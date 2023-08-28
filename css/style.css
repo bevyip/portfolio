@@ -261,13 +261,7 @@ a.nav-link:hover {
   cursor: context-menu;
 }
 
-.skill-1 {
-  display: flex;
-  justify-content: center;
-  margin-left: -100px;
-}
-
-.skill-2 {
+.skill-1, .skill-2, .skill-3, .skill-4 {
   display: flex;
   justify-content: center;
 }
@@ -278,24 +272,24 @@ a.nav-link:hover {
   /* width: 100%; */
 }
 
-@media only screen
+/* @media only screen
   and (min-width: 750px)
   and (max-width: 990px) {
     #skills {
         flex-direction: column;
     }
 
-    .skill-1, .skill-2 {
+    .skill-1, .skill-2, .skill-3, .skill-4 {
       margin: 0 auto;
     }
-}
+} */
 
 @media only screen and (max-width: 750px) {
     #skills {
         flex-direction: column;
     }
 
-    .skill-1, .skill-2 {
+    .skill-1, .skill-2, .skill-3, .skill-4 {
       margin: 0 10px;
     }
 
@@ -311,6 +305,7 @@ a.nav-link:hover {
 }
 
 .words > div {
+  width: 100px;
   height: 25px;
   text-align: end;
   margin: 0 0 10px 0;
@@ -318,13 +313,13 @@ a.nav-link:hover {
 
 .bar {
   flex-direction: column;
-  width: 70%;
+  width: 100%;
 }
 
 /* whole bar */
 .progress {
   height: 25px;
-  width: 400px;
+  width: 25px;
   margin: 10px;
 }
 
@@ -341,16 +336,17 @@ a.nav-link:hover {
   font-size: 15px;
   transition: background-color 0.2s ease-out,
   color 0.2s ease-out;
+  width: 100%;
 }
 
-.progress-bar:hover, .progress-bar:focus {
+/* .progress-bar:hover, .progress-bar:focus {
   background-color: #fff;
   color:#67d967;
   /* font-weight: bold; */
-  transition: background-color 0.3s ease-in,
+  /* transition: background-color 0.3s ease-in,
   color 0.3s ease-in;
   cursor: context-menu;
-}
+} */
 
 .expertise {
   display: flex;
