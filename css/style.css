@@ -272,18 +272,6 @@ a.nav-link:hover {
   /* width: 100%; */
 }
 
-/* @media only screen
-  and (min-width: 750px)
-  and (max-width: 990px) {
-    #skills {
-        flex-direction: column;
-    }
-
-    .skill-1, .skill-2, .skill-3, .skill-4 {
-      margin: 0 auto;
-    }
-} */
-
 @media only screen and (max-width: 750px) {
     #skills {
         flex-direction: column;
@@ -338,15 +326,6 @@ a.nav-link:hover {
   color 0.2s ease-out;
   width: 100%;
 }
-
-/* .progress-bar:hover, .progress-bar:focus {
-  background-color: #fff;
-  color:#67d967;
-  /* font-weight: bold; */
-  /* transition: background-color 0.3s ease-in,
-  color 0.3s ease-in;
-  cursor: context-menu;
-} */
 
 .expertise {
   display: flex;
