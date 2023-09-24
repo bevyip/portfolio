@@ -165,8 +165,8 @@ a.nav-link:hover {
   border-bottom: 1px solid #808080; /* This creates the border. Replace black with whatever color you want. */
 }
 
-.designer-cube, .leader-cube {
-  border-left: 1px solid #808080;
+.left-cube {
+  border-right: 1px solid #808080;
 }
 
 @media only screen
@@ -180,8 +180,8 @@ a.nav-link:hover {
       padding-top: 20px;
       border-bottom: 1px solid #808080;
     }
-    .designer-cube, .leader-cube {
-      border-left: 0;
+    .left-cube {
+      border-right: 0;
     }
 }
 
