@@ -7,7 +7,7 @@
 
 header {
   background-color: black;
-  background-image: url("../img/bannerImage.jpg");
+  background-image: url("/img/bannerImage.jpg");
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
@@ -381,6 +381,16 @@ a.nav-link:hover {
   position: relative;
 }
 
+.work-projects {
+  width: 100%;
+  padding-bottom: 40px;
+  margin-left: 0px;
+
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
 .filter-overlay {
   position: absolute;
   width: 100%;
@@ -391,7 +401,7 @@ a.nav-link:hover {
   transition: 200ms;
   opacity: 0;
 
-  display:flex;
+  display: flex;
   text-align: center;
   justify-content: center;
   flex-direction: column;
@@ -401,7 +411,7 @@ a.nav-link:hover {
 }
 
 .filter-overlay:hover, .filter-overlay:focus {
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.8);
   opacity: 1;
 
   display:flex;
@@ -448,6 +458,13 @@ a.nav-link:hover {
     }
     .prev-proj img {
       height: 350px;
+    }
+    .work-projects {
+      padding-bottom: 0px;
+    }
+    .work-projects .prev-proj-box {
+      padding: 0 !important;
+      margin: 0 !important;
     }
 }
 
