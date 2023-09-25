@@ -1,0 +1,22 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "personal website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bevyip/portfolio.git"
+  },
+  "author": "Beverly Yip",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bevyip/portfolio/issues"
+  },
+  "homepage": "https://github.com/bevyip/portfolio#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
