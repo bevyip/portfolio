@@ -34,7 +34,10 @@
           <a class="nav-link" style="color: #aaa;" href="#intro">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: #aaa;" href="#proj">Experience</a>
+          <a class="nav-link" style="color: #aaa;" href="#proj">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: #aaa;" href="#experience">Experience</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" style="color: #aaa;" href="https://tinyurl.com/5272c7ye" target="_blank">Resume</a>
@@ -201,7 +204,7 @@
         <!-- Work Projects -->
         <div class="row work-projects">
 
-         <div class="col-12 col-lg-5 prev-proj-box">
+         <div class="col-12 col-lg-4 prev-proj-box">
            <img class-"canvas-enhancements img-fluid" src="img/canvas-enhancements" alt="canvas-enhancements-case-study">
            <div class="canvas-enhancements-filter filter-overlay">
              <h4>Flow Builder Canvas Enhancements</h4>
@@ -209,8 +212,8 @@
            </div>
 
          </div>
-         <div class="col-12 col-lg-5 prev-proj-box">
-           <img class-"keyboard-navigation img-fluid" src="img/keyboard-nav.jpg" alt="keyboard-navigation-case-study">
+         <div class="col-12 col-lg-4 prev-proj-box">
+           <img class-"keyboard-navigation img-fluid" src="img/resource-experience-salesforce.png" alt="keyboard-navigation-case-study">
            <div class="keyboard-navigation-filter filter-overlay">
              <h4>Improving Resource Selection Experience with Keyboard Navigation</h4>
              <p>A case study about improving keyboard navigation towards an improved resource selection experience for Salesforce's Flow Builder.</p>
@@ -248,97 +251,98 @@
         </div>
       </div>
 
-      <div class="prev-leadership">
+      <div id="experience">
+        <div class="prev-leadership">
 
-        <div>
-          <p>Click the logo to find out what I've been doing!</p>
+          <div>
+            <p>Click the logo to find out what I've been doing!</p>
+            </div>
+
+          <div class="logo-leadership">
+            <div class="first-logo-row">
+              <input type="image" src="img/asub.PNG" alt="Submit" class="asub leader" onclick="reveal_asub()">
+              <input type="image" src="img/sase.png" alt="Submit" class="sase leader" onclick="reveal_sase()">
+              <input type="image" src="img/salesforce.png" alt="Submit" class="salesforce leader" onclick="reveal_salesforce()">
+            </div>
+            <div class="sec-logo-row">
+              <input type="image" src="img/cswn.png" alt="Submit" class="cswn leader" onclick="reveal_cswn()">
+              <input type="image" src="img/purdue.png" alt="Submit" class="purdue leader" onclick="reveal_purdue()">
+            </div>
           </div>
 
-        <div class="logo-leadership">
-          <div class="first-logo-row">
-            <input type="image" src="img/asub.PNG" alt="Submit" class="asub leader" onclick="reveal_asub()">
-            <input type="image" src="img/sase.png" alt="Submit" class="sase leader" onclick="reveal_sase()">
-            <input type="image" src="img/salesforce.png" alt="Submit" class="salesforce leader" onclick="reveal_salesforce()">
+          <div class="content-leadership text-center">
+            <div id="asub-content" style="display:none">
+              <h5>Asian Student Union Board</h5>
+              <p>Senior Advisor <b style="margin-left:15px">2019-2020</b></p>
+              <p>President <b style="margin-left:15px">2018-2019</b></p>
+              <div class="justify-content-center" style="width: 100%">
+                <a href="https://www.facebook.com/ASUBPurdue/" target="_blank" class="icons fa fa-facebook" style="margin: 10px auto;"></a>
+                <a href="https://www.instagram.com/purdueasub/" target="_blank" class="icons fa fa-instagram" style="margin: 10px 5px;"></a>
+              </div>
+            </div>
+            <div id="sase-content" style="display:none">
+              <h5>Society of Asian Scientists and Engineers</h5>
+              <p>Senior Advisor <b style="margin-left:15px">2019-2020</b></p>
+              <p>Midwest Regional Marketing Representative <b style="margin-left:15px">2018-2019</b></p>
+              <p>Outreach Chair <b style="margin-left:15px">2018-2019</b></p>
+              <p>President <b style="margin-left:15px">2017-2018</b></p>
+              <p>Trade Show Chair & Philanthropy Chair <b style="margin-left:15px">2016-2017</b></p>
+              <div class="justify-content-center" style="width: 100%">
+                <a href="https://www.facebook.com/SASEMidwest/" target="_blank" class="icons fa fa-facebook" style="margin: 10px 5px;"></a>
+                <a href="https://www.instagram.com/sasepurdue/" target="_blank" class="icons fa fa-instagram" style="margin: 10px 5px;"></a>
+                <a href="https://saseconnect.org/" target="_blank" class="icons fa fa-link" style="margin: 10px 5px;"></a>
+              </div>
+            </div>
+            <div id="salesforce-content" style="display:none">
+              <h5>Salesforce</h5>
+              <p>Full-Time Software Engineer <b style="margin-left:15px">2020-2023</b></p>
+              <p>Software Engineering Intern <b style="margin-left:15px">2019-2020</b></p>
+              <p>Campus Ambassador <b style="margin-left:15px">2019-2020</b></p>
+              <div class="justify-content-center" style="width: 100%">
+                <a href="https://twitter.com/salesforce" target="_blank" class="icons fa fa-twitter" style="margin: 10px 5px;"></a>
+                <a href="https://www.instagram.com/salesforce" target="_blank" class="icons fa fa-instagram" style="margin: 10px 5px;"></a>
+                <a href="https://www.salesforce.com/" target="_blank" class="icons fa fa-link" style="margin: 10px 5px;"></a>
+              </div>
+            </div>
+            <div id="cswn-content" style="display:none">
+              <h5>Computer Science Women's Network</h5>
+              <p>Secretary <b style="margin-left:15px">2017-2018</b></p>
+              <div class="justify-content-center" style="width: 100%">
+                <a href="https://www.facebook.com/purduecswn/" target="_blank" class="icons fa fa-facebook" style="margin: 10px 5px;"></a>
+                <a href="https://www.instagram.com/cswnpurdue/" target="_blank" class="icons fa fa-instagram" style="margin: 10px 5px;"></a>
+                <a href="https://www.cs.purdue.edu/cswn/" target="_blank" class="icons fa fa-link" style="margin: 10px 5px;"></a>
+              </div>
+            </div>
+            <div id="purdue-content" style="display:none">
+              <h5>Mortar Board National College Senior Honor Society – Purdue Chapter</h5>
+              <p style="margin-top: -5px;margin-bottom: 5px;">Member <b style="margin-left:15px">2019-2020</b></p>
+              <div class="justify-content-center" style="width: 100%">
+                <a href="https://www.facebook.com/PurdueMortarBoard/" target="_blank" class="icons fa fa-facebook" style="margin: -2px 5px 8px;"></a>
+                <a href="https://www.linkedin.com/company/mortar-board/" target="_blank" class="icons fa fa-linkedin" style="margin: -2px 5px 8px;"></a>
+                <a href="http://purduemortarboard.com/" target="_blank" class="icons fa fa-link" style="margin: -2px 5px 8px;"></a>
+              </div>
+              <h5>CS180: Object Oriented Programming in Java</h5>
+              <p style="margin-top: -5px;margin-bottom: 5px;">Undergraduate Teaching Assistant <b style="margin-left:15px">2017-2020</b></p>
+              <div class="justify-content-center" style="width: 100%">
+                <a href="https://www.cs.purdue.edu/academic-programs/courses/canonical/cs180.html" target="_blank" class="icons fa fa-link" style="margin: -2px 5px 8px;"></a>
+              </div>
+              <h5>Mentors for Aspiring Girls In Computing</h5>
+              <p style="margin-top: -5px;margin-bottom: 5px;">Mentor <b style="margin-left:15px">2017-2018</b></p>
+              <div class="justify-content-center" style="width: 100%">
+                <a href="https://www.facebook.com/PurdueMAGIC" target="_blank" class="icons fa fa-facebook" style="margin: -2px 5px 8px;"></a>
+                <a href="https://www.cs.purdue.edu/outreach/magic.html" target="_blank" class="icons fa fa-link" style="margin: -2px 5px 8px;"></a>
+              </div>
+              <h5>Women in Science Program</h5>
+              <p style="margin-top: -5px;margin-bottom: 5px;">Mentor <b style="margin-left:15px">2017-2018</b></p>
+              <div class="justify-content-center" style="width: 100%">
+                <a href="https://www.science.purdue.edu/wisp/" target="_blank" class="icons fa fa-link" style="margin: -2px 5px 8px;"></a>
+              </div>
+            </div>
           </div>
-          <div class="sec-logo-row">
-            <input type="image" src="img/cswn.png" alt="Submit" class="cswn leader" onclick="reveal_cswn()">
-            <input type="image" src="img/purdue.png" alt="Submit" class="purdue leader" onclick="reveal_purdue()">
-          </div>
+
         </div>
 
-        <div class="content-leadership text-center">
-          <div id="asub-content" style="display:none">
-            <h5>Asian Student Union Board</h5>
-            <p>Senior Advisor <b style="margin-left:15px">2019-2020</b></p>
-            <p>President <b style="margin-left:15px">2018-2019</b></p>
-            <div class="justify-content-center" style="width: 100%">
-              <a href="https://www.facebook.com/ASUBPurdue/" target="_blank" class="icons fa fa-facebook" style="margin: 10px auto;"></a>
-              <a href="https://www.instagram.com/purdueasub/" target="_blank" class="icons fa fa-instagram" style="margin: 10px 5px;"></a>
-            </div>
-          </div>
-          <div id="sase-content" style="display:none">
-            <h5>Society of Asian Scientists and Engineers</h5>
-            <p>Senior Advisor <b style="margin-left:15px">2019-2020</b></p>
-            <p>Midwest Regional Marketing Representative <b style="margin-left:15px">2018-2019</b></p>
-            <p>Outreach Chair <b style="margin-left:15px">2018-2019</b></p>
-            <p>President <b style="margin-left:15px">2017-2018</b></p>
-            <p>Trade Show Chair & Philanthropy Chair <b style="margin-left:15px">2016-2017</b></p>
-            <div class="justify-content-center" style="width: 100%">
-              <a href="https://www.facebook.com/SASEMidwest/" target="_blank" class="icons fa fa-facebook" style="margin: 10px 5px;"></a>
-              <a href="https://www.instagram.com/sasepurdue/" target="_blank" class="icons fa fa-instagram" style="margin: 10px 5px;"></a>
-              <a href="https://saseconnect.org/" target="_blank" class="icons fa fa-link" style="margin: 10px 5px;"></a>
-            </div>
-          </div>
-          <div id="salesforce-content" style="display:none">
-            <h5>Salesforce</h5>
-            <p>Full-Time Software Engineer <b style="margin-left:15px">2020-2023</b></p>
-            <p>Software Engineering Intern <b style="margin-left:15px">2019-2020</b></p>
-            <p>Campus Ambassador <b style="margin-left:15px">2019-2020</b></p>
-            <div class="justify-content-center" style="width: 100%">
-              <a href="https://twitter.com/salesforce" target="_blank" class="icons fa fa-twitter" style="margin: 10px 5px;"></a>
-              <a href="https://www.instagram.com/salesforce" target="_blank" class="icons fa fa-instagram" style="margin: 10px 5px;"></a>
-              <a href="https://www.salesforce.com/" target="_blank" class="icons fa fa-link" style="margin: 10px 5px;"></a>
-            </div>
-          </div>
-          <div id="cswn-content" style="display:none">
-            <h5>Computer Science Women's Network</h5>
-            <p>Secretary <b style="margin-left:15px">2017-2018</b></p>
-            <div class="justify-content-center" style="width: 100%">
-              <a href="https://www.facebook.com/purduecswn/" target="_blank" class="icons fa fa-facebook" style="margin: 10px 5px;"></a>
-              <a href="https://www.instagram.com/cswnpurdue/" target="_blank" class="icons fa fa-instagram" style="margin: 10px 5px;"></a>
-              <a href="https://www.cs.purdue.edu/cswn/" target="_blank" class="icons fa fa-link" style="margin: 10px 5px;"></a>
-            </div>
-          </div>
-          <div id="purdue-content" style="display:none">
-            <h5>Mortar Board National College Senior Honor Society – Purdue Chapter</h5>
-            <p style="margin-top: -5px;margin-bottom: 5px;">Member <b style="margin-left:15px">2019-2020</b></p>
-            <div class="justify-content-center" style="width: 100%">
-              <a href="https://www.facebook.com/PurdueMortarBoard/" target="_blank" class="icons fa fa-facebook" style="margin: -2px 5px 8px;"></a>
-              <a href="https://www.linkedin.com/company/mortar-board/" target="_blank" class="icons fa fa-linkedin" style="margin: -2px 5px 8px;"></a>
-              <a href="http://purduemortarboard.com/" target="_blank" class="icons fa fa-link" style="margin: -2px 5px 8px;"></a>
-            </div>
-            <h5>CS180: Object Oriented Programming in Java</h5>
-            <p style="margin-top: -5px;margin-bottom: 5px;">Undergraduate Teaching Assistant <b style="margin-left:15px">2017-2020</b></p>
-            <div class="justify-content-center" style="width: 100%">
-              <a href="https://www.cs.purdue.edu/academic-programs/courses/canonical/cs180.html" target="_blank" class="icons fa fa-link" style="margin: -2px 5px 8px;"></a>
-            </div>
-            <h5>Mentors for Aspiring Girls In Computing</h5>
-            <p style="margin-top: -5px;margin-bottom: 5px;">Mentor <b style="margin-left:15px">2017-2018</b></p>
-            <div class="justify-content-center" style="width: 100%">
-              <a href="https://www.facebook.com/PurdueMAGIC" target="_blank" class="icons fa fa-facebook" style="margin: -2px 5px 8px;"></a>
-              <a href="https://www.cs.purdue.edu/outreach/magic.html" target="_blank" class="icons fa fa-link" style="margin: -2px 5px 8px;"></a>
-            </div>
-            <h5>Women in Science Program</h5>
-            <p style="margin-top: -5px;margin-bottom: 5px;">Mentor <b style="margin-left:15px">2017-2018</b></p>
-            <div class="justify-content-center" style="width: 100%">
-              <a href="https://www.science.purdue.edu/wisp/" target="_blank" class="icons fa fa-link" style="margin: -2px 5px 8px;"></a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="prev-awards text-center">
+        <div class="prev-awards text-center">
         <h6>Grace Hopper Conference Scholarship 2018</h6>
         <p>Purdue Computer Science Department</p>
         <h6>Freshman of the Year 2017</h6>
@@ -346,6 +350,7 @@
         <h6>Emerging Leader 2017</h6>
         <p>Society of Asian Scientists and Engineers (SASE)</p>
 
+      </div>
       </div>
 
     </div>
