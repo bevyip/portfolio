@@ -13,8 +13,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname+ '/public/pages/index.html'));
 });
 
-app.get('/salesforce-test', (req, res) => {
-  res.sendFile(path.join(__dirname+ '/public/pages/salesforce-test.html'));
+app.get('/salesforce-canvas-enhancements', (req, res) => {
+  res.sendFile(path.join(__dirname+ '/public/pages/salesforce-canvas-enhancements.html'));
 })
 
 // Start Server
