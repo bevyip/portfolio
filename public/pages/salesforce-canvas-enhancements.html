@@ -58,66 +58,67 @@
       <div class="mainheader row justify-content-around">
         <div class="col-lg-12 justify-content-center">
           <h2>
-            <span>A case study about redesigning Salesforce's Flow Builder canvas layout for better user productivity and inclusivity for those sight-impaired.
+            <span>A case study about redesigning Salesforce's Flow Builder canvas layout and experience with improvements that are inclusive to those that are sight-impaired.
             </span>
           </h2>
         </div>
       </div>
     </header>
 
-    <div class="section intro text-center container" id="intro">
-      <div class="col-12">
-        <img class="rounded center-block" src="img/personalphoto.jpg" alt="Head Shot" class="rounded mx-auto d-block">
+    <div class="disclaimer">
+      <i class="fa fa-info-circle" aria-hidden="true"></i>
+      <p>Due to a Non-Disclosure Agreement, information on this project is limited.
+      </p>
+    </div>
+
+    <div class="row introduction">
+      <div class="col-8 project-summary">
+        <h2>Introduction</h2>
+      </br>
+        <p>Flow Builder provides declarative process automation for every Salesforce app, experience, and portal with point-and-click automation. I joined this team in April 2022 and have since been working on releasing changes that aim to consistently improve user productivity and experience.</p>
+        <p class="highlight">The primary goal of this Flow Builder's redesign was to offer users a <span>modernized and simplified layout that remains inclusive to all</span>. This involves a cleaner and more visually appealing interface with improved navigation, as well as improving user experience for those that are sight-impaired with colors that meet the WCAG 2.1 requirements. </p>
+        <p>The modifications were implemented in Java, Typescript, HTML, and CSS.
+        </p>
+
+      </br>
+
+        <h2>So, what's the problem?</h2>
+        </br>
+        <p style="padding-bottom:30px;">As the Flow Builder user base expands and increasingly complex flows emerge, we received feedback about the challenges of navigating the flow. Previously, the sole navigation method was dragging the canvas to view off-screen elements and scrolling to zoom for clearer visibility.</p>
+        <img src="/img/canvas-enhancements-img/drag-gif.gif" alt="canvas drag gif">
+        <p style="padding-top:30px;"> The following are the core problems this product aims to solve: </p>
+        <ul>
+          <li class="highlight"><span>Users would lose element positioning on the canvas</span>. The zoom level would reset with every element interaction. If you were building a large flow, this was a headache to deal with. It frustrated users and negatively impacted user productivity.</li>
+          <li class="highlight"><span>The icon colors were inaccessible</span>. They did not meet the contrast ratio of at least 3:1 for graphics and user interface components. This was a requirement specified by Web Content Accessibility Guidelines (WCAG) 2.1. Our features were isolating our users, especially those that are sight-impaired.</li>
+        </ul>
       </div>
-      <div class="background-content">
-        <div class="row justify-content-center align-items-start bgrnd-row">
-          <div class="col-12 col-lg-5 left-cube">
-            <div class="background-title Developer">
-              <div class="header-background">
-                <i class="fa fa-background fa-code" aria-hidden="true"></i>
-                <h2>Developer</h2>
-              </div>
-              <p>I first ventured into coding during my freshman year at the National University of Singapore while majoring in Math. It soon dawned on me the vast potential and profound impact of the innovations possible through programming. This realization led me to transfer to Purdue University in 2016, where I pursued a major in Computer Science with a specialization in Machine Learning. Occasionally, I dabble in side programming projects, seeking inventive and user-centric solutions to real-world challenges. Since starting my journey in CS, I have learned a variety of programming languages and enjoy developing projects.</p>
-            </div>
-          </div>
-
-          <div class="col-12 col-lg-5">
-            <div class="background-title Designer">
-              <div class="header-background">
-                <i class="fa fa-background fa-pencil" aria-hidden="true"></i>
-                <h2>Designer</h2>
-              </div>
-              <p>From a young age, I've been drawn to design and captivated by art. My fascination grew when I realized the blend of programming with design, prompting my dive into Computer Science. There, I learned and embodied the importance of an empathetic, research-based, and human-centered approach to technical solutions. I was actively engaged in designing content for the marketing departments of several campus organizations, pursued a minor in Anthropology to delve deeper into human interactions, and consistently prioritized the end-user in my solutions as a Software Engineer.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row justify-content-center align-items-start">
-          <div class="col-12 col-lg-5 left-cube">
-            <div class="background-title Innovator">
-              <div class="header-background">
-                <i class="fa fa-background fa-cloud" aria-hidden="true"></i>
-                <h2>Collaborator</h2>
-              </div>
-              <p>I've consistently valued the power and advantages of collaboration and the insights that come from constructive feedback. While at Salesforce, I was involved in different aspects of designing and developing solutions for our users.  Collaborating with UX teams and Product Managers, I brainstormed ideas, undertook research, documented findings, and coordinated tasks with my engineering peers. Additionally, I partnered with parallel teams to discuss accessibility shortcomings and solutions in our products. With every solution, I intend on designing and engineer with growing empathy and intuition for the end user - an endeavor made achievable through ongoing teamwork and open communication.</p>
-            </div>
-          </div>
-
-          <div class="col-12 col-lg-5">
-            <div class="background-title Leader">
-              <div class="header-background">
-                <i class="fa fa-background fa-users" aria-hidden="true"></i>
-                <h2>Leader</h2>
-              </div>
-              <p>While at Purdue, I took on minor and major roles in several minority organizations. One noticeable leadership role  was my tenure as the President of the Society of Asian Scientists and Engineers (SASE). With the support of my leadership team, we boosted the organization's membership by a whopping 475%. Additionally, I held a position as a Teaching Assistant for the CS180 course and played a mentoring role in numerous CS minority initiatives. At Salesforce, I proactively stepped up as the Accessibility Champion for my team, committing myself to ensure our product consistently caters to individuals of varying capabilities.</p>
-            </div>
-
-          </div>
-        </div>
+      <div class="col-4 project-sub-summary">
+        <p class="sub-header">WHEN WAS THIS?</p>
+        <p>Dec 2022 - Feb 2023</p>
+        </br>
+        <p class="sub-header">WHAT'D I DO?</p>
+        <p>I served as the lead Software Engineer for this feature, overseeing the entire project cycle.</p>
+        <p>My responsibilities included:
+          <ul>
+            <li>Project scoping and presenting proof-of-concepts to discern technical specifications.</li>
+            <li>Identifying potential technical challenges.</li>
+            <li>Dissecting the feature into digestible work items.</li>
+            <li>Implementing code and creating comprehensive test plans.</li>
+            <li>Organizing and leading bug blitzes to identify user issues.</li>
+            <li>Presenting the end product to key stakeholders and company executives.</li>
+           </ul>
+         </p>
+        <p>During this process, I worked in tandem with the UX team, Product Managers, and my engineering team to ideate and troubleshoot.</p>
       </div>
-      <div class="col-12" ontouchstart="">
-        <a class="resume btn btn-default" href="https://bit.ly/2S54Pg9" target="_blank">RESUME</a>
+    </div>
+
+    <div class="solution">
+      <div class="ux-deliverables">
+        <h2>The Process</h2>
+        </br>
+        <p>As a Software Engineer in Salesforce, my responsibilities start when I receive feature deliverables by the User Experience team.</p>
       </div>
+      <img class="center" src="/img/canvas-enhancements-img/ux-deliverables.png" alt="ux deliverables">
     </div>
 
 <div class="section contact" id="contact">

@@ -5,9 +5,15 @@
   background: #ffb7b7; /* Gecko Browsers */
 }
 
+p, li {
+  font-weight: 600;
+  font-family: Quicksand;
+  color: #4d4d4d;
+}
+
 header {
   background-color: black;
-  background-image: url("/img/canvas-enhancements-landing.png");
+  background-image: url("/img/canvas-enhancements-img/canvas-enhancements-landing.png");
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
@@ -33,6 +39,7 @@ header {
   display: inline-block;
   color: #333;
   border: 2px solid #333;
+  background-color: white;
   text-align: center;
   outline: none;
   text-decoration: none;
@@ -153,7 +160,7 @@ a.nav-link:hover {
 }
 
 .navbar-brand {
-  font-family: "Open Sans";
+  font-family: Open Sans;
   font-weight: bold;
   color: #222 !important;
   font-size: 20px;
@@ -162,331 +169,71 @@ a.nav-link:hover {
   padding: 0 2%;
 }
 
-.intro {
-  background-color: white;
-  padding: 60px 0 0 0;
-  cursor: context-menu;
-}
-
-.bgrnd-row:after {
-  content: ""; /* This is necessary for the pseudo element to work. */
-  display: block; /* This will put the pseudo element on its own line. */
-  margin: -12px auto; /* This will center the border. */
-  width: 80%; /* Change this to whatever width you want. */
-  padding-top: 20px; /* This creates some space between the element and the border. */
-  border-bottom: 1px solid #808080; /* This creates the border. Replace black with whatever color you want. */
-}
-
-.left-cube {
-  border-right: 1px solid #808080;
-}
-
-@media only screen
-  /* and (min-device-width: 375px) */
-  and (max-width: 990px) {
-    .Designer:before, .Leader:before {
-      content: "";
-      display: block;
-      margin: 0 auto;
-      width: 90%;
-      padding-top: 20px;
-      border-bottom: 1px solid #808080;
-    }
-    .left-cube {
-      border-right: 0;
-    }
-}
-
-.intro h2 {
-  font-size: 30px;
-}
-
-.intro img {
-  height: 200px;
-  width: 200px;
-  margin-bottom: 30px;
-}
-
-.background-title {
-  margin: 10px;
-}
-
-.background-content {
-  padding: 20px 0;
-  font-family: Quicksand;
-  background-color: rgb(250,250,250);
-  border-radius: 10px;
-  width: 85%;
-  margin: auto;
-}
-
-.header-background {
-  display: flex;
-  flex-direction: row;
-  margin: auto;
-  justify-content: center;
-  align-items: center;
+.disclaimer {
+  background-color: #F0F0F0;
+  font-family: Roboto;
   padding: 20px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.header-background h2 {
-  font-family: "Lato";
-  font-weight: bolder;
-  margin-top: 5px;
-  color: #333;
+.disclaimer p {
+  padding: 0 10px;
+  margin: 0;
 }
 
-.fa-background {
-  border-radius: 100%;
-  cursor: default;
-  display: inline-block;
-  height: 2.5em;
-  line-height: 2.5em;
-  margin-right: 15px;
-  width: 2.5em;
-
-  font-size: 20px;
-  background-color: #4e3419;
-  color: white;
-}
-
-.resume {
-  font-family: "Open Sans";
-  color: black;
-  padding: 8px 40px;
-  font-size: 18px;
-  font-weight: bold;
-  border-color: lightgrey;
-  margin-top: 40px;
-}
-
-.resume:hover, .resume:focus {
-  border-color: #4e3419;
-  background-color: #4e3419;
-  color: white;
-  transition: background-color border-color 0.2s ease-in, color 0.2s ease-in;
-}
-/*
-.section.proj {
-  padding: 40px 0 0 0;
+.project-summary {
+  padding: 40px 40px 40px 60px;
   font-family: Quicksand;
-  cursor: context-menu;
 }
 
-.skill-1, .skill-2, .skill-3, .skill-4 {
-  display: flex;
-  justify-content: center;
+.project-sub-summary {
+  padding: 40px;
+  font-family: Quicksand;
 }
 
-#skills {
-  display: flex;
-  justify-content: center;
-  /* width: 100%; */
-}
-/*
-@media only screen and (max-width: 750px) {
-    #skills {
-        flex-direction: column;
-    }
-
-    .skill-1, .skill-2, .skill-3, .skill-4 {
-      margin: 0 10px;
-    }
-
-    .long-skill {
-      font-size: 15px;
-    }
-
-}
-
-.words{
-  margin: 10px 5px 10px 10px;
-  font-family: Cabin;
-}
-
-.words > div {
-  width: 100px;
-  height: 25px;
-  text-align: end;
-  margin: 0 0 10px 0;
-}
-
-.bar {
-  flex-direction: column;
-  width: 100%;
-}
-
-
-/* whole bar */
-/*
-.progress {
-  height: 25px;
-  width: 25px;
-  margin: 10px;
-}
-
-@media only screen and (max-width: 750px) {
-    .progress {
-        width: 100%;
-    }
-}
-
-/* bar contents */
-/*
-.progress-bar {
-  background-color: #3f2a14 !important;
-  font-family: Oswald;
-  font-size: 15px;
-  transition: background-color 0.2s ease-out,
-  color 0.2s ease-out;
-  width: 100%;
-}
-
-.expertise {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.expertise:hover {
-  cursor: context-menu;
-}
-
-.exp-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-@media only screen
-  /* and (min-device-width: 375px) */
-  /*
-  and (max-width: 750px) {
-    .exp-content {
-        flex-direction: column;
-        width: 60%;
-        margin: auto;
-    }
-    .progress {
-      width: 80%;
-    }
-}
-
-.expertise p {
-  border: 1px solid;
-  border-radius: 2px;
-  margin: 5px;
-  padding: 5px 15px;
-  background-color: #e9ecef;
-  border-color: #e9ecef;
+.project-summary h2, .solution h2 {
+  font-size: 30px;
+  font-family: Lato;
+  font-weight: bolder;
   color: #333;
-  font-weight: bold;
 }
 
-.prev-proj {
-  padding: 40px 0;
+.project-sub-summary .sub-header {
+  font-weight: 600;
+  font-family: Lato;
+  color: #A9A9A9;
 }
 
-.prev-proj img {
-  width: 100%;
-  height: 100%;
+p.highlight span, li.highlight span {
+  color: black;
+  background-color: #c6e4fa;
+  border-radius: 10px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 5px 0 5px;
 }
 
-.prev-proj-box {
-  position: relative;
+ul li {
+  padding: 5px 0px;
 }
 
-.work-projects {
-  width: 100%;
-  padding-bottom: 40px;
-  margin-left: 0px;
+.solution {
+  padding: 0 60px;
+  font-family: Quicksand;
 
-  display: flex;
-  text-align: center;
-  justify-content: center;
-}
-
-.work-projects .prev-proj-box a {
-    text-decoration: inherit;
-    color: inherit;
-}
-
-.work-projects .prev-proj-box {
-  margin: 0 20px;
-  padding: 0;
-}
-
-*/
-/*
-.prev-leadership {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: Cabin;
 }
 
-.logo-leadership input {
-  margin: 10px 20px;
-}
-
-.logo-leadership input:focus {
-  outline: none;
-}
-
-.logo-leadership {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.asub.leader {
-  border-radius: 150%;
-  width: 85px;
-  height: 85px;
-}
-
-.sase.leader {
-  width: 100px;
-  height: 90px;
-}
-
-.salesforce.leader {
-  border-radius: 150%;
-  height: 90px;
-}
-
-.cswn.leader {
-  width: 95px;
-  height: 90px;
-}
-
-.purdue.leader {
-  width: 110px;
-  height: 80px;
-}
-
-@media only screen and (max-width: 750px) {
-  .first-logo-row, .sec-logo-row {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .asub.leader {
-    margin-bottom: 20px;
-  }
-
-  .cswn.leader {
-    margin-bottom: 30px;
-  }
-
-  .purdue.leader {
-    margin-top: -10px;
-  }
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .contact:before {
@@ -508,7 +255,7 @@ a.nav-link:hover {
 }
 
 .contact h2 {
-  font-family: "Quicksand";
+  font-family: Quicksand;
   font-weight: 100;
   font-size: 20px;
   /* padding: 0 0 10px 0; */
