@@ -72,7 +72,7 @@
     </div>
 
     <div class="row introduction">
-      <div class="col-8 project-summary">
+      <div class="col-lg-8 col-md-8 col-sm-12 project-summary">
         <h2>Introduction</h2>
       </br>
         <p>Flow Builder provides declarative process automation for every Salesforce app, experience, and portal with point-and-click automation. I joined this team in April 2022 and have since been working on releasing changes that aim to consistently improve user productivity and experience.</p>
@@ -92,7 +92,7 @@
           <li class="highlight"><span>The icon colors were inaccessible</span>. They did not meet the contrast ratio of at least 3:1 for graphics and user interface components. This was a requirement specified by Web Content Accessibility Guidelines (WCAG) 2.1. Our features were isolating our users, especially those that are sight-impaired.</li>
         </ul>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-8 project-sub-summary">
+      <div class="col-lg-4 col-md-4 col-sm-12 project-sub-summary">
         <p class="sub-header">WHEN WAS THIS?</p>
         <p>Dec 2022 - Feb 2023</p>
         </br>
@@ -112,14 +112,52 @@
       </div>
     </div>
 
-    <div class="solution">
+    <div class="col solution">
       <div class="ux-deliverables">
         <h2>The Process</h2>
         </br>
         <p>As a Software Engineer in Salesforce, my responsibilities start when I receive feature deliverables by the User Experience team.</p>
-        <img class="center" src="/img/canvas-enhancements-img/ux-deliverables.png" alt="ux deliverables">
+        <div class="deliverables-img">
+          <img class="center" src="/img/canvas-enhancements-img/deliverables-1.png" alt="ux deliverables">
+          <img class="center" src="/img/canvas-enhancements-img/deliverables-2.png" alt="ux deliverables">
+        </div>
+        <p class="highlight">I began by conducting a spike, <span>a time-boxed research into the codebase to explore potential solutions and identify technical challenges</span>. This research would conclude with a detailed presentation of my findings and demoing proof-of-concepts to my team.</p>
+        <img class="center spike-example" src="/img/canvas-enhancements-img/spike-eg.jpg" alt="spike example">
       </div>
-      // IMAGE BOOSTRAP COL INSTEAD OF WIDTH?
+
+      <div class="update-icon-story">
+        <h2>Update The <img class="plus-icon" src="/img/canvas-enhancements-img/plus-icon.png" alt="plus icon"> Icon</h2>
+        </br>
+        <p>The first noticeable enhancement was changing the icon to a <img class="circle-icon" src="/img/canvas-enhancements-img/circle-icon.png" alt="circle icon"> icon that enlarges to the <img class="plus-icon" src="/img/canvas-enhancements-img/plus-icon.png" alt="plus icon"> icon when interacted with.</p>
+        <img class="hover-animation" src="/img/canvas-enhancements-img/hover-animation.gif" alt="icon hover animation gif">
+        <p>With this update, there were 4 animation cases to consider.</p>
+        <img class="center icon-cases" src="/img/canvas-enhancements-img/icon-animation-cases.png" alt="icon cases">
+      </div>
+
+      <div class="add-help-popover-story">
+        <h2>Add Help Popover</h2>
+        </br>
+        <p>With the significant visual update, we wanted to provide users a help popover that explains how one can interact with the new interface.</p>
+          <img class="center popover-example" src="/img/canvas-enhancements-img/popover-eg.png" alt="popover example">
+          <img class="center popover-req" src="/img/canvas-enhancements-img/popover-requirements.png" alt="popover requirements">
+          <img class="center popover-issue" src="/img/canvas-enhancements-img/popover-issue.png" alt="popover issue">
+      </div>
+
+      <div class="shorten-distance-story">
+        <h2>Shorten The Distance Between Vertical Nodes</h2>
+        </br>
+        <p>This feature involved a simple change in variable value in a file that calculated all element configurations. After spiking this feature, I found 2 implementation options that my team and I could discuss and finalize on.</p>
+        <img class="center shorten-dist-spike-example" src="/img/canvas-enhancements-img/shorten-dist-spike.png" alt="shorten distance spike example">
+        <img class="center shorten-dist-issue" src="/img/canvas-enhancements-img/shorten-dist-issue.png" alt="shorten distance issue">
+        <p>After multiple feedback sessions and multi-team discussions with UX and my team, an acceptable variable value was agreed upon that could meet both the feature requirement and accommodate unique cases like the Decision element.</p>
+      </div>
+
+      <div class="reduce-width-story">
+        <h2>Reduce The Width Of Connectors</h2>
+        </br>
+        <p>Part of the move towards improving the canvas interface was reducing the overall width of the connectors. This also involved a small change in variable value.</p>
+        <img class="center reduce-width" src="/img/canvas-enhancements-img/reduce-width-img.png" alt="reduce width example">
+      </div>
     </div>
 
 <div class="section contact" id="contact">
