@@ -19,7 +19,7 @@
 
 <body>
 
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" id="navbar-real">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light row" id="navbar-real">
     <a class="navbar-brand" href="/#">BEVERLY YIP</a>
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="nav-gen">
       <span class="navbar-toggler-icon"></span>
@@ -51,7 +51,7 @@
 
 
   <header>
-    <div class="container-fluid landing filter-overlay">
+    <div class="container-fluid landing filter-overlay row">
       <div class="landing-name">
         <h1>Flow Builder Canvas Enhancements</h1>
       </div>
@@ -76,7 +76,7 @@
         <h2>Introduction</h2>
       </br>
         <p>Flow Builder provides declarative process automation for every Salesforce app, experience, and portal with point-and-click automation. I joined this team in April 2022 and have since been working on releasing changes that aim to consistently improve user productivity and experience.</p>
-        <p class="highlight">The primary goal of this Flow Builder's redesign was to offer users a <span>modernized and simplified layout that remains inclusive to all</span>. This involves a cleaner and more visually appealing interface with improved navigation, as well as improving user experience for those that are sight-impaired with colors that meet the WCAG 2.1 requirements. </p>
+        <p class="highlight">The primary goal of this Flow Builder's redesign was to offer users a <span>modernized and simplified layout that remains inclusive to all</span>. This involves a cleaner and more visually appealing interface with improved navigation, as well as improving user experience for those that are sight-impaired with colors that meet accessibility requirements. </p>
         <p>The modifications were implemented in Java, Typescript, HTML, and CSS.
         </p>
 
@@ -118,8 +118,8 @@
         </br>
         <p>As a Software Engineer in Salesforce, my responsibilities start when I receive feature deliverables by the User Experience team.</p>
         <div class="deliverables-img">
-          <img class="center" src="/img/canvas-enhancements-img/deliverables-1.png" alt="ux deliverables">
-          <img class="center" src="/img/canvas-enhancements-img/deliverables-2.png" alt="ux deliverables">
+          <img src="/img/canvas-enhancements-img/deliverables-1.png" alt="ux deliverables">
+          <img src="/img/canvas-enhancements-img/deliverables-2.png" alt="ux deliverables">
         </div>
         <p class="highlight">I began by conducting a spike, <span>a time-boxed research into the codebase to explore potential solutions and identify technical challenges</span>. This research would conclude with a detailed presentation of my findings and a demo of proof-of-concepts to my team.</p>
         <img class="center spike-example" src="/img/canvas-enhancements-img/spike-eg.jpg" alt="spike example">
@@ -131,33 +131,88 @@
         <p>The first noticeable enhancement was changing the icon to a <img class="circle-icon" src="/img/canvas-enhancements-img/circle-icon.png" alt="circle icon"> icon that enlarges to the <img class="plus-icon" src="/img/canvas-enhancements-img/plus-icon.png" alt="plus icon"> icon when interacted with.</p>
         <img class="hover-animation" src="/img/canvas-enhancements-img/hover-animation.gif" alt="icon hover animation gif">
         <p class="highlight">With this update, there were <span>four animation cases</span> to consider.</p>
-        <img class="center icon-cases" src="/img/canvas-enhancements-img/icon-animation-cases.png" alt="icon cases">
+        <div class="row">
+          <img class="icon-cases" src="/img/canvas-enhancements-img/icon-animation-cases.png" alt="icon cases">
+        </div>
       </div>
 
       <div class="add-help-popover-story">
         <h2>Add Help Popover</h2>
         </br>
         <p>With the significant visual update, we wanted to provide users a help popover that explains how one can interact with the new interface.</p>
-          <img class="center popover-example" src="/img/canvas-enhancements-img/popover-eg.png" alt="popover example">
-          <img class="center popover-req" src="/img/canvas-enhancements-img/popover-requirements.png" alt="popover requirements">
-          <img class="center popover-issue" src="/img/canvas-enhancements-img/popover-issue.png" alt="popover issue">
+        <div class="row">
+          <img class="popover-example" src="/img/canvas-enhancements-img/popover-eg.png" alt="popover example">
+          <img class="popover-req" src="/img/canvas-enhancements-img/popover-requirements.png" alt="popover requirements">
+          <img class="popover-issue" src="/img/canvas-enhancements-img/popover-issue.png" alt="popover issue">
+        </div>
       </div>
 
       <div class="shorten-distance-story">
         <h2>Shorten The Distance Between Vertical Nodes</h2>
         </br>
         <p class="highlight">This feature involved a simple change in variable value in a file that calculated all element configurations. After spiking this feature, I found <span>two methods of implementation</span> that my team and I could discuss and finalize on.</p>
-        <img class="center shorten-dist-spike-example" src="/img/canvas-enhancements-img/shorten-dist-spike.png" alt="shorten distance spike example">
-        <img class="center shorten-dist-issue" src="/img/canvas-enhancements-img/shorten-dist-issue.png" alt="shorten distance issue">
+        <div class="row">
+          <img class="center shorten-dist-spike-example" src="/img/canvas-enhancements-img/shorten-dist-spike.png" alt="shorten distance spike example">
+          <img class="shorten-dist-issue" src="/img/canvas-enhancements-img/shorten-dist-issue.png" alt="shorten distance issue">
+        </div>
         <p>After multiple feedback sessions and multi-team discussions with UX and my team, an acceptable variable value was agreed upon that could meet both the feature requirement and accommodate unique cases like the Decision element.</p>
+        </br>
       </div>
 
       <div class="reduce-width-story">
         <h2>Reduce The Width Of Connectors</h2>
         </br>
         <p>Part of the move towards improving the canvas interface was reducing the overall width of the connectors. This also involved a small change in variable value.</p>
-        <img class="center reduce-width" src="/img/canvas-enhancements-img/reduce-width-img.png" alt="reduce width example">
+        <div class="row">
+          <img class="reduce-width" src="/img/canvas-enhancements-img/reduce-width-img.png" alt="reduce width example">
+        </div>
       </div>
+
+      <div class="color-contrast-story">
+        <h2>Increase The Contrast Of Nodes And Connectors</h2>
+        </br>
+        <p>Prior to this update, Flow Builder displayed colors that were not WCAG 2.1 compliant. After consulting with the UX team and obtaining the necessary css requirements, I began identifying the areas that required modifications.</p>
+        <div class="row">
+          <img class="color-contrast" src="/img/canvas-enhancements-img/color-contrast.png" alt="color contrast example">
+        </div>
+        <p>The code was straightforward, but its application demanded consideration of all node and connector variations. Thus, before embarking on the changes, I needed to thoroughly investigate the source code for these variants and all their possible use cases.</p>
+      </br>
+        <p class="highlight">This feature adjustment was particularly notable for me. Throughout my career, it was among the few tasks I undertook that highlighted a <span>distinct interface-driven customer need</span>. Addressing this would greatly enhance both productivity and inclusivity for its users.
+        </p>
+      </br>
+      </div>
+
+      <div class="results">
+        <h2>Drum Roll, Please... The Finished Product</h2>
+        </br>
+        <p>On the left, you'd see what Flow Builder was before the changes. On the right, you'd see how the Flow Builder canvas has improved after the changes.</p>
+        <div class="row">
+          <img class="end-product" src="/img/canvas-enhancements-img/end-product.gif" alt="end product gif">
+          <img class="canvas-enhancements-conclusion" src="/img/canvas-enhancements-img/canvas-enhancements-conclusion.jpg" alt="canvas enhancements conclusion">
+        </div>
+        <p class="highlight">The newly-upgraded canvas layout that boasts <span>a more compact view with improved accessibility standards</span> received praise during its Summer ‘23 release. While Salesforce product releases are commonly discussed in quarterly articles and blogs, this particular feature stood out. It captivated many users right from the get go and was subsequently highlighted as <span>one of the top features</span> of that Salesforce release.</p>
+        <div class="row">
+          <img class="canvas-reviews" src="/img/canvas-enhancements-img/canvas-reviews.png" alt="canvas reviews">
+        </div>
+      </div>
+
+      <div class="learning-journey">
+        <h2>Phew, What A Learning Journey!</h2>
+        </br>
+        <p>When I first took on the leadership role for this project, I grappled with self-doubt, often questioning my capabilities as the youngest Software Engineer on a seasoned team. My experience was marked by daily challenges, collaborative brainstorming and intensive problem-solving.</p>
+        </br>
+        <p class="highlight" style="padding-bottom: 20px">My manager and mentor played crucial roles in encouraging me to <span>stay curious</span>. I'll never forget the response I received to my apprehension about asking questions, which completely transformed my outlook on speaking up.</p>
+        </br>
+        <p class="quote">“You never know if someone also has the same question as you or if your question might offer a new perspective. By asking your question, you could be helping someone else too.”</p>
+        </br>
+        <p style="padding-top: 20px">Looking back at the successful impact of the feature on user productivity and accessibility, I'm deeply thankful for my team's unwavering support that fueled my confidence and determination to lead the project to its success.</p>
+      </br>
+      </div>
+
+      <div class="learning-journey">
+        <h2>Thanks for scrolling!</h2>
+        </br>
+        <p>If you're interested, check out <a class="content-link" href="/#">this other case study</a> I did on improving accessibility in Salesforce's Flow Builder Resource Menu.</p>
     </div>
 
 <div class="section contact" id="contact">
