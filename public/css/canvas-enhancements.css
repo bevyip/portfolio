@@ -258,7 +258,8 @@ ul li {
 .reduce-width-story h2,
 .color-contrast-story h2,
 .results h2,
-.learning-journey h2 {
+.learning-journey h2,
+.outro h2 {
   padding: 0 60px;
 }
 

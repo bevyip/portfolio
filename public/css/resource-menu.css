@@ -1,0 +1,358 @@
+::selection {
+  background: #ffb7b7; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #ffb7b7; /* Gecko Browsers */
+}
+p, li {
+  font-weight: 600;
+  font-family: Quicksand;
+  color: #4d4d4d;
+}
+
+header {
+  background-color: black;
+  background-image: url("/img/resource-menu/resource-selection.png");
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  cursor: context-menu;
+}
+
+@media only screen
+  /* and (min-device-width: 375px) */
+  and (max-width: 750px) {
+    header {
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+    }
+
+}
+
+.mainheader {
+  width: 50%;
+  margin: 0 auto 110px;
+  padding: 8px 0 2px 0;
+  display: inline-block;
+  color: #333;
+  border: 2px solid #333;
+  background-color: white;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+}
+
+.mainheader h2 {
+  font-size: 20px;
+  font-family: Cabin;
+  letter-spacing: 2px;
+  line-height: 1.3em;
+  color: black;
+  align-items: center;
+}
+
+@media only screen
+  /* and (min-device-width: 375px) */
+  and (max-width: 1200px){
+    .filter-overlay  {
+      height: 100%;
+    }
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 480px;
+}
+
+@media only screen
+  /* and (min-device-width: 375px) */
+  and (max-width: 750px) {
+    .mainheader {
+      width: 100%;
+      font-weight: bold;
+      color: black;
+      line-height: 1.3em;
+      margin: 0 0 100px 0;
+    }
+
+    .mainheader span {
+      color: black;
+      font-size: 17px;
+      letter-spacing: 1px;
+      line-height: 2em;
+    }
+
+    .landing {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: auto;
+      height: 480px;
+    }
+}
+
+
+.filter-overlay {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+h1 {
+  font-family: Lato;
+  font-weight: 600;
+  text-align: center;
+  font-style: normal;
+  font-size: 64px;
+  line-height: 1.3em;
+  letter-spacing: -.03em;
+  text-transform: none;
+  color: #111 !important;
+}
+
+#navbar-real {
+  background-color: inherit !important;
+  justify-content: center;
+}
+
+#navbarSupportedContent, a.nav-link {
+  font-family: Quicksand;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+a.nav-link:hover {
+  color: black !important;
+}
+
+.navbar-nav > li {
+  font-family: Martel;
+  display: flex;
+  padding: 0 10px;
+}
+
+#custom-navbar {
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.navbar-toggler.collapsed .navbar-toggler-icon {
+  -webkit-transform: rotate(0deg); transform: rotate(0deg);
+  -webkit-transition: 0.2s ease; transition: 0.2s ease;
+}
+.navbar-toggler .navbar-toggler-icon {
+  -webkit-transform: rotate(90deg); transform: rotate(90deg);
+  outline:none !important;
+}
+
+#nav-gen:focus {
+  color: black !important;
+  border-color: transparent;
+  outline: none;
+}
+
+#nav-gen {
+  stroke: #333;
+  border-color: transparent;
+}
+
+.navbar-brand {
+  font-family: Open Sans;
+  font-weight: bold;
+  color: #222 !important;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  line-height: 1.2em;
+  padding: 0 2%;
+}
+
+.disclaimer {
+  background-color: #F0F0F0;
+  font-family: Roboto;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.disclaimer p {
+  padding: 0 10px;
+  margin: 0;
+}
+
+.project-summary {
+  padding: 40px 40px 40px 60px;
+  font-family: Quicksand;
+}
+
+.project-sub-summary {
+  padding: 40px;
+  font-family: Quicksand;
+}
+
+.project-summary h2, .solution h2 {
+  font-size: 30px;
+  font-family: Lato;
+  font-weight: bolder;
+  color: #333;
+}
+
+.project-sub-summary .sub-header {
+  font-weight: 600;
+  font-family: Lato;
+  color: #A9A9A9;
+}
+
+p.highlight span, li.highlight span {
+  color: black;
+  background-color: #c6e4fa;
+  border-radius: 10px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 5px 0 5px;
+}
+
+ul li {
+  padding: 5px 0px;
+}
+
+@media only screen
+  /* and (min-device-width: 375px) */
+  and (max-width: 750px) {
+    .introduction {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: auto;
+    }
+
+    .project-summary {
+      padding: 40px !important;
+    }
+
+    .project-sub-summary {
+      padding-top: 0;
+     }
+}
+
+.solution {
+  padding: 0;
+  font-family: Quicksand;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.solution h2, .solution p {
+  padding: 0 60px;
+  margin: 0;
+}
+
+.learning-journey h2,
+.outro h2 {
+  padding: 0 60px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.learning-journey .quote {
+  font-style: italic;
+  color: black;
+  padding: 0 40px;
+  margin: 0 120px;
+  border-left: 2px solid black;
+}
+
+a.content-link:hover, a.content-link:focus {
+  color: #3f2a14;
+  text-decoration: none !important;
+}
+
+.contact:before {
+  content: ""; /* This is necessary for the pseudo element to work. */
+    display: block; /* This will put the pseudo element on its own line. */
+    margin: 0 auto 2em auto; /* This will center the border. */
+    width: 50%; /* Change this to whatever width you want. */
+    padding-top: 0.1em; /* This creates some space between the element and the border. */
+    border-bottom: 1px solid black; /* This creates the border. Replace black with whatever color you want. */
+}
+
+.contact {
+  /* background-color: #3f2a14; */
+  padding: 10px 0 2em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact h2 {
+  font-family: Quicksand;
+  font-weight: 100;
+  font-size: 20px;
+  /* padding: 0 0 10px 0; */
+}
+
+.contactlabel {
+  cursor:default;
+  color:#000;
+  text-decoration:none;
+  text-align: center;
+}
+
+/* social media */
+.icons {
+  padding: 0.1em;
+  font-size: 25px;
+  text-align: center;
+  margin: 5px;
+}
+
+.icons:hover, .icons:focus {
+  color: #3f2a14;
+  text-decoration: none;
+}
+
+.fa-facebook {
+  /* background: #3B5998; */
+  color: black;
+}
+
+.fa-twitter {
+  /* background: #3B5998; */
+  color: black;
+}
+
+.fa-linkedin {
+  /* background: #007bb5; */
+  color: black;
+}
+
+.fa-github {
+  /* background: black; */
+  color: black;
+}
+
+.fa-instagram {
+  /* background: #125688; */
+  color: black;
+}
+
+.fa-envelope {
+  /* background: #125688; */
+  color: black;
+}
+
+.fa-link {
+  /* background: black; */
+  color: black;
+}

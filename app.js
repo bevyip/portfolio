@@ -17,7 +17,9 @@ app.get('/salesforce-canvas-enhancements', (req, res) => {
   res.sendFile(path.join(__dirname+ '/public/pages/salesforce-canvas-enhancements.html'));
 })
 
+app.get('/salesforce-resource-selection-experience', (req, res) => {
+  res.sendFile(path.join(__dirname+ '/public/pages/salesforce-resource-menu.html'));
+})
+
 // Start Server
-app.listen(3000, () => {
-  console.log('Listening on port localhost:3000!');
-});
+app.listen(3000);
