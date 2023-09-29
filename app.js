@@ -18,7 +18,7 @@ app.get('/salesforce-canvas-enhancements', (req, res) => {
 })
 
 app.get('/salesforce-resource-selection-experience', (req, res) => {
-  res.sendFile(path.join(__dirname+ '/public/pages/salesforce-resource-menu.html'));
+  res.sendFile(path.join(__dirname+ '/public/pages/salesforce-resource-selection.html'));
 })
 
 // Start Server
