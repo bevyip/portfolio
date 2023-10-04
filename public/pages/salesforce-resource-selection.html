@@ -76,7 +76,7 @@
         <h2>Introduction</h2>
       </br>
         <p>Flow Builder provides declarative process automation for every Salesforce app, experience, and portal with point-and-click automation. I joined this team in April 2022 and have since been working on releasing changes that aim to consistently improve user productivity and experience.</p>
-        <p class="highlight">The primary goal of this Flow Builder's redesign was to offer users a <span>modernized and simplified layout that remains inclusive to all</span>. This involves a cleaner and more visually appealing interface with improved navigation, as well as improving user experience for those that are sight-impaired with colors that meet accessibility requirements. </p>
+        <p class="highlight">Within a broader initiative aimed at an improved resource selection experience, this specific project sought to <span>guarantee keyboard accessibility</span> for the redesigned menu.</p>
         <p>The modifications were implemented in Java, Typescript, HTML, and CSS.
         </p>
 
@@ -84,51 +84,95 @@
 
         <h2>So, what's the problem?</h2>
         </br>
-        <p style="padding-bottom:30px;">As the Flow Builder user base expands and increasingly complex flows emerge, we received feedback about the challenges of navigating the flow. Previously, the sole navigation method was dragging the canvas to view off-screen elements and scrolling to zoom for clearer visibility.</p>
-        <img src="/img/canvas-enhancements-img/drag-gif.gif" alt="canvas drag gif">
-        <p style="padding-top:30px;"> The following are the core problems this product aims to solve: </p>
+        <p>The original Resource Menu (v1) needed a design overhaul.</p>
+        <p> The following are the core problems this product aims to solve: </p>
         <ul>
-          <li class="highlight"><span>Users would lose element positioning on the canvas</span>. The zoom level would reset with every element interaction. If you were building a large flow, this was a headache to deal with. It frustrated users and negatively impacted user productivity.</li>
-          <li class="highlight"><span>The icon colors were inaccessible</span>. They did not meet the contrast ratio of at least 3:1 for graphics and user interface components. This was a requirement specified by Web Content Accessibility Guidelines (WCAG) 2.1. Our features were isolating our users, especially those that are sight-impaired.</li>
+          <li class="error-highlight"><span>Outdated design</span>. The menu’s design was dated in comparison to latest Flow design enhancements.</li>
+          <li class="error-highlight"><span>The menu items were disorganized</span>. Menu items that received significant interaction, as identified by the UX team's user research, were located towards the bottom of the menu.</li>
+          <li class="error-highlight"><span>Poor user experience</span>. Users found themselves lost after navigating into multi-layered menu items and struggled to backtrack their navigation.</li>
+          <li class="error-highlight"><span>Inaccurate icons</span>. The icons for menu items were unclear, and at times, they didn't accurately represent the menu option.</li>
         </ul>
+       <p>This is where the revamped Resource Menu (v2) came in. It was intended to prioritize customer needs, and improve usability and user productivity.</p>
+       <p class="highlight">Initially, when I was tasked with integrating keyboard navigation for the resource menu, it was clear that the aim was to <span>preserve the keyboard navigation experience</span> akin to v1 for consistency. Yet, the interface of v1 differed from that of v2.</p>
+       <p class="highlight">v1 didn't showcase a header or footer, nor did it have a distinct nested menu structure like v2. To ensure keyboard navigation was not only <span>compliant with accessibility standards</span> but also <span>tailored to typical Flow Builder user interactions</span>, every nuanced aspect of keyboard navigation had to be collaboratively addressed by the UX team, Product Managers, and Engineers.</p>
+     </br>
+       <div class="menu-comparison-img row">
+         <div class="old col">
+           <img src="/img/resource-selection/old-resource.jpg" alt="old resource">
+           <p>v1 Design</p>
+         </div>
+         <div class="new col">
+           <img src="/img/resource-selection/new-resource.jpg" alt="new resource">
+           <p>v2 Design</p>
+         </div>
+       </div>
       </div>
+
       <div class="col-lg-4 col-md-4 col-sm-12 project-sub-summary">
         <p class="sub-header">WHEN WAS THIS?</p>
-        <p>Aug 2022 - Sep 2022</p>
+        <p>Aug - Sep 2022</p>
         </br>
         <p class="sub-header">WHAT'D I DO?</p>
-        <p>I served as the lead Software Engineer for this feature, overseeing the entire project cycle.</p>
-        <p>My responsibilities included:
+        <p>As the team's Accessibility Champion, I devoted much of my efforts to enhancing accessibility standards across all products under our purview and identifying any that were lacking.</p>
+        <p>My responsibilities include:
           <ul>
-            <li>Project scoping and presenting proof-of-concepts to discern technical specifications.</li>
+            <li>Researching and documenting the requirements of making the product 2.1 keyboard accessible.</li>
+            <li>Studying the fundamentals of human-centered design for Salesforce products.</li>
             <li>Identifying potential technical challenges.</li>
-            <li>Dissecting the feature into digestible work items.</li>
-            <li>Implementing code and creating comprehensive test plans.</li>
-            <li>Organizing and leading bug blitzes to identify user issues.</li>
+            <li>Presenting my findings to the UX team, Product Managers and other engineers for critical feedback.</li>
+            <li>Implementing code, creating comprehensive test plans and conducting bug blitzes to identify user issues.</li>
             <li>Presenting the end product to key stakeholders and company executives.</li>
            </ul>
          </p>
-        <p>During this process, I worked in tandem with the UX team, Product Managers, and my engineering team to ideate and troubleshoot.</p>
       </div>
     </div>
 
     <div class="col solution">
-      <div class="ux-deliverables">
-        <h2>The Process</h2>
-        </br>
-        <p>As a Software Engineer in Salesforce, my responsibilities start when I receive feature deliverables by the User Experience team.</p>
-        <div class="deliverables-img">
-          <img src="/img/canvas-enhancements-img/deliverables-1.png" alt="ux deliverables">
-          <img src="/img/canvas-enhancements-img/deliverables-2.png" alt="ux deliverables">
+      <div class="focus-points">
+        <div>
+          <h2>Guaranteeing Keyboard Navigation</h2>
+          </br>
+          <p>When I was first assigned the task to implement comprehensive keyboard navigation for the redesigned resource menu, I began researching web accessibility guidelines for menus. Specifically, I was recommended to refer to <a class="content-link" href="https://www.w3.org">World Wide Web Consortium (W3C)</a> for standards and guidelines I could use to apply to our redesigned resource menu.</p>
+          </br>
+          <p class="highlight">Subsequently, I began documenting my findings and categorizing them into <span>four common scenarios</span> where the focus would land after certain keyboard navigation.
+          </p>
+          <div class="row">
+            <img class="focus-points" src="/img/resource-selection/keyboard-focus-points.png" alt="focus points">
+          </div>
         </div>
-        <p class="highlight">I began by conducting a spike, <span>a time-boxed research into the codebase to explore potential solutions and identify technical challenges</span>. This research would conclude with a detailed presentation of my findings and a demo of proof-of-concepts to my team.</p>
-        <img class="center spike-example" src="/img/canvas-enhancements-img/spike-eg.jpg" alt="spike example">
+      </div>
+
+      <div class="overall-nav">
+        <h2>The Big Picture</h2>
+        </br>
+        <p>With the help of the UX team, I documented and presented my findings using this diagram.</p>
+        <div class="row">
+          <img class="overall-nav-img" src="/img/resource-selection/overall-menu-nav.jpg" alt="overall navigation">
+        </div>
+        <p>The pink numbered lines represent the tabbing order and the pink dotted arrows represent up/down/left/right arrow key interactions.</p>
+      </br>
+        <p>Let's see how I used this diagram to detail the four common focus scenarios.</p>
+      </br>
+      <div class="focus-points row">
+        <img src="/img/resource-selection/input-field.png" alt="focus points 1">
+        <img src="/img/resource-selection/menu-item.png" alt="focus points 2">
+        <img src="/img/resource-selection/footer.png" alt="focus points 3">
+        <img src="/img/resource-selection/close-button.png" alt="focus points 4">
+      </div>
+      <div class="road-bump-eureka row">
+        <img src="/img/resource-selection/road-bump.png" alt="road bump">
+        <img src="/img/resource-selection/eureka.png" alt="eureka">
+      </div>
       </div>
 
       <div class="learning-journey">
-        <h2>Phew, What A Learning Journey!</h2>
+        <h2>... annnnnd cut!</h2>
+        <div class="overall-exp row">
+          <img src="/img/resource-selection/resource-exp.png" alt="overall resource experience">
+        </div>
+
         </br>
-        <p>When I first took on the leadership role for this project, I grappled with self-doubt, often questioning my capabilities as the youngest Software Engineer on a seasoned team. My experience was marked by daily challenges, collaborative brainstorming and intensive problem-solving.</p>
+        <p>After nearly a year of dedicated effort by my team, the revamped selection experience not only met but exceeded our customer's expectations. We introduced a menu that not only significantly improved user experience, but also underscored the importance of accessibility. Besides boasting keyboard compatibility, the menu had more intuitive icons, helpful tooltips for each item accessible by keyboard shortcuts and clickable breadcrumbs for streamlined navigation.</p>
       </br>
       </div>
 

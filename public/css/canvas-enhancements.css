@@ -12,7 +12,7 @@ p, li {
 
 header {
   background-color: black;
-  background-image: url("/img/canvas-enhancements-img/canvas-enhancements-landing.png");
+  background-image: url("/img/canvas-enhancements/canvas-enhancements-landing.png");
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
@@ -210,6 +210,15 @@ a.nav-link:hover {
 p.highlight span, li.highlight span {
   color: black;
   background-color: #c6e4fa;
+  border-radius: 10px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 5px 0 5px;
+}
+
+p.error-highlight span, li.error-highlight span {
+  color: black;
+  background-color: #EFC7C7;
   border-radius: 10px;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
