@@ -259,10 +259,10 @@ ul li {
 }
 
 .old img {
-  width: 47%;
+  width: 57%;
 }
 .new img {
-  width: 57%;
+  width: 67%;
 }
 
 .solution {
@@ -294,18 +294,15 @@ img.overall-nav-img {
   width: 80%;
 }
 
-.focus-input h2,
-.learning-journey h2,
-.outro h2 {
-  padding: 0 60px;
+img.overall-exp,
+img.resource-reviews {
+  padding: 40px 0;
 }
 
-.learning-journey .quote {
-  font-style: italic;
-  color: black;
-  padding: 0 40px;
-  margin: 0 120px;
-  border-left: 2px solid black;
+.focus-input h2,
+.results h2,
+.outro h2 {
+  padding: 0 60px;
 }
 
 a.content-link:hover, a.content-link:focus {
@@ -324,7 +321,7 @@ a.content-link:hover, a.content-link:focus {
 
 .contact {
   /* background-color: #3f2a14; */
-  padding: 10px 0 2em 0;
+  padding: 40px 0 2em 0;
   display: flex;
   flex-direction: column;
   justify-content: center;

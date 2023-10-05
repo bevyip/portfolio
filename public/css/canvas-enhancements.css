@@ -353,7 +353,7 @@ a.content-link:hover, a.content-link:focus {
 
 .contact {
   /* background-color: #3f2a14; */
-  padding: 10px 0 2em 0;
+  padding: 40px 0 2em 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
