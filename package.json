@@ -4,7 +4,9 @@
   "description": "personal website",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build",
   },
   "repository": {
     "type": "git",
@@ -15,8 +17,11 @@
   "bugs": {
     "url": "https://github.com/bevyip/portfolio/issues"
   },
-  "homepage": "https://github.com/bevyip/portfolio#readme",
+  "homepage": "https://bevyip.github.io/portfolio",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
   }
 }
