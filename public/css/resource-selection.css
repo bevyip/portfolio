@@ -4,6 +4,7 @@
 ::-moz-selection {
   background: #ffb7b7; /* Gecko Browsers */
 }
+
 p, li {
   font-weight: 600;
   font-family: Quicksand;
@@ -186,6 +187,8 @@ a.nav-link:hover {
   margin: 0;
 }
 
+/* Content */
+
 .project-summary {
   padding: 40px 40px 40px 60px;
   font-family: Quicksand;
@@ -258,13 +261,6 @@ ul li {
   text-align: center;
 }
 
-.old img {
-  width: 57%;
-}
-.new img {
-  width: 67%;
-}
-
 .solution {
   padding: 0;
   font-family: Quicksand;
@@ -276,6 +272,15 @@ ul li {
 .solution h2, .solution p {
   padding: 0 60px;
   margin: 0;
+}
+
+/* Image Styling */
+
+.old img {
+  width: 57%;
+}
+.new img {
+  width: 67%;
 }
 
 img {
@@ -290,20 +295,18 @@ img.focus-points {
 }
 
 img.overall-nav-img {
-  padding: 40px 0;
   width: 80%;
 }
 
-img.overall-exp,
-img.resource-reviews {
+.padding-top-bottom {
   padding: 40px 0;
 }
 
-.focus-input h2,
-.results h2,
-.outro h2 {
+.heading-padding {
   padding: 0 60px;
 }
+
+/* Footer */
 
 a.content-link:hover, a.content-link:focus {
   color: #3f2a14;

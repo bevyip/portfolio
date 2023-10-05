@@ -184,6 +184,8 @@ a.nav-link:hover {
   margin: 0;
 }
 
+/* Content */
+
 .project-summary {
   padding: 40px 40px 40px 60px;
   font-family: Quicksand;
@@ -261,16 +263,11 @@ ul li {
   margin: 0;
 }
 
-.update-icon-story h2,
-.add-help-popover-story h2,
-.shorten-distance-story h2,
-.reduce-width-story h2,
-.color-contrast-story h2,
-.results h2,
-.learning-journey h2,
-.outro h2 {
+.heading-padding {
   padding: 0 60px;
 }
+
+/* Image Styling */
 
 img {
   display: block;
@@ -281,34 +278,23 @@ img {
 
 img.hover-animation {
   width: 30%;
-  padding: 40px 0;
-}
-
-img.end-product {
-  width: 80%;
-  padding-top: 40px;
 }
 
 img.spike-example,
 img.shorten-dist-spike-example {
   width: 70%;
+}
+
+.padding-top {
   padding-top: 40px;
 }
 
-img.popover-example {
-  padding-top: 40px;
-}
-
-img.icon-cases,
-img.reduce-width,
-img.color-contrast,
-img.canvas-enhancements-conclusion,
-img.canvas-reviews {
+.padding-top-bottom {
   padding: 40px 0;
 }
 
 img.color-contrast {
-  width: 60%;
+  width: 50%;
 }
 
 img.shorten-dist-issue,
@@ -329,6 +315,10 @@ img.circle-icon {
   width: 12px;
 }
 
+img.end-product {
+  width: 80%;
+}
+
 .learning-journey .quote {
   font-style: italic;
   color: black;
@@ -336,6 +326,8 @@ img.circle-icon {
   margin: 0 120px;
   border-left: 2px solid black;
 }
+
+/* Footer */
 
 a.content-link:hover, a.content-link:focus {
   color: #3f2a14;
