@@ -267,6 +267,14 @@ ul li {
   padding: 0 60px;
 }
 
+.popover-issue p {
+  text-align: center;
+}
+
+p.short-padding-top {
+  padding-top: 20px;
+}
+
 /* Image Styling */
 
 img {
@@ -297,9 +305,12 @@ img.color-contrast {
   width: 50%;
 }
 
-img.shorten-dist-issue,
-img.popover-issue {
+img.shorten-dist-issue {
   padding-bottom: 40px;
+}
+
+img.popover-issue-gif {
+  width: 60%;
 }
 
 img.plus-icon {
