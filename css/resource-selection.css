@@ -13,7 +13,7 @@ p, li {
 
 header {
   background-color: black;
-  background-image: url("img/resource-selection/resource-selection.png");
+  background-image: url("../img/resource-selection/resource-selection.png");
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;

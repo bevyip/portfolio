@@ -7,7 +7,7 @@
 
 header {
   background-color: black;
-  background-image: url("img/bannerImage.jpg");
+  background-image: url("../img/bannerImage.jpg");
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
