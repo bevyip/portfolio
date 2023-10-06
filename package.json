@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "personal website",
   "main": "app.js",
+  "homepage": "https://bevyip.github.io/portfolio",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,8 @@
   "bugs": {
     "url": "https://github.com/bevyip/portfolio/issues"
   },
-  "homepage": "https://bevyip.github.io/portfolio",
   "dependencies": {
+    "angular-cli-ghpages": "^1.0.7",
     "express": "^4.18.2"
   },
   "devDependencies": {
