@@ -10,15 +10,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname+ '/public/pages/index.html'));
+  res.sendFile(path.join(__dirname+ '/index.html'));
 });
 
 app.get('/salesforce-canvas-enhancements', (req, res) => {
-  res.sendFile(path.join(__dirname+ '/public/pages/salesforce-canvas-enhancements.html'));
+  res.sendFile(path.join(__dirname+ '/salesforce-canvas-enhancements.html'));
 })
 
 app.get('/salesforce-resource-selection-experience', (req, res) => {
-  res.sendFile(path.join(__dirname+ '/public/pages/salesforce-resource-selection.html'));
+  res.sendFile(path.join(__dirname+ '/salesforce-resource-selection.html'));
 })
 
 // Start Server
