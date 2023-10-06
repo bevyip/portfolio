@@ -14,11 +14,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/salesforce-canvas-enhancements', (req, res) => {
-  res.sendFile(path.join(__dirname+ '/salesforce-canvas-enhancements.html'));
+  res.sendFile(path.join(__dirname+ '/portfolio/salesforce-canvas-enhancements.html'));
 })
 
 app.get('/salesforce-resource-selection-experience', (req, res) => {
-  res.sendFile(path.join(__dirname+ '/salesforce-resource-selection.html'));
+  res.sendFile(path.join(__dirname+ '/portfolio/salesforce-resource-selection.html'));
 })
 
 // Start Server
