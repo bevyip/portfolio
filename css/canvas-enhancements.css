@@ -275,6 +275,11 @@ p.short-padding-top {
   padding-top: 20px;
 }
 
+.old p, .new p {
+  text-align: center;
+  padding-top: 20px;
+}
+
 /* Image Styling */
 
 img {
@@ -301,11 +306,8 @@ img.shorten-dist-spike-example {
   padding: 40px 0;
 }
 
-img.color-contrast {
-  width: 50%;
-}
-
-img.shorten-dist-issue {
+img.shorten-dist-issue,
+img.line-updates {
   padding-bottom: 40px;
 }
 
@@ -326,8 +328,8 @@ img.circle-icon {
   width: 12px;
 }
 
-img.end-product {
-  width: 80%;
+.old img, .new img {
+  width: 90%;
 }
 
 .learning-journey .quote {
