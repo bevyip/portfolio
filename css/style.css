@@ -322,21 +322,23 @@ a.nav-link:hover {
 }
 
 .work-projects {
-  width: 100%;
   padding-bottom: 40px;
-  margin-left: 0px;
+}
 
+.work-projects, .school-projects {
+  width: 100%;
+  margin-left: 0px;
   display: flex;
   text-align: center;
   justify-content: center;
 }
 
 .work-projects .prev-proj-box a {
-    text-decoration: inherit;
-    color: inherit;
+  text-decoration: inherit;
+  color: inherit;
 }
 
-.work-projects .prev-proj-box {
+.work-projects .prev-proj-box, .school-projects .prev-proj-box {
   margin: 0 20px;
   padding: 0;
 }
@@ -395,26 +397,14 @@ a.nav-link:hover {
   font-family: Quicksand;
 }
 
-.nopadding {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
 @media only screen
   /* and (min-device-width: 375px) */
-  and (max-width: 1200px){
+  and (max-width: 960px){
     .filter-overlay  {
       height: 100%;
     }
-    .prev-proj img {
-      height: 350px;
-    }
     .work-projects {
-      padding-bottom: 0px;
-    }
-    .work-projects .prev-proj-box {
-      padding: 0 !important;
-      margin: 0 !important;
+      padding-bottom: 0;
     }
 }
 
