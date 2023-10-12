@@ -213,7 +213,7 @@ a.nav-link:hover {
 .project-sub-summary .sub-header {
   font-weight: 600;
   font-family: Lato;
-  color: #A9A9A9;
+  color: #595959;
 }
 
 p.highlight span, li.highlight span {
@@ -311,6 +311,10 @@ img.overall-nav-img {
 }
 
 /* Footer */
+
+a.content-link {
+  color: #0056b3;
+}
 
 a.content-link:hover, a.content-link:focus {
   color: #3f2a14;
