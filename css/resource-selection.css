@@ -5,6 +5,10 @@
   background: #ffb7b7; /* Gecko Browsers */
 }
 
+.row {
+  margin: 0;
+}
+
 p, li {
   font-weight: 600;
   font-family: Quicksand;

@@ -4,6 +4,11 @@
 ::-moz-selection {
   background: #ffb7b7; /* Gecko Browsers */
 }
+
+.row {
+  margin: 0;
+}
+
 p, li {
   font-weight: 600;
   font-family: Quicksand;
@@ -94,7 +99,6 @@ header {
       height: 480px;
     }
 }
-
 
 .filter-overlay {
   background-color: rgba(255, 255, 255, 0.7);
