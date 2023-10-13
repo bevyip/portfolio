@@ -117,6 +117,9 @@
         <h2>The Process</h2>
         </br>
         <p>As a Software Engineer in Salesforce, my responsibilities start when I receive feature deliverables by the User Experience team.</p>
+        <div class="ux-req">
+          <h2>UX Deliverables</h2>
+        </br>
         <div class="deliverables-img">
           <img src="img/canvas-enhancements/deliverables-1.png" alt="ux deliverables">
           <img src="img/canvas-enhancements/deliverables-2.png" alt="ux deliverables">
@@ -131,8 +134,11 @@
         <p>The first noticeable enhancement was changing the icon to a <img class="circle-icon" src="img/canvas-enhancements/circle-icon.png" alt="circle icon"> icon that enlarges to the <img class="plus-icon" src="img/canvas-enhancements/plus-icon.png" alt="plus icon"> icon when interacted with.</p>
         <img class="hover-animation padding-top-bottom" src="img/canvas-enhancements/hover-animation.gif" alt="icon hover animation gif">
         <p class="highlight">With this update, there were <span>four animation cases</span> to consider.</p>
+        <div class="icon-header-segment">
+          <h2 class="icon-cases-header">Icon Animation Cases</h2>
+          </div>
         <div class="row">
-          <img class="icon-cases padding-top-bottom" src="img/canvas-enhancements/icon-animation-cases.png" alt="icon cases">
+          <img class="icon-cases" src="img/canvas-enhancements/icon-animation-cases.png" alt="icon cases">
         </div>
       </div>
 
@@ -142,13 +148,59 @@
         <p>With the significant visual update, we wanted to provide users a help popover that explains how one can interact with the new interface.</p>
         <div class="row">
           <img class="popover-example padding-top" src="img/canvas-enhancements/popover-eg.png" alt="popover example">
-          <img class="popover-req" src="img/canvas-enhancements/popover-requirements.png" alt="popover requirements">
-          <img class="popover-issue-text" src="img/canvas-enhancements/popover-issue.png" alt="popover issue">
-          <div class="popover-issue col">
-            <img class="popover-issue-gif padding-top" src="img/canvas-enhancements/popover-issue.gif" alt="popover panning issue gif">
-            </br>
-            <p>An Example of Issue #1</p>
+        </div>
+        <div class="popover-req">
+          <h2>Popover Requirements</h2>
+        </br>
+          <div class="four-popover-req row">
+            <div class="col-sm">
+              <a href="https://www.flaticon.com/free-icons/repeat-once" title="repeat once icons"><img class="popover-req-img" src="img/canvas-enhancements/popover-1.png" alt="popover requirements"></a>
+              <p>Display only once per user.</p>
+            </div>
+            <div class="col-sm">
+              <a href="https://www.flaticon.com/free-icons/anchor" title="anchor icons"><img class="popover-req-img" src="img/canvas-enhancements/popover-2.png" alt="popover requirements"></a>
+              <p>Stay anchored to the first circle icon, even when the flow moves.</p>
+            </div>
+            <div class="col-sm">
+              <a href="https://www.flaticon.com/free-icons/close" title="close icons"><img class="popover-req-img" src="img/canvas-enhancements/popover-3.png" alt="popover requirements"></a>
+              <p>To close, the user has to click the X button or press the Esc key.</p>
+            </div>
+            <div class="col-sm">
+              <a href="https://www.flaticon.com/free-icons/pop-up" title="pop up icons"><img class="popover-req-img" src="img/canvas-enhancements/popover-4.png" alt="popover requirements"></a>
+              <p>Appear on the right of the circle icon.</p>
+            </div>
           </div>
+        </div>
+        <div class="popover-issue-text">
+          <h2 class="heading-padding">Yikes, road bump!</h2>
+          </br>
+          <p>I spent a week researching this popover component as it was a separate library that my team had not utilized before. It involved registering the component within our codebase, and enabling security keys in a separate Java file before we could use the component.</p>
+          </br>
+          <p>Fortunately, the component’s library was also extensive and implementing requirements 1, 3 and 4 went smoothly once I identified the library’s documentation and determined which lines of code needed tweaking.</p>
+          </br>
+          <p class="bold"><span>The real issue</span> was in implementing requirement 2 - keeping the popover anchored.</p>
+          </br>
+          <div class="three-popover-issues row bgrnd-row">
+            <div class="col-sm border-col first-issue">
+              <h3>01</h3>
+              <p class="highlight-blue">When the flow was dragged, <span>the popover didn’t follow</span>. This didn’t meet the requirements of keeping the popover anchored to the first circle icon.</p>
+              </br>
+            </div>
+            <div class="col-sm border-col second-issue">
+              <h3>02</h3>
+              <p class="highlight-blue">Certain Flow types opened a menu that shifted the circle icon downward. <span>The placement of the popover would be misaligned</span> relative to the circle icon as the popover was getting rendered before the opening animation began.</p>
+              </br>
+            </div>
+            <div class="col-sm third-issue">
+              <h3>03</h3>
+              <p class="highlight-blue">When the flow was dragged, <span>the popover didn’t follow</span>. This didn’t meet the requirements of keeping the popover anchored to the first circle icon.</p>
+            </div>
+          </div>
+        </div>
+        <div class="popover-issue col">
+          <img class="popover-issue-gif padding-top" src="img/canvas-enhancements/popover-issue.gif" alt="popover panning issue gif">
+          </br>
+          <p>An Example of Issue #1</p>
         </div>
         <p class="short-padding-top">Multiple attempts at a solution were made to resolve the three issues in keeping the popover anchored. However, no solution could not solve all three issues simultaneously.</p>
         </br>
@@ -164,8 +216,28 @@
         <p class="highlight">This feature involved a simple change in variable value in a file that calculated all element configurations. After spiking this feature, I found <span>two methods of implementation</span> that my team and I could discuss and finalize on.</p>
         <div class="row">
           <img class="center shorten-dist-spike-example padding-top" src="img/canvas-enhancements/shorten-dist-spike.png" alt="shorten distance spike example">
-          <img class="shorten-dist-issue" src="img/canvas-enhancements/shorten-dist-issue.png" alt="shorten distance issue">
         </div>
+        <div class="shorten-distance-issue-text">
+          <h2 class="heading-padding">Tricky Terrain</h2>
+          </br>
+          <p class="bold">For a change that impacted the entire Flow, it was imperative to <span>ensure compatibility</span> with all connector types - whether straight, curved, or with arrowed ends.</p>
+          </br>
+          <p class="bold">Additionally, we had to consider <span>special nodes with unique shapes</span> in terms of height and the spacing between nodes.</p>
+          </br>
+          <div class="row shorten-distance-issue-section">
+            <div class="col-md shorten-distance-issue-visuals">
+              <p>For instance, take the Decision element, a diamond-shaped orange icon. Its height exceeds that of most other elements, so even a slight reduction was clearly noticeable.</p>
+              <img class="shorten-dist-issue" src="img/canvas-enhancements/shorten-1.jpg" alt="shorten distance issue">
+            </div>
+            <div class="col-md shorten-distance-issue-visuals shorten-dist-2">
+              <p>This height disparity became even more pronounced in cut mode, where we also had to incorporate an extra border around specific elements.</p>
+            </br>
+              <img class="shorten-dist-issue" src="img/canvas-enhancements/shorten-2.jpg" alt="shorten distance issue">
+            </div>
+          </div>
+          </br>
+        </div>
+        </br>
         <p>After multiple feedback sessions and multi-team discussions with UX and my team, an acceptable variable value was agreed upon that could meet both the feature requirement and accommodate unique cases like the Decision element.</p>
         </br>
       </div>
@@ -174,13 +246,29 @@
         <h2 class="heading-padding">Reduce The Width Of Connectors</h2>
         </br>
         <p>Part of the move towards improving the canvas interface was reducing the overall width of the connectors. This also involved a small change in variable value.</p>
-        <div class="row">
-          <img class="reduce-width padding-top-bottom" src="img/canvas-enhancements/reduce-width-img.png" alt="reduce width example">
+      </br>
+        <div class="reduce-width-issue-text">
+          <h2 class="heading-padding">But wait!</h2>
+          </br>
+          <p class="error-highlight">During my research, I found that the previous requirement <a style="color:black;">(Reduce The Width of Connectors)</a> and this needed to be completed <a style="color:black;">concurrently</a> as one change without the other would result in <span>interrupted and incohesive</span> connector lines.</p>
+          </br>
+          <div class="row">
+            <img class="center reduce-width-img padding-top-bottom" src="img/canvas-enhancements/reduce-width-1.jpg" alt="reduce width issue image">
+          </div>
+          <p class="bold">Hence, I decided that these two requirements had to be combined into <span>a single code release</span>.</p>
+          <div class="row reduce-width">
+            <div class="col-2">
+            <a href="https://www.flaticon.com/free-icons/idea" title="idea icons"><img class="center reduce-width-icon" src="img/canvas-enhancements/reduce-width-flaticon.png" alt="reduce width issue icon"></a>
+          </div>
+            <div class="col-10">
+              <p class="bold reduce-width-exception">What the UX team didn’t take into consideration was that Flow Builder had <span>a lot</span> of connectors with different shapes and forms. During implementation, I also took the initiative to ensure that all connector widths were standardized across all impacted files. This became an added criterion.</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="color-contrast-story">
-        <h2 class="heading-padding">Increase The Contrast Of Nodes And Connectors</h2>
+        <h2>Increase The Contrast Of Nodes And Connectors</h2>
         </br>
         <p>Prior to this update, Flow Builder displayed colors that were not WCAG 2.1 compliant. The UX team presented me with a list of UX deliverables necessary to address and resolve the color contrast issue.</p>
         <div class="row">

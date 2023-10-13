@@ -234,6 +234,10 @@ p.error-highlight span, li.error-highlight span {
   padding: 0 5px 0 5px;
 }
 
+p.bold span {
+  color: black;
+}
+
 ul li {
   padding: 5px 0px;
 }
