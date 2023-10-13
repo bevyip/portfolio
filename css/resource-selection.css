@@ -222,7 +222,16 @@ p.highlight span, li.highlight span {
   border-radius: 10px;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
-  padding: 0 5px 0 5px;
+  padding: 0 5px;
+}
+
+p.highlight-blue span {
+  color: black;
+  background-color: #F4FDFF;
+  border-radius: 10px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 5px;
 }
 
 p.error-highlight span, li.error-highlight span {
@@ -231,7 +240,17 @@ p.error-highlight span, li.error-highlight span {
   border-radius: 10px;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
-  padding: 0 5px 0 5px;
+  padding: 0 5px;
+}
+
+li.code-highlight span {
+  color: black;
+  background-color: #d9d9d9;
+  font-family: "Source Code Pro";
+  font-weight: 500;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 3px 4px;
 }
 
 p.bold span {
@@ -282,6 +301,53 @@ ul li {
   margin: 0;
 }
 
+.focus-points-header-segment, .results h2 {
+  padding-top: 20px;
+}
+
+.overall-nav ul {
+  margin: 0;
+}
+
+.overall-nav .col-lg-8, .overall-nav .col-lg {
+  padding: 0;
+}
+
+.focus-point-2 h2, .focus-point-4 h2 {
+  padding-top: 40px;
+}
+
+.focus-point-2, .focus-point-4 {
+  padding-bottom: 20px;
+}
+
+h2.focus-points-header {
+  background-color: #FCFFF4;
+  padding-top: 40px;
+}
+
+ul.focus-bulletpoints {
+  padding: 20px 80px;
+}
+
+.focus-point-1, .focus-point-3 {
+  padding-top: 40px;
+  padding-bottom: 20px;
+  background-color: #F4FDFF;
+}
+
+.tabbing-issue-text {
+  background-color: #EFC7C7;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.eureka {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #F4FDFF;
+}
+
 /* Image Styling */
 
 .old img {
@@ -299,11 +365,20 @@ img {
 }
 
 img.focus-points {
-  padding: 20px 0;
+  padding-bottom: 20px;
 }
 
 img.overall-nav-img {
   width: 80%;
+}
+
+.focus-arrows {
+  display: flex;
+  align-items: center;
+}
+
+.focus-arrows img {
+  width: 60%;
 }
 
 .padding-top-bottom {
@@ -312,6 +387,14 @@ img.overall-nav-img {
 
 .heading-padding {
   padding: 0 60px;
+}
+
+.eureka .quote {
+  font-style: italic;
+  color: black;
+  padding: 0 40px;
+  margin: 0 120px;
+  border-left: 2px solid black;
 }
 
 /* Footer */

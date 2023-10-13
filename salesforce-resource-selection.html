@@ -11,7 +11,7 @@
   <title>Beverly Yip</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Cabin|Lato|Oswald|Quicksand|Roboto|Open+Sans|Martel|Ubuntu|Liberata" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cabin|Lato|Oswald|Quicksand|Roboto|Open+Sans|Martel|Ubuntu|Liberata|Source+Code+Pro" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/resource-selection.css">
 
@@ -136,6 +136,9 @@
           </br>
           <p class="highlight">Subsequently, I began documenting my findings and categorizing them into <span>four common scenarios</span> where the focus would land after certain keyboard navigation.
           </p>
+          <div class="focus-points-header-segment">
+            <h2 class="focus-points-header">Common Focus Points</h2>
+          </div>
           <div class="row">
             <img class="focus-points" src="img/resource-selection/keyboard-focus-points.png" alt="focus points">
           </div>
@@ -153,15 +156,101 @@
       </br>
         <p>Let's see how I used this diagram to detail the four common focus scenarios.</p>
       </br>
-      <div class="focus-points row">
-        <img src="img/resource-selection/input-field.png" alt="focus points 1">
-        <img src="img/resource-selection/menu-item.png" alt="focus points 2">
-        <img src="img/resource-selection/footer.png" alt="focus points 3">
-        <img src="img/resource-selection/close-button.png" alt="focus points 4">
+      <div class="focus-point-1">
+          <h2 class="heading-padding">The Input Field</h2>
+          </br>
+          <div class="row">
+            <div class="col-lg-8">
+              <p>When the user focuses into the text input field for the first time:</p>
+              <ul class="focus-bulletpoints">
+                <li>Dropdown menu should immediately display.</li>
+                <li>Secondary focus should be on the first menu item (in the diagram, that would be <a style="color:black;">Users from Get Account Owners</a>).</li>
+                <li class="code-highlight">Using <span>Enter</span> will select the first menu item.</li>
+                <li class="code-highlight">Using <span>Tab</span> will bring the focus into the menu (demonstrated with the <a style="color:black;">01 pink numbered line</a>).</li>
+                <ul>
+                  <li class="code-highlight">Using <span>↓</span> will trap tabbing within the menu.</li>
+                </ul>
+                <li>Typing any alphanumeric character will filter the menu items.</li>
+              </ul>
+            </div>
+          <div class="col-lg focus-arrows">
+            <img src="img/resource-selection/arrow-1.png" alt="tabbing order 1">
+          </div>
+        </div>
       </div>
-      <div class="road-bump-eureka row">
-        <img src="img/resource-selection/road-bump.png" alt="road bump">
-        <img src="img/resource-selection/eureka.png" alt="eureka">
+      <div class="focus-point-2">
+        <h2 class="heading-padding">A Menu Item</h2>
+        </br>
+        <div class="row">
+          <div class="col-lg-8">
+          <p>When the focus is on a menu item:</p>
+          <ul class="focus-bulletpoints">
+            <li class="code-highlight">Using <span>↑</span> or <span>↓</span> keys, a user can navigate the menu items, excluding the header and footer (demonstrated with the <a style="color:black;">up/down pink dotted lines</a>).</li>
+            <li class="code-highlight">Using <span>Tab</span> will move the focus straight to the footer (i.e.: <a style="color:black;">New Resource</a>) (demonstrated with the <a style="color:black;">02 pink numbered line</a>).</li>
+            <li class="code-highlight">Using <span>→</span> or <span>Enter</span> towards a chevron will traverse, display and focus the next level’s menu item.</li>
+            <li class="code-highlight">Menu items with tooltips will have <span>aria-describedby</span> pointing to tooltip contents to support screen readers.</li>
+            <li class="code-highlight">Using <span>Cmd + I</span> (Mac) or <span>Ctrl + I</span> (Windows) will display the tooltip.</li>
+          </ul>
+        </div>
+        <div class="col-lg focus-arrows">
+          <img src="img/resource-selection/arrow-2.png" alt="tabbing order 2">
+        </div>
+      </div>
+      </div>
+      <div class="focus-point-3">
+        <h2 class="heading-padding">The Footer</h2>
+        </br>
+        <div class="row">
+          <div class="col-lg-8">
+          <p>When the focus is on the footer:</p>
+          <ul class="focus-bulletpoints">
+            <li class="code-highlight">Using <span>Shift + Tab</span> will move the focus back to the last-focused menu item.</li>
+            <li class="code-highlight">Using <span>Tab</span> will focus the header (i.e.: <a style="color:black;">All Resources</a>) (demonstrated with the <a style="color:black;">03 pink numbered line</a>).</li>
+            <li>Typing any alphanumeric character will filter the menu items.</li>
+          </ul>
+        </div>
+        <div class="col-lg focus-arrows">
+          <img src="img/resource-selection/arrow-3.png" alt="tabbing order 3">
+        </div>
+      </div>
+      </div>
+      <div class="focus-point-4">
+        <h2 class="heading-padding">The Close Button</h2>
+        </br>
+        <p>To leave the resource menu, the user can click outside the menu, use the Esc key or click the X button. When this happens:</p>
+        <ul class="focus-bulletpoints">
+          <li>This will close the combo box, but the focus will remain on the input field.</li>
+          <li class="code-highlight">Using <span>Tab</span> will move to the next element in the field.</li>
+          <li class="code-highlight">Using <span>↓</span> or <span>Enter</span> on the input field will show the dropdown menu again.</li>
+          <li>Typing any alphanumeric character will filter the menu items.</li>
+        </ul>
+      </div>
+      <div class="road-bump-eureka">
+        <div class="tabbing-issue-text">
+          <h2 class="heading-padding">Yikes, road bump!</h2>
+          </br>
+          <p class="bold">In the v2 design that now included a header and footer, determining the <span>new tabbing order</span> was most essential.</p>
+          </br>
+          <p class="highlight-blue">There were conflicting views on whether tabbing from the input field should move the focus to the menu item (as it does in v1) or to the ‘New Resource‘ option. The latter prioritized <span>user familiarity</span> while the former prioritized <span>adhering to 2.1 global keyboard accessibility standards</span>.</p>
+          </br>
+          <p>The UX team, Product Managers and engineers were in days-long discussions as both options were viable and there was no consensus on which one to prioritize.</p>
+          </br>
+          <p>As the weekend approached, everyone got the chance to take a break and stepped away from the conversation.</p>
+        </div>
+        <div class="eureka">
+          <h2 class="heading-padding">Eureka!</h2>
+          </br>
+          <p>During my time in the software engineering field, people commonly told me this whenever I was stuck trying to solve a problem:</p>
+          </br>
+          <p class="quote">“Go grab a bite, step away from the screen for a little bit, take a walk... when you come back, you’ll most likely notice something you overlooked.”</p>
+          </br>
+          <p>and they were never wrong.</p>
+          </br>
+          <p class="highlight">After the weekend, the team reconvened to discuss the issue once more. With fresh perspectives, the <span>importance of upholding 2.1 keyboard accessibility</span> became clear to all. The team reached a unanimous decision.</p>
+          </br>
+          <p>To tackle the concern of user unfamiliarity, we decided to also incorporate help pop-ups to assist users in grasping the updated keyboard navigation.</p>
+          </br>
+          <p class="highlight">Attempting to release a product with inaccessible features simply made no sense. A product that boasts enhanced user experience should ensure that what’s user-friendly for one user is <span>equally accessible and intuitive</span> to another.</p>
       </div>
       </div>
 
