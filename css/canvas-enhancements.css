@@ -281,19 +281,27 @@ ul li {
 }
 
 .heading-padding {
-  padding: 0 60px;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
-h2.icon-cases-header {
-  background-color: #F4FDFF;
-  padding-top: 40px;
+.short-padding-top {
+  padding-top: 20px !important;
 }
 
-.icon-header-segment {
-  padding-top: 20px;
+.padding-top {
+  padding-top: 40px !important;
 }
 
-.popover-req, .reduce-width-issue-text {
+.padding-bottom {
+  padding-bottom: 40px !important;
+}
+
+.padding-top-bottom {
+  padding: 40px 0;
+}
+
+h2.icon-cases-header, .popover-req, .reduce-width-issue-text {
   background-color: #F4FDFF;
 }
 
@@ -305,17 +313,8 @@ h2.icon-cases-header {
   background-color: #EFC7C7;
 }
 
-.popover-issue-text h2, .popover-req h2, .ux-req h2, .shorten-distance-issue-text h2, .reduce-width-issue-text h2, .color-contrast-story h2 {
-  padding-top: 40px;
-}
-
-.popover-issue p, .four-popover-req {
+.popover-issue p, .four-popover-req, .old p, .new p {
   text-align: center;
-}
-
-.three-popover-issues, .four-popover-req {
-  padding-bottom: 40px;
-  padding-top: 40px;
 }
 
 .three-popover-issues .col-sm h3 {
@@ -357,10 +356,6 @@ h2.icon-cases-header {
   padding: 0 45px 20px 45px;
 }
 
-.shorten-distance-issue-section {
-  padding-bottom: 40px;
-}
-
 @media only screen and (max-width: 767px)  {
   .shorten-dist-2 {
     padding-top: 40px;
@@ -381,15 +376,6 @@ p.reduce-width-exception {
   padding: 0 !important;
 }
 
-p.short-padding-top {
-  padding-top: 20px;
-}
-
-.old p, .new p {
-  text-align: center;
-  padding-top: 20px;
-}
-
 /* Image Styling */
 
 img {
@@ -408,19 +394,7 @@ img.shorten-dist-spike-example {
   width: 70%;
 }
 
-.padding-top {
-  padding-top: 40px;
-}
-
-.padding-top-bottom {
-  padding: 40px 0;
-}
-
-img.line-updates {
-  padding-bottom: 40px;
-}
-
-img.popover-req-img {
+img.popover-req-img, img.shorten-dist-issue {
   width: 40%;
 }
 
@@ -441,19 +415,7 @@ img.circle-icon {
   width: 12px;
 }
 
-img.icon-cases {
-  padding-bottom: 40px;
-}
-
-img.shorten-dist-issue {
-  width: 40%;
-}
-
-img.reduce-width-img {
-  width: 50%;
-}
-
-img.reduce-width-icon {
+img.reduce-width-img, img.reduce-width-icon {
   width: 50%;
 }
 

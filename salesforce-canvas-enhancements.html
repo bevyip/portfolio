@@ -118,7 +118,7 @@
         </br>
         <p>As a Software Engineer in Salesforce, my responsibilities start when I receive feature deliverables by the User Experience team.</p>
         <div class="ux-req">
-          <h2>UX Deliverables</h2>
+          <h2 class='padding-top'>UX Deliverables</h2>
         </br>
         <div class="deliverables-img">
           <img src="img/canvas-enhancements/deliverables-1.png" alt="ux deliverables">
@@ -134,11 +134,11 @@
         <p>The first noticeable enhancement was changing the icon to a <img class="circle-icon" src="img/canvas-enhancements/circle-icon.png" alt="circle icon"> icon that enlarges to the <img class="plus-icon" src="img/canvas-enhancements/plus-icon.png" alt="plus icon"> icon when interacted with.</p>
         <img class="hover-animation padding-top-bottom" src="img/canvas-enhancements/hover-animation.gif" alt="icon hover animation gif">
         <p class="highlight">With this update, there were <span>four animation cases</span> to consider.</p>
-        <div class="icon-header-segment">
-          <h2 class="icon-cases-header">Icon Animation Cases</h2>
+        <div class="icon-header-segment short-padding-top">
+          <h2 class="icon-cases-header padding-top">Icon Animation Cases</h2>
         </div>
         <div class="row">
-          <img class="icon-cases" src="img/canvas-enhancements/icon-animation-cases.png" alt="icon cases">
+          <img class="icon-cases padding-bottom" src="img/canvas-enhancements/icon-animation-cases.png" alt="icon cases">
         </div>
       </div>
 
@@ -150,9 +150,9 @@
           <img class="popover-example padding-top" src="img/canvas-enhancements/popover-eg.png" alt="popover example">
         </div>
         <div class="popover-req">
-          <h2>Popover Requirements</h2>
+          <h2 class="padding-top">Popover Requirements</h2>
         </br>
-          <div class="four-popover-req row">
+          <div class="four-popover-req row padding-top padding-bottom">
             <div class="col-sm">
               <a href="https://www.flaticon.com/free-icons/repeat-once" title="repeat once icons"><img class="popover-req-img" src="img/canvas-enhancements/popover-1.png" alt="popover requirements"></a>
               <p>Display only once per user.</p>
@@ -172,7 +172,7 @@
           </div>
         </div>
         <div class="popover-issue-text">
-          <h2 class="heading-padding">Yikes, road bump!</h2>
+          <h2 class="heading-padding padding-top">Yikes, road bump!</h2>
           </br>
           <p>I spent a week researching this popover component as it was a separate library that my team had not utilized before. It involved registering the component within our codebase, and enabling security keys in a separate Java file before we could use the component.</p>
           </br>
@@ -180,7 +180,7 @@
           </br>
           <p class="bold"><span>The real issue</span> was in implementing requirement 2 - keeping the popover anchored.</p>
           </br>
-          <div class="three-popover-issues row bgrnd-row">
+          <div class="three-popover-issues row bgrnd-row padding-top padding-bottom">
             <div class="col-sm border-col first-issue">
               <h3>01</h3>
               <p class="highlight-blue">When the flow was dragged, <span>the popover didn’t follow</span>. This didn’t meet the requirements of keeping the popover anchored to the first circle icon.</p>
@@ -218,13 +218,13 @@
           <img class="center shorten-dist-spike-example padding-top" src="img/canvas-enhancements/shorten-dist-spike.png" alt="shorten distance spike example">
         </div>
         <div class="shorten-distance-issue-text">
-          <h2 class="heading-padding">Tricky Terrain</h2>
+          <h2 class="heading-padding padding-top">Tricky Terrain</h2>
           </br>
           <p class="bold">For a change that impacted the entire Flow, it was imperative to <span>ensure compatibility</span> with all connector types - whether straight, curved, or with arrowed ends.</p>
           </br>
           <p class="bold">Additionally, we had to consider <span>special nodes with unique shapes</span> in terms of height and the spacing between nodes.</p>
           </br>
-          <div class="row shorten-distance-issue-section">
+          <div class="row shorten-distance-issue-section padding-bottom">
             <div class="col-md shorten-distance-issue-visuals">
               <p>For instance, take the Decision element, a diamond-shaped orange icon. Its height exceeds that of most other elements, so even a slight reduction was clearly noticeable.</p>
               <img class="shorten-dist-issue" src="img/canvas-enhancements/shorten-1.jpg" alt="shorten distance issue">
@@ -247,7 +247,7 @@
         <p>Part of the move towards improving the canvas interface was reducing the overall width of the connectors. This also involved a small change in variable value.</p>
       </br>
         <div class="reduce-width-issue-text">
-          <h2 class="heading-padding">But wait!</h2>
+          <h2 class="heading-padding padding-top">But wait!</h2>
           </br>
           <p class="error-highlight">During my research, I found that the previous requirement <a style="color:black;">(Reduce The Width of Connectors)</a> and this needed to be completed <a style="color:black;">concurrently</a> as one change without the other would result in <span>interrupted and incohesive</span> connector lines.</p>
           </br>
@@ -267,14 +267,14 @@
       </div>
 
       <div class="color-contrast-story">
-        <h2>Increase The Contrast Of Nodes And Connectors</h2>
+        <h2 class="padding-top">Increase The Contrast Of Nodes And Connectors</h2>
         </br>
         <p>Prior to this update, Flow Builder displayed colors that were not WCAG 2.1 compliant. The UX team presented me with a list of UX deliverables necessary to address and resolve the color contrast issue.</p>
         <div class="row">
           <img class="icon-color-updates padding-top" src="img/canvas-enhancements/icon-color-updates.png" alt="icon color updates">
         </div>
         <div class="row">
-          <img class="line-updates" src="img/canvas-enhancements/line-updates.png" alt="line-updates">
+          <img class="line-updates padding-bottom" src="img/canvas-enhancements/line-updates.png" alt="line-updates">
         </div>
         <p>With these requirements, I began identifying all areas of the codebase that were impacted and required modifications. The code was straightforward, but its application demanded consideration of all node and connector variations. Thus, before embarking on the changes, I needed to thoroughly investigate the source code for these variants and all their possible use cases.</p>
         </br>
@@ -290,11 +290,11 @@
         <div class="canvas-comparison-img row padding-top">
           <div class="old col">
             <img src="img/canvas-enhancements/old-flow.png" alt="old flow">
-            <p>Previous Flow Builder</p>
+            <p class="short-padding-top">Previous Flow Builder</p>
           </div>
           <div class="new col">
             <img src="img/canvas-enhancements/new-flow.png" alt="new flow">
-            <p>Updated Flow Builder</p>
+            <p class="short-padding-top">Updated Flow Builder</p>
           </div>
         </div>
         <div class="row">
