@@ -577,7 +577,6 @@ a.nav-link:hover {
 }
 
 .contact {
-  /* background-color: #3f2a14; */
   padding: 10px 0 2em 0;
   display: flex;
   flex-direction: column;
@@ -589,7 +588,6 @@ a.nav-link:hover {
   font-family: "Quicksand";
   font-weight: 100;
   font-size: 20px;
-  /* padding: 0 0 10px 0; */
 }
 
 .contactlabel {

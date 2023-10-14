@@ -280,10 +280,6 @@ ul li {
      }
 }
 
-.old, .new {
-  padding: 0;
-}
-
 .old p, .new p {
   text-align: center;
 }
@@ -301,6 +297,27 @@ ul li {
   margin: 0;
 }
 
+.heading-padding {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.padding-top {
+  padding-top: 40px !important;
+}
+
+.short-padding-bottom {
+  padding-bottom: 20px !important;
+}
+
+.padding-bottom {
+  padding-bottom: 40px !important;
+}
+
+.padding-top-bottom {
+  padding: 40px 0;
+}
+
 .focus-points-header-segment, .results h2 {
   padding-top: 20px;
 }
@@ -309,63 +326,33 @@ ul li {
   margin: 0;
 }
 
-.overall-nav .col-lg-8, .overall-nav .col-lg {
+.overall-nav .col-lg-8, .overall-nav .col-lg, .old, .new {
   padding: 0;
-}
-
-.focus-point-2 h2, .focus-point-4 h2 {
-  padding-top: 40px;
-}
-
-.focus-point-2, .focus-point-4 {
-  padding-bottom: 20px;
-}
-
-h2.focus-points-header {
-  background-color: #FCFFF4;
-  padding-top: 40px;
 }
 
 ul.focus-bulletpoints {
   padding: 20px 80px;
 }
 
-.focus-point-1, .focus-point-3 {
-  padding-top: 40px;
-  padding-bottom: 20px;
+h2.focus-points-header {
+  background-color: #FCFFF4;
+}
+
+.focus-point-1, .focus-point-3, .eureka {
   background-color: #F4FDFF;
 }
 
 .tabbing-issue-text {
   background-color: #EFC7C7;
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
-.eureka {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #F4FDFF;
 }
 
 /* Image Styling */
-
-.old img {
-  width: 57%;
-}
-.new img {
-  width: 67%;
-}
 
 img {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-}
-
-img.focus-points {
-  padding-bottom: 20px;
 }
 
 img.overall-nav-img {
@@ -381,20 +368,20 @@ img.overall-nav-img {
   width: 60%;
 }
 
-.padding-top-bottom {
-  padding: 40px 0;
-}
-
-.heading-padding {
-  padding: 0 60px;
-}
-
 .eureka .quote {
   font-style: italic;
   color: black;
   padding: 0 40px;
   margin: 0 120px;
   border-left: 2px solid black;
+}
+
+.old img {
+  width: 57%;
+}
+
+.new img {
+  width: 67%;
 }
 
 /* Footer */
@@ -418,7 +405,6 @@ a.content-link:hover, a.content-link:focus {
 }
 
 .contact {
-  /* background-color: #3f2a14; */
   padding: 40px 0 2em 0;
   display: flex;
   flex-direction: column;
@@ -430,7 +416,6 @@ a.content-link:hover, a.content-link:focus {
   font-family: Quicksand;
   font-weight: 100;
   font-size: 20px;
-  /* padding: 0 0 10px 0; */
 }
 
 .contactlabel {

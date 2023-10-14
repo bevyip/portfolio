@@ -301,6 +301,10 @@ ul li {
   padding: 40px 0;
 }
 
+.ux-req h2 {
+  background-color: #FCFFF4;
+}
+
 h2.icon-cases-header, .popover-req, .reduce-width-issue-text {
   background-color: #F4FDFF;
 }
@@ -452,7 +456,6 @@ a.content-link:hover, a.content-link:focus {
 }
 
 .contact {
-  /* background-color: #3f2a14; */
   padding: 40px 0 2em 0;
   display: flex;
   flex-direction: column;
@@ -464,7 +467,6 @@ a.content-link:hover, a.content-link:focus {
   font-family: Quicksand;
   font-weight: 100;
   font-size: 20px;
-  /* padding: 0 0 10px 0; */
 }
 
 .contactlabel {
