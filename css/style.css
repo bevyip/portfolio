@@ -16,7 +16,7 @@ header {
 
 @media only screen
   /* and (min-device-width: 375px) */
-  and (max-width: 750px) {
+  and (max-width: 990px) {
     header {
       background-size: cover;
       background-position: center center;
@@ -29,13 +29,21 @@ header {
 .mainheader {
   width: 50%;
   margin: 0 auto 110px;
-  padding: 8px 0 2px 0;
   display: inline-block;
   color: #333;
-  border: 2px solid #333;
+
   text-align: center;
   outline: none;
   text-decoration: none;
+}
+
+.mainheader .col-lg-12 {
+  padding: 0;
+}
+
+.mainheader h2 span {
+  font-family: Quicksand;
+  font-weight: 600;
 }
 
 .landing {
@@ -47,7 +55,7 @@ header {
 
 @media only screen
   /* and (min-device-width: 375px) */
-  and (max-width: 750px) {
+  and (max-width: 990px) {
     .mainheader {
       width: 100%;
       font-weight: bold;
@@ -60,7 +68,6 @@ header {
       color: black;
       font-size: 17px;
       letter-spacing: 1px;
-      line-height: 2em;
     }
 
     .landing {
@@ -150,12 +157,6 @@ a.nav-link:hover {
   padding: 0 2%;
 }
 
-.intro {
-  background-color: white;
-  padding: 60px 0 0 0;
-  cursor: context-menu;
-}
-
 .bgrnd-row:after {
   content: ""; /* This is necessary for the pseudo element to work. */
   display: block; /* This will put the pseudo element on its own line. */
@@ -183,13 +184,49 @@ a.nav-link:hover {
     .left-cube {
       border-right: 0;
     }
+    .intro img {
+      float: none !important;
+      margin-right: none !important;
+    }
+    .intro-text {
+      margin-left: none !important;
+    }
+    .intro-text h2 {
+      text-align: center !important;
+      padding: 0 20px;
+      font-size: 20px !important;
+    }
 }
 
-.intro h2 {
+.intro {
+  background-color: white;
+  padding: 60px 0 0 0;
+  cursor: context-menu;
+}
+
+.intro-statement {
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.intro-text h2 {
+  font-family: Quicksand;
+  font-size: 25px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.intro-text {
+  padding-right: 0;
+}
+
+.background-content h2 {
   font-size: 30px;
 }
 
 .intro img {
+  float: right;
   height: 200px;
   width: 200px;
   margin-bottom: 30px;

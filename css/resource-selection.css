@@ -60,6 +60,12 @@ header {
   align-items: center;
 }
 
+.mainheader h2 span {
+  font-family: Quicksand;
+  font-weight: 600;
+  font-size: 18px;
+}
+
 @media only screen
   /* and (min-device-width: 375px) */
   and (max-width: 1200px){
