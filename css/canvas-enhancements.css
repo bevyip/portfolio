@@ -79,8 +79,6 @@ header {
   and (max-width: 750px) {
     .mainheader {
       width: 100%;
-      font-weight: bold;
-      color: black;
       line-height: 1.3em;
       margin: 0 0 100px 0;
     }
