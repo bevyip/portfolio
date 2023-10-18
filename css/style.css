@@ -41,9 +41,14 @@ header {
   padding: 0;
 }
 
-.mainheader h2 span {
+.mainheader h2 {
+  font-size: 20px;
   font-family: Quicksand;
   font-weight: 600;
+  letter-spacing: 2px;
+  line-height: 1.3em;
+  color: #2c2a2a;
+  align-items: center;
 }
 
 .landing {
@@ -65,7 +70,6 @@ header {
     }
 
     .mainheader span {
-      color: black;
       font-size: 17px;
       letter-spacing: 1px;
     }
@@ -90,15 +94,6 @@ h1 {
   letter-spacing: -.03em;
   text-transform: none;
   color: #111;
-}
-
-.mainheader h2 {
-  font-size: 20px;
-  font-family: Cabin;
-  letter-spacing: 2px;
-  line-height: 1.3em;
-  color: black;
-  align-items: center;
 }
 
 #navbar-real {

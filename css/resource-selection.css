@@ -52,18 +52,13 @@ header {
 }
 
 .mainheader h2 {
-  font-size: 20px;
-  font-family: Cabin;
-  letter-spacing: 2px;
-  line-height: 1.3em;
-  color: black;
-  align-items: center;
-}
-
-.mainheader h2 span {
   font-family: Quicksand;
   font-weight: 600;
   font-size: 18px;
+  letter-spacing: 2px;
+  line-height: 1.3em;
+  color: #2c2a2a;
+  align-items: center;
 }
 
 @media only screen
@@ -93,7 +88,6 @@ header {
     }
 
     .mainheader span {
-      color: black;
       font-size: 17px;
       letter-spacing: 1px;
       line-height: 2em;
