@@ -185,7 +185,7 @@ a.nav-link:hover {
     .intro-text h2 {
       text-align: center !important;
       padding: 0 20px;
-      font-size: 20px !important;
+      font-size: 25px !important;
     }
 }
 
@@ -203,7 +203,7 @@ a.nav-link:hover {
 
 .intro-text h2 {
   font-family: Quicksand;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 500;
   text-align: left;
 }
