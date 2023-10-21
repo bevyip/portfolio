@@ -175,18 +175,6 @@ a.nav-link:hover {
     .left-cube {
       border-right: 0;
     }
-    .intro img {
-      float: none !important;
-      margin-right: none !important;
-    }
-    .intro-text {
-      margin-left: none !important;
-    }
-    .intro-text h2 {
-      text-align: center !important;
-      padding: 0 20px;
-      font-size: 25px !important;
-    }
 }
 
 .intro {
@@ -201,23 +189,11 @@ a.nav-link:hover {
   margin: auto;
 }
 
-.intro-text h2 {
-  font-family: Quicksand;
-  font-size: 30px;
-  font-weight: 500;
-  text-align: left;
-}
-
-.intro-text {
-  padding-right: 0;
-}
-
 .background-content h2 {
   font-size: 30px;
 }
 
 .intro img {
-  float: right;
   height: 200px;
   width: 200px;
   margin-bottom: 30px;
@@ -234,6 +210,18 @@ a.nav-link:hover {
   border-radius: 10px;
   width: 85%;
   margin: auto;
+}
+
+.mission-summary {
+  padding: 40px 60px 0px 60px;
+  font-family: Quicksand;
+  font-weight: 600;
+  text-align:justify;
+}
+
+p.highlight-brown {
+  color: #9f5b13;
+  font-weight: 900;
 }
 
 .header-background {
@@ -273,7 +261,7 @@ a.nav-link:hover {
   font-size: 18px;
   font-weight: bold;
   border-color: lightgrey;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .resume:hover, .resume:focus {
