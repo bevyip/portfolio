@@ -16,7 +16,7 @@ header {
 
 @media only screen
   /* and (min-device-width: 375px) */
-  and (max-width: 990px) {
+  and (max-width: 991px) {
     header {
       background-size: cover;
       background-position: center center;
@@ -58,7 +58,7 @@ header {
 
 @media only screen
   /* and (min-device-width: 375px) */
-  and (max-width: 990px) {
+  and (max-width: 991px) {
     .mainheader {
       width: 100%;
       line-height: 1.3em;
@@ -163,7 +163,7 @@ a.nav-link:hover {
 
 @media only screen
   /* and (min-device-width: 375px) */
-  and (max-width: 990px) {
+  and (max-width: 991px) {
     .Designer:before, .Leader:before {
       content: "";
       display: block;
