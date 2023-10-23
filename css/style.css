@@ -212,6 +212,11 @@ a.nav-link:hover {
   margin: auto;
 }
 
+.background-content p {
+  font-weight: 600;
+  color: #3c3c3c;
+}
+
 .mission-summary {
   padding: 40px 60px 0px 60px;
   font-family: Quicksand;
@@ -233,9 +238,10 @@ p.highlight-brown {
 }
 
 .header-background h2 {
-  font-family: "Lato";
-  font-weight: bolder;
+  font-family: Lato;
+  font-weight: 900;
   margin-top: 5px;
+  letter-spacing: .1rem;
   color: #333;
 }
 
