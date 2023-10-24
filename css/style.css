@@ -418,13 +418,23 @@ p.highlight-brown {
 }
 
 @media only screen
-  /* and (min-device-width: 375px) */
   and (max-width: 991px){
     .filter-overlay  {
       height: 100%;
     }
     .work-projects {
       padding-bottom: 0;
+    }
+}
+
+@media only screen
+  and (max-width: 750px){
+    .weather-app-filter h4 {
+      font-size: 25px;
+    }
+    .weather-app-filter p {
+      font-size: 13px;
+      padding: 0 20px
     }
 }
 
