@@ -521,3 +521,12 @@ a.content-link:hover, a.content-link:focus {
   /* background: black; */
   color: black;
 }
+
+.footer-stamp {
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  color: #202020;
+  font-family: Cabin;
+  margin: 0;
+}
