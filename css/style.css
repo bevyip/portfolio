@@ -261,19 +261,19 @@ p.highlight-brown {
 }
 
 .interests-images img {
-  width: 28rem;
-  height: 15rem;
+  width: 20rem;
+  height: 12rem;
   padding: 0 10px;
   margin: 0;
 }
 
-@media only screen and (max-width: 1298px)  {
+@media only screen and (max-width: 900px)  {
   .interests-images {
     flex-direction: column;
   }
   .interests-images img {
-    width: 28rem;
-    height: 18rem;
+    width: 24rem;
+    height: 16rem;
     padding: 10px 0;
     margin: 0;
   }
