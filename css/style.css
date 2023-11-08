@@ -242,7 +242,7 @@ a.nav-link:hover {
 }
 
 .mission-summary {
-  padding: 0;
+  padding: 0 50px;
   font-family: Quicksand;
   font-weight: 600;
   align-items: stretch;
@@ -268,7 +268,7 @@ p.highlight-brown {
   margin: 0;
 }
 
-@media only screen and (max-width: 900px)  {
+@media only screen and (max-width: 1046px)  {
   .interests-images {
     flex-direction: column;
   }

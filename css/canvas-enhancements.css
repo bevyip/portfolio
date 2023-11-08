@@ -417,6 +417,12 @@ img {
   width: 100%;
 }
 
+@media only screen and (min-width: 1028px)  {
+  img.drag-gif {
+    width: 575px !important;
+  }
+}
+
 img.hover-animation {
   width: 30%;
 }
@@ -424,6 +430,12 @@ img.hover-animation {
 img.spike-example,
 img.shorten-dist-spike-example {
   width: 70%;
+}
+
+@media only screen and (min-width: 1028px)  {
+  img.spike-example, img.shorten-dist-spike-example {
+    width: 710px !important;
+  }
 }
 
 img.popover-req-img, img.shorten-dist-issue-2 {
