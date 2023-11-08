@@ -297,7 +297,7 @@ p.highlight-brown {
 }
 
 .section.proj {
-  padding: 40px 0 0 0;
+  padding-top: 20px;
   font-family: Quicksand;
   cursor: context-menu;
 }

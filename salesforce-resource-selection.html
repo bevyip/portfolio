@@ -53,12 +53,12 @@
   <header>
     <div class="container-fluid landing filter-overlay row">
       <div class="landing-name">
-        <h1>Navigating the Resource Menu</h1>
+        <h1>Navigating Salesforce Flow Builder's Resource Menu</h1>
       </div>
       <div class="mainheader row justify-content-around">
         <div class="col-lg-12 justify-content-center">
           <h2>
-            <span>Upgrading keyboard navigation towards an improved resource selection experience.
+            <span>Ensuring comprehensive keyboard navigation towards an improved resource selection experience in the Salesforce Flow Builder.
             </span>
           </h2>
         </div>
@@ -76,7 +76,7 @@
         <h2>Introduction</h2>
       </br>
         <p>Flow Builder is the most powerful automation tool that any Salesforce user has at their disposal. It can be used to perform various tasks from sending an email and posting a message to performing mass updates across multiple unrelated records and performing complex logic. I joined this team in April 2022 and have since been working on releasing changes that aim to consistently improve user productivity and experience.</p>
-        <p class="highlight">Within a broader initiative aimed at an improved resource selection experience, this specific project sought to <span>guarantee keyboard accessibility</span> for the redesigned menu.</p>
+        <p class="highlight">Flow Builder's Resource Menu displays the resources that are available in the flow. Within a broader initiative aimed at an improved resource selection experience, this specific project sought to <span>guarantee keyboard accessibility</span> for the redesigned menu.</p>
         <p>The modifications were implemented in Java, Typescript, HTML, and CSS.
         </p>
 
@@ -92,7 +92,7 @@
           <li class="error-highlight"><span>Poor user experience</span>. Users found themselves lost after navigating into multi-layered menu items and struggled to backtrack their navigation.</li>
           <li class="error-highlight"><span>Inaccurate icons</span>. The icons for menu items were unclear, and at times, they didn't accurately represent the menu option.</li>
         </ul>
-       <p>This is where the revamped Resource Menu (v2) came in. It was intended to prioritize customer needs, and improve usability and user productivity.</p>
+       <p>This is where the revamped Resource Menu (v2) came in. This new design, provided by the UX team, was intended to prioritize customer needs, and improve usability and user productivity.</p>
        <p class="highlight">Initially, when I was tasked with integrating keyboard navigation for the resource menu, it was clear that the aim was to <span>preserve the keyboard navigation experience</span> akin to v1 for consistency. Yet, the interface of v1 differed from that of v2.</p>
        <p class="highlight">v1 didn't showcase a header or footer, nor did it have a distinct nested menu structure like v2. To ensure keyboard navigation was not only <span>compliant with accessibility standards</span> but also <span>tailored to typical Flow Builder user interactions</span>, every nuanced aspect of keyboard navigation had to be collaboratively addressed by the UX team, Product Managers, and Engineers.</p>
      </br>
@@ -133,7 +133,7 @@
       </div>
       <div class="focus-points">
         <div>
-          <h2 style="padding-top:20px;">Guaranteeing Keyboard Navigation</h2>
+          <h2 class="heading-padding padding-top">Guaranteeing Keyboard Navigation</h2>
           </br>
           <p>When I was first assigned the task to implement comprehensive keyboard navigation for the redesigned resource menu, I began researching web accessibility guidelines for menus. Specifically, I was recommended to refer to <a class="content-link" href="https://www.w3.org">World Wide Web Consortium (W3C)</a> for standards and guidelines I could use to apply to our redesigned resource menu.</p>
           </br>
@@ -149,19 +149,19 @@
       </div>
 
       <div class="overall-nav">
-        <h2>Delving Into Keyboard Navigation</h2>
+        <h2 class="heading-padding padding-top">Delving Into Keyboard Navigation</h2>
         </br>
         <p>With the help of the UX team, I documented and presented my findings using this diagram.</p>
-        <div class="row">
+        <div class="row justify-content-center">
           <img class="overall-nav-img padding-top-bottom" src="img/resource-selection/overall-menu-nav.jpg" alt="overall navigation">
         </div>
-        <p>The pink numbered lines represent the tabbing order and the pink dotted arrows represent up/down/left/right arrow key interactions.</p>
+        <p class="bold"><span>The pink numbered lines represent the tabbing order and the pink dotted arrows represent up/down/left/right arrow key interactions.</span></p>
       </br>
         <p>Let's see how I used this diagram to detail the four common focus scenarios.</p>
       </br>
       <div class="focus-point-1 short-padding-bottom padding-top">
-          <h2 class="heading-padding">The Input Field</h2>
-          </br>
+          <h4 class="heading-padding">Focus Point 1</h4>
+          <h3 class="heading-padding">The Input Field</h3>
           <div class="row">
             <div class="col-lg-8">
               <p>When the user focuses into the text input field for the first time:</p>
@@ -181,9 +181,9 @@
           </div>
         </div>
       </div>
-      <div class="focus-point-2 short-padding-bottom">
-        <h2 class="heading-padding padding-top">A Menu Item</h2>
-        </br>
+      <div class="focus-point-2 short-padding-bottom padding-top">
+        <h4 class="heading-padding">Focus Point 2</h4>
+        <h3 class="heading-padding">A Menu Item</h3>
         <div class="row">
           <div class="col-lg-8">
           <p>When the focus is on a menu item:</p>
@@ -201,8 +201,8 @@
       </div>
       </div>
       <div class="focus-point-3 short-padding-bottom padding-top">
-        <h2 class="heading-padding">The Footer</h2>
-        </br>
+        <h4 class="heading-padding">Focus Point 3</h4>
+        <h3 class="heading-padding">The Footer</h3>
         <div class="row">
           <div class="col-lg-8">
           <p>When the focus is on the footer:</p>
@@ -217,9 +217,9 @@
         </div>
       </div>
       </div>
-      <div class="focus-point-4 short-padding-bottom">
-        <h2 class="heading-padding padding-top">The Close Button</h2>
-        </br>
+      <div class="focus-point-4 short-padding-bottom padding-top">
+        <h4 class="heading-padding">Focus Point 4</h4>
+        <h3 class="heading-padding">The Close Button</h3>
         <p>To leave the resource menu, the user can click outside the menu, use the Esc key or click the X button. When this happens:</p>
         <ul class="focus-bulletpoints">
           <li>This will close the combo box, but the focus will remain on the input field.</li>
@@ -230,17 +230,17 @@
       </div>
       <div class="road-bump-eureka">
         <div class="tabbing-issue-text padding-top-bottom">
-          <h2 class="heading-padding">Yikes, road bump!</h2>
+          <h2 class="heading-padding">Yikes, tabbing road bump!</h2>
           </br>
           <p class="bold">In the v2 design that now included a header and footer, determining the <span>new tabbing order</span> was most essential.</p>
           </br>
-          <p class="highlight-blue">There were conflicting views on whether tabbing from the input field should move the focus to the menu item (as it does in v1) or to the ‘New Resource‘ option. The latter prioritized <span>user familiarity</span> while the former prioritized <span>adhering to 2.1 global keyboard accessibility standards</span>.</p>
+          <p class="highlight-blue">There were conflicting views on whether tabbing from the input field should move the focus to the menu item (as it does in v1) or to the ‘New Resource‘ option. The former prioritized <span>user familiarity</span> while the latter prioritized <span>adhering to 2.1 global keyboard accessibility standards</span>.</p>
           </br>
           <p>The UX team, Product Managers and engineers were in days-long discussions as both options were viable and there was no consensus on which one to prioritize.</p>
           </br>
           <p>As the weekend approached, everyone got the chance to take a break and stepped away from the conversation.</p>
         </div>
-        <div class="eureka padding-top-bottom">
+        <div class="eureka padding-top">
           <h2 class="heading-padding">Eureka!</h2>
           </br>
           <p>During my time in the software engineering field, people commonly told me this whenever I was stuck trying to solve a problem:</p>
@@ -258,9 +258,10 @@
       </div>
 
       <div class="results">
-        <h2 class="heading-padding">... annnnnd cut!</h2>
+        <h2 class="heading-padding padding-top">... annnnnd cut!</h2>
         </br>
         <p class="highlight">After nearly a year of dedicated effort by my team, the revamped selection experience not only met but exceeded our customer's expectations. We introduced a redesigned resource menu that <span>significantly improved user experience</span> and <span>underscored the importance of accessibility</span>. Besides boasting keyboard compatibility, the menu had more intuitive icons, helpful tooltips for each item accessible by keyboard shortcuts, and clickable breadcrumbs for streamlined navigation.</p>
+        </br>
         <p>While the updates to keyboard navigation weren't explicitly highlighted, numerous independent and mainstream articles sang praises for the newly-designed selection experience.</p>
         </br>
         <div class="row">

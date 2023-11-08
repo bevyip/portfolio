@@ -35,7 +35,6 @@ header {
       background-repeat: no-repeat;
       background-attachment: scroll;
     }
-
 }
 
 .mainheader {
@@ -95,7 +94,7 @@ header {
       flex-direction: column;
       justify-content: center;
       margin: auto;
-      height: 480px;
+      height: 600px;
     }
 }
 
@@ -205,6 +204,12 @@ a.nav-link:hover {
   font-family: Lato;
   font-weight: bolder;
   color: #333;
+}
+
+.solution h3 {
+  font-family: Lato;
+  font-size: 25px;
+  font-weight: 600;
 }
 
 .project-sub-summary .sub-header {
@@ -336,16 +341,16 @@ ul li {
   padding: 0;
 }
 
+.overall-nav h4 {
+  font-size: 20px;
+}
+
 ul.focus-bulletpoints {
   padding: 20px 80px;
 }
 
 h2.focus-points-header {
-  background-color: #FCFFF4;
-}
-
-.focus-point-1, .focus-point-3, .eureka {
-  background-color: #F4FDFF;
+  background-color: #FEFFFA;
 }
 
 .tabbing-issue-text {
