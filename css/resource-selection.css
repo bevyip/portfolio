@@ -275,6 +275,11 @@ ul li {
     .project-sub-summary {
       padding-top: 0;
      }
+
+     .heading-padding, .solution p {
+       padding-left: 40px !important;
+       padding-right: 40px !important;
+     }
 }
 
 .old p, .new p {
@@ -292,6 +297,10 @@ ul li {
 .solution h2, .solution p {
   padding: 0 60px;
   margin: 0;
+}
+
+.resource-selection {
+  padding: 0 60px;
 }
 
 .heading-padding {

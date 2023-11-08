@@ -15,6 +15,10 @@ p, li {
   color: #4d4d4d;
 }
 
+h2 {
+  margin: 0 !important;
+}
+
 header {
   background-color: black;
   background-image: url("../img/canvas-enhancements/canvas-enhancements-landing.png");
@@ -39,7 +43,7 @@ header {
 .mainheader {
   width: 50%;
   margin: 0 auto 110px;
-  padding: 8px 0 2px 0;
+  padding: 8px 0;
   display: inline-block;
   border: 2px solid #333;
   background-color: white;
@@ -101,7 +105,7 @@ header {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-h1 {
+.landing-name h1 {
   font-family: Lato;
   font-weight: 600;
   text-align: center;
@@ -263,6 +267,11 @@ ul li {
       padding-top: 0;
       padding-bottom: 0;
      }
+
+     .heading-padding, .solution p {
+       padding-left: 40px !important;
+       padding-right: 40px !important;
+     }
 }
 
 .solution {
@@ -273,9 +282,27 @@ ul li {
   flex-direction: column;
 }
 
+.solution h4 {
+  font-family: Quicksand;
+}
+
+.solution h4.subheader {
+  font-weight: bold;
+}
+
+.solution h3 {
+  font-family: Lato;
+  font-size: 25px;
+  font-weight: 600;
+}
+
 .solution h2, .solution p {
   padding: 0 60px;
   margin: 0;
+}
+
+.canvas-enhancements, .popover-example, .icon-cases {
+  padding: 0 60px;
 }
 
 .heading-padding {
@@ -300,11 +327,7 @@ ul li {
 }
 
 .ux-req h2 {
-  background-color: #FCFFF4;
-}
-
-h2.icon-cases-header, .popover-req, .reduce-width-issue-text {
-  background-color: #F4FDFF;
+  background-color: #FEFFFA;
 }
 
 .four-popover-req .col-sm p {
@@ -315,8 +338,12 @@ h2.icon-cases-header, .popover-req, .reduce-width-issue-text {
   background-color: #EFC7C7;
 }
 
-.popover-issue p, .four-popover-req, .old p, .new p {
+.popover-issue p, .four-popover-req, .old p, .new p, .shorten-dist-issue-compare {
   text-align: center;
+}
+
+.three-popover-issues .col-sm {
+  padding: 0;
 }
 
 .three-popover-issues .col-sm h3 {
@@ -339,9 +366,6 @@ h2.icon-cases-header, .popover-req, .reduce-width-issue-text {
   .three-popover-issues .border-col.first-issue {
     border-right: none;
   }
-}
-
-@media only screen and (max-width: 756px)  {
   .third-issue:before {
     content: "";
     display: block;
@@ -352,16 +376,17 @@ h2.icon-cases-header, .popover-req, .reduce-width-issue-text {
   .three-popover-issues .border-col.second-issue {
     border-right: none;
   }
+  .three-popover-issues .col-sm h3 {
+    padding-left: 40px !important;
+  }
 }
 
 .shorten-distance-issue-visuals p {
   padding: 0 45px 20px 45px;
 }
 
-@media only screen and (max-width: 767px)  {
-  .shorten-dist-2 {
-    padding-top: 40px;
-  }
+.shorten-dist-issue-compare {
+  padding: 0 40px;
 }
 
 .reduce-width {
@@ -376,6 +401,11 @@ h2.icon-cases-header, .popover-req, .reduce-width-issue-text {
 
 p.reduce-width-exception {
   padding: 0 !important;
+}
+
+.reduce-width-issue-text h3 {
+  font-weight: 200;
+  font-style: italic;
 }
 
 /* Image Styling */
@@ -396,8 +426,12 @@ img.shorten-dist-spike-example {
   width: 70%;
 }
 
-img.popover-req-img, img.shorten-dist-issue {
+img.popover-req-img, img.shorten-dist-issue-2 {
   width: 40%;
+}
+
+img.shorten-dist-issue {
+
 }
 
 img.popover-issue-gif {

@@ -14,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css?family=Cabin|Lato|Oswald|Quicksand|Roboto|Open+Sans|Martel|Ubuntu|Liberata" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/canvas-enhancements.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
 
@@ -53,12 +54,12 @@
   <header>
     <div class="container-fluid landing filter-overlay">
       <div class="landing-name padding-top">
-        <h1>Flow Builder Canvas Enhancements</h1>
+        <h1>Redesigning Salesforce's Flow Builder</h1>
       </div>
       <div class="mainheader row justify-content-around">
         <div class="col-lg-12 justify-content-center">
           <h2>
-            <span>A case study about redesigning Salesforce's Flow Builder canvas layout and experience with improvements that are inclusive to those that are sight-impaired.
+            <span>A case study about improving accessibility and user productivity for sight-impaired users in Salesforce's Flow Builder.
             </span>
           </h2>
         </div>
@@ -75,7 +76,7 @@
       <div class="col-lg-8 col-md-8 col-sm-12 project-summary">
         <h2>Introduction</h2>
       </br>
-        <p>Flow Builder provides declarative process automation for every Salesforce app, experience, and portal with point-and-click automation. I joined this team in April 2022 and have since been working on releasing changes that aim to consistently improve user productivity and experience.</p>
+        <p>Flow Builder is the most powerful automation tool that any Salesforce user has at their disposal. It can be used to perform various tasks from sending an email and posting a message to performing mass updates across multiple unrelated records and performing complex logic. I joined this team in April 2022 and have since been working on releasing changes that aim to consistently improve user productivity and experience.</p>
         <p class="highlight">The primary goal of this Flow Builder's redesign was to offer users a <span>modernized and simplified layout that remains inclusive to all</span>. This involves a cleaner and more visually appealing interface with improved navigation, as well as improving user experience for those that are sight-impaired with colors that meet accessibility requirements. </p>
         <p>The modifications were implemented in Java, Typescript, HTML, and CSS.
         </p>
@@ -94,7 +95,7 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-12 project-sub-summary">
         <p class="sub-header">WHEN WAS THIS?</p>
-        <p>Dec 2022 - Feb 2023</p>
+        <p>Dec 2022 - Feb 2023 (3 months)</p>
         </br>
         <p class="sub-header">WHAT'D I DO?</p>
         <p>I served as the lead Software Engineer for this feature, overseeing the entire project cycle.</p>
@@ -113,7 +114,7 @@
     </div>
 
     <div class="col solution">
-      <div class="row">
+      <div class="row canvas-enhancements">
         <img class="canvas-enhancements-conclusion" src="img/canvas-enhancements/canvas-enhancements-conclusion.jpg" alt="canvas enhancements conclusion">
       </div>
       <div class="ux-deliverables">
@@ -132,13 +133,13 @@
       </div>
 
       <div class="update-icon-story">
-        <h2 class="heading-padding">Update The <img class="plus-icon" src="img/canvas-enhancements/plus-icon.png" alt="plus icon"> Icon</h2>
-        </br>
+        <h4 class="heading-padding">Deliverable 1</h4>
+        <h3 class="heading-padding">Update The <img class="plus-icon" src="img/canvas-enhancements/plus-icon.png" alt="plus icon"> Icon</h3>
         <p>The first noticeable enhancement was changing the icon to a <img class="circle-icon" src="img/canvas-enhancements/circle-icon.png" alt="circle icon"> icon that enlarges to the <img class="plus-icon" src="img/canvas-enhancements/plus-icon.png" alt="plus icon"> icon when interacted with.</p>
         <img class="hover-animation padding-top-bottom" src="img/canvas-enhancements/hover-animation.gif" alt="icon hover animation gif">
         <p class="highlight">With this update, there were <span>four animation cases</span> to consider.</p>
         <div class="icon-header-segment short-padding-top">
-          <h2 class="icon-cases-header padding-top">Icon Animation Cases</h2>
+          <h3 class="icon-cases-header heading-padding">Icon Animation Cases</h3>
         </div>
         <div class="row">
           <img class="icon-cases padding-bottom" src="img/canvas-enhancements/icon-animation-cases.png" alt="icon cases">
@@ -146,16 +147,15 @@
       </div>
 
       <div class="add-help-popover-story">
-        <h2 class="heading-padding">Add Help Popover</h2>
-        </br>
-        <p>With the significant visual update, we wanted to provide users a help popover that explains how one can interact with the new interface.</p>
+        <h4 class="heading-padding">Deliverable 2</h4>
+        <h3 class="heading-padding">Add Help Popover</h3>
+        <p class="bold">With the significant visual update, we wanted to provide users a <span>help pop up</span> that explains how one can interact with the new interface and ensure a smooth transition in user experience.</p>
         <div class="row">
           <img class="popover-example padding-top" src="img/canvas-enhancements/popover-eg.png" alt="popover example">
         </div>
         <div class="popover-req">
-          <h2 class="padding-top">Popover Requirements</h2>
-        </br>
-          <div class="four-popover-req row padding-top padding-bottom">
+          <h4 class="heading-padding padding-top subheader">Popover Requirements</h4>
+          <div class="four-popover-req row short-padding-top">
             <div class="col-sm">
               <a href="https://www.flaticon.com/free-icons/repeat-once" title="repeat once icons"><img class="popover-req-img" src="img/canvas-enhancements/popover-1.png" alt="popover requirements"></a>
               <p>Display only once per user.</p>
@@ -175,14 +175,12 @@
           </div>
         </div>
         <div class="popover-issue-text">
-          <h2 class="heading-padding padding-top">Yikes, road bump!</h2>
-          </br>
+          <h3 class="heading-padding padding-top">Yikes, popover road bump!</h3>
           <p>I spent a week researching this popover component as it was a separate library that my team had not utilized before. It involved registering the component within our codebase, and enabling security keys in a separate Java file before we could use the component.</p>
           </br>
           <p>Fortunately, the component’s library was also extensive and implementing requirements 1, 3 and 4 went smoothly once I identified the library’s documentation and determined which lines of code needed tweaking.</p>
           </br>
           <p class="bold"><span>The real issue</span> was in implementing requirement 2 - keeping the popover anchored.</p>
-          </br>
           <div class="three-popover-issues row padding-top padding-bottom">
             <div class="col-sm border-col first-issue">
               <h3>01</h3>
@@ -214,27 +212,35 @@
       </div>
 
       <div class="shorten-distance-story">
-        <h2 class="heading-padding">Shorten The Distance Between Vertical Nodes</h2>
-        </br>
+        <h4 class="heading-padding">Deliverable 3</h4>
+        <h3 class="heading-padding">Shorten The Distance Between Vertical Nodes</h3>
         <p class="highlight">This feature involved a simple change in variable value in a file that calculated all element configurations. After spiking this feature, I found <span>two methods of implementation</span> that my team and I could discuss and finalize on.</p>
         <div class="row">
           <img class="center shorten-dist-spike-example padding-top" src="img/canvas-enhancements/shorten-dist-spike.png" alt="shorten distance spike example">
         </div>
-        <div class="shorten-distance-issue-text">
-          <h2 class="heading-padding padding-top">Tricky Terrain</h2>
-          </br>
+        <div class="shorten-distance-issue-text padding-bottom">
+          <h3 class="heading-padding padding-top">Tricky Terrain</h3>
           <p class="bold">For a change that impacted the entire Flow, it was imperative to <span>ensure compatibility</span> with all connector types - whether straight, curved, or with arrowed ends.</p>
           </br>
           <p class="bold">Additionally, we had to consider <span>special nodes with unique shapes</span> in terms of height and the spacing between nodes.</p>
           </br>
-          <div class="row shorten-distance-issue-section padding-bottom">
+          <div class="row shorten-distance-issue-section">
             <div class="col-md shorten-distance-issue-visuals">
               <p>For instance, take the Decision element, a diamond-shaped orange icon. Its height exceeds that of most other elements, so even a slight reduction was clearly noticeable.</p>
-              <img class="shorten-dist-issue" src="img/canvas-enhancements/shorten-1.jpg" alt="shorten distance issue">
+              <div class="shorten-dist-issue-compare row">
+                <div class="col">
+                  <img class="shorten-dist-issue-1" src="img/canvas-enhancements/shorten-1a.png" alt="shorten distance issue before">
+                  <p class="short-padding-top bold"><span>Before</span></p>
+                </div>
+                <div class="col">
+                  <img class="shorten-dist-issue-1" src="img/canvas-enhancements/shorten-1.jpg" alt="shorten distance issue after">
+                  <p class="short-padding-top bold"><span>After</span></p>
+                </div>
+              </div>
             </div>
             <div class="col-md shorten-distance-issue-visuals shorten-dist-2">
               <p>This height disparity became even more pronounced in cut mode, where we also had to incorporate an extra border around specific elements.</p>
-              <img class="shorten-dist-issue" src="img/canvas-enhancements/shorten-2.jpg" alt="shorten distance issue">
+              <img class="shorten-dist-issue-2" src="img/canvas-enhancements/shorten-2.jpg" alt="shorten distance issue">
             </div>
           </div>
           </br>
@@ -245,13 +251,12 @@
       </div>
 
       <div class="reduce-width-story">
-        <h2 class="heading-padding">Reduce The Width Of Connectors</h2>
-        </br>
+        <h4 class="heading-padding">Deliverable 4</h4>
+        <h3 class="heading-padding">Reduce The Width Of Connectors</h3>
         <p>Part of the move towards improving the canvas interface was reducing the overall width of the connectors. This also involved a small change in variable value.</p>
       </br>
         <div class="reduce-width-issue-text">
-          <h2 class="heading-padding padding-top">But wait!</h2>
-          </br>
+          <h3 class="heading-padding">But wait!</h3>
           <p class="error-highlight">During my research, I found that the previous requirement <a style="color:black;">(Reduce The Width of Connectors)</a> and this needed to be completed <a style="color:black;">concurrently</a> as one change without the other would result in <span>interrupted and incohesive</span> connector lines.</p>
           </br>
           <div class="row">
@@ -270,14 +275,14 @@
       </div>
 
       <div class="color-contrast-story">
-        <h2 class="padding-top">Increase The Contrast Of Nodes And Connectors</h2>
-        </br>
+        <h4 class="heading-padding">Deliverable 5</h4>
+        <h3 class="heading-padding">Increase The Contrast Of Nodes And Connectors</h3>
         <p>Prior to this update, Flow Builder displayed colors that were not WCAG 2.1 compliant. The UX team presented me with a list of UX deliverables necessary to address and resolve the color contrast issue.</p>
-        <div class="row">
-          <img class="icon-color-updates padding-top" src="img/canvas-enhancements/icon-color-updates.png" alt="icon color updates">
-        </div>
-        <div class="row">
-          <img class="line-updates padding-bottom" src="img/canvas-enhancements/line-updates.png" alt="line-updates">
+        <div class="w3-content w3-display-container padding-top-bottom">
+          <img class="color-contrast-updates" src="img/canvas-enhancements/icon-color-updates.png" alt="icon color updates">
+          <img class="color-contrast-updates" src="img/canvas-enhancements/line-updates.png" alt="line-updates">
+          <button class="w3-button w3-light-grey w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+          <button class="w3-button w3-light-grey w3-display-right" onclick="plusDivs(1)">&#10095;</button>
         </div>
         <p>With these requirements, I began identifying all areas of the codebase that were impacted and required modifications. The code was straightforward, but its application demanded consideration of all node and connector variations. Thus, before embarking on the changes, I needed to thoroughly investigate the source code for these variants and all their possible use cases.</p>
         </br>
@@ -300,9 +305,6 @@
             <p class="short-padding-top">Updated Flow Builder</p>
           </div>
         </div>
-        <!-- <div class="row">
-          <img class="canvas-enhancements-conclusion padding-top-bottom" src="img/canvas-enhancements/canvas-enhancements-conclusion.jpg" alt="canvas enhancements conclusion">
-        </div> -->
        </br>
         <p class="highlight">The newly-upgraded canvas layout that boasts <span>a more compact view with improved accessibility standards</span> received praise during its Summer ‘23 release. While Salesforce product releases are commonly discussed in quarterly articles and blogs, this particular feature stood out. It captivated many users right from the get go and was subsequently highlighted as <span>one of the top features</span> of that Salesforce release.</p>
         <div class="row">
@@ -342,7 +344,7 @@
       <a href="mailto:beverly.yip.8000@gmail.com" target="_blank" class="icons fa fa-envelope"></a>
     </div>
     <div class="col-12 footer-stamp">
-      <p class="stamp">Designed and Developed by Beverly Yip.</p>
+      <p>Designed and Developed by Beverly Yip.</p>
     </div>
   </div>
 </div>
@@ -351,6 +353,26 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("color-contrast-updates");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+}
+</script>
 
 </body>
 
