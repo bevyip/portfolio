@@ -301,7 +301,11 @@ ul li {
   margin: 0;
 }
 
-.canvas-enhancements, .popover-example, .icon-cases {
+.canvas-enhancements,
+.deliverables-img,
+.popover-example,
+.icon-cases,
+.canvas-reviews-img {
   padding: 0 60px;
 }
 
@@ -427,13 +431,12 @@ img.hover-animation {
   width: 30%;
 }
 
-img.spike-example,
-img.shorten-dist-spike-example {
+img.spike-example{
   width: 70%;
 }
 
 @media only screen and (min-width: 1028px)  {
-  img.spike-example, img.shorten-dist-spike-example {
+  img.spike-example {
     width: 710px !important;
   }
 }
