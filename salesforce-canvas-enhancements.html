@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-  html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @font-face {
+      font-family: "Rashfield";
+      src: url("fonts/TTF/VVDSRashfield-Normal.ttf");
+    }
   </style>
 
   <title>Beverly Yip</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Cabin|Lato|Oswald|Quicksand|Roboto|Open+Sans|Martel|Ubuntu|Liberata" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/canvas-enhancements.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -19,41 +28,40 @@
 </head>
 
 <body>
+  <header class="fade-in">
+    <nav class="navbar navbar-expand-lg navbar-light filter-overlay fade-in" id="navbar-real">
+      <a class="navbar-brand" id="navbar-brand" href="/portfolio"><img src="img/updated-img/logo.png" alt="Logo"
+          class="logo"></a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation" id="nav-gen" fade-in>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-center justify-content-center fade-in" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto" id="custom-navbar">
+          <li class="nav-item">
+            <a class="nav-link" href="#">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/portfolio/about">ABOUT</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="workDropdown" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              WORK
+            </a>
+            <div id="workMenu" class="dropdown-menu">
+              <a class="dropdown-item" href="/portfolio#work">ALL</a>
+              <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light row" id="navbar-real">
-    <a class="navbar-brand" href="/portfolio/#">BEVERLY YIP</a>
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="nav-gen">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse text-center justify-content-center" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto" id="custom-navbar">
-        <li class="nav-item active">
-          <a class="nav-link" style="color: #202020;" href="/portfolio/#">Home<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: #605757;" href="/portfolio/#intro">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: #605757;" href="/portfolio/#proj">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: #605757;" href="/portfolio/#experience">Experience</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: #605757;" href="https://tinyurl.com/nhfsekpj" target="_blank">Resume</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: #605757;" href="/portfolio/#contact">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-
-  <header>
-    <div class="container-fluid landing filter-overlay">
-      <div class="landing-name padding-top">
+    <div class="container-fluid landing filter-overlay fade-in">
+      <div class="landing-name">
         <h1>Redesigning Salesforce's Flow Builder</h1>
       </div>
       <div class="mainheader row justify-content-around">
@@ -64,92 +72,120 @@
           </h2>
         </div>
       </div>
-    </header>
+  </header>
 
-    <div class="disclaimer row">
-      <i class="fa fa-info-circle" aria-hidden="true"></i>
-      <p>Due to a Non-Disclosure Agreement, information on this project is limited.
+  <div class="disclaimer row fade-in">
+    <i class="fa fa-info-circle" aria-hidden="true"></i>
+    <p>Due to a Non-Disclosure Agreement, information on this project is limited.
+    </p>
+  </div>
+
+  <div class="row introduction">
+    <div class="col-lg-8 col-md-12 col-sm-12 project-summary fade-in">
+      <h2>Introduction</h2>
+      </br>
+      <p>Flow Builder is the most powerful automation tool that any Salesforce user has at their disposal. It can be
+        used to perform various tasks from sending an email and posting a message to performing mass updates across
+        multiple unrelated records and performing complex logic. I joined this team in April 2022 and have since been
+        working on releasing changes that aim to consistently improve user productivity and experience.</p>
+      <p class="highlight">The primary goal of this Flow Builder's redesign was to offer users a <span>modernized and
+          simplified layout that remains inclusive to all</span>. This involves a cleaner and more visually appealing
+        interface with improved navigation, as well as improving user experience for those that are sight-impaired with
+        colors that meet accessibility requirements. </p>
+      <p>The modifications were implemented in Java, Typescript, HTML, and CSS.
       </p>
-    </div>
-
-    <div class="row introduction">
-      <div class="col-lg-8 col-md-8 col-sm-12 project-summary">
-        <h2>Introduction</h2>
-      </br>
-        <p>Flow Builder is the most powerful automation tool that any Salesforce user has at their disposal. It can be used to perform various tasks from sending an email and posting a message to performing mass updates across multiple unrelated records and performing complex logic. I joined this team in April 2022 and have since been working on releasing changes that aim to consistently improve user productivity and experience.</p>
-        <p class="highlight">The primary goal of this Flow Builder's redesign was to offer users a <span>modernized and simplified layout that remains inclusive to all</span>. This involves a cleaner and more visually appealing interface with improved navigation, as well as improving user experience for those that are sight-impaired with colors that meet accessibility requirements. </p>
-        <p>The modifications were implemented in Java, Typescript, HTML, and CSS.
-        </p>
 
       </br>
 
-        <h2>So, what's the problem?</h2>
-        </br>
-        <p style="padding-bottom:30px;">As the Flow Builder user base expands and increasingly complex flows emerge, we received feedback about the challenges of navigating the flow. Previously, the sole navigation method was dragging the canvas to view off-screen elements and scrolling to zoom for clearer visibility.</p>
-        <img class="drag-gif" src="img/canvas-enhancements/drag-gif.gif" alt="canvas drag gif">
-        <p style="padding-top:30px;"> The following are the core problems this product aims to solve: </p>
-        <ul>
-          <li class="error-highlight"><span>Users would lose element positioning on the canvas</span>. The zoom level would reset with every element interaction. If you were building a large flow, this was a headache to deal with. It frustrated users and negatively impacted user productivity.</li>
-          <li class="error-highlight"><span>The icon colors were inaccessible</span>. They did not meet the contrast ratio of at least 3:1 for graphics and user interface components. This was a requirement specified by Web Content Accessibility Guidelines (WCAG) 2.1. Our features were isolating our users, especially those that are sight-impaired.</li>
-        </ul>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-12 project-sub-summary">
-        <p class="sub-header">WHEN WAS THIS?</p>
-        <p>Dec 2022 - Feb 2023 (3 months)</p>
-        </br>
-        <p class="sub-header">WHAT'D I DO?</p>
-        <p>I served as the lead Software Engineer for this feature, overseeing the entire project cycle.</p>
-        <p>My responsibilities included:
-          <ul>
-            <li>Project scoping and presenting proof-of-concepts to discern technical specifications.</li>
-            <li>Identifying potential technical challenges.</li>
-            <li>Dissecting the feature into digestible work items.</li>
-            <li>Implementing code and creating comprehensive test plans.</li>
-            <li>Organizing and leading bug blitzes to identify user issues.</li>
-            <li>Presenting the end product to key stakeholders and company executives.</li>
-           </ul>
-         </p>
-        <p>During this process, I worked in tandem with the UX team, Product Managers, and my engineering team to ideate and troubleshoot.</p>
-      </div>
+      <h2>So, what's the problem?</h2>
+      </br>
+      <p style="padding-bottom:30px;">As the Flow Builder user base expands and increasingly complex flows emerge, we
+        received feedback about the challenges of navigating the flow. Previously, the sole navigation method was
+        dragging the canvas to view off-screen elements and scrolling to zoom for clearer visibility.</p>
+      <img class="drag-gif" src="img/canvas-enhancements/drag-gif.gif" alt="canvas drag gif">
+      <p style="padding-top:30px;"> The following are the core problems this product aims to solve: </p>
+      <ul>
+        <li class="error-highlight"><span>Users would lose element positioning on the canvas</span>. The zoom level
+          would reset with every element interaction. If you were building a large flow, this was a headache to deal
+          with. It frustrated users and negatively impacted user productivity.</li>
+        <li class="error-highlight"><span>The icon colors were inaccessible</span>. They did not meet the contrast ratio
+          of at least 3:1 for graphics and user interface components. This was a requirement specified by Web Content
+          Accessibility Guidelines (WCAG) 2.1. Our features were isolating our users, especially those that are
+          sight-impaired.</li>
+      </ul>
     </div>
+    <div class="col-lg-4 col-md-12 col-sm-12 project-sub-summary fade-in">
+      <p class="sub-header">WHEN WAS THIS?</p>
+      <p>Dec 2022 - Feb 2023 (3 months)</p>
+      </br>
+      <p class="sub-header">WHAT'D I DO?</p>
+      <p>I served as the lead Software Engineer for this feature, overseeing the entire project cycle.</p>
+      <p>My responsibilities included:
+      <ul>
+        <li>Project scoping and presenting proof-of-concepts to discern technical specifications.</li>
+        <li>Identifying potential technical challenges.</li>
+        <li>Dissecting the feature into digestible work items.</li>
+        <li>Implementing code and creating comprehensive test plans.</li>
+        <li>Organizing and leading bug blitzes to identify user issues.</li>
+        <li>Presenting the end product to key stakeholders and company executives.</li>
+      </ul>
+      </p>
+      <p>During this process, I worked in tandem with the UX team, Product Managers, and my engineering team to ideate
+        and troubleshoot.</p>
+    </div>
+  </div>
 
-    <div class="col solution">
-      <div class="row canvas-enhancements">
-        <img class="canvas-enhancements-conclusion" src="img/canvas-enhancements/canvas-enhancements-conclusion.jpg" alt="canvas enhancements conclusion">
-      </div>
-      <div class="ux-deliverables">
-        <h2 class="padding-top">The Process</h2>
-        </br>
-        <p>As a Software Engineer in Salesforce, my responsibilities start when I receive feature deliverables by the User Experience team.</p>
-        <div class="ux-req short-padding-top">
-          <h2 class='padding-top'>UX Deliverables</h2>
+  <div class="col solution">
+    <div class="row canvas-enhancements fade-in">
+      <img class="canvas-enhancements-conclusion" src="img/canvas-enhancements/canvas-enhancements-conclusion.jpg"
+        alt="canvas enhancements conclusion">
+    </div>
+    <div class="ux-deliverables">
+      <h2 class="padding-top fade-in">The Process</h2>
+      </br>
+      <p class="fade-in">As a Software Engineer in Salesforce, my responsibilities start when I receive feature
+        deliverables by the User
+        Experience team.</p>
+      <div class="ux-req short-padding-top fade-in">
+        <h2 class='padding-top'>UX Deliverables</h2>
         <div class="deliverables-img">
           <img src="img/canvas-enhancements/deliverables-1.png" alt="ux deliverables">
           <img src="img/canvas-enhancements/deliverables-2.png" alt="ux deliverables">
         </div>
         </br>
-        <p class="highlight">I began by conducting a spike, <span>a time-boxed research into the codebase to explore potential solutions and identify technical challenges</span>. This research would conclude with a detailed presentation of my findings and a demo of proof-of-concepts to my team.</p>
-        <img class="center spike-example padding-top" src="img/canvas-enhancements/spike-eg.jpg" alt="spike example">
+        <p class="highlight fade-in">I began by conducting a spike, <span>a time-boxed research into the codebase to
+            explore
+            potential solutions and identify technical challenges</span>. This research would conclude with a detailed
+          presentation of my findings and a demo of proof-of-concepts to my team.</p>
+        <img class="center spike-example padding-top fade-in" src="img/canvas-enhancements/spike-eg.jpg"
+          alt="spike example">
       </div>
 
-      <div class="update-icon-story padding-top">
+      <div class="update-icon-story padding-top fade-in">
         <h4 class="heading-padding">Deliverable 1</h4>
-        <h3 class="heading-padding">Update The <img class="plus-icon" src="img/canvas-enhancements/plus-icon.png" alt="plus icon"> Icon</h3>
-        <p>The first noticeable enhancement was changing the icon to a <img class="circle-icon" src="img/canvas-enhancements/circle-icon.png" alt="circle icon"> icon that enlarges to the <img class="plus-icon" src="img/canvas-enhancements/plus-icon.png" alt="plus icon"> icon when interacted with.</p>
-        <img class="hover-animation padding-top-bottom" src="img/canvas-enhancements/hover-animation.gif" alt="icon hover animation gif">
+        <h3 class="heading-padding">Update The <img class="plus-icon" src="img/canvas-enhancements/plus-icon.png"
+            alt="plus icon"> Icon</h3>
+        <p>The first noticeable enhancement was changing the icon to a <img class="circle-icon"
+            src="img/canvas-enhancements/circle-icon.png" alt="circle icon"> icon that enlarges to the <img
+            class="plus-icon" src="img/canvas-enhancements/plus-icon.png" alt="plus icon"> icon when interacted with.
+        </p>
+        <img class="hover-animation padding-top-bottom" src="img/canvas-enhancements/hover-animation.gif"
+          alt="icon hover animation gif">
         <p class="highlight">With this update, there were <span>four animation cases</span> to consider.</p>
         <div class="icon-header-segment short-padding-top">
           <h3 class="icon-cases-header heading-padding">Icon Animation Cases</h3>
         </div>
         <div class="row">
-          <img class="icon-cases padding-bottom" src="img/canvas-enhancements/icon-animation-cases.png" alt="icon cases">
+          <img class="icon-cases padding-bottom" src="img/canvas-enhancements/icon-animation-cases.png"
+            alt="icon cases">
         </div>
       </div>
 
-      <div class="add-help-popover-story padding-top">
+      <div class="add-help-popover-story padding-top fade-in">
         <h4 class="heading-padding">Deliverable 2</h4>
         <h3 class="heading-padding">Add Help Popover</h3>
-        <p class="bold">With the significant visual update, we wanted to provide users a <span>help pop up</span> that explains how one can interact with the new interface and ensure a smooth transition in user experience.</p>
+        <p class="bold">With the significant visual update, we wanted to provide users a <span>help pop up</span> that
+          explains how one can interact with the new interface and ensure a smooth transition in user experience.</p>
         <div class="row">
           <img class="popover-example padding-top" src="img/canvas-enhancements/popover-eg.png" alt="popover example">
         </div>
@@ -157,146 +193,197 @@
           <h4 class="heading-padding padding-top subheader">Popover Requirements</h4>
           <div class="four-popover-req row short-padding-top">
             <div class="col-sm">
-              <a href="https://www.flaticon.com/free-icons/repeat-once" title="repeat once icons"><img class="popover-req-img" src="img/canvas-enhancements/popover-1.png" alt="popover requirements"></a>
+              <a href="https://www.flaticon.com/free-icons/repeat-once" title="repeat once icons"><img
+                  class="popover-req-img" src="img/canvas-enhancements/popover-1.png" alt="popover requirements"></a>
               <p>Display only once per user.</p>
             </div>
             <div class="col-sm">
-              <a href="https://www.flaticon.com/free-icons/anchor" title="anchor icons"><img class="popover-req-img" src="img/canvas-enhancements/popover-2.png" alt="popover requirements"></a>
+              <a href="https://www.flaticon.com/free-icons/anchor" title="anchor icons"><img class="popover-req-img"
+                  src="img/canvas-enhancements/popover-2.png" alt="popover requirements"></a>
               <p>Stay anchored to the first circle icon, even when the flow moves.</p>
             </div>
             <div class="col-sm">
-              <a href="https://www.flaticon.com/free-icons/close" title="close icons"><img class="popover-req-img" src="img/canvas-enhancements/popover-3.png" alt="popover requirements"></a>
+              <a href="https://www.flaticon.com/free-icons/close" title="close icons"><img class="popover-req-img"
+                  src="img/canvas-enhancements/popover-3.png" alt="popover requirements"></a>
               <p>To close, the user has to click the X button or press the Esc key.</p>
             </div>
             <div class="col-sm">
-              <a href="https://www.flaticon.com/free-icons/pop-up" title="pop up icons"><img class="popover-req-img" src="img/canvas-enhancements/popover-4.png" alt="popover requirements"></a>
+              <a href="https://www.flaticon.com/free-icons/pop-up" title="pop up icons"><img class="popover-req-img"
+                  src="img/canvas-enhancements/popover-4.png" alt="popover requirements"></a>
               <p>Appear on the right of the circle icon.</p>
             </div>
           </div>
         </div>
         <div class="popover-issue-text">
           <h3 class="heading-padding padding-top">Yikes, popover road bump!</h3>
-          <p>I spent a week researching this popover component as it was a separate library that my team had not utilized before. It involved registering the component within our codebase, and enabling security keys in a separate Java file before we could use the component.</p>
+          <p>I spent a week researching this popover component as it was a separate library that my team had not
+            utilized before. It involved registering the component within our codebase, and enabling security keys in a
+            separate Java file before we could use the component.</p>
           </br>
-          <p>Fortunately, the component’s library was also extensive and implementing requirements 1, 3 and 4 went smoothly once I identified the library’s documentation and determined which lines of code needed tweaking.</p>
+          <p>Fortunately, the component’s library was also extensive and implementing requirements 1, 3 and 4 went
+            smoothly once I identified the library’s documentation and determined which lines of code needed tweaking.
+          </p>
           </br>
-          <p class="bold"><span>The real issue</span> was in implementing requirement 2 - keeping the popover anchored.</p>
-          <div class="three-popover-issues row padding-top padding-bottom">
+          <p class="bold"><span>The real issue</span> was in implementing requirement 2 - keeping the popover anchored.
+          </p>
+          <div class="three-popover-issues row padding-top-bottom">
             <div class="col-sm border-col first-issue">
               <h3>01</h3>
-              <p class="highlight-blue">When the flow was dragged, <span>the popover didn’t follow</span>. This didn’t meet the requirements of keeping the popover anchored to the first circle icon.</p>
+              <p class="highlight-blue">When the flow was dragged, <span>the popover didn’t follow</span>. This didn’t
+                meet the requirements of keeping the popover anchored to the first circle icon.</p>
               </br>
             </div>
             <div class="col-sm border-col second-issue">
               <h3>02</h3>
-              <p class="highlight-blue">Certain Flow types opened a menu that shifted the circle icon downward. <span>The placement of the popover would be misaligned</span> relative to the circle icon as the popover was getting rendered before the opening animation began.</p>
+              <p class="highlight-blue">Certain Flow types opened a menu that shifted the circle icon downward.
+                <span>The placement of the popover would be misaligned</span> relative to the circle icon as the popover
+                was getting rendered before the opening animation began.
+              </p>
               </br>
             </div>
             <div class="col-sm third-issue">
               <h3>03</h3>
-              <p class="highlight-blue">When the flow was dragged, <span>the popover didn’t follow</span>. This didn’t meet the requirements of keeping the popover anchored to the first circle icon.</p>
+              <p class="highlight-blue">When the flow was dragged, <span>the popover didn’t follow</span>. This didn’t
+                meet the requirements of keeping the popover anchored to the first circle icon.</p>
             </div>
           </div>
         </div>
         <div class="popover-issue col">
-          <img class="popover-issue-gif padding-top" src="img/canvas-enhancements/popover-issue.gif" alt="popover panning issue gif">
+          <img class="popover-issue-gif padding-top" src="img/canvas-enhancements/popover-issue.gif"
+            alt="popover panning issue gif">
           </br>
           <p>An Example of Issue #1</p>
         </div>
-        <p class="short-padding-top">Multiple attempts at a solution were made to resolve the three issues in keeping the popover anchored. However, no solution could not solve all three issues simultaneously.</p>
+        <p class="short-padding-top">Multiple attempts at a solution were made to resolve the three issues in keeping
+          the popover anchored. However, no solution could not solve all three issues simultaneously.</p>
         </br>
-        <p class="highlight">Eventually, I sought the guidance of the Salesforce In-App Guidance team, and together, implemented an algorithm that keeps the popover anchored with every window resize and shift in Flow. This same algorithm has become a core piece in ensuring that the Flow remains <span>adaptable</span> to diverse media sizes and user interactions.</p>
+        <p class="highlight">Eventually, I sought the guidance of the Salesforce In-App Guidance team, and together,
+          implemented an algorithm that keeps the popover anchored with every window resize and shift in Flow. This same
+          algorithm has become a core piece in ensuring that the Flow remains <span>adaptable</span> to diverse media
+          sizes and user interactions.</p>
         </br>
         <p>Panels were also adjusted such that they would never overlap with the popover.</p>
-      </br>
+        </br>
       </div>
 
-      <div class="shorten-distance-story padding-top">
+      <div class="shorten-distance-story padding-top fade-in">
         <h4 class="heading-padding">Deliverable 3</h4>
         <h3 class="heading-padding">Shorten The Distance Between Vertical Nodes</h3>
-        <p class="highlight">This feature involved a simple change in variable value in a file that calculated all element configurations. After spiking this feature, I found <span>two methods of implementation</span> that my team and I could discuss and finalize on.</p>
+        <p class="highlight">This feature involved a simple change in variable value in a file that calculated all
+          element configurations. After spiking this feature, I found <span>two methods of implementation</span> that my
+          team and I could discuss and finalize on.</p>
         </br>
         <p>1 - Modify a key variable, but manually update other impacted variables along the way <i>or</i></p>
-        <p>2 - Modify each impacted variable respectively depending on connector type and variant, while keeping the key variable constant.</p>
+        <p>2 - Modify each impacted variable respectively depending on connector type and variant, while keeping the key
+          variable constant.</p>
         </br>
-        <div class="shorten-distance-issue-text padding-bottom">
+        <div class="shorten-distance-issue-text padding-bottom fade-in">
           <h3 class="heading-padding padding-top">Tricky Terrain</h3>
-          <p class="bold">For a change that impacted the entire Flow, it was imperative to <span>ensure compatibility</span> with all connector types - whether straight, curved, or with arrowed ends.</p>
+          <p class="bold">For a change that impacted the entire Flow, it was imperative to <span>ensure
+              compatibility</span> with all connector types - whether straight, curved, or with arrowed ends.</p>
           </br>
-          <p class="bold">Additionally, we had to consider <span>special nodes with unique shapes</span> in terms of height and the spacing between nodes.</p>
+          <p class="bold">Additionally, we had to consider <span>special nodes with unique shapes</span> in terms of
+            height and the spacing between nodes.</p>
           </br>
-          <div class="row shorten-distance-issue-section">
+          <div class="row shorten-distance-issue-section fade-in">
             <div class="col-md shorten-distance-issue-visuals">
-              <p>For instance, take the Decision element, a diamond-shaped orange icon. Its height exceeds that of most other elements, so even a slight reduction was clearly noticeable.</p>
+              <p>For instance, take the Decision element, a diamond-shaped orange icon. Its height exceeds that of most
+                other elements, so even a slight reduction was clearly noticeable.</p>
               <div class="shorten-dist-issue-compare row">
                 <div class="col">
-                  <img class="shorten-dist-issue-1" src="img/canvas-enhancements/shorten-1a.png" alt="shorten distance issue before">
+                  <img class="shorten-dist-issue-1" src="img/canvas-enhancements/shorten-1a.png"
+                    alt="shorten distance issue before">
                   <p class="short-padding-top">Before</p>
                 </div>
                 <div class="col">
-                  <img class="shorten-dist-issue-1" src="img/canvas-enhancements/shorten-1.jpg" alt="shorten distance issue after">
+                  <img class="shorten-dist-issue-1" src="img/canvas-enhancements/shorten-1.jpg"
+                    alt="shorten distance issue after">
                   <p class="short-padding-top">After</p>
                 </div>
               </div>
             </div>
             <div class="col-md shorten-distance-issue-visuals shorten-dist-2">
-              <p>This height disparity became even more pronounced in cut mode, where we also had to incorporate an extra border around specific elements.</p>
-              <img class="shorten-dist-issue-2" src="img/canvas-enhancements/shorten-2.jpg" alt="shorten distance issue">
+              <p>This height disparity became even more pronounced in cut mode, where we also had to incorporate an
+                extra border around specific elements.</p>
+              <img class="shorten-dist-issue-2" src="img/canvas-enhancements/shorten-2.jpg"
+                alt="shorten distance issue">
             </div>
           </div>
           </br>
         </div>
         </br>
-        <p>After multiple feedback sessions and multi-team discussions with UX and my team, an acceptable variable value was agreed upon that could meet both the feature requirement and accommodate unique cases like the Decision element.</p>
+        <p>After multiple feedback sessions and multi-team discussions with UX and my team, an acceptable variable value
+          was agreed upon that could meet both the feature requirement and accommodate unique cases like the Decision
+          element.</p>
         </br>
       </div>
 
-      <div class="reduce-width-story padding-top">
+      <div class="reduce-width-story padding-top fade-in">
         <h4 class="heading-padding">Deliverable 4</h4>
         <h3 class="heading-padding">Reduce The Width Of Connectors</h3>
-        <p>Part of the move towards improving the canvas interface was reducing the overall width of the connectors. This also involved a small change in variable value.</p>
-      </br>
-        <div class="reduce-width-issue-text">
+        <p>Part of the move towards improving the canvas interface was reducing the overall width of the connectors.
+          This also involved a small change in variable value.</p>
+        </br>
+        <div class="reduce-width-issue-text fade-in">
           <h3 class="heading-padding">But wait!</h3>
-          <p class="error-highlight">During my research, I found that the previous requirement <a style="color:black;">(Reduce The Width of Connectors)</a> and this needed to be completed <a style="color:black;">concurrently</a> as one change without the other would result in <span>interrupted and incohesive</span> connector lines.</p>
+          <p class="error-highlight">During my research, I found that the previous requirement <a
+              style="color:black;">(Reduce The Width of Connectors)</a> and this needed to be completed <a
+              style="color:black;">concurrently</a> as one change without the other would result in <span>interrupted
+              and incohesive</span> connector lines.</p>
           </br>
           <div class="row">
-            <img class="center reduce-width-img padding-top-bottom" src="img/canvas-enhancements/reduce-width-1.jpg" alt="reduce width issue image">
+            <img class="center reduce-width-img padding-top-bottom" src="img/canvas-enhancements/reduce-width-1.jpg"
+              alt="reduce width issue image">
           </div>
-          <p class="bold">Hence, I decided that these two requirements had to be combined into <span>a single code release</span>.</p>
-          <div class="row reduce-width">
+          <p class="bold fade-in">Hence, I decided that these two requirements had to be combined into <span>a single
+              code
+              release</span>.</p>
+          <div class="row reduce-width fade-in">
             <div class="col-2">
-            <a href="https://www.flaticon.com/free-icons/idea" title="idea icons"><img class="center reduce-width-icon" src="img/canvas-enhancements/reduce-width-flaticon.png" alt="reduce width issue icon"></a>
-          </div>
+              <a href="https://www.flaticon.com/free-icons/idea" title="idea icons"><img
+                  class="center reduce-width-icon" src="img/canvas-enhancements/reduce-width-flaticon.png"
+                  alt="reduce width issue icon"></a>
+            </div>
             <div class="col-10">
-              <p class="bold reduce-width-exception">What the UX team didn’t take into consideration was that Flow Builder had <span>a lot</span> of connectors with different shapes and forms. During implementation, I also took the initiative to ensure that all connector widths were standardized across all impacted files. This became an added criterion.</p>
+              <p class="bold reduce-width-exception">What the UX team didn’t take into consideration was that Flow
+                Builder had <span>a lot</span> of connectors with different shapes and forms. During implementation, I
+                also took the initiative to ensure that all connector widths were standardized across all impacted
+                files. This became an added criterion.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="color-contrast-story padding-top">
+      <div class="color-contrast-story padding-top fade-in">
         <h4 class="heading-padding">Deliverable 5</h4>
         <h3 class="heading-padding">Increase The Contrast Of Nodes And Connectors</h3>
-        <p>Prior to this update, Flow Builder displayed colors that were not WCAG 2.1 compliant. The UX team presented me with a list of UX deliverables necessary to address and resolve the color contrast issue.</p>
+        <p>Prior to this update, Flow Builder displayed colors that were not WCAG 2.1 compliant. The UX team presented
+          me with a list of UX deliverables necessary to address and resolve the color contrast issue.</p>
         <div class="w3-content w3-display-container padding-top-bottom">
-          <img class="color-contrast-updates" src="img/canvas-enhancements/icon-color-updates.png" alt="icon color updates">
+          <img class="color-contrast-updates" src="img/canvas-enhancements/icon-color-updates.png"
+            alt="icon color updates">
           <img class="color-contrast-updates" src="img/canvas-enhancements/line-updates.png" alt="line-updates">
           <button class="w3-button w3-light-grey w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
           <button class="w3-button w3-light-grey w3-display-right" onclick="plusDivs(1)">&#10095;</button>
         </div>
-        <p>With these requirements, I began identifying all areas of the codebase that were impacted and required modifications. The code was straightforward, but its application demanded consideration of all node and connector variations. Thus, before embarking on the changes, I needed to thoroughly investigate the source code for these variants and all their possible use cases.</p>
+        <p>With these requirements, I began identifying all areas of the codebase that were impacted and required
+          modifications. The code was straightforward, but its application demanded consideration of all node and
+          connector variations. Thus, before embarking on the changes, I needed to thoroughly investigate the source
+          code for these variants and all their possible use cases.</p>
         </br>
-        <p class="highlight">This feature adjustment was particularly notable for me. Throughout my career, it was among the few tasks I undertook that highlighted a <span>distinct interface-driven customer need</span>. Addressing this made a direct positive impact on both productivity and inclusivity for its users.
+        <p class="highlight">This feature adjustment was particularly notable for me. Throughout my career, it was among
+          the few tasks I undertook that highlighted a <span>distinct interface-driven customer need</span>. Addressing
+          this made a direct positive impact on both productivity and inclusivity for its users.
         </p>
-      </br>
+        </br>
       </div>
 
-      <div class="results padding-top">
+      <div class="results padding-top fade-in">
         <h2 class="heading-padding">Drum Roll, Please... The Finished Product</h2>
         </br>
-        <p>On the left, you'd see what Flow Builder was before the changes. On the right, you'd see how the Flow Builder canvas has improved after the changes.</p>
-        <div class="canvas-comparison-img row padding-top">
+        <p>On the left, you'd see what Flow Builder was before the changes. On the right, you'd see how the Flow Builder
+          canvas has improved after the changes.</p>
+        <div class="canvas-comparison-img row padding-top fade-in">
           <div class="old col">
             <img src="img/canvas-enhancements/old-flow.png" alt="old flow">
             <p class="short-padding-top">Previous Flow Builder</p>
@@ -306,74 +393,143 @@
             <p class="short-padding-top">Updated Flow Builder</p>
           </div>
         </div>
-       </br>
-        <p class="highlight">The newly-upgraded canvas layout that boasts <span>a more compact view with improved accessibility standards</span> received praise during its Summer ‘23 release. While Salesforce product releases are commonly discussed in quarterly articles and blogs, this particular feature stood out. It captivated many users right from the get go and was subsequently highlighted as <span>one of the top features</span> of that Salesforce release.</p>
-        <div class="row canvas-reviews-img">
-          <img class="canvas-reviews padding-top-bottom" src="img/canvas-enhancements/canvas-reviews.png" alt="canvas reviews">
+        </br>
+        <p class="highlight fade-in">The newly-upgraded canvas layout that boasts <span>a more compact view with
+            improved
+            accessibility standards</span> received praise during its Summer ‘23 release. While Salesforce product
+          releases are commonly discussed in quarterly articles and blogs, this particular feature stood out. It
+          captivated many users right from the get go and was subsequently highlighted as <span>one of the top
+            features</span> of that Salesforce release.</p>
+        <div class="row canvas-reviews-img fade-in">
+          <img class="canvas-reviews padding-top-bottom" src="img/canvas-enhancements/canvas-reviews.png"
+            alt="canvas reviews">
         </div>
       </div>
 
-      <div class="learning-journey">
+      <div class="learning-journey fade-in">
         <h2 class="heading-padding">Phew, What A Learning Journey!</h2>
         </br>
-        <p>When I first took on the leadership role for this project, I grappled with self-doubt, often questioning my capabilities as the youngest Software Engineer on a seasoned team. My experience was marked by daily challenges, collaborative brainstorming and intensive problem-solving.</p>
+        <p>When I first took on the leadership role for this project, I grappled with self-doubt, often questioning my
+          capabilities as the youngest Software Engineer on a seasoned team. My experience was marked by daily
+          challenges, collaborative brainstorming and intensive problem-solving.</p>
         </br>
-        <p class="highlight" style="padding-bottom: 20px">My manager and mentor played crucial roles in encouraging me to <span>stay curious</span>. I'll never forget the response I received to my apprehension about asking questions, which completely transformed my outlook on speaking up.</p>
+        <p class="highlight" style="padding-bottom: 20px">My manager and mentor played crucial roles in encouraging me
+          to <span>stay curious</span>. I'll never forget the response I received to my apprehension about asking
+          questions, which completely transformed my outlook on speaking up.</p>
         </br>
-        <p class="quote">“You never know if someone also has the same question as you or if your question might offer a new perspective. By asking your question, you could be helping someone else too.”</p>
+        <p class="quote fade-in">“You never know if someone also has the same question as you or if your question might
+          offer a
+          new perspective. By asking your question, you could be helping someone else too.”</p>
         </br>
-        <p style="padding-top: 20px">Looking back at the successful impact of the feature on user productivity and accessibility, I'm deeply thankful for my team's unwavering support that fueled my confidence and determination to lead the project to its success.</p>
-      </br>
+        <p style="padding-top: 20px">Looking back at the successful impact of the feature on user productivity and
+          accessibility, I'm deeply thankful for my team's unwavering support that fueled my confidence and
+          determination to lead the project to its success.</p>
+        </br>
       </div>
 
-      <div class="outro padding-top">
+      <div class="outro padding-top-bottom fade-in">
         <h2 class="heading-padding">Thanks for scrolling!</h2>
         </br>
-        <p>If you're interested, check out <a class="content-link" href="/portfolio/salesforce-resource-selection">this other case study</a> I did on improving accessibility and the resource selection experience in Salesforce's Flow Builder.</p>
-    </div>
-
-<div class="section contact" id="contact">
-  <div class="row justify-content-around" style="width: 100%">
-    <div class="col-12">
-      <h2 class="contactlabel"><b>Let's get in touch!</span></b>
+        <p>If you're interested, check out <a class="content-link" href="/portfolio/salesforce-resource-selection">this
+            other case study</a> I did on improving accessibility and the resource selection experience in Salesforce's
+          Flow Builder.</p>
       </div>
     </div>
-    <div class="row justify-content-center" style="width: 100%">
-      <a href="https://www.facebook.com/beverlyyhx" target="_blank" class="icons fa fa-facebook"></a>
-      <a href="https://www.linkedin.com/in/byip/" target="_blank" class="icons fa fa-linkedin"></a>
-      <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
-      <a href="mailto:beverly.yip.8000@gmail.com" target="_blank" class="icons fa fa-envelope"></a>
-    </div>
-    <div class="col-12 footer-stamp">
-      <p>Designed and Developed by Beverly Yip.</p>
+  </div>
+
+  <div class="footer" id="footer">
+    <div class="footer-info fade-in">
+      <h2 class="footerLabel fade-in"><b>Let's get in touch!</span></b></h2>
+      <div class="footerIcons fade-in">
+        <a href="https://www.linkedin.com/in/byip/" target="_blank" class="icons fa fa-linkedin"></a>
+        <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
+        <a href="mailto:hy3018@nyu.edu" target="_blank" class="icons fa fa-envelope"></a>
+      </div>
+      <div class="footerStamp fade-in">
+        <p>Designed and Developed © 2025 by Beverly Yip.</p>
+      </div>
+      <div class="footerReroute fade-in">
+        <a class="footerReroute-link" href="#">BACK TO TOP</a>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
-<script>
-var slideIndex = 1;
-showDivs(slideIndex);
+  <script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
 
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("color-contrast-updates");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  x[slideIndex-1].style.display = "block";
-}
-</script>
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("color-contrast-updates");
+      if (n > x.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = x.length }
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      x[slideIndex - 1].style.display = "block";
+    }
+  </script>
+
+  <script>
+    let debounceTimeout;
+    document.addEventListener("DOMContentLoaded", () => {
+      const rows = document.querySelectorAll(".proj-overview-content");
+
+      const observerOptions = {
+        root: null, // Use the viewport as the root
+        threshold: 0.1, // Trigger when 10% of the row is visible
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(() => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, 50);
+      }, observerOptions);
+
+      rows.forEach(row => observer.observe(row));
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const fadeInElements = document.querySelectorAll(".fade-in");
+
+      const observerOptions = {
+        root: null,
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      fadeInElements.forEach((el) => observer.observe(el));
+    });
+  </script>
 
 </body>
 
