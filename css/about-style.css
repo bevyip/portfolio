@@ -1,0 +1,628 @@
+::selection {
+  background: #ffb7b7; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #ffb7b7; /* Gecko Browsers */
+}
+
+/* Global box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Landing */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-in, transform 0.6s ease-in;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h1 {
+  font-family: "Rashfield";
+  font-weight: 600;
+  text-align: left;
+  font-size: 90px;
+  color: #111;
+  letter-spacing: 0.1rem;
+}
+
+header {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ede0d4;
+}
+
+body {
+  width: 100%;
+}
+
+.navbar-brand {
+  margin: 0;
+}
+
+.logo {
+  width: 40%;
+  height: 40%;
+  max-height: 200px;
+}
+
+.navbar {
+  width: 100%;
+}
+
+nav {
+  height: 200px;
+}
+
+#navbar-real {
+  background-color: inherit !important;
+  padding: 0 120px;
+}
+
+#navbarSupportedContent,
+a.nav-link,
+div.nav-link {
+  font-family: "Hanken Grotesk";
+  font-size: 20px;
+  font-weight: bold;
+  color: black !important;
+}
+
+a.nav-link:hover,
+div.nav-link:hover {
+  color: #4e3419 !important;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.navbar-nav > li {
+  font-family: "Hanken Grotesk";
+  display: flex;
+  padding-left: 20px;
+  margin-right: 20px;
+}
+
+#custom-navbar {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navbar-toggler.collapsed .navbar-toggler-icon {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+.navbar-toggler .navbar-toggler-icon {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  outline: none !important;
+}
+
+#nav-gen:focus {
+  color: black !important;
+  border-color: transparent;
+  outline: none;
+}
+
+#nav-gen {
+  stroke: #333;
+  border-color: transparent;
+}
+
+.nav-item.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+#workMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  min-width: 160px;
+  margin: 0;
+  background-color: hsla(42.85714286, 28%, 95.09803922%, 1);
+  border: none;
+  opacity: 0;
+}
+
+.nav-item.dropdown:hover #workMenu,
+#workMenu:hover {
+  opacity: 1;
+  display: block !important;
+}
+
+.dropdown-item {
+  padding: 8px 16px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black !important;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: #4e3419;
+  color: #f1f1f1 !important;
+}
+
+@media only screen and (max-width: 1090px) {
+  .navbar-nav > li {
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 1020px) {
+  .navbar-nav > li {
+    margin-right: 5px;
+  }
+}
+
+.about-landing-top {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  padding-bottom: 60px;
+  padding-left: 120px;
+}
+
+img.about-landing-pfp {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.about-landing-name h1 {
+  font-family: "Rashfield";
+  font-weight: 600;
+  text-align: left;
+  font-size: 64px;
+  color: #111;
+  letter-spacing: 0.1rem;
+
+  padding-left: 120px;
+  padding-bottom: 20px;
+}
+
+p.highlight-brown {
+  color: #4e3419;
+  font-weight: bold;
+}
+
+.about-landing-desc {
+  display: flex;
+  flex-direction: column;
+  padding: 0 120px;
+}
+
+.about-landing-desc p {
+  font-family: "Hanken Grotesk";
+}
+
+.about-landing-content {
+  font-family: "Hanken Grotesk";
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 1683px) {
+  .about-landing-name h1,
+  .about-landing-desc {
+    padding-left: 50px;
+    padding-right: 120px;
+  }
+}
+@media only screen and (max-width: 1115px) {
+  .about-landing-name h1,
+  .about-landing-desc {
+    padding-left: 20px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .about-landing-top {
+    padding-left: 120px;
+  }
+
+  .about-landing-name h1,
+  .about-landing-desc {
+    padding: 0 120px 0 20px;
+  }
+
+  .about-landing-name h1 {
+    font-size: 54px;
+  }
+
+  .about-landing-top {
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-landing-top {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    padding-bottom: 20px;
+  }
+
+  .about-landing-name h1 {
+    text-align: center;
+    font-size: 40px;
+  }
+
+  img.about-landing-pfp {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 40px;
+  }
+
+  .about-landing-name h1,
+  .about-desc,
+  .about-landing-desc,
+  .about-landing-image {
+    padding: 0;
+  }
+}
+
+@media (max-width: 548px) {
+  #navbar-real {
+    padding: 60px;
+  }
+
+  .about-desc {
+    padding: 0;
+  }
+
+  .about-landing-desc {
+    padding-top: 10px;
+  }
+}
+
+/* Body */
+
+.about-overview-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  padding: 80px 120px 60px 120px;
+}
+
+.about-content-images {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.about-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-left: 0;
+  padding-right: 20px;
+}
+
+.about-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.about-content-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 60px 0 0 0;
+}
+
+.about-content-text p {
+  font-family: "Hanken Grotesk";
+  font-size: 18px;
+}
+/* Experience */
+
+.experience-overview-header {
+  padding-top: 60px;
+}
+
+.prev-leadership {
+  display: flex;
+  flex-direction: column;
+  font-family: "Hanken Grotesk";
+}
+
+.prev-leadership .row {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-leadership {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  min-height: 200px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.logo-leadership input {
+  width: 20%;
+  height: auto;
+  max-width: 120px;
+  max-height: 120px;
+}
+
+.logo-leadership input:focus {
+  outline: none;
+}
+
+.salesforce.leader {
+  border-radius: 150%;
+}
+
+.asub.leader {
+  border-radius: 150%;
+}
+
+@media (max-width: 750px) {
+  .logo-leadership {
+    margin-bottom: 20px;
+  }
+}
+
+.content-block {
+  margin-top: 20px;
+}
+
+@media only screen and (max-device-width: 750px) and (-webkit-min-device-pixel-ratio: 2) {
+  .content-leadership,
+  #asub-content,
+  #sase-content,
+  #cswn-content,
+  #purdue-content,
+  #nyu-content {
+    width: 100%;
+  }
+}
+
+.content-leadership h5 {
+  font-family: "Hanken Grotesk";
+  font-weight: bold;
+  color: #202020;
+  font-size: 20px;
+}
+
+.content-leadership p {
+  margin: 2px 0;
+}
+
+.about-awards {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  padding: 0 120px 80px 120px;
+}
+
+.awards-overview-header h2,
+.experience-overview-header h2 {
+  font-family: "Rashfield";
+  font-weight: bold;
+  font-size: 36px;
+  letter-spacing: 0.1rem;
+}
+
+.prev-awards h6 {
+  font-family: "Hanken Grotesk";
+  font-weight: 900;
+  font-size: 20px;
+  color: black;
+  margin-top: 30px;
+  letter-spacing: 2px;
+}
+
+.prev-awards p {
+  font-size: 18px;
+  font-weight: 200;
+  color: #202020;
+  font-family: "Hanken Grotesk";
+}
+
+@media (max-width: 768px) {
+  .about-overview-content {
+    padding: 40px 80px;
+  }
+
+  .about-content-images {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .about-container {
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .about-container img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .about-content-text,
+  .experience-overview-header {
+    padding-top: 20px;
+  }
+
+  .about-awards {
+    padding: 0 80px 40px 80px;
+  }
+}
+
+@media (max-width: 548px) {
+  .about-overview-content {
+    padding: 40px 60px;
+  }
+
+  .about-content-images {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .about-container {
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .about-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .about-content-text {
+    padding-top: 10px;
+  }
+
+  .experience-overview-header {
+    padding-top: 40px;
+  }
+
+  .content-block {
+    margin-top: 10px;
+  }
+
+  .about-awards {
+    padding: 0 60px 40px 60px;
+  }
+}
+
+/* Footer */
+
+.footer {
+  background-color: #ede0d4;
+  color: black;
+  padding: 60px 120px 40px 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerLabel {
+  font-family: "Rashfield";
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.footerIcons {
+  margin: 0;
+}
+
+.icons {
+  padding: 0.1em;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.icons:hover,
+.icons:focus {
+  color: #3f2a14;
+  text-decoration: none;
+}
+
+.fa-github,
+.fa-envelope,
+.fa-twitter,
+.fa-facebook,
+.fa-instagram,
+.fa-linkedin,
+.fa-link {
+  color: black;
+}
+
+.footerStamp {
+  font-size: 18px;
+  color: #202020;
+  font-family: "Hanken Grotesk";
+}
+
+.footerStamp p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 20px;
+  }
+}
+
+.footerReroute {
+  margin-top: 10px;
+}
+
+.footerReroute-link {
+  font-size: 14px;
+  color: #202020;
+  font-family: "Hanken Grotesk";
+  font-weight: 600;
+}
+
+.footerReroute-link:hover,
+.footerReroute-link:focus {
+  color: #4e3419;
+  text-decoration: none;
+}
