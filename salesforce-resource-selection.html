@@ -1,182 +1,220 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-  html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @font-face {
+      font-family: "Rashfield";
+      src: url("fonts/TTF/VVDSRashfield-Normal.ttf");
+    }
   </style>
 
   <title>Beverly Yip</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Cabin|Lato|Oswald|Quicksand|Roboto|Open+Sans|Martel|Ubuntu|Liberata|Source+Code+Pro" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/resource-selection.css">
 
 </head>
 
 <body>
+  <header class="fade-in">
+    <nav class="navbar navbar-expand-lg navbar-light filter-overlay fade-in" id="navbar-real">
+      <a class="navbar-brand" id="navbar-brand" href="/portfolio"><img src="img/updated-img/logo.png" alt="Logo"
+          class="logo"></a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation" id="nav-gen" fade-in>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-center justify-content-center fade-in" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto" id="custom-navbar">
+          <li class="nav-item">
+            <a class="nav-link" href="#">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/portfolio/about">ABOUT</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="workDropdown" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              WORK
+            </a>
+            <div id="workMenu" class="dropdown-menu">
+              <a class="dropdown-item" href="/portfolio#work">ALL</a>
+              <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light row" id="navbar-real">
-    <a class="navbar-brand" href="/portfolio/#">BEVERLY YIP</a>
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="nav-gen">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse text-center justify-content-center" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto" id="custom-navbar">
-        <li class="nav-item active">
-          <a class="nav-link" style="color: #202020;" href="/portfolio/#">Home<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: #605757;" href="/portfolio/#intro">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: #605757;" href="/portfolio/#proj">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: #605757;" href="/portfolio/#experience">Experience</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: #605757;" href="https://tinyurl.com/nhfsekpj" target="_blank">Resume</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: #605757;" href="/portfolio/#contact">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-
-  <header>
-    <div class="container-fluid landing filter-overlay row">
+    <div class="container-fluid landing filter-overlay fade-in">
       <div class="landing-name">
         <h1>Navigating Salesforce Flow Builder's Resource Menu</h1>
       </div>
       <div class="mainheader row justify-content-around">
         <div class="col-lg-12 justify-content-center">
           <h2>
-            <span>Ensuring comprehensive keyboard navigation towards an improved resource selection experience in the Salesforce Flow Builder.
+            <span>Ensuring comprehensive keyboard navigation towards an improved resource selection experience in the
+              Salesforce Flow Builder.
             </span>
           </h2>
         </div>
       </div>
-    </header>
+  </header>
 
-    <div class="disclaimer row">
-      <i class="fa fa-info-circle" aria-hidden="true"></i>
-      <p>Due to a Non-Disclosure Agreement, information on this project is limited.
+  <div class="disclaimer fade-in">
+    <i class="fa fa-info-circle" aria-hidden="true"></i>
+    <p>Due to a Non-Disclosure Agreement, information on this project is limited.
+    </p>
+  </div>
+
+  <div class="row introduction">
+    <div class="col-lg-8 col-md-12 col-sm-12 project-summary">
+      <h2>Introduction</h2>
+      </br>
+      <p>Flow Builder is the most powerful automation tool that any Salesforce user has at their disposal (see <a
+          class="content-link" href="/portfolio/salesforce-canvas-enhancements">Case Study #1</a>). It can be used to
+        perform various tasks from sending an email and posting a message to performing mass updates across multiple
+        unrelated records and performing complex logic. I joined this team in April 2022 and have since been working on
+        releasing changes that aim to consistently improve user productivity and experience.</p>
+      <p class="highlight">Flow Builder's Resource Menu displays the resources that are available in the flow. Within a
+        broader initiative aimed at an improved resource selection experience, this specific project sought to
+        <span>guarantee keyboard accessibility</span> for the redesigned menu.
+      </p>
+      <p>The modifications were implemented in Java, Typescript, HTML, and CSS.
+      </p>
+
+      </br>
+
+      <h2>So, what's the problem?</h2>
+      </br>
+      <p>The original Resource Menu (v1) needed a design overhaul.</p>
+      <p> The following are the core problems this product aims to solve: </p>
+      <ul>
+        <li class="error-highlight"><span>Outdated design</span>. The menu’s design was dated in comparison to latest
+          Flow design enhancements.</li>
+        <li class="error-highlight"><span>The menu items were disorganized</span>. Menu items that received significant
+          interaction, as identified by the UX team's user research, were located towards the bottom of the menu.</li>
+        <li class="error-highlight"><span>Poor user experience</span>. Users found themselves lost after navigating into
+          multi-layered menu items and struggled to backtrack their navigation.</li>
+        <li class="error-highlight"><span>Inaccurate icons</span>. The icons for menu items were unclear, and at times,
+          they didn't accurately represent the menu option.</li>
+      </ul>
+      <div class="old col">
+        <img src="img/resource-selection/old-resource.jpg" alt="old resource">
+        <p>v1 Design</p>
+      </div>
+      <p>This is where the revamped Resource Menu (v2) came in. This new design, provided by the UX team, was intended
+        to prioritize customer needs, and improve usability and user productivity.</p>
+      <div class="new col">
+        <img src="img/resource-selection/new-resource.jpg" alt="new resource">
+        <p>v2 Design</p>
+      </div>
+      <p class="highlight">Initially, when I was tasked with integrating keyboard navigation for the resource menu, it
+        was clear that the aim was to <span>preserve the keyboard navigation experience</span> akin to v1 for
+        consistency. Yet, the interface of v1 differed from that of v2.</p>
+      <p class="highlight">v1 didn't showcase a header or footer, nor did it have a distinct nested menu structure like
+        v2. To ensure keyboard navigation was not only <span>compliant with accessibility standards</span> but also
+        <span>tailored to typical Flow Builder user interactions</span>, every nuanced aspect of keyboard navigation had
+        to be collaboratively addressed by the UX team, Product Managers, and Engineers.
       </p>
     </div>
 
-    <div class="row introduction">
-      <div class="col-lg-8 col-md-8 col-sm-12 project-summary">
-        <h2>Introduction</h2>
+    <div class="col-lg-4 col-md-12 col-sm-12 project-sub-summary">
+      <p class="sub-header">WHEN WAS THIS?</p>
+      <p>Aug - Sep 2022 (1 month)</p>
       </br>
-        <p>Flow Builder is the most powerful automation tool that any Salesforce user has at their disposal (see <a class="content-link" href="/portfolio/salesforce-canvas-enhancements">Case Study #1</a>). It can be used to perform various tasks from sending an email and posting a message to performing mass updates across multiple unrelated records and performing complex logic. I joined this team in April 2022 and have since been working on releasing changes that aim to consistently improve user productivity and experience.</p>
-        <p class="highlight">Flow Builder's Resource Menu displays the resources that are available in the flow. Within a broader initiative aimed at an improved resource selection experience, this specific project sought to <span>guarantee keyboard accessibility</span> for the redesigned menu.</p>
-        <p>The modifications were implemented in Java, Typescript, HTML, and CSS.
+      <p class="sub-header">WHAT'D I DO?</p>
+      <p>As the team's Accessibility Champion, I devoted much of my efforts to enhancing accessibility standards across
+        all products under our purview and identifying any that were lacking.</p>
+      <p>My responsibilities include:
+      <ul>
+        <li>Researching and documenting the requirements of making the product 2.1 keyboard accessible.</li>
+        <li>Studying the fundamentals of human-centered design for Salesforce products.</li>
+        <li>Identifying potential technical challenges.</li>
+        <li>Presenting my findings to the UX team, Product Managers and other engineers for critical feedback.</li>
+        <li>Implementing code, creating comprehensive test plans and conducting bug blitzes to identify user issues.
+        </li>
+        <li>Presenting the end product to key stakeholders and company executives.</li>
+      </ul>
+      </p>
+    </div>
+  </div>
+
+  <div class="col solution">
+    <div class="row resource-selection">
+      <img class="overall-exp" src="img/resource-selection/resource-exp.png" alt="overall resource experience">
+    </div>
+    <div class="focus-points">
+      <div>
+        <h2 class="heading-padding padding-top">Guaranteeing Keyboard Navigation</h2>
+        </br>
+        <p>When I was first assigned the task to implement comprehensive keyboard navigation for the redesigned resource
+          menu, I began researching web accessibility guidelines for menus. Specifically, I was recommended to refer to
+          <a class="content-link" href="https://www.w3.org">World Wide Web Consortium (W3C)</a> for standards and
+          guidelines I could use to apply to our redesigned resource menu.
         </p>
-
-      </br>
-
-        <h2>So, what's the problem?</h2>
         </br>
-        <p>The original Resource Menu (v1) needed a design overhaul.</p>
-        <p> The following are the core problems this product aims to solve: </p>
-        <ul>
-          <li class="error-highlight"><span>Outdated design</span>. The menu’s design was dated in comparison to latest Flow design enhancements.</li>
-          <li class="error-highlight"><span>The menu items were disorganized</span>. Menu items that received significant interaction, as identified by the UX team's user research, were located towards the bottom of the menu.</li>
-          <li class="error-highlight"><span>Poor user experience</span>. Users found themselves lost after navigating into multi-layered menu items and struggled to backtrack their navigation.</li>
-          <li class="error-highlight"><span>Inaccurate icons</span>. The icons for menu items were unclear, and at times, they didn't accurately represent the menu option.</li>
-        </ul>
-        <div class="old col">
-          <img src="img/resource-selection/old-resource.jpg" alt="old resource">
-          <p>v1 Design</p>
+        <p class="highlight">Subsequently, I began documenting my findings and categorizing them into <span>four common
+            scenarios</span> where the focus would land after certain keyboard navigation.
+        </p>
+        <div class="focus-points-header-segment">
+          <h2 class="focus-points-header padding-top">Common Focus Points</h2>
         </div>
-       <p>This is where the revamped Resource Menu (v2) came in. This new design, provided by the UX team, was intended to prioritize customer needs, and improve usability and user productivity.</p>
-       <div class="new col">
-         <img src="img/resource-selection/new-resource.jpg" alt="new resource">
-         <p>v2 Design</p>
-       </div>
-       <p class="highlight">Initially, when I was tasked with integrating keyboard navigation for the resource menu, it was clear that the aim was to <span>preserve the keyboard navigation experience</span> akin to v1 for consistency. Yet, the interface of v1 differed from that of v2.</p>
-       <p class="highlight">v1 didn't showcase a header or footer, nor did it have a distinct nested menu structure like v2. To ensure keyboard navigation was not only <span>compliant with accessibility standards</span> but also <span>tailored to typical Flow Builder user interactions</span>, every nuanced aspect of keyboard navigation had to be collaboratively addressed by the UX team, Product Managers, and Engineers.</p>
-      </div>
-
-      <div class="col-lg-4 col-md-4 col-sm-12 project-sub-summary">
-        <p class="sub-header">WHEN WAS THIS?</p>
-        <p>Aug - Sep 2022 (1 month)</p>
-        </br>
-        <p class="sub-header">WHAT'D I DO?</p>
-        <p>As the team's Accessibility Champion, I devoted much of my efforts to enhancing accessibility standards across all products under our purview and identifying any that were lacking.</p>
-        <p>My responsibilities include:
-          <ul>
-            <li>Researching and documenting the requirements of making the product 2.1 keyboard accessible.</li>
-            <li>Studying the fundamentals of human-centered design for Salesforce products.</li>
-            <li>Identifying potential technical challenges.</li>
-            <li>Presenting my findings to the UX team, Product Managers and other engineers for critical feedback.</li>
-            <li>Implementing code, creating comprehensive test plans and conducting bug blitzes to identify user issues.</li>
-            <li>Presenting the end product to key stakeholders and company executives.</li>
-           </ul>
-         </p>
+        <div class="row focus-points-img">
+          <img class="focus-points short-padding-bottom" src="img/resource-selection/keyboard-focus-points.png"
+            alt="focus points">
+        </div>
       </div>
     </div>
 
-    <div class="col solution">
-      <div class="row resource-selection">
-        <img class="overall-exp" src="img/resource-selection/resource-exp.png" alt="overall resource experience">
-      </div>
-      <div class="focus-points">
-        <div>
-          <h2 class="heading-padding padding-top">Guaranteeing Keyboard Navigation</h2>
-          </br>
-          <p>When I was first assigned the task to implement comprehensive keyboard navigation for the redesigned resource menu, I began researching web accessibility guidelines for menus. Specifically, I was recommended to refer to <a class="content-link" href="https://www.w3.org">World Wide Web Consortium (W3C)</a> for standards and guidelines I could use to apply to our redesigned resource menu.</p>
-          </br>
-          <p class="highlight">Subsequently, I began documenting my findings and categorizing them into <span>four common scenarios</span> where the focus would land after certain keyboard navigation.
-          </p>
-          <div class="focus-points-header-segment">
-            <h2 class="focus-points-header padding-top">Common Focus Points</h2>
-          </div>
-          <div class="row focus-points-img">
-            <img class="focus-points short-padding-bottom" src="img/resource-selection/keyboard-focus-points.png" alt="focus points">
-          </div>
-        </div>
-      </div>
-
-      <div class="overall-nav padding-top">
-        <h2 class="heading-padding padding-top">Delving Into Keyboard Navigation</h2>
-        </br>
-        <p>With the help of the UX team, I documented and presented my findings using this diagram.</p>
-        <div class="row overall-nav-img-section">
-          <div class="col">
-            <img class="overall-nav-img padding-top-bottom" src="img/resource-selection/overall-menu-nav.jpg" alt="overall navigation">
-          </div>
-          <div class="col">
-            <p>The pink numbered lines represent the tabbing order and the pink dotted arrows represent up/down/left/right arrow key interactions.</p>
-          </div>
-        </div>
+    <div class="overall-nav padding-top">
+      <h2 class="heading-padding padding-top">Delving Into Keyboard Navigation</h2>
       </br>
-        <p>Let's see how I used this diagram to detail the four common focus scenarios.</p>
+      <p>With the help of the UX team, I documented and presented my findings using this diagram.</p>
+      <div class="row overall-nav-img-section">
+        <div class="col">
+          <img class="overall-nav-img padding-top-bottom" src="img/resource-selection/overall-menu-nav.jpg"
+            alt="overall navigation">
+        </div>
+        <div class="col">
+          <p>The pink numbered lines represent the tabbing order and the pink dotted arrows represent up/down/left/right
+            arrow key interactions.</p>
+        </div>
+      </div>
+      </br>
+      <p>Let's see how I used this diagram to detail the four common focus scenarios.</p>
       </br>
       <div class="focus-point-1 short-padding-bottom padding-top">
-          <h4 class="heading-padding">Focus Point 1</h4>
-          <h3 class="heading-padding">The Input Field</h3>
-          <div class="row">
-            <div class="col-lg-8">
-              <p>When the user focuses into the text input field for the first time:</p>
-              <ul class="focus-bulletpoints">
-                <li>Dropdown menu should immediately display.</li>
-                <li>Secondary focus should be on the first menu item (in the diagram, that would be <a style="color:black;">Users from Get Account Owners</a>).</li>
-                <li class="code-highlight">Using <span>Enter</span> will select the first menu item.</li>
-                <li class="code-highlight">Using <span>Tab</span> will bring the focus into the menu (demonstrated with the <a style="color:black;">01 pink numbered line</a>).</li>
-                <ul>
-                  <li class="code-highlight">Using <span>↓</span> will trap tabbing within the menu.</li>
-                </ul>
-                <li>Typing any alphanumeric character will filter the menu items.</li>
+        <h4 class="heading-padding">Focus Point 1</h4>
+        <h3 class="heading-padding">The Input Field</h3>
+        <div class="row">
+          <div class="col-lg-8">
+            <p>When the user focuses into the text input field for the first time:</p>
+            <ul class="focus-bulletpoints">
+              <li>Dropdown menu should immediately display.</li>
+              <li>Secondary focus should be on the first menu item (in the diagram, that would be <a
+                  style="color:black;">Users from Get Account Owners</a>).</li>
+              <li class="code-highlight">Using <span>Enter</span> will select the first menu item.</li>
+              <li class="code-highlight">Using <span>Tab</span> will bring the focus into the menu (demonstrated with
+                the <a style="color:black;">01 pink numbered line</a>).</li>
+              <ul>
+                <li class="code-highlight">Using <span>↓</span> will trap tabbing within the menu.</li>
               </ul>
-            </div>
+              <li>Typing any alphanumeric character will filter the menu items.</li>
+            </ul>
+          </div>
           <div class="col-lg focus-arrows">
             <img src="img/resource-selection/01.png" alt="tabbing order 1">
           </div>
@@ -187,45 +225,56 @@
         <h3 class="heading-padding">A Menu Item</h3>
         <div class="row">
           <div class="col-lg-8">
-          <p>When the focus is on a menu item:</p>
-          <ul class="focus-bulletpoints">
-            <li class="code-highlight">Using <span>↑</span> or <span>↓</span> keys, a user can navigate the menu items, excluding the header and footer (demonstrated with the <a style="color:black;">up/down pink dotted lines</a>).</li>
-            <li class="code-highlight">Using <span>Tab</span> will move the focus straight to the footer (i.e.: <a style="color:black;">New Resource</a>) (demonstrated with the <a style="color:black;">02 pink numbered line</a>).</li>
-            <li class="code-highlight">Using <span>→</span> or <span>Enter</span> towards a chevron will traverse, display and focus the next level’s menu item.</li>
-            <li class="code-highlight">Menu items with tooltips will have <span>aria-describedby</span> pointing to tooltip contents to support screen readers.</li>
-            <li class="code-highlight">Using <span>Cmd + I</span> (Mac) or <span>Ctrl + I</span> (Windows) will display the tooltip.</li>
-          </ul>
+            <p>When the focus is on a menu item:</p>
+            <ul class="focus-bulletpoints">
+              <li class="code-highlight">Using <span>↑</span> or <span>↓</span> keys, a user can navigate the menu
+                items, excluding the header and footer (demonstrated with the <a style="color:black;">up/down pink
+                  dotted lines</a>).</li>
+              <li class="code-highlight">Using <span>Tab</span> will move the focus straight to the footer (i.e.: <a
+                  style="color:black;">New Resource</a>) (demonstrated with the <a style="color:black;">02 pink numbered
+                  line</a>).</li>
+              <li class="code-highlight">Using <span>→</span> or <span>Enter</span> towards a chevron will traverse,
+                display and focus the next level’s menu item.</li>
+              <li class="code-highlight">Menu items with tooltips will have <span>aria-describedby</span> pointing to
+                tooltip contents to support screen readers.</li>
+              <li class="code-highlight">Using <span>Cmd + I</span> (Mac) or <span>Ctrl + I</span> (Windows) will
+                display the tooltip.</li>
+            </ul>
+          </div>
+          <div class="col-lg focus-arrows">
+            <img src="img/resource-selection/02.png" alt="tabbing order 2">
+          </div>
         </div>
-        <div class="col-lg focus-arrows">
-          <img src="img/resource-selection/02.png" alt="tabbing order 2">
-        </div>
-      </div>
       </div>
       <div class="focus-point-3 short-padding-bottom padding-top">
         <h4 class="heading-padding">Focus Point 3</h4>
         <h3 class="heading-padding">The Footer</h3>
         <div class="row">
           <div class="col-lg-8">
-          <p>When the focus is on the footer:</p>
-          <ul class="focus-bulletpoints">
-            <li class="code-highlight">Using <span>Shift + Tab</span> will move the focus back to the last-focused menu item.</li>
-            <li class="code-highlight">Using <span>Tab</span> will focus the header (i.e.: <a style="color:black;">All Resources</a>) (demonstrated with the <a style="color:black;">03 pink numbered line</a>).</li>
-            <li>Typing any alphanumeric character will filter the menu items.</li>
-          </ul>
+            <p>When the focus is on the footer:</p>
+            <ul class="focus-bulletpoints">
+              <li class="code-highlight">Using <span>Shift + Tab</span> will move the focus back to the last-focused
+                menu item.</li>
+              <li class="code-highlight">Using <span>Tab</span> will focus the header (i.e.: <a style="color:black;">All
+                  Resources</a>) (demonstrated with the <a style="color:black;">03 pink numbered line</a>).</li>
+              <li>Typing any alphanumeric character will filter the menu items.</li>
+            </ul>
+          </div>
+          <div class="col-lg focus-arrows">
+            <img src="img/resource-selection/03.png" alt="tabbing order 3">
+          </div>
         </div>
-        <div class="col-lg focus-arrows">
-          <img src="img/resource-selection/03.png" alt="tabbing order 3">
-        </div>
-      </div>
       </div>
       <div class="focus-point-4 short-padding-bottom padding-top">
         <h4 class="heading-padding">Focus Point 4</h4>
         <h3 class="heading-padding">The Close Button</h3>
-        <p>To leave the resource menu, the user can click outside the menu, use the Esc key or click the X button. When this happens:</p>
+        <p>To leave the resource menu, the user can click outside the menu, use the Esc key or click the X button. When
+          this happens:</p>
         <ul class="focus-bulletpoints">
           <li>This will close the combo box, but the focus will remain on the input field.</li>
           <li class="code-highlight">Using <span>Tab</span> will move to the next element in the field.</li>
-          <li class="code-highlight">Using <span>↓</span> or <span>Enter</span> on the input field will show the dropdown menu again.</li>
+          <li class="code-highlight">Using <span>↓</span> or <span>Enter</span> on the input field will show the
+            dropdown menu again.</li>
           <li>Typing any alphanumeric character will filter the menu items.</li>
         </ul>
       </div>
@@ -233,68 +282,144 @@
         <div class="tabbing-issue-text padding-top-bottom">
           <h2 class="heading-padding">Yikes, tabbing road bump!</h2>
           </br>
-          <p class="bold">In the v2 design that now included a header and footer, determining the <span>new tabbing order</span> was most essential.</p>
+          <p class="bold">In the v2 design that now included a header and footer, determining the <span>new tabbing
+              order</span> was most essential.</p>
           </br>
-          <p class="highlight-blue">There were conflicting views on whether tabbing from the input field should move the focus to the menu item (as it does in v1) or to the ‘New Resource‘ option. The former prioritized <span>user familiarity</span> while the latter prioritized <span>adhering to 2.1 global keyboard accessibility standards</span>.</p>
+          <p class="highlight-blue">There were conflicting views on whether tabbing from the input field should move the
+            focus to the menu item (as it does in v1) or to the ‘New Resource‘ option. The former prioritized <span>user
+              familiarity</span> while the latter prioritized <span>adhering to 2.1 global keyboard accessibility
+              standards</span>.</p>
         </div>
         <div class="eureka padding-top">
           <h2 class="heading-padding">Eureka!</h2>
           </br>
-          <p class="bold">Flow Builder is a point-and-click automation tool. That meant that individuals with <span>low vision</span> (who may have trouble finding or tracking a pointer indicator on screen) and those who have <span>difficulty with using the mouse</span> face challenges in using our product if keyboard alternatives are lacking.</p>
+          <p class="bold">Flow Builder is a point-and-click automation tool. That meant that individuals with <span>low
+              vision</span> (who may have trouble finding or tracking a pointer indicator on screen) and those who have
+            <span>difficulty with using the mouse</span> face challenges in using our product if keyboard alternatives
+            are lacking.
+          </p>
           </br>
-          <p class="highlight">Hence, the team agreed on the <span>importance of upholding 2.1 global keyboard accessibility</span> and pursued the ‘New Resource‘ option.</p>
+          <p class="highlight">Hence, the team agreed on the <span>importance of upholding 2.1 global keyboard
+              accessibility</span> and pursued the ‘New Resource‘ option.</p>
           </br>
-          <p>To tackle the concern of user unfamiliarity, we decided to also incorporate help popups to assist users in grasping the updated keyboard navigation.</p>
+          <p>To tackle the concern of user unfamiliarity, we decided to also incorporate help popups to assist users in
+            grasping the updated keyboard navigation.</p>
           </br>
-          <p class="highlight">Attempting to release a product with inaccessible features simply made no sense. A product that boasts enhanced user experience should ensure that what’s user-friendly for one user is <span>equally accessible and intuitive</span> to another.</p>
-      </div>
+          <p class="highlight">Attempting to release a product with inaccessible features simply made no sense. A
+            product that boasts enhanced user experience should ensure that what’s user-friendly for one user is
+            <span>equally accessible and intuitive</span> to another.
+          </p>
+        </div>
       </div>
 
       <div class="results padding-top">
         <h2 class="heading-padding padding-top">... annnnnd cut!</h2>
         </br>
-        <p class="highlight">After nearly a year of dedicated effort by my team, the revamped selection experience not only met but exceeded our customer's expectations. We introduced a redesigned resource menu that <span>significantly improved user experience</span> and <span>underscored the importance of accessibility</span>. Besides boasting keyboard compatibility, the menu had more intuitive icons, helpful tooltips for each item accessible by keyboard shortcuts, and clickable breadcrumbs for streamlined navigation.</p>
+        <p class="highlight">After nearly a year of dedicated effort by my team, the revamped selection experience not
+          only met but exceeded our customer's expectations. We introduced a redesigned resource menu that
+          <span>significantly improved user experience</span> and <span>underscored the importance of
+            accessibility</span>. Besides boasting keyboard compatibility, the menu had more intuitive icons, helpful
+          tooltips for each item accessible by keyboard shortcuts, and clickable breadcrumbs for streamlined navigation.
+        </p>
         </br>
-        <p>While the updates to keyboard navigation weren't explicitly highlighted, numerous independent and mainstream articles sang praises for the newly-designed selection experience.</p>
+        <p>While the updates to keyboard navigation weren't explicitly highlighted, numerous independent and mainstream
+          articles sang praises for the newly-designed selection experience.</p>
         </br>
         <div class="row resource-reviews-img">
-          <img class="resource-reviews padding-bottom" src="img/resource-selection/resource-reviews.png" alt="resource reviews">
+          <img class="resource-reviews padding-bottom" src="img/resource-selection/resource-reviews.png"
+            alt="resource reviews">
         </div>
-        <p>Witnessing people genuinely enjoying and appreciating the revamped interface and selection experience emphasized the significance of user-centric feature development.</p>
+        <p>Witnessing people genuinely enjoying and appreciating the revamped interface and selection experience
+          emphasized the significance of user-centric feature development.</p>
         </br>
-        <p class="highlight">This project not only deepened my understanding of human-centered design in keyboard interaction but also taught me that a product's user experience can <span>evolve</span> - provided that ample support and direction is offered to its users.</p>
+        <p class="highlight">This project not only deepened my understanding of human-centered design in keyboard
+          interaction but also taught me that a product's user experience can <span>evolve</span> - provided that ample
+          support and direction is offered to its users.</p>
         </br>
       </div>
 
       <div class="outro padding-top">
         <h2 class="heading-padding">Thanks for scrolling!</h2>
         </br>
-        <p>If you're interested, check out <a class="content-link" href="/portfolio/salesforce-canvas-enhancements">this other case study</a> I did on redesigning Salesforce's Flow Builder canvas layout and experience.</p>
-    </div>
-
-<div class="section contact" id="contact">
-  <div class="row justify-content-around" style="width: 100%">
-    <div class="col-12">
-      <h2 class="contactlabel"><b>Let's get in touch!</span></b>
+        <p>If you're interested, check out <a class="content-link" href="/portfolio/salesforce-canvas-enhancements">this
+            other case study</a> I did on redesigning Salesforce's Flow Builder canvas layout and experience.</p>
       </div>
     </div>
-    <div class="row justify-content-center" style="width: 100%">
-      <a href="https://www.facebook.com/beverlyyhx" target="_blank" class="icons fa fa-facebook"></a>
-      <a href="https://www.linkedin.com/in/byip/" target="_blank" class="icons fa fa-linkedin"></a>
-      <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
-      <a href="mailto:beverly.yip.8000@gmail.com" target="_blank" class="icons fa fa-envelope"></a>
-    </div>
-    <div class="col-12 footer-stamp">
-      <p>Designed and Developed by Beverly Yip.</p>
+  </div>
+
+  <div class="footer" id="footer">
+    <div class="footer-info fade-in">
+      <h2 class="footerLabel fade-in"><b>Let's get in touch!</span></b></h2>
+      <div class="footerIcons fade-in">
+        <a href="https://www.linkedin.com/in/byip/" target="_blank" class="icons fa fa-linkedin"></a>
+        <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
+        <a href="mailto:hy3018@nyu.edu" target="_blank" class="icons fa fa-envelope"></a>
+      </div>
+      <div class="footerStamp fade-in">
+        <p>Designed and Developed © 2025 by Beverly Yip.</p>
+      </div>
+      <div class="footerReroute fade-in">
+        <a class="footerReroute-link" href="#">BACK TO TOP</a>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
+  <script>
+    let debounceTimeout;
+    document.addEventListener("DOMContentLoaded", () => {
+      const rows = document.querySelectorAll(".proj-overview-content");
+
+      const observerOptions = {
+        root: null, // Use the viewport as the root
+        threshold: 0.1, // Trigger when 10% of the row is visible
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(() => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, 50);
+      }, observerOptions);
+
+      rows.forEach(row => observer.observe(row));
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const fadeInElements = document.querySelectorAll(".fade-in");
+
+      const observerOptions = {
+        root: null,
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      fadeInElements.forEach((el) => observer.observe(el));
+    });
+  </script>
 </body>
 
 </html>

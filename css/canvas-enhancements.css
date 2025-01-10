@@ -88,6 +88,23 @@ header {
   padding: 40px 120px;
 }
 
+.filter-overlay {
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 1;
+}
+
+.landing-name h1 {
+  font-family: "Rashfield";
+  font-weight: 600;
+  text-align: center;
+  font-style: normal;
+  font-size: 64px;
+  line-height: 1.3em;
+  letter-spacing: 0.2rem;
+  text-transform: none;
+  color: #111 !important;
+}
+
 @media (max-width: 1200px) {
   .landing {
     width: 100%;
@@ -126,23 +143,6 @@ header {
   .landing {
     padding-bottom: 40px;
   }
-}
-
-.filter-overlay {
-  background-color: rgba(255, 255, 255, 0.7);
-  z-index: 1;
-}
-
-.landing-name h1 {
-  font-family: "Rashfield";
-  font-weight: 600;
-  text-align: center;
-  font-style: normal;
-  font-size: 64px;
-  line-height: 1.3em;
-  letter-spacing: 0.2rem;
-  text-transform: none;
-  color: #111 !important;
 }
 
 .navbar-brand {
@@ -264,22 +264,6 @@ div.nav-link:hover {
   color: #f1f1f1 !important;
 }
 
-@media (max-width: 991px) {
-  #navbar-real {
-    padding: 0 40px;
-    align-items: center;
-    margin: 0;
-  }
-
-  a.nav-link {
-    font-size: 16px;
-  }
-
-  li.nav-item {
-    padding: 0;
-  }
-}
-
 @media only screen and (max-width: 1090px) {
   .navbar-nav > li {
     margin-right: 10px;
@@ -289,6 +273,12 @@ div.nav-link:hover {
 @media only screen and (max-width: 1020px) {
   .navbar-nav > li {
     margin-right: 5px;
+  }
+}
+
+@media (max-width: 548px) {
+  #navbar-real {
+    padding: 60px;
   }
 }
 
@@ -380,8 +370,7 @@ ul li {
 @media only screen and (max-width: 970px) {
   .introduction {
     flex-direction: column;
-    justify-content: flex-start;
-    padding: 40px 20px;
+    align-items: center;
     width: 100%;
     margin: auto;
   }
@@ -391,8 +380,7 @@ ul li {
   }
 
   .project-sub-summary {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0 40px;
   }
 
   .heading-padding,
@@ -546,6 +534,10 @@ ul li {
   }
   .three-popover-issues .col-sm h3 {
     padding-left: 40px !important;
+  }
+  .three-popover-issues {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
