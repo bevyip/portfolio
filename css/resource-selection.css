@@ -1,8 +1,8 @@
 ::selection {
-  background: #ffb7b7; /* WebKit/Blink Browsers */
+  background: #b3cde0; /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-  background: #ffb7b7; /* Gecko Browsers */
+  background: #b3cde0; /* Gecko Browsers */
 }
 
 .fade-in {
@@ -29,7 +29,7 @@ li {
 
 header {
   background-color: black;
-  background-image: url("../img/resource-selection/resource-selection.png");
+  background-image: url("../img/resource-selection/resource-selection-landing.png");
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
@@ -47,37 +47,6 @@ header {
   }
 }
 
-.mainheader {
-  width: 80%;
-  margin: 0 auto 110px;
-  padding: 8px 0;
-  display: inline-block;
-  border: 2px solid #333;
-  background-color: white;
-  text-align: center;
-  outline: none;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.mainheader h2 {
-  font-family: "Hanken Grotesk";
-  font-weight: 600;
-  font-size: 18px;
-  letter-spacing: 2px;
-  line-height: 1.3em;
-  color: #2c2a2a;
-  align-items: center;
-}
-
-.mainheader span {
-  font-size: 20px;
-}
-
-.mainheader .col-lg-12 {
-  padding: 10px;
-}
-
 .landing {
   display: flex;
   flex-direction: column;
@@ -86,35 +55,24 @@ header {
   padding: 40px 120px;
 }
 
-.filter-overlay {
-  background-color: rgba(255, 255, 255, 0.7);
-  z-index: 1;
-}
-
 .landing-name h1 {
   font-family: "Rashfield";
   font-weight: 600;
-  text-align: center;
+  text-align: flex-start;
   font-style: normal;
-  font-size: 64px;
-  line-height: 1.3em;
-  letter-spacing: 0.2rem;
-  text-transform: none;
-  color: #111 !important;
+  font-size: 48px;
+  letter-spacing: 0.1rem;
+  color: #111;
+}
+
+.landing-name {
+  padding-bottom: 20px;
 }
 
 @media (max-width: 1200px) {
   .landing {
     width: 100%;
     height: auto;
-  }
-
-  .mainheader {
-    width: 100%;
-    line-height: 1.3em;
-    padding: 0 40px;
-    box-sizing: border-box;
-    margin-bottom: 60px;
   }
 }
 
@@ -132,7 +90,7 @@ header {
   }
 
   .landing-name h1 {
-    font-size: 55px;
+    font-size: 42px;
     letter-spacing: 0.1em;
   }
 }
@@ -140,15 +98,6 @@ header {
 @media (max-width: 500px) {
   .landing {
     padding-bottom: 40px;
-  }
-
-  .landing-name h1 {
-    font-size: 48px;
-    letter-spacing: 0.1em;
-  }
-
-  .mainheader span {
-    font-size: 18px;
   }
 }
 
