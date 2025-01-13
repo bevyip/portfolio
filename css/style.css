@@ -296,7 +296,7 @@ h2 {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  padding-top: 20px;
+  padding: 20px 40px 0 40px;
 }
 
 .introduction {
@@ -359,9 +359,17 @@ h2 {
 }
 
 @media only screen and (max-width: 991px) {
+  #navbar-real {
+    padding: 60px;
+  }
+
+  .landing-top {
+    padding: 0;
+  }
+
   .landing {
     flex-direction: column;
-    padding: 0 40px;
+    padding: 0 60px;
     align-items: center;
   }
 
@@ -402,8 +410,8 @@ h2 {
   }
 
   .landing-bottom {
-    justify-content: flex-start;
-    padding: 40px;
+    padding: 0;
+    padding-top: 20px;
   }
 
   .landing-buttons {
@@ -420,6 +428,10 @@ h2 {
 }
 
 @media only screen and (max-width: 900px) {
+  #navbar-real {
+    padding: 40px;
+  }
+
   .landing {
     display: flex;
     flex-direction: column;
@@ -435,6 +447,11 @@ h2 {
     padding: 0 40px;
   }
 
+  .landing-bottom {
+    justify-content: flex-start;
+    padding: 40px;
+  }
+
   h1 {
     font-size: 80px;
   }
@@ -447,9 +464,9 @@ h2 {
   }
 }
 
-@media (max-width: 548px) {
+@media (max-width: 748px) {
   #navbar-real {
-    padding: 60px;
+    padding: 40px;
   }
 }
 
@@ -613,6 +630,18 @@ h2 {
 
 .fab-tag::after {
   content: "🛠";
+}
+
+@media only screen and (max-width: 991px) {
+  .all-projects-overview {
+    padding: 60px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .all-projects-overview {
+    padding: 40px;
+  }
 }
 
 @media (max-width: 768px) {
