@@ -35,7 +35,8 @@ header {
   background-size: cover;
   cursor: context-menu;
 
-  margin-left: 0;
+  position: relative;
+  z-index: 10;
 }
 
 @media only screen and (max-width: 750px) {
@@ -45,6 +46,11 @@ header {
     background-repeat: no-repeat;
     background-attachment: scroll;
   }
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .landing {
@@ -120,6 +126,8 @@ nav {
 
 #navbar-real {
   padding: 0 120px;
+  position: relative;
+  z-index: 11;
 }
 
 .navbar-brand img {
@@ -192,9 +200,10 @@ div.nav-link:hover {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1000;
+  z-index: 9999;
   min-width: 160px;
   margin: 0;
+  padding: 0;
   background-color: hsla(42.85714286, 28%, 95.09803922%, 1);
   border: none;
   opacity: 0;
@@ -204,6 +213,7 @@ div.nav-link:hover {
 #workMenu:hover {
   opacity: 1;
   display: block !important;
+  z-index: 9999;
 }
 
 .dropdown-item {
@@ -231,9 +241,9 @@ div.nav-link:hover {
   }
 }
 
-@media (max-width: 548px) {
+@media (max-width: 748px) {
   #navbar-real {
-    padding: 60px;
+    padding: 40px;
   }
 }
 
@@ -304,7 +314,7 @@ ul li {
   }
 
   .project-summary {
-    padding: 40px !important;
+    padding: 40px;
   }
 
   .project-sub-summary {
@@ -318,10 +328,11 @@ ul li {
     align-items: center;
     width: 100%;
     margin: auto;
+    padding: 0;
   }
 
   .project-summary {
-    padding: 40px !important;
+    padding: 40px;
   }
 
   .project-sub-summary {
@@ -331,11 +342,11 @@ ul li {
 
 @media (max-width: 576px) {
   .project-sub-summary {
-    padding: 20px 40px;
+    padding: 40px;
   }
 
   .project-summary {
-    padding: 40px 60px 40px 60px;
+    padding: 40px;
   }
 }
 

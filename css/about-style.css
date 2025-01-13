@@ -42,6 +42,7 @@ header {
 
 body {
   width: 100%;
+  overflow-x: hidden;
 }
 
 .navbar-brand {
@@ -253,6 +254,10 @@ p.highlight-brown {
 }
 
 @media (max-width: 768px) {
+  #navbar-real {
+    padding: 60px;
+  }
+
   .about-landing-top {
     display: flex;
     flex-direction: column;
@@ -264,16 +269,19 @@ p.highlight-brown {
   }
 
   .about-landing-name h1 {
-    text-align: center;
-    font-size: 40px;
+    font-size: 42px;
   }
 
   img.about-landing-pfp {
-    width: 100%;
+    width: 150%;
     height: auto;
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 10px;
     margin-bottom: 40px;
+
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .about-landing-name h1,
@@ -285,16 +293,16 @@ p.highlight-brown {
 }
 
 @media (max-width: 548px) {
-  #navbar-real {
-    padding: 60px;
-  }
-
   .about-desc {
     padding: 0;
   }
 
   .about-landing-desc {
     padding-top: 10px;
+  }
+
+  .about-landing-name h1 {
+    font-size: 32px;
   }
 }
 

@@ -35,7 +35,8 @@ header {
   background-size: cover;
   cursor: context-menu;
 
-  margin-left: 0;
+  position: relative;
+  z-index: 10;
 }
 
 @media only screen and (max-width: 750px) {
@@ -45,6 +46,11 @@ header {
     background-repeat: no-repeat;
     background-attachment: scroll;
   }
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .landing {
@@ -58,7 +64,6 @@ header {
 .landing-name h1 {
   font-family: "Rashfield";
   font-weight: 600;
-  text-align: flex-start;
   font-style: normal;
   font-size: 48px;
   letter-spacing: 0.1rem;
@@ -82,7 +87,7 @@ header {
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 748px) {
   .landing {
     display: flex;
     flex-direction: column;
@@ -121,6 +126,8 @@ nav {
 
 #navbar-real {
   padding: 0 120px;
+  position: relative;
+  z-index: 11;
 }
 
 .navbar-brand img {
@@ -193,9 +200,10 @@ div.nav-link:hover {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1000;
+  z-index: 9999;
   min-width: 160px;
   margin: 0;
+  padding: 0;
   background-color: hsla(42.85714286, 28%, 95.09803922%, 1);
   border: none;
   opacity: 0;
@@ -205,6 +213,7 @@ div.nav-link:hover {
 #workMenu:hover {
   opacity: 1;
   display: block !important;
+  z-index: 9999;
 }
 
 .dropdown-item {
@@ -232,9 +241,9 @@ div.nav-link:hover {
   }
 }
 
-@media (max-width: 548px) {
+@media (max-width: 748px) {
   #navbar-real {
-    padding: 60px;
+    padding: 40px;
   }
 }
 
@@ -247,6 +256,9 @@ div.nav-link:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  position: relative;
+  z-index: 5;
 }
 
 .disclaimer p {
@@ -347,7 +359,11 @@ ul li {
   padding: 5px 0px;
 }
 
-@media only screen and (max-width: 970px) {
+@media (max-width: 970px) {
+  #navbar-real {
+    padding: 40px;
+  }
+
   .introduction {
     flex-direction: column;
     align-items: center;
