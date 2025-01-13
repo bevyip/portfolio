@@ -145,7 +145,7 @@ div.nav-link {
 
 a.nav-link:hover,
 div.nav-link:hover {
-  color: #3f2a14 !important;
+  color: #4e3419 !important;
 }
 
 .navbar-nav {
@@ -244,6 +244,33 @@ div.nav-link:hover {
 @media (max-width: 748px) {
   #navbar-real {
     padding: 40px;
+  }
+}
+
+@media (max-width: 390px) {
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  #navbar-real {
+    padding: 40px;
+    padding-bottom: 0;
+  }
+
+  .navbar-brand img.logo {
+    width: 30%;
+    height: auto;
+  }
+
+  #navbarSupportedContent,
+  a.nav-link,
+  div.nav-link {
+    font-size: 16px;
+  }
+
+  .navbar-nav {
+    gap: 10px;
   }
 }
 
@@ -669,6 +696,7 @@ a.content-link:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .footerLabel {

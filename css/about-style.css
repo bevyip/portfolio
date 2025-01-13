@@ -38,6 +38,8 @@ header {
   width: 100%;
   min-height: 100vh;
   background-color: #ede0d4;
+  position: relative;
+  z-index: 10;
 }
 
 body {
@@ -66,6 +68,8 @@ nav {
 #navbar-real {
   background-color: inherit !important;
   padding: 0 120px;
+  position: relative;
+  z-index: 11;
 }
 
 #navbarSupportedContent,
@@ -134,7 +138,7 @@ div.nav-link:hover {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1000;
+  z-index: 9999;
   min-width: 160px;
   margin: 0;
   background-color: hsla(42.85714286, 28%, 95.09803922%, 1);
@@ -146,6 +150,7 @@ div.nav-link:hover {
 #workMenu:hover {
   opacity: 1;
   display: block !important;
+  z-index: 9999;
 }
 
 .dropdown-item {
@@ -303,6 +308,33 @@ p.highlight-brown {
 
   .about-landing-name h1 {
     font-size: 32px;
+  }
+}
+
+@media (max-width: 390px) {
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  #navbar-real {
+    padding: 40px;
+    padding-bottom: 0;
+  }
+
+  .navbar-brand img.logo {
+    width: 30%;
+    height: auto;
+  }
+
+  #navbarSupportedContent,
+  a.nav-link,
+  div.nav-link {
+    font-size: 16px;
+  }
+
+  .navbar-nav {
+    gap: 10px;
   }
 }
 
@@ -558,6 +590,7 @@ p.highlight-brown {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .footerLabel {
