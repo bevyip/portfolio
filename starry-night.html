@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @font-face {
+            font-family: "Rashfield";
+            src: url("fonts/TTF/VVDSRashfield-Normal.ttf");
+        }
+    </style>
+
+    <title>Beverly Yip</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/starry-night.css">
+
+</head>
+
+<body>
+    <header class="fade-in">
+        <nav class="navbar navbar-expand-lg navbar-light fade-in" id="navbar-real">
+            <a class="navbar-brand" id="navbar-brand" href="/portfolio"><img src="img/updated-img/logo-light.png"
+                    alt="Logo" class="logo"></a>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation" id="nav-gen" fade-in>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-center justify-content-center fade-in"
+                id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto" id="custom-navbar">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/portfolio">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/portfolio/about">ABOUT</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="workDropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            WORK
+                        </a>
+                        <div id="workMenu" class="dropdown-menu">
+                            <a class="dropdown-item" href="/portfolio#work">ALL</a>
+                            <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid landing fade-in">
+        </div>
+    </header>
+
+    <div class="row concept">
+        <div class="col-lg-8 col-md-12 col-sm-12 project-summary">
+            <div class="landing-name fade-in">
+                <h1>Transforming Van Gogh's Starry Night</h1>
+            </div>
+            <h2 class="fade-in">Concept</h2>
+            <p class="text-padding fade-in">This project delves into the fusion of classical art and digital
+                transformation by applying a range of rippling effects to Van Gogh's "The Starry Night." The code
+                generates a dynamic visual experience, where various effects sweep across the canvas in both circular
+                and square patterns, uncovering different elements of the iconic painting while momentarily concealing
+                others.</p>
+            <h2 class="fade-in">Technical Implementation</h2>
+            <ul>
+                <li class="fade-in">Utilizes p5.js to manipulate pixels of Van Gogh’s "The Starry Night" through eight
+                    distinct effects —</li>
+                <ul class="fade-in">
+                    <li>Greyscale (Square Ripple)</li>
+                    <li>Invert (Circular Ripple)</li>
+                    <li>Cool Tones (Circular Ripple)</li>
+                    <li>Black & White (Square Ripple)</li>
+                    <li>Red-Green Gradient (Slow Circular Ripple)</li>
+                    <li>Saturation Adjustment (Circular Ripple)</li>
+                    <li>Color Shift (Circular Ripple)</li>
+                    <li>Normal (Circular Ripple)</li>
+                </ul>
+                <div class="gallery">
+                    <img src="/img/updated-img/starry-night/1.png" alt="Image 1">
+                    <img src="/img/updated-img/starry-night/2.png" alt="Image 2">
+                    <img src="/img/updated-img/starry-night/3.png" alt="Image 3">
+                    <img src="/img/updated-img/starry-night/4.png" alt="Image 4">
+                    <img src="/img/updated-img/starry-night/5.png" alt="Image 5">
+                    <img src="/img/updated-img/starry-night/6.png" alt="Image 6">
+                    <img src="/img/updated-img/starry-night/7.png" alt="Image 7">
+                    <img src="/img/updated-img/starry-night/8.png" alt="Image 8">
+                </div>
+                <li class="fade-in">Each effect moves across the canvas in either an inward or outward direction,
+                    creating a mesmerizing dance between the original artwork and its digital transformation.</li>
+                <li class="fade-in">The entire cycle completes in exactly one minute, with the redGreenGradient effect
+                    moving notably slower than the others to create rhythmic variation.</li>
+            </ul>
+            <h2 class="fade-in">Artistic Decisions</h2>
+            <ul>
+                <li class="fade-in"><strong>Square vs. Circular Ripples —</strong> The decision to implement both square
+                    and circular ripple patterns creates an interesting tension between organic and geometric forms,
+                    mirroring Van Gogh’s own exploration of natural and mathematical patterns in Starry Night.</li>
+                <li class="fade-in"><strong>Effect Selection —</strong> Each effect was chosen to reveal different
+                    aspects of the original painting.
+                    <ul>
+                        <li>Greyscale strips away color to reveal underlying tonal relationships</li>
+                        <li>Cool tones emphasize the night sky’s ethereal quality</li>
+                        <li>Black & White reduces the image to its most basic light/dark relationships</li>
+                        <li>Red-Green Gradient introduces new color relationships while maintaining the original
+                            structure</li>
+                    </ul>
+                </li>
+                <li class="fade-in"><strong>Timing —</strong> The one-minute cycle creates a meditative experience,
+                    allowing viewers to anticipate and recognize patterns while maintaining engagement through constant
+                    pixelated variations.</li>
+            </ul>
+            <h2 class="fade-in">Tools & Frameworks</h2>
+            <ul class="fade-in">
+                <li>Developed interactive functionality using p5.js for pixel manipulation and dynamic visual effects to
+                    control the application of visual effects and
+                    manage transitions between different transformations of the artwork.</li>
+                <li>Customized responsive, user-centric design through CSS and HTML to enhance visual aesthetics and
+                    ensure seamless interaction across devices.</li>
+            </ul>
+            <p class="fade-in"><a class="sketch-link" href="https://editor.p5js.org/bevyip/full/M3nIH2bcE"
+                    target="_blank">Take this
+                    sketch for a spin!</a>
+            </p>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-sm-12 project-sub-summary fade-in">
+            <p class="sub-header">WHEN WAS THIS?</p>
+            <p>Dec 2024 (2 weeks)</p>
+            </br>
+            <p class="sub-header">WHAT'D I DO?</p>
+            <p>In this two-person project with <a class="yafira-link"
+                    href="https://electrocuteitp.wordpress.com/2024/11/03/digital-metamorphosis-transforming-van-goghs-starry-night-with-beverly-yip/">Yafira</a>,
+                I contributed by establishing the foundational code and overall
+                structure, collaborating closely on the development process.</p>
+            <p>While we both worked on various aspects of
+                the project, I played a key role in setting up the architecture and ensuring the seamless integration of
+                our code, from ideation through to deployment.</p>
+            <p>My responsibilities include:
+            <ul>
+                <li><strong>UI/UX Design & Front-End Development —</strong> Created an interactive, responsive UI using
+                    HTML, CSS, and p5.js to manipulate images in real-time, offering a dynamic split-screen experience
+                    with seamless user controls.</li>
+                <li><strong>Pixel Manipulation & Visual Effects —</strong> Implemented complex pixel manipulation
+                    algorithms to apply eight distinct effects on an image, optimizing performance for smooth, real-time
+                    user feedback.</li>
+                <li><strong>Behavior-Driven Interaction —</strong> Designed and coded intuitive, mouse-driven controls
+                    to dynamically adjust the effects, ensuring a fluid and engaging experience for users.</li>
+                <li><strong>Collaborative Code Architecture —</strong> Led the technical implementation, collaborating
+                    with Yafira to modularize code, integrate effect properties, and optimize performance for future
+                    scalability.</li>
+                <li><strong>Performance Optimization & Testing —</strong> Focused on performance efficiency, conducting
+                    iterative testing to ensure visual consistency and responsiveness across devices while maintaining
+                    high-quality effects.</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+
+    <div class="footer" id="footer">
+        <div class="footer-info fade-in">
+            <h2 class="footerLabel fade-in"><b>Let's get in touch!</span></b></h2>
+            <div class="footerIcons fade-in">
+                <a href="https://www.linkedin.com/in/byip/" target="_blank" class="icons fa fa-linkedin"></a>
+                <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
+                <a href="mailto:hy3018@nyu.edu" target="_blank" class="icons fa fa-envelope"></a>
+            </div>
+            <div class="footerStamp fade-in">
+                <p>Designed and Developed © 2025 by Beverly Yip.</p>
+            </div>
+            <div class="footerReroute fade-in">
+                <a class="footerReroute-link" href="#">BACK TO TOP</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script>
+        let debounceTimeout;
+        document.addEventListener("DOMContentLoaded", () => {
+            const rows = document.querySelectorAll(".proj-overview-content");
+
+            const observerOptions = {
+                root: null, // Use the viewport as the root
+                threshold: 0.1, // Trigger when 10% of the row is visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                clearTimeout(debounceTimeout);
+                debounceTimeout = setTimeout(() => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, 50);
+            }, observerOptions);
+
+            rows.forEach(row => observer.observe(row));
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const fadeInElements = document.querySelectorAll(".fade-in");
+
+            const observerOptions = {
+                root: null,
+                threshold: 0.1,
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            fadeInElements.forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>
