@@ -171,12 +171,14 @@ div.nav-link:hover {
   transform: rotate(0deg);
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='black' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 .navbar-toggler .navbar-toggler-icon {
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
   outline: none !important;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='black' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 #nav-gen:focus {
