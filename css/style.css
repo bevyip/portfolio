@@ -411,8 +411,7 @@ h2 {
   }
 
   .landing-bottom {
-    padding: 0;
-    padding-top: 20px;
+    padding: 20px 0;
   }
 
   .landing-buttons {
