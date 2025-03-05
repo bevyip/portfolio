@@ -33,7 +33,7 @@ h2 {
 
 header {
   background-color: black;
-  background-image: url("../img/canvas-enhancements/canvas-enhancements-landing.png");
+  background-image: url("../img/canvas-enhancements/canvas-enhancements-temp.png");
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
@@ -588,10 +588,8 @@ img {
   width: 100%;
 }
 
-@media only screen and (min-width: 1028px) {
-  img.drag-gif {
-    width: 575px !important;
-  }
+img.drag-gif {
+  max-width: 489px !important;
 }
 
 img.hover-animation {
