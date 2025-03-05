@@ -284,6 +284,7 @@ h2 {
 .landing-image {
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   max-width: 100%;
   height: auto;
 }
