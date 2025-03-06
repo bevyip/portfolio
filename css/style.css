@@ -627,8 +627,9 @@ h2 {
 .proj-container img {
   width: 100%;
   height: 300px;
-  object-fit: fill;
+  object-fit: cover;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .proj-desc {
