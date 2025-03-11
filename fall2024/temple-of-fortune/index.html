@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @font-face {
+            font-family: "Rashfield";
+            src: url("../../fonts/TTF/VVDSRashfield-Normal.ttf");
+        }
+    </style>
+
+    <title>Beverly Yip</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/temple.css">
+
+</head>
+
+<body>
+    <header class="fade-in">
+        <nav class="navbar navbar-expand-lg navbar-light fade-in" id="navbar-real">
+            <a class="navbar-brand" id="navbar-brand" href="/"><img src="../../img/updated-img/logo-light.png"
+                    alt="Logo" class="logo"></a>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation" id="nav-gen" fade-in>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-center justify-content-center fade-in"
+                id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto" id="custom-navbar">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">ABOUT</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="workDropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            WORK
+                        </a>
+                        <div id="workMenu" class="dropdown-menu">
+                            <a class="dropdown-item" href="/#work">ALL</a>
+                            <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid landing fade-in">
+        </div>
+    </header>
+
+    <div class="row introduction">
+        <div class="col-lg-8 col-md-12 col-sm-12 project-summary">
+            <div class="landing-name fade-in">
+                <h1>Temple of Fortune</h1>
+            </div>
+            <h2 class="fade-in">Introduction</h2>
+            </br>
+            <p class="fade-in">Fortune-telling is a rich cultural tradition in Chinese heritage. <i>Temple of
+                    Fortune</i> is an
+                interactive
+                shrine installation that brings this experience to life using physical computing, projection mapping,
+                and real-time user interactions.</p>
+            <p class="fade-in">Through RFID sensors, Unity and Blender animations, Arduino-controlled interactions, and
+                TouchDesigner projection
+                mapping, this project bridges cultural storytelling with modern technology in an intuitive, immersive
+                way.
+            </p>
+
+            </br>
+
+            <h2 class="fade-in">The Challenge</h2>
+            </br>
+            <p class="highlight fade-in">Many individuals are unfamiliar with the nuances of Chinese fortune-telling
+                traditions.
+                How can we <span>bridge cultural storytelling with modern interactive technology</span> to create an
+                engaging and meaningful user experience? Additionally, how do we make the interaction <span>intuitive,
+                    immersive, and seamless</span> while integrating physical and digital components?</p>
+            <img class="solution-img padding-top fade-in" src="../../img/updated-img/temple/thumbnail.jpg"
+                alt="overall resource experience">
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-sm-12 project-sub-summary fade-in">
+            <p class="sub-header">WHEN WAS THIS?</p>
+            <p>Nov - Dec 2024 (3 weeks)</p>
+            </br>
+            <p class="sub-header">WHAT'D I DO?</p>
+            <p>As my team's Physical Computing & Programming Lead, I led the full technical development, ensuring
+                seamless interaction between sensors, software, and projection mapping.</p>
+            <p>My responsibilities include:
+            <ul>
+                <li><strong>Hardware & Circuit Design —</strong> Developed the RFID reader, seat pressure sensors, and
+                    Arduino circuits to track user interactions.</li>
+                <li><strong>Embedded Programming & Unity Integration —</strong> Wrote Arduino (C++) and Unity (C#)
+                    scripts to process sensor data and trigger animations.</li>
+                <li><strong>Projection Mapping & Lighting —</strong> Integrated TouchDesigner with OSC communication
+                    (Python) to
+                    illuminate the correct cabinet dynamically.</li>
+                <li><strong>System Optimization & Debugging —</strong> Refactored code to fix sensor inconsistencies,
+                    improve response timing, and enable session resets.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col solution">
+        <div class="user-journey">
+            <h2 class="heading-padding padding-top fade-in">The Solution: Step-by-Step User Journey</h2>
+            </br>
+            <div class="solution-visuals">
+                <!-- Video Embed -->
+                <div class="video-container fade-in">
+                    <h3>Full User Interaction Flow</h3>
+                    <video controls>
+                        <source src="../../img/updated-img/temple/solution.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <!-- Step 1: Initiating the Experience -->
+                <div class="journey-step">
+                    <h3 class="fade-in">Step 1: Initiating the Experience (Seat Sensor Activation)</h3>
+                    <div class="step-content">
+                        <img class="seat-sensor fade-in" src="../../img/updated-img/temple/seat-sensor.jpeg"
+                            alt="Seat sensor setup under cushion">
+                        <p class="fade-in">When a user sits down, a pressure sensor detects presence, triggering an
+                            audio
+                            introduction in Unity.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2: Selecting an Offering -->
+                <div class="journey-step">
+                    <h3 class="fade-in">Step 2: Selecting an Offering</h3>
+                    <div class="step-content">
+                        <img class="full-img fade-in" src="../../img/updated-img/temple/step-2.jpg"
+                            alt="Altar with five offering bowls">
+                        <p class="fade-in">The user chooses from five symbolic offerings (e.g., oranges for luck, lotus
+                            for new
+                            beginnings).</p>
+                    </div>
+                </div>
+
+                <!-- Step 3: Placing the Offering on the Altar -->
+                <div class="journey-step">
+                    <h3 class="fade-in">Step 3: Placing the Offering on the Altar (RFID Activation)</h3>
+                    <div class="step-content fade-in">
+                        <div class="visual-grid fade-in">
+                            <img src="../../img/updated-img/temple/step-3.jpg"
+                                alt="Hand placing an offering on the altar" class="offering-img">
+                            <video controls class="animation-video">
+                                <source src="../../img/updated-img/temple/animation.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <p class="fade-in">The RFID sensor detects the offering, sending data to Unity to trigger a
+                            matching
+                            animation and audio response.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4: Projection Mapping & Cabinet Illumination -->
+                <div class="journey-step">
+                    <h3 class="fade-in">Step 4: Projection Mapping & Cabinet Illumination</h3>
+                    <div class="step-content">
+                        <div class="visual-grid fade-in">
+                            <img src="../../img/updated-img/temple/step-4-td.png" alt="TouchDesigner Interface"
+                                class="touchdesigner-img">
+                            <img src="../../img/updated-img/temple/step-4.gif"
+                                alt="Projection-mapped cabinet lighting up after offering placement">
+                        </div>
+                        <p class="fade-in">After the fortune animation, a specific cabinet lights up, guiding the user
+                            to their
+                            physical fortune scroll.</p>
+                    </div>
+                </div>
+
+                <!-- Step 5: Retrieving the Fortune -->
+                <div class="journey-step">
+                    <h3 class="fade-in">Step 5: Retrieving the Fortune</h3>
+                    <div class="step-content fade-in">
+                        <img class="full-img" src="../../img/updated-img/temple/step-5.jpg"
+                            alt="Open cabinet with fortune scroll inside">
+                        <p class="fade-in">The user opens the illuminated cabinet and retrieves a physical fortune,
+                            completing the
+                            ritual.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="outcome heading-padding padding-top">
+            <h2 class="fade-in">Final Outcome & Impact</h2>
+            <ul class="fade-in">
+                <li>Showcased successfully at NYU’s Biannual Interactive Media exhibition.</li>
+                <li>Created a fully immersive ritual, blending physical computing, digital storytelling, and projection
+                    mapping.</li>
+                <li>Engaged users in an intuitive, responsive, and culturally meaningful experience.</li>
+            </ul>
+            <div class="image-row fade-in">
+                <img src="../../img/updated-img/temple/show-1.jpeg" alt="Show 1">
+                <img src="../../img/updated-img/temple/show-2.jpeg" alt="Show 2">
+                <img src="../../img/updated-img/temple/show-3.jpeg" alt="Show 3">
+            </div>
+            <p class="fade-in documentation">Detailed documentation of this project can be found on my NYU blog
+                <a href="https://bevyip.notion.site/Week-12-Temple-Of-Fortune-Part-I-14a5b3e7f9e780f6be4de91928197acb?pvs=4"
+                    target="_blank">here</a>,
+                <a href="https://bevyip.notion.site/Week-13-Temple-Of-Fortune-Part-II-1505b3e7f9e780cfa500e5a860cbcfd6?pvs=4"
+                    target="_blank">here</a>, and
+                <a href="https://bevyip.notion.site/Week-14-Temple-of-Fortune-Part-III-1525b3e7f9e78005a897f7a5340ac84f?pvs=4"
+                    target="_blank">here</a>!
+            </p>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+        <div class="footer-info fade-in">
+            <h2 class="footerLabel fade-in"><b>Let's get in touch!</span></b></h2>
+            <div class="footerIcons fade-in">
+                <a href="https://www.linkedin.com/in/bevyip/" target="_blank" class="icons fa fa-linkedin"></a>
+                <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
+                <a href="mailto:hy3018@nyu.edu" target="_blank" class="icons fa fa-envelope"></a>
+            </div>
+            <div class="footerStamp fade-in">
+                <p>Designed and Developed © 2025 by Beverly Yip.</p>
+            </div>
+            <div class="footerReroute fade-in">
+                <a class="footerReroute-link" href="#">BACK TO TOP</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script>
+        let debounceTimeout;
+        document.addEventListener("DOMContentLoaded", () => {
+            const rows = document.querySelectorAll(".proj-overview-content");
+
+            const observerOptions = {
+                root: null, // Use the viewport as the root
+                threshold: 0.1, // Trigger when 10% of the row is visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                clearTimeout(debounceTimeout);
+                debounceTimeout = setTimeout(() => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, 50);
+            }, observerOptions);
+
+            rows.forEach(row => observer.observe(row));
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const fadeInElements = document.querySelectorAll(".fade-in");
+
+            const observerOptions = {
+                root: null,
+                threshold: 0.1,
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            fadeInElements.forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>

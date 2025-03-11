@@ -147,14 +147,13 @@
     </div>
     <div class="proj-overview-content">
       <div class="col-sm-4 proj-container">
-        <a href="#">
-          <img class="temple-of-fortune" src="img/updated-img/404-image.png" alt="temple-of-fortune">
+        <a href="fall2024/temple-of-fortune/">
+          <img class="temple-of-fortune" src="img/updated-img/temple/thumbnail.jpg" alt="temple-of-fortune">
           <div class="temple-of-fortune-desc proj-desc">
             <h3>Temple of Fortune</h3>
-            <p>An interactive digital fortune-telling altar installation combining physical computing components (RFID
-              readers and pressure sensors) with software including Unity, Blender, TouchDesigner, and Arduino.
-              Developed using C++, C#, and Python, it features projection mapping, synchronized animations, audio, and
-              lighting effects for immersive storytelling.</p>
+            <p>An interactive digital fortune-telling altar that blends physical computing (RFID readers, pressure
+              sensors) with software (Unity, Blender, TouchDesigner, Arduino). Developed in C++, C#, and Python, it
+              features projection mapping, synchronized animations, audio, and lighting for immersive storytelling.</p>
           </div>
         </a>
         <div class="tag project-tag pcomp-tag">Physical Computing</div>
@@ -283,30 +282,6 @@
   integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script>
-  let debounceTimeout;
-  document.addEventListener("DOMContentLoaded", () => {
-    const rows = document.querySelectorAll(".proj-overview-content");
-
-    const observerOptions = {
-      root: null, // Use the viewport as the root
-      threshold: 0.1, // Trigger when 10% of the row is visible
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      clearTimeout(debounceTimeout);
-      debounceTimeout = setTimeout(() => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, 50);
-    }, observerOptions);
-
-    rows.forEach(row => observer.observe(row));
-  });
-
   document.addEventListener("DOMContentLoaded", () => {
     const fadeInElements = document.querySelectorAll(".fade-in");
 

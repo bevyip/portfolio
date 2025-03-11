@@ -1,0 +1,681 @@
+::selection {
+  background: #b3cde0; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #b3cde0; /* Gecko Browsers */
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-in, transform 0.6s ease-in;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.row {
+  margin: 0;
+}
+
+p,
+li {
+  font-family: "Hanken Grotesk";
+  color: black;
+  font-size: 18px;
+}
+
+header {
+  background-color: black;
+  background-image: url("../img/updated-img/temple/landing.jpg");
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  cursor: context-menu;
+
+  position: relative;
+  z-index: 10;
+}
+
+@media only screen and (max-width: 750px) {
+  header {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+  }
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 480px;
+  padding: 40px 120px;
+}
+
+.landing-name h1 {
+  font-family: "Rashfield";
+  font-weight: 600;
+  font-style: normal;
+  font-size: 48px;
+  letter-spacing: 0.1rem;
+  color: #111;
+}
+
+.landing-name {
+  padding-bottom: 20px;
+}
+
+@media (max-width: 1200px) {
+  .landing {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 880px) {
+  .landing {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 748px) {
+  .landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .landing-name h1 {
+    font-size: 42px;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (max-width: 500px) {
+  .landing {
+    padding-bottom: 40px;
+  }
+}
+
+.navbar-brand {
+  margin: 0;
+}
+
+.logo {
+  width: 40%;
+  height: 40%;
+  max-height: 200px;
+}
+
+.navbar {
+  width: 100%;
+}
+
+nav {
+  height: 200px;
+}
+
+#navbar-real {
+  padding: 0 120px;
+  position: relative;
+  z-index: 11;
+}
+
+.navbar-brand img {
+  margin: 0 !important;
+}
+
+#navbarSupportedContent,
+a.nav-link,
+div.nav-link {
+  font-family: "Hanken Grotesk";
+  font-size: 20px;
+  font-weight: bold;
+  color: white !important;
+}
+
+a.nav-link:hover,
+div.nav-link:hover {
+  color: #4e3419 !important;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.navbar-nav > li {
+  font-family: "Hanken Grotesk";
+  display: flex;
+  padding-left: 20px;
+  margin-right: 20px;
+  color: white;
+}
+
+#custom-navbar {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navbar-toggler.collapsed .navbar-toggler-icon {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler .navbar-toggler-icon {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  outline: none !important;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+#nav-gen:focus {
+  color: black !important;
+  border-color: transparent;
+  outline: none;
+}
+
+#nav-gen {
+  stroke: #333;
+  border-color: transparent;
+}
+
+.nav-item.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+#workMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 9999;
+  min-width: 160px;
+  margin: 0;
+  padding: 0;
+  background-color: hsla(42.85714286, 28%, 95.09803922%, 1);
+  border: none;
+  opacity: 0;
+}
+
+.nav-item.dropdown:hover #workMenu,
+#workMenu:hover {
+  opacity: 1;
+  display: block !important;
+  z-index: 9999;
+}
+
+.dropdown-item {
+  padding: 8px 16px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black !important;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: #4e3419;
+  color: #f1f1f1 !important;
+}
+
+@media only screen and (max-width: 1090px) {
+  .navbar-nav > li {
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 1020px) {
+  .navbar-nav > li {
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 748px) {
+  #navbar-real {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 390px) {
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  #navbar-real {
+    padding: 40px;
+    padding-bottom: 0;
+  }
+
+  .navbar-brand img.logo {
+    width: 30%;
+    height: auto;
+  }
+
+  #navbarSupportedContent,
+  a.nav-link,
+  div.nav-link {
+    font-size: 16px;
+  }
+
+  .navbar-nav {
+    gap: 10px;
+  }
+}
+
+/* Content */
+
+.project-summary {
+  padding: 40px 40px 0 120px;
+  font-family: "Hanken Grotesk";
+}
+
+.project-sub-summary {
+  padding: 40px 120px 40px 40px;
+  font-family: "Hanken Grotesk";
+}
+
+.project-summary h2,
+.solution h2 {
+  font-size: 30px;
+  font-family: "Rashfield";
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  color: black;
+}
+
+.project-sub-summary .sub-header {
+  font-family: "Rashfield";
+  color: #444444;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 576px) {
+  .project-sub-summary {
+    padding: 20px 60px;
+  }
+
+  .project-summary {
+    padding: 40px 60px 40px 60px;
+  }
+}
+
+.solution h3 {
+  font-family: "Hanken Grotesk";
+  font-size: 25px;
+  font-weight: 600;
+  padding: 20px 0;
+}
+
+p.highlight span,
+li.highlight span {
+  color: black;
+  background-color: #c6e4fa;
+  border-radius: 10px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 5px;
+}
+
+ul li {
+  padding: 5px 0px;
+}
+
+@media (max-width: 970px) {
+  #navbar-real {
+    padding: 40px;
+  }
+
+  .introduction {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+  }
+
+  .project-summary {
+    padding: 40px !important;
+  }
+
+  .project-sub-summary {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 750px) {
+  .introduction {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+  }
+
+  .project-summary {
+    padding: 40px !important;
+  }
+
+  .project-sub-summary {
+    padding: 20px 40px;
+  }
+
+  .heading-padding {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+}
+
+.solution {
+  padding: 0;
+  padding-bottom: 80px;
+  font-family: "Hanken Grotesk";
+
+  display: flex;
+  flex-direction: column;
+}
+
+.solution h2,
+.solution p {
+  padding: 0 60px;
+  margin: 0;
+}
+
+.solution-visuals {
+  padding: 0 60px;
+  margin: 0;
+}
+
+.journey-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.journey-step h3 {
+  width: 100%;
+  text-align: left;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.step-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.visual-grid {
+  display: flex;
+  gap: 15px;
+  width: 50%;
+  padding-right: 20px;
+}
+
+.step-content p {
+  width: 50%;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.user-journey,
+.outcome {
+  padding: 0 60px;
+}
+
+.user-journey-img {
+  padding: 0 60px;
+}
+
+.outcome ul {
+  padding: 20px 80px;
+}
+
+.documentation {
+  padding: 40px 60px 0 60px !important;
+}
+
+.heading-padding {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.padding-top {
+  padding-top: 40px !important;
+}
+
+.short-padding-bottom {
+  padding-bottom: 20px !important;
+}
+
+.padding-bottom {
+  padding-bottom: 40px !important;
+}
+
+.padding-top-bottom {
+  padding: 40px 0;
+}
+
+@media (max-width: 970px) {
+  .user-journey {
+    padding: 0;
+  }
+
+  .solution h2 {
+    padding: 0 40px;
+  }
+
+  .solution p {
+    padding: 0;
+  }
+
+  .solution-visuals {
+    padding: 0 40px;
+  }
+
+  .journey-step {
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  .outcome {
+    padding: 0 !important;
+    padding-top: 40px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .step-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .step-content img,
+  .animation-video,
+  .visual-grid {
+    width: 100%;
+    max-height: 500px;
+  }
+
+  .full-img {
+    width: 100% !important;
+  }
+
+  .step-content p {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* Image Styling */
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+img.solution-img {
+  padding-bottom: 20px;
+}
+
+.video-container {
+  width: 100%;
+  max-width: 800px;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+}
+
+.step-content img,
+.animation-video {
+  width: 50%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+img.seat-sensor {
+  width: auto;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.image-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.image-row img {
+  width: 100%;
+  height: auto;
+  max-width: 30%;
+}
+
+@media (max-width: 768px) {
+  .image-row {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  .image-row img {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+}
+
+/* Footer */
+
+.footer {
+  background-color: #ede0d4;
+  color: black;
+  padding: 60px 120px 40px 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footerLabel {
+  font-family: "Rashfield";
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 5px !important;
+}
+
+.footerIcons {
+  margin: 0;
+}
+
+.icons {
+  padding: 0.1em;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.icons:hover,
+.icons:focus {
+  color: #3f2a14;
+  text-decoration: none;
+}
+
+.fa-github,
+.fa-envelope,
+.fa-linkedin {
+  color: black;
+}
+
+.footerStamp {
+  font-size: 18px;
+  color: #202020;
+  font-family: "Hanken Grotesk";
+}
+
+.footerStamp p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 20px;
+  }
+}
+
+.footerReroute {
+  margin-top: 10px;
+}
+
+.footerReroute-link {
+  font-size: 14px;
+  color: #202020;
+  font-family: "Hanken Grotesk";
+  font-weight: 600;
+}
+
+.footerReroute-link:hover,
+.footerReroute-link:focus {
+  color: #4e3419;
+  text-decoration: none;
+}
