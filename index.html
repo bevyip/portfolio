@@ -282,6 +282,30 @@
   integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script>
+  let debounceTimeout;
+  document.addEventListener("DOMContentLoaded", () => {
+    const rows = document.querySelectorAll(".proj-overview-content");
+
+    const observerOptions = {
+      root: null, // Use the viewport as the root
+      threshold: 0.1, // Trigger when 10% of the row is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(() => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, 50);
+    }, observerOptions);
+
+    rows.forEach(row => observer.observe(row));
+  });
+
   document.addEventListener("DOMContentLoaded", () => {
     const fadeInElements = document.querySelectorAll(".fade-in");
 
