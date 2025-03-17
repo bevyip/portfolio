@@ -39,23 +39,23 @@ header {
 }
 
 header.cat-box-landing {
-  background-image: url("../../img/updated-img/fabrication/cat-box-img/cat-box-banner.png");
+  background-image: url("../../img/fall2024/fabrication/cat-box-img/cat-box-banner.png");
 }
 
 header.whack-a-mouse-landing {
-  background-image: url("../../img/updated-img/fabrication/whack-a-mouse-img/5.jpg");
+  background-image: url("../../img/fall2024/fabrication/whack-a-mouse-img/5.jpg");
 }
 
 header.five-fishes-landing {
-  background-image: url("../../img/updated-img/fabrication/five-fishes-img/3.jpg");
+  background-image: url("../../img/fall2024/fabrication/five-fishes-img/3.jpg");
 }
 
 header.cat-figurine-landing {
-  background-image: url("../../img/updated-img/fabrication/cat-figurine-img/cat-figurine-banner.png");
+  background-image: url("../../img/fall2024/fabrication/cat-figurine-img/cat-figurine-banner.png");
 }
 
 header.puzzle-box-landing {
-  background-image: url("../../img/updated-img/fabrication/puzzle-box-img/puzzle-box-banner.png");
+  background-image: url("../../img/fall2024/fabrication/puzzle-box-img/puzzle-box-banner.png");
 }
 
 @media only screen and (max-width: 750px) {

@@ -29,7 +29,7 @@ li {
 
 header {
   background-color: black;
-  background-image: url("../img/updated-img/temple/landing.jpg");
+  background-image: url("../img/fall2024/temple/landing.jpg");
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
@@ -279,12 +279,12 @@ div.nav-link:hover {
 /* Content */
 
 .project-summary {
-  padding: 40px 40px 0 120px;
+  padding: 80px 40px 0 120px;
   font-family: "Hanken Grotesk";
 }
 
 .project-sub-summary {
-  padding: 40px 120px 40px 40px;
+  padding: 80px 120px 40px 40px;
   font-family: "Hanken Grotesk";
 }
 

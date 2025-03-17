@@ -29,7 +29,7 @@ li {
 
 header {
   background-color: black;
-  background-image: url("../../img/updated-img/fortune-wizard-banner.png");
+  background-image: url("../../img/fall2024/fortune-wizard-banner.png");
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
@@ -330,13 +330,45 @@ ul li {
 .code-block {
   background-color: #2e2e2e;
   color: #f5f5f5;
-  padding: 0px 40px;
+  padding: 20px 40px;
+  margin-top: 20px;
   border-radius: 8px;
   font-family: "Courier New", Courier, monospace;
   font-size: 16px;
   overflow-x: auto;
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+.code-container {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.code-toggle-btn {
+  font-family: "Hanken Grotesk";
+  font-weight: bold;
+  font-size: 16px;
+  border: solid;
+  padding: 0.7em 2em;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 40px;
+  background-color: black;
+  border-color: black;
+  color: hsla(42.85714286, 28%, 95.09803922%, 1);
+  transition: all 0.2s ease-in;
+}
+
+.code-toggle-btn:hover {
+  border-color: #4e3419;
+  background-color: #4e3419;
+  color: white;
+}
+
+.code-toggle-btn i {
+  margin-left: 8px;
 }
 
 code {

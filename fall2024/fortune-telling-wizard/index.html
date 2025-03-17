@@ -29,8 +29,8 @@
 <body>
     <header class="fade-in">
         <nav class="navbar navbar-expand-lg navbar-light fade-in" id="navbar-real">
-            <a class="navbar-brand" id="navbar-brand" href="/"><img src="../../img/updated-img/logo-light.png"
-                    alt="Logo" class="logo"></a>
+            <a class="navbar-brand" id="navbar-brand" href="/"><img src="../../img/logo-light.png" alt="Logo"
+                    class="logo"></a>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation" id="nav-gen" fade-in>
@@ -87,9 +87,9 @@
                 <li class="fade-in">
                     <strong>Immersive Introduction —</strong>
                     <ul>
-                        <li>Key inputs include the user’s name, birth year, and a personalized question.</li>
+                        <li>Key inputs include the user's name, birth year, and a personalized question.</li>
                         <li>The starry, animated background sets an ethereal, contemplative tone.</li>
-                        <li>A golden rainbow-arc header titled <em>“Fortune Telling Wizard”</em> focuses attention and
+                        <li>A golden rainbow-arc header titled <em>"Fortune Telling Wizard"</em> focuses attention and
                             aligns with themes of prosperity.</li>
                     </ul>
                 </li>
@@ -108,8 +108,10 @@
                     </ul>
                 </li>
 
-                <div class="code-block">
-                    <code>
+                <div class="code-container fade-in">
+                    <button class="code-toggle-btn" onclick="toggleCode()">View Code <i class="fa fa-code"></i></button>
+                    <div class="code-block" id="codeBlock" style="display: none;">
+                        <code>
 async function getText() {
     const userName = nameInput.value().trim();
     const userBirthYear = birthYearSelect.value();
@@ -159,7 +161,8 @@ async function getText() {
     alert("Sorry, something went wrong. Please try again later.");
     }
 }
-                    </code>
+                        </code>
+                    </div>
                 </div>
 
                 <li class="fade-in" style="padding-top: 20px">
@@ -172,7 +175,7 @@ async function getText() {
                         <li>Implemented a gradual text reveal mechanism, mimicking the unfurling of a scroll, to build
                             suspense and enhance the immersive nature of the fortune-telling experience.</li>
                     </ul>
-                    <img class="fortune-wizard-gif" src="../../img/updated-img/fortune-wizard-gif.gif"
+                    <img class="fortune-wizard-gif" src="../../img/fall2024/fortune-wizard-gif.gif"
                         alt="fortune-wizard-gif">
                 </li>
 
@@ -296,6 +299,18 @@ async function getText() {
 
             fadeInElements.forEach((el) => observer.observe(el));
         });
+
+        function toggleCode() {
+            const codeBlock = document.getElementById('codeBlock');
+            const button = document.querySelector('.code-toggle-btn');
+            if (codeBlock.style.display === 'none') {
+                codeBlock.style.display = 'block';
+                button.innerHTML = 'Hide Code <i class="fa fa-code"></i>';
+            } else {
+                codeBlock.style.display = 'none';
+                button.innerHTML = 'View Code <i class="fa fa-code"></i>';
+            }
+        }
     </script>
 </body>
 

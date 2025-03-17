@@ -656,7 +656,8 @@ h2 {
   cursor: pointer;
 }
 
-.project-tag {
+/* Old tag styling - commented out as no longer in use */
+/*.project-tag {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -711,7 +712,7 @@ h2 {
 
 .fab-tag::after {
   content: "🛠";
-}
+}*/
 
 @media only screen and (max-width: 991px) {
   .all-projects-overview {
@@ -801,6 +802,36 @@ h2 {
   .all-projects-overview {
     padding: 40px;
   }
+}
+
+/* Pill Tags */
+.pill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.pill {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid #f0f0f0;
+}
+
+.pill:hover {
+  cursor: pointer;
+}
+
+.proj-container:hover .pill,
+.proj-container:focus .pill {
+  background-color: #ffffff;
+  color: #4e3419;
+  border-color: #4e3419;
 }
 
 /* Footer */
