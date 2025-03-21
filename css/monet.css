@@ -919,6 +919,8 @@ img {
   background-color: #fff;
   transition: transform 0.3s ease;
   margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .scene-card strong {
@@ -933,67 +935,37 @@ img {
   font-size: 18px;
   line-height: 1.5;
   margin-bottom: 20px;
+  flex-grow: 1;
 }
 
-.scene-card .process-image {
-  margin: 0;
-  padding: 0;
-}
-
-.scene-card .process-image img {
-  border-radius: 4px;
-  width: 100%;
-  height: auto;
-}
-
-@media (max-width: 768px) {
-  .scene-card {
-    margin-bottom: 20px;
-  }
-}
-
-.process-video {
+.scene-card .process-video {
   margin: 0;
   padding: 0;
   width: 100%;
   border-radius: 4px;
   overflow: hidden;
-  background-color: #000; /* Prevents white flash */
+  background-color: #000;
+  margin-top: auto;
+  aspect-ratio: 16/9;
 }
 
-.process-video video {
+.scene-card .process-video video {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   object-fit: cover;
   border-radius: 4px;
-}
-
-/* Override Bootstrap's default column padding */
-.additional-content .row {
-  margin: 0;
-  padding-top: 40px;
-}
-
-.additional-content .row > [class*="col-"] {
-  padding: 0;
-}
-
-/* Maintain spacing between cards */
-.additional-content .row > [class*="col-"]:not(:last-child) {
-  padding-right: 40px;
 }
 
 @media (max-width: 768px) {
   .scene-card {
     margin-bottom: 20px;
   }
+}
 
-  .additional-content .row > [class*="col-"] {
-    padding: 0;
-  }
-
-  .additional-content .row > [class*="col-"]:not(:last-child) {
-    padding-right: 0;
-  }
+/* Override Bootstrap's default column padding */
+.additional-content .row {
+  margin: 0;
+  padding: 0;
+  padding-top: 40px;
 }
