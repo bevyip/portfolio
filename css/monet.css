@@ -1,0 +1,999 @@
+::selection {
+  background: #b3cde0; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #b3cde0; /* Gecko Browsers */
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-in, transform 0.6s ease-in;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.row {
+  margin: 0;
+}
+
+p,
+li {
+  font-family: "Hanken Grotesk";
+  color: black;
+  font-size: 18px;
+}
+
+header {
+  background-color: white;
+  background-image: url("../img/spring2025/reflections-of-monet/landing.png");
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: context-menu;
+
+  position: relative;
+  z-index: 10;
+}
+
+@media only screen and (max-width: 750px) {
+  header {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+  }
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 480px;
+  padding: 40px 120px;
+}
+
+.landing-name h1 {
+  font-family: "Rashfield";
+  font-weight: 600;
+  text-align: flex-start;
+  font-style: normal;
+  font-size: 48px;
+  letter-spacing: 0.1rem;
+  color: #111;
+}
+
+.landing-name {
+  padding-bottom: 20px;
+}
+
+.text-padding {
+  padding: 20px 0;
+}
+
+@media (max-width: 1200px) {
+  .landing {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 880px) {
+  .landing {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 750px) {
+  .landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 500px) {
+  .landing {
+    padding-bottom: 40px;
+  }
+}
+
+.subtitle {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 24px;
+  color: #6b4423;
+  margin-bottom: 30px;
+}
+
+.live-demo-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #4e3419;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.live-demo-btn:hover {
+  background-color: #6b4423;
+  transform: translateY(-2px);
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Video Container */
+.video-container {
+  position: relative;
+  width: 70%;
+  margin: 40px auto;
+  height: auto;
+  background-color: #000; /* Prevents white flash */
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background-color: #000; /* Ensures no white background shows through */
+}
+
+/* Ensure poster image covers the entire video area */
+.video-container video[poster] {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Process Section */
+.process-section {
+  margin: 40px 0;
+  text-align: left;
+}
+
+.process-section h3 {
+  font-family: "Rashfield", sans-serif;
+  font-size: 20px;
+  color: #4e3419;
+  margin: 30px 0 20px;
+  letter-spacing: 0.1rem;
+}
+
+.process-image {
+  padding: 0;
+}
+
+/* Features Table */
+.features-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.features-table th,
+.features-table td {
+  padding: 15px;
+  border: 1px solid #e6ccb2;
+}
+
+.features-table th {
+  background-color: #4e3419;
+  color: #fff;
+  font-family: "Rashfield", sans-serif;
+  font-size: 14px;
+  text-align: left;
+  letter-spacing: 0.1rem;
+}
+
+.features-table td {
+  background-color: #fff;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 16px;
+}
+
+.features-table tr:hover td {
+  background-color: #f5e6d3;
+}
+
+/* Try Live Section */
+.try-live-section {
+  text-align: center;
+  margin: 60px 0;
+  padding: 40px;
+  background-color: #f5e6d3;
+  border-radius: 12px;
+}
+
+.try-live-btn {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #4e3419;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 18px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.try-live-btn:hover {
+  background-color: #6b4423;
+  transform: translateY(-2px);
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Responsive Updates */
+@media (max-width: 768px) {
+  .landing {
+    padding: 60px 40px;
+  }
+
+  .landing-name h1 {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+
+  .process-section h3 {
+    font-size: 18px;
+  }
+
+  .features-table th,
+  .features-table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .try-live-btn {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+
+  .footer {
+    padding: 40px;
+  }
+
+  .concept {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    padding: 0;
+  }
+
+  .project-summary {
+    padding: 40px;
+  }
+
+  .project-sub-summary {
+    padding: 20px 40px;
+  }
+
+  .video-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing {
+    padding: 40px 20px;
+  }
+
+  .landing-name h1 {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .live-demo-btn,
+  .try-live-btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .features-table {
+    font-size: 12px;
+  }
+
+  .footer {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 390px) {
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .landing-name h1 {
+    font-size: 36px;
+  }
+
+  .project-summary h2 {
+    font-size: 24px;
+  }
+
+  #navbar-real {
+    padding: 40px;
+    padding-bottom: 0;
+  }
+
+  .navbar-brand img.logo {
+    width: 30%;
+    height: auto;
+  }
+
+  #navbarSupportedContent,
+  a.nav-link,
+  div.nav-link {
+    font-size: 16px;
+  }
+
+  .navbar-nav {
+    gap: 10px;
+  }
+}
+
+.navbar-brand {
+  margin: 0;
+}
+
+.logo {
+  width: 40%;
+  height: 40%;
+  max-height: 200px;
+}
+
+.navbar {
+  width: 100%;
+}
+
+nav {
+  height: 200px;
+}
+
+#navbar-real {
+  padding: 0 120px;
+  position: relative;
+  z-index: 11;
+}
+
+.navbar-brand img {
+  margin: 0 !important;
+}
+
+#navbarSupportedContent,
+a.nav-link,
+div.nav-link {
+  font-family: "Hanken Grotesk";
+  font-size: 20px;
+  font-weight: bold;
+  color: black !important;
+}
+
+a.nav-link:hover,
+div.nav-link:hover {
+  color: #4e3419 !important;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.navbar-nav > li {
+  font-family: "Hanken Grotesk";
+  display: flex;
+  padding-left: 20px;
+  margin-right: 20px;
+}
+
+#custom-navbar {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navbar-toggler.collapsed .navbar-toggler-icon {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='black' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler .navbar-toggler-icon {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  outline: none !important;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='black' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+#nav-gen:focus {
+  color: black !important;
+  border-color: transparent;
+  outline: none;
+}
+
+#nav-gen {
+  stroke: #333;
+  border-color: transparent;
+}
+
+.nav-item.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+#workMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 9999;
+  min-width: 160px;
+  margin: 0;
+  padding: 0;
+  background-color: hsla(42.85714286, 28%, 95.09803922%, 1);
+  border: none;
+  opacity: 0;
+}
+
+.nav-item.dropdown:hover #workMenu,
+#workMenu:hover {
+  opacity: 1;
+  display: block !important;
+  z-index: 9999;
+}
+
+.dropdown-item {
+  padding: 8px 16px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black !important;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: #4e3419;
+  color: #f1f1f1 !important;
+}
+
+@media only screen and (max-width: 1090px) {
+  .navbar-nav > li {
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 1020px) {
+  .navbar-nav > li {
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 748px) {
+  #navbar-real {
+    padding: 40px;
+  }
+}
+
+/* Content */
+
+.concept {
+  padding-top: 40px;
+}
+
+.project-summary {
+  padding: 40px 40px 40px 120px;
+  font-family: "Hanken Grotesk";
+}
+
+.project-sub-summary {
+  padding: 40px 120px 40px 40px;
+  font-family: "Hanken Grotesk";
+}
+
+.project-sub-summary .sub-header {
+  font-family: "Rashfield";
+  color: #444444;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 0.1em;
+}
+
+.project-sub-summary p {
+  margin-bottom: 1rem;
+}
+
+.project-sub-summary ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.project-sub-summary ul li {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.project-sub-summary ul li strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.project-summary h2 {
+  font-size: 30px;
+  font-family: "Rashfield";
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  color: black;
+}
+
+p.bold span {
+  color: black;
+}
+
+ol li {
+  padding: 10px 0px;
+}
+
+ul {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+ul li {
+  padding: 5px 0px;
+}
+
+.code-block {
+  background-color: #2e2e2e;
+  color: #f5f5f5;
+  padding: 0px 40px;
+  border-radius: 8px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  color: white;
+}
+
+@media only screen and (max-width: 970px) {
+  .concept {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    padding: 40px 80px;
+  }
+
+  .project-summary {
+    padding: 40px;
+  }
+
+  .project-sub-summary {
+    padding: 0 40px;
+  }
+
+  .additional-content {
+    padding: 0 120px 40px 120px;
+  }
+
+  .additional-content .col-12 {
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Add styles for converting rows to columns */
+  .additional-content .row > [class*="col-"] {
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+    padding: 0;
+  }
+
+  .additional-content .row > [class*="col-"]:not(:last-child) {
+    padding-right: 0;
+    margin-bottom: 40px;
+  }
+
+  .scene-card {
+    height: auto;
+  }
+}
+
+@media (max-width: 750px) {
+  .concept {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    padding: 0;
+  }
+
+  .project-summary {
+    padding: 40px;
+  }
+
+  .project-sub-summary {
+    padding: 20px 40px;
+  }
+
+  .video-container {
+    width: 100%;
+  }
+
+  .additional-content {
+    padding: 0 0 40px 0;
+  }
+
+  .additional-content .col-12 {
+    padding: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .project-sub-summary {
+    padding: 40px;
+  }
+
+  .project-summary {
+    padding: 40px;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 390px) {
+  .landing-name h1 {
+    font-size: 36px;
+  }
+
+  .project-summary h2 {
+    font-size: 24px;
+  }
+}
+
+/* Image Styling */
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .gallery img {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 800px) {
+  .gallery img {
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery img {
+    max-width: 120px;
+  }
+}
+
+/* Footer */
+
+.footer {
+  background-color: #ede0d4;
+  color: black;
+  padding: 60px 120px 40px 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footerLabel {
+  font-family: "Rashfield";
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 5px !important;
+}
+
+.footerIcons {
+  margin: 0;
+}
+
+.icons {
+  padding: 0.1em;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.icons:hover,
+.icons:focus {
+  color: #3f2a14;
+  text-decoration: none;
+}
+
+.fa-github,
+.fa-envelope,
+.fa-linkedin {
+  color: black;
+}
+
+.footerStamp {
+  font-size: 18px;
+  color: #202020;
+  font-family: "Hanken Grotesk";
+}
+
+.footerStamp p {
+  margin: 0;
+}
+
+.footerReroute {
+  margin-top: 10px;
+}
+
+.footerReroute-link {
+  font-size: 14px;
+  color: #202020;
+  font-family: "Hanken Grotesk";
+  font-weight: 600;
+}
+
+.footerReroute-link:hover,
+.footerReroute-link:focus {
+  color: #4e3419;
+  text-decoration: none;
+}
+
+.additional-content {
+  padding: 0 0 40px 0;
+}
+
+.additional-content .col-12 {
+  padding: 0;
+  margin: 0;
+}
+
+.additional-content section {
+  padding: 40px 120px 0 120px;
+}
+
+.additional-content section:first-child {
+  padding-top: 0;
+}
+
+.additional-content h2 {
+  font-size: 30px;
+  font-family: "Rashfield";
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  color: black;
+  text-align: left;
+}
+
+.additional-content ul {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.additional-content ul li {
+  margin-bottom: 10px;
+}
+
+.additional-content ul li strong {
+  color: #111;
+}
+
+.additional-content ul li ul {
+  margin-top: 10px;
+}
+
+.additional-content ul li ul li {
+  margin-bottom: 5px;
+}
+
+.additional-content p {
+  text-align: left;
+}
+
+/* Add styles for the sketch-link section */
+.additional-content .sketch-link {
+  display: block;
+  padding: 0 120px;
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+@media (max-width: 750px) {
+  .additional-content {
+    padding: 0 0 40px 0;
+  }
+
+  .additional-content section {
+    padding: 40px 40px 0 40px;
+  }
+
+  /* Add responsive padding for sketch-link */
+  .additional-content .sketch-link {
+    padding: 0 40px;
+  }
+
+  .project-sub-summary {
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .additional-content {
+    padding: 0 0 40px 0;
+  }
+
+  .additional-content section {
+    padding: 40px 40px 0 40px;
+  }
+
+  /* Maintain consistent padding at smaller screens */
+  .additional-content .sketch-link {
+    padding: 40px 40px 0 40px;
+  }
+
+  .project-sub-summary {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 390px) {
+  .additional-content h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 991px) {
+  .additional-content {
+    order: 3;
+  }
+  .project-sub-summary {
+    order: 2;
+  }
+  .project-summary {
+    order: 1;
+  }
+  .video-container {
+    width: 100%;
+  }
+}
+
+.process-image {
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  font-style: italic;
+  color: #6b4423;
+}
+
+.scene-card {
+  border-radius: 8px;
+  height: 100%;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+  margin: 0;
+}
+
+.scene-card strong {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 20px;
+  color: black;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.scene-card p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.scene-card .process-image {
+  margin: 0;
+  padding: 0;
+}
+
+.scene-card .process-image img {
+  border-radius: 4px;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .scene-card {
+    margin-bottom: 20px;
+  }
+}
+
+.process-video {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #000; /* Prevents white flash */
+}
+
+.process-video video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Override Bootstrap's default column padding */
+.additional-content .row {
+  margin: 0;
+  padding-top: 40px;
+}
+
+.additional-content .row > [class*="col-"] {
+  padding: 0;
+}
+
+/* Maintain spacing between cards */
+.additional-content .row > [class*="col-"]:not(:last-child) {
+  padding-right: 40px;
+}
+
+@media (max-width: 768px) {
+  .scene-card {
+    margin-bottom: 20px;
+  }
+
+  .additional-content .row > [class*="col-"] {
+    padding: 0;
+  }
+
+  .additional-content .row > [class*="col-"]:not(:last-child) {
+    padding-right: 0;
+  }
+}

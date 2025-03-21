@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @font-face {
+            font-family: "Rashfield";
+            src: url("../../fonts/TTF/VVDSRashfield-Normal.ttf");
+        }
+    </style>
+
+    <title>Beverly Yip</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/monet.css">
+
+</head>
+
+<body>
+    <header class="fade-in">
+        <nav class="navbar navbar-expand-lg navbar-light fade-in" id="navbar-real">
+            <a class="navbar-brand" id="navbar-brand" href="/"><img src="../../img/logo.png" alt="Logo"
+                    class="logo"></a>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation" id="nav-gen" fade-in>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-center justify-content-center fade-in"
+                id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto" id="custom-navbar">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">ABOUT</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="workDropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            WORK
+                        </a>
+                        <div id="workMenu" class="dropdown-menu">
+                            <a class="dropdown-item" href="/#work">ALL</a>
+                            <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid landing fade-in">
+        </div>
+    </header>
+
+    <div class="row concept">
+        <div class="col-lg-8 col-md-12 col-sm-12 project-summary">
+            <div class="landing-name fade-in">
+                <h1>Reflections of Monet</h1>
+            </div>
+
+            <h2 class="fade-in">Introduction</h2>
+            <p class="text-padding fade-in">Reflections of Monet is an interactive web art project that reimagines
+                Claude Monet's <i>Water Lilies</i> series into a meditative, immersive scrolling experience. Users
+                interact
+                with a dreamlike environment through subtle movements, ripples, soundscapes, and layered
+                visuals — inviting them to explore the sensation of being enveloped in Monet's paintings.</p>
+
+            <h2 class="fade-in">Concept</h2>
+            <p class="fade-in" style="padding-top: 20px; margin-bottom: 1rem">Monet's <i>Water Lilies</i> have always
+                drawn me
+                into their quiet, atmospheric world. Experiencing them at scale in exhibitions like MoMA made me feel
+                weightless, adrift in a reflective dreamscape. I wanted to translate this sensation into a web-based
+                space: an experience where users don't just look at the art but sink into it — becoming part of Monet's
+                vision of light, color, and water.</p>
+
+            <p class="fade-in" style="margin-bottom: 10px">This project focuses on:</p>
+            <ul class="fade-in">
+                <li>The fluidity and softness of Monet's brushstrokes.</li>
+                <li>A sense of being submerged and weightless.</li>
+                <li>Dynamic interaction with light, water, and sound.</li>
+                <li>Symbolic storytelling through the blooming of water lilies as a metaphor for rebirth and
+                    enlightenment.</li>
+            </ul>
+
+            <h2 class="fade-in padding-top">End-to-End Demo</h2>
+            <div class="video-container fade-in">
+                <video controls width="100%" height="100%" preload="none" playsinline
+                    poster="../../img/spring2025/reflections-of-monet/landing.png">
+                    <source src="../../img/spring2025/reflections-of-monet/demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-sm-12 project-sub-summary fade-in">
+            <p class="sub-header">WHEN WAS THIS?</p>
+            <p>March 2025 (1 week)</p>
+            </br>
+            <p class="sub-header">WHAT'D I DO?</p>
+            <p>I designed and developed this interactive, immersive web experience, translating the serene and
+                contemplative qualities of Monet's <i>Water Lilies</i> into an intuitive and meditative digital journey.
+            </p>
+            <p>My responsibilities include:</p>
+            <ul>
+                <li><strong>Interactive Canvas Animation —</strong> Built complex animations and visual effects using
+                    JavaScript and HTML5 Canvas, including ripple effects and floating objects with user interaction.
+                </li>
+
+                <li><strong>Audio-Visual Integration —</strong> Implemented scroll-based system coordinating multiple
+                    videos, audio tracks, and visual transitions using Web Audio API and HTML5 video.</li>
+
+                <li><strong>Performance Optimization —</strong> Engineered efficient rendering techniques for canvas
+                    animations with optimized image handling and pixel manipulation.</li>
+
+                <li><strong>Custom Physics System —</strong> Developed physics engine for floating objects with
+                    collision detection and smooth transitions using JavaScript mathematics.</li>
+
+                <li><strong>Responsive Design —</strong> Created fully responsive experience adapting to different
+                    screen sizes while maintaining consistent performance and visuals.</li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="row additional-content">
+        <div class="col-12">
+
+            <section class="fade-in">
+                <h2 class="fade-in">User Experience Flow</h2>
+                <div class="row">
+                    <!-- First Row -->
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-4 fade-in">
+                        <div class="scene-card">
+                            <strong>Scene 1: The Invitation</strong>
+                            <p>The journey begins with a zoomed-in cropped section of a Monet painting. A floating lotus
+                                is centered on screen, with cursor hover effects hinting at its interactivity.</p>
+                            <div class="process-video">
+                                <video autoplay loop muted playsinline>
+                                    <source src="../../img/spring2025/reflections-of-monet/step1.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-4 fade-in">
+                        <div class="scene-card">
+                            <strong>Scene 2: Surface Exploration</strong>
+                            <p>Clicking the lotus transitions to a tranquil pond with floating lilies. Gentle cursor
+                                movements create ripples, accompanied by soft ambient sounds of birds and trickling
+                                water. Three faint outlines at the bottom left suggest collectible elements, with the
+                                drifting lotus ready to fill the first slot.</p>
+                            <div class="process-video">
+                                <video autoplay loop muted playsinline>
+                                    <source src="../../img/spring2025/reflections-of-monet/step2.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-4 fade-in">
+                        <div class="scene-card">
+                            <strong>Scene 3: Submersion</strong>
+                            <p>As users scroll downward, they experience the sensation of sinking beneath the water's
+                                surface. The background transitions from light pastels to deeper water tones, while the
+                                audio deepens to match the descent.</p>
+                            <div class="process-video">
+                                <video autoplay loop muted playsinline>
+                                    <source src="../../img/spring2025/reflections-of-monet/step3.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Second Row -->
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-4 fade-in">
+                        <div class="scene-card">
+                            <strong>Scene 4: The Search</strong>
+                            <p>Users find themselves in a murky, immersive underwater space filled with floating lotus
+                                images. The challenge is to find the "real" lotus among the fakes to fill the second
+                                slot, with subtle animations mimicking water currents to enhance the dreamlike
+                                atmosphere.</p>
+                            <div class="process-video">
+                                <video autoplay loop muted playsinline>
+                                    <source src="../../img/spring2025/reflections-of-monet/step4.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-4 fade-in">
+                        <div class="scene-card">
+                            <strong>Scene 5: The Depths</strong>
+                            <p>At the deepest layer, schools of fish swim by as Monet's quotes drift through the space.
+                                The final lotus reveals itself only on hover, encouraging users to explore and engage
+                                with the text and environment.</p>
+                            <div class="process-video">
+                                <video autoplay loop muted playsinline>
+                                    <source src="../../img/spring2025/reflections-of-monet/step5.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-4 fade-in">
+                        <div class="scene-card">
+                            <strong>Scene 6: Emergence & Reflection</strong>
+                            <p>Upon completing the lotus collection, the screen pixelates and prompts users to scroll
+                                outwards, revealing Monet's Bridge over a Pond of Water Lilies. This final transition
+                                connects their journey back to the source artwork, with a restart lotus floating at the
+                                bottom for replaying the experience.</p>
+                            <div class="process-video">
+                                <video autoplay loop muted playsinline>
+                                    <source src="../../img/spring2025/reflections-of-monet/step6.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fade-in">
+                <h2 class="fade-in">Tools & Frameworks</h2>
+                <ul class="fade-in">
+                    <li>HTML5 Canvas for complex animations and ripple effects</li>
+                    <li>Web Audio API for immersive soundscapes and audio transitions</li>
+                    <li>Custom JavaScript physics engine for floating object interactions</li>
+                    <li>Optimized rendering techniques for smooth performance</li>
+                    <li>Responsive design with Bootstrap for cross-device compatibility</li>
+                </ul>
+            </section>
+
+            <p class="fade-in"><a class="sketch-link" href="https://bevyip.github.io/reflections-of-monet/"
+                    target="_blank">Ready to
+                    immerse yourself in Monet's water lilies? Experience it live!</a></p>
+        </div>
+    </div>
+
+    <div class="footer" id="footer">
+        <div class="footer-info fade-in">
+            <h2 class="footerLabel fade-in"><b>Let's get in touch!</span></b></h2>
+            <div class="footerIcons fade-in">
+                <a href="https://www.linkedin.com/in/bevyip/" target="_blank" class="icons fa fa-linkedin"></a>
+                <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
+                <a href="mailto:hy3018@nyu.edu" target="_blank" class="icons fa fa-envelope"></a>
+            </div>
+            <div class="footerStamp fade-in">
+                <p>Designed and Developed © 2025 by Beverly Yip.</p>
+            </div>
+            <div class="footerReroute fade-in">
+                <a class="footerReroute-link" href="#">BACK TO TOP</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script>
+        let debounceTimeout;
+        document.addEventListener("DOMContentLoaded", () => {
+            const rows = document.querySelectorAll(".proj-overview-content");
+
+            const observerOptions = {
+                root: null, // Use the viewport as the root
+                threshold: 0.1, // Trigger when 10% of the row is visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                clearTimeout(debounceTimeout);
+                debounceTimeout = setTimeout(() => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, 50);
+            }, observerOptions);
+
+            rows.forEach(row => observer.observe(row));
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Immediately show above-the-fold content
+            const initialElements = document.querySelectorAll(".landing-name, .landing-name + p, .project-sub-summary");
+            initialElements.forEach(el => {
+                el.classList.add("visible");
+            });
+
+            // Set up intersection observer for the rest of the content
+            const fadeInElements = document.querySelectorAll(".fade-in:not(.landing-name):not(.landing-name + p):not(.project-sub-summary)");
+
+            const observerOptions = {
+                root: null,
+                threshold: 0.1,
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            fadeInElements.forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>
