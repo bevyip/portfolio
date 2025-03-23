@@ -87,7 +87,7 @@
         </div>
       </div>
       <div class="landing-bottom fade-in">
-        <div class="introduction">
+        <div class="introduction fade-in">
           <h3>INTRODUCTION —</h3>
           <p>Now pursuing a Master's in Human-Computer Interaction at at New York University (NYU) ITP '26, I specialize
             in
@@ -209,48 +209,64 @@
   integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script>
-  let debounceTimeout;
   document.addEventListener("DOMContentLoaded", () => {
     const rows = document.querySelectorAll(".proj-overview-content");
+    const fadeInElements = document.querySelectorAll(".fade-in");
+
+    // Function to check if element is in viewport
+    const isInViewport = (element) => {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.bottom >= 0
+      );
+    };
+
+    // Handle initial visibility
+    const handleInitialVisibility = () => {
+      rows.forEach(row => {
+        if (isInViewport(row)) {
+          row.classList.add("visible");
+        }
+      });
+
+      fadeInElements.forEach(el => {
+        if (isInViewport(el)) {
+          el.classList.add("visible");
+        }
+      });
+    };
+
+    // Call on initial load
+    handleInitialVisibility();
 
     const observerOptions = {
       root: null,
       threshold: 0.1,
+      rootMargin: "20px"
     };
 
     const observer = new IntersectionObserver((entries) => {
-      clearTimeout(debounceTimeout);
-      debounceTimeout = setTimeout(() => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, 50);
-    }, observerOptions);
-
-    rows.forEach(row => observer.observe(row));
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const fadeInElements = document.querySelectorAll(".fade-in");
-
-    const observerOptions = {
-      root: null,
-      threshold: 0.1,
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
+        } else {
+          // Remove visible class when element is not in viewport
+          entry.target.classList.remove("visible");
         }
       });
     }, observerOptions);
 
-    fadeInElements.forEach((el) => observer.observe(el));
+    // Observe all elements
+    rows.forEach(row => observer.observe(row));
+    fadeInElements.forEach(el => observer.observe(el));
+
+    // Handle visibility on scroll
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(handleInitialVisibility, 50);
+    }, { passive: true });
   });
 </script>
 
