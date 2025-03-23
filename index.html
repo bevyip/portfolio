@@ -225,14 +225,16 @@
     // Handle initial visibility
     const handleInitialVisibility = () => {
       rows.forEach(row => {
-        if (isInViewport(row)) {
+        if (isInViewport(row) && !row.classList.contains("has-appeared")) {
           row.classList.add("visible");
+          row.classList.add("has-appeared"); // Mark as having appeared
         }
       });
 
       fadeInElements.forEach(el => {
-        if (isInViewport(el)) {
+        if (isInViewport(el) && !el.classList.contains("has-appeared")) {
           el.classList.add("visible");
+          el.classList.add("has-appeared"); // Mark as having appeared
         }
       });
     };
@@ -248,11 +250,9 @@
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !entry.target.classList.contains("has-appeared")) {
           entry.target.classList.add("visible");
-        } else {
-          // Remove visible class when element is not in viewport
-          entry.target.classList.remove("visible");
+          entry.target.classList.add("has-appeared"); // Mark as having appeared
         }
       });
     }, observerOptions);
