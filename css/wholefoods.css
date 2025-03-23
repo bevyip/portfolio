@@ -124,8 +124,8 @@ body {
   font-family: "Hanken Grotesk", sans-serif;
   font-size: 20px;
   font-weight: bold;
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
+  transition: all 0.3s ease, border-color 0.3s ease;
+  border: 3px solid transparent;
 }
 
 .live-demo-btn:hover {
@@ -133,6 +133,7 @@ body {
   color: #4e3419;
   border-color: #4e3419;
   text-decoration: none;
+  border: solid;
 }
 
 .live-demo-btn .fa-arrow-down {
