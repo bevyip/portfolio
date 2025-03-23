@@ -117,23 +117,40 @@ body {
 .live-demo-btn {
   display: inline-block;
   padding: 0.7em 4em;
-  background-color: hsla(42.85714286, 28%, 95.09803922%, 1);
-  color: black;
+  background-color: #f0f0f0;
+  color: #333;
   text-decoration: none;
   border-radius: 40px;
   font-family: "Hanken Grotesk", sans-serif;
   font-size: 20px;
   font-weight: bold;
-  transition: all 0.2s ease;
-  border: solid;
-  border-color: hsla(42.85714286, 28%, 95.09803922%, 1);
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
 
 .live-demo-btn:hover {
-  background-color: hsla(42.85714286, 28%, 95.09803922%, 1);
+  background-color: #ffffff;
   color: #4e3419;
   border-color: #4e3419;
   text-decoration: none;
+}
+
+.live-demo-btn .fa-arrow-down {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.live-demo-btn:hover .fa-arrow-down {
+  animation: bounce 0.6s infinite alternate;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(4px);
+  }
 }
 
 /* Video Container */
@@ -1348,6 +1365,7 @@ img {
   font-family: "Hanken Grotesk";
   font-size: 18px;
   margin: 0;
+  margin-top: 10px;
   color: black;
   word-wrap: break-word;
   overflow-wrap: break-word;
