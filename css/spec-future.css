@@ -332,11 +332,6 @@ ul li {
   padding: 5px 0px;
 }
 
-a.queenie-link:hover {
-  color: #3f2a14;
-  text-decoration: none;
-}
-
 @media only screen and (max-width: 970px) {
   .concept {
     flex-direction: column;

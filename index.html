@@ -16,6 +16,8 @@
     }
   </style>
 
+  <title>Beverly Yip</title>
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
@@ -36,9 +38,6 @@
       <div class="collapse navbar-collapse text-center justify-content-center fade-in" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto" id="custom-navbar">
           <li class="nav-item">
-            <a class="nav-link" href="/">HOME</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/about">ABOUT</a>
           </li>
           <li class="nav-item dropdown">
@@ -50,6 +49,9 @@
               <a class="dropdown-item" href="/#work">ALL</a>
               <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
             </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/play">PLAY</a>
           </li>
         </ul>
       </div>
@@ -106,9 +108,10 @@
       <h2>Work</h2>
     </div>
     <div class="proj-overview-content">
-      <div class="col-sm-4 proj-container">
+      <div class="col-12 proj-container">
         <a href="/spring2025/wholefoods">
-          <img class="wholefoods" src="img/spring2025/wholefoods/wholefoods-thumbnail.png" alt="wholefoods-thumbnail">
+          <img class="wholefoods" src="img/spring2025/wholefoods/wholefoods-work-thumbnail.png"
+            alt="wholefoods-thumbnail">
           <div class="wholefoods-desc proj-desc">
             <h3>Whole Foods In-Store Checkout Experience</h3>
             <div class="pill-tags">
@@ -122,7 +125,27 @@
           </div>
         </a>
       </div>
-      <div class="col-sm-4 proj-container">
+    </div>
+    <div class="proj-overview-content">
+      <div class="col-12 proj-container">
+        <a href="/lume">
+          <img class="lume" src="img/lume/work-thumbnail.png" alt="lume-case-study">
+          <div class="lume-desc proj-desc">
+            <h3>Lume</h3>
+            <div class="pill-tags">
+              <span class="pill">Mobile</span>
+              <span class="pill">User Research</span>
+              <span class="pill">UX/UI Design</span>
+              <span class="pill">Prototyping & Wireframing</span>
+            </div>
+            <p>A UX case study exploring how to help independent designers increase their market visibility through an
+              intuitive mobile platform.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="proj-overview-content">
+      <div class="col-12 proj-container">
         <a href="/salesforce-canvas-enhancements">
           <img class="canvas-enhancements" src="img/canvas-enhancements/canvas-enhancements.png"
             alt="canvas-enhancements-case-study">
@@ -132,14 +155,16 @@
               <span class="pill">Web</span>
               <span class="pill">Design Systems</span>
               <span class="pill">WCAG Accessibility</span>
-              <span class="pill">TypeScript</span>
+              <span class="pill">UI Architecture</span>
             </div>
             <p>A case study on improving accessibility and user productivity for sight-impaired users in Salesforce's
               Flow Builder.</p>
           </div>
         </a>
       </div>
-      <div class="col-sm-4 proj-container">
+    </div>
+    <div class="proj-overview-content">
+      <div class="col-12 proj-container">
         <a href="/salesforce-resource-selection">
           <img class="keyboard-navigation" src="img/resource-selection/resource-selection.png"
             alt="keyboard-navigation-case-study">
@@ -149,209 +174,10 @@
               <span class="pill">Web</span>
               <span class="pill">ARIA Implementation</span>
               <span class="pill">Component Design</span>
-              <span class="pill">TypeScript</span>
+              <span class="pill">Interaction Design</span>
             </div>
             <p>A case study on ensuring comprehensive keyboard navigation towards an improved resource selection
               experience in the Salesforce Flow Builder.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="proj-overview-content">
-      <div class="col-sm-4 proj-container">
-        <a href="/spring2025/boba-cafe">
-          <img class="boba-cafe" src="img/spring2025/boba-cafe/boba-cafe-proj.png" alt="boba-cafe">
-          <div class="boba-cafe-desc proj-desc">
-            <h3>Bev's Boba Cafe</h3>
-            <div class="pill-tags">
-              <span class="pill">Mobile</span>
-              <span class="pill">Web</span>
-              <span class="pill">User Experience Design</span>
-              <span class="pill">Interaction Design</span>
-            </div>
-            <p>A mobile-first, gamified bubble tea ordering web app that combines interactive drink customization with
-              playful motion design, all while prioritizing accessibility and small-screen optimization.</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-sm-4 proj-container">
-        <a href="/weather-wear">
-          <img class="weather-app" src="img/weather-app.png" alt="weather-app">
-          <div class="weather-app-desc proj-desc">
-            <h3>WeatherWear</h3>
-            <div class="pill-tags">
-              <span class="pill">Web</span>
-              <span class="pill">Node.js</span>
-              <span class="pill">MongoDB</span>
-              <span class="pill">API Integration</span>
-            </div>
-            <p>WeatherWear takes the guess work out of your fashion choices by analyzing the forecast and allowing you
-              to revisit past choices to dress perfectly for the day ahead.</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-sm-4 proj-container">
-        <a href="/spring2025/reflections-of-monet">
-          <video class="reflections-of-monet" autoplay loop muted playsinline>
-            <source src="img/spring2025/reflections-of-monet/step1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="reflections-of-monet-desc proj-desc">
-            <h3>Reflections of Monet</h3>
-            <div class="pill-tags">
-              <span class="pill">Interactive Art</span>
-              <span class="pill">Generative Design</span>
-              <span class="pill">Creative Coding</span>
-              <span class="pill">Web Audio</span>
-            </div>
-            <p>An interactive web art project that reimagines Claude Monet's Water Lilies series into a meditative,
-              immersive scrolling experience, featuring dynamic animations, ambient soundscapes, and responsive
-              interactions.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="proj-overview-content">
-      <div class="col-sm-4 proj-container">
-        <a href="fall2024/temple-of-fortune/">
-          <img class="temple-of-fortune" src="img/fall2024/temple/thumbnail.jpg" alt="temple-of-fortune">
-          <div class="temple-of-fortune-desc proj-desc">
-            <h3>Temple of Fortune</h3>
-            <div class="pill-tags">
-              <span class="pill">User-Centered Design</span>
-              <span class="pill">Interaction Design</span>
-              <span class="pill">Multi-Platform Dev</span>
-              <span class="pill">Sensor Integration</span>
-            </div>
-            <p>An interactive digital fortune-telling altar that blends physical computing (RFID readers, pressure
-              sensors) with software (Unity, Blender, TouchDesigner, Arduino). Developed in C++, C#, and Python, it
-              features projection mapping, synchronized animations, audio, and lighting for immersive storytelling.</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-sm-4 proj-container">
-        <a href="fall2024/fortune-telling-wizard">
-          <img class="fortune-telling-wizard" src="img/fall2024/fortune-telling-wizard.gif"
-            alt="fortune-telling-wizard">
-          <div class="fortune-telling-wizard-desc proj-desc">
-            <h3>Fortune Telling Wizard</h3>
-            <div class="pill-tags">
-              <span class="pill">User-Centered Design</span>
-              <span class="pill">Interaction Design</span>
-              <span class="pill">API Integration</span>
-              <span class="pill">Creative Coding</span>
-            </div>
-            <p>An interactive artwork that blends the practice of Chinese fortune-telling with the modern capabilities
-              of p5.js and OpenAI's API to create a personalized reading based on the user's name, birth year and
-              inquiry.</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-sm-4 proj-container">
-        <a href="fall2024/starry-night">
-          <img class="starry-night" src="img/fall2024/starry-night/starry-night.png" alt="starry-night">
-          <div class="starry-night-desc proj-desc">
-            <h3>Transforming Van Gogh's Starry Night</h3>
-            <div class="pill-tags">
-              <span class="pill">Algorithm Design</span>
-              <span class="pill">Performance Optimization</span>
-              <span class="pill">Creative Coding</span>
-            </div>
-            <p>A creative computing artwork in p5.js showcasing the transformation of Van Gogh's "The Starry Night"
-              through dissolving and emerging effects, creating a cyclical exploration of digital manipulation that
-              reveals and obscures the painting's core essence.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="proj-overview-content">
-      <div class="col-sm-4 proj-container">
-        <a href="fall2024/speculative-future">
-          <img class="spec-future" src="img/fall2024/spec-future/spec-future.png" alt="spec-future">
-          <div class="spec-future-desc proj-desc">
-            <h3>A Speculative Future Film</h3>
-            <div class="pill-tags">
-              <span class="pill">Motion Design</span>
-              <span class="pill">Visual Storytelling</span>
-              <span class="pill">Storyboarding</span>
-            </div>
-            <p>A speculative future film exploring the imagined perspective of someone within their apartment, created
-              using After Effects, Premiere Pro, Photoshop, and Figma.</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-sm-4 proj-container">
-        <a href="fall2024/fabrication-projects/whack-a-mouse">
-          <img class="whack-a-mouse" src="img/fall2024/fabrication/whack-a-mouse-img/whackamouse.jpg"
-            alt="whack-a-mouse">
-          <div class="whack-a-mouse-desc proj-desc">
-            <h3>Whack-A-Mouse</h3>
-            <div class="pill-tags">
-              <span class="pill">Interactive Play Design</span>
-              <span class="pill">Laser Cutting</span>
-              <span class="pill">Product Design</span>
-            </div>
-            <p>A cat toy enclosure fabricated out of plywood, acrylic, felt and toy mice.</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-sm-4 proj-container">
-        <a href="fall2024/fabrication-projects/cat-box">
-          <img class="cat-box" src="img/fall2024/fabrication/cat-box-img/cat-box.jpg" alt="cat-box">
-          <div class="cat-box-desc proj-desc">
-            <h3>Cat Box</h3>
-            <div class="pill-tags">
-              <span class="pill">Tactile Design</span>
-              <span class="pill">Woodworking</span>
-              <span class="pill">Form Factor Design</span>
-            </div>
-            <p>A cat-shaped box fabricated out of a single block of wood and fastened with a wooden dowel.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="proj-overview-content">
-      <div class="col-sm-4 proj-container">
-        <a href="fall2024/fabrication-projects/cat-figurine">
-          <img class="cat-figurine" src="img/fall2024/fabrication/cat-figurine-img/cat-figurine.jpg" alt="cat-figurine">
-          <div class="cat-figurine-desc proj-desc">
-            <h3>Cat Figurine</h3>
-            <div class="pill-tags">
-              <span class="pill">3D Printing</span>
-              <span class="pill">Sculpting</span>
-              <span class="pill">Woodworking</span>
-            </div>
-            <p>A cat figurine fabricated out of polymer clay and wood, connected by tough PLA ball-and-socket joints.
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="col-sm-4 proj-container">
-        <a href="fall2024/fabrication-projects/five-fishes">
-          <img class="five-fishes" src="img/fall2024/fabrication/five-fishes-img/five-fishes.jpg" alt="five-fishes">
-          <div class="five-fishes-desc proj-desc">
-            <h3>Five Identical Fishes</h3>
-            <div class="pill-tags">
-              <span class="pill">Play Pattern Design</span>
-              <span class="pill">Woodworking</span>
-              <span class="pill">Sensory Design</span>
-            </div>
-            <p>Five identical toy fishes fabricated out of wood and fabric hair ties.</p>
-          </div>
-        </a>
-      </div>
-      <div class="col-sm-4 proj-container">
-        <a href="fall2024/fabrication-projects/puzzle-box">
-          <img class="puzzle-box" src="img/fall2024/fabrication/puzzle-box-img/puzzle-box.jpg" alt="puzzle-box">
-          <div class="puzzle-box-desc proj-desc">
-            <h3>Cat Puzzle Feeder Box</h3>
-            <div class="pill-tags">
-              <span class="pill">Interactive Play Design</span>
-              <span class="pill">Laser Cutting</span>
-              <span class="pill">Product Design</span>
-            </div>
-            <p>A pair of cat puzzle feeder boxes, identical in design but different in size, laser-cut and engraved from
-              plywood.</p>
           </div>
         </a>
       </div>
@@ -388,8 +214,8 @@
     const rows = document.querySelectorAll(".proj-overview-content");
 
     const observerOptions = {
-      root: null, // Use the viewport as the root
-      threshold: 0.1, // Trigger when 10% of the row is visible
+      root: null,
+      threshold: 0.1,
     };
 
     const observer = new IntersectionObserver((entries) => {
