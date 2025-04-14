@@ -5,17 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    @font-face {
-      font-family: "Rashfield";
-      src: url("../fonts/TTF/VVDSRashfield-Normal.ttf");
-    }
-  </style>
-
   <title>Beverly Yip</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -73,37 +62,42 @@
       <div class="landing-name">
         <h1>Redesigning Salesforce's Flow Builder</h1>
       </div>
-      <h2>Introduction</h2>
+      <h2>Overview</h2>
       </br>
-      <p>Flow Builder is the most powerful automation tool that any Salesforce user has at their disposal. It can be
-        used to perform various tasks from sending an email and posting a message to performing mass updates across
-        multiple unrelated records and performing complex logic. I joined this team in April 2022 and have since been
-        working on releasing changes that aim to consistently improve user productivity and experience.</p>
-      <p class="highlight">The primary goal of this Flow Builder's redesign was to offer users a <span>modernized and
-          simplified layout that remains inclusive to all</span>. This involves a cleaner and more visually appealing
-        interface with improved navigation, as well as improving user experience for those that are sight-impaired with
-        colors that meet accessibility requirements. </p>
+      <p>Flow Builder is a powerful low-code tool that enables users to automate business processes by creating
+        customizable flows. Users can design visual workflows with drag-and-drop elements to automate tasks, guide user
+        interactions, and integrate with Salesforce data — all without writing code.</p>
+      <p class="highlight">In this redesign, we <span>modernized and simplified</span> the layout while <span>ensuring
+          accessibility</span> for all users through
+        improved navigation and WCAG 2.1 compliant colors.</p>
       <p>The modifications were implemented in Java, Typescript, HTML, and CSS.
       </p>
 
       </br>
 
-      <h2>So, what's the problem?</h2>
+      <h2>Why Redesign Flow Builder?</h2>
       </br>
-      <p style="padding-bottom:30px;">As the Flow Builder user base expands and increasingly complex flows emerge, we
-        received feedback about the challenges of navigating the flow. Previously, the sole navigation method was
-        dragging the canvas to view off-screen elements and scrolling to zoom for clearer visibility.</p>
-      <img class="drag-gif" src="../img/canvas-enhancements/drag-gif.gif" alt="canvas drag gif">
-      <p style="padding-top:30px;"> The following are the core problems this product aims to solve: </p>
-      <ul>
-        <li class="error-highlight"><span>Users would lose element positioning on the canvas</span>. The zoom level
-          would reset with every element interaction. If you were building a large flow, this was a headache to deal
-          with. It frustrated users and negatively impacted user productivity.</li>
-        <li class="error-highlight"><span>The icon colors were inaccessible</span>. They did not meet the contrast ratio
-          of at least 3:1 for graphics and user interface components. This was a requirement specified by Web Content
-          Accessibility Guidelines (WCAG) 2.1. Our features were isolating our users, especially those that are
-          sight-impaired.</li>
-      </ul>
+      <div class="problem-section">
+        <h3>Problem #1: Navigation Challenges</h3>
+        <p class="error-highlight">As the user base grows, <span>navigation becomes challenging</span> with larger, more
+          complex flows.</p>
+        <div class="row problem-visuals">
+          <div class="col-md-12">
+            <img class="problem-img" src="../img/canvas-enhancements/problem1.png" alt="navigation challenges">
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-section" style="padding-top: 50px;">
+        <h3>Problem #2: Accessibility Issues</h3>
+        <p class="error-highlight">The interface has <span>accessibility issues</span> with icon color contrast that
+          fail to meet WCAG standards.</p>
+        <div class="row problem-visuals">
+          <div class="col-md-12">
+            <img class="problem-img" src="../img/canvas-enhancements/problem2.png" alt="accessibility issues">
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-lg-4 col-md-12 col-sm-12 project-sub-summary fade-in">
       <p class="sub-header">WHEN WAS THIS?</p>
@@ -131,230 +125,269 @@
   </div>
 
   <div class="col solution">
-    <div class="row canvas-enhancements fade-in">
-      <img class="canvas-enhancements-conclusion" src="../img/canvas-enhancements/canvas-enhancements-conclusion.jpg"
-        alt="canvas enhancements conclusion">
-    </div>
-    <div class="ux-deliverables">
-      <h2 class="padding-top fade-in">The Process</h2>
-      </br>
-      <p class="fade-in">As a Software Engineer in Salesforce, my responsibilities start when I receive feature
-        deliverables by the User
-        Experience team.</p>
-      <div class="ux-req short-padding-top fade-in">
-        <h2 class='padding-top'>UX Deliverables</h2>
-        <div class="deliverables-img">
-          <img src="../img/canvas-enhancements/deliverables-1.png" alt="ux deliverables">
-          <img src="../img/canvas-enhancements/deliverables-2.png" alt="ux deliverables">
+    <div class="customer-need-section">
+      <h2>Customer Need</h2>
+      <div class="need-details">
+        <div>
+          <h3>Need</h3>
+          <p>Simplified, efficient, and inclusive flow-building experience.</p>
         </div>
-        </br>
-        <p class="highlight fade-in">I began by conducting a spike, <span>a time-boxed research into the codebase to
-            explore
-            potential solutions and identify technical challenges</span>. This research would conclude with a detailed
-          presentation of my findings and a demo of proof-of-concepts to my team.</p>
-        <img class="center spike-example padding-top fade-in" src="../img/canvas-enhancements/spike-eg.jpg"
-          alt="spike example">
+
+        <div>
+          <h3>Goal</h3>
+          <p>Improve usability for all users, especially those with sight impairments.</p>
+        </div>
+
+        <div>
+          <h3>Use Case</h3>
+          <p>Provide a simpler canvas with less scrolling and better navigation.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ux-deliverables">
+      <h2 class="process-heading fade-in">The Process</h2>
+      <img class="process-img fade-in" src="../img/canvas-enhancements/process.png" alt="process overview">
+      <div class="ux-req fade-in">
+        <h2>UX Deliverables</h2>
+        <div class="deliverables-grid">
+          <div class="deliverable-item">
+            <h3>1. Update the <img class="inline-icon" src="../img/canvas-enhancements/plus-icon.png" alt="plus icon">
+              Icon</h3>
+            <p>Convert the <img class="inline-icon" src="../img/canvas-enhancements/plus-icon.png" alt="plus icon"> icon
+              to a <img class="inline-icon" src="../img/canvas-enhancements/circle-icon.png" alt="circle icon"> that
+              animates on load, hover, focus states, and in cut mode.</p>
+            <img class="main-image" src="../img/canvas-enhancements/d1.png" alt="icon update example">
+          </div>
+
+          <div class="deliverable-item">
+            <h3>2. Add Help Popover</h3>
+            <p>Introduce a help popover to guide users through the visual changes.</p>
+            <img class="main-image" src="../img/canvas-enhancements/d2.png" alt="help popover example">
+          </div>
+
+          <div class="deliverable-item">
+            <h3>3. Shorten Vertical Node Distance</h3>
+            <p>Reduce the spacing between vertical nodes for better visual flow.</p>
+            <img class="main-image" src="../img/canvas-enhancements/d3.png" alt="node distance example">
+          </div>
+
+          <div class="deliverable-item">
+            <h3>4. Reduce Connector Width</h3>
+            <p>Decrease the width of connectors for a cleaner, more modern look.</p>
+            <img class="main-image" src="../img/canvas-enhancements/d4.png" alt="connector width example">
+          </div>
+
+          <div class="deliverable-item">
+            <h3>5. Increase Contrast</h3>
+            <p>Enhance the contrast of nodes and connectors for better visibility.</p>
+            <img class="main-image" src="../img/canvas-enhancements/d5.png" alt="contrast example">
+          </div>
+        </div>
       </div>
 
       <div class="update-icon-story padding-top fade-in">
         <h4 class="heading-padding">Deliverable 1</h4>
-        <h3 class="heading-padding">Update The <img class="plus-icon" src="../img/canvas-enhancements/plus-icon.png"
-            alt="plus icon"> Icon</h3>
-        <p>The first noticeable enhancement was changing the icon to a <img class="circle-icon"
-            src="../img/canvas-enhancements/circle-icon.png" alt="circle icon"> icon that enlarges to the <img
-            class="plus-icon" src="../img/canvas-enhancements/plus-icon.png" alt="plus icon"> icon when interacted with.
-        </p>
-        <img class="hover-animation padding-top-bottom" src="../img/canvas-enhancements/hover-animation.gif"
-          alt="icon hover animation gif">
-        <p class="highlight">With this update, there were <span>four animation cases</span> to consider.</p>
+        <h3 class="heading-padding deliverable-heading">Update The <img class="plus-icon"
+            src="../img/canvas-enhancements/plus-icon.png" alt="plus icon"> Icon</h3>
+        <video class="hover-animation padding-top-bottom" autoplay loop muted playsinline>
+          <source src="../img/canvas-enhancements/hover-animation.mp4" type="video/mp4">
+        </video>
         <div class="icon-header-segment short-padding-top">
           <h3 class="icon-cases-header heading-padding">Icon Animation Cases</h3>
         </div>
-        <div class="row">
-          <img class="icon-cases padding-bottom" src="../img/canvas-enhancements/icon-animation-cases.png"
-            alt="icon cases">
+        <div class="icon-cases-container">
+          <div class="row icon-cases-row">
+            <div class="col-lg-3 col-md-6 col-sm-12 icon-case-item">
+              <div class="case-number">1</div>
+              <h4 class="case-type">On Hover</h4>
+              <p class="case-description">When a user hovers on the circle icon, we want to display</p>
+              <img class="case-image" src="../img/canvas-enhancements/case1.png" alt="On Hover Case">
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 icon-case-item">
+              <div class="case-number">2</div>
+              <h4 class="case-type">On Focus</h4>
+              <p class="case-description">When the focus is on the circle icon, we want to display</p>
+              <img class="case-image" src="../img/canvas-enhancements/case2.png" alt="On Focus Case">
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 icon-case-item">
+              <div class="case-number">3</div>
+              <h4 class="case-type">On Load</h4>
+              <p class="case-description">When a user first loads a flow, we want to display</p>
+              <img class="case-image" src="../img/canvas-enhancements/case3.png" alt="On Load Case">
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 icon-case-item">
+              <div class="case-number">4</div>
+              <h4 class="case-type">In Cut Mode</h4>
+              <p class="case-description">When a user is in cut mode, there should be no icon animation.</p>
+              <img class="case-image" src="../img/canvas-enhancements/case4.png" alt="In Cut Mode Case">
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="add-help-popover-story padding-top fade-in">
+      <div class="add-help-popover-story short-padding-top fade-in">
         <h4 class="heading-padding">Deliverable 2</h4>
-        <h3 class="heading-padding">Add Help Popover</h3>
-        <p class="bold">With the significant visual update, we wanted to provide users a <span>help pop up</span> that
-          explains how one can interact with the new interface and ensure a smooth transition in user experience.</p>
-        <div class="row">
-          <img class="popover-example padding-top" src="../img/canvas-enhancements/popover-eg.png"
-            alt="popover example">
-        </div>
-        <div class="popover-req">
-          <h4 class="heading-padding padding-top subheader">Popover Requirements</h4>
-          <div class="four-popover-req row short-padding-top">
-            <div class="col-sm">
-              <a href="https://www.flaticon.com/free-icons/repeat-once" title="repeat once icons"><img
-                  class="popover-req-img" src="../img/canvas-enhancements/popover-1.png" alt="popover requirements"></a>
-              <p>Display only once per user.</p>
-            </div>
-            <div class="col-sm">
-              <a href="https://www.flaticon.com/free-icons/anchor" title="anchor icons"><img class="popover-req-img"
-                  src="../img/canvas-enhancements/popover-2.png" alt="popover requirements"></a>
-              <p>Stay anchored to the first circle icon, even when the flow moves.</p>
-            </div>
-            <div class="col-sm">
-              <a href="https://www.flaticon.com/free-icons/close" title="close icons"><img class="popover-req-img"
-                  src="../img/canvas-enhancements/popover-3.png" alt="popover requirements"></a>
-              <p>To close, the user has to click the X button or press the Esc key.</p>
-            </div>
-            <div class="col-sm">
-              <a href="https://www.flaticon.com/free-icons/pop-up" title="pop up icons"><img class="popover-req-img"
-                  src="../img/canvas-enhancements/popover-4.png" alt="popover requirements"></a>
-              <p>Appear on the right of the circle icon.</p>
-            </div>
-          </div>
-        </div>
-        <div class="popover-issue-text">
-          <h3 class="heading-padding padding-top">Yikes, popover road bump!</h3>
-          <p>I spent a week researching this popover component as it was a separate library that my team had not
-            utilized before. It involved registering the component within our codebase, and enabling security keys in a
-            separate Java file before we could use the component.</p>
-          </br>
-          <p>Fortunately, the component's library was also extensive and implementing requirements 1, 3 and 4 went
-            smoothly once I identified the library's documentation and determined which lines of code needed tweaking.
-          </p>
-          </br>
-          <p class="bold"><span>The real issue</span> was in implementing requirement 2 - keeping the popover anchored.
-          </p>
-          <div class="three-popover-issues row padding-top-bottom">
-            <div class="col-sm border-col first-issue">
-              <h3>01</h3>
-              <p class="highlight-blue">When the flow was dragged, <span>the popover didn't follow</span>. This didn't
-                meet the requirements of keeping the popover anchored to the first circle icon.</p>
-              </br>
-            </div>
-            <div class="col-sm border-col second-issue">
-              <h3>02</h3>
-              <p class="highlight-blue">Certain Flow types opened a menu that shifted the circle icon downward.
-                <span>The placement of the popover would be misaligned</span> relative to the circle icon as the popover
-                was getting rendered before the opening animation began.
-              </p>
-              </br>
-            </div>
-            <div class="col-sm third-issue">
-              <h3>03</h3>
-              <p class="highlight-blue">When the flow was dragged, <span>the popover didn't follow</span>. This didn't
-                meet the requirements of keeping the popover anchored to the first circle icon.</p>
-            </div>
-          </div>
-        </div>
-        <div class="popover-issue col">
-          <img class="popover-issue-gif padding-top" src="../img/canvas-enhancements/popover-issue.gif"
-            alt="popover panning issue gif">
-          </br>
-          <p>An Example of Issue #1</p>
-        </div>
-        <p class="short-padding-top">Multiple attempts at a solution were made to resolve the three issues in keeping
-          the popover anchored. However, no solution could not solve all three issues simultaneously.</p>
-        </br>
-        <p class="highlight">Eventually, I sought the guidance of the Salesforce In-App Guidance team, and together,
-          implemented an algorithm that keeps the popover anchored with every window resize and shift in Flow. This same
-          algorithm has become a core piece in ensuring that the Flow remains <span>adaptable</span> to diverse media
-          sizes and user interactions.</p>
-        </br>
-        <p>Panels were also adjusted such that they would never overlap with the popover.</p>
-        </br>
+        <h3 class="heading-padding deliverable-heading">Add Help Popover</h3>
+        <img class="popover-example padding-top" src="../img/canvas-enhancements/popover-eg.png" alt="popover example">
       </div>
+      <div class="popover-req">
+        <h4 class="heading-padding padding-top popover-req-header">Popover Requirements</h4>
+        <div class="four-popover-req row">
+          <div class="col-sm" data-number="1">
+            <p>Display only once per user.</p>
+          </div>
+          <div class="col-sm" data-number="2">
+            <p>Stay anchored to the first circle icon, even when the flow moves.</p>
+          </div>
+          <div class="col-sm" data-number="3">
+            <p>To close, the user has to click the X button or press the Esc key.</p>
+          </div>
+          <div class="col-sm" data-number="4">
+            <p>Appear on the right of the circle icon.</p>
+          </div>
+        </div>
+      </div>
+      <div class="popover-issue-text">
+        <h3 class="heading-padding">Popover Roadblock & Solution</h3>
+        <p class="short-padding-top error-highlight">When working on a proof of concept, I faced a challenge when
+          <span>the popover wouldn't stay anchored</span> as the flow moved.
+        </p>
+      </div>
+      <div class="popover-issue col">
+        <img class="popover-issue-gif padding-top" src="../img/canvas-enhancements/popover-issue.gif"
+          alt="popover panning issue gif">
+        </br>
+        <p><i>When the flow was dragged, the popover didn't follow.</i></p>
+      </div>
+      <p class="short-padding-top">Multiple attempts at a solution were made to resolve the three issues in keeping
+        the popover anchored. However, no solution could not solve all three issues simultaneously.</p>
+      <p class="highlight">Eventually, I sought the guidance of the Salesforce In-App Guidance team, and together,
+        and
+        collaborated with them in implementing a custom algorithm that kept the popover anchored during window resizes
+        and shifts. This solution also <span>improved the Flow's adaptability</span> to different
+        screen sizes and interactions, and
+        <span>maintained product scalability</span>.
+      </p>
+      </br>
 
-      <div class="shorten-distance-story padding-top fade-in">
-        <h4 class="heading-padding">Deliverable 3</h4>
-        <h3 class="heading-padding">Shorten The Distance Between Vertical Nodes</h3>
-        <p class="highlight">This feature involved a simple change in variable value in a file that calculated all
-          element configurations. After spiking this feature, I found <span>two methods of implementation</span> that my
-          team and I could discuss and finalize on.</p>
+    </div>
+
+    <div class="shorten-distance-story short-padding-top fade-in">
+      <h4 class="heading-padding">Deliverable 3</h4>
+      <h3 class="heading-padding deliverable-heading">Shorten The Distance Between Vertical Nodes</h3>
+      <img class="d3-image" src="../img/canvas-enhancements/d3.png" alt="d3 visualization">
+      </br>
+      <div class="shorten-distance-issue-text padding-bottom fade-in">
+        <h3 class="heading-padding short-padding-top">Edge Cases</h3>
+        <br>
+        <p class="bold">I accounted for different connector types (straight, curved, arrowed) and unique node shapes
+          like diamond-shaped Decision elements, as well as icons with added borders that affected layout.
+        </p>
+        <p class="highlight">While the fix was a simple variable change, I had to ensure <span>visual consistency</span>
+          throughout.</p>
         </br>
-        <p>1 - Modify a key variable, but manually update other impacted variables along the way <i>or</i></p>
-        <p>2 - Modify each impacted variable respectively depending on connector type and variant, while keeping the key
-          variable constant.</p>
-        </br>
-        <div class="shorten-distance-issue-text padding-bottom fade-in">
-          <h3 class="heading-padding padding-top">Tricky Terrain</h3>
-          <p class="bold">For a change that impacted the entire Flow, it was imperative to <span>ensure
-              compatibility</span> with all connector types - whether straight, curved, or with arrowed ends.</p>
-          </br>
-          <p class="bold">Additionally, we had to consider <span>special nodes with unique shapes</span> in terms of
-            height and the spacing between nodes.</p>
-          </br>
-          <div class="row shorten-distance-issue-section fade-in">
-            <div class="col-md shorten-distance-issue-visuals">
-              <p>For instance, take the Decision element, a diamond-shaped orange icon. Its height exceeds that of most
-                other elements, so even a slight reduction was clearly noticeable.</p>
-              <div class="shorten-dist-issue-compare row">
-                <div class="col">
-                  <img class="shorten-dist-issue-1" src="../img/canvas-enhancements/shorten-1a.png"
-                    alt="shorten distance issue before">
-                  <p class="short-padding-top">Before</p>
-                </div>
-                <div class="col">
-                  <img class="shorten-dist-issue-1" src="../img/canvas-enhancements/shorten-1.jpg"
-                    alt="shorten distance issue after">
-                  <p class="short-padding-top">After</p>
-                </div>
+
+        <div class="row shorten-distance-cases fade-in">
+          <!-- Connector Types Case -->
+          <div class="col-md-12 case-section">
+            <h4 class="case-title font-weight-bold heading-padding">Connector Types</h4>
+            <div class="row connector-types heading-padding">
+              <div class="col-md-6">
+                <img class="connector-img main-image case-image" src="../img/canvas-enhancements/connector1.png"
+                  alt="connector types before">
+              </div>
+              <div class="col-md-6">
+                <img class="connector-img main-image case-image" src="../img/canvas-enhancements/connector2.png"
+                  alt="connector types after">
               </div>
             </div>
-            <div class="col-md shorten-distance-issue-visuals shorten-dist-2">
-              <p>This height disparity became even more pronounced in cut mode, where we also had to incorporate an
-                extra border around specific elements.</p>
-              <img class="shorten-dist-issue-2" src="../img/canvas-enhancements/shorten-2.jpg"
-                alt="shorten distance issue">
-            </div>
+            <p class="case-description text-center"><i>Different connector types - straight, curved, and with arrowed
+                ends.</i>
+            </p>
           </div>
-          </br>
-        </div>
-        </br>
-        <p>After multiple feedback sessions and multi-team discussions with UX and my team, an acceptable variable value
-          was agreed upon that could meet both the feature requirement and accommodate unique cases like the Decision
-          element.</p>
-        </br>
-      </div>
 
-      <div class="reduce-width-story padding-top fade-in">
-        <h4 class="heading-padding">Deliverable 4</h4>
-        <h3 class="heading-padding">Reduce The Width Of Connectors</h3>
-        <p>Part of the move towards improving the canvas interface was reducing the overall width of the connectors.
-          This also involved a small change in variable value.</p>
-        </br>
-        <div class="reduce-width-issue-text fade-in">
-          <h3 class="heading-padding">But wait!</h3>
-          <p class="error-highlight">During my research, I found that the previous requirement <a
-              style="color:black;">(Reduce The Width of Connectors)</a> and this needed to be completed <a
-              style="color:black;">concurrently</a> as one change without the other would result in <span>interrupted
-              and incohesive</span> connector lines.</p>
-          </br>
-          <div class="row">
-            <img class="center reduce-width-img padding-top-bottom" src="../img/canvas-enhancements/reduce-width-1.jpg"
-              alt="reduce width issue image">
-          </div>
-          <p class="bold fade-in">Hence, I decided that these two requirements had to be combined into <span>a single
-              code
-              release</span>.</p>
-          <div class="row reduce-width fade-in">
-            <div class="col-2">
-              <a href="https://www.flaticon.com/free-icons/idea" title="idea icons"><img
-                  class="center reduce-width-icon" src="../img/canvas-enhancements/reduce-width-flaticon.png"
-                  alt="reduce width issue icon"></a>
+          <!-- Node Types Case -->
+          <div class="col-md-12 case-section">
+            <h4 class="case-title font-weight-bold heading-padding short-padding-top">Node Types</h4>
+            <div class="row node-types heading-padding">
+              <div class="node-comparison">
+                <p class="node-text text-center">Before: Original Flow Layout</p>
+                <img class="node-img main-image case-image" src="../img/canvas-enhancements/node-before.png"
+                  alt="node types before">
+                <p class="node-description"><i>Initial layout with original spacing.</i></p>
+              </div>
+              <div class="node-comparison">
+                <p class="node-text text-center">After: Adjusted Flow Layout</p>
+                <img class="node-img main-image case-image" src="../img/canvas-enhancements/node-after.png"
+                  alt="node types after">
+                <p class="node-description"><i>Adjusted layout <u>without consideration</u> for nodes with unique
+                    shapes.</i></p>
+              </div>
             </div>
-            <div class="col-10">
-              <p class="bold reduce-width-exception">What the UX team didn't take into consideration was that Flow
-                Builder had <span>a lot</span> of connectors with different shapes and forms. During implementation, I
-                also took the initiative to ensure that all connector widths were standardized across all impacted
-                files. This became an added criterion.</p>
+          </div>
+
+          <!-- Border Types Case -->
+          <div class="col-md-12 case-section">
+            <h4 class="case-title font-weight-bold heading-padding short-padding-top">Border Types</h4>
+            <div class="row border-types heading-padding">
+              <div class="col-md-12">
+                <img class="border-img main-image case-image" src="../img/canvas-enhancements/border-case.png"
+                  alt="border types example">
+                <p class="case-description text-center"><i>Icons with an added border, affecting layout consistency.</i>
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <p>After several feedback sessions with the UX
+        team, I adjusted the variable values to balance the feature's requirement with the unique needs of these edge
+        cases.</p>
+      </br>
+    </div>
 
-      <div class="color-contrast-story padding-top fade-in">
-        <h4 class="heading-padding">Deliverable 5</h4>
-        <h3 class="heading-padding">Increase The Contrast Of Nodes And Connectors</h3>
-        <p>Prior to this update, Flow Builder displayed colors that were not WCAG 2.1 compliant. The UX team presented
-          me with a list of UX deliverables necessary to address and resolve the color contrast issue.</p>
+    <div class="reduce-width-story short-padding-top fade-in">
+      <h4 class="heading-padding">Deliverable 4</h4>
+      <h3 class="heading-padding deliverable-heading">Reduce The Width Of Connectors</h3>
+      <img class="d4-image" src="../img/canvas-enhancements/d4.png" alt="d4 visualization">
+      </br>
+      <div class="reduce-width-issue-text fade-in">
+        <h3 class="heading-padding short-padding-top">Handling Complex Node and Connector Variations</h3>
+        <br>
+        <p class="error-highlight">During my research, I found that the previous requirement <a
+            style="color:black;">(Shorten The Distance Between Vertical Nodes)</a> and this needed to be completed <a
+            style="color:black;">concurrently</a> as one change without the other would result in <span>interrupted
+            and incohesive</span> connector lines.</p>
+        </br>
+        <div class="row">
+          <img class="center reduce-width-img padding-top-bottom" src="../img/canvas-enhancements/reduce-width-1.jpg"
+            alt="reduce width issue image">
+        </div>
+        <p class="bold fade-in">Hence, I decided that these two requirements had to be combined into <span>a single
+            code
+            release</span>.</p>
+        <div class="row reduce-width fade-in">
+          <div class="col-2">
+            <a href="https://www.flaticon.com/free-icons/idea" title="idea icons"><img class="center reduce-width-icon"
+                src="../img/canvas-enhancements/reduce-width-flaticon.png" alt="reduce width issue icon"></a>
+          </div>
+          <div class="col-10">
+            <p class="bold reduce-width-exception">What the UX team didn't take into consideration was that Flow
+              Builder had <span>a lot</span> of connectors with different shapes and forms. During implementation, I
+              also took the initiative to ensure that all connector widths were standardized across all impacted
+              files. This became an added requirement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-contrast-story short-padding-top fade-in">
+      <h4 class="heading-padding">Deliverable 5</h4>
+      <h3 class="heading-padding deliverable-heading">Increase The Contrast Of Nodes And Connectors</h3>
+      <img class="d5-image" src="../img/canvas-enhancements/d5.png" alt="d5 visualization">
+      <h3 class="heading-padding short-padding-top">Accessibility Changes & Requirements</h3>
+      <div class="color-contrast-container">
         <div class="w3-content w3-display-container padding-top-bottom">
           <img class="color-contrast-updates" src="../img/canvas-enhancements/icon-color-updates.png"
             alt="icon color updates">
@@ -362,75 +395,78 @@
           <button class="w3-button w3-light-grey w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
           <button class="w3-button w3-light-grey w3-display-right" onclick="plusDivs(1)">&#10095;</button>
         </div>
-        <p>With these requirements, I began identifying all areas of the codebase that were impacted and required
-          modifications. The code was straightforward, but its application demanded consideration of all node and
-          connector variations. Thus, before embarking on the changes, I needed to thoroughly investigate the source
-          code for these variants and all their possible use cases.</p>
-        </br>
-        <p class="highlight">This feature adjustment was particularly notable for me. Throughout my career, it was among
-          the few tasks I undertook that highlighted a <span>distinct interface-driven customer need</span>. Addressing
-          this made a direct positive impact on both productivity and inclusivity for its users.
-        </p>
-        </br>
       </div>
+      <p>While the code changes were straightforward, they needed to be implemented across the entire codebase. I had to
+        carefully map out and test every node and connector variation to ensure consistent behavior throughout the
+        application.</p>
+      <p class="highlight">This feature adjustment was particularly notable for me. Throughout my career, it was among
+        the few tasks I undertook that highlighted a <span>distinct interface-driven customer need</span>. Addressing
+        this made a direct positive impact on both productivity and inclusivity for its users.
+      </p>
+      </br>
 
-      <div class="results padding-top fade-in">
-        <h2 class="heading-padding">Drum Roll, Please... The Finished Product</h2>
-        </br>
-        <p>On the left, you'd see what Flow Builder was before the changes. On the right, you'd see how the Flow Builder
-          canvas has improved after the changes.</p>
-        <div class="canvas-comparison-img row padding-top fade-in">
-          <div class="old col">
-            <img src="../img/canvas-enhancements/old-flow.png" alt="old flow">
-            <p class="short-padding-top">Previous Flow Builder</p>
-          </div>
-          <div class="new col">
-            <img src="../img/canvas-enhancements/new-flow.png" alt="new flow">
-            <p class="short-padding-top">Updated Flow Builder</p>
-          </div>
-        </div>
-        </br>
-        <p class="highlight fade-in">The newly-upgraded canvas layout that boasts <span>a more compact view with
-            improved
-            accessibility standards</span> received praise during its Summer '23 release. While Salesforce product
-          releases are commonly discussed in quarterly articles and blogs, this particular feature stood out. It
-          captivated many users right from the get go and was subsequently highlighted as <span>one of the top
-            features</span> of that Salesforce release.</p>
-        <div class="row canvas-reviews-img fade-in">
-          <img class="canvas-reviews padding-top-bottom" src="../img/canvas-enhancements/canvas-reviews.png"
-            alt="canvas reviews">
-        </div>
+    </div>
+
+    <div class="results fade-in">
+      <h2 class="heading-padding">Feature Comparison</h2>
+      </br>
+      <p class="highlight">The redesign modernized the interface with tighter spacing, thinner connectors, and
+        high-contrast icons for
+        better accessibility. These changes reduced scrolling and zooming, making it <span>easier to
+          work with complex flows</span>
+        while creating <span>a more inclusive experience</span> for all users.</p>
+      <div class="canvas-comparison-img row fade-in">
+        <img class="feature-comparison" src="../img/canvas-enhancements/feature-comparison.png"
+          alt="Flow Builder before and after comparison">
       </div>
-
-      <div class="learning-journey fade-in padding-top">
-        <h2 class="heading-padding">Phew, What A Learning Journey!</h2>
-        </br>
-        <p>When I first took on the leadership role for this project, I grappled with self-doubt, often questioning my
-          capabilities as the youngest Software Engineer on a seasoned team. My experience was marked by daily
-          challenges, collaborative brainstorming and intensive problem-solving.</p>
-        </br>
-        <p class="highlight" style="padding-bottom: 20px">My manager and mentor played crucial roles in encouraging me
-          to <span>stay curious</span>. I'll never forget the response I received to my apprehension about asking
-          questions, which completely transformed my outlook on speaking up.</p>
-        </br>
-        <p class="quote fade-in">“You never know if someone also has the same question as you or if your question might
-          offer a
-          new perspective. By asking your question, you could be helping someone else too.”</p>
-        </br>
-        <p style="padding-top: 20px">Looking back at the successful impact of the feature on user productivity and
-          accessibility, I'm deeply thankful for my team's unwavering support that fueled my confidence and
-          determination to lead the project to its success.</p>
-        </br>
-      </div>
-
-      <div class="outro padding-top-bottom fade-in">
-        <h2 class="heading-padding">Thanks for scrolling!</h2>
-        </br>
-        <p>If you're interested, check out <a class="content-link" href="/salesforce-resource-selection">this
-            other case study</a> I did on improving accessibility and the resource selection experience in Salesforce's
-          Flow Builder.</p>
+      </br>
+      <p class="highlight fade-in">These changes came together in the Salesforce Summer 2023 release. The Flow Builder
+        updates
+        were spotlighted in multiple blogs and roundups, consistently ranking as <span>one of the top features</span> of
+        that release.</p>
+      <div class="row canvas-reviews-img fade-in">
+        <img class="canvas-reviews" src="../img/canvas-enhancements/reviews.png" alt="canvas reviews">
       </div>
     </div>
+
+    <div class="user-feedback-section fade-in">
+      <h2 class="heading-padding">User Feedback & Praise</h2>
+      <div class="feedback-images">
+        <div class="feedback-image-container">
+          <img class="feedback-img" src="../img/canvas-enhancements/feedback1.png" alt="User feedback 1">
+        </div>
+        <div class="feedback-image-container">
+          <img class="feedback-img" src="../img/canvas-enhancements/feedback2.png" alt="User feedback 2">
+        </div>
+      </div>
+    </div>
+
+    <div class="learning-journey fade-in">
+      <h2 class="heading-padding">Insights & Takeaways</h2>
+      </br>
+      <p>When I first took on the leadership role for this project, I grappled with self-doubt, often questioning my
+        capabilities as the youngest Software Engineer on a seasoned team. My experience was marked by daily
+        challenges, collaborative brainstorming and intensive problem-solving.</p>
+      <p class="highlight" style="padding-bottom: 20px">My manager and mentor played crucial roles in encouraging me
+        to <span>stay curious</span>. I'll never forget the response I received to my apprehension about asking
+        questions, which completely transformed my outlook on speaking up.</p>
+      <p class="quote fade-in">“You never know if someone also has the same question as you or if your question might
+        offer a
+        new perspective. By asking your question, you could be helping someone else too.”</p>
+      <p style="padding-top: 20px">Looking back at the successful impact of the feature on user productivity and
+        accessibility, I'm deeply thankful for my team's unwavering support that fueled my confidence and
+        determination to lead the project to its success.</p>
+
+    </div>
+
+    <div class="outro fade-in">
+      <h2 class="heading-padding">Thanks for scrolling!</h2>
+      </br>
+      <p>If you're interested, check out <a class="content-link" href="/salesforce-resource-selection">this
+          other case study</a> I did on improving accessibility and the resource selection experience in Salesforce's
+        Flow Builder.</p>
+    </div>
+  </div>
   </div>
 
   <div class="footer" id="footer">
