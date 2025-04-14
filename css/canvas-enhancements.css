@@ -26,17 +26,13 @@
   margin: 0;
 }
 
-.row.introduction {
-  padding: 40px 120px;
-}
-
 .col-lg-8.project-summary {
-  padding: 20px 0;
+  padding: 40px 40px 0 120px;
   font-family: "Hanken Grotesk";
 }
 
 .col-lg-4.project-sub-summary {
-  padding: 20px;
+  padding: 40px 120px 40px 40px;
   font-family: "Hanken Grotesk";
 }
 
@@ -252,6 +248,11 @@ div.nav-link:hover {
   align-items: center;
   position: relative;
   z-index: 5;
+}
+
+.disclaimer i.fa-info-circle {
+  font-size: 18px;
+  margin-right: 10px;
 }
 
 .disclaimer p {
@@ -967,11 +968,17 @@ img.d5-image {
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 748px) {
   .landing {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+  }
+}
+
+@media (max-width: 500px) {
+  .landing {
+    padding-bottom: 40px;
   }
 }
 
@@ -997,16 +1004,15 @@ img.d5-image {
   }
 
   .col-lg-8.project-summary {
-    padding: 20px 0;
+    padding: 40px 0;
   }
 
   .col-lg-4.project-sub-summary {
-    padding: 20px 0;
+    padding: 0;
   }
 
   .need-details {
     flex-direction: column;
-    gap: 30px;
   }
 }
 
@@ -1017,7 +1023,7 @@ img.d5-image {
   }
 
   #navbar-real {
-    padding: 0 40px;
+    padding: 40px;
     padding-bottom: 0;
   }
 
@@ -1039,13 +1045,11 @@ img.d5-image {
 
 @media (max-width: 748px) {
   .canvas-enhancements,
-  .solution h2,
   .deliverables-img,
   .icon-cases,
   .popover-example,
   .canvas-comparison-img,
   .canvas-reviews,
-  .heading-padding,
   .shorten-distance-issue-section {
     padding-left: 40px;
     padding-right: 40px;
@@ -1106,18 +1110,72 @@ img.d5-image {
 }
 
 @media (max-width: 970px) {
-  .row.introduction {
-    padding: 20px 0;
+  #navbar-real {
+    padding: 40px;
+  }
+}
+
+/* @media (max-width: 970px) {
+  #navbar-real {
+    padding: 0 60px;
   }
 
   .col-lg-8.project-summary {
-    padding: 20px 120px;
+    padding: 40px !important;
   }
 
   .col-lg-4.project-sub-summary {
-    padding: 20px 120px;
+    padding: 0 40px;
   }
-}
+
+  .solution {
+    padding: 0 60px;
+  }
+
+  .heading-padding {
+    padding: 20px 0;
+  }
+
+  .deliverables-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+} */
+
+/* @media (max-width: 750px) {
+  .col-lg-8.project-summary {
+    padding: 40px !important;
+  }
+
+  .col-lg-4.project-sub-summary {
+    padding: 20px 40px;
+  }
+
+  .heading-padding,
+  .short-padding-top,
+  .padding-top,
+  .padding-bottom,
+  .padding-top-bottom {
+    padding: 15px 0;
+  }
+
+  .deliverable-item h3,
+  .dilemma-option h4 {
+    font-size: 18px;
+  }
+
+  .dilemma-section,
+  .dilemma-grid {
+    padding: 0 20px;
+  }
+
+  .dilemma-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dilemma-grid .dilemma-option {
+    padding: 20px;
+  }
+} */
 
 /* Process Section */
 .process-section {
@@ -1142,7 +1200,7 @@ img.d5-image {
   .process-section,
   .ux-deliverables-section,
   .solution {
-    padding: 0 120px 40px 120px;
+    padding: 0 40px;
   }
 
   .process-section h2,
@@ -1171,7 +1229,7 @@ img.d5-image {
   }
 }
 
-@media (max-width: 748px) {
+/* @media (max-width: 748px) {
   .row.introduction,
   .solution {
     padding: 40px;
@@ -1194,4 +1252,4 @@ img.d5-image {
   h4 {
     padding: 0 !important;
   }
-}
+} */

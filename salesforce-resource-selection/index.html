@@ -494,6 +494,7 @@
       const observerOptions = {
         root: null,
         threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px' // Add a small margin to trigger slightly earlier
       };
 
       const observer = new IntersectionObserver((entries, observer) => {
@@ -504,6 +505,23 @@
           }
         });
       }, observerOptions);
+
+      // Add a fallback for elements that might not trigger the observer
+      const checkVisibility = () => {
+        fadeInElements.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+          if (isVisible) {
+            el.classList.add("visible");
+          }
+        });
+      };
+
+      // Initial check
+      checkVisibility();
+
+      // Check on scroll
+      window.addEventListener('scroll', checkVisibility);
 
       fadeInElements.forEach((el) => observer.observe(el));
     });
