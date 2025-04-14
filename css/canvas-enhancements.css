@@ -493,7 +493,7 @@ img.reduce-width-icon {
   font-style: italic;
   color: black;
   padding: 0 40px;
-  margin: 0 120px;
+  margin: 0 40px;
   border-left: 2px solid black;
 }
 
@@ -717,6 +717,7 @@ img[src*="plus"] {
   font-weight: 800;
   margin-bottom: 0.5rem;
   text-align: left;
+  color: black;
 }
 
 .case-description {
@@ -912,6 +913,8 @@ img.d5-image {
   background-color: #f8f9fa;
   padding: 30px;
   border-radius: 8px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
 }
 
 .deliverable-item h3 {
@@ -1165,10 +1168,6 @@ img.d5-image {
   .canvas-comparison-img,
   .canvas-reviews {
     padding: 0;
-  }
-
-  .learning-journey .quote {
-    margin: 0 40px;
   }
 }
 

@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../css/resource-selection.css">
 
@@ -67,32 +68,33 @@
     </p>
   </div>
 
-  <div class="row introduction">
+  <div class="row introduction fade-in">
     <div class="col-lg-8 col-md-12 col-sm-12 project-summary">
       <div class="landing-name">
-        <h1>Navigating Salesforce Flow Builder's Resource Menu</h1>
+        <h1 class="fade-in">Navigating Salesforce Flow Builder's Resource Menu</h1>
       </div>
-      <h2>Introduction</h2>
+      <h2 class="fade-in">Overview</h2>
       </br>
-      <p>Flow Builder is the most powerful automation tool that any Salesforce user has at their disposal (see <a
-          class="content-link" href="/salesforce-canvas-enhancements">Case Study #1</a>). It can be used to
-        perform various tasks from sending an email and posting a message to performing mass updates across multiple
-        unrelated records and performing complex logic. I joined this team in April 2022 and have since been working on
-        releasing changes that aim to consistently improve user productivity and experience.</p>
-      <p class="highlight">Flow Builder's Resource Menu displays the resources that are available in the flow. Within a
+      <p class="fade-in">Flow Builder is a powerful low-code tool that enables users to automate business processes by
+        creating
+        customizable flows. Users can design visual workflows with drag-and-drop elements to automate tasks, guide user
+        interactions, and integrate with Salesforce data — all without writing code (see <a class="content-link"
+          href="/salesforce-canvas-enhancements">Case Study #1</a>).</p>
+      <p class="highlight fade-in">Flow Builder's Resource Menu displays the resources that are available in the flow.
+        Within a
         broader initiative aimed at an improved resource selection experience, this specific project sought to
         <span>guarantee keyboard accessibility</span> for the redesigned menu.
       </p>
-      <p>The modifications were implemented in Java, Typescript, HTML, and CSS.
+      <p class="fade-in">The modifications were implemented in Java, Typescript, HTML, and CSS.
       </p>
 
       </br>
 
-      <h2>So, what's the problem?</h2>
+      <h2 class="fade-in">So, what's the problem?</h2>
       </br>
-      <p>The original Resource Menu (v1) needed a design overhaul.</p>
-      <p> The following are the core problems this product aims to solve: </p>
-      <ul>
+      <p class="fade-in">The original Resource Menu (v1) needed a design overhaul.</p>
+      <p class="fade-in">The following are the core problems this product aims to solve: </p>
+      <ul class="fade-in">
         <li class="error-highlight"><span>Outdated design</span>. The menu's design was dated in comparison to latest
           Flow design enhancements.</li>
         <li class="error-highlight"><span>The menu items were disorganized</span>. Menu items that received significant
@@ -112,17 +114,19 @@
         <img src="../img/resource-selection/new-resource.jpg" alt="new resource">
         <p>v2 Design</p>
       </div>
-      <p class="highlight">Initially, when I was tasked with integrating keyboard navigation for the resource menu, it
+      <p class="highlight fade-in">Initially, when I was tasked with integrating keyboard navigation for the resource
+        menu, it
         was clear that the aim was to <span>preserve the keyboard navigation experience</span> akin to v1 for
         consistency. Yet, the interface of v1 differed from that of v2.</p>
-      <p class="highlight">v1 didn't showcase a header or footer, nor did it have a distinct nested menu structure like
+      <p class="highlight fade-in">v1 didn't showcase a header or footer, nor did it have a distinct nested menu
+        structure like
         v2. To ensure keyboard navigation was not only <span>compliant with accessibility standards</span> but also
         <span>tailored to typical Flow Builder user interactions</span>, every nuanced aspect of keyboard navigation had
         to be collaboratively addressed by the UX team, Product Managers, and Engineers.
       </p>
     </div>
 
-    <div class="col-lg-4 col-md-12 col-sm-12 project-sub-summary">
+    <div class="col-lg-4 col-md-12 col-sm-12 project-sub-summary fade-in">
       <p class="sub-header">WHEN WAS THIS?</p>
       <p>Aug - Sep 2022 (1 month)</p>
       </br>
@@ -152,37 +156,59 @@
     </div>
   </div>
 
-  <div class="col solution">
-    <div class="row resource-selection">
-      <img class="overall-exp" src="../img/resource-selection/resource-exp.png" alt="overall resource experience">
-    </div>
-    <div class="focus-points">
+  <div class="col solution fade-in">
+    <div class="focus-points fade-in">
       <div>
-        <h2 class="heading-padding padding-top">Guaranteeing Keyboard Navigation</h2>
+        <h2 class="heading-padding padding-top fade-in">The Process</h2>
         </br>
-        <p>When I was first assigned the task to implement comprehensive keyboard navigation for the redesigned resource
+        <p class="fade-in">When I was first assigned the task to implement comprehensive keyboard navigation for the
+          redesigned resource
           menu, I began researching web accessibility guidelines for menus. Specifically, I was recommended to refer to
           <a class="content-link" href="https://www.w3.org">World Wide Web Consortium (W3C)</a> for standards and
           guidelines I could use to apply to our redesigned resource menu.
         </p>
         </br>
-        <p class="highlight">Subsequently, I began documenting my findings and categorizing them into <span>four common
+        <p class="highlight fade-in">Subsequently, I began documenting my findings and categorizing them into <span>four
+            common
             scenarios</span> where the focus would land after certain keyboard navigation.
         </p>
         <div class="focus-points-header-segment">
-          <h2 class="focus-points-header padding-top">Common Focus Points</h2>
+          <h2 class="focus-points-header padding-top fade-in">Common Focus Points</h2>
         </div>
-        <div class="row focus-points-img">
-          <img class="focus-points short-padding-bottom" src="../img/resource-selection/keyboard-focus-points.png"
-            alt="focus points">
+        <div class="deliverables-grid">
+          <div class="deliverable-item">
+            <h3>1. The Input Field</h3>
+            <p>Initial focus point when users first interact with the resource menu.</p>
+          </div>
+
+          <div class="deliverable-item">
+            <h3>2. A Menu Item</h3>
+            <p>Focus lands here when navigating through available resources.</p>
+          </div>
+
+          <div class="deliverable-item">
+            <h3>3. The Footer</h3>
+            <p>Focus moves here when tabbing through the menu structure.</p>
+          </div>
+
+          <div class="deliverable-item">
+            <h3>4. The Close Button</h3>
+            <p>Final focus point when exiting the menu through:
+            <ul>
+              <li>Clicking outside</li>
+              <li>Pressing Esc</li>
+              <li>Selecting the X button</li>
+            </ul>
+            </p>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="overall-nav padding-top">
-      <h2 class="heading-padding padding-top">Delving Into Keyboard Navigation</h2>
+    <div class="overall-nav fade-in">
+      <h2 class="heading-padding padding-top fade-in">Delving Into Keyboard Navigation</h2>
       </br>
-      <p>With the help of the UX team, I documented and presented my findings using this diagram.</p>
+      <p class="fade-in">With the help of the UX team, I documented and presented my findings using this diagram.</p>
       <div class="row overall-nav-img-section">
         <div class="col">
           <img class="overall-nav-img padding-top-bottom" src="../img/resource-selection/overall-menu-nav.jpg"
@@ -196,7 +222,7 @@
       </br>
       <p>Let's see how I used this diagram to detail the four common focus scenarios.</p>
       </br>
-      <div class="focus-point-1 short-padding-bottom padding-top">
+      <div class="focus-point-1 short-padding-bottom padding-top fade-in">
         <h4 class="heading-padding">Focus Point 1</h4>
         <h3 class="heading-padding">The Input Field</h3>
         <div class="row">
@@ -220,7 +246,7 @@
           </div>
         </div>
       </div>
-      <div class="focus-point-2 short-padding-bottom padding-top">
+      <div class="focus-point-2 short-padding-bottom padding-top fade-in">
         <h4 class="heading-padding">Focus Point 2</h4>
         <h3 class="heading-padding">A Menu Item</h3>
         <div class="row">
@@ -246,7 +272,7 @@
           </div>
         </div>
       </div>
-      <div class="focus-point-3 short-padding-bottom padding-top">
+      <div class="focus-point-3 short-padding-bottom padding-top fade-in">
         <h4 class="heading-padding">Focus Point 3</h4>
         <h3 class="heading-padding">The Footer</h3>
         <div class="row">
@@ -265,7 +291,7 @@
           </div>
         </div>
       </div>
-      <div class="focus-point-4 short-padding-bottom padding-top">
+      <div class="focus-point-4 short-padding-bottom padding-top fade-in">
         <h4 class="heading-padding">Focus Point 4</h4>
         <h3 class="heading-padding">The Close Button</h3>
         <p>To leave the resource menu, the user can click outside the menu, use the Esc key or click the X button. When
@@ -278,70 +304,132 @@
           <li>Typing any alphanumeric character will filter the menu items.</li>
         </ul>
       </div>
-      <div class="road-bump-eureka">
-        <div class="tabbing-issue-text padding-top-bottom">
-          <h2 class="heading-padding">Yikes, tabbing road bump!</h2>
-          </br>
-          <p class="bold">In the v2 design that now included a header and footer, determining the <span>new tabbing
-              order</span> was most essential.</p>
-          </br>
-          <p class="highlight-blue">There were conflicting views on whether tabbing from the input field should move the
-            focus to the menu item (as it does in v1) or to the 'New Resource' option. The former prioritized <span>user
-              familiarity</span> while the latter prioritized <span>adhering to 2.1 global keyboard accessibility
-              standards</span>.</p>
+      <div class="problem-solution padding-top fade-in">
+        <h2 class="heading-padding fade-in">Balancing User Familiarity with Accessibility Standards</h2>
+        </br>
+        <h3 class="short-padding-top fade-in dilemma-section">The Design Challenge</h3>
+        <p class="bold fade-in">The introduction of a header and footer in v2 created a critical design decision for
+          keyboard navigation - we had to choose between two competing design principles:</p>
+
+        <div class="dilemma-container fade-in">
+          <div class="dilemma-option">
+            <div class="dilemma-header">
+              <h4>User Familiarity</h4>
+            </div>
+            <p>Maintain v1 behavior by focusing on menu items first.</p>
+            <div class="dilemma-pros">
+              <h5>Benefits</h5>
+              <ul>
+                <li>Preserves existing user muscle memory</li>
+                <li>Minimizes learning curve</li>
+                <li>Maintains consistency with previous version</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="dilemma-divider">
+            <span>VS</span>
+          </div>
+
+          <div class="dilemma-option">
+            <div class="dilemma-header">
+              <h4>Accessibility Standards</h4>
+            </div>
+            <p>Prioritize 2.1 global keyboard accessibility standards by focusing on the 'New Resource' option.</p>
+            <div class="dilemma-pros">
+              <h5>Benefits</h5>
+              <ul>
+                <li>Ensures compliance with accessibility guidelines</li>
+                <li>Improves experience for keyboard-only users</li>
+                <li>Future-proofs the interface</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="eureka padding-top">
-          <h2 class="heading-padding">Eureka!</h2>
-          </br>
-          <p class="bold">Flow Builder is a point-and-click automation tool. That meant that individuals with <span>low
-              vision</span> (who may have trouble finding or tracking a pointer indicator on screen) and those who have
-            <span>difficulty with using the mouse</span> face challenges in using our product if keyboard alternatives
-            are lacking.
-          </p>
-          </br>
-          <p class="highlight">Hence, the team agreed on the <span>importance of upholding 2.1 global keyboard
-              accessibility</span> and pursued the 'New Resource' option.</p>
-          </br>
-          <p>To tackle the concern of user unfamiliarity, we decided to also incorporate help popups to assist users in
-            grasping the updated keyboard navigation.</p>
-          </br>
-          <p class="highlight">Attempting to release a product with inaccessible features simply made no sense. A
-            product that boasts enhanced user experience should ensure that what's user-friendly for one user is
-            <span>equally accessible and intuitive</span> to another.
-          </p>
-        </div>
+
+        <h3 class="fade-in short-padding-top">Understanding User Needs</h3>
+        <p class="fade-in">Recognizing that Flow Builder is a point-and-click automation tool, we understood that users
+          with low vision or difficulty using the mouse would face significant challenges without proper keyboard
+          alternatives.</p>
+        <h3 class="fade-in padding-top">Our Approach</h3>
+        <p class="highlight fade-in">We implemented the 'New Resource' focus path to <span>uphold 2.1 global keyboard
+            accessibility standards</span>, with help popups to guide users through the new navigation. This decision
+          reinforced our core belief that a truly enhanced user experience must
+          be <span>equally accessible and intuitive</span> for all users, regardless of their interaction preferences or
+          abilities.</p>
       </div>
 
-      <div class="results padding-top">
-        <h2 class="heading-padding padding-top">... annnnnd cut!</h2>
-        </br>
-        <p class="highlight">After nearly a year of dedicated effort by my team, the revamped selection experience not
+      <div class="features padding-top fade-in">
+        <h2 class="heading-padding padding-top fade-in">Key Features</h2>
+        <p class="highlight short-padding-top fade-in">The revamped selection experience not
           only met but exceeded our customer's expectations. We introduced a redesigned resource menu that
           <span>significantly improved user experience</span> and <span>underscored the importance of
-            accessibility</span>. Besides boasting keyboard compatibility, the menu had more intuitive icons, helpful
-          tooltips for each item accessible by keyboard shortcuts, and clickable breadcrumbs for streamlined navigation.
+            accessibility</span> as part of the Salesforce Winter 2024 release.
         </p>
         </br>
-        <p>While the updates to keyboard navigation weren't explicitly highlighted, numerous independent and mainstream
-          articles sang praises for the newly-designed selection experience.</p>
-        </br>
-        <div class="row resource-reviews-img">
-          <img class="resource-reviews padding-bottom" src="../img/resource-selection/resource-reviews.png"
-            alt="resource reviews">
+        <div class="row resource-selection fade-in">
+          <img class="overall-exp" src="../img/resource-selection/resource-exp.png"
+            alt="Overview of easier Flow resource selection experience showing friendlier names, improved grouping, helpful tooltips, and clickable breadcrumbs">
         </div>
-        <p>Witnessing people genuinely enjoying and appreciating the revamped interface and selection experience
-          emphasized the significance of user-centric feature development.</p>
         </br>
-        <p class="highlight">This project not only deepened my understanding of human-centered design in keyboard
-          interaction but also taught me that a product's user experience can <span>evolve</span> - provided that ample
-          support and direction is offered to its users.</p>
-        </br>
+        <div class="features-container">
+          <div class="feature-grid">
+            <div class="feature-item">
+              <h3>Friendlier Names</h3>
+              <p>Easily find flow resources by label vs technical API name (e.g., Triggering Account vs $record).</p>
+            </div>
+          </div>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <h3>Improved Grouping</h3>
+              <p>Find outputs under the elements they were created in, making resource discovery more intuitive.</p>
+            </div>
+          </div>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <h3>New Helpful Tooltip</h3>
+              <p>Hover any row to see description, API Name, and Data or Element Type for better context.</p>
+            </div>
+          </div>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <h3>New Clickable Breadcrumbs</h3>
+              <p>See helpful context on the hierarchical data structure and effortlessly navigate the path.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="outro padding-top">
-        <h2 class="heading-padding">Thanks for scrolling!</h2>
+      <div class="results short-padding-top fade-in">
+        <h2 class="heading-padding padding-top fade-in">User Feedback & Praise</h2>
+        <div class="row review-image fade-in">
+          <img src="../img/resource-selection/review.png" alt="User reviews and feedback" class="img-fluid">
+        </div>
+
+
+      </div>
+
+      <div class="insights short-padding-top fade-in">
+        <h2 class="heading-padding padding-top fade-in">Insights & Takeaways</h2>
+        <p class="short-padding-top fade-in">Seeing users embrace the redesigned interface reinforced a crucial lesson:
+          accessibility and user experience are not mutually exclusive goals.</p>
         </br>
-        <p>If you're interested, check out <a class="content-link" href="/salesforce-canvas-enhancements">this
+        <p class="highlight fade-in">This project taught me three key lessons about product evolution:</p>
+        <ul class="focus-bulletpoints fade-in">
+          <li class="highlight">Accessibility is a <span>foundation</span>, not an afterthought. By integrating keyboard
+            navigation from the start, we created a more inclusive experience without compromising usability.</li>
+          <li class="highlight">User experience can <span>evolve</span> successfully when supported by clear guidance
+            and contextual help, even when introducing significant changes to familiar workflows.</li>
+          <li class="highlight">Cross-functional collaboration is <span>essential</span>. The success of this project
+            stemmed from the close partnership between UX, engineering, and product teams.</li>
+        </ul>
+      </div>
+
+      <div class="outro short-padding-top fade-in">
+        <h2 class="padding-top fade-in">Thanks for scrolling!</h2>
+        </br>
+        <p class="fade-in">If you're interested, check out <a class="content-link"
+            href="/salesforce-canvas-enhancements">this
             other case study</a> I did on redesigning Salesforce's Flow Builder canvas layout and experience.</p>
       </div>
     </div>
