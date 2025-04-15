@@ -1253,3 +1253,86 @@ img.d5-image {
     padding: 0 !important;
   }
 } */
+
+/* Project Grid and Cards */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.project-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-link:hover {
+  text-decoration: none;
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-info h3 {
+  margin: 0 0 0.5rem 0 !important;
+  color: black;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 0;
+  min-height: 2.5em; /* Ensures consistent height for titles */
+}
+
+.project-info p {
+  margin: 0;
+  color: #333;
+  line-height: 1.5;
+  font-size: 18px;
+  padding: 0;
+  flex-grow: 1; /* Makes paragraphs align at the bottom */
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 978px) {
+  .project-info h3 {
+    min-height: 0;
+  }
+}
