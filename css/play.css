@@ -375,6 +375,7 @@ div.nav-link:hover {
 
   .all-projects-overview {
     padding: 40px;
+    padding-top: 0;
   }
 
   .proj-desc h3 {
@@ -386,40 +387,29 @@ div.nav-link:hover {
   }
 }
 
-@media (max-width: 480px) {
-  .all-projects-overview {
-    padding: 20px;
-  }
-
-  .proj-container {
-    flex: 0 0 100%;
-  }
-
-  .proj-overview-header h2 {
-    font-size: 36px;
-  }
-
-  .proj-desc h3 {
-    font-size: 20px;
-  }
-
-  .footer {
-    padding: 40px 20px;
-  }
-}
-
 @media (max-width: 390px) {
   body {
-    font-size: 14px;
+    padding: 0;
+    margin: 0;
   }
 
   #navbar-real {
-    padding: 20px;
+    padding: 40px;
+    padding-bottom: 0;
+  }
+
+  .navbar-brand img.logo {
+    width: 30%;
+    height: auto;
   }
 
   #navbarSupportedContent,
   a.nav-link,
   div.nav-link {
     font-size: 16px;
+  }
+
+  .navbar-nav {
+    gap: 10px;
   }
 }

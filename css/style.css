@@ -739,10 +739,6 @@ h2 {
     max-width: none;
   }
 
-  .proj-container img {
-    height: 250px;
-  }
-
   .proj-overview-header h2 {
     font-size: 28px;
   }
@@ -780,10 +776,13 @@ h2 {
   .proj-container {
     flex: 1 1 100%;
     max-width: none;
+    padding: 0;
   }
 
   .proj-container img {
-    height: 200px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 10px;
   }
 
   .proj-overview-header h2 {
