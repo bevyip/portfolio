@@ -195,7 +195,6 @@ div.nav-link:hover {
 }
 
 .landing-content {
-  /* max-width: 70%; */
   margin-right: auto;
   margin-left: 0;
 }
@@ -373,11 +372,11 @@ div.nav-link:hover {
   }
 
   .headline {
-    font-size: 2.7rem;
+    font-size: 2.5rem;
   }
 
   .experience-summary {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.6;
   }
 
@@ -395,17 +394,18 @@ div.nav-link:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
   }
 
   .resume-button,
   .contact-button {
-    margin: 10px 0;
+    margin: 0;
     width: 100%;
   }
 
   .resume,
   .contact {
-    margin: 10px 0;
+    margin: 0;
   }
 
   .introduction {
@@ -589,9 +589,9 @@ div.nav-link:hover {
     gap: 10px;
   }
 
-  .landing {
+  /* .landing {
     padding: 40px 20px 40px 20px;
-  }
+  } */
 
   .landing-top {
     padding: 0;
@@ -606,11 +606,11 @@ div.nav-link:hover {
   }
 
   .landing-name h1 {
-    font-size: 64px;
+    font-size: 0.8rem;
   }
 
   .main-landing-desc {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .sub-landing-desc {
@@ -1132,5 +1132,15 @@ div.nav-link:hover {
 
   .salesforce-logo {
     height: 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .headline {
+    font-size: 2.1rem;
+  }
+
+  .experience-summary {
+    font-size: 1rem;
   }
 }
