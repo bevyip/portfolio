@@ -188,49 +188,117 @@ div.nav-link:hover {
 }
 
 .landing {
+  min-height: calc(100vh - 200px);
   display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding-bottom: 20px;
+  padding: 120px 120px 60px 120px;
+  position: relative;
 }
 
-.landing-top {
-  display: flex;
-  flex-direction: row;
-  padding-top: 20px;
+.landing-content {
+  /* max-width: 70%; */
+  margin-right: auto;
+  margin-left: 0;
 }
 
-.landing-text {
-  max-width: 60%;
+.landing-intro {
+  margin-bottom: 2.5rem;
 }
 
-.landing-name,
-.landing-desc {
-  padding-left: 120px;
-  padding-right: 20px;
+.greeting {
+  font-family: "Rashfield";
+  font-size: 1.5rem;
+  color: #4e3419;
+  display: block;
+  margin-bottom: 1rem;
 }
 
-.landing-name {
-  padding-bottom: 20px;
-}
-
-h2 {
+.headline {
   font-family: "Hanken Grotesk";
+  font-size: 3.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0;
+  letter-spacing: -0.02em;
 }
 
-.main-landing-desc {
-  font-size: 20px;
+.em-dash {
+  margin: 0 0.5rem;
+  font-weight: 400;
 }
 
-.sub-landing-desc {
-  font-size: 18px;
+.experience-summary {
+  font-family: "Hanken Grotesk";
+  font-size: 1.35rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #212020;
+}
+
+.location i {
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.highlight-link {
+  color: #4e3419;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.highlight-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #4e3419;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.highlight-link:hover {
+  color: #2c1d0d;
+  text-decoration: none;
+}
+
+.highlight-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.experience-section {
+  margin-bottom: 3rem;
+}
+
+.experience-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.experience-label {
+  font-weight: 500;
+  color: #4e3419;
+  width: 100px;
+}
+
+.experience-detail {
+  display: flex;
+  align-items: center;
 }
 
 .landing-buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 120px;
+  padding: 0;
 }
 
 .resume,
@@ -250,7 +318,7 @@ h2 {
 
 .resume-button,
 .contact-button {
-  margin: 60px 40px 60px 0;
+  margin: 40px 40px 40px 0;
 }
 
 .resume {
@@ -280,50 +348,77 @@ h2 {
   transition: border-color 0.2s ease-in;
 }
 
-.landing-image {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
+@media (max-width: 1640px) {
+  .landing {
+    padding: 80px 120px 60px 120px;
+  }
 }
 
-.landing-pfp {
-  border-radius: 50%;
-  max-width: 60%;
-  height: auto;
+@media (max-width: 1200px) {
+  .landing {
+    padding: 40px 120px;
+  }
 }
 
-.landing-bottom {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  padding: 40px 40px 0 40px;
+@media (max-width: 991px) {
+  .landing {
+    padding: 100px 60px 40px 60px;
+  }
 }
 
-.introduction {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  max-width: 600px;
-  margin-right: 120px;
-  text-align: left;
-}
+@media (max-width: 768px) {
+  .landing {
+    padding: 80px 40px 40px 40px;
+    min-height: auto;
+  }
 
-.introduction h3 {
-  font-family: "Rashfield";
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  letter-spacing: 0.1em;
-}
+  .headline {
+    font-size: 2.7rem;
+  }
 
-.introduction p {
-  font-family: "Hanken Grotesk";
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 0;
+  .experience-summary {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+
+  .experience-item {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+
+  .experience-label {
+    margin-bottom: 0.5rem;
+  }
+
+  .landing-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .resume-button,
+  .contact-button {
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .resume,
+  .contact {
+    margin: 10px 0;
+  }
+
+  .introduction {
+    padding-top: 20px;
+  }
+
+  .location {
+    font-size: 1rem;
+  }
+
+  .location i {
+    font-size: 1.1rem;
+  }
 }
 
 @media only screen and (max-width: 1640px) {
@@ -346,7 +441,7 @@ h2 {
 
   .resume-button,
   .contact-button {
-    margin: 10px 40px;
+    margin: 0;
     width: 100%;
   }
 
@@ -435,7 +530,7 @@ h2 {
   .landing {
     display: flex;
     flex-direction: column;
-    padding: 0;
+    padding: 0 40px;
   }
 
   .landing-top {
@@ -451,7 +546,7 @@ h2 {
   }
 
   h1 {
-    font-size: 80px;
+    font-size: 3.5rem;
   }
 
   .landing-image {
@@ -495,7 +590,7 @@ h2 {
   }
 
   .landing {
-    padding: 0 40px;
+    padding: 40px 20px 40px 20px;
   }
 
   .landing-top {
@@ -924,4 +1019,120 @@ h2 {
 .footerReroute-link:focus {
   color: #4e3419;
   text-decoration: none;
+}
+
+.landing-name h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.landing-name .role-title {
+  font-family: "Hanken Grotesk";
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #4e3419;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.landing-name .em-dash {
+  margin: 0 0.5rem;
+  font-weight: 400;
+}
+
+.landing-desc h2 {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0;
+  padding-left: 0;
+}
+
+.landing-desc .sub-landing-desc {
+  font-weight: 400;
+  color: #000;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  padding-left: 0;
+}
+
+@media (max-width: 768px) {
+  .landing-name h1 {
+    font-size: 2.2rem;
+  }
+
+  .landing-name .role-title {
+    font-size: 1.2rem;
+  }
+
+  .landing-desc h2 {
+    font-size: 1.1rem;
+  }
+
+  .landing-desc .sub-landing-desc {
+    font-size: 1rem;
+  }
+}
+
+.experience-section {
+  margin-top: 1rem;
+}
+
+.experience-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.experience-label {
+  font-weight: 500;
+  min-width: 100px;
+  color: #4e3419;
+}
+
+.experience-detail {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #000;
+  line-height: 1.5;
+}
+
+.company-logo {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.salesforce-logo {
+  height: 1.6em;
+  width: auto;
+  vertical-align: middle;
+  margin-left: 0.25rem;
+  position: relative;
+  top: -0.15em;
+}
+
+@media (max-width: 768px) {
+  .experience-item {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .experience-label {
+    margin-bottom: 0.25rem;
+  }
+
+  .experience-detail {
+    font-size: 1rem;
+  }
+
+  .salesforce-logo {
+    height: 2em;
+  }
 }

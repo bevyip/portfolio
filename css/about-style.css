@@ -29,7 +29,7 @@ h1 {
   font-family: "Rashfield";
   font-weight: 600;
   text-align: left;
-  font-size: 90px;
+  font-size: 80px;
   color: #111;
   letter-spacing: 0.1rem;
 }
@@ -199,7 +199,7 @@ img.about-landing-pfp {
   font-family: "Rashfield";
   font-weight: 600;
   text-align: left;
-  font-size: 64px;
+  font-size: 54px;
   color: #111;
   letter-spacing: 0.1rem;
 
@@ -276,7 +276,7 @@ p.highlight-brown {
   }
 
   .about-landing-name h1 {
-    font-size: 42px;
+    font-size: 38px;
   }
 
   img.about-landing-pfp {
@@ -309,7 +309,7 @@ p.highlight-brown {
   }
 
   .about-landing-name h1 {
-    font-size: 32px;
+    font-size: 28px;
   }
 }
 

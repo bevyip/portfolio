@@ -58,22 +58,21 @@
     </nav>
 
     <div class="landing">
-      <div class="landing-top fade-in">
-        <div class="landing-text fade-in">
-          <div class="landing-name fade-in">
-            <h1>Hey, I'm Beverly!</h1>
-          </div>
-          <div class="landing-desc fade-in">
-            <h2>
-              <span class="main-landing-desc"><b>UX Engineer | Graduate student at NYU Interactive Telecommunications
-                  Program
-                  (ITP).</b></span><br>
-              <span class="sub-landing-desc">Previously a Full-Stack Software Engineer specializing in Web Accessibility
-                at
-                Salesforce.</span>
-            </h2>
-          </div>
-          <div class="landing-buttons fade-in">
+      <div class="landing-content fade-in">
+        <div class="landing-intro">
+          <h1 class="headline">Hey, I'm Beverly <span class="em-dash">—</span> a UX Engineer building accessible,
+            intuitive, and delightful digital experiences for everyone.</h1>
+        </div>
+
+        <div class="landing-details">
+          <p class="experience-summary">
+            Currently pursuing a Master's in HCI at <a href="https://tisch.nyu.edu/itp" target="_blank"
+              class="highlight-link">NYU ITP '26</a>. Previously improved web accessibility as a Software Engineer at
+            <a href="https://www.salesforce.com" target="_blank" class="highlight-link">Salesforce <img
+                src="img/salesforce-logo.png" alt="Salesforce Logo" class="salesforce-logo"></a>.
+          </p>
+
+          <div class="landing-buttons">
             <div class="resume-button" ontouchstart="">
               <a class="resume btn btn-default" href="https://tinyurl.com/384ukjxf" target="_blank">Resume</a>
             </div>
@@ -81,23 +80,6 @@
               <a class="contact btn btn-default" href="#footer">Contact</a>
             </div>
           </div>
-        </div>
-        <div class="landing-image fade-in">
-          <img src="img/croppedpersonalphoto.jpg" alt="Head Shot" class="landing-pfp">
-        </div>
-      </div>
-      <div class="landing-bottom fade-in">
-        <div class="introduction fade-in">
-          <h3>INTRODUCTION —</h3>
-          <p>Now pursuing a Master's in Human-Computer Interaction at at New York University (NYU) ITP '26, I specialize
-            in
-            UX engineering with a focus
-            on web accessibility.</p>
-          <p>With eight years of experience in full-stack software engineering, I aspire to create thoughtfully-designed
-            user interfaces that
-            look
-            good and work even better.
-          </p>
         </div>
       </div>
     </div>
@@ -209,6 +191,7 @@
   integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script>
+  // Existing fade-in animation code
   document.addEventListener("DOMContentLoaded", () => {
     const rows = document.querySelectorAll(".proj-overview-content");
     const fadeInElements = document.querySelectorAll(".fade-in");
