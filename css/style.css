@@ -1112,9 +1112,7 @@ div.nav-link:hover {
   height: 1.6em;
   width: auto;
   vertical-align: middle;
-  margin-left: 0.25rem;
-  position: relative;
-  top: -0.15em;
+  margin-left: 0.5rem;
 }
 
 @media (max-width: 768px) {
