@@ -33,10 +33,6 @@ body {
   width: 100%;
 }
 
-nav {
-  height: 200px;
-}
-
 #navbar-real {
   background-color: inherit !important;
   padding: 40px 120px;
@@ -395,7 +391,6 @@ div.nav-link:hover {
 
   #navbar-real {
     padding: 40px;
-    padding-bottom: 0;
   }
 
   .navbar-brand img.logo {

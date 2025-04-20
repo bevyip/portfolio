@@ -61,13 +61,9 @@ body {
   width: 100%;
 }
 
-nav {
-  height: 200px;
-}
-
 #navbar-real {
   background-color: inherit !important;
-  padding: 0 120px;
+  padding: 40px 120px;
   position: relative;
   z-index: 11;
 }
@@ -184,8 +180,7 @@ div.nav-link:hover {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  padding-bottom: 60px;
-  padding-left: 120px;
+  padding: 40px 120px 60px 120px;
 }
 
 img.about-landing-pfp {
@@ -195,6 +190,10 @@ img.about-landing-pfp {
   border-radius: 10px;
 }
 
+.about-desc {
+  padding: 0 40px;
+}
+
 .about-landing-name h1 {
   font-family: "Rashfield";
   font-weight: 600;
@@ -202,9 +201,6 @@ img.about-landing-pfp {
   font-size: 54px;
   color: #111;
   letter-spacing: 0.1rem;
-
-  padding-left: 120px;
-  padding-bottom: 20px;
 }
 
 p.highlight-brown {
@@ -215,7 +211,6 @@ p.highlight-brown {
 .about-landing-desc {
   display: flex;
   flex-direction: column;
-  padding: 0 120px;
 }
 
 .about-landing-desc p {
@@ -227,28 +222,9 @@ p.highlight-brown {
   font-size: 18px;
 }
 
-@media only screen and (max-width: 1683px) {
-  .about-landing-name h1,
-  .about-landing-desc {
-    padding-left: 50px;
-    padding-right: 120px;
-  }
-}
-@media only screen and (max-width: 1115px) {
-  .about-landing-name h1,
-  .about-landing-desc {
-    padding-left: 20px;
-  }
-}
-
 @media only screen and (max-width: 991px) {
   .about-landing-top {
     padding-left: 120px;
-  }
-
-  .about-landing-name h1,
-  .about-landing-desc {
-    padding: 0 120px 0 20px;
   }
 
   .about-landing-name h1 {
@@ -260,9 +236,9 @@ p.highlight-brown {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   #navbar-real {
-    padding: 60px;
+    padding: 40px;
   }
 
   .about-landing-top {
@@ -276,7 +252,7 @@ p.highlight-brown {
   }
 
   .about-landing-name h1 {
-    font-size: 38px;
+    font-size: 46px;
   }
 
   img.about-landing-pfp {
@@ -292,7 +268,6 @@ p.highlight-brown {
   }
 
   .about-landing-name h1,
-  .about-desc,
   .about-landing-desc,
   .about-landing-image {
     padding: 0;
@@ -300,10 +275,6 @@ p.highlight-brown {
 }
 
 @media (max-width: 548px) {
-  .about-desc {
-    padding: 0;
-  }
-
   .about-landing-desc {
     padding-top: 10px;
   }
@@ -321,7 +292,7 @@ p.highlight-brown {
 
   #navbar-real {
     padding: 40px;
-    padding-bottom: 0;
+    padding-bottom: 20px;
   }
 
   .navbar-brand img.logo {
@@ -535,7 +506,7 @@ p.highlight-brown {
 
 @media (max-width: 548px) {
   .about-overview-content {
-    padding: 40px 60px;
+    padding: 40px;
   }
 
   .about-content-images {
@@ -571,7 +542,7 @@ p.highlight-brown {
   }
 
   .about-awards {
-    padding: 0 60px 40px 60px;
+    padding: 0 40px 40px 40px;
   }
 }
 
