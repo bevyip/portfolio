@@ -309,7 +309,7 @@ body {
   }
 
   .landing-name h1 {
-    font-size: 36px;
+    font-size: 42px;
   }
 
   .subtitle {
@@ -572,6 +572,12 @@ div.nav-link:hover {
   font-family: "Hanken Grotesk";
 }
 
+.project-sub-summary-content {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 40px;
+}
+
 .project-sub-summary .sub-header {
   font-family: "Rashfield";
   color: #444444;
@@ -615,12 +621,6 @@ p.bold span {
 ol li {
   padding: 10px 0px;
 }
-
-ul {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
 ul li {
   padding: 5px 0px;
 }
@@ -887,7 +887,7 @@ img {
 
 @media (max-width: 750px) {
   .additional-content {
-    padding: 0 40px 40px 40px;
+    padding: 40px;
   }
 
   .project-sub-summary {
@@ -897,7 +897,7 @@ img {
 
 @media (max-width: 576px) {
   .additional-content {
-    padding: 0 40px 40px 40px;
+    padding: 40px;
   }
 
   .project-sub-summary {
