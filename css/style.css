@@ -12,6 +12,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Landing */
 
 .fade-in {
@@ -197,6 +201,11 @@ div.nav-link:hover {
 
 .landing-intro {
   margin-bottom: 2.5rem;
+  cursor: default;
+}
+
+.landing-intro h1 {
+  cursor: default;
 }
 
 .greeting {
@@ -1146,4 +1155,28 @@ div.nav-link:hover {
     font-size: 1rem;
     margin-bottom: 1rem;
   }
+}
+
+/* Animation Styles */
+.animated-word {
+  display: inline-block;
+  cursor: default;
+}
+
+.animated-word span {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: default;
+}
+
+.animated-word span:hover {
+  transform: translateY(-15px);
+}
+
+.landing-intro {
+  cursor: default;
+}
+
+.landing-intro h1 {
+  cursor: default;
 }

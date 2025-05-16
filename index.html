@@ -6,10 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
     @font-face {
       font-family: "Rashfield";
       src: url("fonts/TTF/VVDSRashfield-Normal.ttf");
@@ -60,8 +56,11 @@
     <div class="landing">
       <div class="landing-content fade-in">
         <div class="landing-intro">
-          <h1 class="headline">Hey, I'm Beverly <span class="em-dash">—</span> a UX Engineer building accessible,
-            delightful, and intuitive digital experiences for everyone.</h1>
+          <h1 class="headline">Hey, I'm Beverly <span class="em-dash">—</span> a UX Engineer building <span
+              class="animated-word" id="accessible">accessible</span>,
+            <span class="animated-word" id="delightful">delightful</span>, and <span class="animated-word"
+              id="intuitive">intuitive</span> digital experiences for everyone.
+          </h1>
         </div>
 
         <div class="landing-details">
@@ -195,6 +194,51 @@
 <script>
   // Existing fade-in animation code
   document.addEventListener("DOMContentLoaded", () => {
+    // Function to wrap each character in a span
+    function wrapCharacters(element) {
+      const text = element.textContent;
+      element.textContent = '';
+      for (let i = 0; i < text.length; i++) {
+        const span = document.createElement('span');
+        span.textContent = text[i];
+        element.appendChild(span);
+      }
+    }
+
+    // Wrap characters for each animated word
+    ['accessible', 'delightful', 'intuitive'].forEach(id => {
+      const element = document.getElementById(id);
+      wrapCharacters(element);
+    });
+
+    // Handle hover animation
+    const animatedWords = document.querySelectorAll('.animated-word');
+    animatedWords.forEach(word => {
+      const chars = word.querySelectorAll('span');
+
+      word.addEventListener('mousemove', (e) => {
+        const rect = word.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const charWidth = rect.width / chars.length;
+        const hoveredCharIndex = Math.floor(x / charWidth);
+
+        chars.forEach((char, index) => {
+          if (index === hoveredCharIndex) {
+            char.style.transform = 'translateY(-15px)';
+          } else {
+            char.style.transform = 'translateY(0)';
+          }
+        });
+      });
+
+      word.addEventListener('mouseleave', () => {
+        chars.forEach(char => {
+          char.style.transform = 'translateY(0)';
+        });
+      });
+    });
+
+    // Existing fade-in animation code
     const rows = document.querySelectorAll(".proj-overview-content");
     const fadeInElements = document.querySelectorAll(".fade-in");
 
