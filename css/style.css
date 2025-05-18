@@ -194,11 +194,6 @@ div.nav-link:hover {
   position: relative;
 }
 
-/* .landing-content {
-  margin-right: auto;
-  margin-left: 0;
-} */
-
 .landing-intro {
   margin-bottom: 2.5rem;
   cursor: default;
@@ -219,7 +214,7 @@ div.nav-link:hover {
 .headline {
   font-family: "Hanken Grotesk";
   font-size: 3.75rem;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.2;
   margin-bottom: 0;
   letter-spacing: -0.02em;
@@ -1161,6 +1156,7 @@ div.nav-link:hover {
 .animated-word {
   display: inline-block;
   cursor: default;
+  font-weight: 600;
 }
 
 .animated-word span {
@@ -1179,4 +1175,93 @@ div.nav-link:hover {
 
 .landing-intro h1 {
   cursor: default;
+}
+
+/* Firework and Confetti Animations (delightful) */
+.firework {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  animation: firework 1s ease-out forwards;
+  z-index: 1000;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  animation: confetti 1.5s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes firework {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty));
+    opacity: 0;
+  }
+}
+
+@keyframes confetti {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) rotate(var(--rotation));
+    opacity: 0;
+  }
+}
+
+/* Accessibility Focus Effect (accessible) */
+.animated-word#accessible {
+  position: relative;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.animated-word#accessible::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid rgba(15, 15, 15, 0.6);
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 0 0 2px rgba(15, 15, 15, 0.1);
+}
+
+.animated-word#accessible:hover::before {
+  opacity: 1;
+}
+
+/* Intuitive Underline Effect (intuitive) */
+.animated-word#intuitive {
+  position: relative;
+  display: inline-block;
+}
+
+.intuitive-underline {
+  position: absolute;
+  height: 2px;
+  bottom: -2px;
+  background-color: #4e3419;
+  width: 30px;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.animated-word#intuitive:hover .intuitive-underline {
+  opacity: 1;
 }
