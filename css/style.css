@@ -1232,12 +1232,20 @@ div.nav-link:hover {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  border: 2px solid rgba(15, 15, 15, 0.6);
   border-radius: 4px;
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
-  box-shadow: 0 0 0 2px rgba(15, 15, 15, 0.1);
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(15, 15, 15, 0.2) 0%,
+    rgba(15, 15, 15, 0.8) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  padding: 2px;
 }
 
 .animated-word#accessible:hover::before {

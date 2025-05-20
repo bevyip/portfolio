@@ -149,6 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
     word.addEventListener("mousemove", (e) => {
       const rect = word.getBoundingClientRect();
       const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
       const charWidth = rect.width / chars.length;
       const hoveredCharIndex = Math.floor(x / charWidth);
 
@@ -180,6 +181,12 @@ document.addEventListener("DOMContentLoaded", () => {
           );
           underline.style.left = `${left}px`;
         }
+      } else if (word.id === "accessible") {
+        // Calculate percentage position for the gradient
+        const xPercent = (x / rect.width) * 100;
+        const yPercent = (y / rect.height) * 100;
+        word.style.setProperty("--mouse-x", `${xPercent}%`);
+        word.style.setProperty("--mouse-y", `${yPercent}%`);
       }
     });
 
