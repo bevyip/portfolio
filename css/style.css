@@ -305,7 +305,6 @@ div.nav-link:hover {
   font-family: "Hanken Grotesk";
   font-weight: bold;
   font-size: 20px;
-  border: solid;
   padding: 0.7em 8em;
   text-align: center;
   text-decoration: none;
@@ -313,6 +312,35 @@ div.nav-link:hover {
   cursor: pointer;
   border-radius: 40px;
   width: 100%;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.5, 2.5, 0.7, 0.7);
+}
+
+.resume {
+  background-color: black;
+  color: hsla(42.85714286, 28%, 95.09803922%, 1);
+}
+
+.contact {
+  background-color: hsla(42.85714286, 28%, 95.09803922%, 1);
+  border: 2px solid hsla(42.85714286, 28%, 95.09803922%, 1);
+  color: black;
+}
+
+.resume:hover,
+.resume:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 0 0 1px black, 0 4px 0 0 black;
+  text-decoration: none;
+  color: hsla(42.85714286, 28%, 95.09803922%, 1);
+}
+
+.contact:hover,
+.contact:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 0 0 1px black, 0 4px 0 0 black;
+  text-decoration: none;
+  color: black;
 }
 
 .resume-button,
@@ -320,31 +348,17 @@ div.nav-link:hover {
   margin: 40px 40px 40px 0;
 }
 
-.resume {
-  background-color: black;
-  border-color: black;
-  color: hsla(42.85714286, 28%, 95.09803922%, 1);
-}
+@media (max-width: 768px) {
+  .resume,
+  .contact {
+    font-size: 16px;
+    padding: 0.7em 4em;
+  }
 
-.resume:hover,
-.resume:focus {
-  border-color: #4e3419;
-  background-color: #4e3419;
-  color: white;
-  transition: background-color border-color 0.2s ease-in;
-}
-
-.contact {
-  background-color: hsla(42.85714286, 28%, 95.09803922%, 1);
-  border-color: hsla(42.85714286, 28%, 95.09803922%, 1);
-  color: black;
-}
-
-.contact:hover,
-.contact:focus {
-  color: #4e3419;
-  border-color: #4e3419;
-  transition: border-color 0.2s ease-in;
+  .resume-button,
+  .contact-button {
+    margin: 20px 0;
+  }
 }
 
 @media (max-width: 1640px) {
