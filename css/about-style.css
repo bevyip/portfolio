@@ -564,79 +564,104 @@ p.highlight-brown {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  gap: 0.875rem;
 }
 
 .footerLabel {
   font-family: "Rashfield";
   font-weight: 600;
   letter-spacing: 0.1rem;
-  font-size: 30px;
+  font-size: 2rem;
   font-weight: bold;
   margin: 0;
-  margin-bottom: 10px;
 }
 
 .footerIcons {
   margin: 0;
+  display: flex;
+  gap: 1rem;
 }
 
 .icons {
   padding: 0.1em;
-  font-size: 25px;
-  margin-bottom: 10px;
+  font-size: 1.25rem;
+  margin-bottom: 0;
+  transition: transform 0.2s ease;
 }
 
 .icons:hover,
 .icons:focus {
   color: #3f2a14;
   text-decoration: none;
+  transform: translateY(-2px);
 }
 
 .fa-github,
 .fa-envelope,
-.fa-twitter,
-.fa-facebook,
-.fa-instagram,
-.fa-linkedin,
-.fa-link {
+.fa-linkedin {
   color: black;
 }
 
-.footerStamp {
-  font-size: 18px;
-  color: #202020;
+.footer .footerStamp {
+  font-size: 0.85rem;
+  color: black;
   font-family: "Hanken Grotesk";
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
 }
 
-.footerStamp p {
+.footer .footerStamp p {
   margin: 0;
-}
-
-@media (max-width: 768px) {
-  .footer {
-    padding: 40px;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer {
-    padding: 20px;
-  }
+  font-size: 0.85rem;
+  color: black;
 }
 
 .footerReroute {
-  margin-top: 10px;
+  margin-top: 0.5rem;
 }
 
 .footerReroute-link {
-  font-size: 14px;
+  font-size: 0.8rem;
   color: #202020;
   font-family: "Hanken Grotesk";
   font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  transition: all 0.2s ease;
 }
 
 .footerReroute-link:hover,
 .footerReroute-link:focus {
   color: #4e3419;
   text-decoration: none;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px;
+  }
+
+  .footerLabel {
+    font-size: 1.75rem;
+  }
+
+  .footer-info {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 20px;
+  }
+
+  .footerLabel {
+    font-size: 1.5rem;
+  }
+
+  .footer-info {
+    gap: 0.625rem;
+  }
 }
