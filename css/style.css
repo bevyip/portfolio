@@ -1013,6 +1013,7 @@ div.nav-link:hover {
 }
 
 .footerStamp p {
+  font-size: 0.85rem;
   margin: 0;
 }
 
@@ -1048,6 +1049,10 @@ div.nav-link:hover {
 
   .footer-info {
     gap: 0.75rem;
+  }
+
+  .footerStamp p {
+    font-size: 0.7rem;
   }
 }
 

@@ -523,7 +523,7 @@ img {
   opacity: 0.8;
 }
 
-.footer .footerStamp p {
+.footerStamp p {
   margin: 0;
   font-size: 0.85rem;
   color: black;
@@ -561,6 +561,10 @@ img {
 
   .footer-info {
     gap: 0.75rem;
+  }
+
+  .footerStamp p {
+    font-size: 0.7rem;
   }
 }
 
