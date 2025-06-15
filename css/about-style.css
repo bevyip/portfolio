@@ -436,6 +436,10 @@ p.highlight-brown {
   margin: 2px 0;
 }
 
+.content-leadership a {
+  color: black;
+}
+
 .about-awards {
   display: flex;
   flex-direction: column;
