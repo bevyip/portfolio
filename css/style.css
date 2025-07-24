@@ -1164,6 +1164,13 @@ div.nav-link:hover {
   margin-left: 0.5rem;
 }
 
+.confido-logo {
+  height: 1.2em;
+  width: auto;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
 @media (max-width: 768px) {
   .experience-item {
     flex-direction: column;
@@ -1180,6 +1187,10 @@ div.nav-link:hover {
   }
 
   .salesforce-logo {
+    height: 2em;
+  }
+
+  .confido-logo {
     height: 2em;
   }
 }
