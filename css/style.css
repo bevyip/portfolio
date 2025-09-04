@@ -473,7 +473,6 @@ main {
 /* Responsive breakpoints for projects section */
 @media (min-width: 1281px) {
   .projects-container {
-    max-width: 1800px;
     padding: 0 var(--spacing-5xl);
   }
 }

@@ -24,6 +24,20 @@ body {
   transform: translateY(0);
 }
 
+/* Section wrapper */
+.section-wrapper {
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-4xl);
+}
+
+/* Large screens - no padding */
+@media (min-width: 1280px) {
+  .section-wrapper {
+    padding: 0;
+  }
+}
+
 /* Section titles */
 .section-title {
   font-family: var(--font-family-primary);
@@ -263,6 +277,7 @@ body {
 /* Hobbies Section */
 .hobbies-section {
   padding: var(--spacing-3xl) var(--spacing-4xl);
+  margin: 0 auto;
   background: white;
   position: relative;
   min-height: 600px;
@@ -698,6 +713,10 @@ body {
 
   .container {
     padding: 0 var(--spacing-2xl);
+  }
+
+  .section-wrapper {
+    padding: 0;
   }
 
   /* Hobbies section responsive spacing */
