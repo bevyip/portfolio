@@ -79,11 +79,6 @@ body {
   display: block;
 }
 
-/* Film grain effect for profile image */
-.profile-image {
-  filter: contrast(1.1) brightness(1.05) saturate(1.05) sepia(0.08);
-}
-
 .hero-title {
   font-family: var(--font-family-primary);
   font-size: 5rem;
