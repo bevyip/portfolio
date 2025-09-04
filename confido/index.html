@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beverly Yip | Portfolio</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../img/logo-light.png">
+
+    <!-- Typography System -->
+    <link rel="stylesheet" href="../css/typography.css">
+
+    <!-- Navbar Component CSS -->
+    <link rel="stylesheet" href="../nav/nav.css">
+
+    <!-- Footer Component CSS -->
+    <link rel="stylesheet" href="../nav/footer.css">
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Material-UI Icons -->
+    <script src="https://unpkg.com/@mui/icons-material@latest/umd/material-ui-icons.development.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <!-- Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Header with Navbar -->
+    <header>
+        <!-- Include the navbar component -->
+        <div id="nav-bar"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <h1 class="hero-title text-animate">REBUILDING CONFIDO'S APPROVAL FLOW</h1>
+                    <div class="hero-meta">
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">ROLE</span>
+                            <span class="meta-value">UX Design Engineer</span>
+                        </div>
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">DURATION</span>
+                            <span class="meta-value">June — August 2025 (8 weeks)</span>
+                        </div>
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">TOOLS</span>
+                            <span class="meta-value">Figma, React, TypeScript, Node.js, Ruby, PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="hero-summary text-animate">
+                        <p>A comprehensive redesign and refactor of Confido's approval workflow that transforms how
+                            analysts review promotional deductions. The project replaces fragmented UI design and
+                            unclear approval paths by introducing consistent design components, clearer approval flows,
+                            and
+                            detailed audit logging that makes the approval process more efficient and intuitive for
+                            analysts.</p>
+                        <div class="hero-tags text-animate">
+                            <span class="tag">Web</span>
+                            <span class="tag">Design Systems</span>
+                            <span class="tag">Product Design</span>
+                            <span class="tag">UX/UI</span>
+                        </div>
+
+                        <!-- Scroll to Solution Button -->
+                        <div class="hero-scroll-button-container">
+                            <button class="hero-scroll-button clickable" onclick="scrollToSolution()">
+                                <span class="button-text">Skip to Solution</span>
+                                <span class="button-text-hidden">Skip to Solution</span>
+                                <span class="material-icons button-arrow">arrow_downward</span>
+                                <span class="material-icons button-arrow-hidden">arrow_downward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visuals fade-in">
+                <img src="img/thumbnail.png" alt="Confido Approval Flow Interface" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview Section -->
+    <section class="project-overview">
+        <div class="overview-container">
+            <div class="overview-content">
+                <div class="overview-left fade-in">
+                    <h2 class="overview-title">What is Confido?</h2>
+                    <p class="overview-description">
+                        Confido is a B2B SaaS platform that helps CPG brands manage and resolve promotional deductions
+                        and chargebacks. The platform streamlines the complex process of tracking, reviewing, and
+                        approving promotional claims between retailers and suppliers.
+                    </p>
+                </div>
+                <div class="overview-right fade-in">
+                    <h2 class="overview-title">My Role</h2>
+                    <p class="overview-description">
+                        As a UX Design Engineer, I led the complete redesign and refactor of the approval workflow,
+                        including user research, problem analysis, design system implementation, and full-stack
+                        development while collaborating with product managers and engineers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcome Section -->
+    <section class="outcome-section">
+        <div class="outcome-container">
+            <h3 class="section-subtitle">Outcome</h3>
+            <div class="outcome-metrics">
+                <div class="metric-item">
+                    <span class="metric-number" data-target="40">0%</span>
+                    <span class="metric-label">reduction in approval time</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number" data-target="25">0%</span>
+                    <span class="metric-label">decrease in user errors</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number" data-target="60">0%</span>
+                    <span class="metric-label">improvement in analyst satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Context Section -->
+    <section class="context-section">
+        <div class="context-container">
+            <h3 class="section-subtitle fade-in">Context</h3>
+            <p class="context-problem fade-in">
+                Confido's approval workflow had fragmented UI design and unclear approval paths, leading to delays and
+                unresolved deductions.
+            </p>
+            <p class="context-subtext fade-in">
+                The existing system created confusion with inconsistent design and unclear rejection flows. Analysts
+                spent an average of <strong>3.2</strong> days resolving each deduction, with <strong>35%</strong> of
+                deductions bouncing back for multiple
+                reviews due to unclear approval states and poor visibility into previous decisions.
+            </p>
+            <div class="context-image fade-in">
+                <img src="img/context.png" alt="Context visualization of Confido's approval workflow">
+                <span class="video-label">1 — Previous UI</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="problem-container">
+            <h3 class="section-subtitle fade-in">Problems</h3>
+            <div class="problem-content">
+                <!-- Problem 1: Unintuitive UI & Workflow -->
+                <div class="problem-subsection">
+                    <h4 class="problem-subtitle fade-in">Unintuitive UI & Workflow</h4>
+                    <p class="problem-description fade-in">
+                        Confusing icons, hidden approval panels, and excessive clicks for basic tasks made the approval
+                        process unnecessarily complex and time-consuming.
+                    </p>
+                    <div class="problem-visual fade-in">
+                        <div class="video-container">
+                            <video class="problem-video" autoplay loop muted playsinline>
+                                <source src="img/old-design-video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <span class="video-label">2.1 — Previous Approval UI</span>
+                    </div>
+                </div>
+
+                <!-- Problem 2: Poor Rejection Handling -->
+                <div class="problem-subsection">
+                    <h4 class="problem-subtitle fade-in">Poor Rejection Handling</h4>
+                    <p class="problem-description fade-in">
+                        Auto-reassignment loops and unclear rejection consequences created user confusion, with users
+                        getting unexpectedly reassigned deductions without explanation.
+                    </p>
+                    <div class="problem-visual fade-in">
+                        <img src="img/auto-reassign.png" alt="Auto-reassignment flow issues in rejection handling"
+                            class="problem-image">
+                        <span class="video-label">2.2 — Previous Auto-Reassignment Issues</span>
+                    </div>
+                </div>
+
+                <!-- Problem 3: Unclear Data Visibility -->
+                <div class="problem-subsection">
+                    <h4 class="problem-subtitle fade-in">Unclear Data Visibility</h4>
+                    <p class="problem-description fade-in">
+                        High-level metrics without actionable insights or change tracking made it difficult for users to
+                        understand what had changed and what required their attention.
+                    </p>
+                    <div class="problem-visual fade-in">
+                        <img src="img/approval-summary.png"
+                            alt="Approval summary showing unclear data visibility issues" class="problem-image">
+                        <span class="video-label">2.3 — Previous Approval Summary</span>
+                    </div>
+                </div>
+
+                <!-- Problem 4: Workflow Management Issues -->
+                <div class="problem-subsection">
+                    <h4 class="problem-subtitle fade-in">Workflow Management Issues</h4>
+                    <p class="problem-description fade-in">
+                        Overlapping approval flows, misassignments, and manual intervention requirements created
+                        disorganization and required constant manual oversight.
+                    </p>
+                    <div class="problem-visual fade-in">
+                        <img src="img/approval-flows.png" alt="Approval flows showing workflow management issues"
+                            class="problem-image">
+                        <span class="video-label">2.4 — Previous Approval Flows</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Goal Section -->
+    <section class="goal-section">
+        <div class="goal-container">
+            <h3 class="section-subtitle fade-in">Goal</h3>
+            <p class="goal-text fade-in">
+                Transform the approval workflow into an intuitive, consistent system that reduces analyst confusion and
+                speeds up the approval process.
+            </p>
+        </div>
+    </section>
+
+    <!-- User Research Section -->
+    <section class="user-research-section">
+        <div class="user-research-container">
+            <h3 class="section-subtitle fade-in">User Research</h3>
+            <p class="research-intro fade-in">
+                From my user interviews with accounting teams at major CPG brands like <a
+                    href="https://drinkolipop.com/" target="_blank" class="company-link">Olipop
+                    <img src="img/olipop.png" alt="Olipop Logo" class="company-logo">
+                </a> and <a href="https://unbunfoods.com/" target="_blank" class="company-link">Unbun Foods™
+                    <img src="img/unbun.png" alt="Unbun Foods Logo" class="company-logo">
+                </a>, three critical pain points emerged that were causing delays and confusion in the approval process.
+            </p>
+            <div class="research-visual fade-in">
+                <img src="img/user-research.png" alt="User research findings and pain points" class="research-image">
+                <span class="video-label">3 — User Research Findings</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Analysis Section -->
+    <section class="competitive-analysis-section">
+        <div class="competitive-analysis-container">
+            <h3 class="section-subtitle fade-in">Competitive Analysis</h3>
+            <p class="competitive-intro-main fade-in">
+                To better understand best practices in B2B approval workflows, I conducted a competitor analysis of
+                <a href="https://ramp.com/" target="_blank" class="company-link">Ramp
+                    <img src="img/ramp.png" alt="Ramp Logo" class="company-logo">
+                </a>,
+                <a href="https://bill.com/" target="_blank" class="company-link">Bill.com
+                    <img src="img/bill.png" alt="Bill.com Logo" class="company-logo">
+                </a>,
+                <a href="https://approvalmax.com/" target="_blank" class="company-link">ApprovalMax
+                    <img src="img/approvalmax.png" alt="ApprovalMax Logo" class="company-logo">
+                </a>, and
+                <a href="https://quickbooks.intuit.com/" target="_blank" class="company-link">QuickBooks Online
+                    <img src="img/quickbooks.png" alt="QuickBooks Logo" class="company-logo">
+                </a>.
+            </p>
+            <p class="competitive-intro fade-in">
+                These platforms were selected because they represent leading financial approval solutions. By examining
+                their approach to approval creation, status visibility, and workflow flexibility, I identified several
+                proven
+                patterns for Confido's issues.
+            </p>
+
+            <p class="transition-insight fade-in">
+                However, the research also showed that fixing individual pain points — like rejection flows or template
+                creation — wouldn't be enough; <span class="highlight-phrase">the entire approval process needed
+                    a complete overhaul across
+                    four critical stages</span>:
+            </p>
+
+            <div class="competitive-content">
+                <div class="flow-container">
+                    <!-- Flow Step 1: Intuitive Flow Creation -->
+                    <div class="flow-card flow-card-1 fade-in">
+                        <div class="flow-number">1</div>
+                        <div class="flow-content">
+                            <h4 class="flow-title">Intuitive Flow Creation</h4>
+                            <p class="flow-subtitle">Addresses: Hidden Navigation</p>
+                            <p class="flow-description">
+                                Competitors use visual builders with templates and validation. Ramp provides "Large
+                                Deductions" templates while ApprovalMax uses drag-and-drop flowcharts — unlike Confido's
+                                buried approval panels in deduction modals.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Flow Step 2: Clear Status & Action Visibility -->
+                    <div class="flow-card flow-card-2 fade-in">
+                        <div class="flow-number">2</div>
+                        <div class="flow-content">
+                            <h4 class="flow-title">Clear Status & Action Visibility</h4>
+                            <p class="flow-subtitle">Addresses: Poor Visibility (35% rework rate)</p>
+                            <p class="flow-description">
+                                All competitors surface approval actions in dedicated sections with direct action
+                                buttons and comprehensive audit trails visible. Bill.com displays timestamps and action
+                                history prominently in tables — unlike Confido's buried approval actions in nested
+                                modals across scattered views.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Flow Step 3: Flexible Routing & Recovery -->
+                    <div class="flow-card flow-card-3 fade-in">
+                        <div class="flow-number">3</div>
+                        <div class="flow-content">
+                            <h4 class="flow-title">Flexible Routing & Recovery</h4>
+                            <p class="flow-subtitle">Addresses: Rigid Workflows</p>
+                            <p class="flow-description">
+                                Competitors offer approval groups and fallback options. ApprovalMax allows mid-flow
+                                adjustments while Ramp handles inactive users — preventing the workflow breakdowns
+                                Confido
+                                users face when they can't break out of approval chains.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Flow Step 4: Smart Automation & Oversight -->
+                    <div class="flow-card flow-card-4 fade-in">
+                        <div class="flow-number">4</div>
+                        <div class="flow-content">
+                            <h4 class="flow-title">Smart Automation & Oversight</h4>
+                            <p class="flow-subtitle">Addresses: All pain points</p>
+                            <p class="flow-description">
+                                Advanced reminders and admin tools provide oversight. QuickBooks offers customizable
+                                notifications while ApprovalMax surfaces errors as actionable tasks — capabilities
+                                missing
+                                from Confido's current system.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Prioritization Section -->
+    <section class="feature-prioritization-section">
+        <div class="feature-prioritization-container">
+            <h3 class="section-subtitle fade-in">Feature Prioritization</h3>
+            <p class="prioritization-intro fade-in">
+                Based on user research and competitive analysis, I prioritized features using impact vs. effort,
+                focusing on solutions that would directly address the core pain points:
+            </p>
+
+            <div class="priority-grid">
+                <!-- High Priority -->
+                <div class="priority-card priority-high clickable fade-in">
+                    <div class="priority-header clickable" onclick="togglePriorityCard(this)">
+                        <div class="priority-text">
+                            <h4 class="priority-title">High Priority — Core Experience</h4>
+                            <p class="priority-subtitle">Must-haves that solve critical user pain points</p>
+                        </div>
+                        <span class="priority-chevron">
+                            <span class="material-icons">expand_more</span>
+                        </span>
+                    </div>
+                    <div class="priority-visual collapsed">
+                        <img src="img/high.png" alt="High priority features" class="priority-image">
+                    </div>
+                </div>
+
+                <!-- Medium Priority -->
+                <div class="priority-card priority-medium clickable fade-in">
+                    <div class="priority-header clickable" onclick="togglePriorityCard(this)">
+                        <div class="priority-text">
+                            <h4 class="priority-title">Medium Priority — Enhanced Functionality</h4>
+                            <p class="priority-subtitle">Important improvements for workflow efficiency</p>
+                        </div>
+                        <span class="priority-chevron">
+                            <span class="material-icons">expand_more</span>
+                        </span>
+                    </div>
+                    <div class="priority-visual collapsed">
+                        <img src="img/medium.png" alt="Medium priority features" class="priority-image">
+                    </div>
+                </div>
+
+                <!-- Low Priority -->
+                <div class="priority-card priority-low clickable fade-in">
+                    <div class="priority-header" onclick="togglePriorityCard(this)">
+                        <div class="priority-text">
+                            <h4 class="priority-title">Low Priority — Nice-to-Haves</h4>
+                            <p class="priority-subtitle">Future enhancements once core issues are resolved</p>
+                        </div>
+                        <span class="chevron">
+                            <span class="material-icons">expand_more</span>
+                        </span>
+                    </div>
+                    <div class="priority-content collapsed">
+                        <ul class="priority-list">
+                            <li>Watchers/notifications for non-approvers</li>
+                            <li>Template approval flows</li>
+                            <li>Flexible backup workflows</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Introduction Section -->
+    <section class="solution-intro-section">
+        <div class="solution-intro-container">
+            <h3 class="section-subtitle fade-in">How could we redesign the workflow to establish clear start-to-end
+                approval
+                paths?
+            </h3>
+
+            <div class="solution-content">
+                <p class="solution-main fade-in">
+                    I structured the redesign around addressing what matters most to our core users:
+                </p>
+            </div>
+
+            <div class="personas-section">
+                <div class="personas-grid">
+                    <div class="persona-card fade-in">
+                        <h5 class="persona-name">Jane (Accounts Specialist)</h5>
+                        <p class="persona-need">
+                            needs clear approval flows and tracking tools to stop constantly reassigning deductions and
+                            chasing approvers.
+                        </p>
+                    </div>
+                    <div class="persona-card fade-in">
+                        <h5 class="persona-name">John (Sales Specialist)</h5>
+                        <p class="persona-need">
+                            needs easy unassign options and clear handoff paths to avoid handling misrouted deductions
+                            he can't approve.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="redesigned-flow-section">
+                <h4 class="redesigned-flow-title fade-in">Redesigned Approval Paths</h4>
+                <p class="flow-description fade-in">
+                    The redesigned flow introduces clear terminal states for all rejection paths and fallback user
+                    assignments to prevent workflow breakdowns.
+                </p>
+                <div class="flow-visual fade-in">
+                    <img src="img/new-flow.png" alt="Redesigned approval flow diagram" class="flow-diagram">
+                    <span class="video-label">4 — Redesigned Approval Flow</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Translating Insights to Design Section -->
+    <section class="translating-insights-section">
+        <div class="translating-insights-container">
+            <h3 class="section-subtitle fade-in">Translating Insights to Design</h3>
+            <p class="translating-insights-intro fade-in">
+                To bring these solutions to life, I mapped out how the redesigned interface would look and function
+                across the key problem areas — creating dedicated spaces for approvals, comprehensive audit trails, and
+                intuitive flow creation.
+            </p>
+            <div class="design-visuals">
+                <div class="design-image-container fade-in">
+                    <img src="img/wireframe1.png" alt="Wireframe 1 - Redesigned approval interface layout"
+                        class="design-image wireframe-image">
+                    <span class="video-label">5.1 — Unified Approval Interface Wireframes</span>
+                </div>
+                <div class="design-image-container fade-in">
+                    <img src="img/wireframe2.png" alt="Wireframe 2 - Redesigned flow creation interface"
+                        class="design-image wireframe-image">
+                    <span class="video-label">5.2 — Intuitive Flow Creation Wireframes</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Iterative Design & User Validation Section -->
+    <section class="iterative-design-section">
+        <div class="iterative-design-container">
+            <h3 class="section-subtitle fade-in">Iterative Design & User Validation</h3>
+            <p class="iterative-design-intro fade-in">
+                Following the initial wireframes,I conducted weekly validation sessions over three weeks with users,
+                product managers, and engineers. By observing how users interacted with the redesigned approval
+                interface and listening to their workflow concerns, I identified four critical areas that needed
+                refinement:
+            </p>
+            <div class="user-testing-visual fade-in">
+                <img src="img/user-testing.jpg" alt="User testing and feedback process" class="user-testing-image">
+                <span class="video-label">6 — User Testing & Feedback</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Design Solutions Section -->
+    <section class="final-design-section">
+        <div class="final-design-container">
+            <h3 class="section-subtitle fade-in">Final Implementation (Designed & Developed)</h3>
+            <p class="final-design-intro fade-in">
+                The implemented improvements directly address each of the four critical stages identified in the
+                competitive analysis, transforming Confido's fragmented approval experience:
+            </p>
+
+            <!-- Solution 1: Flow Creation -->
+            <div class="solution-item">
+                <div class="solution-header fade-in">
+                    <h4 class="solution-number">1</h4>
+                    <h4 class="solution-title">Build Advanced Multi-Step Flows</h4>
+                </div>
+
+                <div class="before-after-container">
+                    <div class="before-after-item">
+                        <div class="before-after-header">
+                            <h5 class="before-after-title fade-in">Before: Limited single-step approval setup</h5>
+                            <p class="before-after-description fade-in">
+                                Approval flow creation was restricted to simple, single-step logic with no visual
+                                guidance or ability to handle complex approval scenarios.
+                            </p>
+                        </div>
+                        <div class="before-after-visual fade-in">
+                            <img src="img/old-approval-flows.jpg" alt="Previous flow creation interface"
+                                class="before-after-image">
+                            <span class="video-label">7.1 — Previous Interface: Flow Creation</span>
+                        </div>
+                    </div>
+
+                    <div class="before-after-item">
+                        <div class="before-after-header">
+                            <h5 class="before-after-title fade-in">After: Advanced flow builder with nested logic</h5>
+                            <p class="before-after-description fade-in">
+                                A complete approval flow management interface with multi-step capabilities, nested
+                                conditions, approval tiers, and visual flow creation that handles complex approval
+                                scenarios.
+                            </p>
+                        </div>
+                        <div class="before-after-visual fade-in">
+                            <div class="video-container">
+                                <video class="before-after-video" autoplay loop muted playsinline>
+                                    <source src="img/new-approval-flows.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <span class="video-label">7.2 — New Interface: Flow Creation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solution 2: Status Visibility -->
+            <div class="solution-item">
+                <div class="solution-header fade-in">
+                    <h4 class="solution-number">2</h4>
+                    <h4 class="solution-title">Surface Hidden Approval Actions</h4>
+                </div>
+
+                <div class="before-after-container">
+                    <div class="before-after-item">
+                        <div class="before-after-header">
+                            <h5 class="before-after-title fade-in">Before: Buried approval actions caused 35% rework
+                            </h5>
+                            <p class="before-after-description fade-in">
+                                Approval actions were hidden in nested modals scattered across different views, with
+                                inconsistent UI components and missing audit trails where users expected them most.
+                            </p>
+                        </div>
+                        <div class="before-after-visual fade-in">
+                            <img src="img/old-approval-section.jpg" alt="Previous status visibility interface"
+                                class="before-after-image">
+                            <span class="video-label">8.1 — Previous Interface: Status Visibility</span>
+                        </div>
+                    </div>
+
+                    <div class="before-after-item">
+                        <div class="before-after-header">
+                            <h5 class="before-after-title fade-in">After: Dedicated approval and audit log section</h5>
+                            <p class="before-after-description fade-in">
+                                A unified approval section that surfaces all actions directly on the main interface,
+                                with consistent UI components and comprehensive audit trails visible where users need
+                                them.
+                            </p>
+                        </div>
+                        <div class="before-after-visual fade-in">
+                            <div class="video-container">
+                                <video class="before-after-video" autoplay loop muted playsinline>
+                                    <source src="img/new-approval-section.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <span class="video-label">8.2 — New Interface: Status Visibility</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solution 3: Workflow Routing -->
+            <div class="solution-item">
+                <div class="solution-header fade-in">
+                    <h4 class="solution-number">3</h4>
+                    <h4 class="solution-title">Flexible Workflow Routing & Recovery
+                    </h4>
+                </div>
+
+                <div class="before-after-container">
+                    <div class="before-after-item">
+                        <div class="before-after-header">
+                            <h5 class="before-after-title fade-in">Before: Inflexible approval chains</h5>
+                            <p class="before-after-description fade-in">
+                                Users couldn't break out of workflows or handle misassignments, causing approval
+                                bottlenecks
+                                and frustrated users.
+                            </p>
+                        </div>
+                        <div class="before-after-visual fade-in">
+                            <img src="img/auto-reassign.png" alt="Previous workflow routing interface"
+                                class="before-after-image">
+                            <span class="video-label">9.1 — Previous Interface: Workflow Routing</span>
+                        </div>
+                    </div>
+
+                    <div class="before-after-item">
+                        <div class="before-after-header">
+                            <h5 class="before-after-title fade-in">After: Smart routing with fallbacks</h5>
+                            <p class="before-after-description fade-in">
+                                Flexible approval groups, misassignment handling, and fallback routing that prevents
+                                workflow breakdowns.
+                            </p>
+                        </div>
+                        <div class="before-after-visual fade-in">
+                            <div class="video-container">
+                                <video class="before-after-video" autoplay loop muted playsinline>
+                                    <source src="img/new-misassigned.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <span class="video-label">9.2 — New Interface: Workflow Routing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solution 4: Automation & Oversight -->
+            <div class="solution-item">
+                <div class="solution-header fade-in">
+                    <h4 class="solution-number">4</h4>
+                    <h4 class="solution-title">Keep Approvals Moving with Reminders</h4>
+                </div>
+
+                <div class="before-after-container">
+                    <div class="before-after-item">
+                        <div class="before-after-header">
+                            <h5 class="before-after-title fade-in">Before: No oversight or automation</h5>
+                            <p class="before-after-description fade-in">
+                                Manual tracking with no reminders or admin tools, leaving approvals to fall through
+                                cracks with poor visibility into outstanding deductions.
+                            </p>
+                        </div>
+                        <div class="before-after-visual fade-in">
+                            <img src="img/approval-summary.png" alt="Previous automation interface"
+                                class="before-after-image">
+                            <span class="video-label">10.1 — Previous Interface: Automation</span>
+                        </div>
+                    </div>
+
+                    <div class="before-after-item">
+                        <div class="before-after-header">
+                            <h5 class="before-after-title fade-in">After: Smart oversight with automated reminders</h5>
+                            <p class="before-after-description fade-in">
+                                Redesigned interface that prioritizes outstanding deduction counts and introduces
+                                automated email reminder system, allowing admins to proactively nudge users and prevent
+                                approvals from stalling.
+                            </p>
+                        </div>
+                        <div class="before-after-visual fade-in">
+                            <div class="video-container">
+                                <video class="before-after-video" autoplay loop muted playsinline>
+                                    <source src="img/new-approval-summary.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <span class="video-label">10.2 — New Interface: Automation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflection & Key Takeaways Section -->
+    <section class="reflection-section">
+        <div class="reflection-container">
+            <h3 class="section-subtitle fade-in">Reflection & Key Takeaways</h3>
+            <p class="reflection-intro fade-in">
+                This project marked my transition from full-stack engineering to design engineering as the only designer
+                at Confido.
+            </p>
+            <p class="reflection-text fade-in">
+                Without design mentorship in an unfamiliar domain (serving CPG brands) and working with new programming
+                languages like Ruby, I had to define my own pace and
+                trust my design instincts — a 180 degree turn from structured internships. Working directly with
+                engineering and customer
+                success taught me to communicate design decisions effectively and gave me significant input on product
+                direction. This fast-paced environment was the perfect testing ground for my career transition, proving
+                I could successfully bridge design and development. <span class="reflection-closing">Thank you
+                    Confido!</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- See Next Section -->
+    <section class="see-next-section">
+        <div class="see-next-container">
+            <h3 class="section-subtitle fade-in">See Next</h3>
+            <div class="project-cards">
+                <a href="../spring2025/wholefoods/" class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="../img/spring2025/wholefoods/wholefoods-work-thumbnail.png" alt="Whole Foods Project"
+                            class="project-thumbnail">
+                    </div>
+                    <div class="project-content">
+                        <h4 class="project-title">Whole Foods In-Store Checkout Experience</h4>
+                        <p class="project-description">
+                            A case study on streamlining access to the Whole Foods in-store
+                            checkout code within the Amazon app for a faster, frustration-free experience.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="../salesforce-canvas-enhancements/" class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="../img/canvas-enhancements/thumbnail.png" alt="Salesforce Canvas Enhancements"
+                            class="project-thumbnail">
+                    </div>
+                    <div class="project-content">
+                        <h4 class="project-title">Redesigning Salesforce's Flow Builder</h4>
+                        <p class="project-description">
+                            A case study on improving accessibility and user productivity for
+                            sight-impaired users in the Salesforce Flow Builder.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="../salesforce-resource-selection/" class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="../img/resource-selection/thumbnail.png" alt="Salesforce Resource Selection"
+                            class="project-thumbnail">
+                    </div>
+                    <div class="project-content">
+                        <h4 class="project-title">Improving Salesforce's Resource Menu Accessibility</h4>
+                        <p class="project-description">
+                            A case study on ensuring comprehensive keyboard navigation towards an
+                            improved resource selection experience in the Salesforce Flow Builder.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Component -->
+    <div id="footer-component"></div>
+
+    <!-- Scripts -->
+    <!-- Custom Cursor -->
+    <script src="../js/cursor.js"></script>
+
+    <!-- Navbar Component JavaScript -->
+    <script src="../nav/nav.js"></script>
+
+    <!-- Footer Component JavaScript -->
+    <script src="../nav/footer.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="script.js"></script>
+
+    <!-- Load Navigation Component -->
+    <script>
+        // Load the navigation component
+        fetch('../nav/nav.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('nav-bar').innerHTML = html;
+                // Initialize navbar functionality after loading
+                initializeNavbar();
+            })
+            .catch(error => {
+                console.error('Error loading navigation:', error);
+            });
+
+        // Load the footer component
+        fetch('../nav/footer.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('footer-component').innerHTML = html;
+                // Initialize footer functionality after loading
+                initializeFooter();
+                // Re-run cursor effects to detect new cursor-white elements
+                if (window.addCursorEffects) {
+                    setTimeout(() => {
+                        window.addCursorEffects();
+
+                        // Manually add cursor effects to cursor-white elements
+                        const cursorWhiteElements = document.querySelectorAll('.cursor-white');
+
+                        // Get the cursor dot element
+                        const cursorDot = document.querySelector('.cursor-dot');
+                        if (cursorDot) {
+                            cursorWhiteElements.forEach(el => {
+                                // Add mouse enter event
+                                el.addEventListener('mouseenter', function () {
+                                    cursorDot.style.backgroundColor = 'white';
+                                });
+
+                                // Add mouse leave event
+                                el.addEventListener('mouseleave', function () {
+                                    cursorDot.style.backgroundColor = 'black';
+                                });
+                            });
+                        }
+                    }, 300);
+                }
+            })
+            .catch(error => {
+                console.error('Error loading footer:', error);
+            });
+
+        // See Next section scroll-driven card positioning
+        document.addEventListener("DOMContentLoaded", function () {
+            const projectCards = document.querySelectorAll('.project-card');
+
+            if (projectCards.length === 3) {
+                // Add scroll-driven positioning classes
+                projectCards[0].classList.add('scroll-spread-1');
+                projectCards[1].classList.add('scroll-spread-2');
+                projectCards[2].classList.add('scroll-spread-3');
+            }
+        });
+    </script>
+</body>
+
+</html>

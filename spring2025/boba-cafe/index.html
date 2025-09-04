@@ -4,270 +4,229 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Beverly Yip | Portfolio</title>
 
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../img/logo-light.png">
 
-        @font-face {
-            font-family: "Rashfield";
-            src: url("../../fonts/TTF/VVDSRashfield-Normal.ttf");
-        }
-    </style>
+    <!-- Typography System -->
+    <link rel="stylesheet" href="../../css/typography.css">
 
-    <title>Beverly Yip</title>
+    <!-- Navbar Component CSS -->
+    <link rel="stylesheet" href="../../nav/nav.css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Footer Component CSS -->
+    <link rel="stylesheet" href="../../nav/footer.css">
+
+    <!-- Project-Specific Styles -->
     <link rel="stylesheet" href="../../css/boba-cafe.css">
 
+    <!-- Material-UI Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
-    <header class="fade-in">
-        <nav class="navbar navbar-expand-lg navbar-light fade-in" id="navbar-real">
-            <a class="navbar-brand" id="navbar-brand" href="/"><img src="../../img/logo.png" alt="Logo"
-                    class="logo"></a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation" id="nav-gen" fade-in>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-center justify-content-center fade-in"
-                id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto" id="custom-navbar">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">ABOUT</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" id="workDropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            WORK
-                        </a>
-                        <div id="workMenu" class="dropdown-menu">
-                            <a class="dropdown-item" href="/#work">ALL</a>
-                            <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/play">PLAY</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="container-fluid landing fade-in">
-        </div>
+    <!-- Header with Navbar -->
+    <header>
+        <!-- Include the navbar component -->
+        <div id="nav-bar"></div>
     </header>
 
-    <div class="row concept">
-        <div class="col-lg-8 col-md-12 col-sm-12 project-summary">
-            <div class="landing-name fade-in">
-                <h1>Bev's Boba Cafe</h1>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <h1 class="hero-title text-animate">BEV'S BOBA CAFE</h1>
+                    <div class="hero-meta">
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">ROLE</span>
+                            <span class="meta-value">Design Engineer</span>
+                        </div>
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">DURATION</span>
+                            <span class="meta-value">March 2025 (2 weeks)</span>
+                        </div>
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">TOOLS</span>
+                            <span class="meta-value">Figma, HTML, CSS, JavaScript, Netlify</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="hero-summary text-animate">
+                        <p>Inspired by my love for bubble tea culture and early 2000s internet nostalgia, this project
+                            reimagines the drink customization experience as a playful, interactive web app. I wanted to
+                            capture the fun of in-person ordering and the charm of vintage dress-up games while
+                            showcasing my design + engineering skills in development, wireframing, prototyping, and
+                            usability
+                            testing.</p>
+                        <div class="hero-tags text-animate">
+                            <span class="tag">Mobile</span>
+                            <span class="tag">Web</span>
+                            <span class="tag">UX/UI</span>
+                            <span class="tag">Interaction Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visuals fade-in">
+                <img src="../../img/spring2025/boba-cafe/boba-cafe-landing.png" alt="Bev's Boba Cafe Interface"
+                    class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview Section -->
+    <section class="project-overview">
+        <div class="overview-container">
+            <div class="overview-content">
+                <div class="overview-left fade-in">
+                    <h2 class="overview-title">What is Bev's Boba Cafe?</h2>
+                    <p class="overview-description">
+                        A mobile-first, gamified bubble tea ordering app that transforms drink customization into an
+                        engaging, repeatable experience. The project reimagines the drink customization experience as a
+                        playful, interactive web app inspired by early 2000s internet nostalgia and vintage dress-up
+                        games.
+                    </p>
+                </div>
+                <div class="overview-right fade-in">
+                    <h2 class="overview-title">My Role</h2>
+                    <p class="overview-description">
+                        I designed and developed this interactive web app from concept to deployment, handling the
+                        complete user experience design, prototyping in Figma, front-end development with
+                        HTML/CSS/JavaScript, and deployment via Netlify.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="process-container">
+            <h2 class="process-title fade-in">Designing & Building the Experience</h2>
+
+            <div class="process-item fade-in">
+                <h3 class="process-subtitle">Define the Experience</h3>
+                <p class="process-description">Designed a gamified, repeatable interaction inspired by early 2000s
+                    dress-up games, paired with a calm, comforting UI using a beige, milk-tea palette to encourage
+                    endless customization and reordering.</p>
             </div>
 
-            <h2 class="fade-in">Inspiration</h2>
-            <p class="text-padding fade-in">Inspired by my love for bubble tea culture and early 2000s internet
-                nostalgia, this project reimagines the drink customization experience as a playful, interactive web app.
-                I wanted to capture the fun of in-person ordering and the charm of vintage dress-up games while
-                showcasing my UX engineering skills in development, wireframing, prototyping, and usability testing.</p>
+            <div class="process-item fade-in">
+                <h3 class="process-subtitle">Low-Fidelity Wireframes & User Flow</h3>
+                <p class="process-description">Mapped out user flow: Select tea ➜ Add toppings ➜ Confirm milk ➜ Review ➜
+                    Checkout, prioritizing clarity for mobile users. Designed conditional actions and streamlined task
+                    flows to ensure an intuitive ordering experience.</p>
+                <div class="process-image fade-in">
+                    <img src="../../img/spring2025/boba-cafe/wireframe.png"
+                        alt="Low-fidelity wireframe showing the user flow" width="100%">
+                </div>
+            </div>
 
-            <h2 class="fade-in">Concept</h2>
-            <p class="fade-in" style="padding-top: 20px; margin-bottom: 1rem">Introducing a mobile-first, gamified
-                bubble tea ordering app
-                that transforms
-                drink customization into an engaging, repeatable experience — optimized for small screens and designed
-                with accessibility in mind.</p>
+            <div class="process-item fade-in">
+                <h3 class="process-subtitle">Asset Creation</h3>
+                <p class="process-description">Designed modular UI assets in Figma, including customizable tea, ice, and
+                    toppings layers optimized for seamless stacking and consistent dimensions. Implemented a cohesive
+                    color palette inspired by real milk tea.</p>
+                <div class="process-image fade-in">
+                    <img src="../../img/spring2025/boba-cafe/figma.png"
+                        alt="Figma workspace showing UI components and assets" width="100%">
+                </div>
+            </div>
 
-            <p class="fade-in" style="margin-bottom: 10px">The goal was to create a seamless, playful interface that
-                empowers users to
-                craft their perfect boba drink with dynamic feedback and intuitive controls. Key features include:</p>
-            <ul class="fade-in">
-                <li><strong>End-to-End Customization —</strong> Users select tea bases, toppings, and milk options, with
-                    live previews and real-time order updates.</li>
-                <li><strong>Dynamic Order Receipt —</strong> Generates a randomized order number, timestamp, and price,
-                    mimicking a real café experience.</li>
-                <li><strong>Accessible & Mobile-First UI —</strong> Built for sub-800px screens without media queries,
-                    with WCAG-compliant contrast and clear feedback states.</li>
-                <li><strong>Playful Motion Design —</strong> Polaroid-style drink summaries, bounce animations, and
-                    randomized success messages for a fun, satisfying interaction loop.</li>
+            <div class="process-item fade-in">
+                <h3 class="process-subtitle">Client-Side Development</h3>
+                <p class="process-description">Developed with HTML, CSS, and JS, optimized for mobile browsers under
+                    800px width. Added interactive features including dynamic receipts with random order numbers, live
+                    timestamps, price updates, and playful animations.</p>
+                <div class="process-image fade-in">
+                    <img src="../../img/spring2025/boba-cafe/final-drink.png"
+                        alt="Final drink screen with receipt and animations" width="100%">
+                </div>
+            </div>
+
+            <div class="process-item fade-in">
+                <h3 class="process-subtitle">Interactive Enhancements & Accessibility</h3>
+                <p class="process-description">Implemented interactive elements including a milk selection popup, higher
+                    contrast states for active items (WCAG compliant), and randomized success messages for a playful
+                    closure. Added reset functionality to ensure a fresh start with every new order.</p>
+                <div class="process-image fade-in">
+                    <img src="../../img/spring2025/boba-cafe/milk-selection.png"
+                        alt="Milk selection interface showing accessibility improvements" width="100%">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- End-to-End Demo Section -->
+    <section class="demo-section">
+        <div class="demo-container">
+            <h2 class="process-title fade-in">End-to-End Demo</h2>
+            <h3 class="process-subtitle fade-in">Watch the full interaction below to see how users customize and order
+                their personalized boba drink.</h3>
+            <div class="demo-video fade-in">
+                <div class="video-container">
+                    <video controls width="100%" height="100%" preload="none" muted playsinline
+                        poster="../../img/spring2025/boba-cafe/boba-cafe-thumbnail.png">
+                        <source src="../../img/spring2025/boba-cafe/boba-cafe-ux.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Playtesting & Iterations Section -->
+    <section class="playtesting-section">
+        <div class="playtesting-container">
+            <h2 class="process-title fade-in">Playtesting & Iterations</h2>
+            <h3 class="process-subtitle fade-in">Iterative improvements through user feedback</h3>
+            <ul class="playtesting-list fade-in">
+                <li>Conducted playtesting across mobile and web browsers with peer feedback to identify usability issues
+                </li>
+                <li>Refined contrast ratios, navigation clarity, and order confirmation flow based on testing results
+                </li>
+                <li>Enhanced the final order scene with a Polaroid-style layout and clear success messaging</li>
+                <li>Balanced visual appeal with performance and usability through iterative design</li>
             </ul>
-
-            <h2 class="fade-in padding-top">End-to-End Demo</h2>
-            <p class="text-padding fade-in">Watch the full interaction below to see how users customize and order their
-                personalized boba drink.</p>
-            <div class="video-container fade-in">
-                <video controls width="100%" height="100%" preload="none" playsinline
-                    poster="../../img/spring2025/boba-cafe/boba-cafe-thumbnail.png">
-                    <source src="../../img/spring2025/boba-cafe/boba-cafe-ux.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
         </div>
+    </section>
 
-        <div class="col-lg-4 col-md-12 col-sm-12 project-sub-summary fade-in">
-            <p class="sub-header">WHEN WAS THIS?</p>
-            <p>March 2025 (2 weeks)</p>
-            </br>
-            <p class="sub-header">WHAT DID I DO?</p>
-            <p>I designed and developed this interactive, mobile-first web app, focusing on creating a playful and
-                accessible bubble tea ordering experience.
-            </p>
-            <p>My responsibilities include:</p>
-            <ul>
-                <li><strong>Interaction Design & Prototyping —</strong> Designed user flows and interactive wireframes
-                    in Figma, focusing on a gamified experience inspired by early 2000s dress-up games.</li>
-                <li><strong>Component-Based UI & Visual Design —</strong> Created scalable UI components and custom
-                    assets, building a cohesive design system optimized for mobile screens and repeat play.</li>
-                <li><strong>Mobile-First Front-End Development —</strong> Developed the responsive front-end using HTML,
-                    CSS, and JavaScript - optimized for sub-800px screens without media queries.</li>
-                <li><strong>Accessibility & Motion Design —</strong> Implemented WCAG-compliant color contrast, logical
-                    navigation, and playful animations to enhance usability and delight.</li>
-                <li><strong>Testing, Iteration & Deployment —</strong> Conducted mobile testing, refined interactions
-                    based on feedback, and deployed the optimized app via Netlify for smooth performance.</li>
+    <!-- Next Steps Section -->
+    <section class="next-steps-section">
+        <div class="next-steps-container">
+            <h2 class="process-title fade-in">Next Steps</h2>
+            <h3 class="process-subtitle fade-in">Expanding functionality and user experience</h3>
+            <ul class="next-steps-list fade-in">
+                <li>Plan to implement session saving capabilities and exportable drink images for users to share their
+                    creations</li>
+                <li>Will expand customization options with additional topping and milk varieties to increase replay
+                    value</li>
+                <li>Exploring gesture-based controls like drag-and-drop and swipe interactions to enhance the
+                    mobile-first experience</li>
+                <li>Plus improved desktop layouts for broader device accessibility</li>
             </ul>
-        </div>
-    </div>
-
-    <div class="row additional-content">
-        <div class="col-12">
-
-            <section class="fade-in">
-                <h2 class="fade-in">Designing & Building the Experience</h2>
-                <ul>
-                    <li class="fade-in">
-                        <strong>Define the Experience — </strong>Designed a gamified, repeatable interaction inspired by
-                        early 2000s dress-up games, paired with a calm, comforting UI using a beige, milk-tea palette to
-                        encourage endless customization and reordering.
-                    </li>
-
-                    <li class="fade-in">
-                        <strong>Low-Fidelity Wireframes & User Flow —</strong>
-                        <ul>
-                            <li><strong>Mapped out user flow</strong>: Select tea ➜ Add toppings ➜ Confirm milk ➜ Review
-                                ➜ Checkout, focusing on clarity and simplicity for mobile users.</li>
-                            <li><strong>Streamlined task flow</strong> with conditional actions (like popups and
-                                checkout buttons) to ensure a smooth, intuitive experience.</li>
-                        </ul>
-                        <div class="process-image fade-in">
-                            <img src="../../img/spring2025/boba-cafe/wireframe.png"
-                                alt="Low-fidelity wireframe showing the user flow" width="100%">
-                        </div>
-                    </li>
-
-                    <li class="fade-in">
-                        <strong>UI Asset Creation —</strong>
-                        <ul>
-                            <li><strong>Designed modular UI assets in Figma</strong>, including customizable tea, ice,
-                                and toppings layers optimized for seamless stacking and consistent dimensions.</li>
-                            <li><strong>Implemented a cohesive color palette</strong> inspired by real milk tea and
-                                structured assets for efficient updates through Frames and Components.</li>
-                        </ul>
-                        <div class="process-image fade-in">
-                            <img src="../../img/spring2025/boba-cafe/figma.png"
-                                alt="Figma workspace showing UI components and assets" width="100%">
-                        </div>
-                    </li>
-
-                    <li class="fade-in">
-                        <strong>Client-Side Development —</strong>
-                        <ul>
-                            <li><strong>Developed with HTML, CSS, and JS</strong>, optimized for mobile browsers under
-                                800px width.</li>
-                            <li><strong>Added interactive features</strong>, including dynamic receipts with random
-                                order numbers, live timestamps, price updates, and playful animations like Polaroid
-                                effects and bounce transitions.</li>
-                        </ul>
-                        <div class="process-image fade-in">
-                            <img src="../../img/spring2025/boba-cafe/final-drink.png"
-                                alt="Final drink screen with receipt and animations"
-                                style="max-width: 400px; display: block; margin: 0 auto;">
-                        </div>
-                    </li>
-
-                    <li class="fade-in">
-                        <strong>Interactive Enhancements & Accessibility —</strong>
-                        <ul>
-                            <li><strong>Implemented interactive elements</strong>, including a milk selection
-                                popup, higher contrast states for active items (WCAG compliant), and randomized success
-                                messages for a playful closure.</li>
-                            <li><strong>Added reset functionality</strong> to ensure a fresh start with every new order,
-                                maintaining a seamless user experience.</li>
-                        </ul>
-                        <div class="process-image fade-in">
-                            <img src="../../img/spring2025/boba-cafe/milk-selection.png"
-                                alt="Milk selection interface showing accessibility improvements"
-                                style="max-width: 400px; display: block; margin: 0 auto;">
-                        </div>
-                    </li>
-                </ul>
-            </section>
-
-            <section class="fade-in">
-                <h2 class="fade-in">Playtesting & Iterations</h2>
-                <ul class="fade-in">
-                    <li>Tested across mobile and web browsers with peer feedback</li>
-                    <li>Refined contrast, navigation clarity, and order confirmation user experience</li>
-                    <li>Enhanced final order scene with Polaroid layout and success messaging</li>
-                    <li>Iterated to balance visual charm with usability and performance</li>
-                </ul>
-            </section>
-
-            <section class="fade-in">
-                <h2 class="fade-in">Tools & Frameworks</h2>
-                <ul class="fade-in">
-                    <li>Implemented using HTML, CSS, and JavaScript for frontend development</li>
-                    <li>Built with Figma for UI design and prototyping</li>
-                    <li>Deployed via Netlify for seamless hosting and delivery</li>
-                </ul>
-            </section>
-
-            <section class="fade-in">
-                <h2 class="fade-in">Next Steps</h2>
-                <ul class="fade-in">
-                    <li>Session saving and exportable drink images</li>
-                    <li>More topping/milk variety</li>
-                    <li>Gesture controls for drag-and-drop or swipe interactions</li>
-                    <li>Improved desktop layout for broader accessibility</li>
-                </ul>
-            </section>
-
-            <p class="fade-in"><a class="sketch-link" href="https://bev-boba-cafe.netlify.app/" target="_blank">Ready to
-                    make your dream bubble tea? Try
-                    it live!</a></p>
-        </div>
-    </div>
-
-    <div class="footer" id="footer">
-        <div class="footer-info fade-in">
-            <h2 class="footerLabel fade-in"><b>Let's get in touch!</span></b></h2>
-            <div class="footerIcons fade-in">
-                <a href="https://www.linkedin.com/in/bevyip/" target="_blank" class="icons fa fa-linkedin"></a>
-                <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
-                <a href="mailto:hy3018@nyu.edu" target="_blank" class="icons fa fa-envelope"></a>
-            </div>
-            <div class="footerStamp fade-in">
-                <p>Proudly designed & handcoded by Beverly Yip.</p>
-            </div>
-            <div class="footerReroute fade-in">
-                <a class="footerReroute-link" href="#">BACK TO TOP</a>
+            <div class="cta-section fade-in">
+                <a class="cta-button" href="https://bev-boba-cafe.netlify.app/" target="_blank">
+                    <span class="cta-text">Ready to make your dream bubble tea? Try it live!</span>
+                    <img src="../../img/spring2025/boba-cafe/bubble-tea.png" alt="Bubble tea icon" class="cta-icon">
+                </a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+
+
+    <!-- Include the reusable footer component -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Navigation Component Scripts -->
+    <script src="../../js/cursor.js"></script>
+    <script src="../../nav/nav.js"></script>
+    <script src="../../nav/footer.js"></script>
 
     <script>
         let debounceTimeout;
@@ -295,14 +254,29 @@
         });
 
         document.addEventListener("DOMContentLoaded", () => {
-            // Immediately show above-the-fold content
-            const initialElements = document.querySelectorAll(".landing-name, .landing-name + p, .project-sub-summary");
-            initialElements.forEach(el => {
-                el.classList.add("visible");
+            // Load navigation components using the same approach as main index.html
+            loadNavigationComponents();
+
+            // Initialize navbar functionality
+            if (window.initializeNavbar) {
+                window.initializeNavbar();
+            }
+
+            // Initialize footer functionality
+            if (window.initializeFooter) {
+                window.initializeFooter();
+            }
+
+            // Handle text animations for hero section
+            const textAnimateElements = document.querySelectorAll('.text-animate');
+            textAnimateElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('animate-in');
+                }, index * 100);
             });
 
-            // Set up intersection observer for the rest of the content
-            const fadeInElements = document.querySelectorAll(".fade-in:not(.landing-name):not(.landing-name + p):not(.project-sub-summary)");
+            // Set up intersection observer for fade-in elements
+            const fadeInElements = document.querySelectorAll(".fade-in");
 
             const observerOptions = {
                 root: null,
@@ -320,6 +294,34 @@
 
             fadeInElements.forEach((el) => observer.observe(el));
         });
+
+        // Function to load navigation components - updated to match main index.html exactly
+        async function loadNavigationComponents() {
+            try {
+                // Load navigation
+                const navResponse = await fetch('../../nav/nav.html');
+                const navHtml = await navResponse.text();
+                document.getElementById('nav-bar').innerHTML = navHtml;
+
+                // Load footer
+                const footerResponse = await fetch('../../nav/footer.html');
+                const footerHtml = await footerResponse.text();
+                document.getElementById('footer-placeholder').innerHTML = footerHtml;
+
+                // Update logo path for boba-cafe project
+                const logoImg = document.querySelector('.nav-brand img');
+                if (logoImg) {
+                    logoImg.src = '../../img/logo.png';
+                }
+
+                // Initialize navbar functionality after loading
+                if (window.initializeNavbar) {
+                    window.initializeNavbar();
+                }
+            } catch (error) {
+                console.error('Error loading navigation components:', error);
+            }
+        }
     </script>
 </body>
 

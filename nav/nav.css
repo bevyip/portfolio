@@ -1,0 +1,365 @@
+/* Reusable Navbar Component Styles */
+
+/* Note: CSS Custom Properties are defined in typography.css */
+
+/* Navbar Base Styles */
+.navbar {
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+}
+
+/* Navbar Container - Using CSS Grid for layout */
+.nav-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "logo menu toggle";
+  align-items: center;
+  gap: var(--spacing-xl);
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-4xl);
+}
+
+/* Logo Section */
+.nav-logo {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+}
+
+.nav-brand {
+  display: block;
+  text-decoration: none;
+  transition: transform var(--transition-base);
+}
+
+.nav-brand:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  width: auto;
+  height: 3.5rem;
+  object-fit: contain;
+}
+
+/* Navigation Menu */
+.nav-menu {
+  grid-area: menu;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--spacing-2xl);
+  align-items: center;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 700; /* Bold text */
+  color: var(--color-text-primary);
+  text-decoration: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--spacing-sm);
+  transition: all var(--transition-base);
+  position: relative;
+  display: inline-block;
+  overflow: hidden; /* Hide overflow for the rolling effect */
+}
+
+/* Text positioning for rolling effect */
+.nav-text-original,
+.nav-text-duplicate {
+  display: block;
+  transition: transform 0.5s ease; /* Much slower animation */
+  width: 100%;
+  text-align: center;
+}
+
+.nav-text-original {
+  transform: translateY(0);
+}
+
+.nav-text-duplicate {
+  position: absolute;
+  top: 100%; /* Position just below the original text */
+  left: 50%;
+  transform: translate(-50%, 0); /* Center horizontally, no vertical offset */
+  color: var(--color-primary);
+  /* Removed opacity: 0 so text gradually appears as it moves into view */
+  pointer-events: none; /* Prevent interaction when hidden */
+}
+
+/* Rolling up effect on hover */
+.nav-link:hover .nav-text-original,
+.nav-link:focus .nav-text-original {
+  transform: translateY(-100%);
+  /* Removed opacity: 0 so text gradually moves out of view */
+}
+
+.nav-link:hover .nav-text-duplicate,
+.nav-link:focus .nav-text-duplicate {
+  transform: translate(-50%, -130%); /* Move up to original text position */
+  /* Removed opacity: 1 so text gradually appears as it moves into view */
+  pointer-events: auto; /* Re-enable interaction */
+}
+
+/* Contact Button Styles */
+.nav-contact-btn {
+  background-color: var(--color-primary);
+  color: var(--color-surface) !important;
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border-radius: 50px;
+  font-weight: 700; /* Bold text */
+  transition: all var(--transition-base);
+  display: inline-block;
+  overflow: hidden; /* Hide overflow for the rolling effect */
+  border: 2px solid transparent; /* Invisible border to maintain dimensions */
+  box-sizing: border-box; /* Ensure border is included in dimensions */
+}
+
+/* Contact button text positioning */
+.nav-contact-btn .nav-text-original {
+  color: var(--color-surface);
+}
+
+/* Mobile menu toggle - hidden by default */
+.nav-toggle {
+  display: none;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  cursor: none;
+  z-index: 1001;
+}
+
+/* Hamburger icon base styles */
+.nav-toggle-icon::before,
+.nav-toggle-icon::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  transition: all 0.3s ease;
+  left: 3px;
+}
+
+.nav-toggle-icon {
+  /* No content - just a container */
+  content: none;
+  background-color: transparent;
+}
+
+.nav-toggle-icon::before {
+  top: calc(50% - 8px);
+}
+
+.nav-toggle-icon::after {
+  top: calc(50% + 8px);
+}
+
+/* Cross animation when active */
+.nav-toggle.active .nav-toggle-icon::before {
+  transform: rotate(45deg);
+  top: 50%;
+}
+
+.nav-toggle.active .nav-toggle-icon::after {
+  transform: rotate(-45deg);
+  top: 50%;
+}
+
+.nav-contact-btn .nav-text-duplicate {
+  color: var(--color-primary); /* Black color to match the pill background */
+}
+
+.nav-contact-btn:hover,
+.nav-contact-btn:focus {
+  background-color: transparent;
+  color: var(--color-primary) !important;
+  border: 2px solid var(--color-primary);
+  box-shadow: none;
+}
+
+/* Contact button rolling effect */
+.nav-contact-btn:hover .nav-text-original,
+.nav-contact-btn:focus .nav-text-original {
+  transform: translateY(-100%);
+}
+
+.nav-contact-btn:hover .nav-text-duplicate,
+.nav-contact-btn:focus .nav-text-duplicate {
+  transform: translate(-50%, -130%); /* Same positioning as other nav items */
+}
+
+/* Responsive Design */
+@media (max-width: 1280px) {
+  .nav-container {
+    padding: var(--spacing-2xl) var(--spacing-3xl);
+    gap: var(--spacing-lg);
+  }
+
+  .nav-list {
+    gap: var(--spacing-xl);
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav-container {
+    padding: var(--spacing-xl) var(--spacing-2xl);
+    gap: var(--spacing-md);
+  }
+
+  .nav-list {
+    gap: var(--spacing-lg);
+  }
+
+  .nav-link {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "logo toggle";
+    padding: var(--spacing-lg) var(--spacing-xl);
+    gap: var(--spacing-md);
+  }
+
+  .nav-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-menu.active {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    opacity: 1;
+  }
+
+  .nav-list {
+    background: none;
+    margin: 80px var(--spacing-xl) 0 0;
+    padding: var(--spacing-lg);
+    border-radius: 0;
+    box-shadow: none;
+    min-width: 200px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--spacing-sm);
+  }
+
+  .nav-item {
+    width: auto;
+  }
+
+  .nav-link {
+    display: block;
+    width: auto;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-xl);
+  }
+
+  .nav-contact-btn {
+    text-align: center;
+    border-radius: 50px; /* More pill-like */
+    width: auto;
+    min-width: fit-content;
+    align-self: flex-end;
+    padding: var(--spacing-sm) var(--spacing-lg); /* More horizontal padding */
+    background-color: var(--color-text-primary); /* Dark background */
+    color: var(--color-surface); /* Light text */
+    transition: all 0.2s ease;
+  }
+
+  .nav-contact-btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .nav-toggle {
+    display: block;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .nav-link {
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .logo {
+    width: auto;
+    height: 2.5rem;
+  }
+}
+
+/* Body scroll prevention when menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Focus States for Accessibility */
+.nav-link:focus-visible,
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .navbar {
+    border-bottom: 2px solid var(--color-text-primary);
+  }
+
+  .nav-link:hover,
+  .nav-link:focus {
+    background-color: var(--color-text-primary);
+    color: var(--color-surface);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .nav-link,
+  .dropdown-menu,
+  .nav-toggle-icon,
+  .nav-toggle-icon::before,
+  .nav-toggle-icon::after {
+    transition: none;
+  }
+}

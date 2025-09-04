@@ -2,507 +2,519 @@
 <html lang="en" dir="ltr">
 
 <head>
+    <title>Beverly Yip | Portfolio</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="../img/logo-light.png">
 
     <style>
         html {
             scroll-behavior: smooth;
         }
-
-        @font-face {
-            font-family: "Rashfield";
-            src: url("../fonts/TTF/VVDSRashfield-Normal.ttf");
-        }
     </style>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../nav/nav.css">
+    <link rel="stylesheet" href="../nav/footer.css">
     <link rel="stylesheet" href="../css/about-style.css">
 
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light fade-in" id="navbar-real">
-            <a class="navbar-brand" id="navbar-brand" href="/"><img src="../img/logo.png" alt="Logo" class="logo"></a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation" id="nav-gen" fade-in>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-center justify-content-center fade-in"
-                id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto" id="custom-navbar">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">ABOUT</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" id="workDropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            WORK
+        <!-- Include reusable navbar -->
+        <div id="navbar-container"></div>
+
+        <!-- Custom cursor pill for polaroid pile -->
+        <div class="cursor-pill" id="cursor-pill">
+            <span class="cursor-pill-text">VIEW</span>
+            <span class="material-icons cursor-pill-arrow">arrow_upward</span>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-image fade-in">
+                    <img src="../img/personalphoto.jpg" alt="Beverly Yip" class="profile-image">
+                </div>
+                <div class="hero-text fade-in">
+                    <div class="hero-text-intro">
+                        <h1 class="hero-title">
+                            <span class="rolling-text">
+                                <span class="text-line hi">Hi,</span>
+                                <span class="text-line ni-hao">你好,</span>
+                            </span>
+                        </h1>
+                        <p class="hero-subtitle">I'm Beverly Yip!</p>
+                        <p class="hero-blurb hero-role">A UX design engineer who bridges the gap between what's
+                            technically
+                            possible and what people actually need. <strong>Whether through design or code, I turn
+                                technical
+                                possibilities into delightful human experiences.</strong></p>
+                    </div>
+                    <div class="hero-text-details">
+                        <p class="hero-description">I started as a software engineer at Salesforce, contributing to the
+                            Flow
+                            Builder and championing accessibility, before realizing I cared just as much (if not more)
+                            about
+                            how people interact with technology. That realization drew me to UX Design Engineering at
+                            Confido, where I got to design <em>and</em> code – bridging the gap between user needs and
+                            technical solutions.</p>
+                        <p class="hero-description">Currently pursuing my Master's in HCI at NYU ITP, I'm exploring
+                            deeper
+                            into the intersection of technology and the human experience. I'm particularly focused on
+                            making
+                            the digital world more accessible and intuitive for everyone.</p>
+                        <a href="https://drive.google.com/file/d/1t8BBP__xqK7TDSD1hLv0WFaMLLgeufTK/view?usp=sharing"
+                            target="_blank" class="resume-btn clickable">
+                            <span class="resume-text">VIEW RESUME</span>
+                            <span class="resume-text-hidden">VIEW RESUME</span>
+                            <span class="material-icons resume-arrow">arrow_upward</span>
+                            <span class="material-icons resume-arrow-hidden">arrow_upward</span>
                         </a>
-                        <div id="workMenu" class="dropdown-menu">
-                            <a class="dropdown-item" href="/#work">ALL</a>
-                            <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/play">PLAY</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="about-landing">
-            <div class="about-landing-top">
-                <div class="about-landing-image fade-in col-3">
-                    <img src="../img/personalphoto.jpg" alt="Head Shot" class="about-landing-pfp">
-                </div>
-                <div class="about-desc">
-                    <div class="about-landing-name fade-in">
-                        <h1>My name is Beverly Yip.</h1>
-                    </div>
-                    <div class="about-landing-desc fade-in">
-                        <div class="about-landing-content">
-                            <p>I'm a software engineer and designer who loves creating digital experiences that feel
-                                both powerful and effortless. My journey began in the early 2000s when I started
-                                customizing my blog – that's where I discovered my passion for both the technical and
-                                creative sides of building for the web.</p>
-
-                            <p>At Salesforce, I led the development of the Flow Builder, a project that transformed how
-                                users interact with our platform. What made this project special wasn't just the
-                                technical achievement, but how I collaborated with Product Designers, Product Managers
-                                and Engineers to ensure every feature was
-                                both powerful and accessible. This experience taught me that the best products come from
-                                understanding both the technical possibilities and human needs.</p>
-
-                            <p>My background in Anthropology has been my secret weapon in product development. It's
-                                helped me understand that great design isn't just about aesthetics – it's about creating
-                                experiences that resonate with people's needs and behaviors. This perspective has been
-                                invaluable in my work as an Accessibility Champion at Salesforce, where I worked to
-                                ensure our products served everyone.</p>
-
-                            <p>Now pursuing my Master's in Human-Computer Interaction at NYU ITP, I'm diving deeper into
-                                the intersection of technology and the human experience. I'm particularly focused on
-                                making
-                                the digital world more accessible and intuitive for everyone.</p>
-
-                            <p class="highlight-brown">I believe the best digital experiences are those that feel
-                                effortless to use while being technically robust. That's what I strive to create in
-                                everything I build.</p>
-                        </div>
                     </div>
                 </div>
             </div>
-
+        </section>
     </header>
-    <div class="about-overview-content fade-in">
-        <div class="about-content-images">
-            <div class="about-container fade-in">
-                <img src="../img/piano.jpg" alt="Piano Shot">
+
+    <!-- Hobbies & Interests Section -->
+    <section class="hobbies-section fade-in">
+        <h2 class="section-title">When I'm not coding or designing, I'm...</h2>
+
+        <!-- Polaroid Pile Center Button -->
+        <div class="polaroid-pile-center clickable" id="polaroid-pile-center"></div>
+
+        <div class="hobbies-grid">
+            <div class="hobby-card fade-in pile-mode" data-index="0">
+                <img src="../img/piano-bw.png" alt="Piano" class="hobby-image">
+                <img src="../img/piano.png" alt="Piano" class="hobby-image-hover">
             </div>
-            <div class="about-container fade-in">
-                <img src="../img/stream.jpg" alt="Stream Shot">
+            <div class="hobby-card fade-in pile-mode" data-index="1">
+                <img src="../img/stream-bw.png" alt="Gaming" class="hobby-image">
+                <img src="../img/stream.png" alt="Gaming" class="hobby-image-hover">
             </div>
-            <div class="about-container fade-in">
-                <img src="../img/boba.jpg" alt="Cat Shot">
+            <div class="hobby-card fade-in pile-mode" data-index="2">
+                <img src="../img/boba-bw.png" alt="Cat" class="hobby-image">
+                <img src="../img/boba.png" alt="Cat" class="hobby-image-hover">
+            </div>
+            <div class="hobby-card fade-in pile-mode" data-index="3">
+                <img src="../img/climb-bw.png" alt="Bouldering" class="hobby-image">
+                <img src="../img/climb.png" alt="Bouldering" class="hobby-image-hover">
             </div>
         </div>
-        <div class="about-content-text fade-in">
-            <p>In my spare time, I play the piano and cello, stream games like Valorant and Minecraft on Twitch, and
-                love
-                spending time with my cat called Boba 😸.</p>
-            <div id="experience">
-                <div class="prev-leadership">
-                    <div class="experience-overview-header fade-in">
-                        <h2>Experience</h2>
-                    </div>
-                    <div class="experience-p fade-in">
-                        <p>Click through the icons to see what I've been up to!</p>
-                    </div>
+    </section>
 
-                    <div class="logo-leadership container fade-in">
-                        <div class="logo-leadership container">
-                            <input type="image" src="../img/nyu.png" alt="Submit" class="nyu leader"
-                                onclick="reveal_nyu()">
-                            <input type="image" src="../img/salesforce.png" alt="Submit" class="salesforce leader"
-                                onclick="reveal_salesforce()">
-                            <input type="image" src="../img/purdue.png" alt="Submit" class="purdue leader"
-                                onclick="reveal_purdue()">
-                            <input type="image" src="../img/sase.png" alt="Submit" class="sase leader"
-                                onclick="reveal_sase()">
-                            <input type="image" src="../img/asub.PNG" alt="Submit" class="asub leader"
-                                onclick="reveal_asub()">
-                            <input type="image" src="../img/cswn.png" alt="Submit" class="cswn leader"
-                                onclick="reveal_cswn()">
+    <!-- Experience Section -->
+    <section class="experience-section fade-in">
+        <h2 class="section-title">Experience</h2>
+        <div class="experience-grid">
+            <div class="experience-card fade-in">
+                <div class="experience-content">
+                    <div class="experience-info">
+                        <div class="experience-header">
+                            <h3>UX Design Engineering Intern</h3>
+                            <span class="duration">June 2025 – August 2025</span>
+                        </div>
+                        <p class="role">Confido</p>
+                        <p class="description">During my internship, I redesigned a broken data validation system
+                            through user research,
+                            creating an intuitive design system with improved error visibility that accelerated finance
+                            team triage by 30%. I also led the redesign and development of scalable approval flows
+                            using React, TypeScript, and Ruby, delivering reusable components that reduced errors by 25%
+                            and improved audit visibility by 40%.</p>
+                        <div class="experience-links">
+                            <a href="https://confidotech.com/" target="_blank"
+                                class="exp-social-link clickable cursor-white">
+                                <i class="fa fa-link social-icon"></i>
+                                <i class="fa fa-link social-icon-hidden"></i>
+                            </a>
                         </div>
                     </div>
-
-                    <div class="content-leadership">
-                        <div id="nyu-content" style="display:none">
-                            <div class="content-block">
-                                <h5>UX Club</h5>
-                                <p>Head of Communications & Events&emsp;<b>2024-Present</b></p>
-                                <div>
-                                    <a href="https://www.linkedin.com/in/ux-nyu/" target="_blank"
-                                        class="icons fa fa-linkedin" style="margin: 10px 5px;"></a>
-                                    <a href="https://www.instagram.com/ux_nyu/" target="_blank"
-                                        class="icons fa fa-instagram" style="margin: 10px 5px;"></a>
-                                </div>
-                            </div>
-                            <div class="content-block">
-                                <h5>Code! and Code! 2</h5>
-                                <p>Graduate Assistant&emsp;<b>2024-Present</b></p>
-                                <div>
-                                    <a href="https://colonelpanix.notion.site/Code-Fall-Semester-2024-68a4bc68d48e456b9524c18cac72557d"
-                                        target="_blank" class="icons fa fa-link" style="margin: 10px 5px;"></a>
-                                </div>
-                            </div>
-                            <div class="content-block">
-                                <h5>The Coding Lab</h5>
-                                <p>Mentor&emsp;<b>2024-Present</b></p>
-                                <div>
-                                    <a href="https://www.instagram.com/itpcodinglab/" target="_blank"
-                                        class="icons fa fa-instagram" style="margin: 10px 5px;"></a>
-                                    <a href="https://codinglab.itp.io/" target="_blank" class="icons fa fa-link"
-                                        style="margin: 10px 5px;"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="salesforce-content" style="display:none">
-                            <div class="content-block">
-                                <h5>Salesforce</h5>
-                                <p>Full-Time Software Engineer&emsp;<b>2020-2023</b></p>
-                                <p>Software Engineering Intern&emsp;<b>2019-2020</b></p>
-                                <p>Campus Ambassador&emsp;<b>2019-2020</b></p>
-                                <div>
-                                    <a href="https://twitter.com/salesforce" target="_blank" class="icons fa fa-twitter"
-                                        style="margin: 10px 5px;"></a>
-                                    <a href="https://www.instagram.com/salesforce" target="_blank"
-                                        class="icons fa fa-instagram" style="margin: 10px 5px;"></a>
-                                    <a href="https://www.salesforce.com/" target="_blank" class="icons fa fa-link"
-                                        style="margin: 10px 5px;"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="purdue-content" style="display:none">
-                            <div class="content-block">
-                                <h5>Mortar Board National College Senior Honor Society – Purdue Chapter</h5>
-                                <p>Member&emsp;<b>2019-2020</b></p>
-                                <div>
-                                    <a href="https://www.facebook.com/PurdueMortarBoard/" target="_blank"
-                                        class="icons fa fa-facebook" style="margin: 10px 5px;"></a>
-                                    <a href="https://www.linkedin.com/company/mortar-board/" target="_blank"
-                                        class="icons fa fa-linkedin" style="margin: 10px 5px;"></a>
-                                    <a href="http://purduemortarboard.com/" target="_blank" class="icons fa fa-link"
-                                        style="margin: 10px 5px;"></a>
-                                </div>
-                            </div>
-                            <div class="content-block">
-                                <h5>CS180: Object Oriented Programming in Java</h5>
-                                <p>Undergraduate Teaching Assistant&emsp;<b>2017-2020</b></p>
-                                <div>
-                                    <a href="https://www.cs.purdue.edu/academic-programs/courses/canonical/cs180.html"
-                                        target="_blank" class="icons fa fa-link" style="margin: 10px 5px;"></a>
-                                </div>
-                            </div>
-                            <div class="content-block">
-                                <h5>Mentors for Aspiring Girls In Computing</h5>
-                                <p>Mentor&emsp;<b>2017-2018</b></p>
-                                <div>
-                                    <a href="https://www.facebook.com/PurdueMAGIC" target="_blank"
-                                        class="icons fa fa-facebook" style="margin: 10px 5px;"></a>
-                                    <a href="https://www.cs.purdue.edu/outreach/magic.html" target="_blank"
-                                        class="icons fa fa-link" style="margin: 10px 5px;"></a>
-                                </div>
-                            </div>
-                            <div class="content-block">
-                                <h5>Women in Science Program</h5>
-                                <p>Mentor&emsp;<b>2017-2018</b></p>
-                                <div>
-                                    <a href="https://www.science.purdue.edu/wisp/" target="_blank"
-                                        class="icons fa fa-link" style="margin: 10px 5px;"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="sase-content" style="display:none">
-                            <div class="content-block">
-                                <h5>Society of Asian Scientists and Engineers</h5>
-                                <p>Senior Advisor&emsp;<b>2019-2020</b></p>
-                                <p>Midwest Regional Marketing Representative&emsp;<b>2018-2019</b></p>
-                                <p>Outreach Chair&emsp;<b>2018-2019</b></p>
-                                <p>President&emsp;<b>2017-2018</b></p>
-                                <p>Trade Show Chair & Philanthropy Chair&emsp;<b>2016-2017</b></p>
-                                <div>
-                                    <a href="https://www.facebook.com/SASEMidwest/" target="_blank"
-                                        class="icons fa fa-facebook" style="margin: 10px 5px;"></a>
-                                    <a href="https://www.instagram.com/sasepurdue/" target="_blank"
-                                        class="icons fa fa-instagram" style="margin: 10px 5px;"></a>
-                                    <a href="https://saseconnect.org/" target="_blank" class="icons fa fa-link"
-                                        style="margin: 10px 5px;"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="asub-content" style="display:none">
-                            <div class="content-block">
-                                <h5>Asian Student Union Board</h5>
-                                <p>Senior Advisor&emsp;<b>2019-2020</b></p>
-                                <p>President&emsp;<b>2018-2019</b></p>
-                                <div>
-                                    <a href="https://www.facebook.com/ASUBPurdue/" target="_blank"
-                                        class="icons fa fa-facebook" style="margin: 10px 5px;"></a>
-                                    <a href="https://www.instagram.com/purdueasub/" target="_blank"
-                                        class="icons fa fa-instagram" style="margin: 10px 5px;"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="cswn-content" style="display:none">
-                            <div class="content-block">
-                                <h5>Computer Science Women's Network</h5>
-                                <p>Secretary&emsp;<b>2017-2018</b></p>
-                                <div>
-                                    <a href="https://www.facebook.com/purduecswn/" target="_blank"
-                                        class="icons fa fa-facebook" style="margin: 10px 5px;"></a>
-                                    <a href="https://www.instagram.com/cswnpurdue/" target="_blank"
-                                        class="icons fa fa-instagram" style="margin: 10px 5px;"></a>
-                                    <a href="https://www.cs.purdue.edu/cswn/" target="_blank" class="icons fa fa-link"
-                                        style="margin: 10px 5px;"></a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="experience-image">
+                        <img src="../img/confido-exp.png" alt="Confido Experience" class="exp-img">
                     </div>
-
                 </div>
             </div>
+
+            <div class="experience-card fade-in">
+                <div class="experience-content">
+                    <div class="experience-info">
+                        <div class="experience-header">
+                            <h3>Graduate Assistant & Coding Lab Mentor</h3>
+                            <span class="duration">August 2024 – Present</span>
+                        </div>
+                        <p class="role">NYU</p>
+                        <p class="description">As part of NYU's Coding Lab mentor team, I guided students weekly through
+                            programming languages and tools like JavaScript, p5.js, REST APIs, and Git. I also taught
+                            creative coding as a Graduate Assistant for Code! classes, covering sound design, machine
+                            learning, and game development while assessing projects and providing student feedback.</p>
+                        <div class="experience-links">
+                            <a href="https://tisch.nyu.edu/" target="_blank"
+                                class="exp-social-link clickable cursor-white">
+                                <i class="fa fa-link social-icon"></i>
+                                <i class="fa fa-link social-icon-hidden"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="experience-image">
+                        <img src="../img/codinglab-exp.jpeg" alt="Coding Lab Experience" class="exp-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-card fade-in">
+                <div class="experience-content">
+                    <div class="experience-info">
+                        <div class="experience-header">
+                            <h3>Co–Founder & Co–President</h3>
+                            <span class="duration">October 2024 – Present</span>
+                        </div>
+                        <p class="role">UX Club @ NYU</p>
+                        <p class="description">As the external face of the club, I build strategic partnerships with
+                            industry leaders from companies like Google, Duolingo, and Nike, while managing branding
+                            across all platforms to grow our presence in the design community. I also drive internal
+                            operations by coordinating events, managing sponsor relationships, and connecting students
+                            with emerging UX opportunities.
+                        </p>
+                        <div class="experience-links">
+                            <a href="https://www.linkedin.com/in/ux_nyu/" target="_blank"
+                                class="exp-social-link clickable cursor-white">
+                                <i class="fa fa-linkedin social-icon"></i>
+                                <i class="fa fa-linkedin social-icon-hidden"></i>
+                            </a>
+                            <a href="https://www.instagram.com/ux_nyu/" target="_blank"
+                                class="exp-social-link clickable cursor-white">
+                                <i class="fa fa-instagram social-icon"></i>
+                                <i class="fa fa-instagram social-icon-hidden"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="experience-image">
+                        <img src="../img/uxcnyu-exp.png" alt="UX Club Experience" class="exp-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-card fade-in">
+                <div class="experience-content">
+                    <div class="experience-info">
+                        <div class="experience-header">
+                            <h3>Software Engineer</h3>
+                            <span class="duration">March 2020 – July 2023</span>
+                        </div>
+                        <p class="role">Salesforce</p>
+                        <p class="description">I led Flow Builder UI/UX improvements for thousands of Salesforce users,
+                            working cross-functionally to translate research into optimized Lightning Web Component
+                            layouts. Additionally, I championed accessibility by implementing WCAG 2.1 standards and
+                            developed a secure MFA web portal using Angular.js, TypeScript, and Go while maintaining
+                            intuitive user experience.</p>
+                        <div class="experience-links">
+                            <a href="https://www.salesforce.com/" target="_blank"
+                                class="exp-social-link clickable cursor-white">
+                                <i class="fa fa-link social-icon"></i>
+                                <i class="fa fa-link social-icon-hidden"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="experience-image">
+                        <img src="../img/salesforce-exp.jpeg" alt="Salesforce Experience" class="exp-img">
+                    </div>
+                </div>
+            </div>
+
+
         </div>
-    </div>
-    <div class="about-awards prev-awards fade-in">
-        <div class="awards-overview-header">
-            <h2>Awards</h2>
         </div>
-        <h6>TSOA Graduate Scholarship 2024 - 2026</h6>
-        <p>NYU Tisch School of The Arts</p>
-        <h6>Interaction Design Specialization Coursera Certification</h6>
-        <p>UC San Diego</p>
-        <h6>Figma Fundamentals for Aspiring UI/UX Designers Certification</h6>
-        <p>Tertiary Infotech Singapore</p>
-        <h6>Grace Hopper Conference Scholarship 2018</h6>
-        <p>Purdue Computer Science Department</p>
-        <h6>Freshman of the Year 2017</h6>
-        <p>Society of Asian Scientists and Engineers</p>
-        <h6>Emerging Leader 2017</h6>
-        <p>Society of Asian Scientists and Engineers</p>
+    </section>
 
-    </div>
-</body>
 
-<div class="footer" id="footer">
-    <div class="footer-info fade-in">
-        <h2 class="footerLabel fade-in"><b>Let's get in touch!</span></b></h2>
-        <div class="footerIcons fade-in">
-            <a href="https://www.linkedin.com/in/bevyip/" target="_blank" class="icons fa fa-linkedin"></a>
-            <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
-            <a href="mailto:hy3018@nyu.edu" target="_blank" class="icons fa fa-envelope"></a>
+
+    <!-- Awards Section -->
+    <section class="awards-section fade-in">
+        <h2 class="section-title">Awards & Certifications</h2>
+        <div class="awards-grid">
+            <div class="award-item fade-in">
+                <h3>TSOA Graduate Scholarship</h3>
+                <p>NYU Tisch School of The Arts • 2024-2026</p>
+            </div>
+            <div class="award-item fade-in">
+                <h3>Interaction Design Specialization</h3>
+                <p>UC San Diego (Coursera) • 2024</p>
+            </div>
+            <div class="award-item fade-in">
+                <h3>Figma Fundamentals for Aspiring UI/UX Designers Certification</h3>
+                <p>Tertiary Infotech Singapore • 2024</p>
+            </div>
+            <div class="award-item fade-in">
+                <h3>Grace Hopper Conference Scholarship</h3>
+                <p>Purdue Computer Science Department • 2018</p>
+            </div>
+            <div class="award-item fade-in">
+                <h3>Freshman of the Year</h3>
+                <p>Society of Asian Scientists and Engineers • 2017</p>
+            </div>
+            <div class="award-item fade-in">
+                <h3>Emerging Leader</h3>
+                <p>Society of Asian Scientists and Engineers • 2017</p>
+            </div>
         </div>
-        <div class="footerStamp fade-in">
-            <p>Proudly designed & handcoded by Beverly Yip.</p>
-        </div>
-        <div class="footerReroute fade-in">
-            <a class="footerReroute-link" href="#">BACK TO TOP</a>
-        </div>
-    </div>
-</div>
+    </section>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Include reusable footer -->
+    <div id="footer-container"></div>
 
-<script>
-    let debounceTimeout;
-    document.addEventListener("DOMContentLoaded", () => {
-        const rows = document.querySelectorAll(".proj-overview-content");
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/js/font-awesome.min.js"></script>
+    <script src="../js/cursor.js"></script>
+    <script src="../nav/nav.js"></script>
+    <script src="../nav/footer.js"></script>
 
-        const observerOptions = {
-            root: null, // Use the viewport as the root
-            threshold: 0.1, // Trigger when 10% of the row is visible
-        };
+    <script>
+        // Load navbar and footer components
+        document.addEventListener('DOMContentLoaded', function () {
+            // Load navbar
+            fetch('../nav/nav.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                    // Initialize navbar functionality
+                    if (window.initializeNavbar) {
+                        window.initializeNavbar();
+                    }
+                });
 
-        const observer = new IntersectionObserver((entries) => {
-            clearTimeout(debounceTimeout);
-            debounceTimeout = setTimeout(() => {
+            // Load footer
+            fetch('../nav/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                    // Initialize footer functionality
+                    if (window.initializeFooter) {
+                        window.initializeFooter();
+                    }
+                });
+        });
+
+        // Fade-in animation functionality
+        document.addEventListener("DOMContentLoaded", () => {
+            const fadeInElements = document.querySelectorAll(".fade-in");
+
+            const observerOptions = {
+                root: null,
+                threshold: 0.1,
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add("visible");
                         observer.unobserve(entry.target);
                     }
                 });
-            }, 50);
-        }, observerOptions);
+            }, observerOptions);
 
-        rows.forEach(row => observer.observe(row));
-    });
+            fadeInElements.forEach((el) => observer.observe(el));
+        });
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const fadeInElements = document.querySelectorAll(".fade-in");
+        // Rolling text animation - simplified
+        document.addEventListener("DOMContentLoaded", () => {
+            // Animation is handled entirely by CSS
+        });
 
-        const observerOptions = {
-            root: null,
-            threshold: 0.1,
-        };
+        // Smart Polaroid Pile Effect - captures natural grid positions
+        document.addEventListener("DOMContentLoaded", () => {
+            const polaroidCenter = document.getElementById("polaroid-pile-center");
+            const hobbyCards = document.querySelectorAll(".hobby-card");
+            const cursorPill = document.getElementById("cursor-pill");
+            let isSpread = false;
+            let gridPositions = [];
+            let resizeTimeout;
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                    observer.unobserve(entry.target);
+            // Function to capture natural grid positions
+            function captureGridPositions() {
+                const currentWidth = window.innerWidth;
+                const isDesktopView = currentWidth > 768;
+
+                // Only capture positions if we're in desktop view
+                if (!isDesktopView) {
+                    return;
                 }
+
+                // Ensure grid is properly centered before capturing positions
+                ensureGridCentering();
+
+                hobbyCards.forEach(card => {
+                    card.classList.remove("pile-mode");
+                });
+
+                document.body.offsetHeight;
+
+                const gridElement = document.querySelector(".hobbies-grid");
+                const gridRect = gridElement.getBoundingClientRect();
+                const computedStyle = window.getComputedStyle(gridElement);
+                const gridGap = parseInt(computedStyle.gap) || 36;
+
+                // Clear previous positions
+                gridPositions = [];
+
+                hobbyCards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+
+                    // Calculate position relative to the grid container
+                    const relativeTop = rect.top - gridRect.top;
+                    const relativeLeft = rect.left - gridRect.left;
+
+                    gridPositions.push({
+                        top: relativeTop,
+                        left: relativeLeft,
+                        width: rect.width,
+                        height: rect.height
+                    });
+                });
+
+                // Calculate the total grid dimensions for proper spacing
+                const totalGridHeight = Math.max(
+                    gridPositions[2].top + gridPositions[2].height + gridGap,
+                    gridPositions[3].top + gridPositions[3].height + gridGap
+                );
+
+                gridElement.style.minHeight = totalGridHeight + "px";
+
+                hobbyCards.forEach(card => {
+                    card.classList.add("pile-mode");
+                });
+            }
+
+            // Capture positions after a short delay to ensure everything is rendered
+            setTimeout(captureGridPositions, 100);
+
+            // Function to ensure grid is properly centered
+            function ensureGridCentering() {
+                const gridElement = document.querySelector(".hobbies-grid");
+                if (gridElement) {
+                    // Force the grid to be centered by ensuring margin: 0 auto is applied
+                    gridElement.style.margin = "0 auto";
+                    // Force a reflow to ensure centering is applied
+                    gridElement.offsetHeight;
+                }
+            }
+
+            // Function to return cards to responsive grid flow
+            function returnToResponsiveGrid() {
+                const currentWidth = window.innerWidth;
+                const isDesktopView = currentWidth > 768;
+
+                if (isSpread) {
+                    // Cards are currently spread out - return them to grid
+                    hobbyCards.forEach(card => {
+                        card.classList.remove("animate-to-grid");
+                        card.style.position = "";
+                        card.style.top = "";
+                        card.style.left = "";
+                        card.style.width = "";
+                        card.style.height = "";
+                    });
+
+                    polaroidCenter.style.opacity = "1";
+                    polaroidCenter.style.pointerEvents = "auto";
+                    isSpread = false;
+
+                    setTimeout(captureGridPositions, 100);
+                } else if (isDesktopView && !isSpread) {
+                    // Screen expanded to desktop view - re-enable polaroid pile
+                    polaroidCenter.style.display = "flex";
+                    polaroidCenter.style.opacity = "1";
+                    polaroidCenter.style.pointerEvents = "auto";
+
+                    // Return cards to pile mode so they can be clicked again
+                    hobbyCards.forEach(card => {
+                        card.classList.add("pile-mode");
+                        card.classList.remove("animate-to-grid");
+                        card.style.position = "";
+                        card.style.top = "";
+                        card.style.left = "";
+                        card.style.width = "";
+                        card.style.height = "";
+                    });
+
+                    // Re-capture positions for the new desktop layout
+                    setTimeout(captureGridPositions, 100);
+                }
+            }
+
+            // Debounced resize handler to return cards to responsive grid
+            function handleResize() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    returnToResponsiveGrid();
+                }, 250); // Wait 250ms after resize stops
+            }
+
+            // Listen for window resize
+            window.addEventListener('resize', handleResize);
+
+            // Also handle orientation changes on mobile devices
+            window.addEventListener('orientationchange', () => {
+                setTimeout(handleResize, 100); // Wait for orientation change to complete
             });
-        }, observerOptions);
 
-        fadeInElements.forEach((el) => observer.observe(el));
-    });
-</script>
+            if (polaroidCenter && hobbyCards.length > 0) {
+                // Cursor pill hover effect
+                polaroidCenter.addEventListener("mouseenter", () => {
+                    if (cursorPill) {
+                        cursorPill.classList.add("visible");
+                    }
+                    const cursorDot = document.querySelector(".cursor-dot");
+                    if (cursorDot) {
+                        cursorDot.style.opacity = "0";
+                    }
+                });
 
-<script>
-    let asubLogo = document.getElementById('asub-content');
-    let saseLogo = document.getElementById('sase-content');
-    let salesforceLogo = document.getElementById('salesforce-content');
-    let cswnLogo = document.getElementById('cswn-content');
-    let purdueLogo = document.getElementById('purdue-content');
-    let nyuLogo = document.getElementById('nyu-content');
+                polaroidCenter.addEventListener("mousemove", (e) => {
+                    if (cursorPill && cursorPill.classList.contains("visible")) {
+                        cursorPill.style.left = e.clientX + "px";
+                        cursorPill.style.top = e.clientY + "px";
+                        cursorPill.style.transform = "translate(-50%, -50%)";
+                    }
+                });
 
-    function reveal_asub() {
-        var x = document.getElementById("asub-content");
-        if (x.style.display === "none") {
-            nyuLogo.style.display = "none";
-            saseLogo.style.display = "none";
-            cswnLogo.style.display = "none";
-            purdueLogo.style.display = "none";
-            salesforceLogo.style.display = "none";
-            x.style.display = "flex";
-            x.style.flexDirection = "column";
-            x.style.height = "100%";
-            x.style.width = "100%";
-            // x.style.marginBottom = "20px";
-            // x.style.padding = "10px 30px";
-        } else {
-            x.style.display = "none";
-            x.style.height = "0";
-            x.style.width = "0";
-        }
-    }
+                polaroidCenter.addEventListener("mouseleave", () => {
+                    if (cursorPill) {
+                        cursorPill.classList.remove("visible");
+                    }
+                    const cursorDot = document.querySelector(".cursor-dot");
+                    if (cursorDot) {
+                        cursorDot.style.opacity = "1";
+                    }
+                });
 
-    function reveal_sase() {
-        var x = document.getElementById("sase-content");
-        if (x.style.display === "none") {
-            nyuLogo.style.display = "none";
-            asubLogo.style.display = "none";
-            cswnLogo.style.display = "none";
-            purdueLogo.style.display = "none";
-            salesforceLogo.style.display = "none";
-            x.style.display = "flex";
-            x.style.flexDirection = "column";
-            x.style.height = "100%";
-            x.style.width = "100%";
-            // x.style.marginBottom = "20px";
-            // x.style.padding = "10px 30px";
-        } else {
-            x.style.display = "none";
-            x.style.height = "0";
-            x.style.width = "0";
-        }
-    }
+                polaroidCenter.addEventListener("click", () => {
+                    if (!isSpread && gridPositions.length > 0) {
+                        hobbyCards.forEach((card, index) => {
+                            card.classList.remove("pile-mode");
+                            card.classList.add("animate-to-grid");
 
-    function reveal_salesforce() {
-        var x = document.getElementById("salesforce-content");
-        if (x.style.display === "none") {
-            nyuLogo.style.display = "none";
-            saseLogo.style.display = "none";
-            cswnLogo.style.display = "none";
-            asubLogo.style.display = "none";
-            purdueLogo.style.display = "none";
-            x.style.display = "flex";
-            x.style.flexDirection = "column";
-            x.style.height = "100%";
-            x.style.width = "100%";
-            // x.style.marginBottom = "20px";
-            // x.style.padding = "10px 30px";
-        } else {
-            x.style.display = "none";
-            x.style.height = "0";
-            x.style.width = "0";
-        }
-    }
+                            const pos = gridPositions[index];
+                            card.style.top = pos.top + "px";
+                            card.style.left = pos.left + "px";
+                            card.style.width = pos.width + "px";
+                            card.style.height = pos.height + "px";
+                        });
 
-    function reveal_cswn() {
-        var x = document.getElementById("cswn-content");
-        if (x.style.display === "none") {
-            nyuLogo.style.display = "none";
-            saseLogo.style.display = "none";
-            asubLogo.style.display = "none";
-            purdueLogo.style.display = "none";
-            salesforceLogo.style.display = "none";
-            x.style.display = "flex";
-            x.style.flexDirection = "column";
-            x.style.height = "100%";
-            x.style.width = "100%";
-            // x.style.marginBottom = "20px";
-            // x.style.padding = "10px 30px";
-        } else {
-            x.style.display = "none";
-            x.style.height = "0";
-            x.style.width = "0";
-        }
-    }
+                        polaroidCenter.style.opacity = "0";
+                        polaroidCenter.style.pointerEvents = "none";
+                        isSpread = true;
+                    }
+                });
+            }
+        });
 
-    function reveal_purdue() {
-        var x = document.getElementById("purdue-content");
-        if (x.style.display === "none") {
-            nyuLogo.style.display = "none";
-            saseLogo.style.display = "none";
-            cswnLogo.style.display = "none";
-            asubLogo.style.display = "none";
-            salesforceLogo.style.display = "none";
-            x.style.display = "flex";
-            x.style.flexDirection = "column";
-            x.style.height = "100%";
-            x.style.width = "100%";
-            // x.style.marginBottom = "20px";
-            // x.style.padding = "10px 30px";
-        } else {
-            x.style.display = "none";
-            x.style.height = "0";
-            x.style.width = "0";
-        }
-    }
+    </script>
 
-    function reveal_nyu() {
-        var x = document.getElementById("nyu-content");
-        if (x.style.display === "none") {
-            purdueLogo.style.display = "none";
-            saseLogo.style.display = "none";
-            cswnLogo.style.display = "none";
-            asubLogo.style.display = "none";
-            salesforceLogo.style.display = "none";
-            x.style.display = "flex";
-            x.style.flexDirection = "column";
-            x.style.height = "100%";
-            x.style.width = "100%";
-            // x.style.marginBottom = "20px";
-            // x.style.padding = "10px 30px";
-        } else {
-            x.style.display = "none";
-            x.style.height = "0";
-            x.style.width = "0";
-        }
-    }
-</script>
+</body>
 
 </html>

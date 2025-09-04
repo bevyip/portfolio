@@ -16,86 +16,63 @@
         }
     </style>
 
-    <title>Beverly Yip</title>
+    <title>Beverly Yip | Portfolio</title>
+    <link rel="icon" type="image/png" href="../img/logo-light.png">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Remove Bootstrap CSS and add new nav component CSS -->
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../nav/nav.css">
+    <link rel="stylesheet" href="../nav/footer.css">
     <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/play.css">
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fade-in" id="navbar-real">
-            <a class="navbar-brand" id="navbar-brand" href="/"><img src="../img/logo.png" alt="Logo" class="logo"></a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation" id="nav-gen" fade-in>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-center justify-content-center fade-in"
-                id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto" id="custom-navbar">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">ABOUT</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" id="workDropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            WORK
-                        </a>
-                        <div id="workMenu" class="dropdown-menu">
-                            <a class="dropdown-item" href="/#work">ALL</a>
-                            <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/play">PLAY</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <!-- Include the reusable nav component -->
+    <div id="nav-placeholder"></div>
 
     <div class="all-projects-overview">
         <div class="proj-overview-content">
-            <div class="proj-container">
-                <a href="/spring2025/boba-cafe">
+            <div class="proj-container clickable">
+                <a href="/spring2025/boba-cafe" class="clickable">
                     <img class="boba-cafe" src="../img/spring2025/boba-cafe/boba-cafe-proj.png" alt="boba-cafe">
                     <div class="boba-cafe-desc proj-desc">
                         <h3>Bev's Boba Cafe</h3>
                         <div class="pill-tags">
-                            <span class="pill">Mobile</span>
-                            <span class="pill">Web</span>
-                            <span class="pill">UX/UI</span>
-                            <span class="pill">Interaction Design</span>
+                            <span class="pill clickable">Mobile</span>
+                            <span class="pill clickable">Web</span>
+                            <span class="pill clickable">UX/UI</span>
+                            <span class="pill clickable">Interaction Design</span>
                         </div>
-                        <p>A mobile-first, gamified bubble tea ordering web app that combines interactive drink
+                        <p class="clickable">A mobile-first, gamified bubble tea ordering web app that combines
+                            interactive drink
                             customization with
                             playful motion design, all while prioritizing accessibility and small-screen optimization.
                         </p>
                     </div>
                 </a>
             </div>
-            <div class="proj-container">
-                <a href="/weather-wear">
+            <div class="proj-container clickable">
+                <a href="/weather-wear" class="clickable">
                     <img class="weather-app" src="../img/weather-app.png" alt="weather-app">
                     <div class="weather-app-desc proj-desc">
                         <h3>WeatherWear</h3>
                         <div class="pill-tags">
-                            <span class="pill">Web</span>
-                            <span class="pill">UX/UI</span>
-                            <span class="pill">API Integrations</span>
+                            <span class="pill clickable">Web</span>
+                            <span class="pill clickable">UX/UI</span>
+                            <span class="pill clickable">API Integrations</span>
                         </div>
-                        <p>WeatherWear takes the guess work out of your fashion choices by analyzing the forecast and
+                        <p class="clickable">WeatherWear takes the guess work out of your fashion choices by analyzing
+                            the forecast and
                             allowing you
                             to revisit past choices to dress perfectly for the day ahead.</p>
                     </div>
                 </a>
             </div>
-            <div class="proj-container">
-                <a href="/spring2025/reflections-of-monet">
+            <div class="proj-container clickable">
+                <a href="/spring2025/reflections-of-monet" class="clickable">
                     <video class="reflections-of-monet" autoplay loop muted playsinline>
                         <source src="../img/spring2025/reflections-of-monet/step1.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -103,12 +80,13 @@
                     <div class="reflections-of-monet-desc proj-desc">
                         <h3>Reflections of Monet</h3>
                         <div class="pill-tags">
-                            <span class="pill">Web</span>
-                            <span class="pill">UX/UI</span>
-                            <span class="pill">Interactive Art</span>
-                            <span class="pill">Creative Coding</span>
+                            <span class="pill clickable">Web</span>
+                            <span class="pill clickable">UX/UI</span>
+                            <span class="pill clickable">Interactive Art</span>
+                            <span class="pill clickable">Creative Coding</span>
                         </div>
-                        <p>An interactive web art project that reimagines Claude Monet's Water Lilies series into a
+                        <p class="clickable">An interactive web art project that reimagines Claude Monet's Water Lilies
+                            series into a
                             meditative,
                             immersive scrolling experience, featuring dynamic animations, ambient soundscapes, and
                             responsive
@@ -118,38 +96,36 @@
             </div>
         </div>
         <div class="proj-overview-content">
-            <div class="proj-container">
-                <a href="/fall2024/temple-of-fortune/">
+            <div class="proj-container clickable">
+                <a href="/fall2024/temple-of-fortune/" class="clickable">
                     <img class="temple-of-fortune" src="../img/fall2024/temple/thumbnail.jpg" alt="temple-of-fortune">
                     <div class="temple-of-fortune-desc proj-desc">
                         <h3>Temple of Fortune</h3>
                         <div class="pill-tags">
-                            <span class="pill">UX/UI</span>
-                            <span class="pill">Interaction Design</span>
-                            <span class="pill">Physical Computing</span>
+                            <span class="pill clickable">UX/UI</span>
+                            <span class="pill clickable">Interaction Design</span>
+                            <span class="pill clickable">Physical Computing</span>
                         </div>
-                        <p>An interactive digital fortune-telling altar that blends physical computing (RFID readers,
-                            pressure
-                            sensors) with software (Unity, Blender, TouchDesigner, Arduino). Developed in C++, C#, and
-                            Python, it
-                            features projection mapping, synchronized animations, audio, and lighting for immersive
-                            storytelling.</p>
+                        <p class="clickable">An interactive fortune-telling altar combining physical computing (RFID,
+                            pressure sensors) with projection mapping and real-time animations to create an immersive
+                            cultural storytelling experience.</p>
                     </div>
                 </a>
             </div>
-            <div class="proj-container">
-                <a href="/fall2024/fortune-telling-wizard">
-                    <img class="fortune-telling-wizard" src="../img/fall2024/fortune-telling-wizard.gif"
+            <div class="proj-container clickable">
+                <a href="/fall2024/fortune-telling-wizard" class="clickable">
+                    <img class="fortune-telling-wizard" src="../img/fall2024/fortune-telling/fortune-telling-wizard.gif"
                         alt="fortune-telling-wizard">
                     <div class="fortune-telling-wizard-desc proj-desc">
                         <h3>Fortune Telling Wizard</h3>
                         <div class="pill-tags">
-                            <span class="pill">Web</span>
-                            <span class="pill">UX/UI</span>
-                            <span class="pill">OpenAI API</span>
-                            <span class="pill">Creative Coding</span>
+                            <span class="pill clickable">Web</span>
+                            <span class="pill clickable">UX/UI</span>
+                            <span class="pill clickable">OpenAI API</span>
+                            <span class="pill clickable">Creative Coding</span>
                         </div>
-                        <p>An interactive artwork that blends the practice of Chinese fortune-telling with the modern
+                        <p class="clickable">An interactive artwork that blends the practice of Chinese fortune-telling
+                            with the modern
                             capabilities
                             of p5.js and OpenAI's API to create a personalized reading based on the user's name, birth
                             year and
@@ -157,17 +133,18 @@
                     </div>
                 </a>
             </div>
-            <div class="proj-container">
-                <a href="/fall2024/starry-night">
+            <div class="proj-container clickable">
+                <a href="/fall2024/starry-night" class="clickable">
                     <img class="starry-night" src="../img/fall2024/starry-night/starry-night.png" alt="starry-night">
                     <div class="starry-night-desc proj-desc">
                         <h3>Transforming Van Gogh's Starry Night</h3>
                         <div class="pill-tags">
-                            <span class="pill">Web</span>
-                            <span class="pill">Generative Art</span>
-                            <span class="pill">Creative Coding</span>
+                            <span class="pill clickable">Web</span>
+                            <span class="pill clickable">Generative Art</span>
+                            <span class="pill clickable">Creative Coding</span>
                         </div>
-                        <p>A creative computing artwork in p5.js showcasing the transformation of Van Gogh's "The Starry
+                        <p class="clickable">A creative computing artwork in p5.js showcasing the transformation of Van
+                            Gogh's "The Starry
                             Night"
                             through dissolving and emerging effects, creating a cyclical exploration of digital
                             manipulation that
@@ -177,97 +154,102 @@
             </div>
         </div>
         <div class="proj-overview-content">
-            <div class="proj-container">
-                <a href="/fall2024/speculative-future">
+            <div class="proj-container clickable">
+                <a href="/fall2024/speculative-future" class="clickable">
                     <img class="spec-future" src="../img/fall2024/spec-future/spec-future.png" alt="spec-future">
                     <div class="spec-future-desc proj-desc">
-                        <h3>A Speculative Future Film</h3>
+                        <h3>A Speculative Future</h3>
                         <div class="pill-tags">
-                            <span class="pill">Generative AI</span>
-                            <span class="pill">Storyboarding</span>
-                            <span class="pill">Visual Storytelling</span>
+                            <span class="pill clickable">Film</span>
+                            <span class="pill clickable">Generative AI</span>
+                            <span class="pill clickable">Storyboarding</span>
                         </div>
-                        <p>A speculative future film exploring the imagined perspective of someone within their
-                            apartment, created
+                        <p class="clickable">A short film exploring the imagined perspective of someone
+                            within their
+                            apartment in a speculative future, created
                             using After Effects, Premiere Pro, Photoshop, and Figma.</p>
                     </div>
                 </a>
             </div>
-            <div class="proj-container">
-                <a href="/fall2024/fabrication-projects/whack-a-mouse">
+            <div class="proj-container clickable">
+                <a href="/fall2024/fabrication-projects/whack-a-mouse" class="clickable">
                     <img class="whack-a-mouse" src="../img/fall2024/fabrication/whack-a-mouse-img/whackamouse.jpg"
                         alt="whack-a-mouse">
                     <div class="whack-a-mouse-desc proj-desc">
                         <h3>Whack-A-Mouse</h3>
                         <div class="pill-tags">
-                            <span class="pill">Interactive Play</span>
-                            <span class="pill">Fabrication</span>
-                            <span class="pill">Product Design</span>
+                            <span class="pill clickable">Interactive Play</span>
+                            <span class="pill clickable">Fabrication</span>
+                            <span class="pill clickable">Product Design</span>
                         </div>
-                        <p>A cat toy enclosure fabricated out of plywood, acrylic, felt and toy mice.</p>
+                        <p class="clickable">A cat toy enclosure fabricated out of plywood, acrylic, felt and toy mice.
+                        </p>
                     </div>
                 </a>
             </div>
-            <div class="proj-container">
-                <a href="/fall2024/fabrication-projects/cat-box">
+            <div class="proj-container clickable">
+                <a href="/fall2024/fabrication-projects/cat-box" class="clickable">
                     <img class="cat-box" src="../img/fall2024/fabrication/cat-box-img/cat-box.jpg" alt="cat-box">
                     <div class="cat-box-desc proj-desc">
                         <h3>Cat Box</h3>
                         <div class="pill-tags">
-                            <span class="pill">Fabrication</span>
-                            <span class="pill">Product Design</span>
+                            <span class="pill clickable">Fabrication</span>
+                            <span class="pill clickable">Product Design</span>
                         </div>
-                        <p>A cat-shaped box fabricated out of a single block of wood and fastened with a wooden dowel.
+                        <p class="clickable">A cat-shaped box fabricated out of a single block of wood and fastened with
+                            a wooden dowel.
                         </p>
                     </div>
                 </a>
             </div>
         </div>
         <div class="proj-overview-content">
-            <div class="proj-container">
-                <a href="/fall2024/fabrication-projects/cat-figurine">
+            <div class="proj-container clickable">
+                <a href="/fall2024/fabrication-projects/cat-figurine" class="clickable">
                     <img class="cat-figurine" src="../img/fall2024/fabrication/cat-figurine-img/cat-figurine.jpg"
                         alt="cat-figurine">
                     <div class="cat-figurine-desc proj-desc">
                         <h3>Cat Figurine</h3>
                         <div class="pill-tags">
-                            <span class="pill">3D Printing</span>
-                            <span class="pill">Fabrication</span>
-                            <span class="pill">Product Design</span>
+                            <span class="pill clickable">3D Printing</span>
+                            <span class="pill clickable">Fabrication</span>
+                            <span class="pill clickable">Product Design</span>
                         </div>
-                        <p>A cat figurine fabricated out of polymer clay and wood, connected by tough PLA
+                        <p class="clickable">A cat figurine fabricated out of polymer clay and wood, connected by tough
+                            PLA
                             ball-and-socket joints.
                         </p>
                     </div>
                 </a>
             </div>
-            <div class="proj-container">
-                <a href="/fall2024/fabrication-projects/five-fishes">
+            <div class="proj-container clickable">
+                <a href="/fall2024/fabrication-projects/five-fishes" class="clickable">
                     <img class="five-fishes" src="../img/fall2024/fabrication/five-fishes-img/five-fishes.jpg"
                         alt="five-fishes">
                     <div class="five-fishes-desc proj-desc">
                         <h3>Five Identical Fishes</h3>
                         <div class="pill-tags">
-                            <span class="pill">Interactive Play</span>
-                            <span class="pill">Fabrication</span>
-                            <span class="pill">Product Design</span>
+                            <span class="pill clickable">Interactive Play</span>
+                            <span class="pill clickable">Fabrication</span>
+                            <span class="pill clickable">Product Design</span>
                         </div>
-                        <p>Five identical toy fishes fabricated out of wood and fabric hair ties.</p>
+                        <p class="clickable">Five identical toy fishes fabricated out of wood and fabric hair ties.</p>
                     </div>
                 </a>
             </div>
-            <div class="proj-container">
-                <a href="/fall2024/fabrication-projects/puzzle-box">
+            <div class="proj-container clickable">
+                <a href="/fall2024/fabrication-projects/puzzle-box" class="clickable">
                     <img class="puzzle-box" src="../img/fall2024/fabrication/puzzle-box-img/puzzle-box.jpg"
                         alt="puzzle-box">
                     <div class="puzzle-box-desc proj-desc">
                         <h3>Cat Puzzle Feeder Box</h3>
                         <div class="pill-tags">
-                            <span class="pill">Interactive Play</span>
-                            <span class="pill">Fabrication</span>
-                            <span class="pill">Product Design</span>
+                            <span class="pill clickable">Interactive Play</span>
+                            <span class="pill clickable">Fabrication</span>
+                            <span class="pill clickable">Product Design</span>
                         </div>
-                        <p>A pair of cat puzzle feeder boxes, identical in design but different in size, laser-cut and
+                        <p class="clickable">A pair of cat puzzle feeder boxes, identical in design but different in
+                            size, laser-cut and
                             engraved from
                             plywood.</p>
                     </div>
@@ -276,31 +258,50 @@
         </div>
     </div>
 
-    <div class="footer" id="footer">
-        <div class="footer-info fade-in">
-            <h2 class="footerLabel fade-in"><b>Let's get in touch!</span></b></h2>
-            <div class="footerIcons fade-in">
-                <a href="https://www.linkedin.com/in/bevyip/" target="_blank" class="icons fa fa-linkedin"></a>
-                <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
-                <a href="mailto:hy3018@nyu.edu" target="_blank" class="icons fa fa-envelope"></a>
-            </div>
-            <div class="footerStamp fade-in">
-                <p>Proudly designed & handcoded by Beverly Yip.</p>
-            </div>
-            <div class="footerReroute fade-in">
-                <a class="footerReroute-link" href="#">BACK TO TOP</a>
-            </div>
-        </div>
-    </div>
+    <!-- Include the reusable footer component -->
+    <div id="footer-placeholder"></div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Remove Bootstrap JavaScript and add nav component JavaScript -->
+    <script src="../nav/nav.js"></script>
+    <script src="../nav/footer.js"></script>
+    <script src="../js/cursor.js"></script>
     <script>
+        // Load the nav component
+        fetch('../nav/nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+                // Initialize the navbar after it's loaded
+                if (window.initializeNavbar) {
+                    window.initializeNavbar();
+                }
+                // Re-initialize cursor effects after nav is loaded
+                if (window.addCursorEffects) {
+                    setTimeout(() => {
+                        window.addCursorEffects();
+                    }, 100);
+                }
+            })
+            .catch(error => console.error('Error loading nav component:', error));
+
+        // Load the footer component
+        fetch('../nav/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+                // Initialize the footer after it's loaded
+                if (window.initializeFooter) {
+                    window.initializeFooter();
+                }
+                // Re-initialize cursor effects after footer is loaded
+                if (window.addCursorEffects) {
+                    setTimeout(() => {
+                        window.addCursorEffects();
+                    }, 100);
+                }
+            })
+            .catch(error => console.error('Error loading footer component:', error));
+
         let debounceTimeout;
         document.addEventListener("DOMContentLoaded", () => {
             const rows = document.querySelectorAll(".proj-overview-content");

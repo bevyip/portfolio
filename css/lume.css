@@ -1,10 +1,3 @@
-::selection {
-  background: #b3cde0; /* WebKit/Blink Browsers */
-}
-::-moz-selection {
-  background: #b3cde0; /* Gecko Browsers */
-}
-
 .fade-in {
   opacity: 0;
   transform: translateY(20px);

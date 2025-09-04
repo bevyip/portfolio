@@ -129,13 +129,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // Wrap characters for each animated word
   ["accessible", "delightful", "intuitive"].forEach((id) => {
     const element = document.getElementById(id);
-    wrapCharacters(element);
+    if (element) {
+      wrapCharacters(element);
 
-    // Add underline element for intuitive
-    if (id === "intuitive") {
-      const underline = document.createElement("div");
-      underline.className = "intuitive-underline";
-      element.appendChild(underline);
+      // Add underline element for intuitive
+      if (id === "intuitive") {
+        const underline = document.createElement("div");
+        underline.className = "intuitive-underline";
+        element.appendChild(underline);
+      }
     }
   });
 
@@ -196,6 +198,82 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+
+  // Parallax scrolling effect for projects section
+  function handleParallaxScroll() {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const projectsSection = document.querySelector(".projects-section");
+
+    if (projectsSection) {
+      // Using W3Schools approach: background-attachment: fixed handles parallax automatically
+      // No need for manual transform calculations
+
+      // Add depth effect with opacity as it moves over header
+      const headerHeight = windowHeight;
+      if (scrollY < headerHeight) {
+        const opacity = 0.8 + (scrollY / headerHeight) * 0.2;
+        projectsSection.style.opacity = opacity;
+      } else {
+        projectsSection.style.opacity = 1;
+      }
+    }
+  }
+
+  // Footer floating animation
+  function handleFooterAnimation() {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollY = window.scrollY;
+    const footer = document.querySelector(".footer");
+
+    if (footer) {
+      // Only trigger animation when scroll bar reaches the bottom
+      // Check if we're at the very bottom of the page
+      const isAtBottom = scrollY + windowHeight >= documentHeight - 50; // 50px tolerance
+
+      if (isAtBottom) {
+        // Add a slight delay before starting the animation
+        setTimeout(() => {
+          const footerLeft = footer.querySelector(".footer-left");
+          const footerSocial = footer.querySelector(".footer-social");
+          const footerBottomRow = footer.querySelector(".footer-bottom-row");
+
+          // Add floating animation classes with staggered timing
+          if (footerLeft && !footerLeft.classList.contains("floating-in")) {
+            footerLeft.classList.add("floating-in");
+          }
+
+          if (footerSocial && !footerSocial.classList.contains("floating-in")) {
+            footerSocial.classList.add("floating-in");
+          }
+
+          if (
+            footerBottomRow &&
+            !footerBottomRow.classList.contains("floating-in")
+          ) {
+            footerBottomRow.classList.add("floating-in");
+          }
+        }, 300); // 300ms delay before starting the animation
+      }
+    }
+  }
+
+  // Throttled scroll handler for performance
+  let ticking = false;
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        handleParallaxScroll();
+        handleFooterAnimation();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  // Add scroll event listener
+  window.addEventListener("scroll", requestTick, { passive: true });
 
   // Existing fade-in animation code
   const rows = document.querySelectorAll(".proj-overview-content");
@@ -260,6 +338,64 @@ document.addEventListener("DOMContentLoaded", () => {
     () => {
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(handleInitialVisibility, 50);
+    },
+    { passive: true }
+  );
+
+  // Initialize parallax and footer animation on load
+  handleParallaxScroll();
+  handleFooterAnimation();
+
+  // Project card text animation on scroll
+  const animateProjectCardText = () => {
+    const projectCards = document.querySelectorAll(".project-card");
+
+    projectCards.forEach((card, cardIndex) => {
+      const title = card.querySelector(".project-title");
+      const role = card.querySelector(".project-role");
+      const tags = card.querySelector(".project-tags");
+      const description = card.querySelector(".project-description");
+
+      if (title && tags && description) {
+        const cardRect = card.getBoundingClientRect();
+        const isInViewport =
+          cardRect.top <= window.innerHeight * 0.8 && cardRect.bottom >= 0;
+
+        if (isInViewport && !card.classList.contains("text-animated")) {
+          // Add delay based on card position for staggered effect
+          const baseDelay = cardIndex * 0.3;
+
+          setTimeout(() => {
+            title.classList.add("animate-in");
+          }, baseDelay * 1000);
+
+          setTimeout(() => {
+            if (role) role.classList.add("animate-in");
+          }, (baseDelay + 0.1) * 1000);
+
+          setTimeout(() => {
+            tags.classList.add("animate-in");
+          }, (baseDelay + 0.2) * 1000);
+
+          setTimeout(() => {
+            description.classList.add("animate-in");
+          }, (baseDelay + 0.4) * 1000);
+
+          card.classList.add("text-animated");
+        }
+      }
+    });
+  };
+
+  // Call on initial load
+  animateProjectCardText();
+
+  // Add scroll listener for project card animations
+  window.addEventListener(
+    "scroll",
+    () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(animateProjectCardText, 50);
     },
     { passive: true }
   );

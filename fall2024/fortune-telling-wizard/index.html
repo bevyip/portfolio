@@ -4,283 +4,273 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Beverly Yip | Portfolio</title>
 
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../img/logo-light.png">
 
-        @font-face {
-            font-family: "Rashfield";
-            src: url("../../fonts/TTF/VVDSRashfield-Normal.ttf");
-        }
-    </style>
+    <!-- Typography System -->
+    <link rel="stylesheet" href="../../css/typography.css">
 
-    <title>Beverly Yip</title>
+    <!-- Navbar Component CSS -->
+    <link rel="stylesheet" href="../../nav/nav.css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Footer Component CSS -->
+    <link rel="stylesheet" href="../../nav/footer.css">
+
+    <!-- Project-Specific Styles -->
     <link rel="stylesheet" href="../../css/fortune-wizard.css">
 
+    <!-- Material-UI Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
-    <header class="fade-in">
-        <nav class="navbar navbar-expand-lg navbar-light fade-in" id="navbar-real">
-            <a class="navbar-brand" id="navbar-brand" href="/"><img src="../../img/logo-light.png" alt="Logo"
-                    class="logo"></a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation" id="nav-gen" fade-in>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-center justify-content-center fade-in"
-                id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto" id="custom-navbar">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">ABOUT</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" id="workDropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            WORK
-                        </a>
-                        <div id="workMenu" class="dropdown-menu">
-                            <a class="dropdown-item" href="/#work">ALL</a>
-                            <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/play">PLAY</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="container-fluid landing fade-in">
-        </div>
+    <!-- Header with Navbar -->
+    <header>
+        <!-- Include the navbar component -->
+        <div id="nav-bar"></div>
     </header>
 
-    <div class="row concept">
-        <div class="col-lg-8 col-md-12 col-sm-12 project-summary">
-            <div class="landing-name fade-in">
-                <h1>Fortune Telling Wizard</h1>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <h1 class="hero-title text-animate">FORTUNE TELLING WIZARD</h1>
+                    <div class="hero-meta">
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">ROLE</span>
+                            <span class="meta-value">Software Engineer</span>
+                        </div>
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">DURATION</span>
+                            <span class="meta-value">December 2024 (2 weeks)</span>
+                        </div>
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">TOOLS</span>
+                            <span class="meta-value">p5.js, OpenAI API, HTML, CSS, JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="hero-summary text-animate">
+                        <p>The Fortune Telling Wizard draws inspiration from traditional Chinese fortune-telling
+                            practices, particularly <i>Bazi</i> (Four Pillars of Destiny), and translates them into an
+                            interactive, web-based experience. Influenced by a collaborative physical computing project
+                            that I was working on at the same time, this mini version utilizes p5.js and OpenAI API to
+                            capture the mystical essence of Chinese fortune-telling in a user-friendly digital format.
+                        </p>
+                        <div class="hero-tags text-animate">
+                            <span class="tag">Web</span>
+                            <span class="tag">UX/UI</span>
+                            <span class="tag">Interactive Art</span>
+                            <span class="tag">Creative Coding</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h2 class="fade-in">Inspiration</h2>
-            <p class="text-padding fade-in">The Fortune-Telling Wizard draws inspiration from traditional Chinese
-                fortune-telling practices, particularly <i>Bazi</i> (Four Pillars of Destiny), and translates them into
-                an interactive, web-based experience. Influenced by a collaborative physical computing project that I
-                was working on at the same time, this
-                mini version utilizes p5.js and OpenAI API to capture the mystical essence of Chinese fortune-telling in
-                a
-                user-friendly digital format.</p>
-            <h2 class="fade-in">Concept</h2>
-            <p class="text-padding fade-in">The application invites users to enter their name, birth year, and a
-                question to receive
-                a fortune rooted in Bazi principles. Designed with a whimsical and playful tone, the project blends
-                cultural elements with modern interaction design, using visuals, music, and AI to create a personalized
-                experience.</p>
-            <h2 class="fade-in">Features</h2>
-            <ul>
-                <li class="fade-in">
-                    <strong>Immersive Introduction —</strong>
-                    <ul>
-                        <li>Key inputs include the user's name, birth year, and a personalized question.</li>
-                        <li>The starry, animated background sets an ethereal, contemplative tone.</li>
-                        <li>A golden rainbow-arc header titled <em>"Fortune Telling Wizard"</em> focuses attention and
-                            aligns with themes of prosperity.</li>
-                    </ul>
-                </li>
+            <div class="hero-visuals fade-in">
+                <img src="../../img/fall2024/fortune-telling/fortune-wizard-banner.png"
+                    alt="Fortune Telling Wizard Interface" class="hero-image">
+            </div>
+        </div>
+    </section>
 
-                <li class="fade-in">
-                    <strong>OpenAI API Integration —</strong>
-                    <ul>
-                        <li>Integrated OpenAI API to generate personalized, whimsical fortune-telling responses, guiding
-                            the AI with a custom system prompt to adopt the role of a Chinese Taoist fortune-teller.
-                        </li>
-                        <li>Ensured outputs adhered to specific formatting, including "As you were born in the year
-                            of..." and elements from <em>Bazi</em>, while incorporating randomness, such as a randomly
-                            included
-                            line from the NYU ITP website.
-                        </li>
-                    </ul>
-                </li>
+    <!-- Project Overview Section -->
+    <section class="project-overview">
+        <div class="overview-container">
+            <div class="overview-content">
+                <div class="overview-left fade-in">
+                    <h2 class="overview-title">What is Fortune Telling Wizard?</h2>
+                    <p class="overview-description">
+                        The application invites users to enter their name, birth year, and a question to receive a
+                        fortune rooted in Bazi principles. Designed with a whimsical and playful tone, the project
+                        blends cultural elements with modern interaction design, using visuals, music, and AI to create
+                        a personalized experience.
+                    </p>
+                </div>
+                <div class="overview-right fade-in">
+                    <h2 class="overview-title">My Role</h2>
+                    <p class="overview-description">
+                        I designed and developed this web application from concept to deployment, handling the complete
+                        development lifecycle. This included user experience research, frontend development with p5.js,
+                        custom OpenAI API integration, responsive design, and API optimization.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-container">
+            <h2 class="process-title fade-in">Key Features & Implementation</h2>
+
+            <!-- Feature 1: Immersive Introduction -->
+            <div class="feature-item fade-in">
+                <h3 class="process-subtitle">Immersive Introduction</h3>
+                <p class="process-description">Key inputs include the user's name, birth year, and a personalized
+                    question. The starry, animated background sets an ethereal, contemplative tone. A golden rainbow-arc
+                    header titled "Fortune Telling Wizard" focuses attention and aligns with themes of prosperity.</p>
+            </div>
+
+            <!-- Feature 2: Enhanced User Experience -->
+            <div class="feature-item fade-in">
+                <h3 class="process-subtitle">Enhanced User Experience</h3>
+                <p class="process-description">Mysterious looping guitar music auditory layer complements the visual
+                    storytelling, adding depth and mystique. Subtle user experience details, like dynamic cursor changes
+                    on buttons and hover animations. Implemented a gradual text reveal mechanism, mimicking the
+                    unfurling of a scroll, to build suspense and enhance the immersive nature of the fortune-telling
+                    experience.</p>
+                <div class="feature-image fade-in">
+                    <img src="../../img/fall2024/fortune-telling/fortune-wizard-gif.gif"
+                        alt="Fortune Wizard Interface Demo">
+                </div>
+            </div>
+
+            <!-- Feature 3: OpenAI API Integration -->
+            <div class="feature-item fade-in">
+                <h3 class="process-subtitle">OpenAI API Integration</h3>
+                <p class="process-description">Integrated OpenAI API to generate personalized, whimsical fortune-telling
+                    responses, guiding the AI with a custom system prompt to adopt the role of a Chinese Taoist
+                    fortune-teller. Ensured outputs adhered to specific formatting, including "As you were born in the
+                    year of..." and elements from <em>Bazi</em>, while incorporating randomness.</p>
+
+                <!-- Code Viewing Section -->
                 <div class="code-container fade-in">
-                    <button class="code-toggle-btn" onclick="toggleCode()">View Code <i class="fa fa-code"></i></button>
+                    <button class="code-toggle-btn" onclick="toggleCode()">
+                        <span class="code-text">View Code</span>
+                        <span class="material-icons code-icon">code</span>
+                    </button>
                     <div class="code-block" id="codeBlock" style="display: none;">
                         <code>
-async function getText() {
-    const userName = nameInput.value().trim();
-    const userBirthYear = birthYearSelect.value();
-    const capitalizedUserName = userName
-        .split(" ")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) 
-        .join(" ");
-    const userQuestion = questionInput.value().trim();
-        
-    if (!userName || !capitalizedUserName ||userName.length <= 0 ||
-        !userQuestion || userQuestion.length <= 0) {
-            alert("Please fill in all fields.");
-            return;
-        }
-        
-    messages.push({
-    role: "user",
-    content: `My name is ${capitalizedUserName}, I was born in ${userBirthYear}, and I want to know: ${userQuestion}.`,});
+ async function getText() {
+     const userName = nameInput.value().trim();
+     const userBirthYear = birthYearSelect.value();
+     const capitalizedUserName = userName
+         .split(" ")
+         .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) 
+         .join(" ");
+     const userQuestion = questionInput.value().trim();
+         
+     if (!userName || !capitalizedUserName ||userName.length <= 0 ||
+         !userQuestion || userQuestion.length <= 0) {
+             alert("Please fill in all fields.");
+             return;
+         }
+         
+     messages.push({
+     role: "user",
+     content: `My name is ${capitalizedUserName}, I was born in ${userBirthYear}, and I want to know: ${userQuestion}.`,});
 
-    let options = {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${API_KEY}`,
-    },
-    body: JSON.stringify({
-        model: "gpt-3.5-turbo",
-        messages: messages,
-        temperature: 0.7,
-    }),
-    };
+     let options = {
+     method: "POST",
+     headers: {
+         "Content-Type": "application/json",
+         Authorization: `Bearer ${API_KEY}`,
+     },
+     body: JSON.stringify({
+         model: "gpt-3.5-turbo",
+         messages: messages,
+         temperature: 0.7,
+     }),
+     };
 
-    try {
-        let data = await fetchWithBackoff(url, options);
-    
-        if (data.choices && data.choices[0]) {
-            const assistantResponse = data.choices[0].message.content;
-            let formattedResponse = `Ah, ${capitalizedUserName}. That's a very good question. ${assistantResponse}`;
-    
-            messages.push({ role: "assistant", content: formattedResponse });
-    
-            myOutput.show();
-            typeOutResponse(formattedResponse);
-        }
-    } catch (error) {
-    console.error("Failed to fetch response:", error);
-    alert("Sorry, something went wrong. Please try again later.");
-    }
-}
+     try {
+         let data = await fetchWithBackoff(url, options);
+     
+         if (data.choices && data.choices[0]) {
+             const assistantResponse = data.choices[0].message.content;
+             let formattedResponse = `Ah, ${capitalizedUserName}. That's a very good question. ${assistantResponse}`;
+     
+             messages.push({ role: "assistant", content: formattedResponse });
+     
+             myOutput.show();
+             typeOutResponse(formattedResponse);
+         }
+     } catch (error) {
+     console.error("Failed to fetch response:", error);
+     alert("Sorry, something went wrong. Please try again later.");
+     }
+ }
                         </code>
                     </div>
                 </div>
+            </div>
 
-                <li class="fade-in" style="padding-top: 20px">
-                    <strong>Enhanced User Experience —</strong>
-                    <ul>
-                        <li>Mysterious looping guitar music auditory layer complements the visual storytelling, adding
-                            depth and mystique.</li>
-                        <li>Subtle user experience details, like dynamic cursor changes on buttons and hover animations.
-                        </li>
-                        <li>Implemented a gradual text reveal mechanism, mimicking the unfurling of a scroll, to build
-                            suspense and enhance the immersive nature of the fortune-telling experience.</li>
-                    </ul>
-                    <img class="fortune-wizard-gif" src="../../img/fall2024/fortune-wizard-gif.gif"
-                        alt="fortune-wizard-gif">
-                </li>
+            <!-- Feature 4: Typography -->
+            <div class="feature-item fade-in">
+                <h3 class="process-subtitle">Typography & Visual Design</h3>
+                <p class="process-description"><em>MedievalSharp</em> evokes ancient scrolls and mystical texts.
+                    <em>Cinzel</em> provides Roman elegance and ceremonial gravitas. Together they create an authentic
+                    fortune-telling atmosphere that feels both mystical and trustworthy.
+                </p>
+                <div class="feature-image fade-in">
+                    <img src="../../img/fall2024/fortune-telling/fonts.png" alt="Typography and Font Examples">
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <li class="fade-in">
-                    <strong>Typography —</strong>
-                    <ul>
-                        <li><em>MedievalSharp</em> — Conveys an ancient, esoteric vibe reminiscent of handwritten
-                            scrolls.</li>
-                        <li><em>Cinzel</em> — Adds elegance and tradition with its Roman-inspired lettering.</li>
-                        <li>This font combination reinforces a mystical fortune-telling theme.</li>
-                    </ul>
-                </li>
-            </ul>
-            <h2 class="fade-in">Tools & Frameworks</h2>
-            <ul class="fade-in">
+    <!-- Tools & Frameworks Section -->
+    <section class="tools-section">
+        <div class="tools-container">
+            <h2 class="process-title fade-in">Tools & Frameworks</h2>
+            <ul class="tools-list fade-in">
                 <li>Developed using p5.js to create an interactive and visually engaging canvas experience.</li>
                 <li>Integrates OpenAI API to deliver personalized, dynamic, and contextually relevant fortune-based
                     responses.</li>
                 <li>Customized responsive, user-centric design through CSS and HTML to enhance visual aesthetics and
                     ensure seamless interaction across devices.</li>
             </ul>
-            <p class="fade-in"><a class="sketch-link" href="https://editor.p5js.org/bevyip/full/Mhl0_kBRo"
-                    target="_blank">Take this
-                    sketch for a spin!</a>
-            </p>
         </div>
+    </section>
 
-        <div class="col-lg-4 col-md-12 col-sm-12 project-sub-summary fade-in">
-            <p class="sub-header">WHEN WAS THIS?</p>
-            <p>Dec 2024 (2 weeks)</p>
-            </br>
-            <p class="sub-header">WHAT DID I DO?</p>
-            <p>As the sole developer and designer of this web application, I was responsible for overseeing the full
-                development lifecycle, from ideation to deployment.</p>
-            <p>My responsibilities include:
-            <ul>
-                <li><strong>User Experience Research —</strong> Conducted research to understand user expectations for a
-                    digital fortune-telling experience and inform design decisions.</li>
-                <li><strong>Frontend Development & Interactive Canvas —</strong> Developed the interactive canvas using
-                    p5.js to bring the mystical elements of fortune-telling to life.</li>
-                <li><strong>Custom OpenAI Integration —</strong> Designed custom prompts for OpenAI to generate
-                    personalized, whimsical fortune responses.</li>
-                <li><strong>Responsive Design & Custom CSS —</strong> Implemented responsive design with custom CSS for
-                    an immersive, device-agnostic experience.</li>
-                <li><strong>API Optimization & User Interaction —</strong> Optimized API interactions to ensure
-                    seamless, quick fortune delivery for a smooth user experience.</li>
-            </ul>
-            </p>
-        </div>
-    </div>
-
-    <div class="footer" id="footer">
-        <div class="footer-info fade-in">
-            <h2 class="footerLabel fade-in"><b>Let's get in touch!</span></b></h2>
-            <div class="footerIcons fade-in">
-                <a href="https://www.linkedin.com/in/bevyip/" target="_blank" class="icons fa fa-linkedin"></a>
-                <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
-                <a href="mailto:hy3018@nyu.edu" target="_blank" class="icons fa fa-envelope"></a>
-            </div>
-            <div class="footerStamp fade-in">
-                <p>Proudly designed & handcoded by Beverly Yip.</p>
-            </div>
-            <div class="footerReroute fade-in">
-                <a class="footerReroute-link" href="#">BACK TO TOP</a>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-content fade-in">
+                <a class="cta-button" href="https://editor.p5js.org/bevyip/full/Mhl0_kBRo" target="_blank">
+                    <span class="cta-text">Ready to discover your fortune? Try the Fortune Telling Wizard!</span>
+                    <span class="material-icons cta-icon">auto_fix_high</span>
+                </a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <!-- Include the reusable footer component -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Navigation Component Scripts -->
+    <script src="../../js/cursor.js"></script>
+    <script src="../../nav/nav.js"></script>
+    <script src="../../nav/footer.js"></script>
 
     <script>
-        let debounceTimeout;
         document.addEventListener("DOMContentLoaded", () => {
-            const rows = document.querySelectorAll(".proj-overview-content");
+            // Load navigation components using the same approach as main index.html
+            loadNavigationComponents();
 
-            const observerOptions = {
-                root: null, // Use the viewport as the root
-                threshold: 0.1, // Trigger when 10% of the row is visible
-            };
+            // Initialize navbar functionality
+            if (window.initializeNavbar) {
+                window.initializeNavbar();
+            }
 
-            const observer = new IntersectionObserver((entries) => {
-                clearTimeout(debounceTimeout);
-                debounceTimeout = setTimeout(() => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("visible");
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, 50);
-            }, observerOptions);
+            // Initialize footer functionality
+            if (window.initializeFooter) {
+                window.initializeFooter();
+            }
 
-            rows.forEach(row => observer.observe(row));
-        });
+            // Handle text animations for hero section
+            const textAnimateElements = document.querySelectorAll('.text-animate');
+            textAnimateElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('animate-in');
+                }, index * 100);
+            });
 
-        document.addEventListener("DOMContentLoaded", () => {
+            // Set up intersection observer for fade-in elements
             const fadeInElements = document.querySelectorAll(".fade-in");
 
             const observerOptions = {
@@ -300,15 +290,46 @@ async function getText() {
             fadeInElements.forEach((el) => observer.observe(el));
         });
 
+        // Function to load navigation components - updated to match main index.html exactly
+        async function loadNavigationComponents() {
+            try {
+                // Load navigation
+                const navResponse = await fetch('../../nav/nav.html');
+                const navHtml = await navResponse.text();
+                document.getElementById('nav-bar').innerHTML = navHtml;
+
+                // Load footer
+                const footerResponse = await fetch('../../nav/footer.html');
+                const footerHtml = await footerResponse.text();
+                document.getElementById('footer-placeholder').innerHTML = footerHtml;
+
+                // Update logo path for fortune wizard project
+                const logoImg = document.querySelector('.nav-brand img');
+                if (logoImg) {
+                    logoImg.src = '../../img/logo.png';
+                }
+
+                // Initialize navbar functionality after loading
+                if (window.initializeNavbar) {
+                    window.initializeNavbar();
+                }
+            } catch (error) {
+                console.error('Error loading navigation components:', error);
+            }
+        }
+
+        // Code toggle functionality
         function toggleCode() {
             const codeBlock = document.getElementById('codeBlock');
             const button = document.querySelector('.code-toggle-btn');
+            const codeText = button.querySelector('.code-text');
+
             if (codeBlock.style.display === 'none') {
                 codeBlock.style.display = 'block';
-                button.innerHTML = 'Hide Code <i class="fa fa-code"></i>';
+                codeText.textContent = 'Hide Code';
             } else {
                 codeBlock.style.display = 'none';
-                button.innerHTML = 'View Code <i class="fa fa-code"></i>';
+                codeText.textContent = 'View Code';
             }
         }
     </script>

@@ -1,0 +1,294 @@
+/* Import Manrope font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
+
+/* CSS Custom Properties for Typography and Color System */
+:root {
+  /* Primary Font Family */
+  --font-primary: "Manrope", sans-serif;
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 900;
+  --font-semibold: 600; /* Added for compatibility */
+  --font-regular: 400; /* Added for compatibility */
+  --font-medium: 500; /* Added for compatibility */
+  --font-bold: 700; /* Added for compatibility */
+
+  /* Spacing System - matching navbar */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem; /* 8px */
+  --spacing-md: 1rem; /* 16px */
+  --spacing-lg: 1.5rem; /* 24px */
+  --spacing-xl: 2rem; /* 32px */
+  --spacing-2xl: 3rem; /* 48px */
+  --spacing-3xl: 4rem; /* 64px */
+  --spacing-4xl: 6rem; /* 96px */
+  --spacing-5xl: 8rem; /* 128px */
+
+  /* Container max-widths - matching navbar */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+
+  /* Typography */
+  --font-family-primary: "Manrope", sans-serif;
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Font Sizes */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-xl-2: 1.375rem; /* 22px - Added missing variable */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem; /* 36px */
+
+  /* Line Heights */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* Letter Spacing */
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em; /* Added missing variable */
+
+  /* MUI-Style Color Palette - Black, White, Gray System */
+
+  /* Primary Colors */
+  --color-primary: #000000; /* Pure Black */
+  --color-primary-light: #1a1a1a; /* Very Dark Gray */
+  --color-primary-dark: #000000; /* Pure Black */
+
+  /* Secondary Colors */
+  --color-secondary: #666666; /* Medium Gray */
+  --color-secondary-light: #999999; /* Light Gray */
+  --color-secondary-dark: #333333; /* Dark Gray */
+
+  /* Neutral Colors */
+  --color-neutral-50: #fafafa; /* Almost White */
+  --color-neutral-100: #f5f5f5; /* Very Light Gray */
+  --color-neutral-200: #eeeeee; /* Light Gray */
+  --color-neutral-300: #e0e0e0; /* Light Gray */
+  --color-neutral-400: #bdbdbd; /* Medium Light Gray */
+  --color-neutral-500: #9e9e9e; /* Medium Gray */
+  --color-neutral-600: #757575; /* Medium Dark Gray */
+  --color-neutral-700: #616161; /* Dark Gray */
+  --color-neutral-800: #424242; /* Very Dark Gray */
+  --color-neutral-900: #212121; /* Almost Black */
+
+  /* Semantic Colors */
+  --color-background: var(--color-neutral-50); /* Page Background */
+  --color-surface: oklch(98.5% 0 0); /* Surface Background */
+  --color-text-primary: var(--color-neutral-900); /* Primary Text */
+  --color-text-secondary: var(--color-neutral-700); /* Secondary Text */
+  --color-text-disabled: var(--color-neutral-400); /* Disabled Text */
+  --color-border: var(--color-neutral-200); /* Borders */
+  --color-divider: var(--color-neutral-100); /* Dividers */
+
+  /* Interactive Colors */
+  --color-hover: var(--color-neutral-100); /* Hover States */
+  --color-focus: var(--color-neutral-200); /* Focus States */
+  --color-selected: var(--color-neutral-200); /* Selected States */
+  --color-active: var(--color-neutral-300); /* Active States */
+
+  /* Opacity Variants */
+  --color-black-12: rgba(0, 0, 0, 0.12); /* 12% Black */
+  --color-black-26: rgba(0, 0, 0, 0.26); /* 26% Black */
+  --color-black-38: rgba(0, 0, 0, 0.38); /* 38% Black */
+  --color-black-54: rgba(0, 0, 0, 0.54); /* 54% Black */
+  --color-black-87: rgba(0, 0, 0, 0.87); /* 87% Black */
+
+  --color-white-12: rgba(255, 255, 255, 0.12); /* 12% White */
+  --color-white-26: rgba(255, 255, 255, 0.26); /* 26% White */
+  --color-white-38: rgba(255, 255, 255, 0.38); /* 38% White */
+  --color-white-54: rgba(255, 255, 255, 0.54); /* 54% White */
+  --color-white-87: rgba(255, 255, 255, 0.87); /* 87% White */
+}
+
+/* Base Typography and Global Styles */
+body {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom Cursor Styles */
+* {
+  cursor: none; /* Hide default cursor */
+}
+
+/* Custom cursor dot */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.2s ease;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Cursor dot when hovering over clickable elements */
+.cursor-dot.hover {
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
+/* Special cursor effect when hovering over hero-role text - color only, no size change */
+.cursor-dot.hero-role-hover {
+  background: linear-gradient(
+    45deg,
+    #ff8fa3,
+    /* deeper pastel red */ #ff8fc7,
+    /* deeper pastel pink */ #ff8fe8,
+    /* deeper pastel magenta */ #d699ff,
+    /* deeper pastel purple */ #9999ff,
+    /* deeper pastel blue */ #99c7ff,
+    /* deeper pastel light blue */ #99e8ff,
+    /* deeper pastel cyan */ #99ffd6,
+    /* deeper pastel mint */ #99ff99,
+    /* deeper pastel green */ #c7ff99,
+    /* deeper pastel lime */ #e8ff99,
+    /* deeper pastel yellow */ #ffc799 /* deeper pastel orange */
+  );
+  background-size: 400% 400%;
+  animation: rainbow-aura 3s ease-in-out infinite,
+    color-shift 4s ease-in-out infinite;
+  transform: translate(-50%, -50%) scale(1); /* Keep original size */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* Rainbow aura animation */
+@keyframes rainbow-aura {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Color shift animation for randomization */
+@keyframes color-shift {
+  0%,
+  25% {
+    filter: hue-rotate(0deg) saturate(1.2) brightness(1.1);
+  }
+  50% {
+    filter: hue-rotate(120deg) saturate(1.4) brightness(1.2);
+  }
+  75% {
+    filter: hue-rotate(240deg) saturate(1.1) brightness(1.3);
+  }
+  100% {
+    filter: hue-rotate(360deg) saturate(1.2) brightness(1.1);
+  }
+}
+
+/* Clickable elements that trigger cursor change */
+a,
+button,
+.btn,
+input[type="submit"],
+input[type="button"],
+select,
+textarea,
+[role="button"],
+[tabindex],
+.nav-link,
+.dropdown-toggle,
+.dropdown-item,
+.nav-contact-btn {
+  cursor: none;
+}
+
+/* Heading Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+}
+
+/* Paragraph Styles */
+p {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-primary);
+}
+
+/* Link Styles */
+a {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-primary-light);
+}
+
+/* Button Styles */
+button,
+.btn {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* Input and Form Elements */
+input,
+textarea,
+select,
+label {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+/* Focus States */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

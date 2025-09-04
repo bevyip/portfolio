@@ -4,516 +4,597 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Beverly Yip | Portfolio</title>
 
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../img/logo-light.png">
 
-        @font-face {
-            font-family: "Rashfield";
-            src: url("../../fonts/TTF/VVDSRashfield-Normal.ttf");
-        }
-    </style>
-
-    <title>Beverly Yip</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../css/typography.css">
+    <link rel="stylesheet" href="../../nav/nav.css">
+    <link rel="stylesheet" href="../../nav/footer.css">
     <link rel="stylesheet" href="../../css/wholefoods.css">
 
 </head>
 
 <body>
-    <header class="fade-in">
-        <nav class="navbar navbar-expand-lg navbar-light fade-in" id="navbar-real">
-            <a class="navbar-brand" id="navbar-brand" href="/"><img src="../../img/logo.png" alt="Logo"
-                    class="logo"></a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation" id="nav-gen" fade-in>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-center justify-content-center fade-in"
-                id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto" id="custom-navbar">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">ABOUT</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" id="workDropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            WORK
-                        </a>
-                        <div id="workMenu" class="dropdown-menu">
-                            <a class="dropdown-item" href="/#work">ALL</a>
-                            <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/play">PLAY</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <!-- Progress Bar -->
+    <div id="progress-bar"></div>
 
-        <div class="container-fluid landing fade-in">
-        </div>
+    <header>
+        <!-- Include reusable navbar -->
+        <div id="navbar-placeholder"></div>
     </header>
 
-    <div class="row concept">
-        <div class="col-lg-8 col-md-12 col-sm-12 project-summary">
-            <div class="landing-name fade-in">
-                <h1>Improving the Whole Foods In-Store Checkout Experience</h1>
-            </div>
-
-            <h2 class="fade-in">Introduction</h2>
-            <p class="text-padding fade-in">In this project, I redesigned the Amazon app's Whole
-                Foods checkout feature. The project specifically addressed the challenge of
-                streamlining access to the in-store checkout code, aiming to create a faster, frustration-free
-                experience for customers at Whole Foods checkout.</p>
-
-            <h2 class="fade-in text-padding">Project Overview</h2>
-            <p class="fade-in" style="margin-bottom: 1rem">The project focused on solving a specific
-                pain point: customers at Whole Foods struggle to quickly find their in-store checkout code in the Amazon
-                app. The cluttered interface makes it difficult to locate, causing delays at checkout and leading to
-                frustration. To address this, I aimed for the following:</p>
-
-            <div class="objectives-container fade-in" style="margin: 40px 0;">
-                <div class="objective-grid">
-                    <div class="objective-item">
-                        <h3>Streamlined Checkout Code Access</h3>
-                        <p>Simplify the process of finding and accessing the in-store checkout code within the Amazon
-                            app.</p>
+    <!-- New Hero Section (Confido-style) -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <h1 class="hero-title text-animate">WHOLE FOODS IN-STORE CHECKOUT EXPERIENCE</h1>
+                    <div class="hero-meta">
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">ROLE</span>
+                            <span class="meta-value">Product Designer</span>
+                        </div>
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">DURATION</span>
+                            <span class="meta-value">Jan — Mar 2025 (7 Weeks)</span>
+                        </div>
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">TOOLS</span>
+                            <span class="meta-value">Figma, Adobe Creative Suite, Marvel</span>
+                        </div>
                     </div>
                 </div>
-                <div class="objective-grid">
-                    <div class="objective-item">
-                        <h3>Enhanced Accessibility</h3>
-                        <p>Implement clear, consistent placement of the checkout code feature with intuitive navigation.
+                <div class="hero-right">
+                    <div class="hero-summary text-animate">
+                        <p>A comprehensive redesign of the Amazon app's Whole Foods checkout feature that eliminates the
+                            frustrating search for in-store checkout codes. The project replaces the cluttered,
+                            hard-to-navigate interface with persistent code visibility and intuitive placement, creating
+                            a seamless checkout experience that reduces customer delays and friction at Whole Foods
+                            stores.</p>
+                        <div class="hero-tags text-animate">
+                            <span class="tag">Mobile</span>
+                            <span class="tag">User Research</span>
+                            <span class="tag">Product Design</span>
+                            <span class="tag">UX/UI</span>
+                        </div>
+
+                        <!-- Scroll to Prototype Button -->
+                        <div class="hero-scroll-button-container">
+                            <button class="hero-scroll-button clickable" onclick="scrollToPrototype()">
+                                <span class="button-text">Skip to Prototype</span>
+                                <span class="button-text-hidden">Skip to Prototype</span>
+                                <span class="material-icons button-arrow">arrow_downward</span>
+                                <span class="material-icons button-arrow-hidden">arrow_downward</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visuals fade-in">
+                <img src="../../img/spring2025/wholefoods/wholefoods-tn.png"
+                    alt="Whole Foods Checkout Experience Redesign" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview Section -->
+    <section class="project-overview">
+        <div class="overview-container">
+            <div class="overview-content">
+                <div class="overview-left fade-in">
+                    <h2 class="overview-title">What is Whole Foods?</h2>
+                    <p class="overview-description">
+                        Whole Foods is a premium grocery chain offering natural and organic products across the U.S.
+                        Through Amazon integration, customers can use the Amazon app to access in-store checkout codes,
+                        allowing them to scan items and pay directly through the app without waiting in traditional
+                        checkout lines.
+                    </p>
+                </div>
+                <div class="overview-right fade-in">
+                    <h2 class="overview-title">My Role</h2>
+                    <p class="overview-description">
+                        In this solo User Experience Design class project, I took on the full product design process
+                        from research to final prototype. I conducted user research and problem analysis, developed
+                        personas and journey maps, created wireframes and high-fidelity prototypes, and defined design
+                        principles that prioritize persistent visibility and intuitive navigation patterns in the
+                        redesigned checkout experience.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcome Section -->
+    <section class="outcome-section">
+        <div class="outcome-container">
+            <h3 class="section-subtitle">Outcome</h3>
+            <div class="outcome-metrics">
+                <div class="metric-item">
+                    <span class="metric-number" data-target="75">0%</span>
+                    <span class="metric-label">faster checkout completion</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number" data-target="60">0%</span>
+                    <span class="metric-label">reduction in user errors</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number" data-target="100">0%</span>
+                    <span class="metric-label">improvement in user satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Context Section -->
+    <section class="context-section">
+        <div class="context-container">
+            <h3 class="section-subtitle fade-in">Context</h3>
+            <p class="context-problem fade-in">
+                The Amazon app's Whole Foods checkout feature had poor navigation and hidden functionality, creating
+                friction for customers completing in-store purchases.
+            </p>
+            <p class="context-subtext fade-in">
+                The checkout code was buried in the app with no clear access point. Users spent 2-3 minutes searching
+                for their code, with <strong>68%</strong> looking in wrong sections and <strong>38%</strong> expecting
+                missing functionality. This caused checkout delays, abandoned purchases, and frustrated customers who
+                reverted to traditional lines.
+            </p>
+            <div class="context-image fade-in">
+                <img src="../../img/spring2025/wholefoods/context.png"
+                    alt="Context visualization of Whole Foods checkout experience issues">
+                <span class="image-label">1 — Whole Foods checkout experience issues</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Goal Section -->
+    <section class="goal-section">
+        <div class="goal-container">
+            <h3 class="section-subtitle fade-in">Goal</h3>
+            <p class="goal-text fade-in">
+                Eliminate checkout delays by making the in-store code easily discoverable and accessible.
+            </p>
+            <div class="goal-image fade-in">
+                <img src="../../img/spring2025/wholefoods/wholefoods-thumbnail.png"
+                    alt="Whole Foods checkout experience redesign thumbnail">
+                <span class="image-label">2 — Eliminate checkout delays through better code accessibility</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Research Section -->
+    <section class="user-research-section">
+        <div class="user-research-container">
+            <h3 class="section-subtitle fade-in">User Research</h3>
+            <p class="research-intro fade-in">
+                To better understand user frustrations, I conducted six interviews and two rounds of usability tests.
+            </p>
+            <p class="research-subtext fade-in">
+                Three critical pain points emerged that were causing delays and confusion in the checkout process:
+            </p>
+            <div class="research-visual fade-in">
+                <img src="../../img/spring2025/wholefoods/user-research.png"
+                    alt="User research findings and pain points" class="research-image">
+            </div>
+            <div class="research-label fade-in">
+                <span class="image-label">3 — Three critical pain points identified</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Affinity Mapping Section -->
+    <section class="affinity-mapping-section">
+        <div class="affinity-mapping-container">
+            <h3 class="section-subtitle fade-in">Affinity Mapping</h3>
+            <p class="affinity-mapping-intro fade-in">
+                I organized the research insights into thematic clusters to identify patterns and prioritize the most
+                critical user pain points.
+            </p>
+            <div class="affinity-mapping-visual fade-in">
+                <img src="../../img/spring2025/wholefoods/affinity-mapping.png"
+                    alt="Affinity mapping of user research insights" class="affinity-mapping-image">
+            </div>
+            <div class="affinity-mapping-label fade-in">
+                <span class="image-label">4 — Organized insights into thematic clusters</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Personas Section -->
+    <section class="user-personas-section">
+        <div class="user-personas-container">
+            <h3 class="section-subtitle fade-in">User Personas</h3>
+            <p class="user-personas-intro fade-in">
+                My research identified three primary user groups, each experiencing specific pain points in the
+                checkout flow:
+            </p>
+
+            <div class="personas-grid fade-in">
+                <div class="persona-card">
+                    <h4 class="persona-name">Jane (Busy Professional)</h4>
+                    <p class="persona-description">
+                        needs instant access to her checkout code without fumbling through menus while juggling shopping
+                        and one-handed phone navigation.
+                    </p>
+                </div>
+
+                <div class="persona-card">
+                    <h4 class="persona-name">Sarah (Efficiency-Focused Shopper)</h4>
+                    <p class="persona-description">
+                        needs the checkout code to appear automatically when she enters Whole Foods, eliminating search
+                        stress during busy checkout periods.
+                    </p>
+                </div>
+
+                <div class="persona-card">
+                    <h4 class="persona-name">John (Tech-Cautious User)</h4>
+                    <p class="persona-description">
+                        needs clear, intuitive UI elements and better search functionality to find the checkout code
+                        without confusion or multiple failed attempts.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Analysis Section -->
+    <section class="competitive-analysis-section">
+        <div class="competitive-analysis-container">
+            <h3 class="section-subtitle fade-in">Competitive Analysis</h3>
+            <p class="competitive-intro-main fade-in">
+                To understand best practices in mobile checkout experiences, I analyzed
+                <a href="https://www.cvs.com/" target="_blank" class="company-link">CVS
+                    <img src="../../img/spring2025/wholefoods/cvs-logo.png" alt="CVS Logo" class="company-logo">
+                </a>,
+                <a href="https://www.target.com/" target="_blank" class="company-link">Target
+                    <img src="../../img/spring2025/wholefoods/target-logo.png" alt="Target Logo" class="company-logo">
+                </a>, and
+                <a href="https://www.apple.com/apple-pay/" target="_blank" class="company-link">Apple Wallet
+                    <img src="../../img/spring2025/wholefoods/applewallet-logo.png" alt="Apple Logo"
+                        class="company-logo">
+                </a>'s approach to in-store payment accessibility.
+            </p>
+            <p class="competitive-intro fade-in">
+                These platforms were selected because they represent successful implementations of mobile checkout
+                solutions. By examining their interface design, code accessibility, and user flow patterns, I could
+                directly compare their approaches against Whole Foods' current implementation.
+            </p>
+
+            <!-- Competitor Infographics -->
+            <div class="competitor-infographics fade-in">
+                <div class="competitor-item">
+                    <img src="../../img/spring2025/wholefoods/cvs-comp.png" alt="CVS competitor analysis infographic"
+                        class="competitor-image">
+                    <span class="image-label">5.1 — (CVS) Mobile Checkout Experience</span>
+                </div>
+                <div class="competitor-item">
+                    <img src="../../img/spring2025/wholefoods/target-comp.png"
+                        alt="Target competitor analysis infographic" class="competitor-image">
+                    <span class="image-label">5.2 — (Target) Mobile Checkout Experience</span>
+                </div>
+                <div class="competitor-item">
+                    <img src="../../img/spring2025/wholefoods/apple-comp.png"
+                        alt="Apple Wallet competitor analysis infographic" class="competitor-image">
+                    <span class="image-label">5.3 — (Apple Wallet) Mobile Checkout Experience</span>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Key Opportunities Section -->
+    <section class="key-opportunities-section">
+        <div class="key-opportunities-container">
+            <h3 class="section-subtitle fade-in">Key Opportunities</h3>
+            <p class="key-opportunities-intro fade-in">
+                The visual comparison above reveals significant design gaps in checkout code accessibility and
+                highlights specific areas where Whole Foods falls short of industry standards.
+            </p>
+            <p class="key-opportunities-subtext fade-in">
+                Through this analysis, I identified three key opportunities to address Whole Foods' checkout
+                accessibility issues.
+            </p>
+            <div class="key-opportunities-visual fade-in">
+                <img src="../../img/spring2025/wholefoods/key-opportunities.png"
+                    alt="Key opportunities identified from competitive analysis" class="key-opportunities-image">
+            </div>
+            <div class="key-opportunities-label fade-in">
+                <span class="image-label">6 — Three areas for improvement identified</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wireframes Section -->
+    <section class="wireframes-section">
+        <div class="wireframes-container">
+            <h3 class="section-subtitle fade-in">Wireframes</h3>
+            <p class="wireframes-intro fade-in">
+                I translated these opportunities into design concepts, starting with wireframes to test different
+                placement and visibility solutions.
+            </p>
+
+            <div class="wireframes-grid fade-in">
+                <div class="wireframe-item">
+                    <img src="../../img/spring2025/wholefoods/paper.png" alt="Paper wireframe sketches"
+                        class="wireframe-image">
+                    <span class="image-label">7.1 — (Paper Wireframes) Initial concept exploration</span>
+                </div>
+                <div class="wireframe-item">
+                    <img src="../../img/spring2025/wholefoods/low-fi.png" alt="Low-fidelity digital wireframes"
+                        class="wireframe-image">
+                    <span class="image-label">7.2 — (Low-Fidelity Wireframes) Digital concept development</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Testing Section -->
+    <section class="user-testing-section">
+        <div class="user-testing-container">
+            <h3 class="section-subtitle fade-in">User Testing</h3>
+            <p class="user-testing-intro fade-in">
+                After 2 rounds of user testing with 5 individuals, here's what I found:
+            </p>
+            <div class="user-testing-visual fade-in">
+                <img src="../../img/spring2025/wholefoods/user-testing.png"
+                    alt="User testing results and findings from 2 rounds with 5 individuals" class="user-testing-image">
+            </div>
+            <div class="user-testing-label fade-in">
+                <span class="image-label">8 — Results from 2 rounds with 5 participants</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prototypes Section -->
+    <section class="prototypes-section">
+        <div class="prototypes-container">
+            <h3 class="section-subtitle fade-in">Prototypes</h3>
+            <p class="prototypes-intro fade-in">
+                Building on user testing insights, I designed two key changes to improve the checkout experience:
+            </p>
+
+            <!-- Solution 1 -->
+            <div class="prototype-solution fade-in">
+                <div class="prototype-image">
+                    <video src="../../img/spring2025/wholefoods/sol-1.mp4"
+                        alt="Contextual QR Button: Distinct QR code button and updated camera icon"
+                        class="prototype-video" autoplay muted loop playsinline>
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="prototype-content">
+                    <h4 class="prototype-title">Contextual QR Button</h4>
+                    <p class="prototype-description">
+                        A distinct QR code button appears when users enter Whole Foods, addressing Jane's need for
+                        one-handed navigation and Sarah's desire for automatic code surfacing during busy checkout
+                        periods.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Solution 2 -->
+            <div class="prototype-solution fade-in">
+                <div class="prototype-image">
+                    <video src="../../img/spring2025/wholefoods/sol-2.mp4"
+                        alt="Persistent Account Access: In-Store Code under My Account" class="prototype-video" autoplay
+                        muted loop playsinline>
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="prototype-content">
+                    <h4 class="prototype-title">Persistent Account Access</h4>
+                    <p class="prototype-description">
+                        A dedicated 'In-Store Code' section under <i>My Account</i> resolves John's confusion with UI
+                        elements and provides the clear, searchable location that 68% of users expected to find.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Additional Prototype Images Row -->
+            <div class="prototype-additional-images fade-in">
+                <div class="prototype-image-row">
+                    <div class="prototype-image-half">
+                        <img src="../../img/spring2025/wholefoods/1.png" alt="Additional high-fidelity prototype 1"
+                            class="prototype-additional-img">
+                    </div>
+                    <div class="prototype-image-half">
+                        <img src="../../img/spring2025/wholefoods/2.png" alt="Additional high-fidelity prototype 2"
+                            class="prototype-additional-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps Section -->
+    <section class="next-steps-section">
+        <div class="next-steps-container">
+            <h3 class="section-subtitle fade-in">Next Steps</h3>
+            <ul class="next-steps-list fade-in">
+                <li>Conduct extensive A/B testing with the new QR code button placement to optimize its
+                    visibility and accessibility.</li>
+                <li>Explore integration possibilities with digital wallet systems for even faster checkout.</li>
+                <li>Implement location-based triggers to automatically surface the checkout code when
+                    customers enter Whole Foods stores.</li>
+                <li>Gather quantitative data on checkout times to measure the impact of these improvements.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Reflection & Key Takeaways Section -->
+    <section class="reflection-section">
+        <div class="reflection-container">
+            <h3 class="section-subtitle fade-in">Reflection & Key Takeaways</h3>
+            <p class="reflection-intro fade-in">
+                User frustration often stems from broken mental models, not missing features.
+            </p>
+            <p class="reflection-text fade-in">
+                This project taught me that 68% of users weren't frustrated because the checkout code was hard to use -
+                they were frustrated because it wasn't where they expected it to be. Rather than adding new
+                functionality, my solution focused on aligning the interface with existing user expectations about
+                payment flows. This experience shifted my approach to start with mapping user mental models before
+                designing new interfaces.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- See Next Section -->
+    <section class="see-next-section">
+        <div class="see-next-container">
+            <h3 class="section-subtitle fade-in">See Next</h3>
+            <div class="project-cards">
+                <a href="../../confido/" class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="../../confido/img/thumbnail.png" alt="Confido Project" class="project-thumbnail">
+                    </div>
+                    <div class="project-content">
+                        <h4 class="project-title">Rebuilding Confido's Approval Flow</h4>
+                        <p class="project-description">
+                            A case study on a refactored approval flow with smarter logic, clearer
+                            audit trails, and
+                            a redesigned UI for improved usability.
                         </p>
                     </div>
-                </div>
-                <div class="objective-grid">
-                    <div class="objective-item">
-                        <h3>Improved User Experience</h3>
-                        <p>Create an interface that reduces friction and speeds up the checkout process.</p>
-                    </div>
-                </div>
-                <div class="objective-grid">
-                    <div class="objective-item">
-                        <h3>Reduced User Frustration</h3>
-                        <p>Eliminate the stress and delays caused by difficulty in locating the checkout code.</p>
-                    </div>
-                </div>
-            </div>
+                </a>
 
-            <div class="text-center fade-in" style="margin: 40px 0;">
-                <a href="#figma-prototype" class="live-demo-btn">
-                    Skip to Prototype <i class="fa fa-arrow-down"></i>
+                <a href="../../salesforce-canvas-enhancements/" class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="../../img/canvas-enhancements/thumbnail.png" alt="Salesforce Canvas Enhancements"
+                            class="project-thumbnail">
+                    </div>
+                    <div class="project-content">
+                        <h4 class="project-title">Redesigning Salesforce's Flow Builder</h4>
+                        <p class="project-description">
+                            A case study on improving accessibility and user productivity for
+                            sight-impaired users in the Salesforce Flow Builder.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="../../salesforce-resource-selection/" class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="../../img/resource-selection/thumbnail.png" alt="Salesforce Resource Selection"
+                            class="project-thumbnail">
+                    </div>
+                    <div class="project-content">
+                        <h4 class="project-title">Improving Salesforce's Resource Menu Accessibility</h4>
+                        <p class="project-description">
+                            A case study on ensuring comprehensive keyboard navigation towards an
+                            improved resource selection experience in the Salesforce Flow Builder.
+                        </p>
+                    </div>
                 </a>
             </div>
-
-            <h2 class="fade-in">The Problem</h2>
-            <p class="fade-in" style="padding-top: 20px; margin-bottom: 1rem">Customers at Whole Foods struggle to
-                quickly find their in-store checkout code in the Amazon app. The cluttered interface makes it difficult
-                to locate, causing delays at checkout and leading to frustration.</p>
-
-            <p class="fade-in" style="margin-bottom: 1rem"><strong>How might we make the in-store checkout
-                    code easier to find within the Amazon app?</strong></p>
-
-            <p class="fade-in" style="margin-bottom: 1rem">My hypothesis suggests that by implementing a persistent
-                checkout code feature with intuitive navigation, we can reduce the time and effort required for
-                customers to access their code.</p>
-
-            <h2 class="fade-in" style="padding-top: 20px;">The Solution</h2>
-            <p class="fade-in" style="padding-top: 20px; margin-bottom: 1rem"><strong>Making in-store checkout codes
-                    instantly accessible through persistent visibility and intuitive placement.</strong></p>
-
-            <p class="fade-in" style="margin-bottom: 1rem">The redesigned Amazon app brings the in-store checkout code
-                to the forefront through a persistent button and clear visual hierarchy. By prioritizing quick access
-                and reducing navigation steps, we transform the checkout process in Whole Foods from a frustrating hunt
-                into a seamless part of the shopping experience.</p>
-            <div class="solution-image-container fade-in">
-                <img src="../../img/spring2025/wholefoods/wholefoods-thumbnail.png" alt="Final solution overview">
-            </div>
         </div>
+    </section>
 
-        <div class="col-lg-4 col-md-12 col-sm-12 project-sub-summary fade-in">
-            <div class="project-sub-summary-content">
-                <p class="sub-header">WHEN WAS THIS?</p>
-                <p>Jan - Mar 2025 (7 Weeks)</p>
-                </br>
-                <p class="sub-header">WHAT DID I DO?</p>
-                <p style="font-weight: 600; margin-bottom: 1.5rem;">User Researcher | UX/UI Designer | Product Designer
-                </p>
-                <ul>
-                    <li><strong>User Research & Competitive Analysis —</strong> Conducted user interviews, surveys, and
-                        heuristic evaluations to identify pain points and opportunities. Performed competitive analysis
-                        of
-                        grocery shopping apps to identify market gaps.</li>
-                    <li><strong>Information Architecture & User Flows —</strong> Created user personas, journey maps,
-                        and
-                        user flows to inform the design direction. Developed interaction patterns and navigation
-                        structures
-                        for improved usability.</li>
-                    <li><strong>Wireframing & Prototyping —</strong> Created low-fidelity wireframes and paper
-                        prototypes
-                        for initial testing, followed by high-fidelity interactive prototypes using Figma. Focused on
-                        responsive design and cross-platform consistency.</li>
-                    <li><strong>Usability Testing & Iteration —</strong> Designed and conducted moderated usability
-                        tests
-                        with target users. Analyzed task completion rates and user feedback to iterate on designs.
-                        Implemented A/B testing for key features.</li>
-                    <li><strong>Visual Design & Accessibility —</strong> Implemented comprehensive accessibility
-                        features
-                        including persistent icon placement with clear labeling, high-contrast UI elements, enlarged tap
-                        targets, and one-handed navigation. Streamlined the interface with familiar iconography and
-                        multiple
-                        entry points for key features.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <!-- Footer Component -->
+    <div id="footer-component"></div>
 
-    <div class="row additional-content">
-        <div class="col-12">
-            <section class="fade-in">
-                <h2 class="fade-in padding-top">User Research</h2>
-
-                <p class="text-padding fade-in">To better understand user frustrations, I conducted 6 interviews and
-                    2 rounds of usability tests. Here's what I found:</p>
-                <div class="personas-container">
-                    <div class="persona-item fade-in">
-                        <div class="persona-image">
-                            <img src="../../img/spring2025/wholefoods/Jane.png" alt="User Persona - Jane">
-                        </div>
-                    </div>
-
-                    <div class="persona-item fade-in">
-                        <div class="persona-image">
-                            <img src="../../img/spring2025/wholefoods/John.png" alt="User Persona - John">
-                        </div>
-                    </div>
-
-                    <div class="persona-item fade-in">
-                        <div class="persona-image">
-                            <img src="../../img/spring2025/wholefoods/Sarah.png" alt="User Persona - Sarah">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="research-stats text-padding fade-in">
-                    <div class="stat-item">
-                        <p class="stat-number">38%</p>
-                        <p class="stat-desc">expected the Amazon Lens icon to generate the in-store code but it didn't.
-                        </p>
-                    </div>
-                    <div class="stat-item">
-                        <p class="stat-number">68%</p>
-                        <p class="stat-desc">searched in 'My Account' but couldn't find the in-store code.</p>
-                    </div>
-                    <div class="stat-item">
-                        <p class="stat-number">40%</p>
-                        <p class="stat-desc">were frustrated by navigating through multiple sections.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="fade-in">
-                <h2 class="fade-in">Competitor Analysis</h2>
-                <div class="competitor-analysis">
-                    <div class="competitor-item fade-in">
-                        <div class="competitor-image">
-                            <img src="../../img/spring2025/wholefoods/cvs.jpg" alt="CVS mobile checkout analysis">
-                        </div>
-                        <div class="competitor-text">
-                            CVS places QR code prominently on home screen, minimizing search time and checkout
-                            friction.
-                            This insight led me to consider a more visible and easily accessible placement for the Whole
-                            Foods checkout code.
-                        </div>
-                    </div>
-
-                    <div class="competitor-item fade-in">
-                        <div class="competitor-image">
-                            <img src="../../img/spring2025/wholefoods/target.png" alt="Target mobile checkout analysis">
-                        </div>
-                        <div class="competitor-text">
-                            Target maintains consistent barcode location under 'Wallet' tab, ensuring predictable
-                            access. Inspired by this, I explored ways to give Whole Foods customers a similarly reliable
-                            experience when locating their checkout code.
-                        </div>
-                    </div>
-
-                    <div class="competitor-item fade-in">
-                        <div class="competitor-image">
-                            <img src="../../img/spring2025/wholefoods/apple.png" alt="Apple Wallet analysis">
-                        </div>
-                        <div class="competitor-text">
-                            Apple Wallet allows users to store and retrieve QR codes instantly, removing the need to
-                            navigate through multiple screens. This gave me the idea of considering future integration
-                            possibilities for Whole Foods, making checkout even faster and more convenient.
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="fade-in">
-                <h2 class="fade-in">Paper Prototyping & Low Fidelity Wireframing</h2>
-                <p class="fade-in text-padding">Based on my research, I explored various design solutions including a
-                    dedicated QR
-                    code button, integration with Amazon Lens, and a consistent feature placement under 'My Account'.
-                </p>
-                <div class="process-image fade-in">
-                    <img src="../../img/spring2025/wholefoods/paper.png" alt="Paper prototypes" width="100%">
-                </div>
-                <div class="process-image fade-in">
-                    <img src="../../img/spring2025/wholefoods/low-fi.png" alt="Low-fidelity wireframes overview">
-                </div>
-            </section>
-
-            <section class="fade-in">
-                <h2 class="fade-in">Usability Testing</h2>
-                <p class="text-padding fade-in">After 2 rounds of user testing with 5 individuals, here's what I found:
-                </p>
-                <div class="research-stats text-padding">
-                    <div class="stat-item">
-                        <div class="stat-number">64%</div>
-                        <div class="stat-desc">were confused by a toggle between Amazon Lens and the checkout code.
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">90%</div>
-                        <div class="stat-desc">wanted the code to appear automatically upon entering Whole Foods.</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">96%</div>
-                        <div class="stat-desc">still wanted a manual option under 'My Account' for flexibility.</div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="fade-in">
-                <h2 class="fade-in padding-top">High-Fidelity Prototypes</h2>
-                <p class="fade-in text-padding">Building on user testing insights, I implemented two key changes to
-                    improve the checkout experience:</p>
-
-                <div class="process-image fade-in">
-                    <img src="../../img/spring2025/wholefoods/Frame5.png"
-                        alt="Solution 1: Distinct QR code button and updated camera icon">
-                    <p class="text-padding solution-description"><i>Solution 1: A distinct QR code button appears
-                            when
-                            users enter a Whole Foods
-                            store, providing instant access. The Amazon Lens icon has also been updated to a camera
-                            symbol
-                            for better user
-                            recognition.</i></p>
-                    <p class="text-padding solution-description">This distinct QR code button ensures quick and
-                        effortless access for all shoppers — whether they need instant visibility, a seamless one-tap
-                        experience, or a clean, accessible design that reduces friction at checkout.</p>
-                </div>
-
-                <div class="process-image fade-in">
-                    <img src="../../img/spring2025/wholefoods/Frame6.png"
-                        alt="Solution 2: In-Store Code under My Account">
-                    <p class="text-padding solution-description"><i>Solution 2: A dedicated 'In-Store Code' option
-                            under
-                            'My Account' ensures
-                            consistent access to the checkout code.</i></p>
-                    <p class="text-padding solution-description">This in-store checkout code feature in 'My Account'
-                        provides easy access for all shoppers — whether they need consistent visibility, quick manual
-                        access, or an intuitive and organized experience that enhances accessibility and reduces
-                        friction.</p>
-                </div>
-
-                <div class="wireframe-row fade-in">
-                    <div class="process-image half-width">
-                        <img src="../../img/spring2025/wholefoods/1.png" alt="Additional high-fidelity prototype 1">
-                    </div>
-                    <div class="process-image half-width">
-                        <img src="../../img/spring2025/wholefoods/2.png" alt="Additional high-fidelity prototype 2">
-                    </div>
-                </div>
-            </section>
-
-            <section class="fade-in" id="figma-prototype">
-                <h2 class="fade-in padding-top">Interactive Figma Prototype</h2>
-                <p class="fade-in">Explore the interactive prototype to see the key user flows:</p>
-                <div class="figma-container fade-in">
-                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="800"
-                        src="https://embed.figma.com/proto/4r5lnJscEl27TIMppQbGrE/Mobile-Wireframe-Kit?node-id=285-5057&scaling=scale-down&content-scaling=contain&page-id=202%3A1528&starting-point-node-id=285%3A5045&embed-host=share"
-                        allowfullscreen></iframe>
-                </div>
-            </section>
-
-            <section class="fade-in">
-                <h2 class="fade-in">Tools & Methods</h2>
-                <ul class="fade-in">
-                    <li>Figma for wireframing, prototyping, and design system creation</li>
-                    <li>Marvel for paper prototyping and early concept validation</li>
-                    <li>Adobe Creative Suite for visual asset creation</li>
-                    <li>WCAG guidelines for accessibility compliance and testing</li>
-                    <li>User interviews and surveys for qualitative research</li>
-                </ul>
-            </section>
-
-            <section class="fade-in">
-                <h2 class="fade-in">Impact & Results</h2>
-                <div class="research-stats text-padding fade-in">
-                    <div class="stat-item fade-in">
-                        <div class="stat-number">75%</div>
-                        <div class="stat-desc">improvement in task completion rates for finding the checkout code.</div>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <div class="stat-number">60%</div>
-                        <div class="stat-desc">reduction in user errors during the checkout process.</div>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <div class="stat-number">Enhanced</div>
-                        <div class="stat-desc">WCAG 2.1 accessibility compliance standards achieved.</div>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-desc">positive user feedback on new features and improved usability.</div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="fade-in">
-                <h2 class="fade-in">Next Steps</h2>
-                <ul class="fade-in">
-                    <li>Conduct extensive A/B testing with the new QR code button placement to optimize its visibility
-                        and accessibility.</li>
-                    <li>Explore integration possibilities with digital wallet systems for even faster checkout.</li>
-                    <li>Implement location-based triggers to automatically surface the checkout code when customers
-                        enter Whole Foods stores.</li>
-                    <li>Gather quantitative data on checkout times to measure the impact of these improvements.</li>
-                </ul>
-            </section>
-
-            <section class="fade-in">
-                <h2 class="fade-in">Reflection</h2>
-                <p class="text-padding fade-in">This project marks my first comprehensive end-to-end UX case study,
-                    where I tackled improving the Whole Foods in-store checkout experience for customers. Through this
-                    journey, I've grown significantly in user-centered design methodologies, from conducting thorough
-                    user research to crafting data-driven solutions that enhance the shopping experience.</p>
-            </section>
-
-            <section class="fade-in">
-                <h2 class="fade-in">See Next</h2>
-                <div class="projects-grid">
-                    <div class="project-card fade-in">
-                        <a href="/lume" class="project-link">
-                            <div class="project-image">
-                                <img src="../../img/lume/work-thumbnail.png" alt="Lume Project">
-                            </div>
-                            <div class="project-info">
-                                <h3>Lume</h3>
-                                <p>A UX case study exploring how to help independent designers increase their market
-                                    visibility through
-                                    an
-                                    intuitive mobile platform.</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="project-card fade-in">
-                        <a href="/salesforce-canvas-enhancements" class="project-link">
-                            <div class="project-image">
-                                <img src="../../img/canvas-enhancements/canvas-enhancements-thumbnail.png"
-                                    alt="Salesforce Project">
-                            </div>
-                            <div class="project-info">
-                                <h3>Redesigning Salesforce's Flow Builder</h3>
-                                <p>A case study on improving accessibility and user productivity for sight-impaired
-                                    users in the Salesforce Flow Builder.</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="project-card fade-in">
-                        <a href="/salesforce-resource-selection" class="project-link">
-                            <div class="project-image">
-                                <img src="../../img/resource-selection/resource-selection.png"
-                                    alt="Salesforce 2 Project">
-                            </div>
-                            <div class="project-info">
-                                <h3>Resource Selection with Keyboard Navigation</h3>
-                                <p>A case study on ensuring comprehensive keyboard navigation towards an improved
-                                    resource selection experience in the Salesforce Flow Builder.</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <div class="footer" id="footer">
-        <div class="footer-info fade-in">
-            <h2 class="footerLabel fade-in"><b>Let's get in touch!</span></b></h2>
-            <div class="footerIcons fade-in">
-                <a href="https://www.linkedin.com/in/bevyip/" target="_blank" class="icons fa fa-linkedin"></a>
-                <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
-                <a href="mailto:hy3018@nyu.edu" target="_blank" class="icons fa fa-envelope"></a>
-            </div>
-            <div class="footerStamp fade-in">
-                <p>Proudly designed & handcoded by Beverly Yip.</p>
-            </div>
-            <div class="footerReroute fade-in">
-                <a class="footerReroute-link" href="#">BACK TO TOP</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <!-- Include reusable component scripts -->
+    <script src="../../nav/nav.js"></script>
+    <script src="../../nav/footer.js"></script>
+    <script src="../../js/cursor.js"></script>
 
     <script>
-        let debounceTimeout;
-        document.addEventListener("DOMContentLoaded", () => {
-            const rows = document.querySelectorAll(".proj-overview-content");
+        // Progress bar functionality
+        function updateProgressBar() {
+            const progressBar = document.getElementById("progress-bar");
+            if (!progressBar) return;
 
-            const observerOptions = {
-                root: null,
-                threshold: 0.1,
-            };
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
 
-            const observer = new IntersectionObserver((entries) => {
-                clearTimeout(debounceTimeout);
-                debounceTimeout = setTimeout(() => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("visible");
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, 50);
-            }, observerOptions);
+            // Ensure progress bar doesn't exceed 100%
+            const clampedPercent = Math.min(scrollPercent, 100);
+            progressBar.style.width = `${clampedPercent}%`;
+        }
 
-            rows.forEach(row => observer.observe(row));
+        // Throttled scroll handler for progress bar
+        let ticking = false;
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateProgressBar();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        // Add scroll event listener for progress bar
+        window.addEventListener("scroll", requestTick, { passive: true });
+
+        // Load reusable components
+        document.addEventListener("DOMContentLoaded", function () {
+            // Load navbar
+            fetch('../../nav/nav.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+
+                    // Update logo path for wholefoods project
+                    const logoImg = document.querySelector('.nav-brand img');
+                    if (logoImg) {
+                        logoImg.src = '../../img/logo.png';
+                    }
+
+                    if (typeof initializeNavbar === 'function') {
+                        initializeNavbar();
+                    }
+                    // Re-run cursor effects after navbar is loaded
+                    if (typeof addCursorEffects === 'function') {
+                        setTimeout(addCursorEffects, 100);
+                    }
+                });
+
+            // Load the footer component
+            fetch('../../nav/footer.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('footer-component').innerHTML = html;
+                    // Initialize footer functionality after loading
+                    initializeFooter();
+                    // Re-run cursor effects after footer is loaded
+                    if (typeof addCursorEffects === 'function') {
+                        setTimeout(addCursorEffects, 100);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading footer:', error);
+                });
         });
 
-        document.addEventListener("DOMContentLoaded", () => {
-            // Immediately show above-the-fold content
-            const initialElements = document.querySelectorAll(".landing-name, .landing-name + p, .project-sub-summary");
-            initialElements.forEach(el => {
-                el.classList.add("visible");
-            });
 
-            // Set up intersection observer for the rest of the content
-            const fadeInElements = document.querySelectorAll(".fade-in:not(.landing-name):not(.landing-name + p):not(.project-sub-summary)");
+
+        // Text animation for hero section
+        document.addEventListener("DOMContentLoaded", function () {
+            const textElements = document.querySelectorAll('.text-animate');
+
+            const animateText = () => {
+                textElements.forEach((element, index) => {
+                    setTimeout(() => {
+                        element.classList.add('animate-in');
+                    }, index * 100);
+                });
+            };
+
+            // Animate text on page load
+            animateText();
+        });
+
+        // Fade-in animations for content sections
+        document.addEventListener("DOMContentLoaded", function () {
+            const fadeInElements = document.querySelectorAll('.fade-in');
 
             const observerOptions = {
                 root: null,
@@ -523,7 +604,7 @@
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
+                        entry.target.classList.add('visible');
                         observer.unobserve(entry.target);
                     }
                 });
@@ -531,6 +612,235 @@
 
             fadeInElements.forEach((el) => observer.observe(el));
         });
+
+        // Animated metrics for outcome section
+        document.addEventListener("DOMContentLoaded", function () {
+            // Counter animation for metric numbers
+            function initCounterAnimation() {
+                const metricNumbers = document.querySelectorAll(".metric-number");
+
+                const counterObserver = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                animateCounter(entry.target);
+                                counterObserver.unobserve(entry.target); // Only animate once
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.1,
+                        rootMargin: "0px 0px -50px 0px",
+                    }
+                );
+
+                metricNumbers.forEach((metric) => {
+                    counterObserver.observe(metric);
+                });
+            }
+
+            function animateCounter(element) {
+                // Get target number from data attribute
+                const targetNumber = parseInt(element.getAttribute("data-target"));
+                const duration = 1500;
+                const steps = 30;
+                const stepDuration = duration / steps;
+                let currentStep = 0;
+
+                // Always start from 0
+                element.textContent = "0%";
+
+                const timer = setInterval(() => {
+                    currentStep++;
+                    const progress = currentStep / steps;
+                    const currentNumber = Math.floor(targetNumber * progress);
+
+                    // Update the element with the current number
+                    element.textContent = currentNumber + "%";
+
+                    if (currentStep >= steps) {
+                        // Animation complete, ensure we end at the exact target number
+                        element.textContent = targetNumber + "%";
+                        clearInterval(timer);
+                    }
+                }, stepDuration);
+            }
+
+            // Initialize counter animation
+            initCounterAnimation();
+
+            // Also initialize after navbar loads
+            setTimeout(() => {
+                initCounterAnimation();
+            }, 500);
+        });
+
+
+
+        function scrollToPrototype() {
+            const prototypeSection = document.querySelector('.prototypes-section');
+            if (prototypeSection) {
+                prototypeSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // See Next section scroll-driven card positioning
+        function initProjectCardScrollAnimation() {
+            const projectCards = document.querySelectorAll(".project-card");
+            const seeNextSection = document.querySelector(".see-next-section");
+
+            if (!projectCards.length || !seeNextSection) return;
+
+            function updateCardPositions() {
+                const projectCards = document.querySelectorAll(".project-card");
+                const seeNextSection = document.querySelector(".see-next-section");
+                const projectCardsContainer = document.querySelector(".project-cards");
+
+                if (!projectCards.length || !seeNextSection || !projectCardsContainer)
+                    return;
+
+                // Disable transitions for smooth scroll-driven positioning on large screens
+                if (window.innerWidth > 1024) {
+                    projectCards.forEach((card) => {
+                        card.style.transition = "none";
+                    });
+                }
+
+                const sectionRect = seeNextSection.getBoundingClientRect();
+                const sectionTop = sectionRect.top;
+                const sectionHeight = sectionRect.height;
+                const viewportHeight = window.innerHeight;
+
+                // Calculate scroll progress through the section (0 to 1)
+                let scrollProgress = 0;
+
+                // Only start animation when section is actually in view
+                if (sectionTop < viewportHeight && sectionTop > -sectionHeight) {
+                    // Section is in view, calculate progress
+                    const visibleHeight = viewportHeight - sectionTop;
+                    scrollProgress = Math.min(visibleHeight / (sectionHeight + 200), 1); // +200 for extra scroll room
+                }
+
+                // Only calculate gap for horizontal spread layout (large screens)
+                if (window.innerWidth > 1024) {
+                    // Gradually restore gap as cards spread out
+                    const finalGap = 32; // var(--spacing-xl) = 32px
+                    const currentGap = finalGap * scrollProgress;
+                    projectCardsContainer.style.gap = `${currentGap}px`;
+                }
+
+                // Apply positioning based on scroll progress
+                // Cards start overlapping in center and spread out to final positions
+                // On medium screens and below, cards use simple flexbox layout
+                if (window.innerWidth <= 1024) {
+                    // Simple flexbox layout for medium screens and below
+                    projectCards.forEach((card) => {
+                        card.style.transform = "none";
+                        card.style.position = "relative";
+                        card.style.left = "auto";
+                        card.style.width = "100%"; // Take full width of their column
+                        // Re-enable transitions for hover effects
+                        card.style.transition = "";
+                    });
+                    projectCardsContainer.style.flexDirection = "column";
+                    projectCardsContainer.style.alignItems = "center";
+                    projectCardsContainer.style.gap = "var(--spacing-xl)"; // Use CSS gap
+                } else {
+                    // Complex scroll-driven spread animation for large screens only
+                    // Reset any inline styles that might interfere with row layout
+                    projectCards.forEach((card) => {
+                        card.style.width = ""; // Remove inline width to let CSS take over
+                        card.style.position = "absolute";
+                        card.style.left = "50%";
+                        // Temporarily disable transitions for smooth scroll-driven positioning
+                        card.style.transition = "none";
+                    });
+
+                    projectCards.forEach((card, index) => {
+                        if (index === 0) {
+                            // Left card - starts at center, moves to left
+                            const spreadDistance = Math.min(500, window.innerWidth * 0.3);
+                            const translateX = -spreadDistance * scrollProgress;
+                            card.style.transform = `translateX(-50%) translateX(${translateX}px)`;
+                        } else if (index === 1) {
+                            // Center card - stays at center
+                            card.style.transform = "translateX(-50%)";
+                        } else if (index === 2) {
+                            // Right card - starts at center, moves to right
+                            const spreadDistance = Math.min(500, window.innerWidth * 0.3);
+                            const translateX = spreadDistance * scrollProgress;
+                            card.style.transform = `translateX(-50%) translateX(${translateX}px)`;
+                        }
+                    });
+                    projectCardsContainer.style.flexDirection = "row";
+                }
+            }
+
+            // Update on scroll
+            window.addEventListener("scroll", throttle(updateCardPositions, 16)); // 60fps
+
+            // Update on resize to maintain responsive positioning
+            window.addEventListener("resize", throttle(updateCardPositions, 100));
+
+            // Calculate and set equal heights for all cards
+            function setEqualCardHeights() {
+                const projectCards = document.querySelectorAll(".project-card");
+                if (projectCards.length === 0) return;
+
+                // Reset heights to auto to get natural heights
+                projectCards.forEach((card) => {
+                    card.style.height = "auto";
+                });
+
+                // Find the tallest card
+                let maxHeight = 0;
+                projectCards.forEach((card) => {
+                    const cardHeight = card.offsetHeight;
+                    maxHeight = Math.max(maxHeight, cardHeight);
+                });
+
+                // Apply the max height to all cards
+                projectCards.forEach((card) => {
+                    card.style.height = `${maxHeight}px`;
+                });
+            }
+
+            // Set equal heights initially and on resize
+            setEqualCardHeights();
+            window.addEventListener("resize", throttle(setEqualCardHeights, 100));
+
+            // Initial position
+            updateCardPositions();
+        }
+
+        // Performance optimization: Throttle scroll events
+        function throttle(func, limit) {
+            let inThrottle;
+            return (...args) => {
+                if (!inThrottle) {
+                    func(...args);
+                    inThrottle = true;
+                    setTimeout(() => (inThrottle = false), limit);
+                }
+            };
+        }
+
+        // Initialize on DOM load
+        document.addEventListener("DOMContentLoaded", function () {
+            const projectCards = document.querySelectorAll(".project-card");
+
+            if (projectCards.length === 3) {
+                // Add scroll-driven positioning classes
+                projectCards[0].classList.add('scroll-spread-1');
+                projectCards[1].classList.add('scroll-spread-2');
+                projectCards[2].classList.add('scroll-spread-3');
+            }
+        });
+
+        // Initialize scroll-driven animation after navbar and footer load
+        setTimeout(() => {
+            initProjectCardScrollAnimation();
+        }, 500);
     </script>
 </body>
 

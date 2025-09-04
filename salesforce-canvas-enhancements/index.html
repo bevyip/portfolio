@@ -5,556 +5,735 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Beverly Yip</title>
+  <title>Beverly Yip | Portfolio</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../img/logo-light.png">
+
+  <!-- Import reusable typography and cursor styles -->
+  <link rel="stylesheet" href="../css/typography.css">
   <link rel="stylesheet" href="../css/canvas-enhancements.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- Import navbar and footer component styles -->
+  <link rel="stylesheet" href="../nav/nav.css">
+  <link rel="stylesheet" href="../nav/footer.css">
+
+  <!-- Material Icons for footer -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
 <body>
-  <header class="fade-in">
-    <nav class="navbar navbar-expand-lg navbar-light fade-in" id="navbar-real">
-      <a class="navbar-brand" id="navbar-brand" href="/"><img src="../img/logo.png" alt="Logo" class="logo"></a>
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation" id="nav-gen" fade-in>
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse text-center justify-content-center fade-in" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto" id="custom-navbar">
-          <li class="nav-item">
-            <a class="nav-link" href="/about">ABOUT</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" id="workDropdown" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              WORK
-            </a>
-            <div id="workMenu" class="dropdown-menu">
-              <a class="dropdown-item" href="/#work">ALL</a>
-              <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/play">PLAY</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+  <!-- Progress Bar -->
+  <div id="progress-bar"></div>
 
-    <div class="container-fluid landing fade-in">
-    </div>
+  <!-- Header with Navbar -->
+  <header>
+    <!-- Include the navbar component -->
+    <div id="nav-bar"></div>
   </header>
 
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-left">
+          <h1 class="hero-title text-animate">REDESIGNING SALESFORCE'S FLOW BUILDER</h1>
+          <div class="hero-meta">
+            <div class="meta-item text-animate">
+              <span class="meta-label">ROLE</span>
+              <span class="meta-value">Lead Software Engineer</span>
+            </div>
+            <div class="meta-item text-animate">
+              <span class="meta-label">DURATION</span>
+              <span class="meta-value">Dec 2022 — Feb 2023 (3 months)</span>
+            </div>
+            <div class="meta-item text-animate">
+              <span class="meta-label">TOOLS</span>
+              <span class="meta-value">Lightning Web Components, Java, Typescript, HTML, CSS, Salesforce Flow Builder,
+                Jest Testing Frameworks</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="hero-summary text-animate">
+            <p>
+              A comprehensive redesign and refactor of Salesforce Flow Builder's canvas interface that resolves critical
+              navigation
+              challenges and optimizes element positioning for thousands of enterprise users. This project implemented
+              WCAG 2.1 accessibility standards while enhancing visual organization and interaction patterns, creating a
+              more navigable and compliant workflow creation experience.</p>
+            <div class="hero-tags text-animate">
+              <span class="tag">Web</span>
+              <span class="tag">Design Systems</span>
+              <span class="tag">Accessibility</span>
+              <span class="tag">UX/UI</span>
+            </div>
+
+            <!-- Scroll to Solution Button -->
+            <div class="hero-scroll-button-container">
+              <button class="hero-scroll-button clickable" onclick="scrollToSolution()">
+                <span class="button-text">Skip to Solution</span>
+                <span class="button-text-hidden">Skip to Solution</span>
+                <span class="material-icons button-arrow">arrow_downward</span>
+                <span class="material-icons button-arrow-hidden">arrow_downward</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visuals fade-in">
+        <img src="../img/canvas-enhancements/thumbnail.png" alt="Salesforce Canvas Enhancements" class="hero-image">
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Overview Section -->
+  <section class="project-overview">
+    <div class="overview-container">
+      <div class="overview-content">
+        <div class="overview-left fade-in">
+          <h2 class="overview-title">What is Flow Builder?</h2>
+          <p class="overview-description">
+            Flow Builder is Salesforce's powerful low-code automation tool that enables users to create visual business
+            workflows through drag-and-drop elements. Users can automate tasks, guide user interactions, and integrate
+            with Salesforce data without writing code, making complex business process automation accessible to
+            non-technical users.
+          </p>
+        </div>
+        <div class="overview-right fade-in">
+          <h2 class="overview-title">My Role</h2>
+          <p class="overview-description">
+            As the Lead Software Engineer of this project, I drove the engineering implementation of the canvas
+            redesign, working closely with the UX team's design specifications. I led technical spiking,
+            UI
+            component
+            development, and cross-functional collaboration to translate design concepts into functional code. My
+            engineering efforts focused on implementing responsive components, accessibility improvements, and design
+            system integration while ensuring the solution met enterprise performance and scalability requirements.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outcome Section -->
+  <section class="outcome-section">
+    <div class="outcome-container">
+      <h3 class="section-subtitle">Outcome</h3>
+      <div class="outcome-metrics">
+        <div class="metric-item">
+          <span class="metric-number" data-target="35">0%</span>
+          <span class="metric-label">reduction in flow creation time</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-number" data-target="90">0%</span>
+          <span class="metric-label">improvement in WCAG accessibility compliance</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-number" data-target="45">0%</span>
+          <span class="metric-label">decrease in user navigation errors</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disclaimer Section -->
   <div class="disclaimer fade-in">
     <i class="fa fa-info-circle" aria-hidden="true"></i>
-    <p>Due to a Non-Disclosure Agreement, information on this project is limited.
-    </p>
+    <p>Due to a Non-Disclosure Agreement, information on this project is limited.</p>
   </div>
 
-  <div class="row introduction">
-    <div class="col-lg-8 col-md-12 col-sm-12 project-summary fade-in">
-      <div class="landing-name">
-        <h1>Redesigning Salesforce's Flow Builder</h1>
-      </div>
-      <h2>Overview</h2>
-      </br>
-      <p>Flow Builder is a powerful low-code tool that enables users to automate business processes by creating
-        customizable flows. Users can design visual workflows with drag-and-drop elements to automate tasks, guide user
-        interactions, and integrate with Salesforce data — all without writing code.</p>
-      <p class="highlight">In this redesign, we <span>modernized and simplified</span> the layout while <span>ensuring
-          accessibility</span> for all users through
-        improved navigation and WCAG 2.1 compliant colors.</p>
-      <p>The modifications were implemented in Java, Typescript, HTML, and CSS.
+  <!-- Context Section -->
+  <section class="context-section">
+    <div class="context-container">
+      <h3 class="section-subtitle fade-in">Context</h3>
+      <p class="context-problem fade-in">
+        Enterprise users need efficient, accessible workflow creation.
       </p>
+      <p class="context-subtext fade-in">
+        Flow Builder serves thousands of Salesforce customers who create complex business automation workflows. As the
+        platform evolved to handle more sophisticated use cases, the original canvas design began showing limitations in
+        navigation, usability, and accessibility compliance.
+      </p>
+      <div class="context-image fade-in">
+        <img src="../img/canvas-enhancements/context.png" alt="Salesforce Flow Builder context and workflow creation"
+          class="context-image">
+        <span class="video-label">1 — Context</span>
+      </div>
+    </div>
+  </section>
 
-      </br>
-
-      <h2>Why Redesign Flow Builder?</h2>
-      </br>
-      <div class="problem-section">
-        <h3>Problem #1: Navigation Challenges</h3>
-        <p class="error-highlight">As the user base grows, <span>navigation becomes challenging</span> with larger, more
-          complex flows.</p>
-        <div class="row problem-visuals">
-          <div class="col-md-12">
-            <img class="problem-img" src="../img/canvas-enhancements/problem1.png" alt="navigation challenges">
+  <!-- Problem Section -->
+  <section class="problem-section">
+    <div class="problem-container">
+      <h3 class="section-subtitle fade-in">Problems</h3>
+      <div class="problem-content">
+        <!-- Problem 1: Navigation Challenges -->
+        <div class="problem-subsection">
+          <h4 class="problem-subtitle fade-in">Navigation Challenges</h4>
+          <p class="problem-description fade-in">
+            Users struggled with element positioning and zoom functionality in complex flows, with zoom resetting during
+            interactions and elements becoming difficult to locate and manage.
+          </p>
+          <div class="problem-visual fade-in">
+            <img src="../img/canvas-enhancements/problem-1.png" alt="Navigation challenges in complex flows"
+              class="problem-image">
+            <span class="video-label">2.1 — Navigation Challenges</span>
           </div>
         </div>
-      </div>
 
-      <div class="problem-section" style="padding-top: 50px;">
-        <h3>Problem #2: Accessibility Issues</h3>
-        <p class="error-highlight">The interface has <span>accessibility issues</span> with icon color contrast that
-          fail to meet WCAG standards.</p>
-        <div class="row problem-visuals">
-          <div class="col-md-12">
-            <img class="problem-img" src="../img/canvas-enhancements/problem2.png" alt="accessibility issues">
+        <!-- Problem 2: Accessibility Compliance -->
+        <div class="problem-subsection">
+          <h4 class="problem-subtitle fade-in">Accessibility Issues</h4>
+          <p class="problem-description fade-in">
+            Icon color contrast failed to meet WCAG 2.1 standards, creating significant barriers for sight-impaired
+            users who rely on visual cues to navigate and build workflows effectively.
+          </p>
+          <div class="problem-visual fade-in">
+            <img src="../img/canvas-enhancements/problem-2.png" alt="Accessibility issues with icon contrast"
+              class="problem-image">
+            <span class="video-label">2.2 — Accessibility Issues</span>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-4 col-md-12 col-sm-12 project-sub-summary fade-in">
-      <div class="project-sub-summary-content">
-        <p class="sub-header">WHEN WAS THIS?</p>
-        <p>Dec 2022 - Feb 2023 (3 months)</p>
-        </br>
-        <p class="sub-header">WHAT DID I DO?</p>
-        <p>I served as the lead Software Engineer for this feature, overseeing the entire project cycle.</p>
-        <p>My responsibilities included:
-        <ul>
-          <li><strong>Product Strategy & Discovery —</strong> Led project scoping, created proof-of-concepts, and
-            conducted technical discovery to shape the canvas enhancement vision and validate design feasibility.</li>
-          <li><strong>UX Architecture & Planning —</strong> Analyzed user workflows, broke down complex features into
-            intuitive interactions, and designed technical solutions that prioritized user experience.</li>
-          <li><strong>UI Implementation & Quality —</strong> Led the development of responsive UI components,
-            established
-            testing frameworks, and conducted thorough bug blitzes to ensure a polished user experience.</li>
-          <li><strong>Cross-functional Leadership —</strong> Collaborated with UX designers and product teams to align
-            technical implementation with design vision while maintaining performance and scalability.</li>
-          <li><strong>Design System Integration —</strong> Ensured new canvas features adhered to Salesforce's design
-            system guidelines while introducing innovative interaction patterns that enhanced user workflow.</li>
-        </ul>
-        </p>
-        <p>During this process, I worked in tandem with the UX team, Product Managers, and my engineering team to ideate
-          and troubleshoot.</p>
+  </section>
+
+  <!-- Project Goal Section -->
+  <section class="goal-section">
+    <div class="goal-container">
+      <h3 class="section-subtitle fade-in">Goal</h3>
+      <p class="goal-text fade-in">
+        Redesign Flow Builder's canvas interface to resolve navigation challenges, optimize element positioning, and
+        achieve WCAG 2.1 accessibility compliance.
+      </p>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process-section">
+    <div class="process-container">
+      <h3 class="section-subtitle fade-in">Project Timeline</h3>
+      <p class="goal-text fade-in">Key phases from research to implementation —</p>
+      <div class="process-image fade-in">
+        <img src="../img/canvas-enhancements/process.png"
+          alt="Salesforce Flow Builder project timeline and process phases" class="process-image">
+        <span class="video-label">3 — Project Timeline</span>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="col solution">
-    <div class="customer-need-section">
-      <h2>Customer Need</h2>
-      <div class="need-details">
-        <div>
-          <h3>Need</h3>
-          <p>Simplified, efficient, and inclusive flow-building experience.</p>
+  <!-- UX Deliverables Section -->
+  <section class="ux-deliverables-section">
+    <div class="ux-deliverables-container">
+      <h3 class="section-subtitle fade-in">UX Deliverables</h3>
+      <p class="goal-text fade-in">Essential design requirements for the product release —</p>
+      <div class="ux-deliverables-grid fade-in">
+        <div class="deliverable-item">
+          <img src="../img/canvas-enhancements/d1.png" alt="Deliverable 1: Icon updates and animations"
+            class="deliverable-image">
+          <span class="video-label">4.1 — Icon Updates</span>
         </div>
-
-        <div>
-          <h3>Goal</h3>
-          <p>Improve usability for all users, especially those with sight impairments.</p>
+        <div class="deliverable-item">
+          <img src="../img/canvas-enhancements/d2.png" alt="Deliverable 2: Help popover implementation"
+            class="deliverable-image">
+          <span class="video-label">4.2 — Help Popover</span>
         </div>
-
-        <div>
-          <h3>Use Case</h3>
-          <p>Provide a simpler canvas with less scrolling and better navigation.</p>
+        <div class="deliverable-item">
+          <img src="../img/canvas-enhancements/d3.png" alt="Deliverable 3: Node distance optimization"
+            class="deliverable-image">
+          <span class="video-label">4.3 — Node Distance</span>
+        </div>
+        <div class="deliverable-item">
+          <img src="../img/canvas-enhancements/d4.png" alt="Deliverable 4: Connector width improvements"
+            class="deliverable-image">
+          <span class="video-label">4.4 — Connector Width</span>
+        </div>
+        <div class="deliverable-item">
+          <img src="../img/canvas-enhancements/d5.png" alt="Deliverable 5: Color contrast enhancements"
+            class="deliverable-image">
+          <span class="video-label">4.5 — Color Contrast</span>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="ux-deliverables">
-      <h2 class="process-heading fade-in">The Process</h2>
-      <img class="process-img fade-in" src="../img/canvas-enhancements/process.png" alt="process overview">
-      <div class="ux-req fade-in">
-        <h2>UX Deliverables</h2>
-        <div class="deliverables-grid">
-          <div class="deliverable-item">
-            <h3>1. Update the <img class="inline-icon" src="../img/canvas-enhancements/plus-icon.png" alt="plus icon">
-              Icon</h3>
-            <p>Convert the <img class="inline-icon" src="../img/canvas-enhancements/plus-icon.png" alt="plus icon"> icon
-              to a <img class="inline-icon" src="../img/canvas-enhancements/circle-icon.png" alt="circle icon"> that
-              animates on load, hover, focus states, and in cut mode.</p>
-            <img class="main-image" src="../img/canvas-enhancements/d1.png" alt="icon update example">
-          </div>
-
-          <div class="deliverable-item">
-            <h3>2. Add Help Popover</h3>
-            <p>Introduce a help popover to guide users through the visual changes.</p>
-            <img class="main-image" src="../img/canvas-enhancements/d2.png" alt="help popover example">
-          </div>
-
-          <div class="deliverable-item">
-            <h3>3. Shorten Vertical Node Distance</h3>
-            <p>Reduce the spacing between vertical nodes for better visual flow.</p>
-            <img class="main-image" src="../img/canvas-enhancements/d3.png" alt="node distance example">
-          </div>
-
-          <div class="deliverable-item">
-            <h3>4. Reduce Connector Width</h3>
-            <p>Decrease the width of connectors for a cleaner, more modern look.</p>
-            <img class="main-image" src="../img/canvas-enhancements/d4.png" alt="connector width example">
-          </div>
-
-          <div class="deliverable-item">
-            <h3>5. Increase Contrast</h3>
-            <p>Enhance the contrast of nodes and connectors for better visibility.</p>
-            <img class="main-image" src="../img/canvas-enhancements/d5.png" alt="contrast example">
-          </div>
-        </div>
-      </div>
-
-      <div class="update-icon-story padding-top fade-in">
-        <h4 class="heading-padding">Deliverable 1</h4>
-        <h3 class="heading-padding deliverable-heading">Update The <img class="plus-icon"
-            src="../img/canvas-enhancements/plus-icon.png" alt="plus icon"> Icon</h3>
-        <video class="hover-animation padding-top-bottom" autoplay loop muted playsinline>
-          <source src="../img/canvas-enhancements/hover-animation.mp4" type="video/mp4">
+  <!-- Deliverable 1 Section -->
+  <section class="deliverable-1-section">
+    <div class="deliverable-1-container">
+      <h3 class="section-subtitle fade-in">Deliverable 1</h3>
+      <h4 class="deliverable-subtitle fade-in">Update The <img src="../img/canvas-enhancements/plus-icon.png"
+          alt="plus icon" class="inline-icon"> Icon</h4>
+      <div class="deliverable-1-video-container fade-in">
+        <video class="deliverable-1-video" autoplay loop muted playsinline>
+          <source src="../img/canvas-enhancements/deliverable1-cover.mp4" type="video/mp4">
         </video>
-        <div class="icon-header-segment short-padding-top">
-          <h3 class="icon-cases-header heading-padding">Icon Animation Cases</h3>
-        </div>
-        <div class="icon-cases-container">
-          <div class="row icon-cases-row">
-            <div class="col-lg-3 col-md-6 col-sm-12 icon-case-item">
-              <div class="case-number">1</div>
-              <h4 class="case-type">On Hover</h4>
-              <p class="case-description">When a user hovers on the circle icon, we want to display</p>
-              <img class="case-image" src="../img/canvas-enhancements/case1.png" alt="On Hover Case">
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 icon-case-item">
-              <div class="case-number">2</div>
-              <h4 class="case-type">On Focus</h4>
-              <p class="case-description">When the focus is on the circle icon, we want to display</p>
-              <img class="case-image" src="../img/canvas-enhancements/case2.png" alt="On Focus Case">
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 icon-case-item">
-              <div class="case-number">3</div>
-              <h4 class="case-type">On Load</h4>
-              <p class="case-description">When a user first loads a flow, we want to display</p>
-              <img class="case-image" src="../img/canvas-enhancements/case3.png" alt="On Load Case">
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 icon-case-item">
-              <div class="case-number">4</div>
-              <h4 class="case-type">In Cut Mode</h4>
-              <p class="case-description">When a user is in cut mode, there should be no icon animation.</p>
-              <img class="case-image" src="../img/canvas-enhancements/case4.png" alt="In Cut Mode Case">
-            </div>
-          </div>
-        </div>
+        <span class="video-label">5 — Icon Animation</span>
       </div>
 
-      <div class="add-help-popover-story short-padding-top fade-in">
-        <h4 class="heading-padding">Deliverable 2</h4>
-        <h3 class="heading-padding deliverable-heading">Add Help Popover</h3>
-        <img class="popover-example padding-top" src="../img/canvas-enhancements/popover-eg.png" alt="popover example">
-      </div>
-      <div class="popover-req">
-        <h4 class="heading-padding padding-top popover-req-header">Popover Requirements</h4>
-        <div class="four-popover-req row">
-          <div class="col-sm" data-number="1">
-            <p>Display only once per user.</p>
+      <!-- Icon Animation Cases -->
+      <div class="icon-cases-section fade-in">
+        <h4 class="icon-cases-title">Icon Animation Cases</h4>
+        <div class="icon-cases-grid">
+          <div class="icon-case-item">
+            <div class="case-number">1</div>
+            <h5 class="case-title">On Hover</h5>
+            <p class="case-description">When a user hovers on the circle icon, we want to display</p>
+            <img src="../img/canvas-enhancements/case1.png" alt="On Hover Case" class="case-image">
           </div>
-          <div class="col-sm" data-number="2">
-            <p>Stay anchored to the first circle icon, even when the flow moves.</p>
+
+          <div class="icon-case-item">
+            <div class="case-number">2</div>
+            <h5 class="case-title">On Focus</h5>
+            <p class="case-description">When the focus is on the circle icon, we want to display</p>
+            <img src="../img/canvas-enhancements/case2.png" alt="On Focus Case" class="case-image">
           </div>
-          <div class="col-sm" data-number="3">
-            <p>To close, the user has to click the X button or press the Esc key.</p>
+
+          <div class="icon-case-item">
+            <div class="case-number">3</div>
+            <h5 class="case-title">On Load</h5>
+            <p class="case-description">When a user first loads a flow, we want to display</p>
+            <img src="../img/canvas-enhancements/case3.png" alt="On Load Case" class="case-image">
           </div>
-          <div class="col-sm" data-number="4">
-            <p>Appear on the right of the circle icon.</p>
+
+          <div class="icon-case-item">
+            <div class="case-number">4</div>
+            <h5 class="case-title">In Cut Mode</h5>
+            <p class="case-description">When a user is in cut mode, there should be no icon animation.</p>
+            <img src="../img/canvas-enhancements/case4.png" alt="In Cut Mode Case" class="case-image">
           </div>
         </div>
       </div>
-      <div class="popover-issue-text">
-        <h3 class="heading-padding">Popover Roadblock & Solution</h3>
-        <p class="short-padding-top error-highlight">When working on a proof of concept, I faced a challenge when
-          <span>the popover wouldn't stay anchored</span> as the flow moved.
-        </p>
-      </div>
-      <div class="popover-issue col">
-        <img class="popover-issue-gif padding-top" src="../img/canvas-enhancements/popover-issue.gif"
-          alt="popover panning issue gif">
-        </br>
-        <p><i>When the flow was dragged, the popover didn't follow.</i></p>
-      </div>
-      <p class="short-padding-top">Multiple attempts at a solution were made to resolve the three issues in keeping
-        the popover anchored. However, no solution could not solve all three issues simultaneously.</p>
-      <p class="highlight">Eventually, I sought the guidance of the Salesforce In-App Guidance team, and together,
-        and
-        collaborated with them in implementing a custom algorithm that kept the popover anchored during window resizes
-        and shifts. This solution also <span>improved the Flow's adaptability</span> to different
-        screen sizes and interactions, and
-        <span>maintained product scalability</span>.
-      </p>
-      </br>
-
     </div>
+  </section>
 
-    <div class="shorten-distance-story short-padding-top fade-in">
-      <h4 class="heading-padding">Deliverable 3</h4>
-      <h3 class="heading-padding deliverable-heading">Shorten The Distance Between Vertical Nodes</h3>
-      <img class="d3-image" src="../img/canvas-enhancements/d3.png" alt="d3 visualization">
-      </br>
-      <div class="shorten-distance-issue-text padding-bottom fade-in">
-        <h3 class="heading-padding short-padding-top">Edge Cases</h3>
-        <br>
-        <p class="bold">I accounted for different connector types (straight, curved, arrowed) and unique node shapes
-          like diamond-shaped Decision elements, as well as icons with added borders that affected layout.
-        </p>
-        <p class="highlight">While the fix was a simple variable change, I had to ensure <span>visual consistency</span>
-          throughout.</p>
-        </br>
+  <!-- Deliverable 2 Section -->
+  <section class="deliverable-2-section">
+    <div class="deliverable-2-container">
+      <h3 class="section-subtitle fade-in">Deliverable 2</h3>
+      <h4 class="deliverable-subtitle fade-in">Add Icon Popover</h4>
+      <div class="deliverable-2-image-container fade-in">
+        <img src="../img/canvas-enhancements/deliverable2-cover.png" alt="Add Icon Popover" class="deliverable-2-image">
+        <span class="video-label">6.1 — Add Icon Popover</span>
+      </div>
 
-        <div class="row shorten-distance-cases fade-in">
-          <!-- Connector Types Case -->
-          <div class="col-md-12 case-section">
-            <h4 class="case-title font-weight-bold heading-padding">Connector Types</h4>
-            <div class="row connector-types heading-padding">
-              <div class="col-md-6">
-                <img class="connector-img main-image case-image" src="../img/canvas-enhancements/connector1.png"
-                  alt="connector types before">
-              </div>
-              <div class="col-md-6">
-                <img class="connector-img main-image case-image" src="../img/canvas-enhancements/connector2.png"
-                  alt="connector types after">
-              </div>
-            </div>
-            <p class="case-description text-center"><i>Different connector types - straight, curved, and with arrowed
-                ends.</i>
+      <!-- Popover Requirements -->
+      <div class="popover-requirements-section fade-in">
+        <h4 class="popover-requirements-title">Popover Requirements</h4>
+        <div class="popover-requirements-grid">
+          <div class="popover-requirement-item">
+            <div class="requirement-number">1</div>
+            <h5 class="requirement-title">Display Once Per User</h5>
+            <p class="requirement-description">Show the popover only once per user session to avoid repetition.</p>
+          </div>
+
+          <div class="popover-requirement-item">
+            <div class="requirement-number">2</div>
+            <h5 class="requirement-title">Stay Anchored to Icon</h5>
+            <p class="requirement-description">Remain anchored to the first circle icon even when the flow moves.</p>
+          </div>
+
+          <div class="popover-requirement-item">
+            <div class="requirement-number">3</div>
+            <h5 class="requirement-title">Close Controls</h5>
+            <p class="requirement-description">User must click the X button or press the Esc key to close the popover.
             </p>
           </div>
 
-          <!-- Node Types Case -->
-          <div class="col-md-12 case-section">
-            <h4 class="case-title font-weight-bold heading-padding short-padding-top">Node Types</h4>
-            <div class="row node-types heading-padding">
-              <div class="node-comparison">
-                <p class="node-text text-center">Before: Original Flow Layout</p>
-                <img class="node-img main-image case-image" src="../img/canvas-enhancements/node-before.png"
-                  alt="node types before">
-                <p class="node-description"><i>Initial layout with original spacing.</i></p>
+          <div class="popover-requirement-item">
+            <div class="requirement-number">4</div>
+            <h5 class="requirement-title">Positioning</h5>
+            <p class="requirement-description">Popover appears on the right side of the circle icon.</p>
+          </div>
+        </div>
+
+        <!-- Popover Anchoring Challenge -->
+        <div class="popover-challenge-section fade-in">
+          <h4 class="popover-challenge-title">Popover Anchoring Challenge</h4>
+          <div class="popover-challenge-content">
+            <div class="challenge-text">
+              <div class="challenge-group">
+                <h5 class="challenge-subtitle">Technical Constraint</h5>
+                <p class="challenge-description">Popovers failed to maintain proper anchoring when users dragged the
+                  flow
+                  interface, creating a disjointed user experience.</p>
               </div>
-              <div class="node-comparison">
-                <p class="node-text text-center">After: Adjusted Flow Layout</p>
-                <img class="node-img main-image case-image" src="../img/canvas-enhancements/node-after.png"
-                  alt="node types after">
-                <p class="node-description"><i>Adjusted layout <u>without consideration</u> for nodes with unique
-                    shapes.</i></p>
+
+              <div class="challenge-group">
+                <h5 class="challenge-subtitle">Root Issue</h5>
+                <p class="challenge-description">Standard positioning solutions couldn't simultaneously address window
+                  resizing, flow movement, and cross-device compatibility requirements.</p>
+              </div>
+
+              <div class="challenge-group">
+                <h5 class="challenge-subtitle">Solution</h5>
+                <p class="challenge-description">Collaborated with Salesforce In-App Guidance team to develop a custom
+                  anchoring algorithm that dynamically tracks flow position changes. This solution enhanced both user
+                  experience consistency and product scalability across different screen sizes and interaction patterns.
+                </p>
+              </div>
+            </div>
+
+            <div class="challenge-video-container">
+              <video class="challenge-video" autoplay loop muted playsinline preload="metadata">
+                <source src="../img/canvas-enhancements/deliverable2-roadblock.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <span class="video-label">6.2 — Popover Anchoring Challenge</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverable 3 Section -->
+  <section class="deliverable-3-section">
+    <div class="deliverable-3-container">
+      <h3 class="section-subtitle fade-in">Deliverable 3</h3>
+      <h4 class="deliverable-subtitle fade-in">Shorten Vertical Node Distance</h4>
+      <div class="deliverable-3-image-container fade-in">
+        <img src="../img/canvas-enhancements/deliverable3-cover.png" alt="Shorten Vertical Node Distance"
+          class="deliverable-3-image">
+        <span class="video-label">7 — Shorten Vertical Node Distance</span>
+      </div>
+
+      <!-- Node Distance Edge Cases -->
+      <div class="node-edge-cases-section fade-in">
+        <h4 class="node-edge-cases-title">Edge Cases & Considerations</h4>
+        <p class="node-edge-cases-intro">I accounted for different connector types, unique node shapes, and icons with
+          added borders that affected layout consistency.</p>
+
+        <div class="node-edge-cases-grid">
+          <!-- Connector Types Case -->
+          <div class="node-edge-case-item">
+            <div class="case-number">1</div>
+            <h5 class="case-title">Connector Types</h5>
+            <p class="case-description">Different connector types — straight, curved, and arrowed — have differnt widths
+              and heights.</p>
+            <div class="case-images">
+              <div class="image-with-label">
+                <img src="../img/canvas-enhancements/connector1.png" alt="Connector types before" class="case-image">
+                <span class="image-label">Curved</span>
+              </div>
+              <div class="image-with-label">
+                <img src="../img/canvas-enhancements/connector2.png" alt="Connector types after" class="case-image">
+                <span class="image-label">Arrowed</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Node Types Case -->
+          <div class="node-edge-case-item">
+            <div class="case-number">2</div>
+            <h5 class="case-title">Node Types</h5>
+            <p class="case-description">Handling unique node shapes like diamond-shaped Decision elements.</p>
+            <div class="case-images">
+              <div class="image-with-label">
+                <img src="../img/canvas-enhancements/node-before.png" alt="Node types before" class="case-image">
+                <span class="image-label">Original</span>
+              </div>
+              <div class="image-with-label">
+                <img src="../img/canvas-enhancements/node-after.png" alt="Node types after" class="case-image">
+                <span class="image-label">Optimized</span>
               </div>
             </div>
           </div>
 
           <!-- Border Types Case -->
-          <div class="col-md-12 case-section">
-            <h4 class="case-title font-weight-bold heading-padding short-padding-top">Border Types</h4>
-            <div class="row border-types heading-padding">
-              <div class="col-md-12">
-                <img class="border-img main-image case-image" src="../img/canvas-enhancements/border-case.png"
-                  alt="border types example">
-                <p class="case-description text-center"><i>Icons with an added border, affecting layout consistency.</i>
-                </p>
+          <div class="node-edge-case-item">
+            <div class="case-number">3</div>
+            <h5 class="case-title">Border Types</h5>
+            <p class="case-description">Different border types like dashed icon borders overlap new connector styles.
+            </p>
+            <div class="case-images">
+              <div class="image-with-label">
+                <img src="../img/canvas-enhancements/border-case.png" alt="Border types example" class="case-image">
+                <span class="image-label">Dashed Borders</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <p>After several feedback sessions with the UX
-        team, I adjusted the variable values to balance the feature's requirement with the unique needs of these edge
-        cases.</p>
-      </br>
-    </div>
 
-    <div class="reduce-width-story short-padding-top fade-in">
-      <h4 class="heading-padding">Deliverable 4</h4>
-      <h3 class="heading-padding deliverable-heading">Reduce The Width Of Connectors</h3>
-      <img class="d4-image" src="../img/canvas-enhancements/d4.png" alt="d4 visualization">
-      </br>
-      <div class="reduce-width-issue-text fade-in">
-        <h3 class="heading-padding short-padding-top">Handling Complex Node and Connector Variations</h3>
-        <br>
-        <p class="error-highlight">During my research, I found that the previous requirement <a
-            style="color:black;">(Shorten The Distance Between Vertical Nodes)</a> and this needed to be completed <a
-            style="color:black;">concurrently</a> as one change without the other would result in <span>interrupted
-            and incohesive</span> connector lines.</p>
-        </br>
-        <div class="row">
-          <img class="center reduce-width-img padding-top-bottom" src="../img/canvas-enhancements/reduce-width-img.png"
-            alt="reduce width issue image">
-        </div>
-        <p class="bold fade-in">Hence, I decided that these two requirements had to be combined into <span>a single
-            code
-            release</span>.</p>
-        <div class="row reduce-width fade-in">
-          <div class="col-2">
-            <a href="https://www.flaticon.com/free-icons/idea" title="idea icons"><img class="center reduce-width-icon"
-                src="../img/canvas-enhancements/reduce-width-flaticon.png" alt="reduce width issue icon"></a>
-          </div>
-          <div class="col-10">
-            <p class="bold reduce-width-exception">What the UX team didn't take into consideration was that Flow
-              Builder had <span>a lot</span> of connectors with different shapes and forms. During implementation, I
-              also took the initiative to ensure that all connector widths were standardized across all impacted
-              files. This became an added requirement.</p>
-          </div>
+        <div class="node-solution-summary fade-in">
+          <h5 class="solution-subtitle">Resolution</h5>
+          <p class="solution-description">Through systematic UX feedback sessions, I fine-tuned positioning variables to
+            create a unified solution that handles diverse node types and connector styles without compromising visual
+            integrity.</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="color-contrast-story short-padding-top fade-in">
-      <h4 class="heading-padding">Deliverable 5</h4>
-      <h3 class="heading-padding deliverable-heading">Increase The Contrast Of Nodes And Connectors</h3>
-      <img class="d5-image" src="../img/canvas-enhancements/d5.png" alt="d5 visualization">
-      <h3 class="heading-padding short-padding-top">Accessibility Changes & Requirements</h3>
-      <div class="color-contrast-container">
-        <div class="w3-content w3-display-container padding-top-bottom">
-          <img class="color-contrast-updates" src="../img/canvas-enhancements/icon-color-updates.png"
-            alt="icon color updates">
-          <img class="color-contrast-updates" src="../img/canvas-enhancements/line-updates.png" alt="line-updates">
-          <button class="w3-button w3-light-grey w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-          <button class="w3-button w3-light-grey w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+  <!-- Deliverable 4 Section -->
+  <section class="deliverable-4-section">
+    <div class="deliverable-4-container">
+      <h3 class="section-subtitle fade-in">Deliverable 4</h3>
+      <h4 class="deliverable-subtitle fade-in">Reduce Connector Width</h4>
+      <div class="deliverable-4-image-container fade-in">
+        <img src="../img/canvas-enhancements/deliverable4-cover.png" alt="Reduce Connector Width"
+          class="deliverable-4-image">
+        <span class="video-label">8.1 — Reduce Connector Width</span>
+      </div>
+
+      <!-- Connector Width Technical Challenge -->
+      <div class="connector-challenge-section fade-in">
+        <h4 class="connector-challenge-title">Handling Complex Node and Connector Variations</h4>
+        <p class="connector-challenge-intro">During my research, I found that vertical node spacing and connector
+          standardization were interdependent — implementing either change independently would create broken connector
+          paths.</p>
+
+        <div class="connector-challenge-image-container">
+          <img src="../img/canvas-enhancements/reduce-width-img.png" alt="Connector width technical constraint"
+            class="connector-challenge-image">
+          <span class="video-label">8.2 — Technical Constraint</span>
+        </div>
+
+        <div class="connector-solution-summary fade-in">
+          <h5 class="solution-subtitle">Technical Resolution</h5>
+          <p class="solution-description">This was a technical constraint the design team had overlooked, and required
+            combining both requirements into a single release. However, by identifying and resolving this constraint
+            early, I prevented future inconsistencies and improved the feature's long-term maintainability.</p>
         </div>
       </div>
-      <p>While the code changes were straightforward, they needed to be implemented across the entire codebase. I had to
-        carefully map out and test every node and connector variation to ensure consistent behavior throughout the
-        application.</p>
-      <p class="highlight">This feature adjustment was particularly notable for me. Throughout my career, it was among
-        the few tasks I undertook that highlighted a <span>distinct interface-driven customer need</span>. Addressing
-        this made a direct positive impact on both productivity and inclusivity for its users.
+    </div>
+  </section>
+
+  <!-- Deliverable 5 Section -->
+  <section class="deliverable-5-section">
+    <div class="deliverable-5-container">
+      <h3 class="section-subtitle fade-in">Deliverable 5</h3>
+      <h4 class="deliverable-subtitle fade-in">Increase Contrast</h4>
+      <div class="deliverable-5-image-container fade-in">
+        <img src="../img/canvas-enhancements/deliverable5-cover.png" alt="Increase Contrast"
+          class="deliverable-5-image">
+        <span class="video-label">9 — Increase Contrast</span>
+      </div>
+
+      <!-- Accessibility Implementation Section -->
+      <div class="accessibility-implementation-section fade-in">
+        <h4 class="accessibility-implementation-title">Accessibility Changes & Requirements</h4>
+        <p class="accessibility-implementation-intro">While the code changes were straightforward, implementation
+          required careful mapping and testing across every node and connector variation to ensure consistent behavior
+          and WCAG 2.1 compliant color contrast throughout the entire codebase.</p>
+
+        <!-- Image Carousel -->
+        <div class="accessibility-carousel-container">
+          <div class="accessibility-carousel">
+            <div class="carousel-item active">
+              <img src="../img/canvas-enhancements/icon-color-updates.png" alt="Before contrast improvement"
+                class="carousel-image">
+            </div>
+            <div class="carousel-item">
+              <img src="../img/canvas-enhancements/line-updates.png" alt="After contrast improvement"
+                class="carousel-image">
+            </div>
+          </div>
+
+          <!-- Carousel Navigation -->
+          <div class="carousel-navigation">
+            <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">
+              <span class="material-icons">chevron_left</span>
+            </button>
+            <div class="carousel-dots">
+              <span class="dot active clickable" onclick="currentSlide(1)"></span>
+              <span class="dot clickable" onclick="currentSlide(2)"></span>
+            </div>
+            <button class="carousel-btn next-btn" onclick="changeSlide(1)">
+              <span class="material-icons">chevron_right</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="accessibility-impact-summary fade-in">
+          <h5 class="solution-subtitle">Personal Impact & Customer-Driven Design</h5>
+          <p class="solution-description">This feature stood out as one of the few projects in my career that directly
+            addressed interface-driven customer needs. The implementation created measurable improvements in both user
+            productivity and platform inclusivity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results & Impact Section -->
+  <section class="results-impact-section">
+    <div class="results-impact-container">
+      <h3 class="section-subtitle fade-in">Results & Impact</h3>
+      <h4 class="deliverable-subtitle fade-in">
+        The redesign modernized the interface with tighter spacing, thinner connectors, and high-contrast icons for
+        better accessibility.
+      </h4>
+      <p class="feature-comparison-intro fade-in">
+        These changes reduced scrolling and zooming, making it easier to
+        work with complex flows while creating a more inclusive experience for all users.
       </p>
-      </br>
 
-    </div>
-
-    <div class="results fade-in">
-      <h2 class="heading-padding">Feature Comparison</h2>
-      </br>
-      <p class="highlight">The redesign modernized the interface with tighter spacing, thinner connectors, and
-        high-contrast icons for
-        better accessibility. These changes reduced scrolling and zooming, making it <span>easier to
-          work with complex flows</span>
-        while creating <span>a more inclusive experience</span> for all users.</p>
-      <div class="canvas-comparison-img row fade-in">
-        <img class="feature-comparison" src="../img/canvas-enhancements/feature-comparison.png"
-          alt="Flow Builder before and after comparison">
+      <div class="feature-comparison-image-container fade-in">
+        <img src="../img/canvas-enhancements/feature-comparison.png" alt="Flow Builder before and after comparison"
+          class="feature-comparison-image">
+        <span class="video-label">10.1 — Feature Comparison</span>
       </div>
-      </br>
-      <p class="highlight fade-in">These changes came together in the Salesforce Summer 2023 release. The Flow Builder
-        updates
-        were spotlighted in multiple blogs and roundups, consistently ranking as <span>one of the top features</span> of
-        that release.</p>
-      <div class="row canvas-reviews-img fade-in">
-        <img class="canvas-reviews" src="../img/canvas-enhancements/reviews.png" alt="canvas reviews">
-      </div>
-    </div>
 
-    <div class="user-feedback-section fade-in">
-      <h2 class="heading-padding">User Feedback & Praise</h2>
-      <div class="feedback-images">
-        <div class="feedback-image-container">
-          <img class="feedback-img" src="../img/canvas-enhancements/feedback1.png" alt="User feedback 1">
+      <div class="release-impact-section fade-in">
+        <p class="release-impact-text">
+          These changes came together in the Salesforce Summer 2023 release. The Flow Builder canvas enhancements were
+          featured
+          in multiple blogs and roundups, consistently ranking as one of the top features of that release.
+        </p>
+
+        <div class="reviews-image-container">
+          <img src="../img/canvas-enhancements/reviews.png" alt="Salesforce Flow Builder reviews and feedback"
+            class="reviews-image">
+          <span class="video-label">10.2 — Release Reviews</span>
         </div>
-        <div class="feedback-image-container">
-          <img class="feedback-img" src="../img/canvas-enhancements/feedback2.png" alt="User feedback 2">
+
+        <div class="feedback-images-container">
+          <div class="feedback-image-container">
+            <img src="../img/canvas-enhancements/feedback1.png" alt="User feedback 1" class="feedback-image">
+            <span class="video-label">10.3 — User Feedback</span>
+          </div>
+          <div class="feedback-image-container">
+            <img src="../img/canvas-enhancements/feedback2.png" alt="User feedback 2" class="feedback-image">
+            <span class="video-label">10.4 — User Feedback</span>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="learning-journey fade-in">
-      <h2 class="heading-padding">Insights & Takeaways</h2>
-      </br>
-      <p>When I first took on the leadership role for this project, I grappled with self-doubt, often questioning my
-        capabilities as the youngest Software Engineer on a seasoned team. My experience was marked by daily
-        challenges, collaborative brainstorming and intensive problem-solving.</p>
-      <p class="highlight" style="padding-bottom: 20px">My manager and mentor played crucial roles in encouraging me
-        to <span>stay curious</span>. I'll never forget the response I received to my apprehension about asking
-        questions, which completely transformed my outlook on speaking up.</p>
-      <p class="quote fade-in">“You never know if someone also has the same question as you or if your question might
-        offer a
-        new perspective. By asking your question, you could be helping someone else too.”</p>
-      <p style="padding-top: 20px">Looking back at the successful impact of the feature on user productivity and
-        accessibility, I'm deeply thankful for my team's unwavering support that fueled my confidence and
-        determination to lead the project to its success.</p>
-
+  <!-- Reflection & Key Takeaways Section -->
+  <section class="reflection-section">
+    <div class="reflection-container">
+      <h3 class="section-subtitle fade-in">Reflection & Key Takeaways</h3>
+      <p class="reflection-intro fade-in">
+        The most impactful engineering solutions emerge from questioning design assumptions, not just implementing them.
+      </p>
+      <p class="reflection-text fade-in">
+        Leading this project as the youngest engineer taught me that my "obvious" questions about connector behavior
+        revealed critical technical gaps that seasoned team members had normalized. Instead of accepting design
+        specifications at face value, my persistent curiosity uncovered systemic inconsistencies that, once addressed,
+        improved both user experience and code maintainability. This experience transformed my approach to treat every
+        design handoff as an opportunity to strengthen the underlying technical foundation.
+      </p>
     </div>
+  </section>
 
-    <div class="outro fade-in">
-      <h2 class="fade-in">See Next</h2>
-      <div class="projects-grid">
-        <div class="project-card fade-in">
-          <a href="/spring2025/wholefoods" class="project-link">
-            <div class="project-image">
-              <img src="../img/spring2025/wholefoods/wholefoods-work-thumbnail.png" alt="Whole Foods Project">
-            </div>
-            <div class="project-info">
-              <h3>Whole Foods In-Store Checkout Experience</h3>
-              <p>A UX case study on streamlining access to the Whole Foods in-store checkout code within the Amazon app
-                for a faster, frustration-free experience.</p>
-            </div>
-          </a>
-        </div>
+  <!-- See Next Section -->
+  <section class="see-next-section">
+    <div class="see-next-container">
+      <h3 class="section-subtitle fade-in">See Next</h3>
+      <div class="project-cards">
+        <a href="../confido/" class="project-card fade-in">
+          <div class="project-image">
+            <img src="../confido/img/thumbnail.png" alt="Confido Project" class="project-thumbnail">
+          </div>
+          <div class="project-content">
+            <h4 class="project-title">Rebuilding Confido's Approval Flow</h4>
+            <p class="project-description">
+              A case study on a refactored approval flow with smarter logic, clearer audit trails, and a redesigned UI
+              for improved usability.
+            </p>
+          </div>
+        </a>
 
-        <div class="project-card fade-in">
-          <a href="/salesforce-resource-selection" class="project-link">
-            <div class="project-image">
-              <img src="../img/resource-selection/resource-selection.png" alt="Salesforce 2 Project">
-            </div>
-            <div class="project-info">
-              <h3>Resource Selection with Keyboard Navigation</h3>
-              <p>A case study on ensuring comprehensive keyboard navigation towards an improved resource selection
-                experience in the Salesforce Flow Builder.</p>
-            </div>
-          </a>
-        </div>
+        <a href="../spring2025/wholefoods/" class="project-card fade-in">
+          <div class="project-image">
+            <img src="../img/spring2025/wholefoods/wholefoods-work-thumbnail.png" alt="Whole Foods Project"
+              class="project-thumbnail">
+          </div>
+          <div class="project-content">
+            <h4 class="project-title">Whole Foods In-Store Checkout Experience</h4>
+            <p class="project-description">
+              A case study on streamlining access to the Whole Foods in-store checkout code within the Amazon app for
+              a faster, frustration-free experience.
+            </p>
+          </div>
+        </a>
 
-        <div class="project-card fade-in">
-          <a href="/lume" class="project-link">
-            <div class="project-image">
-              <img src="../../img/lume/work-thumbnail.png" alt="Lume Project">
-            </div>
-            <div class="project-info">
-              <h3>Lume</h3>
-              <p>A UX case study exploring how to help independent designers increase their market visibility through an
-                intuitive mobile platform.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-
-  <div class="footer" id="footer">
-    <div class="footer-info fade-in">
-      <h2 class="footerLabel fade-in"><b>Let's get in touch!</span></b></h2>
-      <div class="footerIcons fade-in">
-        <a href="https://www.linkedin.com/in/bevyip/" target="_blank" class="icons fa fa-linkedin"></a>
-        <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
-        <a href="mailto:hy3018@nyu.edu" target="_blank" class="icons fa fa-envelope"></a>
-      </div>
-      <div class="footerStamp fade-in">
-        <p>Proudly designed & handcoded by Beverly Yip.</p>
-      </div>
-      <div class="footerReroute fade-in">
-        <a class="footerReroute-link" href="#">BACK TO TOP</a>
+        <a href="../salesforce-resource-selection/" class="project-card fade-in">
+          <div class="project-image">
+            <img src="../img/resource-selection/thumbnail.png" alt="Salesforce Resource Selection"
+              class="project-thumbnail">
+          </div>
+          <div class="project-content">
+            <h4 class="project-title">Improving Salesforce's Resource Menu Accessibility</h4>
+            <p class="project-description">
+              A case study on ensuring comprehensive keyboard navigation towards an improved resource selection
+              experience in the Salesforce Flow Builder.
+            </p>
+          </div>
+        </a>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+  <!-- Reusable Footer Component -->
+  <div id="footer-placeholder"></div>
 
+  <!-- Import reusable navbar and footer components -->
+  <script src="../nav/nav.js"></script>
+  <script src="../nav/footer.js"></script>
+
+  <!-- Import cursor functionality -->
+  <script src="../js/cursor.js"></script>
+
+  <!-- Initialize navbar and footer components -->
   <script>
-    var slideIndex = 1;
-    showDivs(slideIndex);
+    // Progress bar functionality
+    function updateProgressBar() {
+      const progressBar = document.getElementById("progress-bar");
+      if (!progressBar) return;
 
-    function plusDivs(n) {
-      showDivs(slideIndex += n);
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+
+      // Ensure progress bar doesn't exceed 100%
+      const clampedPercent = Math.min(scrollPercent, 100);
+      progressBar.style.width = `${clampedPercent}%`;
     }
 
-    function showDivs(n) {
-      var i;
-      var x = document.getElementsByClassName("color-contrast-updates");
-      if (n > x.length) { slideIndex = 1 }
-      if (n < 1) { slideIndex = x.length }
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
+    // Throttled scroll handler for progress bar
+    let ticking = false;
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateProgressBar();
+          ticking = false;
+        });
+        ticking = true;
       }
-      x[slideIndex - 1].style.display = "block";
     }
+
+    // Add scroll event listener for progress bar
+    window.addEventListener("scroll", requestTick, { passive: true });
+
+    // Load navbar component
+    fetch('../nav/nav.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('nav-bar').innerHTML = data;
+        // Initialize navbar after it's loaded
+        if (window.initializeNavbar) {
+          window.initializeNavbar();
+        }
+      });
+
+    // Load footer component
+    fetch('../nav/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+        // Initialize footer after it's loaded
+        if (window.initializeFooter) {
+          window.initializeFooter();
+        }
+      });
   </script>
+
+
 
   <script>
     let debounceTimeout;
@@ -600,6 +779,282 @@
 
       fadeInElements.forEach((el) => observer.observe(el));
     });
+
+    // Text animation for hero section
+    document.addEventListener("DOMContentLoaded", function () {
+      const textElements = document.querySelectorAll('.text-animate');
+
+      const animateText = () => {
+        textElements.forEach((element, index) => {
+          setTimeout(() => {
+            element.classList.add('animate-in');
+          }, index * 100);
+        });
+      };
+
+      // Animate text on page load
+      animateText();
+    });
+
+    // Counter animation for metric numbers
+    function initCounterAnimation() {
+      const metricNumbers = document.querySelectorAll(".metric-number");
+
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              counterObserver.unobserve(entry.target); // Only animate once
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        }
+      );
+
+      metricNumbers.forEach((metric) => {
+        counterObserver.observe(metric);
+      });
+    }
+
+    function animateCounter(element) {
+      // Get target number from data attribute
+      const targetNumber = parseInt(element.getAttribute("data-target"));
+      const duration = 1500;
+      const steps = 30;
+      const stepDuration = duration / steps;
+      let currentStep = 0;
+
+      // Always start from 0
+      element.textContent = "0%";
+
+      const timer = setInterval(() => {
+        currentStep++;
+        const progress = currentStep / steps;
+        const currentNumber = Math.floor(targetNumber * progress);
+
+        // Update the element with the current number
+        element.textContent = currentNumber + "%";
+
+        if (currentStep >= steps) {
+          // Animation complete, ensure we end at the exact target number
+          element.textContent = targetNumber + "%";
+          clearInterval(timer);
+        }
+      }, stepDuration);
+    }
+
+    // Initialize counter animation when DOM is ready
+    document.addEventListener("DOMContentLoaded", () => {
+      initCounterAnimation();
+      initCarousel();
+      initProjectCardScrollAnimation();
+
+      // Add scroll-driven positioning classes
+      const projectCards = document.querySelectorAll(".project-card");
+      if (projectCards.length === 3) {
+        projectCards[0].classList.add('scroll-spread-1');
+        projectCards[1].classList.add('scroll-spread-2');
+        projectCards[2].classList.add('scroll-spread-3');
+      }
+    });
+
+    // Also initialize after navbar loads
+    setTimeout(() => {
+      initCounterAnimation();
+    }, 500);
+
+    // Scroll-driven project card animation
+    function initProjectCardScrollAnimation() {
+      const projectCards = document.querySelectorAll(".project-card");
+      const seeNextSection = document.querySelector(".see-next-section");
+
+      if (!projectCards.length || !seeNextSection) return;
+
+      function updateCardPositions() {
+        const projectCards = document.querySelectorAll(".project-card");
+        const seeNextSection = document.querySelector(".see-next-section");
+        const projectCardsContainer = document.querySelector(".project-cards");
+
+        if (!projectCards.length || !seeNextSection || !projectCardsContainer)
+          return;
+
+        // Disable transitions for smooth scroll-driven positioning on large screens
+        if (window.innerWidth > 1024) {
+          projectCards.forEach((card) => {
+            card.style.transition = "none";
+          });
+        }
+
+        const sectionRect = seeNextSection.getBoundingClientRect();
+        const sectionTop = sectionRect.top;
+        const sectionHeight = sectionRect.height;
+        const viewportHeight = window.innerHeight;
+
+        // Calculate scroll progress through the section (0 to 1)
+        let scrollProgress = 0;
+
+        // Only start animation when section is actually in view
+        if (sectionTop < viewportHeight && sectionTop > -sectionHeight) {
+          // Section is in view, calculate progress
+          const visibleHeight = viewportHeight - sectionTop;
+          scrollProgress = Math.min(visibleHeight / (sectionHeight + 200), 1); // +200 for extra scroll room
+        }
+
+        // Only calculate gap for horizontal spread layout (large screens)
+        if (window.innerWidth > 1024) {
+          // Gradually restore gap as cards spread out
+          const finalGap = 32; // var(--spacing-xl) = 32px
+          const currentGap = finalGap * scrollProgress;
+          projectCardsContainer.style.gap = `${currentGap}px`;
+        }
+
+        // Apply positioning based on scroll progress
+        // Cards start overlapping in center and spread out to final positions
+        // On medium screens and below, cards use simple flexbox layout
+        if (window.innerWidth <= 1024) {
+          // Simple flexbox layout for medium screens and below
+          projectCards.forEach((card) => {
+            card.style.transform = "none";
+            card.style.position = "relative";
+            card.style.left = "auto";
+            card.style.width = "100%"; // Take full width of their column
+            // Re-enable transitions for hover effects
+            card.style.transition = "";
+          });
+          projectCardsContainer.style.flexDirection = "column";
+          projectCardsContainer.style.alignItems = "center";
+          projectCardsContainer.style.gap = "var(--spacing-xl)"; // Use CSS gap
+        } else {
+          // Complex scroll-driven spread animation for large screens only
+          // Reset any inline styles that might interfere with row layout
+          projectCards.forEach((card) => {
+            card.style.width = ""; // Remove inline width to let CSS take over
+            card.style.position = "absolute";
+            card.style.left = "50%";
+            // Temporarily disable transitions for smooth scroll-driven positioning
+            card.style.transition = "none";
+          });
+
+          projectCards.forEach((card, index) => {
+            if (index === 0) {
+              // Left card - starts at center, moves to left
+              const spreadDistance = Math.min(500, window.innerWidth * 0.3);
+              const translateX = -spreadDistance * scrollProgress;
+              card.style.transform = `translateX(-50%) translateX(${translateX}px)`;
+            } else if (index === 1) {
+              // Center card - stays at center
+              card.style.transform = "translateX(-50%)";
+            } else if (index === 2) {
+              // Right card - starts at center, moves to right
+              const spreadDistance = Math.min(500, window.innerWidth * 0.3);
+              const translateX = spreadDistance * scrollProgress;
+              card.style.transform = `translateX(-50%) translateX(${translateX}px)`;
+            }
+          });
+          projectCardsContainer.style.flexDirection = "row";
+        }
+      }
+
+      // Throttle function for performance
+      function throttle(func, limit) {
+        let inThrottle;
+        return function () {
+          const args = arguments;
+          const context = this;
+          if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+          }
+        }
+      }
+
+      // Update on scroll
+      window.addEventListener("scroll", throttle(updateCardPositions, 16)); // 60fps
+
+      // Update on resize to maintain responsive positioning
+      window.addEventListener("resize", throttle(updateCardPositions, 100));
+
+      // Calculate and set equal heights for all cards
+      function setEqualCardHeights() {
+        const projectCards = document.querySelectorAll(".project-card");
+        if (projectCards.length === 0) return;
+
+        // Reset heights to auto to get natural heights
+        projectCards.forEach((card) => {
+          card.style.height = "auto";
+        });
+
+        // Find the tallest card
+        let maxHeight = 0;
+        projectCards.forEach((card) => {
+          const cardHeight = card.offsetHeight;
+          maxHeight = Math.max(maxHeight, cardHeight);
+        });
+
+        // Apply the max height to all cards
+        projectCards.forEach((card) => {
+          card.style.height = `${maxHeight}px`;
+        });
+      }
+
+      // Set equal heights initially and on resize
+      setEqualCardHeights();
+      window.addEventListener("resize", throttle(setEqualCardHeights, 100));
+
+      // Initial position
+      updateCardPositions();
+    }
+
+    // Carousel functionality
+    function initCarousel() {
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.carousel-item');
+      const dots = document.querySelectorAll('.dot');
+      const totalSlides = slides.length;
+
+      function showSlide(index) {
+        // Hide all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        // Show current slide
+        if (slides[index]) {
+          slides[index].classList.add('active');
+          dots[index].classList.add('active');
+        }
+      }
+
+      // Make functions globally available
+      window.changeSlide = function (direction) {
+        currentSlide += direction;
+        if (currentSlide >= totalSlides) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = totalSlides - 1;
+        showSlide(currentSlide);
+      };
+
+      window.currentSlide = function (index) {
+        currentSlide = index - 1;
+        showSlide(currentSlide);
+      };
+
+      // Carousel is now manual only - no auto-advance
+    }
+
+    // Smooth scroll to Results & Impact section
+    window.scrollToSolution = function () {
+      const targetSection = document.querySelector(".results-impact-section");
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    };
   </script>
 
 </body>

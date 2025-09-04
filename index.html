@@ -4,193 +4,203 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beverly Yip | Portfolio</title>
 
-  <style>
-    @font-face {
-      font-family: "Rashfield";
-      src: url("fonts/TTF/VVDSRashfield-Normal.ttf");
-    }
-  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/logo-light.png">
 
-  <title>Beverly Yip</title>
+  <!-- Typography System -->
+  <link rel="stylesheet" href="css/typography.css">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Navbar Component CSS -->
+  <link rel="stylesheet" href="nav/nav.css">
+
+  <!-- Footer Component CSS -->
+  <link rel="stylesheet" href="nav/footer.css">
+
+  <!-- Main Styles -->
   <link rel="stylesheet" href="css/style.css">
 
+  <!-- Material-UI Icons -->
+  <script src="https://unpkg.com/@mui/icons-material@latest/umd/material-ui-icons.development.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
+  <!-- Header with Navbar and Hero -->
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fade-in" id="navbar-real">
-      <a class="navbar-brand" id="navbar-brand" href="/"><img src="img/logo.png" alt="Logo" class="logo"></a>
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation" id="nav-gen" fade-in>
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse text-center justify-content-center fade-in" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto" id="custom-navbar">
-          <li class="nav-item">
-            <a class="nav-link" href="/about">ABOUT</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" id="workDropdown" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              WORK
-            </a>
-            <div id="workMenu" class="dropdown-menu">
-              <a class="dropdown-item" href="/#work">ALL</a>
-              <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/play">PLAY</a>
-          </li>
-        </ul>
+    <!-- Include the navbar component -->
+    <div id="nav-bar"></div>
+
+    <!-- Hero Section -->
+    <div class="hero-wrapper">
+      <div class="hero-container">
+        <h1 class="hero-title">
+          <span class="hero-intro">HEY, I'M BEVERLY - A</span>
+          <span class="hero-role">UX DESIGN ENGINEER</span>
+        </h1>
+        <p class="hero-description">
+          Currently pursuing a Master's in HCI at NYU ITP '26. Previously designed at
+          <a href="https://www.confidotech.com/" target="_blank" class="company-link clickable">
+            Confido (YC S21)
+            <img src="img/confido-logo.png" alt="Confido Logo" class="company-logo">
+          </a>
+          and coded at
+          <a href="https://www.salesforce.com" target="_blank" class="company-link clickable">
+            Salesforce
+            <img src="img/salesforce-logo.png" alt="Salesforce Logo" class="company-logo">
+          </a>.
+        </p>
       </div>
-    </nav>
 
-    <div class="landing">
-      <div class="landing-content fade-in">
-        <div class="landing-intro">
-          <h1 class="headline">Hey, I'm Beverly <span class="em-dash">—</span> a UX Design Engineer building <span
-              class="animated-word" id="accessible">accessible</span>,
-            <span class="animated-word" id="delightful">delightful</span>, and <span class="animated-word"
-              id="intuitive">intuitive</span> digital experiences for everyone.
-          </h1>
-        </div>
-
-        <div class="landing-details">
-          <p class="experience-summary">
-            Currently pursuing a Master's in HCI at <a href="https://itp.nyu.edu/itp/" target="_blank"
-              class="highlight-link">NYU ITP '26</a>. Previously designed at <a href="https://www.confidotech.com/"
-              target="_blank" class="highlight-link">Confido (YC S21) <img src="img/confido-logo.png" alt="Confido Logo"
-                class="confido-logo"></a> and coded at
-            <a href="https://www.salesforce.com" target="_blank" class="highlight-link">Salesforce <img
-                src="img/salesforce-logo.png" alt="Salesforce Logo" class="salesforce-logo"></a>.
-          </p>
-
-          <div class="landing-buttons">
-            <div class="resume-button" ontouchstart="">
-              <a class="resume btn btn-default" href="https://tinyurl.com/bev-resume" target="_blank">Resume</a>
-            </div>
-            <div class="contact-button" ontouchstart="">
-              <a class="contact btn btn-default" href="#footer">Contact</a>
-            </div>
-          </div>
+      <!-- Arrow Container - follows same spacing as hero section -->
+      <div class="arrow-container">
+        <div class="down-arrow">
+          <span class="material-icons">arrow_downward</span>
         </div>
       </div>
     </div>
   </header>
 
-  <div class="all-projects-overview" id="work">
-    <div class="proj-overview-header">
-      <h2>Work</h2>
-    </div>
-    <div class="proj-overview-content">
-      <div class="col-12 proj-container">
-        <a href="/spring2025/wholefoods">
-          <img class="wholefoods" src="img/spring2025/wholefoods/wholefoods-work-thumbnail.png"
-            alt="wholefoods-thumbnail">
-          <div class="wholefoods-desc proj-desc">
-            <h3>Whole Foods In-Store Checkout Experience</h3>
-            <div class="pill-tags">
-              <span class="pill">Mobile</span>
-              <span class="pill">User Research</span>
-              <span class="pill">Product Design</span>
-              <span class="pill">UX/UI</span>
-            </div>
-            <p>A UX case study on streamlining access to the Whole Foods in-store checkout code within the Amazon app
-              for a faster, frustration-free experience.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="proj-overview-content">
-      <div class="col-12 proj-container">
-        <a href="/lume">
-          <img class="lume" src="img/lume/work-thumbnail.png" alt="lume-case-study">
-          <div class="lume-desc proj-desc">
-            <h3>Lume</h3>
-            <div class="pill-tags">
-              <span class="pill">Mobile</span>
-              <span class="pill">User Research</span>
-              <span class="pill">Product Design</span>
-              <span class="pill">UX/UI</span>
-            </div>
-            <p>A UX case study exploring how to help independent designers increase their market visibility through an
-              intuitive mobile platform.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="proj-overview-content">
-      <div class="col-12 proj-container">
-        <a href="/salesforce-canvas-enhancements">
-          <img class="canvas-enhancements" src="img/canvas-enhancements/canvas-enhancements-thumbnail.png"
-            alt="canvas-enhancements-case-study">
-          <div class="canvas-enhancements-desc proj-desc">
-            <h3>Redesigning Salesforce's Flow Builder</h3>
-            <div class="pill-tags">
-              <span class="pill">Web</span>
-              <span class="pill">Design Systems</span>
-              <span class="pill">WCAG Accessibility</span>
-              <span class="pill">UX/UI</span>
-            </div>
-            <p>A case study on improving accessibility and user productivity for sight-impaired users in the Salesforce
-              Flow Builder.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="proj-overview-content">
-      <div class="col-12 proj-container">
-        <a href="/salesforce-resource-selection">
-          <img class="keyboard-navigation" src="img/resource-selection/resource-selection.png"
-            alt="keyboard-navigation-case-study">
-          <div class="keyboard-navigation-desc proj-desc">
-            <h3>Resource Selection with Keyboard Navigation</h3>
-            <div class="pill-tags">
-              <span class="pill">Web</span>
-              <span class="pill">Component Design</span>
-              <span class="pill">WCAG Accessibility</span>
-              <span class="pill">UX/UI</span>
-            </div>
-            <p>A case study on ensuring comprehensive keyboard navigation towards an improved resource selection
-              experience in the Salesforce Flow Builder.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+  <!-- Main Content -->
+  <main>
 
+    <!-- Projects Section -->
+    <section class="projects-section" id="work">
+      <div class="projects-container">
+        <div class="projects-grid">
+          <!-- Confido Project -->
+          <article class="project-card clickable">
+            <a href="/confido" class="project-link">
+              <div class="project-image">
+                <img src="confido/img/thumbnail.png" alt="Redesigning Confido's Approval Flow">
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Rebuilding Confido's Approval Flow</h3>
+                <p class="project-role">UX Design Engineer</p>
+                <div class="project-tags">
+                  <span class="tag">Web</span>
+                  <span class="tag">Design Systems</span>
+                  <span class="tag">Product Design</span>
+                  <span class="tag">UX/UI</span>
+                </div>
+                <p class="project-description">A case study on a refactored approval flow with smarter logic, clearer
+                  audit trails, and
+                  a redesigned UI for improved usability.</p>
+              </div>
+            </a>
+          </article>
+
+          <!-- Whole Foods Project -->
+          <article class="project-card clickable">
+            <a href="/spring2025/wholefoods" class="project-link">
+              <div class="project-image">
+                <img src="img/spring2025/wholefoods/wholefoods-work-thumbnail.png"
+                  alt="Whole Foods In-Store Checkout Experience">
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Whole Foods In-Store Checkout Experience</h3>
+                <p class="project-role">Product Designer</p>
+                <div class="project-tags">
+                  <span class="tag">Mobile</span>
+                  <span class="tag">User Research</span>
+                  <span class="tag">Product Design</span>
+                  <span class="tag">UX/UI</span>
+                </div>
+                <p class="project-description">A case study on streamlining access to the Whole Foods in-store
+                  checkout code within the Amazon app for a faster, frustration-free experience.</p>
+              </div>
+            </a>
+          </article>
+
+          <!-- Salesforce Flow Builder Project -->
+          <article class="project-card clickable">
+            <a href="/salesforce-canvas-enhancements" class="project-link">
+              <div class="project-image">
+                <img src="img/canvas-enhancements/thumbnail.png" alt="Redesigning Salesforce's Flow Builder">
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Redesigning Salesforce's Flow Builder</h3>
+                <p class="project-role">Software Engineer</p>
+                <div class="project-tags">
+                  <span class="tag">Web</span>
+                  <span class="tag">Design Systems</span>
+                  <span class="tag">Accessibility</span>
+                  <span class="tag">UX/UI</span>
+                </div>
+                <p class="project-description">A case study on improving accessibility and user productivity for
+                  sight-impaired users in the Salesforce Flow Builder.</p>
+              </div>
+            </a>
+          </article>
+
+          <!-- Resource Selection Project -->
+          <article class="project-card clickable">
+            <a href="/salesforce-resource-selection" class="project-link">
+              <div class="project-image">
+                <img src="img/resource-selection/thumbnail.png"
+                  alt="Improving Salesforce's Resource Menu Accessibility">
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Improving Salesforce's Resource Menu Accessibility</h3>
+                <p class="project-role">Software Engineer</p>
+                <div class="project-tags">
+                  <span class="tag">Web</span>
+                  <span class="tag">Component Design</span>
+                  <span class="tag">Accessibility</span>
+                  <span class="tag">UX/UI</span>
+                </div>
+                <p class="project-description">A case study on ensuring comprehensive keyboard navigation towards an
+                  improved resource selection experience in the Salesforce Flow Builder.</p>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Component -->
+    <div id="footer-component"></div>
+
+    <!-- Scripts -->
+    <!-- Custom Cursor -->
+    <script src="js/cursor.js"></script>
+
+    <!-- Navbar Component JavaScript -->
+    <script src="nav/nav.js"></script>
+
+    <!-- Footer Component JavaScript -->
+    <script src="nav/footer.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="js/index.js"></script>
+
+    <!-- Load Navigation Component -->
+    <script>
+      // Load the navigation component
+      fetch('./nav/nav.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('nav-bar').innerHTML = html;
+          // Initialize navbar functionality after loading
+          initializeNavbar();
+        })
+        .catch(error => {
+          console.error('Error loading navigation:', error);
+        });
+
+      // Load the footer component
+      fetch('./nav/footer.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('footer-component').innerHTML = html;
+          // Initialize footer functionality after loading
+          initializeFooter();
+        })
+        .catch(error => {
+          console.error('Error loading footer:', error);
+        });
+    </script>
 </body>
-
-<div class="footer" id="footer">
-  <div class="footer-info fade-in">
-    <h2 class="footerLabel fade-in"><b>Let's get in touch!</span></b></h2>
-    <div class="footerIcons fade-in">
-      <a href="https://www.linkedin.com/in/bevyip/" target="_blank" class="icons fa fa-linkedin"></a>
-      <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
-      <a href="mailto:hy3018@nyu.edu" target="_blank" class="icons fa fa-envelope"></a>
-    </div>
-    <div class="footerStamp fade-in">
-      <p>Proudly designed & handcoded by Beverly Yip</p>
-    </div>
-    <div class="footerReroute fade-in">
-      <a class="footerReroute-link" href="#">BACK TO TOP</a>
-    </div>
-  </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-<script src="js/index.js"></script>
 
 </html>

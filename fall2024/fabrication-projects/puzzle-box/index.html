@@ -4,166 +4,154 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Beverly Yip | Portfolio</title>
 
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../../img/logo-light.png">
 
-        @font-face {
-            font-family: "Rashfield";
-            src: url("../../../fonts/TTF/VVDSRashfield-Normal.ttf");
-        }
-    </style>
+    <!-- Typography System -->
+    <link rel="stylesheet" href="../../../css/typography.css">
 
-    <title>Beverly Yip</title>
+    <!-- Navbar Component CSS -->
+    <link rel="stylesheet" href="../../../nav/nav.css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Footer Component CSS -->
+    <link rel="stylesheet" href="../../../nav/footer.css">
+
+    <!-- Project-Specific Styles -->
     <link rel="stylesheet" href="../../../css/fabrication.css">
 
+    <!-- Material-UI Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
-    <header class="fade-in puzzle-box-landing">
-        <nav class="navbar navbar-expand-lg navbar-light fade-in" id="navbar-real">
-            <a class="navbar-brand" id="navbar-brand" href="/"><img src="../../../img/logo.png" alt="Logo"
-                    class="logo"></a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation" id="nav-gen" fade-in>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-center justify-content-center fade-in"
-                id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto" id="custom-navbar">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">ABOUT</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" id="workDropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            WORK
-                        </a>
-                        <div id="workMenu" class="dropdown-menu">
-                            <a class="dropdown-item" href="/#work">ALL</a>
-                            <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/play">PLAY</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="container-fluid landing fade-in">
-        </div>
+    <!-- Header with Navbar -->
+    <header>
+        <!-- Include the navbar component -->
+        <div id="nav-bar"></div>
     </header>
 
-    <div class="row concept">
-        <div class="col-lg-8 col-md-12 col-sm-12 project-summary">
-            <div class="landing-name fade-in">
-                <h1>Cat Puzzle
-                    Feeder Box
-                </h1>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <h1 class="hero-title text-animate">Cat Puzzle Feeder Box</h1>
+                    <div class="hero-meta">
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">ROLE</span>
+                            <span class="meta-value">Designer & Builder</span>
+                        </div>
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">DURATION</span>
+                            <span class="meta-value">Sep 2024 (1 week)</span>
+                        </div>
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">MATERIAL</span>
+                            <span class="meta-value">Plywood, Cardboard</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="hero-summary text-animate">
+                        <p>A pair of cat puzzle feeder boxes, identical in design but different in size, laser-cut and
+                            engraved from plywood. Created in homage to my cat, Boba.</p>
+                        <div class="hero-tags text-animate">
+                            <span class="tag">Interactive Play</span>
+                            <span class="tag">Fabrication</span>
+                            <span class="tag">Product Design</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h2 class="fade-in">When</h2>
-            <p class="text-padding fade-in">Sep 2024 (1 week)</p>
-            <h2 class="fade-in">Concept</h2>
-            <div class="text-padding">
-                <p class="fade-in">A pair of cat puzzle feeder boxes, identical in design but different in size,
-                    laser-cut and engraved from
-                    plywood.
-                </p>
-                <p class="fade-in">Created in homage to my cat, Boba.</p>
-            </div>
-            <h2 class="fade-in">Material</h2>
-            <p class="fade-in" style="padding-top:20px">Plywood, Cardboard
-            </p>
-        </div>
-
-        <div class="fabrication-img">
-            <img class="fade-in" src="../../../img/fall2024/fabrication/puzzle-box-img/1.jpg" alt="Image 1">
-            <img class="fade-in" src="../../../img/fall2024/fabrication/puzzle-box-img/2.jpg" alt="Image 2">
-            <img class="fade-in" src="../../../img/fall2024/fabrication/puzzle-box-img/3.jpg" alt="Image 3">
-            <img class="fade-in" src="../../../img/fall2024/fabrication/puzzle-box-img/4.jpg" alt="Image 4">
-            <img class="fade-in" src="../../../img/fall2024/fabrication/puzzle-box-img/5.jpg" alt="Image 5">
-            <img class="fade-in" src="../../../img/fall2024/fabrication/puzzle-box-img/7.jpg" alt="Image 6">
-            <img class="fade-in" src="../../../img/fall2024/fabrication/puzzle-box-img/6.jpg" alt="Image 7">
-            <img class="fade-in" src="../../../img/fall2024/fabrication/puzzle-box-img/8.jpg" alt="Image 8">
-            <img class="fade-in" src="../../../img/fall2024/fabrication/puzzle-box-img/9.jpg" alt="Image 9">
-        </div>
-    </div>
-
-    <div class="video-section fade-in">
-        <iframe width="800" height="450" src="https://www.youtube.com/embed/wg21ZtZOSb8" title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-    </div>
-
-    <p class="portfolio-link fade-in">View my complete fabrication portfolio <a
-            href="https://docs.google.com/presentation/d/1n0bsMJ6bRc6EFrK3dV13DUeooROi32we/edit?usp=sharing&ouid=100755772065646129206&rtpof=true&sd=true"
-            target="_blank"> here</a>!
-    </p>
-
-    <div class="footer" id="footer">
-        <div class="footer-info fade-in">
-            <h2 class="footerLabel fade-in"><b>Let's get in touch!</span></b></h2>
-            <div class="footerIcons fade-in">
-                <a href="https://www.linkedin.com/in/bevyip/" target="_blank" class="icons fa fa-linkedin"></a>
-                <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
-                <a href="mailto:hy3018@nyu.edu" target="_blank" class="icons fa fa-envelope"></a>
-            </div>
-            <div class="footerStamp fade-in">
-                <p>Proudly designed & handcoded by Beverly Yip.</p>
-            </div>
-            <div class="footerReroute fade-in">
-                <a class="footerReroute-link" href="#">BACK TO TOP</a>
+            <div class="hero-visuals fade-in">
+                <img src="../../../img/fall2024/fabrication/puzzle-box-img/puzzle-box-banner.png"
+                    alt="Puzzle Box Project Banner" class="hero-image">
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <!-- Project Images Section -->
+    <section class="project-images">
+        <div class="images-container">
+            <div class="image-grid">
+                <img src="../../../img/fall2024/fabrication/puzzle-box-img/1.jpg" alt="Puzzle Box Process Image 1"
+                    class="project-image fade-in">
+                <img src="../../../img/fall2024/fabrication/puzzle-box-img/2.jpg" alt="Puzzle Box Process Image 2"
+                    class="project-image fade-in">
+                <img src="../../../img/fall2024/fabrication/puzzle-box-img/3.jpg" alt="Puzzle Box Process Image 3"
+                    class="project-image fade-in">
+                <img src="../../../img/fall2024/fabrication/puzzle-box-img/4.jpg" alt="Puzzle Box Process Image 4"
+                    class="project-image fade-in">
+                <img src="../../../img/fall2024/fabrication/puzzle-box-img/5.jpg" alt="Puzzle Box Process Image 5"
+                    class="project-image fade-in">
+                <img src="../../../img/fall2024/fabrication/puzzle-box-img/7.jpg" alt="Puzzle Box Process Image 6"
+                    class="project-image fade-in">
+                <img src="../../../img/fall2024/fabrication/puzzle-box-img/6.jpg" alt="Puzzle Box Process Image 7"
+                    class="project-image fade-in">
+                <img src="../../../img/fall2024/fabrication/puzzle-box-img/8.jpg" alt="Puzzle Box Process Image 8"
+                    class="project-image fade-in">
+                <img src="../../../img/fall2024/fabrication/puzzle-box-img/9.jpg" alt="Puzzle Box Process Image 9"
+                    class="project-image fade-in">
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Video Section -->
+    <section class="process-video-section">
+        <div class="process-video-container">
+            <div class="process-video-card">
+                <video autoplay loop muted playsinline>
+                    <source src="../../../img/fall2024/fabrication/puzzle-box-img/process-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Link Section -->
+    <section class="portfolio-link-section">
+        <div class="portfolio-link-container">
+            <p class="portfolio-link-text fade-in">View my complete fabrication portfolio <a
+                    href="https://docs.google.com/presentation/d/1n0bsMJ6bRc6EFrK3dV13DUeooROi32we/edit?usp=sharing&ouid=100755772065646129206&rtpof=true&sd=true"
+                    target="_blank" class="company-link">here</a>!</p>
+        </div>
+    </section>
+
+    <!-- Include the reusable footer component -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Navigation Component Scripts -->
+    <script src="../../../js/cursor.js"></script>
+    <script src="../../../nav/nav.js"></script>
+    <script src="../../../nav/footer.js"></script>
 
     <script>
         let debounceTimeout;
         document.addEventListener("DOMContentLoaded", () => {
-            const rows = document.querySelectorAll(".proj-overview-content");
+            // Load navigation components using the same approach as main index.html
+            loadNavigationComponents();
 
-            const observerOptions = {
-                root: null, // Use the viewport as the root
-                threshold: 0.1, // Trigger when 10% of the row is visible
-            };
+            // Initialize navbar functionality
+            if (window.initializeNavbar) {
+                window.initializeNavbar();
+            }
 
-            const observer = new IntersectionObserver((entries) => {
-                clearTimeout(debounceTimeout);
-                debounceTimeout = setTimeout(() => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("visible");
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, 50);
-            }, observerOptions);
+            // Initialize footer functionality
+            if (window.initializeFooter) {
+                window.initializeFooter();
+            }
 
-            rows.forEach(row => observer.observe(row));
-        });
+            // Handle text animations for hero section
+            const textAnimateElements = document.querySelectorAll('.text-animate');
+            textAnimateElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('animate-in');
+                }, index * 100);
+            });
 
-        document.addEventListener("DOMContentLoaded", () => {
+            // Set up intersection observer for fade-in elements
             const fadeInElements = document.querySelectorAll(".fade-in");
 
             const observerOptions = {
@@ -182,6 +170,34 @@
 
             fadeInElements.forEach((el) => observer.observe(el));
         });
+
+        // Function to load navigation components - updated to match main index.html exactly
+        async function loadNavigationComponents() {
+            try {
+                // Load navigation
+                const navResponse = await fetch('../../../nav/nav.html');
+                const navHtml = await navResponse.text();
+                document.getElementById('nav-bar').innerHTML = navHtml;
+
+                // Load footer
+                const footerResponse = await fetch('../../../nav/footer.html');
+                const footerHtml = await footerResponse.text();
+                document.getElementById('footer-placeholder').innerHTML = footerHtml;
+
+                // Update logo path for fabrication project
+                const logoImg = document.querySelector('.nav-brand img');
+                if (logoImg) {
+                    logoImg.src = '../../../img/logo.png';
+                }
+
+                // Initialize navbar functionality after loading
+                if (window.initializeNavbar) {
+                    window.initializeNavbar();
+                }
+            } catch (error) {
+                console.error('Error loading navigation components:', error);
+            }
+        }
     </script>
 </body>
 

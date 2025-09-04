@@ -4,209 +4,243 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Beverly Yip | Portfolio</title>
 
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../img/logo-light.png">
 
-        @font-face {
-            font-family: "Rashfield";
-            src: url("../fonts/TTF/VVDSRashfield-Normal.ttf");
-        }
-    </style>
+    <!-- Typography System -->
+    <link rel="stylesheet" href="../css/typography.css">
 
-    <title>Beverly Yip</title>
+    <!-- Navbar Component CSS -->
+    <link rel="stylesheet" href="../nav/nav.css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Hanken+Grotesk" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Footer Component CSS -->
+    <link rel="stylesheet" href="../nav/footer.css">
+
+    <!-- Project-Specific Styles -->
     <link rel="stylesheet" href="../css/weather-wear.css">
 
+    <!-- Material-UI Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Material-UI Icons (GitHub specific) -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined&family=Material+Icons+Round&family=Material+Icons+Sharp&family=Material+Icons+Two+Tone&family=Material+Icons">
 </head>
 
 <body>
-    <header class="fade-in">
-        <nav class="navbar navbar-expand-lg navbar-light fade-in" id="navbar-real">
-            <a class="navbar-brand" id="navbar-brand" href="/"><img src="../img/logo.png" alt="Logo" class="logo"></a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation" id="nav-gen" fade-in>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-center justify-content-center fade-in"
-                id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto" id="custom-navbar">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">ABOUT</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" id="workDropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            WORK
-                        </a>
-                        <div id="workMenu" class="dropdown-menu">
-                            <a class="dropdown-item" href="/#work">ALL</a>
-                            <a class="dropdown-item" href="https://bevyip.notion.site/itp" target="_blank">NYU BLOG</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/play">PLAY</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="container-fluid landing fade-in">
-        </div>
+    <!-- Header with Navbar -->
+    <header>
+        <!-- Include the navbar component -->
+        <div id="nav-bar"></div>
     </header>
 
-    <div class="row concept">
-        <div class="col-lg-8 col-md-12 col-sm-12 project-summary">
-            <div class="landing-name fade-in">
-                <h1>WeatherWear</h1>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <h1 class="hero-title text-animate">WEATHERWEAR</h1>
+                    <div class="hero-meta">
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">ROLE</span>
+                            <span class="meta-value">Design Engineer</span>
+                        </div>
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">DURATION</span>
+                            <span class="meta-value">July — August 2018 (3 weeks)</span>
+                        </div>
+                        <div class="meta-item text-animate">
+                            <span class="meta-label">TOOLS</span>
+                            <span class="meta-value">Figma, HTML, CSS, JavaScript, Node.js, Express, MongoDB,
+                                Heroku</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="hero-summary text-animate">
+                        <p>Driven by personal experiences and the challenges faced by those around me — particularly my
+                            mother — who struggle to dress appropriately for unpredictable weather, this project was
+                            conceived to create a solution that simplifies daily outfit decisions.</p>
+                        <div class="hero-tags text-animate">
+                            <span class="tag">Web</span>
+                            <span class="tag">UX/UI</span>
+                            <span class="tag">API Integrations</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h2 class="fade-in">Inspiration</h2>
-            <p class="text-padding fade-in">Driven by personal experiences and the challenges faced by those
-                around
-                me — particularly my mother — who struggle to dress appropriately for unpredictable weather, this
-                project
-                was conceived to create a solution that simplifies daily outfit decisions.</p>
-            <h2 class="fade-in">Concept</h2>
-            <p class="fade-in" style="padding-top:20px">Introducing a user-centric web application designed to enhance
-                daily outfit
-                decisions by
-                providing
-                personalized weather insights.</p>
-            <p class="fade-in">The goal was to design a tool that empowers users to make smarter, more comfortable
-                clothing choices
-                based on real-time weather insights. It features the following:
-            </p>
-            <ul>
-                <li class="fade-in">
-                    <strong>Personalized Recommendations —</strong> Delivers tailored clothing suggestions based on
-                    real-time weather data, ensuring comfort throughout the day.
-                </li>
-                <li class="fade-in">
-                    <strong>Historical Log —</strong> Maintains a record of past outfits and corresponding weather
-                    conditions, assisting users in refining future choices.
-                </li>
-                <li class="text-padding fade-in">
-                    <strong>Essential Weather Metrics —</strong> Highlights critical information like the 'feels-like'
-                    temperature and wind chill to inform appropriate attire selections.
-                </li>
-            </ul>
-            <h2 class="fade-in">Tools & Frameworks</h2>
-            <ul class="fade-in">
-                <li>Implemented using Java, HTML, and CSS</li>
-                <li>Leverages Node.js, Express, and MongoDB for backend development</li>
-                <li>Integrates Dark Sky API and Google Maps API for weather and location data</li>
-                <li>Deployed via Heroku</li>
-            </ul>
-            <p class="fade-in">Find the code <a href="https://github.com/bevyip/WeatherWear" target="_blank">here</a>!
-            </p>
-        </div>
-
-        <div class="col-lg-4 col-md-12 col-sm-12 project-sub-summary fade-in">
-            <p class="sub-header">WHEN WAS THIS?</p>
-            <p>Jul - Aug 2018 (3 weeks)</p>
-            </br>
-            <p class="sub-header">WHAT DID I DO?</p>
-            <p>As the sole developer and designer of this web application, I was responsible for overseeing the full
-                development lifecycle, from ideation to deployment.</p>
-            <p>My responsibilities include:
-            <ul>
-                <li><strong>User Research & Testing —</strong> Conducted research to identify user needs related to
-                    weather-driven outfit choices, gathering insights through surveys and usability tests to guide
-                    design decisions.</li>
-                <li><strong>Wireframing & Design —</strong> Created wireframes and prototypes in Figma to map user
-                    journeys and designed the UI/UX with a focus on accessibility and intuitive navigation.</li>
-                <li><strong>Frontend & Backend Development —</strong> Built the frontend using HTML, CSS, and JavaScript
-                    for responsiveness and the backend with Node.js, Express, and MongoDB for data management and user
-                    interactions.</li>
-                <li><strong>API Integration & Database Management —</strong> Integrated third-party weather and
-                    geolocation APIs, and
-                    designed the MongoDB schema to store user outfit logs and weather data.</li>
-                <li><strong>Deployment & Performance Optimization —</strong> Deployed the app on Heroku, optimized
-                    performance for fast load times, and ensured scalability and security.</li>
-            </ul>
-            </p>
-        </div>
-    </div>
-
-    <div class="footer" id="footer">
-        <div class="footer-info fade-in">
-            <h2 class="footerLabel fade-in"><b>Let's get in touch!</span></b></h2>
-            <div class="footerIcons fade-in">
-                <a href="https://www.linkedin.com/in/bevyip/" target="_blank" class="icons fa fa-linkedin"></a>
-                <a href="https://github.com/bevyip" target="_blank" class="icons fa fa-github"></a>
-                <a href="mailto:hy3018@nyu.edu" target="_blank" class="icons fa fa-envelope"></a>
-            </div>
-            <div class="footerStamp fade-in">
-                <p>Proudly designed & handcoded by Beverly Yip.</p>
-            </div>
-            <div class="footerReroute fade-in">
-                <a class="footerReroute-link" href="#">BACK TO TOP</a>
+            <div class="hero-visuals fade-in">
+                <img src="../img/weather-app.png" alt="WeatherWear Interface" class="hero-image">
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <!-- Project Overview Section -->
+    <section class="project-overview">
+        <div class="overview-container">
+            <div class="overview-content">
+                <div class="overview-left fade-in">
+                    <h2 class="overview-title">What is WeatherWear?</h2>
+                    <p class="overview-description">
+                        A user-centric web application designed to enhance daily outfit decisions by providing
+                        personalized weather insights. The goal was to design a tool that empowers users to make
+                        smarter, more comfortable clothing choices based on real-time weather insights.
+                    </p>
+                </div>
+                <div class="overview-right fade-in">
+                    <h2 class="overview-title">My Role</h2>
+                    <p class="overview-description">
+                        I designed and developed this web application from concept to deployment, handling the complete
+                        development lifecycle including user research, wireframing, frontend and backend development,
+                        API integration, and deployment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Features Section -->
+    <section class="additional-section">
+        <div class="additional-container">
+            <div class="additional-content">
+                <h3 class="additional-subtitle">Key Features</h3>
+                <div class="key-features-visual">
+                    <img src="../img/weather-key-features.png" alt="WeatherWear Key Features"
+                        class="key-features-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="process-container">
+            <h3 class="process-title">Development Process</h3>
+            <div class="process-timeline-visual">
+                <img src="../img/weather-timeline.png" alt="WeatherWear Development Timeline"
+                    class="process-timeline-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps Section -->
+    <section class="next-steps-section">
+        <div class="next-steps-container">
+            <h3 class="process-title">Next Steps</h3>
+            <p class="process-subtitle">Expanding functionality and user experience</p>
+            <ul class="next-steps-list">
+                <li>Mobile app development for iOS and Android</li>
+                <li>Machine learning integration for better outfit recommendations</li>
+                <li>Social features for sharing outfit choices</li>
+                <li>Integration with smart home devices</li>
+                <li>Advanced weather forecasting and alerts</li>
+            </ul>
+            <div class="cta-section fade-in">
+                <a class="cta-button" href="https://github.com/bevyip/WeatherWear" target="_blank">
+                    <span class="cta-text">View Code</span>
+                    <svg class="cta-icon" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+    <!-- Cursor functionality -->
+    <script src="../js/cursor.js"></script>
+
+    <!-- Navbar and Footer components -->
+    <script src="../nav/nav.js"></script>
+    <script src="../nav/footer.js"></script>
 
     <script>
-        let debounceTimeout;
         document.addEventListener("DOMContentLoaded", () => {
-            const rows = document.querySelectorAll(".proj-overview-content");
+            // Load navigation components
+            loadNavigationComponents();
 
-            const observerOptions = {
-                root: null, // Use the viewport as the root
-                threshold: 0.1, // Trigger when 10% of the row is visible
-            };
+            // Initialize navbar functionality
+            if (window.initializeNavbar) {
+                window.initializeNavbar();
+            }
 
-            const observer = new IntersectionObserver((entries) => {
-                clearTimeout(debounceTimeout);
-                debounceTimeout = setTimeout(() => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("visible");
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, 50);
-            }, observerOptions);
+            // Initialize footer functionality
+            if (window.initializeFooter) {
+                window.initializeFooter();
+            }
 
-            rows.forEach(row => observer.observe(row));
-        });
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const fadeInElements = document.querySelectorAll(".fade-in");
+            // Text animation for hero section
+            const textElements = document.querySelectorAll(".text-animate");
 
             const observerOptions = {
                 root: null,
                 threshold: 0.1,
             };
 
-            const observer = new IntersectionObserver((entries, observer) => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("animate-in");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            textElements.forEach((el) => observer.observe(el));
+
+            // Fade in animation for other elements
+            const fadeInElements = document.querySelectorAll(".fade-in");
+
+            const fadeObserverOptions = {
+                root: null,
+                threshold: 0.1,
+            };
+
+            const fadeObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add("visible");
                         observer.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, fadeObserverOptions);
 
-            fadeInElements.forEach((el) => observer.observe(el));
+            fadeInElements.forEach((el) => fadeObserver.observe(el));
         });
+
+        // Function to load navigation components
+        async function loadNavigationComponents() {
+            try {
+                // Load navigation
+                const navResponse = await fetch('../nav/nav.html');
+                const navHtml = await navResponse.text();
+                document.getElementById('nav-bar').innerHTML = navHtml;
+
+                // Load footer
+                const footerResponse = await fetch('../nav/footer.html');
+                const footerHtml = await footerResponse.text();
+                document.getElementById('footer').innerHTML = footerHtml;
+
+                // Update logo path for weather-wear project
+                const logoImg = document.querySelector('.nav-brand img');
+                if (logoImg) {
+                    logoImg.src = '../img/logo.png';
+                }
+
+                // Initialize navbar functionality after loading
+                if (window.initializeNavbar) {
+                    window.initializeNavbar();
+                }
+            } catch (error) {
+                console.error('Error loading navigation components:', error);
+            }
+        }
     </script>
 </body>
 
