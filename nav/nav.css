@@ -105,7 +105,7 @@
 /* Rolling up effect on hover */
 .nav-link:hover .nav-text-original,
 .nav-link:focus .nav-text-original {
-  transform: translateY(-100%);
+  transform: translateY(-110%); /* Move up slightly more to hide bottom edge */
   /* Removed opacity: 0 so text gradually moves out of view */
 }
 
@@ -199,7 +199,7 @@
 /* Contact button rolling effect */
 .nav-contact-btn:hover .nav-text-original,
 .nav-contact-btn:focus .nav-text-original {
-  transform: translateY(-100%);
+  transform: translateY(-110%); /* Move up slightly more to hide bottom edge */
 }
 
 .nav-contact-btn:hover .nav-text-duplicate,
