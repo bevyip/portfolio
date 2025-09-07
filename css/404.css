@@ -3,47 +3,43 @@ body {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  padding: 120px;
+  padding: var(--spacing-5xl);
 }
 
 h1 {
-  font-family: "Rashfield";
-  font-weight: 600;
-  text-align: center;
-  font-size: 64px;
-  color: #111;
-  letter-spacing: 0.1rem;
-  padding: 0;
-  margin: 0;
+  font-size: 4rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--spacing-lg) 0;
 }
 
 p {
-  font-family: "Hanken Grotesk";
-  font-size: 20px;
-  padding: 0;
+  font-size: var(--text-xl);
+  color: var(--color-text-secondary);
   margin: 0;
 }
 
-@media (max-width: 748px) {
+@media (max-width: 768px) {
   h1 {
-    font-size: 48px;
+    font-size: 3rem;
   }
 
   body {
-    padding: 60px;
+    padding: var(--spacing-3xl);
   }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 480px) {
   h1 {
-    font-size: 24px;
+    font-size: 2rem;
   }
 
   p {
-    font-size: 14px;
+    font-size: var(--text-base);
   }
 
   body {
-    padding: 40px;
+    padding: var(--spacing-2xl);
   }
 }
