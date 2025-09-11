@@ -49,25 +49,32 @@
                             </span>
                         </h1>
                         <p class="hero-subtitle">I'm Beverly Yip!</p>
-                        <p class="hero-blurb hero-role">A UX design engineer who bridges the gap between what's
-                            technically
-                            possible and what people actually need. <strong>Whether through design or code, I turn
-                                technical
-                                possibilities into delightful human experiences.</strong></p>
+                        <p class="hero-blurb hero-role">I'm a product designer who codes — and that's my strength. With
+                            eight years of full-stack development experience, I don't just design for users; I design
+                            <em>with</em> technical reality in mind. <strong>Every pixel should serve a purpose, every
+                                interaction should feel effortless, and every solution should work for everyone — not
+                                just
+                                the person who designed it.</strong> I create products that are as beautiful as they are
+                            functional, as accessible as they are innovative.
+                        </p>
                     </div>
                     <div class="hero-text-details">
-                        <p class="hero-description">I started as a software engineer at Salesforce, contributing to the
-                            Flow
-                            Builder and championing accessibility, before realizing I cared just as much (if not more)
-                            about
-                            how people interact with technology. That realization drew me to UX Design Engineering at
-                            Confido, where I got to design <em>and</em> code – bridging the gap between user needs and
-                            technical solutions.</p>
-                        <p class="hero-description">Currently pursuing my Master's in HCI at NYU ITP, I'm exploring
-                            deeper
-                            into the intersection of technology and the human experience. I'm particularly focused on
-                            making
-                            the digital world more accessible and intuitive for everyone.</p>
+                        <div class="read-more-container">
+                            <button class="read-more-btn clickable" id="read-more-btn">
+                                <span class="read-more-text">Read more</span>
+                                <span class="material-icons read-more-arrow">arrow_downward</span>
+                            </button>
+                        </div>
+                        <div class="hero-descriptions-collapsible" id="hero-descriptions">
+                            <p class="hero-description">I started as a software engineer at Salesforce, contributing to
+                                the Flow Builder and championing accessibility, before realizing I cared just as much
+                                (if not more) about how people interact with technology. That realization drew me to UX
+                                Design Engineering at Confido, where I got to design and code – bridging the gap between
+                                user needs and technical solutions.</p>
+                            <p class="hero-description">Currently pursuing my Master's in HCI at NYU ITP, I'm exploring
+                                deeper into the intersection of technology and the human experience. I'm particularly
+                                focused on making the digital world more accessible and intuitive for everyone.</p>
+                        </div>
                         <a href="https://drive.google.com/file/d/1t8BBP__xqK7TDSD1hLv0WFaMLLgeufTK/view?usp=sharing"
                             target="_blank" class="resume-btn clickable">
                             <span class="resume-text">VIEW RESUME</span>
@@ -337,6 +344,32 @@
         // Rolling text animation - simplified
         document.addEventListener("DOMContentLoaded", () => {
             // Animation is handled entirely by CSS
+        });
+
+        // Read More Button
+        document.addEventListener("DOMContentLoaded", () => {
+            const readMoreBtn = document.getElementById("read-more-btn");
+            const descriptionsContainer = document.getElementById("hero-descriptions");
+            let isExpanded = false;
+
+            // Read more button click handler
+            if (readMoreBtn && descriptionsContainer) {
+                readMoreBtn.addEventListener("click", () => {
+                    if (!isExpanded) {
+                        // Expand the container
+                        descriptionsContainer.classList.add("expanded");
+                        readMoreBtn.classList.add("expanded");
+                        readMoreBtn.querySelector(".read-more-text").textContent = "Read less";
+                        isExpanded = true;
+                    } else {
+                        // Collapse the container
+                        descriptionsContainer.classList.remove("expanded");
+                        readMoreBtn.classList.remove("expanded");
+                        readMoreBtn.querySelector(".read-more-text").textContent = "Read more";
+                        isExpanded = false;
+                    }
+                });
+            }
         });
 
         // Smart Polaroid Pile Effect - captures natural grid positions
