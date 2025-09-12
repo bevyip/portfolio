@@ -162,57 +162,48 @@ body {
   transform: translate(-50%, -50%) scale(0.5);
 }
 
-/* Special cursor effect when hovering over hero-role text - color only, no size change */
-.cursor-dot.hero-role-hover {
-  background: linear-gradient(
-    45deg,
-    #ff8fa3,
-    /* deeper pastel red */ #ff8fc7,
-    /* deeper pastel pink */ #ff8fe8,
-    /* deeper pastel magenta */ #d699ff,
-    /* deeper pastel purple */ #9999ff,
-    /* deeper pastel blue */ #99c7ff,
-    /* deeper pastel light blue */ #99e8ff,
-    /* deeper pastel cyan */ #99ffd6,
-    /* deeper pastel mint */ #99ff99,
-    /* deeper pastel green */ #c7ff99,
-    /* deeper pastel lime */ #e8ff99,
-    /* deeper pastel yellow */ #ffc799 /* deeper pastel orange */
-  );
-  background-size: 400% 400%;
-  animation: rainbow-aura 3s ease-in-out infinite,
-    color-shift 4s ease-in-out infinite;
-  transform: translate(-50%, -50%) scale(1); /* Keep original size */
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+/* Flip trigger styling */
+.hero-role.flip-trigger {
+  position: relative;
 }
 
-/* Rainbow aura animation */
-@keyframes rainbow-aura {
+/* Individual letter animations */
+.letter {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  transform-origin: center bottom;
+  /* Inherit all styling from parent hero-role */
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  /* Remove default spacing between spans */
+  margin: 0;
+  padding: 0;
+}
+
+/* Word containers to prevent line breaks */
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.letter.flip {
+  animation: letterFlip 0.5s ease;
+}
+
+/* Letter animation keyframes */
+@keyframes letterFlip {
   0% {
-    background-position: 0% 50%;
+    transform: rotateY(0deg);
   }
   50% {
-    background-position: 100% 50%;
+    transform: rotateY(180deg);
   }
   100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Color shift animation for randomization */
-@keyframes color-shift {
-  0%,
-  25% {
-    filter: hue-rotate(0deg) saturate(1.2) brightness(1.1);
-  }
-  50% {
-    filter: hue-rotate(120deg) saturate(1.4) brightness(1.2);
-  }
-  75% {
-    filter: hue-rotate(240deg) saturate(1.1) brightness(1.3);
-  }
-  100% {
-    filter: hue-rotate(360deg) saturate(1.2) brightness(1.1);
+    transform: rotateY(360deg);
   }
 }
 

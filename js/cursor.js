@@ -25,6 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Check cursor color based on element context
     updateCursorColor(e);
+
+    // Check for flip animations
+    checkFlipTrigger(e);
   });
 
   // Function to check cursor color based on element context
@@ -77,11 +80,56 @@ document.addEventListener("DOMContentLoaded", function () {
     cursorDot.classList.remove("cursor-white-active");
   }
 
+  // Function to check for flip trigger and animate letters
+  function checkFlipTrigger(e) {
+    const elementUnderCursor = document.elementFromPoint(e.clientX, e.clientY);
+    const flipElement = elementUnderCursor?.closest(".flip-trigger");
+
+    if (flipElement) {
+      animateLettersUnderCursor(e, flipElement);
+    }
+  }
+
+  // Function to animate letters under the cursor
+  function animateLettersUnderCursor(e, textElement) {
+    const letters = textElement.querySelectorAll(".letter:not(.space)");
+    const cursorX = e.clientX;
+    const cursorY = e.clientY;
+    const cursorRadius = 10; // Half of cursor size
+
+    letters.forEach((letter) => {
+      const letterRect = letter.getBoundingClientRect();
+      const letterCenterX = letterRect.left + letterRect.width / 2;
+      const letterCenterY = letterRect.top + letterRect.height / 2;
+
+      // Calculate distance from cursor center to letter center
+      const distance = Math.sqrt(
+        Math.pow(cursorX - letterCenterX, 2) +
+          Math.pow(cursorY - letterCenterY, 2)
+      );
+
+      // If cursor is close enough to the letter, animate it
+      if (distance < cursorRadius + 15) {
+        // 15px buffer for easier triggering
+        // Only animate if not already animating
+        if (!letter.classList.contains("flip")) {
+          // Use only flip animation
+          letter.classList.add("flip");
+
+          // Remove animation class after animation completes
+          setTimeout(() => {
+            letter.classList.remove("flip");
+          }, 500);
+        }
+      }
+    });
+  }
+
   // Function to add cursor effects to elements
   function addCursorEffects() {
     // Find all clickable elements with more comprehensive selectors
     const clickableElements = document.querySelectorAll(
-      'a, button, .btn, input[type="submit"], input[type="button"], select, textarea, [role="button"], [tabindex], .nav-link, .dropdown-toggle, .dropdown-item, .nav-contact-btn, .nav-brand, .clickable, .hero-role'
+      'a, button, .btn, input[type="submit"], input[type="button"], select, textarea, [role="button"], [tabindex], .nav-link, .dropdown-toggle, .dropdown-item, .nav-contact-btn, .nav-brand, .clickable, .hero-role, .flip-trigger'
     );
 
     // Add hover effects for cursor
@@ -106,7 +154,10 @@ document.addEventListener("DOMContentLoaded", function () {
       this.tagName === "INPUT" ||
       this.getAttribute("role") === "button";
 
-    if (this.classList.contains("hero-role")) {
+    if (this.classList.contains("flip-trigger")) {
+      // Flip effect - cursor stays normal, letters flip
+      cursorDot.style.transform = "translate(-50%, -50%) scale(1)";
+    } else if (this.classList.contains("hero-role")) {
       // Hero role keeps normal size
       cursorDot.classList.add("hero-role-hover");
       cursorDot.style.transform = "translate(-50%, -50%) scale(1)";
