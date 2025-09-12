@@ -355,6 +355,10 @@ main {
   overflow: hidden;
   transition: all var(--transition-base);
   box-shadow: 0 4px 6px var(--color-black-12);
+  display: flex;
+  flex-direction: row;
+  min-height: 300px;
+  box-sizing: border-box;
 }
 
 .project-card:hover {
@@ -363,17 +367,20 @@ main {
 }
 
 .project-link {
-  display: block;
+  display: flex;
   text-decoration: none;
   color: inherit;
   height: 100%;
+  width: 100%;
 }
 
 .project-image {
-  width: 100%;
+  width: 50%;
   aspect-ratio: 16/9;
   overflow: hidden;
   position: relative;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .project-image img {
@@ -390,6 +397,11 @@ main {
 .project-content {
   padding: var(--spacing-xl) var(--spacing-2xl) var(--spacing-2xl)
     var(--spacing-2xl);
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Animation classes for staggered text entrance */
@@ -493,7 +505,22 @@ main {
     gap: var(--spacing-2xl);
   }
 
+  .project-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .project-link {
+    flex-direction: column;
+  }
+
+  .project-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+
   .project-content {
+    width: 100%;
     padding: var(--spacing-sm) var(--spacing-xl) var(--spacing-xl)
       var(--spacing-xl);
   }
@@ -514,7 +541,22 @@ main {
     gap: var(--spacing-2xl);
   }
 
+  .project-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .project-link {
+    flex-direction: column;
+  }
+
+  .project-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+
   .project-content {
+    width: 100%;
     padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg)
       var(--spacing-lg);
   }
@@ -556,7 +598,22 @@ main {
     gap: var(--spacing-xl);
   }
 
+  .project-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .project-link {
+    flex-direction: column;
+  }
+
+  .project-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+
   .project-content {
+    width: 100%;
     padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg)
       var(--spacing-lg);
   }
@@ -601,7 +658,22 @@ main {
     gap: var(--spacing-lg);
   }
 
+  .project-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .project-link {
+    flex-direction: column;
+  }
+
+  .project-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+
   .project-content {
+    width: 100%;
     padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-lg)
       var(--spacing-lg);
   }
@@ -677,6 +749,7 @@ main {
 /* Cursor color classes */
 .cursor-white {
   /* This class is used by JavaScript to identify elements that should turn cursor white */
+  cursor: none; /* Hide default cursor for custom cursor */
 }
 
 /* Smooth scrolling for the entire page */
