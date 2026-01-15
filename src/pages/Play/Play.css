@@ -30,8 +30,16 @@
 /* Title styles */
 .play-title {
   margin: 1.5rem 0;
-  white-space: nowrap; /* Prevent wrapping to ensure single line */
+  white-space: nowrap; /* Prevent wrapping to ensure single line on desktop */
   overflow: hidden; /* Handle overflow gracefully */
+}
+
+/* Allow wrapping on mobile */
+@media (max-width: 767px) {
+  .play-title {
+    white-space: normal; /* Allow wrapping on mobile */
+    overflow: visible;
+  }
 }
 
 .play-title-word {
@@ -39,7 +47,15 @@
   font-size: 3.5rem;
   font-weight: 400;
   letter-spacing: -0.05em; /* tracking-tighter */
-  white-space: nowrap; /* Prevent individual words from wrapping */
+  white-space: nowrap; /* Prevent individual words from wrapping on desktop */
+}
+
+/* Allow word wrapping on mobile */
+@media (max-width: 767px) {
+  .play-title-word {
+    white-space: normal; /* Allow wrapping on mobile */
+    font-size: 2.75rem; /* Slightly smaller on mobile for better fit */
+  }
 }
 
 @media (min-width: 768px) {
@@ -68,4 +84,12 @@
 .pin-spacer {
   margin-top: 0 !important;
   padding-top: 0 !important;
+}
+
+/* Hardcoded grid positions for bento items - desktop only */
+@media (min-width: 1026px) {
+  .bento-item[data-grid-col][data-grid-row-start][data-grid-row-end] {
+    grid-column: var(--grid-col);
+    grid-row: var(--grid-row-start) / var(--grid-row-end);
+  }
 }

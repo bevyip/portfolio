@@ -96,14 +96,7 @@ const sizeClasses = {
   short: "", // Standard height (1 row)
 };
 
-// Map column index to Tailwind classes
-const columnClasses = {
-  1: "min-[1026px]:col-start-1",
-  2: "min-[1026px]:col-start-2",
-  3: "min-[1026px]:col-start-3",
-};
-
-const BentoItem = ({ project, onClick, columnIndex }) => {
+const BentoItem = ({ project, onClick, gridPosition }) => {
   const { id, theme = "white", tags, actions, size, media } = project;
   const [isTapped, setIsTapped] = useState(false);
   const iframeRef = useRef(null);
@@ -138,6 +131,15 @@ const BentoItem = ({ project, onClick, columnIndex }) => {
     }
   };
 
+  // Set CSS custom properties for grid positioning
+  const gridStyle = gridPosition
+    ? {
+        "--grid-col": gridPosition.col,
+        "--grid-row-start": gridPosition.rowStart,
+        "--grid-row-end": gridPosition.rowEnd,
+      }
+    : {};
+
   return (
     <div
       className={`
@@ -153,8 +155,11 @@ const BentoItem = ({ project, onClick, columnIndex }) => {
         transition-all duration-300 ease-out
         h-full min-h-[200px]
         ${sizeClasses[size] || ""}
-        ${columnClasses[columnIndex] || ""}
       `}
+      style={gridStyle}
+      data-grid-col={gridPosition?.col}
+      data-grid-row-start={gridPosition?.rowStart}
+      data-grid-row-end={gridPosition?.rowEnd}
       onClick={handleCardClick}
     >
       {/* Video Background */}

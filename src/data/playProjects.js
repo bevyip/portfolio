@@ -3,7 +3,10 @@
 // Theme options: "white" or "black" for card background
 
 export const playProjects = [
-  // Balanced distribution for even column heights
+  // Arranged by column order for balanced heights
+  // Column 1: im-listening, ball-slide, cat-box, sprite-map, liquid-silk, sticker-cats, eye-see-you, reflections-of-monet, puzzle-feeder
+  // Column 2: spherical-shopping, binary-pool, snowflake, photo-collage-reveal, bouncing-ball, neumorphic-buttons, cat-figurine, blend-your-cursor, temple-of-fortune
+  // Column 3: emotional-canvas, gravity-text, emoji-ascii-art, picture-distortion, image-to-sprite, five-identical-fishes, pixel-trail, starry-night, whack-a-mouse, words-unseen
   {
     id: "im-listening",
     size: "tall",
@@ -241,23 +244,23 @@ export const playProjects = [
     ],
   },
   {
-    id: "image-to-sprite",
+    id: "picture-distortion",
     size: "tall",
     theme: "white",
-    tags: ["React", "Image Processing"],
+    tags: ["React", "Creative Coding"],
     media: {
-      video: "/projects/image-to-sprite/demo.mp4",
+      video: "/projects/picture-distortion/demo.mp4",
     },
     actions: [
       {
         type: "live",
         tooltip: "View App",
-        url: "https://image-to-sprite.vercel.app/",
+        url: "https://picture-distortion.vercel.app/",
       },
       {
         type: "X",
         tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2005117207479714033?s=20",
+        url: "https://x.com/bevdesigns/status/2011731823676801478?s=20",
       },
     ],
   },
@@ -279,6 +282,69 @@ export const playProjects = [
         type: "X",
         tooltip: "View on X",
         url: "https://x.com/bevdesigns/status/2004342200277373152?s=20",
+      },
+    ],
+  },
+  {
+    id: "bouncing-ball",
+    size: "tall",
+    theme: "white",
+    tags: ["GSAP", "Interaction Design"],
+    media: {
+      iframe: "https://bouncing-ball-gules.vercel.app",
+    },
+    actions: [
+      {
+        type: "live",
+        tooltip: "View Live",
+        url: "https://bouncing-ball-gules.vercel.app",
+      },
+      {
+        type: "X",
+        tooltip: "View on X",
+        url: "https://x.com/bevdesigns/status/2004352789703778514?s=20",
+      },
+    ],
+  },
+  {
+    id: "image-to-sprite",
+    size: "tall",
+    theme: "white",
+    tags: ["React", "Image Processing"],
+    media: {
+      video: "/projects/image-to-sprite/demo.mp4",
+    },
+    actions: [
+      {
+        type: "live",
+        tooltip: "View App",
+        url: "https://image-to-sprite.vercel.app/",
+      },
+      {
+        type: "X",
+        tooltip: "View on X",
+        url: "https://x.com/bevdesigns/status/2005117207479714033?s=20",
+      },
+    ],
+  },
+  {
+    id: "sticker-cats",
+    size: "tall",
+    theme: "white",
+    tags: ["GSAP", "React"],
+    media: {
+      iframe: "https://sticker-cats.vercel.app/",
+    },
+    actions: [
+      {
+        type: "live",
+        tooltip: "View Live",
+        url: "https://sticker-cats.vercel.app/",
+      },
+      {
+        type: "X",
+        tooltip: "View on X",
+        url: "https://x.com/bevdesigns/status/2004353435395891579?s=20",
       },
     ],
   },
@@ -325,23 +391,23 @@ export const playProjects = [
     ],
   },
   {
-    id: "sticker-cats",
+    id: "eye-see-you",
     size: "tall",
     theme: "white",
-    tags: ["GSAP", "React"],
+    tags: ["React", "Interaction Design"],
     media: {
-      iframe: "https://sticker-cats.vercel.app/",
+      iframe: "https://eye-see-you.vercel.app",
     },
     actions: [
       {
         type: "live",
         tooltip: "View Live",
-        url: "https://sticker-cats.vercel.app/",
+        url: "https://eye-see-you.vercel.app",
       },
       {
         type: "X",
         tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004353435395891579?s=20",
+        url: "https://x.com/bevdesigns/status/2004337580029235305?s=20",
       },
     ],
   },
@@ -388,23 +454,23 @@ export const playProjects = [
     ],
   },
   {
-    id: "eye-see-you",
+    id: "reflections-of-monet",
     size: "tall",
     theme: "white",
-    tags: ["React", "Interaction Design"],
+    tags: ["Web Art", "Interaction Design"],
     media: {
-      iframe: "https://eye-see-you.vercel.app",
+      video: "/projects/monet/demo.mp4",
     },
     actions: [
       {
         type: "live",
-        tooltip: "View Live",
-        url: "https://eye-see-you.vercel.app",
+        tooltip: "View App",
+        url: "https://bevyip.github.io/reflections-of-monet/",
       },
       {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004337580029235305?s=20",
+        type: "notion",
+        tooltip: "View Documentation",
+        url: "https://bevyip.notion.site/Week-7-1cb5b3e7f9e780cf84a3e28e81f5a15d?source=copy_link",
       },
     ],
   },
@@ -446,23 +512,23 @@ export const playProjects = [
     ],
   },
   {
-    id: "reflections-of-monet",
-    size: "tall",
+    id: "puzzle-feeder",
+    size: "short",
     theme: "white",
-    tags: ["Web Art", "Interaction Design"],
+    tags: ["Fabrication", "Laser Cutting"],
     media: {
-      video: "/projects/monet/demo.mp4",
+      video: "/projects/puzzle-feeder/demo.mp4",
     },
     actions: [
       {
         type: "live",
-        tooltip: "View App",
-        url: "https://bevyip.github.io/reflections-of-monet/",
+        tooltip: "View Portfolio Deck",
+        url: "https://docs.google.com/presentation/d/1n0bsMJ6bRc6EFrK3dV13DUeooROi32we/edit?usp=sharing&ouid=100755772065646129206&rtpof=true&sd=true",
       },
       {
         type: "notion",
         tooltip: "View Documentation",
-        url: "https://bevyip.notion.site/Week-7-1cb5b3e7f9e780cf84a3e28e81f5a15d?source=copy_link",
+        url: "https://bevyip.notion.site/Week-3-Laser-Cut-Join-1145b3e7f9e780f1ab86e927967316d6?source=copy_link",
       },
     ],
   },
@@ -500,48 +566,6 @@ export const playProjects = [
         type: "notion",
         tooltip: "View Documentation",
         url: "https://bevyip.notion.site/Week-4-Enclosure-1145b3e7f9e7802fb6b6edab318c4214?source=copy_link",
-      },
-    ],
-  },
-  {
-    id: "puzzle-feeder",
-    size: "short",
-    theme: "white",
-    tags: ["Fabrication", "Laser Cutting"],
-    media: {
-      video: "/projects/puzzle-feeder/demo.mp4",
-    },
-    actions: [
-      {
-        type: "live",
-        tooltip: "View Portfolio Deck",
-        url: "https://docs.google.com/presentation/d/1n0bsMJ6bRc6EFrK3dV13DUeooROi32we/edit?usp=sharing&ouid=100755772065646129206&rtpof=true&sd=true",
-      },
-      {
-        type: "notion",
-        tooltip: "View Documentation",
-        url: "https://bevyip.notion.site/Week-3-Laser-Cut-Join-1145b3e7f9e780f1ab86e927967316d6?source=copy_link",
-      },
-    ],
-  },
-  {
-    id: "bouncing-ball",
-    size: "tall",
-    theme: "white",
-    tags: ["GSAP", "Interaction Design"],
-    media: {
-      iframe: "https://bouncing-ball-gules.vercel.app",
-    },
-    actions: [
-      {
-        type: "live",
-        tooltip: "View Live",
-        url: "https://bouncing-ball-gules.vercel.app",
-      },
-      {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004352789703778514?s=20",
       },
     ],
   },

@@ -50,6 +50,7 @@ const WorkSection = () => {
   const titleRef = useRef(null);
   const projectsGridRef = useRef(null);
   const projectCardRefs = useRef([]);
+  const videoRefs = useRef([]);
 
   useLetterByLetterAnimation({
     titleRef,
@@ -59,6 +60,38 @@ const WorkSection = () => {
     scrub: 1.5,
     colorRanges: [{ start: 0, end: 7, color: "#7DD3FC" }],
   });
+
+  // Ensure videos autoplay on mobile by programmatically playing them
+  useEffect(() => {
+    const validVideoRefs = videoRefs.current.filter((ref) => ref !== null);
+    const cleanupFunctions = [];
+
+    validVideoRefs.forEach((videoRef) => {
+      if (videoRef) {
+        // Force play on load to ensure autoplay works on mobile
+        const handleCanPlay = () => {
+          videoRef.play().catch((error) => {
+            // Silently handle autoplay errors (some browsers may block autoplay)
+            console.debug("Video autoplay prevented:", error);
+          });
+        };
+
+        videoRef.addEventListener("canplay", handleCanPlay);
+        cleanupFunctions.push(() => {
+          videoRef.removeEventListener("canplay", handleCanPlay);
+        });
+
+        // Also try to play immediately if video is already loaded
+        if (videoRef.readyState >= 3) {
+          videoRef.play().catch(() => {});
+        }
+      }
+    });
+
+    return () => {
+      cleanupFunctions.forEach((cleanup) => cleanup());
+    };
+  }, [projects.length]);
 
   // Animate project cards with lazy loading - fade up when in view
   useEffect(() => {
@@ -125,12 +158,17 @@ const WorkSection = () => {
                 <div className="project-image-container">
                   {project.video ? (
                     <video
+                      ref={(el) => {
+                        videoRefs.current[index] = el;
+                      }}
                       src={project.video}
                       className="project-image"
                       autoPlay
                       loop
                       muted
                       playsInline
+                      preload="auto"
+                      controls={false}
                       aria-label={project.title}
                     />
                   ) : (
