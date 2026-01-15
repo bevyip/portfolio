@@ -105,6 +105,12 @@ export const GridBackground = ({
       return;
     }
 
+    // Detect if device is touch-enabled (mobile)
+    const isTouchDevice =
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      navigator.msMaxTouchPoints > 0;
+
     const getCellCoords = (mouseX, mouseY) => {
       return {
         cx: Math.floor(mouseX / cellSize),
@@ -173,12 +179,17 @@ export const GridBackground = ({
     };
 
     const handleTouchMove = (e) => {
+      // Disable touch highlighting on mobile
+      if (isTouchDevice) return;
       if (e.touches[0]) {
         handlePointerInteraction(e.touches[0].clientX, e.touches[0].clientY);
       }
     };
 
     const handleMouseDown = (e) => {
+      // Disable touch highlighting on mobile
+      if (isTouchDevice && e.touches) return;
+
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
@@ -209,19 +220,24 @@ export const GridBackground = ({
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    // Only attach touch listeners if not a touch device (for hybrid devices)
+    if (!isTouchDevice) {
+      window.addEventListener("touchmove", handleTouchMove, { passive: false });
+      window.addEventListener("touchstart", handleMouseDown, { passive: false });
+      window.addEventListener("touchend", handleMouseLeave);
+    }
     window.addEventListener("mousedown", handleMouseDown);
-    window.addEventListener("touchstart", handleMouseDown, { passive: false });
     window.addEventListener("mouseleave", handleMouseLeave);
-    window.addEventListener("touchend", handleMouseLeave);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("touchmove", handleTouchMove);
+      if (!isTouchDevice) {
+        window.removeEventListener("touchmove", handleTouchMove);
+        window.removeEventListener("touchstart", handleMouseDown);
+        window.removeEventListener("touchend", handleMouseLeave);
+      }
       window.removeEventListener("mousedown", handleMouseDown);
-      window.removeEventListener("touchstart", handleMouseDown);
       window.removeEventListener("mouseleave", handleMouseLeave);
-      window.removeEventListener("touchend", handleMouseLeave);
       lastPosRef.current = null;
     };
   }, [isVisible, activateBrush, cellSize]);

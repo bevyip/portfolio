@@ -61,37 +61,42 @@ const WorkSection = () => {
     colorRanges: [{ start: 0, end: 7, color: "#7DD3FC" }],
   });
 
-  // Ensure videos autoplay on mobile by programmatically playing them
+  // Use Intersection Observer to play videos when they come into view
   useEffect(() => {
-    const validVideoRefs = videoRefs.current.filter((ref) => ref !== null);
-    const cleanupFunctions = [];
+    const observers = videoRefs.current.map((video, index) => {
+      if (!video) return null;
 
-    validVideoRefs.forEach((videoRef) => {
-      if (videoRef) {
-        // Force play on load to ensure autoplay works on mobile
-        const handleCanPlay = () => {
-          videoRef.play().catch((error) => {
-            // Silently handle autoplay errors (some browsers may block autoplay)
-            console.debug("Video autoplay prevented:", error);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Video is visible, play it
+              video.play().catch((err) => {
+                console.log("Autoplay failed:", err);
+              });
+            } else {
+              // Video is out of view, pause it (optional, saves battery)
+              video.pause();
+            }
           });
-        };
+        },
+        { threshold: 0.5 } // Play when 50% visible
+      );
 
-        videoRef.addEventListener("canplay", handleCanPlay);
-        cleanupFunctions.push(() => {
-          videoRef.removeEventListener("canplay", handleCanPlay);
-        });
-
-        // Also try to play immediately if video is already loaded
-        if (videoRef.readyState >= 3) {
-          videoRef.play().catch(() => {});
-        }
-      }
+      observer.observe(video);
+      return observer;
     });
 
+    // Cleanup
     return () => {
-      cleanupFunctions.forEach((cleanup) => cleanup());
+      observers.forEach((observer, index) => {
+        if (observer && videoRefs.current[index]) {
+          observer.unobserve(videoRefs.current[index]);
+          observer.disconnect();
+        }
+      });
     };
-  }, [projects.length]);
+  }, []);
 
   // Animate project cards with lazy loading - fade up when in view
   useEffect(() => {
