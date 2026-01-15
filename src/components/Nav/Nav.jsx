@@ -176,7 +176,10 @@ const Nav = () => {
     const isLandingPage = location.pathname === "/";
     const isAboutPage = location.pathname === "/about";
     const isPlayPage = location.pathname === "/play";
+    const isConfidoPage = location.pathname === "/confido";
     const isVenmoPage = location.pathname === "/venmo";
+    const isWholeFoodsPage = location.pathname === "/wholefoods";
+    const isMoodlePage = location.pathname === "/moodle";
 
     if (isLandingPage) {
       // Landing page: after Spline, title, and subtitle
@@ -192,9 +195,14 @@ const Nav = () => {
       // Text animation: delay 0.3s, left text ~1.2s, right text ("where I design...") ~2.2s
       // Right text completes around 2.2s after content becomes visible
       delay = 2.3; // 2.2s + small buffer
-    } else if (isVenmoPage) {
-      // Venmo page: after hero image (1.2s) and hero text (1s) complete
-      // Image completes at 1.2s, text starts at 1.2s and completes at 2.2s
+    } else if (
+      isConfidoPage ||
+      isVenmoPage ||
+      isWholeFoodsPage ||
+      isMoodlePage
+    ) {
+      // Case study pages: after hero-before (1.2s) and hero text (1s) complete
+      // Hero-before completes at 1.2s, hero text starts at 1.2s and completes at 2.2s
       delay = 2.2;
     } else {
       // Other pages: drop immediately
