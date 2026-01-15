@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useEffect } from "react";
+import React, { useRef, useMemo, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -6,6 +6,7 @@ import useScrollReset from "../../hooks/useScrollReset";
 import { useCountupAnimation } from "../../hooks/useCountupAnimation";
 import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
+import CursorPill from "../../components/CursorPill/CursorPill";
 import "./MoodleCaseStudy.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,6 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 const MoodleCaseStudy = () => {
   // Reset scroll position to top when page loads/refreshes
   useScrollReset();
+  const [isHoveringSeeNextCard, setIsHoveringSeeNextCard] = useState(false);
 
   const impactSectionRef = useRef(null);
   const metricRefs = useRef([]);
@@ -285,6 +287,7 @@ const MoodleCaseStudy = () => {
 
   return (
     <div className="moodle-case-study">
+      <CursorPill isHovering={isHoveringSeeNextCard} text="View case study" />
       {/* Hero Section */}
       <section className="moodle-hero-section">
         {/* Hero Before Image - Visual welcome */}
@@ -681,7 +684,7 @@ const MoodleCaseStudy = () => {
               className="moodle-solution-subtitle"
               ref={solutionVisualIdentitySubtitleRef}
             >
-              Visual Identity
+              Design System
             </h4>
             <div
               className="moodle-solution-visual-identity-content"
@@ -982,29 +985,31 @@ const MoodleCaseStudy = () => {
               className="moodle-next-steps-item"
               ref={(el) => (nextStepsItemsRefs.current[0] = el)}
             >
-              <span style={{ fontWeight: 600 }}>Partner</span> with veterinary clinics to validate AI scores and build
-              user trust through professional endorsement
+              <span style={{ fontWeight: 600 }}>Partner</span> with veterinary
+              clinics to validate AI scores and build user trust through
+              professional endorsement
             </li>
             <li
               className="moodle-next-steps-item"
               ref={(el) => (nextStepsItemsRefs.current[1] = el)}
             >
-              <span style={{ fontWeight: 600 }}>Add</span> image-specific explanations that show users exactly what the
-              AI detected in their cat's photo
+              <span style={{ fontWeight: 600 }}>Add</span> image-specific
+              explanations that show users exactly what the AI detected in their
+              cat's photo
             </li>
             <li
               className="moodle-next-steps-item"
               ref={(el) => (nextStepsItemsRefs.current[2] = el)}
             >
-              <span style={{ fontWeight: 600 }}>Expand</span> tracking features with symptom clustering, trend charts,
-              and behavioral notes
+              <span style={{ fontWeight: 600 }}>Expand</span> tracking features
+              with symptom clustering, trend charts, and behavioral notes
             </li>
             <li
               className="moodle-next-steps-item"
               ref={(el) => (nextStepsItemsRefs.current[3] = el)}
             >
-              <span style={{ fontWeight: 600 }}>Connect</span> users to vets through telehealth integration for high pain
-              scores
+              <span style={{ fontWeight: 600 }}>Connect</span> users to vets
+              through telehealth integration for high pain scores
             </li>
           </ul>
         </div>
@@ -1054,7 +1059,12 @@ const MoodleCaseStudy = () => {
             SEE NEXT
           </h3>
           <div className="moodle-see-next-grid" ref={seeNextGridRef}>
-            <Link to="/venmo" className="moodle-see-next-card-link">
+            <Link
+              to="/venmo"
+              className="moodle-see-next-card-link"
+              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
+              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
+            >
               <div
                 className="moodle-see-next-card"
                 ref={(el) => (seeNextCardsRefs.current[0] = el)}
@@ -1078,7 +1088,12 @@ const MoodleCaseStudy = () => {
                 </p>
               </div>
             </Link>
-            <Link to="/confido" className="moodle-see-next-card-link">
+            <Link
+              to="/confido"
+              className="moodle-see-next-card-link"
+              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
+              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
+            >
               <div
                 className="moodle-see-next-card"
                 ref={(el) => (seeNextCardsRefs.current[1] = el)}
@@ -1102,7 +1117,12 @@ const MoodleCaseStudy = () => {
                 </p>
               </div>
             </Link>
-            <Link to="/wholefoods" className="moodle-see-next-card-link">
+            <Link
+              to="/wholefoods"
+              className="moodle-see-next-card-link"
+              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
+              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
+            >
               <div
                 className="moodle-see-next-card"
                 ref={(el) => (seeNextCardsRefs.current[2] = el)}

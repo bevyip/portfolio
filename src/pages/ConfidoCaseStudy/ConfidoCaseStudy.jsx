@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useEffect } from "react";
+import React, { useRef, useMemo, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -6,6 +6,7 @@ import useScrollReset from "../../hooks/useScrollReset";
 import { useCountupAnimation } from "../../hooks/useCountupAnimation";
 import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
+import CursorPill from "../../components/CursorPill/CursorPill";
 import "./ConfidoCaseStudy.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,6 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 const ConfidoCaseStudy = () => {
   // Reset scroll position to top when page loads/refreshes
   useScrollReset();
+  const [isHoveringSeeNextCard, setIsHoveringSeeNextCard] = useState(false);
 
   const impactSectionRef = useRef(null);
   const metricRefs = useRef([]);
@@ -250,6 +252,7 @@ const ConfidoCaseStudy = () => {
 
   return (
     <div className="confido-case-study">
+      <CursorPill isHovering={isHoveringSeeNextCard} text="View case study" />
       {/* Hero Section */}
       <section className="confido-hero-section">
         {/* Hero Before Image - Visual welcome */}
@@ -955,7 +958,12 @@ const ConfidoCaseStudy = () => {
             SEE NEXT
           </h3>
           <div className="confido-see-next-grid" ref={seeNextGridRef}>
-            <Link to="/moodle" className="confido-see-next-card-link">
+            <Link
+              to="/moodle"
+              className="confido-see-next-card-link"
+              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
+              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
+            >
               <div
                 className="confido-see-next-card"
                 ref={(el) => (seeNextCardsRefs.current[0] = el)}
@@ -979,7 +987,12 @@ const ConfidoCaseStudy = () => {
                 </p>
               </div>
             </Link>
-            <Link to="/venmo" className="confido-see-next-card-link">
+            <Link
+              to="/venmo"
+              className="confido-see-next-card-link"
+              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
+              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
+            >
               <div
                 className="confido-see-next-card"
                 ref={(el) => (seeNextCardsRefs.current[1] = el)}
@@ -1003,7 +1016,12 @@ const ConfidoCaseStudy = () => {
                 </p>
               </div>
             </Link>
-            <Link to="/wholefoods" className="confido-see-next-card-link">
+            <Link
+              to="/wholefoods"
+              className="confido-see-next-card-link"
+              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
+              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
+            >
               <div
                 className="confido-see-next-card"
                 ref={(el) => (seeNextCardsRefs.current[2] = el)}

@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useEffect } from "react";
+import React, { useRef, useMemo, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -6,6 +6,7 @@ import useScrollReset from "../../hooks/useScrollReset";
 import { useCountupAnimation } from "../../hooks/useCountupAnimation";
 import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
+import CursorPill from "../../components/CursorPill/CursorPill";
 import "./VenmoCaseStudy.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,6 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 const VenmoCaseStudy = () => {
   // Reset scroll position to top when page loads/refreshes
   useScrollReset();
+  const [isHoveringSeeNextCard, setIsHoveringSeeNextCard] = useState(false);
 
   const impactSectionRef = useRef(null);
   const metricRefs = useRef([]);
@@ -251,6 +253,7 @@ const VenmoCaseStudy = () => {
 
   return (
     <div className="venmo-case-study">
+      <CursorPill isHovering={isHoveringSeeNextCard} text="View case study" />
       {/* Hero Section */}
       <section className="venmo-hero-section">
         {/* Hero Before Image - Visual welcome */}
@@ -807,7 +810,12 @@ const VenmoCaseStudy = () => {
             SEE NEXT
           </h3>
           <div className="venmo-see-next-grid" ref={seeNextGridRef}>
-            <Link to="/moodle" className="venmo-see-next-card-link">
+            <Link
+              to="/moodle"
+              className="venmo-see-next-card-link"
+              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
+              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
+            >
               <div
                 className="venmo-see-next-card"
                 ref={(el) => (seeNextCardsRefs.current[0] = el)}
@@ -831,7 +839,12 @@ const VenmoCaseStudy = () => {
                 </p>
               </div>
             </Link>
-            <Link to="/confido" className="venmo-see-next-card-link">
+            <Link
+              to="/confido"
+              className="venmo-see-next-card-link"
+              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
+              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
+            >
               <div
                 className="venmo-see-next-card"
                 ref={(el) => (seeNextCardsRefs.current[1] = el)}
@@ -855,7 +868,12 @@ const VenmoCaseStudy = () => {
                 </p>
               </div>
             </Link>
-            <Link to="/wholefoods" className="venmo-see-next-card-link">
+            <Link
+              to="/wholefoods"
+              className="venmo-see-next-card-link"
+              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
+              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
+            >
               <div
                 className="venmo-see-next-card"
                 ref={(el) => (seeNextCardsRefs.current[2] = el)}

@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLetterByLetterAnimation } from "../../hooks/useLetterByLetterAnimation";
+import CursorPill from "../CursorPill/CursorPill";
 import "./WorkSection.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -51,6 +52,7 @@ const WorkSection = () => {
   const projectsGridRef = useRef(null);
   const projectCardRefs = useRef([]);
   const videoRefs = useRef([]);
+  const [isHoveringCard, setIsHoveringCard] = useState(false);
 
   useLetterByLetterAnimation({
     titleRef,
@@ -152,6 +154,7 @@ const WorkSection = () => {
 
   return (
     <section id="work" className="work-section">
+      <CursorPill isHovering={isHoveringCard} />
       <div className="work-section-content">
         <h2 ref={titleRef} className="work-section-title">
           Featured Work
@@ -206,6 +209,8 @@ const WorkSection = () => {
                   key={project.id}
                   to="/venmo"
                   className="project-card-link"
+                  onMouseEnter={() => setIsHoveringCard(true)}
+                  onMouseLeave={() => setIsHoveringCard(false)}
                 >
                   <div
                     className="project-card"
@@ -225,6 +230,8 @@ const WorkSection = () => {
                   key={project.id}
                   to="/moodle"
                   className="project-card-link"
+                  onMouseEnter={() => setIsHoveringCard(true)}
+                  onMouseLeave={() => setIsHoveringCard(false)}
                 >
                   <div
                     className="project-card"
@@ -244,6 +251,8 @@ const WorkSection = () => {
                   key={project.id}
                   to="/wholefoods"
                   className="project-card-link"
+                  onMouseEnter={() => setIsHoveringCard(true)}
+                  onMouseLeave={() => setIsHoveringCard(false)}
                 >
                   <div
                     className="project-card"
@@ -263,6 +272,8 @@ const WorkSection = () => {
                   key={project.id}
                   to="/confido"
                   className="project-card-link"
+                  onMouseEnter={() => setIsHoveringCard(true)}
+                  onMouseLeave={() => setIsHoveringCard(false)}
                 >
                   <div
                     className="project-card"

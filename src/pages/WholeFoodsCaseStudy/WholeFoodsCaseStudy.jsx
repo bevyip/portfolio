@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useEffect } from "react";
+import React, { useRef, useMemo, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLenis } from "@studio-freight/react-lenis";
 import { gsap } from "gsap";
@@ -7,6 +7,7 @@ import useScrollReset from "../../hooks/useScrollReset";
 import { useCountupAnimation } from "../../hooks/useCountupAnimation";
 import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
+import CursorPill from "../../components/CursorPill/CursorPill";
 import "./WholeFoodsCaseStudy.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,6 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 const WholeFoodsCaseStudy = () => {
   // Reset scroll position to top when page loads/refreshes
   useScrollReset();
+  const [isHoveringSeeNextCard, setIsHoveringSeeNextCard] = useState(false);
   const lenis = useLenis();
 
   const impactSectionRef = useRef(null);
@@ -240,6 +242,7 @@ const WholeFoodsCaseStudy = () => {
 
   return (
     <div className="wholefoods-case-study">
+      <CursorPill isHovering={isHoveringSeeNextCard} text="View case study" />
       {/* Hero Section */}
       <section className="wholefoods-hero-section">
         {/* Hero Before Image - Visual welcome */}
@@ -954,7 +957,12 @@ const WholeFoodsCaseStudy = () => {
             SEE NEXT
           </h3>
           <div className="wholefoods-see-next-grid" ref={seeNextGridRef}>
-            <Link to="/moodle" className="wholefoods-see-next-card-link">
+            <Link
+              to="/moodle"
+              className="wholefoods-see-next-card-link"
+              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
+              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
+            >
               <div
                 className="wholefoods-see-next-card"
                 ref={(el) => (seeNextCardsRefs.current[0] = el)}
@@ -978,7 +986,12 @@ const WholeFoodsCaseStudy = () => {
                 </p>
               </div>
             </Link>
-            <Link to="/venmo" className="wholefoods-see-next-card-link">
+            <Link
+              to="/venmo"
+              className="wholefoods-see-next-card-link"
+              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
+              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
+            >
               <div
                 className="wholefoods-see-next-card"
                 ref={(el) => (seeNextCardsRefs.current[1] = el)}
@@ -1002,7 +1015,12 @@ const WholeFoodsCaseStudy = () => {
                 </p>
               </div>
             </Link>
-            <Link to="/confido" className="wholefoods-see-next-card-link">
+            <Link
+              to="/confido"
+              className="wholefoods-see-next-card-link"
+              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
+              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
+            >
               <div
                 className="wholefoods-see-next-card"
                 ref={(el) => (seeNextCardsRefs.current[2] = el)}

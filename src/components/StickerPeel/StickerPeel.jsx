@@ -44,6 +44,11 @@ const StickerPeel = ({
     if (!container || !wrapper) return;
 
     const handleMouseDown = (e) => {
+      // Clear reset state to allow peeling again
+      if (wrapper.classList.contains("sticker-reset")) {
+        wrapper.classList.remove("sticker-reset");
+        wrapper.style.animation = "";
+      }
       setIsDragging(true);
       setStartY(e.clientY);
       setCurrentY(e.clientY);
@@ -119,6 +124,11 @@ const StickerPeel = ({
     };
 
     const handleTouchStart = (e) => {
+      // Clear reset state to allow peeling again
+      if (wrapper.classList.contains("sticker-reset")) {
+        wrapper.classList.remove("sticker-reset");
+        wrapper.style.animation = "";
+      }
       setIsDragging(true);
       setStartY(e.touches[0].clientY);
       setCurrentY(e.touches[0].clientY);

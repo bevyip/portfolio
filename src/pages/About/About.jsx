@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
@@ -7,6 +7,7 @@ import StickerPeel from "../../components/StickerPeel/StickerPeel";
 import ArrowToOpenToWork from "../../components/Arrows/ArrowToOpenToWork/ArrowToOpenToWork";
 import PhotoGrid from "../../components/PhotoGrid/PhotoGrid";
 import ExperienceTimeline from "../../components/ExperienceTimeline/ExperienceTimeline";
+import CursorPill from "../../components/CursorPill/CursorPill";
 import { useLetterByLetterAnimation } from "../../hooks/useLetterByLetterAnimation";
 import useScrollReset from "../../hooks/useScrollReset";
 import "./About.css";
@@ -25,6 +26,7 @@ const About = () => {
   const arrowStartRef = useRef(null);
   const rolePillsRef = useRef(null);
   const openToWorkBadgeRef = useRef(null);
+  const [isHoveringSticker, setIsHoveringSticker] = useState(false);
 
   // Reset scroll position to top when page loads/refreshes
   useScrollReset();
@@ -185,6 +187,7 @@ const About = () => {
 
   return (
     <>
+      <CursorPill isHovering={isHoveringSticker} text="Peel me!" />
       <main
         className="min-h-screen relative"
         style={{ backgroundColor: "#0f0f0f" }}
@@ -209,18 +212,28 @@ const About = () => {
 
               {/* First paragraph */}
               <div className="about-paragraph-wrapper">
-                <StickerPeel
-                  imageSrc={purdueLogo}
-                  rotate={-10}
-                  width={70}
-                  className="about-sticker-purdue"
-                />
-                <StickerPeel
-                  imageSrc={salesforceLogo}
-                  rotate={10}
-                  width={80}
-                  className="about-sticker-salesforce"
-                />
+                <div
+                  onMouseEnter={() => setIsHoveringSticker(true)}
+                  onMouseLeave={() => setIsHoveringSticker(false)}
+                >
+                  <StickerPeel
+                    imageSrc={purdueLogo}
+                    rotate={-10}
+                    width={70}
+                    className="about-sticker-purdue"
+                  />
+                </div>
+                <div
+                  onMouseEnter={() => setIsHoveringSticker(true)}
+                  onMouseLeave={() => setIsHoveringSticker(false)}
+                >
+                  <StickerPeel
+                    imageSrc={salesforceLogo}
+                    rotate={10}
+                    width={80}
+                    className="about-sticker-salesforce"
+                  />
+                </div>
                 <p
                   className="text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.6] font-normal"
                   style={{ color: "#fafafa" }}
@@ -267,18 +280,28 @@ const About = () => {
 
               {/* Second paragraph */}
               <div className="about-paragraph-wrapper">
-                <StickerPeel
-                  imageSrc={nyuLogo}
-                  rotate={10}
-                  width={70}
-                  className="about-sticker-nyu"
-                />
-                <StickerPeel
-                  imageSrc={confidoLogo}
-                  rotate={-15}
-                  width={60}
-                  className="about-sticker-confido"
-                />
+                <div
+                  onMouseEnter={() => setIsHoveringSticker(true)}
+                  onMouseLeave={() => setIsHoveringSticker(false)}
+                >
+                  <StickerPeel
+                    imageSrc={nyuLogo}
+                    rotate={10}
+                    width={70}
+                    className="about-sticker-nyu"
+                  />
+                </div>
+                <div
+                  onMouseEnter={() => setIsHoveringSticker(true)}
+                  onMouseLeave={() => setIsHoveringSticker(false)}
+                >
+                  <StickerPeel
+                    imageSrc={confidoLogo}
+                    rotate={-15}
+                    width={60}
+                    className="about-sticker-confido"
+                  />
+                </div>
                 <p
                   className="text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.6] font-normal about-paragraph-2 about-fade-in"
                   style={{ color: "#fafafa" }}
@@ -317,18 +340,28 @@ const About = () => {
 
               {/* Third paragraph */}
               <div className="about-paragraph-wrapper">
-                <StickerPeel
-                  imageSrc={reactLogo}
-                  rotate={-10}
-                  width={70}
-                  className="about-sticker-react"
-                />
-                <StickerPeel
-                  imageSrc={figmaLogo}
-                  rotate={10}
-                  width={80}
-                  className="about-sticker-figma"
-                />
+                <div
+                  onMouseEnter={() => setIsHoveringSticker(true)}
+                  onMouseLeave={() => setIsHoveringSticker(false)}
+                >
+                  <StickerPeel
+                    imageSrc={reactLogo}
+                    rotate={-10}
+                    width={70}
+                    className="about-sticker-react"
+                  />
+                </div>
+                <div
+                  onMouseEnter={() => setIsHoveringSticker(true)}
+                  onMouseLeave={() => setIsHoveringSticker(false)}
+                >
+                  <StickerPeel
+                    imageSrc={figmaLogo}
+                    rotate={10}
+                    width={80}
+                    className="about-sticker-figma"
+                  />
+                </div>
                 <p
                   id="last-blurb-paragraph"
                   className="text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.6] font-normal about-paragraph-3 about-fade-in"
