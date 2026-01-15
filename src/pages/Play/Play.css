@@ -1,0 +1,71 @@
+.play-content {
+  text-align: center;
+}
+
+.play-welcome-text {
+  font-family: "Crimson Pro", serif;
+  /* Responsive font size using clamp: min 0.8rem, preferred 3vw, max 1.3rem */
+  font-size: clamp(0.8rem, 3vw, 1.3rem);
+  line-height: 1.6;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+/* Mobile-specific adjustments - larger text */
+@media (max-width: 640px) {
+  .play-welcome-text {
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    letter-spacing: 0.04em;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+  .play-welcome-text {
+    font-size: clamp(1.1rem, 4.5vw, 1.6rem);
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Title styles */
+.play-title {
+  margin: 1.5rem 0;
+  white-space: nowrap; /* Prevent wrapping to ensure single line */
+  overflow: hidden; /* Handle overflow gracefully */
+}
+
+.play-title-word {
+  font-family: "Crimson Pro", serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  letter-spacing: -0.05em; /* tracking-tighter */
+  white-space: nowrap; /* Prevent individual words from wrapping */
+}
+
+@media (min-width: 768px) {
+  .play-title {
+    margin-bottom: 3rem;
+  }
+  .play-title-word {
+    font-size: 5.5rem;
+    letter-spacing: -0.05em; /* tracking-tighter */
+  }
+}
+
+.play-title-design {
+  font-weight: 700;
+  color: #0f0f0f;
+}
+
+.play-title-joy {
+  font-weight: 500;
+  color: #7dd3fc;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  margin-left: 0.1em;
+}
+
+/* Ensure GSAP pin-spacer starts at top of viewport */
+.pin-spacer {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}

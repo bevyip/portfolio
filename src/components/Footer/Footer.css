@@ -1,0 +1,197 @@
+/* Footer Styles */
+
+.footer {
+  background: #1a1a1a;
+  padding: 80px 60px;
+  position: relative;
+  z-index: 30;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-subtitle {
+  font-size: clamp(14px, 1.1vw, 16px);
+  color: #999;
+  margin-bottom: 24px;
+  font-weight: 400;
+  font-family: "Satoshi", sans-serif;
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Hide overflow if needed */
+}
+
+.footer-title {
+  font-size: clamp(32px, 8.5vw, 120px);
+  font-weight: 700;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 40px;
+  letter-spacing: clamp(-1.5px, -0.15vw, -2px);
+  font-family: "Crimson Pro", serif;
+  overflow: hidden;
+  display: inline-block;
+  padding-bottom: 0.15em; /* Space for descenders like g, p, y */
+  white-space: nowrap; /* Prevent wrapping */
+  max-width: 100%; /* Ensure it respects container */
+}
+
+.footer-title .work {
+  font-style: normal;
+}
+
+.footer-title .me {
+  font-style: italic;
+  color: #999;
+}
+
+/* Split text character styling */
+.footer-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.social-links {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Satoshi", sans-serif;
+}
+
+.social-link .arrow {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.social-link:hover .arrow {
+  transform: translateX(3px) translateY(-3px);
+}
+
+.footer-bio {
+  font-size: 14px;
+  color: #666;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  font-family: "Satoshi", sans-serif;
+}
+
+/* Responsive breakpoints for footer title */
+@media (max-width: 1400px) {
+  .footer-title {
+    font-size: clamp(60px, 8.5vw, 120px);
+    letter-spacing: clamp(-3px, -0.15vw, -2px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .footer-title {
+    font-size: clamp(64px, 8.5vw, 115px);
+    letter-spacing: clamp(-3px, -0.2vw, -2px);
+  }
+}
+
+@media (max-width: 968px) {
+  .footer {
+    padding: 60px 40px;
+  }
+
+  .footer-title {
+    font-size: clamp(56px, 9vw, 88px);
+    margin-bottom: 32px;
+    padding-bottom: 0.15em;
+    letter-spacing: clamp(-2.5px, -0.25vw, -2px);
+  }
+
+  .social-links {
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .social-link {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-title {
+    font-size: clamp(56px, 8.5vw, 72px);
+    letter-spacing: clamp(-2px, -0.3vw, -1.5px);
+  }
+
+  .footer-subtitle {
+    font-size: clamp(11px, 1.8vw, 14px);
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    padding: 48px 24px;
+  }
+
+  .footer-subtitle {
+    font-size: clamp(11px, 2.5vw, 14px);
+    margin-bottom: 20px;
+  }
+
+  .footer-title {
+    font-size: clamp(40px, 8vw, 56px);
+    margin-bottom: 18px;
+    letter-spacing: clamp(-1.5px, -0.25vw, -1px);
+    padding-bottom: 0.15em;
+  }
+
+  .social-links {
+    margin-bottom: 32px;
+  }
+
+  .social-link {
+    font-size: 14px;
+  }
+
+  .footer-bio {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-title {
+    font-size: clamp(44px, 7.5vw, 48px);
+    letter-spacing: clamp(-1px, -0.2vw, -0.5px);
+    margin-bottom: 12px;
+  }
+
+  .footer-subtitle {
+    font-size: clamp(10px, 2.5vw, 11px);
+  }
+
+  .social-link {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer-title {
+    font-size: clamp(40px, 9vw, 50px);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .footer-subtitle {
+    font-size: clamp(8px, 2.5vw, 10px);
+  }
+}

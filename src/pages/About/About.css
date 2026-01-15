@@ -1,0 +1,464 @@
+/* About Page Styles */
+
+/* Prevent horizontal scrollbar */
+main {
+  overflow-x: hidden;
+  position: relative;
+}
+
+@media (max-width: 767px) {
+  main {
+    overflow-y: hidden;
+  }
+}
+
+/* Title styles */
+.about-title {
+  margin: 1.5rem 0;
+  /* Hide initially until SplitText is applied */
+  opacity: 0;
+  visibility: hidden;
+}
+
+.about-title-word {
+  font-family: "Crimson Pro", serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  letter-spacing: -0.05em; /* tracking-tighter */
+}
+
+@media (min-width: 768px) {
+  .about-title {
+    margin-bottom: 3rem;
+  }
+  .about-title-word {
+    font-size: 5.5rem;
+    letter-spacing: -0.05em; /* tracking-tighter */
+  }
+}
+
+.about-title-how {
+  font-weight: 700;
+  line-height: 0.95;
+  color: #fafafa;
+}
+
+.about-title-igothere {
+  font-weight: 500;
+  color: #7dd3fc;
+}
+
+.about-scroll-hint {
+  font-family: "Satoshi", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #999;
+  margin-left: 1rem;
+  font-style: italic;
+  display: inline-block;
+}
+
+@media (max-width: 767px) {
+  .about-scroll-hint {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .about-scroll-hint {
+    font-size: 16px;
+  }
+}
+
+/* Fade-in animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animation classes for sequential fade-in */
+.about-fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Letter-by-letter animation styles for "How I got here" title */
+.about-title-char {
+  display: inline-block;
+}
+
+/* Subtitle appears after title animation completes */
+/* Title animation: "How" (0.8s) + "I got here" (starts at 0.2s, completes ~1.24s) */
+.about-subtitle.about-fade-in {
+  animation-delay: 1.1s; /* Title completes ~1.74s (0.5s start + 1.24s) - 0.64s earlier to maintain relative timing */
+}
+
+/* Paragraphs appear after subtitle completes (0.8s duration) + stagger */
+.about-paragraph-1.about-fade-in {
+  animation-delay: 2.1s; /* Subtitle ends at 1.9s + 0.5s additional buffer */
+}
+
+.about-paragraph-2.about-fade-in {
+  animation-delay: 2.4s; /* Paragraph 1 ends at 2.9s, but stagger 0.3s earlier */
+}
+
+.about-paragraph-3.about-fade-in {
+  animation-delay: 2.7s; /* Paragraph 2 ends at 3.2s, but stagger 0.3s earlier */
+}
+
+/* Scroll hint appears after all paragraphs are visible */
+/* Paragraph 3: delay 2.7s + duration 0.8s = completes at 3.5s */
+.about-scroll-hint.about-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+  animation-delay: 3.6s; /* After paragraph 3 completes + small buffer */
+}
+
+/* Stickers fade in with their paragraphs (matching paragraph delays) */
+.about-sticker-purdue,
+.about-sticker-salesforce {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 2.1s; /* Matches paragraph 1 */
+  animation-fill-mode: forwards;
+}
+
+.about-sticker-nyu,
+.about-sticker-confido {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 2.4s; /* Matches paragraph 2 */
+  animation-fill-mode: forwards;
+}
+
+.about-sticker-react,
+.about-sticker-figma {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 2.7s; /* Matches paragraph 3 */
+  animation-fill-mode: forwards;
+}
+
+/* Stickers should reappear instantly after falling - no animation */
+.sticker-peel-wrapper.sticker-reset,
+.sticker-peel-wrapper.sticker-reset.about-sticker-purdue,
+.sticker-peel-wrapper.sticker-reset.about-sticker-salesforce,
+.sticker-peel-wrapper.sticker-reset.about-sticker-nyu,
+.sticker-peel-wrapper.sticker-reset.about-sticker-confido,
+.sticker-peel-wrapper.sticker-reset.about-sticker-react,
+.sticker-peel-wrapper.sticker-reset.about-sticker-figma {
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+/* Role Pills Section - Figma-inspired styling */
+.about-role-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Open to Work Badge Container */
+.about-open-badge-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Green Circular Badge with blinking animation */
+.about-open-badge-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  /* Dot itself remains fixed size - no scaling */
+}
+
+/* Animated pulsing circle behind the badge */
+.about-open-badge-dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.2);
+  animation: circlePulse 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes circlePulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
+
+/* Open to Work Text */
+.about-open-badge-text {
+  font-family: "Google Sans Code", monospace;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  color: #10b981;
+  text-transform: uppercase;
+  cursor: default;
+}
+
+/* Role Pills Container - Full Width */
+.about-role-pills {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+/* Wider Role Pills - Equal Width */
+.about-role-pill {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  color: #fafafa;
+  background: rgba(250, 250, 250, 0.05);
+  border: 1px solid rgba(250, 250, 250, 0.8);
+  border-radius: 999px;
+  padding: 0.875rem 2rem;
+  flex: 1;
+  cursor: default;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.about-role-pill:hover {
+  background: rgba(250, 250, 250, 0.1);
+  border: 1px solid #fafafa;
+  transform: scale(1.02);
+}
+
+/* Role pills fade-in animation - container fades in first */
+.about-role-pills-fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 3.2s;
+}
+
+/* Individual pill fade-in animations - handled by ScrollTrigger in JS */
+/* Initial state is set by GSAP, no CSS animation needed */
+
+/* Mobile adjustments for role pills */
+@media (max-width: 768px) {
+  .about-role-pills {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .about-role-pill {
+    font-size: 0.9375rem;
+    padding: 0.75rem 1.5rem;
+    flex: none;
+    width: 100%;
+  }
+
+  .about-open-badge-text {
+    font-size: 0.75rem;
+  }
+
+  .about-open-badge-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .about-open-badge-dot::before {
+    width: 16px;
+    height: 16px;
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+  }
+}
+
+/* Ensure section clips falling stickers horizontally */
+section {
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Photo grid section */
+#photo-grid-section {
+  padding-top: 0;
+}
+
+@media (max-width: 767px) {
+  #photo-grid-section {
+    padding-top: 3rem;
+  }
+  
+  #photo-grid-container {
+    margin-top: 3rem !important;
+    padding-top: 3rem !important;
+  }
+}
+
+/* Photo grid section title - "When I'm not coding or designing" */
+.photo-grid-title {
+  font-family: "Crimson Pro", serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #fafafa;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+@media (max-width: 767px) {
+  .photo-grid-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Default cursor for all text */
+.about-content p,
+.about-content span {
+  cursor: default;
+}
+
+/* Company link styles with smooth underline animation */
+.about-company-link {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.about-company-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.about-company-link:hover::after {
+  width: 100%;
+}
+
+/* Paragraph wrapper for sticker positioning */
+.about-paragraph-wrapper {
+  position: relative;
+  overflow: visible;
+}
+
+/* Sticker positioning - using StickerPeel component */
+.about-sticker-purdue,
+.about-sticker-nyu,
+.about-sticker-salesforce,
+.about-sticker-confido,
+.about-sticker-react,
+.about-sticker-figma {
+  position: absolute;
+  z-index: 1;
+  overflow: visible;
+}
+
+/* Paragraph 2 stickers - Purdue and Salesforce */
+.about-sticker-purdue {
+  top: -10px;
+  left: -80px;
+}
+
+.about-sticker-salesforce {
+  top: 40%;
+  right: -80px;
+  transform: translateY(-50%);
+}
+
+/* Paragraph 3 stickers - NYU and Confido */
+.about-sticker-nyu {
+  top: -10px;
+  left: -80px;
+}
+
+.about-sticker-confido {
+  top: 40%;
+  right: -80px;
+  transform: translateY(-50%);
+}
+
+/* Paragraph 4 stickers - React and Figma */
+.about-sticker-react {
+  top: -10px;
+  left: -80px;
+}
+
+.about-sticker-figma {
+  top: 40%;
+  right: -80px;
+  transform: translateY(-50%);
+}
+
+/* Responsive behavior - hide or reposition stickers on smaller screens */
+@media (max-width: 1024px) {
+  .about-sticker-purdue,
+  .about-sticker-nyu,
+  .about-sticker-react {
+    left: -70px;
+  }
+
+  .about-sticker-salesforce,
+  .about-sticker-confido,
+  .about-sticker-figma {
+    right: -70px;
+  }
+
+  .about-sticker-purdue .sticker-image,
+  .about-sticker-nyu .sticker-image,
+  .about-sticker-salesforce .sticker-image,
+  .about-sticker-confido .sticker-image,
+  .about-sticker-react .sticker-image,
+  .about-sticker-figma .sticker-image {
+    width: 50px !important;
+  }
+}
+
+@media (max-width: 425px) {
+  /* Hide all stickers on mobile screens */
+  .about-sticker-purdue,
+  .about-sticker-nyu,
+  .about-sticker-react,
+  .about-sticker-salesforce,
+  .about-sticker-confido,
+  .about-sticker-figma {
+    display: none !important;
+  }
+}
