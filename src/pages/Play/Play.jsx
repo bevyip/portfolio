@@ -3,11 +3,9 @@ import React, {
   useRef,
   useEffect,
   useLayoutEffect,
-  useCallback,
 } from "react";
 import { useLocation } from "react-router-dom";
 import { useLenis } from "@studio-freight/react-lenis";
-import { Scene } from "../../components/Ball/Scene";
 import { GridBackground } from "../../components/GridBackground";
 import BentoGrid from "../../components/Play/BentoGrid";
 import Footer from "../../components/Footer/Footer";
@@ -24,12 +22,9 @@ const Play = () => {
   const lenis = useLenis();
   const { setIsGridVisible: setContextGridVisible, setIsBentoVisible } =
     usePlayPage();
-  const [animationStatus, setAnimationStatus] = useState("PLAYING");
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [animationStatus, setAnimationStatus] = useState("CONTENT_VISIBLE");
   const [isGridVisible, setIsGridVisible] = useState(false);
-  const [gameKey, setGameKey] = useState(0);
   const contentRef = useRef(null);
-  const shadowRef = useRef(null);
   const scrollContainerRef = useRef(null);
   const leftTextRef = useRef(null);
   const rightTextRef = useRef(null);
@@ -39,25 +34,10 @@ const Play = () => {
   const scrollTriggerRef = useRef(null);
 
   useLayoutEffect(() => {
-    // Check if user has seen the animation before
-    const hasSeenAnimation = localStorage.getItem("hasSeenPlayAnimation");
-
-    setIsExpanded(false);
     setIsBentoVisible(false);
-    setGameKey((prev) => prev + 1);
-
-    if (hasSeenAnimation) {
-      // Skip animation and go directly to content
-      setAnimationStatus("CONTENT_VISIBLE");
-      setIsGridVisible(false);
-      setContextGridVisible(false);
-    } else {
-      // First time - show animation
-      setAnimationStatus("PLAYING");
-      // Show grid immediately to avoid white flash
-      setIsGridVisible(true);
-      setContextGridVisible(true);
-    }
+    setAnimationStatus("CONTENT_VISIBLE");
+    setIsGridVisible(false);
+    setContextGridVisible(false);
   }, [location.pathname, setContextGridVisible, setIsBentoVisible]);
 
   useEffect(() => {
@@ -90,31 +70,6 @@ const Play = () => {
     };
   }, [location.pathname, lenis]);
 
-  const handleGridStart = useCallback(() => {
-    setIsGridVisible(true);
-    setContextGridVisible(true);
-  }, [setContextGridVisible]);
-
-  const handleExpand = useCallback(() => {
-    setIsExpanded(true);
-    setIsGridVisible(true);
-    setContextGridVisible(true);
-    setAnimationStatus("EXPANDED");
-  }, [setContextGridVisible]);
-
-  const handleComplete = useCallback(() => {
-    // Mark animation as seen in localStorage
-    localStorage.setItem("hasSeenPlayAnimation", "true");
-
-    window.scrollTo(0, 0);
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-
-    setTimeout(() => {
-      setAnimationStatus("CONTENT_VISIBLE");
-    }, 500);
-  }, []);
 
   // Separate effect to aggressively prevent scroll jumps
   useEffect(() => {
@@ -416,25 +371,6 @@ const Play = () => {
           minHeight: "100vh",
         }}
       >
-        {(animationStatus === "PLAYING" || animationStatus === "EXPANDED") && (
-          <div
-            style={{
-              gridArea: "overlay",
-              zIndex: isExpanded ? 1 : 3,
-              pointerEvents: "none",
-              height: "100%",
-            }}
-          >
-            <Scene
-              key={gameKey}
-              onExpand={handleExpand}
-              onComplete={handleComplete}
-              onGridStart={handleGridStart}
-              shadowRef={shadowRef}
-              isExpanded={isExpanded}
-            />
-          </div>
-        )}
 
         <div
           style={{

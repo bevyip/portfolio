@@ -936,6 +936,8 @@ const Nav = () => {
               ) : (
                 <a
                   href="https://drive.google.com/file/d/1t8BBP__xqK7TDSD1hLv0WFaMLLgeufTK/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={(e) => {
                     e.preventDefault();
                     setIsMobileMenuOpen(false);
