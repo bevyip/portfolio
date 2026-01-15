@@ -22,6 +22,7 @@ export const useCardUnfurling = ({
   options = {},
 }) => {
   const scrollTriggersRef = useRef([]);
+  const timelineRef = useRef(null);
 
   useEffect(() => {
     const {
@@ -31,6 +32,30 @@ export const useCardUnfurling = ({
       minWidth = 768,
       layoutDelay = 100,
     } = options;
+
+    // Reset any existing transforms from previous page navigation
+    const resetCards = () => {
+      if (cardRefs.current && cardRefs.current.length === 3) {
+        cardRefs.current.forEach((card) => {
+          if (card) {
+            // Kill any active tweens on this card
+            gsap.killTweensOf(card);
+            // Reset all transforms to default state
+            gsap.set(card, {
+              x: 0,
+              y: 0,
+              scale: 1,
+              opacity: 1,
+              zIndex: "auto",
+              clearProps: "all", // Clear all GSAP-set properties
+            });
+          }
+        });
+      }
+    };
+
+    // Reset cards immediately when effect runs (in case of navigation)
+    resetCards();
 
     const setupUnfurlingAnimation = () => {
       if (!gridRef.current || !cardRefs.current || cardRefs.current.length !== 3) {
@@ -45,6 +70,9 @@ export const useCardUnfurling = ({
       if (!card1 || !card2 || !card3) {
         return;
       }
+
+      // Reset cards again before setting up animation (in case transforms persisted)
+      resetCards();
 
       // Check if desktop
       if (window.innerWidth >= minWidth) {
@@ -109,11 +137,19 @@ export const useCardUnfurling = ({
               // Set initial collapsed state
               setCollapsedState();
 
+              // Kill any existing timeline
+              if (timelineRef.current) {
+                timelineRef.current.kill();
+              }
+
               // Create scroll-scrubbed timeline for unfurling animation
               const unfurlTimeline = gsap.timeline({
                 paused: true,
                 defaults: { ease: "none" }, // Linear interpolation for smooth scrubbing
               });
+
+              // Store timeline reference for cleanup
+              timelineRef.current = unfurlTimeline;
 
               // Cards start from collapsed state (behind card 2) and unfurl outward
               unfurlTimeline.fromTo(
@@ -265,8 +301,38 @@ export const useCardUnfurling = ({
 
     // Cleanup function
     return () => {
-      scrollTriggersRef.current.forEach((trigger) => trigger.kill());
+      // Kill all ScrollTriggers
+      scrollTriggersRef.current.forEach((trigger) => {
+        if (trigger && !trigger.killed) {
+          trigger.kill();
+        }
+      });
       scrollTriggersRef.current = [];
+
+      // Kill timeline
+      if (timelineRef.current) {
+        timelineRef.current.kill();
+        timelineRef.current = null;
+      }
+
+      // Reset all card transforms to prevent persistence between navigations
+      if (cardRefs.current && cardRefs.current.length === 3) {
+        cardRefs.current.forEach((card) => {
+          if (card) {
+            // Kill any active tweens
+            gsap.killTweensOf(card);
+            // Reset all transforms
+            gsap.set(card, {
+              x: 0,
+              y: 0,
+              scale: 1,
+              opacity: 1,
+              zIndex: "auto",
+              clearProps: "all", // Clear all GSAP-set properties
+            });
+          }
+        });
+      }
     };
     // Only depend on refs, not options object (to avoid unnecessary re-runs)
     // eslint-disable-next-line react-hooks/exhaustive-deps
