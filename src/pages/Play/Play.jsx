@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useLayoutEffect,
-} from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useLenis } from "@studio-freight/react-lenis";
 import { GridBackground } from "../../components/GridBackground";
@@ -69,7 +64,6 @@ const Play = () => {
       }
     };
   }, [location.pathname, lenis]);
-
 
   // Separate effect to aggressively prevent scroll jumps
   useEffect(() => {
@@ -371,7 +365,6 @@ const Play = () => {
           minHeight: "100vh",
         }}
       >
-
         <div
           style={{
             gridArea: "overlay",
