@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/assets/pfp2-D6bN9N8z.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <title>Beverly Yip</title>
+  <script type="module" crossorigin src="/assets/index-BAvCLIoW.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DEHM00Yx.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    // Reset scroll position immediately on page load/refresh (before React loads)
+    (function () {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+
+      // Also reset after a microtask to catch any late restoration
+      setTimeout(function () {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }, 0);
+    })();
+  </script>
+</body>
+
+</html>
