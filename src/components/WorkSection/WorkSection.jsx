@@ -57,9 +57,9 @@ const WorkSection = () => {
   useLetterByLetterAnimation({
     titleRef,
     triggerRef: titleRef,
-    start: "top 70%",
-    end: "top 50%",
-    scrub: 1.5,
+    start: "top 80%",
+    end: "top 40%",
+    scrub: 2.5,
     colorRanges: [{ start: 0, end: 7, color: "#7DD3FC" }],
   });
 

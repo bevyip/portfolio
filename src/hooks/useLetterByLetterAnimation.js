@@ -45,7 +45,9 @@ export const useLetterByLetterAnimation = ({
         for (const range of colorRanges) {
           const inRange =
             i >= range.start &&
-            (range.end === undefined || range.end === Infinity || i <= range.end);
+            (range.end === undefined ||
+              range.end === Infinity ||
+              i <= range.end);
           if (inRange) {
             appliedColor = range.color;
             break;
@@ -57,7 +59,9 @@ export const useLetterByLetterAnimation = ({
         for (const range of fontWeightRanges) {
           const inRange =
             i >= range.start &&
-            (range.end === undefined || range.end === Infinity || i <= range.end);
+            (range.end === undefined ||
+              range.end === Infinity ||
+              i <= range.end);
           if (inRange) {
             span.style.fontWeight = range.fontWeight;
             break;
@@ -74,9 +78,6 @@ export const useLetterByLetterAnimation = ({
       // Force ScrollTrigger refresh
       ScrollTrigger.refresh();
 
-      // Track the maximum progress reached to prevent flickering
-      let maxProgressReached = 0;
-
       // Create ScrollTrigger to animate letters
       scrollTrigger = ScrollTrigger.create({
         trigger: triggerRef.current,
@@ -84,22 +85,9 @@ export const useLetterByLetterAnimation = ({
         end,
         scrub,
         onUpdate: (self) => {
-          // Clamp progress to prevent it from going backwards once animation completes
-          // This prevents flickering when the section is at the top
-          const clampedProgress = Math.max(self.progress, maxProgressReached);
-          maxProgressReached = clampedProgress;
-
-          // If progress is at or near 1.0, ensure all letters are fully visible
-          if (clampedProgress >= 0.99) {
-            charSpans.forEach((span) => {
-              gsap.set(span, { opacity: 1 });
-            });
-            return;
-          }
-
           // Calculate how many letters should be visible based on progress
           const totalChars = charSpans.length;
-          const exactProgress = clampedProgress * totalChars;
+          const exactProgress = self.progress * totalChars;
           const visibleCount = Math.floor(exactProgress);
           const nextLetterProgress = exactProgress - visibleCount;
 
@@ -161,4 +149,3 @@ export const useLetterByLetterAnimation = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [start, end, scrub, colorRanges, fontWeightRanges]);
 };
-
