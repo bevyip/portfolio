@@ -40,12 +40,15 @@ const CursorPill = ({ isHovering, text = "View case study" }) => {
     if (!cursorPill || !cursorPillText) return;
 
     if (isHovering) {
+      // Show the pill container
+      cursorPill.style.display = "block";
+
       // First, set width to auto to get the natural width, then animate from 0
       cursorPillText.style.width = "auto";
       const fullWidth = cursorPillText.offsetWidth;
       cursorPillText.style.width = "0px";
 
-      // Expand: animate from 0 to full width (expands to the right)
+      // Expand: animate from 0 to full width
       gsap.to(cursorPillText, {
         width: fullWidth,
         opacity: 1,
@@ -53,12 +56,16 @@ const CursorPill = ({ isHovering, text = "View case study" }) => {
         ease: "power2.out",
       });
     } else {
-      // Collapse: animate to 0 width (collapses backwards to the left)
+      // Collapse: animate to 0 width
       gsap.to(cursorPillText, {
         width: 0,
         opacity: 0,
         duration: 0.25,
         ease: "power2.in",
+        onComplete: () => {
+          // Hide the pill container after animation completes
+          cursorPill.style.display = "none";
+        },
       });
     }
   }, [isHovering]);
