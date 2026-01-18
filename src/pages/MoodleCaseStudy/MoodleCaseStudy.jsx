@@ -332,7 +332,6 @@ const MoodleCaseStudy = () => {
             </p>
             <div className="moodle-hero-tags">
               <span className="moodle-hero-tag">Mobile</span>
-              <span className="moodle-hero-tag">UX/UI</span>
               <span className="moodle-hero-tag">User Research</span>
               <span className="moodle-hero-tag">AI/ML</span>
             </div>

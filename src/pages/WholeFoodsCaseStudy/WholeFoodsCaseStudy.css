@@ -317,7 +317,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0;
+  margin: 2rem 0 0 0;
   text-align: left;
 }
 
@@ -384,7 +384,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0;
+  margin: 2rem 0 0 0;
 }
 
 .wholefoods-impact-metrics {
@@ -449,7 +449,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .wholefoods-problem-image-container {
@@ -490,7 +490,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 1rem 0;
+  margin: 2rem 0 1rem 0;
 }
 
 .wholefoods-problem-subtitle {
@@ -570,7 +570,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .wholefoods-research-overview {
@@ -674,7 +674,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .wholefoods-solution-overview {
@@ -738,7 +738,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0;
+  margin: 2rem 0 0 0;
 }
 
 .wholefoods-solution-iteration-text {
@@ -766,7 +766,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 1rem 0;
+  margin: 2rem 0 1rem 0;
 }
 
 .wholefoods-solution-item-content {
@@ -845,7 +845,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .wholefoods-takeaways-item {
@@ -897,7 +897,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .wholefoods-next-steps-list {
@@ -947,7 +947,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .wholefoods-see-next-grid {

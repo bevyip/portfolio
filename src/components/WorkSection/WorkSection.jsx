@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,7 +13,7 @@ const projects = [
     id: "moodle-pain-detection",
     title: "Moodle: AI-Powered Feline Pain Detection for Cat Owners",
     role: "Product Designer",
-    tags: ["Mobile", "UX/UI", "User Research", "AI/ML"],
+    tags: ["Mobile", "User Research", "AI/ML"],
     summary:
       "Making clinical-grade pain monitoring accessible to cat owners through intuitive mobile design and privacy-first AI.",
     video: "/work/moodle/thumbnail.mp4",
@@ -22,7 +22,7 @@ const projects = [
     id: "confido-approval-flow",
     title: "Rebuilding Confido's Approval Flow",
     role: "Product Designer & Developer",
-    tags: ["Web", "UX/UI", "Design Systems", "Enterprise Software"],
+    tags: ["Web", "Design Systems", "Enterprise Software"],
     summary:
       "Redesigning approval workflows with smarter logic and clearer audit trails for improved enterprise usability.",
     video: "/work/confido/thumbnail.mp4",
@@ -31,7 +31,7 @@ const projects = [
     id: "venmo-privacy-controls",
     title: "Redesigning Venmo's Privacy Controls",
     role: "Product Designer",
-    tags: ["Mobile", "UX/UI", "User Research", "FinTech"],
+    tags: ["Mobile", "User Research", "FinTech"],
     summary:
       "Transforming Venmo's public-by-default privacy model to help users make informed choices without confusion.",
     video: "/work/venmo/thumbnail.mp4",
@@ -40,7 +40,7 @@ const projects = [
     id: "whole-foods-checkout",
     title: "Improving Whole Foods In-Store Checkout Experience",
     role: "Product Designer",
-    tags: ["Mobile", "UX/UI", "User Research", "Retail Tech"],
+    tags: ["Mobile", "User Research", "Retail Tech"],
     summary:
       "Surfacing a hidden checkout feature for an improved in-store experience by aligning interface design with user mental models.",
     video: "/work/wholefoods/thumbnail.mp4",
@@ -54,13 +54,19 @@ const WorkSection = () => {
   const videoRefs = useRef([]);
   const [isHoveringCard, setIsHoveringCard] = useState(false);
 
+  // Memoize colorRanges to prevent the animation hook from re-running unnecessarily
+  const colorRanges = useMemo(
+    () => [{ start: 0, end: 7, color: "#7DD3FC" }],
+    []
+  );
+
   useLetterByLetterAnimation({
     titleRef,
     triggerRef: titleRef,
     start: "top 80%",
     end: "top 40%",
     scrub: 2.5,
-    colorRanges: [{ start: 0, end: 7, color: "#7DD3FC" }],
+    colorRanges,
   });
 
   // Use Intersection Observer to play videos when they come into view

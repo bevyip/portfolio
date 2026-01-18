@@ -96,11 +96,9 @@ export const useLetterByLetterAnimation = ({
 
           charSpans.forEach((span, index) => {
             if (index < visibleCount) {
-              // Fully visible letters
-              gsap.to(span, {
+              // Fully visible letters - use set() for immediate update during scroll
+              gsap.set(span, {
                 opacity: 1,
-                duration: 0.2,
-                overwrite: "auto",
               });
             } else if (
               index >= visibleCount &&
@@ -122,17 +120,14 @@ export const useLetterByLetterAnimation = ({
 
               opacity = Math.min(1, Math.max(0, opacity));
 
-              gsap.to(span, {
+              // Use set() for immediate update during scroll to prevent flickering
+              gsap.set(span, {
                 opacity: opacity,
-                duration: 0.2,
-                overwrite: "auto",
               });
             } else {
               // Letters not yet reached - fully hidden
-              gsap.to(span, {
+              gsap.set(span, {
                 opacity: 0,
-                duration: 0.2,
-                overwrite: "auto",
               });
             }
           });

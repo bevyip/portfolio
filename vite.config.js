@@ -10,3 +10,4 @@ export default defineConfig({
     outDir: "docs", // Change from 'dist' to 'docs'
   },
 });
+

@@ -291,7 +291,6 @@ const WholeFoodsCaseStudy = () => {
             </p>
             <div className="wholefoods-hero-tags">
               <span className="wholefoods-hero-tag">Mobile</span>
-              <span className="wholefoods-hero-tag">UX/UI</span>
               <span className="wholefoods-hero-tag">User Research</span>
               <span className="wholefoods-hero-tag">Retail Tech</span>
             </div>

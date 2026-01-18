@@ -301,7 +301,6 @@ const ConfidoCaseStudy = () => {
             </p>
             <div className="confido-hero-tags">
               <span className="confido-hero-tag">Web</span>
-              <span className="confido-hero-tag">UX/UI</span>
               <span className="confido-hero-tag">Design Systems</span>
               <span className="confido-hero-tag">Enterprise Software</span>
             </div>

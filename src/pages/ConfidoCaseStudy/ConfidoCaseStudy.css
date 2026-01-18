@@ -317,7 +317,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0;
+  margin: 2rem 0 0 0;
   text-align: left;
 }
 
@@ -374,7 +374,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0;
+  margin: 2rem 0 0 0;
 }
 
 .confido-impact-metrics {
@@ -431,7 +431,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .confido-problem-item {
@@ -451,7 +451,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 1rem 0;
+  margin: 2rem 0 1rem 0;
 }
 
 .confido-problem-item-content {
@@ -530,7 +530,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .confido-research-overview {
@@ -640,7 +640,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .confido-design-approach-item {
@@ -719,7 +719,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .confido-solution-item {
@@ -739,7 +739,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 1rem 0;
+  margin: 2rem 0 1rem 0;
 }
 
 .confido-solution-item-content {
@@ -869,7 +869,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .confido-reflection-item {
@@ -916,7 +916,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .confido-see-next-grid {

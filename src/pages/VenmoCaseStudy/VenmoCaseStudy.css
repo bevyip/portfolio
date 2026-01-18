@@ -316,7 +316,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0;
+  margin: 2rem 0 0 0;
   text-align: left;
 }
 
@@ -373,7 +373,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0;
+  margin: 2rem 0 0 0;
 }
 
 .venmo-impact-metrics {
@@ -424,7 +424,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .venmo-research-overview {
@@ -483,7 +483,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 1rem 0;
+  margin: 2rem 0 1rem 0;
 }
 
 .venmo-research-finding-content {
@@ -584,7 +584,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .venmo-solution-overview {
@@ -633,7 +633,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 1rem 0;
+  margin: 2rem 0 1rem 0;
 }
 
 .venmo-solution-item-content {
@@ -731,7 +731,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .venmo-takeaways-item {
@@ -783,7 +783,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .venmo-next-steps-list {
@@ -833,7 +833,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .venmo-see-next-grid {

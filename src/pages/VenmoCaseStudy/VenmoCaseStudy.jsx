@@ -298,7 +298,6 @@ const VenmoCaseStudy = () => {
             </p>
             <div className="venmo-hero-tags">
               <span className="venmo-hero-tag">Mobile</span>
-              <span className="venmo-hero-tag">UX/UI</span>
               <span className="venmo-hero-tag">User Research</span>
               <span className="venmo-hero-tag">FinTech</span>
             </div>

@@ -23,7 +23,7 @@ const Footer = () => {
         hour12: true,
       };
       const time = now.toLocaleTimeString("en-US", options);
-      setTimeString(`© 2025 | ${time} EST`);
+      setTimeString(`© BEVERLY YIP | ${time} EST`);
     };
 
     updateClock();

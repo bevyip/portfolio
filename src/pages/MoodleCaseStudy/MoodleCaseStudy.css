@@ -316,7 +316,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0;
+  margin: 2rem 0 0 0;
   text-align: left;
 }
 
@@ -431,7 +431,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0;
+  margin: 2rem 0 0 0;
 }
 
 .moodle-impact-metrics {
@@ -488,7 +488,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .moodle-research-overview {
@@ -583,7 +583,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 1rem 0;
+  margin: 2rem 0 1rem 0;
 }
 
 .moodle-research-finding-content {
@@ -635,7 +635,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .moodle-solution-visual-identity {
@@ -758,7 +758,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 1rem 0;
+  margin: 2rem 0 1rem 0;
 }
 
 .moodle-solution-item-content {
@@ -860,7 +860,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .moodle-validation-intro {
@@ -926,6 +926,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
+  margin-top: 2rem;
 }
 
 @media (min-width: 640px) {
@@ -1014,7 +1015,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .moodle-takeaways-item {
@@ -1066,7 +1067,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .moodle-next-steps-list {
@@ -1116,7 +1117,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #666;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .moodle-see-next-grid {
