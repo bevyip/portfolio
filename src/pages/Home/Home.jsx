@@ -4,6 +4,7 @@ import { useLenis } from "@studio-freight/react-lenis";
 import Footer from "../../components/Footer/Footer";
 import LandingSection from "../../components/LandingSection/LandingSection";
 import WorkSection from "../../components/WorkSection/WorkSection";
+import PlayPreviewSection from "../../components/PlayPreviewSection/PlayPreviewSection";
 
 const Home = () => {
   const { hash } = useLocation();
@@ -48,6 +49,7 @@ const Home = () => {
       */}
       <div className="relative z-10 mt-[100vh] bg-[#0f0f0f]">
         <WorkSection />
+        <PlayPreviewSection />
         <Footer />
       </div>
     </div>

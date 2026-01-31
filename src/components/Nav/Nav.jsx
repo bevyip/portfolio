@@ -89,6 +89,7 @@ const Nav = () => {
   const isAboutPage = location.pathname === "/about";
   const { isGridVisible, isBentoVisible } = usePlayPage();
   const [isOverWorkSection, setIsOverWorkSection] = useState(false);
+  const isHoveringPlayPreviewLinkRef = useRef(false);
 
   const shouldUseWhiteText =
     (isPlayPage && isGridVisible && !isBentoVisible) ||
@@ -106,6 +107,7 @@ const Nav = () => {
       const nav = navRef.current;
       const landingSection = document.getElementById("landing");
       const workSection = document.getElementById("work");
+      const playPreviewSection = document.getElementById("play-preview");
 
       if (!nav || !landingSection || !workSection) return;
 
@@ -116,16 +118,27 @@ const Nav = () => {
       // Get section positions
       const landingRect = landingSection.getBoundingClientRect();
       const workRect = workSection.getBoundingClientRect();
+      const playPreviewRect = playPreviewSection?.getBoundingClientRect();
+
+      // Check if nav is over PlayPreviewSection
+      const isOverPlayPreview = playPreviewRect && 
+        playPreviewRect.top <= navBottom && 
+        playPreviewRect.bottom >= navRect.top;
 
       // Check if the work section has scrolled up enough to be behind the nav
       // Since landing is fixed (100vh), when work section top reaches nav bottom,
       // the nav is overlaying the work section (dark background)
       // Also check if nav bottom has passed the landing section bottom
+      // If over PlayPreviewSection and link is NOT hovered (light background), don't use work section logic
+      // If over PlayPreviewSection and link IS hovered (dark background), use light mode
       const isOverWork =
-        workRect.top <= navBottom || navBottom > landingRect.bottom;
+        (workRect.top <= navBottom || navBottom > landingRect.bottom) && 
+        !(isOverPlayPreview && !isHoveringPlayPreviewLinkRef.current);
 
-      // If nav is overlaying work section, use light mode (white text/brighter logo)
-      setIsOverWorkSection(isOverWork);
+      // If nav is overlaying work section (dark background), use light mode (white text/brighter logo)
+      // If nav is overlaying PlayPreviewSection with link hovered (dark background), use light mode
+      // If nav is overlaying PlayPreviewSection without link hovered (light background), use dark mode
+      setIsOverWorkSection(isOverWork || (isOverPlayPreview && isHoveringPlayPreviewLinkRef.current));
     };
 
     // Check on scroll
@@ -138,6 +151,22 @@ const Nav = () => {
       checkOverlay();
     };
 
+    // Track hover state on play-preview-link
+    const playPreviewLink = document.querySelector('.play-preview-link');
+    const handleLinkMouseEnter = () => {
+      isHoveringPlayPreviewLinkRef.current = true;
+      checkOverlay();
+    };
+    const handleLinkMouseLeave = () => {
+      isHoveringPlayPreviewLinkRef.current = false;
+      checkOverlay();
+    };
+
+    if (playPreviewLink) {
+      playPreviewLink.addEventListener('mouseenter', handleLinkMouseEnter);
+      playPreviewLink.addEventListener('mouseleave', handleLinkMouseLeave);
+    }
+
     // Initial check
     checkOverlay();
 
@@ -149,6 +178,10 @@ const Nav = () => {
       return () => {
         lenis.off("scroll", handleScroll);
         window.removeEventListener("resize", handleResize);
+        if (playPreviewLink) {
+          playPreviewLink.removeEventListener('mouseenter', handleLinkMouseEnter);
+          playPreviewLink.removeEventListener('mouseleave', handleLinkMouseLeave);
+        }
       };
     } else {
       window.addEventListener("scroll", handleScroll);
@@ -157,6 +190,10 @@ const Nav = () => {
       return () => {
         window.removeEventListener("scroll", handleScroll);
         window.removeEventListener("resize", handleResize);
+        if (playPreviewLink) {
+          playPreviewLink.removeEventListener('mouseenter', handleLinkMouseEnter);
+          playPreviewLink.removeEventListener('mouseleave', handleLinkMouseLeave);
+        }
       };
     }
   }, [location.pathname, lenis]);

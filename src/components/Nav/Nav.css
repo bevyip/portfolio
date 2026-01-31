@@ -10,11 +10,11 @@ nav {
     rgba(255, 255, 255, 0.01) 60%,
     rgba(255, 255, 255, 0) 100%
   );
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  /* backdrop-filter: blur(3px); */
+  /* -webkit-backdrop-filter: blur(3px); */
   border: none !important;
   box-shadow: none !important;
-  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  transition: background-color 0.3s ease; /* , backdrop-filter 0.3s ease; */
 }
 
 /* Light background mode (when bento grid is visible) */
@@ -26,8 +26,8 @@ nav.nav-light-bg {
     rgba(255, 255, 255, 0.02) 60%,
     rgba(255, 255, 255, 0) 100%
   ) !important;
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  /* backdrop-filter: blur(3px); */
+  /* -webkit-backdrop-filter: blur(3px); */
 }
 
 /* Dark theme: Use darker background when overlaying dark content */
@@ -39,8 +39,8 @@ nav.nav-play-page {
     rgba(15, 15, 15, 0.01) 60%,
     rgba(15, 15, 15, 0) 100%
   );
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  /* backdrop-filter: blur(3px); */
+  /* -webkit-backdrop-filter: blur(3px); */
 }
 
 /* Remove blur on About page */

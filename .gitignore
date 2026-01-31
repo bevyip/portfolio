@@ -22,6 +22,11 @@ dist-ssr
 *.sln
 *.sw?
 
+# Examples folder
+examples
+
+
+
 
 
 
