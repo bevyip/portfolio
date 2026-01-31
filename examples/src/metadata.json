@@ -1,5 +1,0 @@
-{
-  "name": "Playground Scroll Animation",
-  "description": "A recreation of a scroll-based reveal animation using GSAP, Lenis, and React.",
-  "requestFramePermissions": []
-}
