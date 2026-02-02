@@ -67,6 +67,8 @@ class ImageTrailVariant1 {
   constructor(container) {
     this.container = container;
     this.DOM = { el: container };
+    // Get the images container - this is where images are actually positioned
+    this.imagesContainer = this.DOM.el.querySelector('.play-preview__images-container');
     this.images = [...this.DOM.el.querySelectorAll('.play-preview__img')].map(img => new ImageItem(img));
     this.imagesTotal = this.images.length;
     this.imgPosition = 0;
@@ -80,14 +82,16 @@ class ImageTrailVariant1 {
     this.cacheMousePos = { x: 0, y: 0 };
 
     const handlePointerMove = ev => {
-      const rect = this.container.getBoundingClientRect();
+      // Use images container rect for accurate positioning
+      const rect = this.imagesContainer.getBoundingClientRect();
       this.mousePos = getLocalPointerPos(ev, rect);
     };
     container.addEventListener('mousemove', handlePointerMove);
     container.addEventListener('touchmove', handlePointerMove);
 
     const initRender = ev => {
-      const rect = this.container.getBoundingClientRect();
+      // Use images container rect for accurate positioning
+      const rect = this.imagesContainer.getBoundingClientRect();
       this.mousePos = getLocalPointerPos(ev, rect);
       this.cacheMousePos = { ...this.mousePos };
 
