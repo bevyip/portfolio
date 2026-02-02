@@ -193,10 +193,37 @@ const PlayPreviewSection = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Initialize the image trail effect
-    trailInstanceRef.current = new ImageTrailVariant1(containerRef.current);
+    // Only initialize the image trail effect on desktop (screens wider than 1023px)
+    // On tablet and mobile, images are shown in a static scattered grid format
+    const isDesktop = window.innerWidth > 1023;
+    
+    if (isDesktop) {
+      // Initialize the image trail effect
+      trailInstanceRef.current = new ImageTrailVariant1(containerRef.current);
+    }
+
+    // Handle window resize to enable/disable trail effect
+    const handleResize = () => {
+      const isDesktopNow = window.innerWidth > 1023;
+      
+      if (isDesktopNow && !trailInstanceRef.current) {
+        // Switch to desktop: initialize trail
+        trailInstanceRef.current = new ImageTrailVariant1(containerRef.current);
+      } else if (!isDesktopNow && trailInstanceRef.current) {
+        // Switch to mobile/tablet: cleanup trail
+        // Reset all images to default state
+        const images = containerRef.current.querySelectorAll('.play-preview__img');
+        images.forEach(img => {
+          gsap.killTweensOf(img);
+        });
+        trailInstanceRef.current = null;
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
+      window.removeEventListener('resize', handleResize);
       // Cleanup if needed
       if (trailInstanceRef.current) {
         // Remove event listeners by removing the container's event listeners
@@ -359,6 +386,18 @@ const PlayPreviewSection = () => {
         pinSpacing: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
+        onEnter: () => {
+          containerRef.current?.classList.add('is-pinned');
+        },
+        onLeave: () => {
+          containerRef.current?.classList.remove('is-pinned');
+        },
+        onEnterBack: () => {
+          containerRef.current?.classList.add('is-pinned');
+        },
+        onLeaveBack: () => {
+          containerRef.current?.classList.remove('is-pinned');
+        },
         onUpdate: (self) => {
           const pinnedProgress = self.progress; // 0 to 1 as user scrolls through pinned section
           
@@ -427,6 +466,7 @@ const PlayPreviewSection = () => {
   return (
     <section id="play-preview" className="play-preview-section" ref={containerRef}>
       {/* Image trail elements */}
+      <div className="play-preview__images-container">
         {trailImages.map((imageUrl, i) => (
           <div className="play-preview__img" key={i}>
             <div 
@@ -437,6 +477,7 @@ const PlayPreviewSection = () => {
             />
           </div>
         ))}
+      </div>
 
       {/* Text content */}
       <div className="play-preview-content" ref={contentRef}>
