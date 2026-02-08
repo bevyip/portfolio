@@ -6,7 +6,7 @@
   justify-items: center;
   text-align: center;
   width: 100%;
-  max-width: 80rem; /* max-w-7xl = 80rem = 1280px */
+  max-width: 90rem; /* Increased from 80rem = 1440px */
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
   position: relative;
@@ -28,26 +28,34 @@
 /* Hero title - positioned above centered dash */
 .sandbox-hero-title {
   font-family: "Crimson Pro", serif;
-  font-size: clamp(3rem, 4vw, 4rem); /* 48-64px range */
+  font-size: clamp(3rem, 4.5vw, 6rem); /* 48-96px range, increased max again */
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1;
   color: #fafafa;
   margin: 0;
   margin-bottom: clamp(1.5rem, 2.5vh, 2rem); /* Spacing above dash */
   letter-spacing: -0.05em;
-  max-width: clamp(22rem, 40vw, 32rem); /* Slightly wider max-width for better wrapping */
+  max-width: clamp(22rem, 45vw, 48rem); /* Increased max-width for larger screens */
   grid-row: 1;
   align-self: end;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .sandbox-hero-title {
-    max-width: clamp(28rem, 45vw, 36rem);
+    font-size: clamp(3.5rem, 5vw, 5.5rem); /* Increased for tablet */
+    max-width: clamp(28rem, 50vw, 52rem); /* Increased max-width for tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .sandbox-hero-title {
+    font-size: clamp(4rem, 5vw, 6.5rem); /* Increased for 1024px and above */
+    max-width: clamp(32rem, 50vw, 52rem); /* Increased max-width for 1024px and above */
   }
 }
 
 .sandbox-hero-accent {
-  color: #22D3EE; /* Accent color */
+  color: #7dd3fc; /* Accent color */
   font-style: italic;
 }
 
