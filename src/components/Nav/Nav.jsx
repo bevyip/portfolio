@@ -46,12 +46,9 @@ const Nav = () => {
     // Reset navbar color state since we're going to landing section
     setIsOverWorkSection(false);
 
-    // Always update URL to root (remove any hash)
     if (location.pathname === "/") {
       e.preventDefault();
-      // Update URL to root, removing any hash
       window.history.pushState(null, "", "/");
-      // Scroll to top
       if (lenis) {
         lenis.scrollTo(0, {
           duration: 1.2,
@@ -60,7 +57,6 @@ const Nav = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     } else {
-      // Navigate to root and scroll to top
       navigate("/");
       setTimeout(() => {
         if (lenis) {
@@ -77,7 +73,6 @@ const Nav = () => {
   const navItems = [
     { label: "ABOUT", href: "/about", isLink: true },
     { label: "WORK", href: "#work", isLink: false },
-    // { label: "PLAY", href: "/play", isLink: true },
     {
       label: "RESUME",
       href: "https://drive.google.com/file/d/1t8BBP__xqK7TDSD1hLv0WFaMLLgeufTK/view?usp=sharing",
@@ -217,13 +212,8 @@ const Nav = () => {
     const isMoodlePage = location.pathname === "/moodle";
 
     if (isLandingPage) {
-      // Landing page: after "where I design..." animation completes
-      // Text animation: delay 0.3s, left text ~1.2s, right text ("where I design...") ~2.2s
-      // Right text completes around 2.2s after content becomes visible
-      delay = 2; // Appear after subtitle animation
+      delay = 2;
     } else if (isAboutPage) {
-      // About page: after all paragraphs complete
-      // Last paragraph starts at 4s, duration 0.8s, completes at 4.8s
       delay = 3.8;
     } else if (
       isConfidoPage ||
@@ -231,15 +221,11 @@ const Nav = () => {
       isWholeFoodsPage ||
       isMoodlePage
     ) {
-      // Case study pages: after hero-before (1.2s) and hero text (1s) complete
-      // Hero-before completes at 1.2s, hero text starts at 1.2s and completes at 2.2s
       delay = 2.2;
     } else {
-      // Other pages: drop immediately
       delay = 0;
     }
 
-    // Create timeline for navbar animation
     const navTl = gsap.timeline({
       defaults: { ease: "power2.out" },
     });
@@ -391,10 +377,6 @@ const Nav = () => {
 
     if (!navItems || navItems.length === 0 || !hamburger) return;
 
-    // Skip pages with custom ScrollTrigger setups that conflict
-
-    // Only reset navlinks if we're at the top of the page (not scrolled)
-    // This prevents navlinks from reappearing when menu opens while scrolled
     const getScrollPosition = () => {
       if (lenis) {
         return lenis.scroll;
@@ -406,12 +388,10 @@ const Nav = () => {
     const isScrolledDown = currentScrollY > 100;
 
     if (isScrolledDown) {
-      // Keep navlinks hidden if we're scrolled down
       gsap.set(navItems, { x: 100, opacity: 0 });
       Array.from(navItems).forEach((item) => {
         item.style.pointerEvents = "none";
       });
-      // Show hamburger if scrolled down
       gsap.set(hamburger, { opacity: 1, scale: 1, display: "flex" });
       hamburger.style.pointerEvents = "auto";
     } else {
@@ -420,14 +400,12 @@ const Nav = () => {
       hamburger.style.pointerEvents = "none";
     }
 
-    // Ensure hamburger lines are in correct state initially
     const lines = hamburger.querySelectorAll(".hamburger-line");
     if (lines.length >= 2 && !isMobileMenuOpen) {
       gsap.set(lines[0], { rotation: 0, y: 0 });
       gsap.set(lines[1], { rotation: 0, y: 0 });
     }
 
-    // On landing page, use scroll event listener instead of ScrollTrigger to avoid conflicts
     if (location.pathname === "/") {
       let wasScrolledDown = isScrolledDown;
 
@@ -436,7 +414,6 @@ const Nav = () => {
         const scrolled = scrollY > 100;
 
         if (scrolled && !wasScrolledDown) {
-          // Scrolled down - hide navlinks, show hamburger
           if (navItemsTweenRef.current) {
             navItemsTweenRef.current.kill();
           }
@@ -471,7 +448,6 @@ const Nav = () => {
           });
           wasScrolledDown = true;
         } else if (!scrolled && wasScrolledDown) {
-          // Scrolled to top - show navlinks, hide hamburger
           if (navItemsTweenRef.current) {
             navItemsTweenRef.current.kill();
           }
@@ -509,14 +485,12 @@ const Nav = () => {
         }
       };
 
-      // Use Lenis scroll event if available, otherwise window scroll
       if (lenis) {
         lenis.on("scroll", handleScroll);
       } else {
         window.addEventListener("scroll", handleScroll);
       }
 
-      // Initial check
       handleScroll();
 
       return () => {
@@ -536,13 +510,11 @@ const Nav = () => {
       };
     }
 
-    // For all other pages, use ScrollTrigger
     const scrollTrigger = ScrollTrigger.create({
       trigger: "body",
       start: "top top",
       end: "100px top",
       onEnter: () => {
-        // Kill any ongoing animations to prevent overlap
         if (navItemsTweenRef.current) {
           navItemsTweenRef.current.kill();
         }
@@ -550,14 +522,12 @@ const Nav = () => {
           hamburgerTweenRef.current.kill();
         }
 
-        // Reset hamburger lines to default state when showing via scroll (only if menu is closed)
         const lines = hamburger.querySelectorAll(".hamburger-line");
         if (lines.length >= 2 && !isMobileMenuOpen) {
           gsap.set(lines[0], { rotation: 0, y: 0 });
           gsap.set(lines[1], { rotation: 0, y: 0 });
         }
 
-        // Animate navlinks out
         navItemsTweenRef.current = gsap.to(navItems, {
           x: 100,
           opacity: 0,
@@ -573,7 +543,6 @@ const Nav = () => {
           },
         });
 
-        // Animate hamburger in
         hamburgerTweenRef.current = gsap.to(hamburger, {
           opacity: 1,
           scale: 1,
@@ -587,7 +556,6 @@ const Nav = () => {
         });
       },
       onLeaveBack: () => {
-        // Kill any ongoing animations to prevent overlap
         if (navItemsTweenRef.current) {
           navItemsTweenRef.current.kill();
         }
@@ -595,14 +563,12 @@ const Nav = () => {
           hamburgerTweenRef.current.kill();
         }
 
-        // Reset hamburger lines to default state when hiding via scroll
         const lines = hamburger.querySelectorAll(".hamburger-line");
         if (lines.length >= 2 && !isMobileMenuOpen) {
           gsap.set(lines[0], { rotation: 0, y: 0 });
           gsap.set(lines[1], { rotation: 0, y: 0 });
         }
 
-        // Animate hamburger out
         hamburgerTweenRef.current = gsap.to(hamburger, {
           opacity: 0,
           scale: 0.8,
@@ -614,12 +580,10 @@ const Nav = () => {
           },
         });
 
-        // Enable pointer events for navlinks
         Array.from(navItems).forEach((item) => {
           item.style.pointerEvents = "auto";
         });
 
-        // Animate navlinks in
         navItemsTweenRef.current = gsap.to(navItems, {
           x: 0,
           opacity: 1,
@@ -653,7 +617,6 @@ const Nav = () => {
     return () => {
       observer.disconnect();
       scrollTrigger.kill();
-      // Kill any ongoing animations on cleanup
       if (navItemsTweenRef.current) {
         navItemsTweenRef.current.kill();
         navItemsTweenRef.current = null;
@@ -689,37 +652,19 @@ const Nav = () => {
 
   const handleWorkClick = (e) => {
     e.preventDefault();
+    
     if (location.pathname === "/") {
       const workSection = document.getElementById("work");
-      if (workSection) {
-        if (lenis) {
-          lenis.scrollTo(workSection, {
-            offset: 0,
-            duration: 1.2,
-          });
-        } else {
-          workSection.scrollIntoView({ behavior: "smooth" });
-        }
+      if (workSection && lenis) {
+        lenis.scrollTo(workSection, {
+          offset: 0,
+          duration: 1.2,
+        });
       }
-      // Update URL to include hash
       window.history.pushState(null, "", "/#work");
     } else {
-      // Immediately set navbar to white text mode since we're navigating to work section
-      setIsOverWorkSection(true);
+      sessionStorage.setItem("shouldShowDarkHamburger", "true");
       navigate("/#work");
-      setTimeout(() => {
-        const workSection = document.getElementById("work");
-        if (workSection) {
-          if (lenis) {
-            lenis.scrollTo(workSection, {
-              offset: 0,
-              duration: 1.2,
-            });
-          } else {
-            workSection.scrollIntoView({ behavior: "smooth" });
-          }
-        }
-      }, 100);
     }
   };
 
@@ -732,7 +677,6 @@ const Nav = () => {
     );
   };
 
-  // Cleanup effect to resume scrolling on unmount
   useEffect(() => {
     return () => {
       if (isMobileMenuOpen) {
@@ -752,27 +696,21 @@ const Nav = () => {
     const hamburger = hamburgerRef.current;
     const menu = mobileMenuRef.current;
 
-    // Handle scroll lock using Lenis (if available) or body class
     if (newState) {
-      // Stop Lenis scrolling if available
       if (lenis) {
         lenis.stop();
       } else {
-        // Fallback: use body class for non-Lenis scrolling
         document.body.classList.add("mobile-menu-open");
       }
     } else {
-      // Resume Lenis scrolling if available
       if (lenis) {
         lenis.start();
       } else {
-        // Fallback: remove body class
         document.body.classList.remove("mobile-menu-open");
       }
     }
 
     if (hamburger) {
-      // Ensure hamburger is always visible and on top when menu opens
       if (newState) {
         gsap.set(hamburger, { opacity: 1, scale: 1, zIndex: 1000 });
         hamburger.style.pointerEvents = "auto";

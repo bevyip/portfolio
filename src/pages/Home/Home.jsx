@@ -185,9 +185,7 @@ const Home = () => {
             onLeave: () => {
               // Dispatch custom event when pin completes so Footer can create ScrollTriggers
               // This ensures Footer ScrollTriggers are calculated after page length is final
-              console.log("Pin completed - dispatching pinComplete event, scroll position:", window.scrollY, "document height:", document.documentElement.scrollHeight);
               window.dispatchEvent(new CustomEvent('pinComplete'));
-              // Also refresh ScrollTrigger to recalculate all positions
               ScrollTrigger.refresh();
             },
           },
@@ -216,7 +214,7 @@ const Home = () => {
         if (rightTextRef.current) {
           tl.to(rightTextRef.current, {
             opacity: 0,
-            x: -150, // Fade out to the left (matching initial fade-in direction)
+            x: -150,
             duration: 1,
             ease: "power3.out",
           }, 0);
@@ -272,8 +270,8 @@ const Home = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: bentoRef.current,
-            start: "top 50%", // Start when section is halfway up viewport
-            end: "top 10%", // End when section is near top, giving longer scroll distance
+            start: "top 50%",
+            end: "top 10%",
             scrub: 1,
           },
         });
@@ -284,6 +282,39 @@ const Home = () => {
       ctx.revert();
     };
   }, [setIsBentoVisible, setContextGridVisible, lenis]);
+
+  // Handle hash navigation AFTER ScrollTrigger is fully set up
+  useLayoutEffect(() => {
+    const hash = location.hash || window.location.hash;
+    
+    if (hash === '#work' && lenis) {
+      // Wait for ScrollTrigger pin to be created
+      const checkAndScroll = () => {
+        const scrollTriggers = ScrollTrigger.getAll();
+        const pinTrigger = scrollTriggers.find(st => st.pin === contentRef.current);
+        
+        if (pinTrigger) {
+          const workSection = document.getElementById("work");
+          if (workSection) {
+            lenis.scrollTo(workSection, {
+              offset: 0,
+              duration: 0,
+              immediate: true,
+            });
+            
+            sessionStorage.removeItem("navigatingWithHash");
+          }
+        } else {
+          setTimeout(checkAndScroll, 100);
+        }
+      };
+      
+      // Start checking after initial animations (0.3s delay + 1.2s animation = 1.5s total)
+      const scrollToWork = setTimeout(checkAndScroll, 2000);
+      
+      return () => clearTimeout(scrollToWork);
+    }
+  }, [location.hash, lenis]);
 
   return (
     <>

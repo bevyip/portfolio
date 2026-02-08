@@ -61,6 +61,11 @@ const WorkBentoItem = ({ project, gridPosition, onHoverChange }) => {
 
   const CardContent = (
     <>
+      <img
+        src="/label.png"
+        alt="Featured project"
+        className="work-bento-label"
+      />
       <div className="work-bento-image-container">
         {project.video ? (
           <video

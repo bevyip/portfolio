@@ -12,6 +12,35 @@
   position: relative;
 }
 
+.work-bento-label {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  width: 80px;
+  height: auto;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+@media (min-width: 768px) {
+  .work-bento-label {
+    width: 96px;
+    height: auto;
+    top: 1rem;
+    left: 1rem;
+  }
+}
+
+@media (min-width: 1026px) {
+  .work-bento-label {
+    width: 112px;
+    height: auto;
+    top: 1.25rem;
+    left: 1.25rem;
+  }
+}
+
 .work-bento-item:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
