@@ -6,7 +6,6 @@ import { experiences } from "../../data/experiences";
 import TimelineItem from "./TimelineItem";
 import ExperienceArrow from "../Arrows/ExperienceArrow/ExperienceArrow";
 import AwardsGrid from "../AwardsGrid/AwardsGrid";
-import { useLetterByLetterAnimation } from "../../hooks/useLetterByLetterAnimation";
 import "./ExperienceTimeline.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -18,21 +17,53 @@ const ExperienceTimeline = () => {
   const timelineContainerRef = useRef(null);
   const timelineItemRefs = useRef([]);
 
-  // Animate "Where I've been" text letter-by-letter on scroll
-  useLetterByLetterAnimation({
-    titleRef,
-    triggerRef: headerRef,
-    start: "top 90%",
-    end: "top 60%",
-    scrub: 2,
-    colorRanges: [
-      { start: 6, end: Infinity, color: "#7DD3FC" }, // "I've been" starts after "Where " (6 characters)
-    ],
-    fontWeightRanges: [
-      { start: 0, end: 5, fontWeight: "700" }, // "Where " (first 6 characters including space)
-      { start: 6, end: Infinity, fontWeight: "500" }, // "I've been" starts after "Where " (6 characters)
-    ],
-  });
+  // Animate "Where I've been" text with rising up animation (starts when arrow starts)
+  useEffect(() => {
+    if (!titleRef.current || !headerRef.current) return;
+
+    const titleText = titleRef.current.querySelector(".experience-timeline-title-text");
+    if (!titleText) return;
+
+    let scrollTrigger = null;
+
+    // Wait for DOM to be fully ready (especially important on hard refresh)
+    const timeoutId = setTimeout(() => {
+      // Set initial state - text starts below
+      gsap.set(titleText, {
+        opacity: 0,
+        y: "100%",
+      });
+
+      // Force ScrollTrigger refresh to ensure accurate positions
+      ScrollTrigger.refresh();
+
+      // Animate on scroll with rising up effect - starts when arrow starts (top 90%)
+      // scrub: true ensures it reverses when scrolling back up
+      scrollTrigger = ScrollTrigger.create({
+        trigger: headerRef.current,
+        start: "top 90%",
+        end: "top 60%",
+        scrub: true,
+        onUpdate: (self) => {
+          // self.progress automatically handles both scroll directions
+          // 0 when at start, 1 when at end, and smoothly transitions in between
+          const progress = self.progress;
+          gsap.set(titleText, {
+            opacity: progress,
+            y: `${(1 - progress) * 100}%`,
+          });
+        },
+      });
+
+      // Refresh again after creating to ensure it's calculated correctly
+      ScrollTrigger.refresh();
+    }, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (scrollTrigger) scrollTrigger.kill();
+    };
+  }, []);
 
   // Animate ExperienceArrow path drawing in one scroll
   useEffect(() => {
@@ -176,9 +207,13 @@ const ExperienceTimeline = () => {
         <header ref={headerRef} className="md:mb-16">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-10">
             <h2 ref={titleRef} className="experience-timeline-title">
-              <span className="experience-timeline-title-where">Where</span>{" "}
-              <span className="experience-timeline-title-ivebeen">
-                I've been
+              <span className="experience-timeline-title-wrapper">
+                <span className="experience-timeline-title-text">
+                  <span className="experience-timeline-title-where">Where</span>{" "}
+                  <span className="experience-timeline-title-ivebeen">
+                    I've been
+                  </span>
+                </span>
               </span>
             </h2>
             {/* 

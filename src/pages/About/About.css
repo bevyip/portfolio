@@ -15,9 +15,21 @@ main {
 /* Title styles */
 .about-title {
   margin: 1.5rem 0;
-  /* Hide initially until SplitText is applied */
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
+}
+
+.about-title-wrapper {
+  display: inline-block;
+  vertical-align: baseline;
+  padding-right: 0.1em; /* Small padding to prevent last letter cutoff */
+  padding-bottom: 0.5em; /* Prevent descenders (g, p, y) from being clipped */
+  overflow: hidden; /* Required for rising up animation */
+  line-height: 1; /* Ensure consistent baseline alignment */
+}
+
+.about-title-text {
+  display: inline-block;
 }
 
 .about-title-word {
@@ -53,9 +65,13 @@ main {
   font-size: 14px;
   font-weight: 400;
   color: #999;
+  display: inline-block;
+  vertical-align: baseline;
   margin-left: 1rem;
+  padding-bottom: 0.1em; 
   font-style: italic;
   display: inline-block;
+  vertical-align: baseline; /* Ensure proper alignment with title */
 }
 
 @media (max-width: 767px) {
@@ -335,6 +351,15 @@ section {
   color: #fafafa;
   margin-bottom: 2rem;
   line-height: 1.2;
+}
+
+.photo-grid-title-wrapper {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.photo-grid-title-text {
+  display: inline-block;
 }
 
 @media (max-width: 767px) {

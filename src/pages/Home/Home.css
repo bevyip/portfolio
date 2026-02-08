@@ -1,0 +1,172 @@
+/* Hero text container - center-aligned, em dash centered vertically */
+.sandbox-hero-text-container {
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 80rem; /* max-w-7xl = 80rem = 1280px */
+  margin: 0 auto;
+  padding: 0 1.5rem; /* px-6 */
+  position: relative;
+  min-height: 100vh;
+}
+
+@media (min-width: 640px) {
+  .sandbox-hero-text-container {
+    padding: 0 2rem; /* sm:px-8 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .sandbox-hero-text-container {
+    padding: 0 3rem; /* lg:px-12 */
+  }
+}
+
+/* Hero title - positioned above centered dash */
+.sandbox-hero-title {
+  font-family: "Crimson Pro", serif;
+  font-size: clamp(3rem, 4vw, 4rem); /* 48-64px range */
+  font-weight: 400;
+  line-height: 1.2;
+  color: #fafafa;
+  margin: 0;
+  margin-bottom: clamp(1.5rem, 2.5vh, 2rem); /* Spacing above dash */
+  letter-spacing: -0.05em;
+  max-width: clamp(22rem, 40vw, 32rem); /* Slightly wider max-width for better wrapping */
+  grid-row: 1;
+  align-self: end;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sandbox-hero-title {
+    max-width: clamp(28rem, 45vw, 36rem);
+  }
+}
+
+.sandbox-hero-accent {
+  color: #22D3EE; /* Accent color */
+  font-style: italic;
+}
+
+/* Hero em dash - centered vertically, fixed width */
+.sandbox-hero-dash {
+  width: 64px; /* Fixed width - always use desktop size */
+  height: 8px; /* Fixed height - always use desktop size */
+  margin: 0;
+  grid-row: 2;
+  z-index: 20;
+}
+
+/* Hero subtitle - modest, 18-20px, positioned below centered dash */
+.sandbox-hero-subtitle {
+  font-family: "Satoshi", sans-serif;
+  font-size: clamp(1.125rem, 1.25vw, 1.25rem); /* 18-20px */
+  font-weight: 300;
+  line-height: 1.6;
+  color: #ffffff;
+  margin: 0;
+  margin-top: clamp(1.5rem, 2.5vh, 2rem); /* Spacing below dash */
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  grid-row: 3;
+  align-self: start;
+  transform-origin: bottom;
+}
+
+.sandbox-hero-subtitle-line {
+  display: block;
+  overflow: hidden;
+}
+
+.sandbox-hero-subtitle-line-text {
+  display: block;
+}
+
+.sandbox-title {
+  font-family: "Crimson Pro", serif;
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  color: #0f0f0f;
+  margin: 0 0 2rem 0;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.sandbox-title-wrapper {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.sandbox-title-text {
+  display: inline-block;
+}
+
+.sandbox-title-featured {
+  font-weight: 500;
+  color: #7dd3fc;
+  letter-spacing: -0.05em;
+}
+
+.sandbox-title-work {
+  color: #0f0f0f;
+  letter-spacing: -0.05em;
+}
+
+@media (min-width: 768px) {
+  .sandbox-title {
+    font-size: 6rem;
+    letter-spacing: -0.05em;
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Ensure GSAP pin-spacer starts at top of viewport */
+.pin-spacer {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Name container within hero text container */
+.sandbox-hero-text-container .sandbox-name-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Name at bottom of grid background */
+.sandbox-name {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  box-sizing: border-box;
+  /* Keep current font size */
+  font-size: clamp(2rem, 9vw, 20rem);
+}
+
+/* Ensure text never wraps on any screen size */
+@media (max-width: 640px) {
+  .sandbox-name {
+    font-size: clamp(1.5rem, 12vw, 8rem);
+  }
+}
+
+/* Hardcoded grid positions for bento items - desktop only */
+@media (min-width: 1026px) {
+  .bento-item[data-grid-col][data-grid-row-start][data-grid-row-end],
+  .work-bento-item[data-grid-col][data-grid-row-start][data-grid-row-end] {
+    grid-column: var(--grid-col);
+    grid-row: var(--grid-row-start) / var(--grid-row-end);
+  }
+}

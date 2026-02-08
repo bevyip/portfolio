@@ -20,6 +20,15 @@
   line-height: 0.95;
 }
 
+.experience-timeline-title-wrapper {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.experience-timeline-title-text {
+  display: inline-block;
+}
+
 .experience-timeline-title-where {
   font-weight: 700;
   color: #fafafa;

@@ -408,6 +408,6 @@ body.mobile-menu-open {
 .mobile-menu-popover .mobile-menu-link:hover {
   cursor: pointer;
   background-color: transparent;
-  color: #fafafa;
-  opacity: 0.7;
+  color: #7dd3fc; /* Accent color */
+  opacity: 1;
 }

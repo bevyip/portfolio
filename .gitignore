@@ -25,6 +25,10 @@ dist-ssr
 # Examples folder
 examples
 
+# Historical pages (preserved for history tracking)
+src/pages/Play/
+src/pages/OldHome/
+
 
 
 

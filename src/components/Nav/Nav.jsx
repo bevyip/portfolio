@@ -77,7 +77,7 @@ const Nav = () => {
   const navItems = [
     { label: "ABOUT", href: "/about", isLink: true },
     { label: "WORK", href: "#work", isLink: false },
-    { label: "PLAY", href: "/play", isLink: true },
+    // { label: "PLAY", href: "/play", isLink: true },
     {
       label: "RESUME",
       href: "https://drive.google.com/file/d/1t8BBP__xqK7TDSD1hLv0WFaMLLgeufTK/view?usp=sharing",
@@ -85,14 +85,13 @@ const Nav = () => {
     },
   ];
 
-  const isPlayPage = location.pathname === "/play";
   const isAboutPage = location.pathname === "/about";
   const { isGridVisible, isBentoVisible } = usePlayPage();
   const [isOverWorkSection, setIsOverWorkSection] = useState(false);
   const isHoveringPlayPreviewLinkRef = useRef(false);
 
   const shouldUseWhiteText =
-    (isPlayPage && isGridVisible && !isBentoVisible) ||
+    (location.pathname === "/" && isGridVisible && !isBentoVisible) ||
     isAboutPage ||
     isOverWorkSection;
 
@@ -212,26 +211,20 @@ const Nav = () => {
     let delay = 0;
     const isLandingPage = location.pathname === "/";
     const isAboutPage = location.pathname === "/about";
-    const isPlayPage = location.pathname === "/play";
     const isConfidoPage = location.pathname === "/confido";
     const isVenmoPage = location.pathname === "/venmo";
     const isWholeFoodsPage = location.pathname === "/wholefoods";
     const isMoodlePage = location.pathname === "/moodle";
 
     if (isLandingPage) {
-      // Landing page: after Spline, title, and subtitle
-      // Spline: ~1.5s, Title parts: ~1.0s each (overlapping), Subtitle: ~1.2s
-      // Title completes around ~2.0s, subtitle completes around ~2.9s
-      delay = 2.7;
+      // Landing page: after "where I design..." animation completes
+      // Text animation: delay 0.3s, left text ~1.2s, right text ("where I design...") ~2.2s
+      // Right text completes around 2.2s after content becomes visible
+      delay = 2; // Appear after subtitle animation
     } else if (isAboutPage) {
       // About page: after all paragraphs complete
       // Last paragraph starts at 4s, duration 0.8s, completes at 4.8s
       delay = 3.8;
-    } else if (isPlayPage) {
-      // Play page: after "where I design..." animation completes
-      // Text animation: delay 0.3s, left text ~1.2s, right text ("where I design...") ~2.2s
-      // Right text completes around 2.2s after content becomes visible
-      delay = 2.3; // 2.2s + small buffer
     } else if (
       isConfidoPage ||
       isVenmoPage ||
@@ -398,8 +391,7 @@ const Nav = () => {
 
     if (!navItems || navItems.length === 0 || !hamburger) return;
 
-    // Skip Play page - it has its own ScrollTrigger setup that conflicts
-    const isPlayPage = location.pathname === "/play";
+    // Skip pages with custom ScrollTrigger setups that conflict
 
     // Only reset navlinks if we're at the top of the page (not scrolled)
     // This prevents navlinks from reappearing when menu opens while scrolled
@@ -435,8 +427,8 @@ const Nav = () => {
       gsap.set(lines[1], { rotation: 0, y: 0 });
     }
 
-    // On Play page, use scroll event listener instead of ScrollTrigger to avoid conflicts
-    if (isPlayPage) {
+    // On landing page, use scroll event listener instead of ScrollTrigger to avoid conflicts
+    if (location.pathname === "/") {
       let wasScrolledDown = isScrolledDown;
 
       const handleScroll = () => {

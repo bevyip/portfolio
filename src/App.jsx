@@ -7,7 +7,6 @@ import ScrollToTop from "./components/ScrollToTop";
 import BackToTop from "./components/BackToTop/BackToTop";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
-import Play from "./pages/Play/Play";
 import VenmoCaseStudy from "./pages/VenmoCaseStudy/VenmoCaseStudy";
 import MoodleCaseStudy from "./pages/MoodleCaseStudy/MoodleCaseStudy";
 import WholeFoodsCaseStudy from "./pages/WholeFoodsCaseStudy/WholeFoodsCaseStudy";
@@ -69,7 +68,6 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/play" element={<Play />} />
               <Route path="/venmo" element={<VenmoCaseStudy />} />
               <Route path="/moodle" element={<MoodleCaseStudy />} />
               <Route path="/wholefoods" element={<WholeFoodsCaseStudy />} />

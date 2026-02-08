@@ -6,12 +6,14 @@ export const GridBackground = ({
   accentColor = "#22D3EE",
   cellSize = 20,
   fadeSpeed = 0.018,
+  fadeDelay = 800, // Delay in milliseconds before fade starts
 }) => {
   const canvasRef = useRef(null);
   const gridRef = useRef(null);
   const activeCellsRef = useRef(new Map());
   const lastPosRef = useRef(null);
   const animationFrameRef = useRef(null);
+  const flickerTimeoutRefs = useRef([]);
 
   // Handle canvas resize
   useEffect(() => {
@@ -50,7 +52,7 @@ export const GridBackground = ({
           gsap.fromTo(
             gridRef.current,
             { opacity: 0 },
-            { opacity: 1, duration: 0.4, delay: 0.3, ease: "power2.out" }
+            { opacity: 1, duration: 0.4, delay: 0, ease: "power2.out" }
           );
         }
       }, 0);
@@ -61,17 +63,66 @@ export const GridBackground = ({
       gsap.fromTo(
         gridRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 0.4, delay: 0.3, ease: "power2.out" }
+        { opacity: 1, duration: 0.4, delay: 0, ease: "power2.out" }
       );
     } else {
       gsap.set(gridRef.current, { opacity: 0 });
     }
   }, [isVisible]);
 
+  // Calculate color based on diagonal position (top-left to bottom-right)
+  const getCellColor = useCallback((cx, cy, canvasWidth, canvasHeight) => {
+    if (!canvasWidth || !canvasHeight) return { r: 34, g: 211, b: 238 }; // Default to accent color
+    
+    // Calculate position along diagonal (0 = top-left, 1 = bottom-right)
+    // Normalize coordinates to 0-1 range
+    const normalizedX = cx * cellSize / canvasWidth;
+    const normalizedY = cy * cellSize / canvasHeight;
+    
+    // Diagonal position: average of x and y normalized positions
+    // This creates a gradient from top-left (0,0) to bottom-right (1,1)
+    const diagonalProgress = (normalizedX + normalizedY) / 2;
+    
+    // Create RGB spectrum gradient similar to color picker
+    // Start with magenta/pink at top-left, go through cyan to blue at bottom-right
+    // Keeping similar brightness to accent color (#22D3EE)
+    let r, g, b;
+    
+    if (diagonalProgress < 0.33) {
+      // Top-left: Magenta/Pink range
+      const t = diagonalProgress / 0.33;
+      r = Math.round(238 + (255 - 238) * t);
+      g = Math.round(34 + (100 - 34) * t);
+      b = Math.round(238 + (255 - 238) * t);
+    } else if (diagonalProgress < 0.66) {
+      // Middle: Cyan range (accent color area)
+      const t = (diagonalProgress - 0.33) / 0.33;
+      r = Math.round(255 - (255 - 34) * t);
+      g = Math.round(100 + (211 - 100) * t);
+      b = Math.round(255);
+    } else {
+      // Bottom-right: Blue range
+      const t = (diagonalProgress - 0.66) / 0.34;
+      r = Math.round(34 - 34 * t);
+      g = Math.round(211 - (211 - 100) * t);
+      b = Math.round(255 - (255 - 238) * t);
+    }
+    
+    return { r, g, b };
+  }, [cellSize]);
+
   const activateCell = useCallback(
-    (cx, cy, boost = 0, initialOpacity = 0.6) => {
+    (cx, cy, boost = 0, initialOpacity = 0.6, canvasWidth = null, canvasHeight = null) => {
       const key = `${cx}-${cy}`;
       const existing = activeCellsRef.current.get(key);
+      const now = Date.now();
+      
+      // Get color for this cell position
+      const cellColor = getCellColor(cx, cy, canvasWidth, canvasHeight);
+
+      // Reset fade delay if cell is reactivated
+      const shouldResetFade = existing && now < existing.fadeStartTime;
+      const fadeStartTime = shouldResetFade ? (now + fadeDelay) : (existing?.fadeStartTime || (now + fadeDelay));
 
       activeCellsRef.current.set(key, {
         x: cx,
@@ -81,27 +132,40 @@ export const GridBackground = ({
           (existing?.opacity || 0) + initialOpacity + boost
         ),
         hoverTime: existing ? existing.hoverTime + 1 : 1,
+        color: cellColor, // Store color with cell
+        lastActivated: now, // Track when cell was last activated
+        fadeStartTime: fadeStartTime, // Delay before fade starts
       });
     },
-    []
+    [getCellColor, fadeDelay]
   );
 
   const activateBrush = useCallback(
-    (cx, cy, boost = 0) => {
+    (cx, cy, boost = 0, canvasWidth = null, canvasHeight = null) => {
       // 2x2 cluster for a refined trail size
       for (let i = 0; i <= 1; i++) {
         for (let j = 0; j <= 1; j++) {
-          activateCell(cx + i, cy + j, boost, 0.5);
+          activateCell(cx + i, cy + j, boost, 0.5, canvasWidth, canvasHeight);
         }
       }
     },
     [activateCell]
   );
 
+  // Detect if device is mobile/tablet (for disabling touch interactions)
+  const isMobileOrTablet = useCallback(() => {
+    return window.innerWidth < 1024; // Tablet and mobile
+  }, []);
+
   // Attach event listeners to window for global mouse tracking
   useEffect(() => {
     if (!isVisible) {
       lastPosRef.current = null;
+      return;
+    }
+
+    // Skip touch/mouse interactions on mobile/tablet
+    if (isMobileOrTablet()) {
       return;
     }
 
@@ -119,6 +183,9 @@ export const GridBackground = ({
     };
 
     const interpolateLine = (x0, y0, x1, y1) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      
       const dx = Math.abs(x1 - x0);
       const dy = Math.abs(y1 - y0);
       const sx = x0 < x1 ? 1 : -1;
@@ -134,7 +201,7 @@ export const GridBackground = ({
 
       while (count < maxSteps) {
         const { cx, cy } = getCellCoords(currX, currY);
-        activateBrush(cx, cy);
+        activateBrush(cx, cy, 0, canvas.width, canvas.height);
 
         if (Math.abs(currX - x1) < 1 && Math.abs(currY - y1) < 1) break;
         const e2 = 2 * err;
@@ -168,7 +235,7 @@ export const GridBackground = ({
         interpolateLine(lastPosRef.current.x, lastPosRef.current.y, x, y);
       } else {
         const { cx, cy } = getCellCoords(x, y);
-        activateBrush(cx, cy);
+        activateBrush(cx, cy, 0, canvas.width, canvas.height);
       }
 
       lastPosRef.current = { x, y };
@@ -210,7 +277,7 @@ export const GridBackground = ({
 
       for (let i = -1; i <= 1; i++) {
         for (let j = -1; j <= 1; j++) {
-          activateCell(cx + i, cy + j, 0.4, 0.4);
+          activateCell(cx + i, cy + j, 0.4, 0.4, canvas.width, canvas.height);
         }
       }
     };
@@ -240,7 +307,110 @@ export const GridBackground = ({
       window.removeEventListener("mouseleave", handleMouseLeave);
       lastPosRef.current = null;
     };
-  }, [isVisible, activateBrush, cellSize]);
+  }, [isVisible, activateBrush, cellSize, isMobileOrTablet]);
+
+  // Random flickering effect for mobile/tablet (like fireflies/stars)
+  useEffect(() => {
+    if (!isVisible || !isMobileOrTablet()) {
+      // Clear all timeouts
+      flickerTimeoutRefs.current.forEach(timeout => {
+        if (timeout) clearTimeout(timeout);
+      });
+      flickerTimeoutRefs.current = [];
+      return;
+    }
+
+    const canvas = canvasRef.current;
+    if (!canvas || canvas.width === 0 || canvas.height === 0) return;
+
+    const randomFlicker = () => {
+      const maxX = Math.floor(canvas.width / cellSize);
+      const maxY = Math.floor(canvas.height / cellSize);
+      
+      if (maxX === 0 || maxY === 0) return;
+      
+      // Create 1-3 small clumps of cells (slightly less)
+      const numClumps = Math.floor(Math.random() * 3) + 1; // 1-3 clumps
+      
+      for (let clump = 0; clump < numClumps; clump++) {
+        // Random center position for clump
+        const centerX = Math.floor(Math.random() * maxX);
+        const centerY = Math.floor(Math.random() * maxY);
+        
+        // Create small clump: 3-5 cells in a small area
+        const clumpSize = Math.floor(Math.random() * 3) + 3; // 3-5 cells per clump
+        
+        for (let i = 0; i < clumpSize; i++) {
+          // Cells within 1-2 cell radius of center
+          const offsetX = Math.floor((Math.random() - 0.5) * 3); // -1 to 1
+          const offsetY = Math.floor((Math.random() - 0.5) * 3); // -1 to 1
+          
+          const cx = Math.max(0, Math.min(maxX - 1, centerX + offsetX));
+          const cy = Math.max(0, Math.min(maxY - 1, centerY + offsetY));
+          
+          // Moderate intensity
+          const boost = Math.random() * 0.4;
+          const initialOpacity = 0.35 + Math.random() * 0.35; // 0.35-0.7
+          
+          activateCell(cx, cy, boost, initialOpacity, canvas.width, canvas.height);
+          
+          // Make mobile flickers last longer by extending fade delay
+          const key = `${cx}-${cy}`;
+          const cell = activeCellsRef.current.get(key);
+          if (cell) {
+            // Extend fade delay to 1200-1800ms (longer than default 800ms)
+            const extendedDelay = 1200 + Math.random() * 600;
+            cell.fadeStartTime = Date.now() + extendedDelay;
+          }
+        }
+      }
+    };
+
+    // Create multiple independent flicker sequences that overlap
+    const createFlickerSequence = () => {
+      const scheduleNext = () => {
+        const delay = 800 + Math.random() * 1000; // 800-1800ms (slower rate)
+        const timeout = setTimeout(() => {
+          if (isVisible && isMobileOrTablet() && canvasRef.current) {
+            randomFlicker();
+            scheduleNext();
+          } else {
+            // Remove from array when done
+            const index = flickerTimeoutRefs.current.indexOf(timeout);
+            if (index > -1) {
+              flickerTimeoutRefs.current.splice(index, 1);
+            }
+          }
+        }, delay);
+        flickerTimeoutRefs.current.push(timeout);
+      };
+      
+      // Start after navbar slides in (2.3s) with a random initial delay for this sequence
+      const navbarDelay = 2300; // Navbar finishes sliding in around 2.3s
+      const initialDelay = navbarDelay + Math.random() * 500;
+      const timeout = setTimeout(() => {
+        if (isVisible && isMobileOrTablet() && canvasRef.current) {
+          randomFlicker();
+          scheduleNext();
+        }
+      }, initialDelay);
+      flickerTimeoutRefs.current.push(timeout);
+    };
+
+    // Start 3-4 independent flicker sequences for seamless overlapping
+    const numSequences = 3 + Math.floor(Math.random() * 2); // 3-4 sequences
+    for (let i = 0; i < numSequences; i++) {
+      createFlickerSequence();
+    }
+
+    return () => {
+      // Clear all timeouts
+      flickerTimeoutRefs.current.forEach(timeout => {
+        if (timeout) clearTimeout(timeout);
+      });
+      flickerTimeoutRefs.current = [];
+    };
+  }, [isVisible, cellSize, activateCell, isMobileOrTablet]);
 
   const hexToRgb = (hex) => {
     let r = 0,
@@ -290,11 +460,13 @@ export const GridBackground = ({
         }
       }
 
-      // Draw active cells with glow effect
-      const rgb = hexToRgb(accentColor);
-
+      // Draw active cells with glow effect using position-based colors
+      const now = Date.now();
       activeCellsRef.current.forEach((cell, key) => {
-        cell.opacity -= fadeSpeed;
+        // Only start fading after the delay period
+        if (now >= cell.fadeStartTime) {
+          cell.opacity -= fadeSpeed;
+        }
 
         if (cell.opacity <= 0) {
           activeCellsRef.current.delete(key);
@@ -303,6 +475,10 @@ export const GridBackground = ({
 
         const xPos = cell.x * cellSize;
         const yPos = cell.y * cellSize;
+
+        // Use stored color or calculate if not available
+        const cellColor = cell.color || getCellColor(cell.x, cell.y, canvas.width, canvas.height);
+        const rgb = `${cellColor.r}, ${cellColor.g}, ${cellColor.b}`;
 
         const glowRadius = cellSize * 2.0;
         const centerX = xPos + cellSize / 2;
@@ -347,7 +523,7 @@ export const GridBackground = ({
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [cellSize, accentColor, fadeSpeed, isVisible]);
+  }, [cellSize, accentColor, fadeSpeed, isVisible, getCellColor]);
 
   return (
     <div

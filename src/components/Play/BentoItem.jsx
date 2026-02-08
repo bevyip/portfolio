@@ -171,6 +171,7 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
           loop
           muted
           playsInline
+          loading="lazy"
         />
       )}
 

@@ -1,5 +1,4 @@
 import { useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './PlayPreviewSection.css';
@@ -491,11 +490,11 @@ const PlayPreviewSection = () => {
         <p ref={statementRef} className="play-preview-statement">
           Beyond product design, I explore interactive web experiences, 3D animations, generative art, and fabrication—curious experiments where code meets making, built purely for delight.
         </p>
-        <Link to="/play" className="play-preview-link">
+        <div className="play-preview-link">
           <span ref={subtitleRef} className="play-preview-subtitle">
             <span className="play-preview-lets">Enter my</span> <span className="play-preview-play">playground<span className="play-preview-arrow">↗</span></span>
           </span>
-        </Link>
+        </div>
       </div>
     </section>
   );

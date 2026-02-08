@@ -4,27 +4,27 @@
 
 export const playProjects = [
   // Arranged by column order for balanced heights
-  // Column 1: im-listening, ball-slide, cat-box, sprite-map, liquid-silk, sticker-cats, eye-see-you, reflections-of-monet, puzzle-feeder
-  // Column 2: spherical-shopping, binary-pool, snowflake, photo-collage-reveal, bouncing-ball, neumorphic-buttons, cat-figurine, blend-your-cursor, temple-of-fortune
-  // Column 3: emotional-canvas, gravity-text, emoji-ascii-art, picture-distortion, image-to-sprite, five-identical-fishes, pixel-trail, starry-night, whack-a-mouse, words-unseen
+  // Column 1: floral-jukebox, im-listening, cat-box, sprite-map, liquid-silk, sticker-cats, eye-see-you, reflections-of-monet, puzzle-feeder
+  // Column 2: spherical-shopping, binary-pool, snowflake, photo-collage-reveal, neumorphic-buttons, bouncing-ball, cat-figurine, blend-your-cursor, temple-of-fortune
+  // Column 3: emotional-canvas, gravity-text, ball-slide, emoji-ascii-art, picture-distortion, image-to-sprite, five-identical-fishes, pixel-trail, starry-night, whack-a-mouse, words-unseen
   {
-    id: "im-listening",
+    id: "floral-jukebox",
     size: "tall",
-    theme: "black",
-    tags: ["Audio Analysis", "Three.js"],
+    theme: "white",
+    tags: ["React", "Web Audio API"],
     media: {
-      video: "/projects/im-listening/demo.mp4",
+      video: "/projects/floral-jukebox/demo.mp4",
     },
     actions: [
       {
         type: "live",
         tooltip: "View App",
-        url: "https://bevyip.github.io/dream-mirror/",
+        url: "https://floral-jukebox-visualizer.vercel.app/",
       },
       {
         type: "X",
         tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004340156485324979?s=20",
+        url: "https://x.com/bevdesigns/status/2020402263144165869?s=20",
       },
     ],
   },
@@ -76,23 +76,23 @@ export const playProjects = [
     ],
   },
   {
-    id: "ball-slide",
+    id: "im-listening",
     size: "tall",
-    theme: "white",
-    tags: ["GSAP", "Three.js"],
+    theme: "black",
+    tags: ["Audio Analysis", "Three.js"],
     media: {
-      video: "/projects/ball-slide/demo.mp4",
+      video: "/projects/im-listening/demo.mp4",
     },
     actions: [
       {
         type: "live",
         tooltip: "View App",
-        url: "https://ball-slide.vercel.app",
+        url: "https://bevyip.github.io/dream-mirror/",
       },
       {
         type: "X",
         tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004342996427592084?s=20",
+        url: "https://x.com/bevdesigns/status/2004340156485324979?s=20",
       },
     ],
   },
@@ -135,6 +135,27 @@ export const playProjects = [
         type: "X",
         tooltip: "View on X",
         url: "https://x.com/bevdesigns/status/2005463006642401381?s=20",
+      },
+    ],
+  },
+  {
+    id: "ball-slide",
+    size: "tall",
+    theme: "white",
+    tags: ["GSAP", "Three.js"],
+    media: {
+      video: "/projects/ball-slide/demo.mp4",
+    },
+    actions: [
+      {
+        type: "live",
+        tooltip: "View App",
+        url: "https://ball-slide.vercel.app",
+      },
+      {
+        type: "X",
+        tooltip: "View on X",
+        url: "https://x.com/bevdesigns/status/2004342996427592084?s=20",
       },
     ],
   },
@@ -286,23 +307,23 @@ export const playProjects = [
     ],
   },
   {
-    id: "bouncing-ball",
-    size: "tall",
+    id: "neumorphic-buttons",
+    size: "short",
     theme: "white",
-    tags: ["GSAP", "Interaction Design"],
+    tags: ["React", "Interaction Design"],
     media: {
-      iframe: "https://bouncing-ball-gules.vercel.app",
+      video: "/projects/buttons/demo.mp4",
     },
     actions: [
       {
         type: "live",
-        tooltip: "View Live",
-        url: "https://bouncing-ball-gules.vercel.app",
+        tooltip: "View App",
+        url: "https://neumorphic-buttons-psi.vercel.app/",
       },
       {
         type: "X",
         tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004352789703778514?s=20",
+        url: "https://x.com/bevdesigns/status/2004346763373871338?s=20",
       },
     ],
   },
@@ -349,23 +370,23 @@ export const playProjects = [
     ],
   },
   {
-    id: "neumorphic-buttons",
-    size: "short",
+    id: "bouncing-ball",
+    size: "tall",
     theme: "white",
-    tags: ["React", "Interaction Design"],
+    tags: ["GSAP", "Interaction Design"],
     media: {
-      video: "/projects/buttons/demo.mp4",
+      iframe: "https://bouncing-ball-gules.vercel.app",
     },
     actions: [
       {
         type: "live",
-        tooltip: "View App",
-        url: "https://neumorphic-buttons-psi.vercel.app/",
+        tooltip: "View Live",
+        url: "https://bouncing-ball-gules.vercel.app",
       },
       {
         type: "X",
         tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004346763373871338?s=20",
+        url: "https://x.com/bevdesigns/status/2004352789703778514?s=20",
       },
     ],
   },
@@ -592,6 +613,22 @@ export const playProjects = [
         type: "github",
         tooltip: "View Code",
         url: "https://github.com/bevyip/words-unseen",
+      },
+    ],
+  },
+  {
+    id: "black-market",
+    size: "tall",
+    theme: "white",
+    tags: ["React", "Creative Coding"],
+    media: {
+      image: "/projects/black-market/thumbnail1.png",
+    },
+    actions: [
+      {
+        type: "live",
+        tooltip: "View App",
+        url: "https://black-market.vercel.app",
       },
     ],
   },

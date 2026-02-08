@@ -1,18 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
 import Footer from "../../components/Footer/Footer";
 import StickerPeel from "../../components/StickerPeel/StickerPeel";
 import ArrowToOpenToWork from "../../components/Arrows/ArrowToOpenToWork/ArrowToOpenToWork";
 import PhotoGrid from "../../components/PhotoGrid/PhotoGrid";
 import ExperienceTimeline from "../../components/ExperienceTimeline/ExperienceTimeline";
 import CursorPill from "../../components/CursorPill/CursorPill";
-import { useLetterByLetterAnimation } from "../../hooks/useLetterByLetterAnimation";
 import useScrollReset from "../../hooks/useScrollReset";
+import { useLetterByLetterAnimation } from "../../hooks/useLetterByLetterAnimation";
 import "./About.css";
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+gsap.registerPlugin(ScrollTrigger);
 import purdueLogo from "../../assets/img/logo-stickers/purdue-logo.png";
 import salesforceLogo from "../../assets/img/logo-stickers/salesforce-logo.png";
 import nyuLogo from "../../assets/img/logo-stickers/nyu-logo.png";
@@ -31,119 +30,49 @@ const About = () => {
   // Reset scroll position to top when page loads/refreshes
   useScrollReset();
 
-  // Animate "How I got here" title with letter-by-letter animation
+  // Animate "How I got here" title with rising up animation (like home page subtitle)
   useEffect(() => {
     const titleElement = howIGotHereTitleRef.current;
     if (!titleElement) return;
 
-    const howSpan = titleElement.querySelector(".about-title-how");
-    const igothereSpan = titleElement.querySelector(".about-title-igothere");
+    const titleText = titleElement.querySelector(".about-title-text");
+    if (!titleText) return;
 
-    if (!howSpan || !igothereSpan) return;
+    // Set initial state - text starts below (like home page subtitle)
+    gsap.set(titleText, {
+      opacity: 0,
+      y: "100%",
+    });
 
-    let howSplitInstance = null;
-    let igothereSplitInstance = null;
-    let scrollTrigger = null;
-    let tl = null;
-
-    // Wait a bit to ensure layout is settled
-    const timeoutId = setTimeout(() => {
-      // Refresh ScrollTrigger to recalculate positions
-      ScrollTrigger.refresh();
-
-      // Split each span separately into characters
-      howSplitInstance = new SplitText(howSpan, {
-        type: "chars",
-        charsClass: "about-title-char",
-      });
-
-      igothereSplitInstance = new SplitText(igothereSpan, {
-        type: "chars",
-        charsClass: "about-title-char",
-      });
-
-      // Set initial state - all characters hidden
-      gsap.set(howSplitInstance.chars, {
-        opacity: 0,
-        y: 40,
-      });
-      gsap.set(igothereSplitInstance.chars, {
-        opacity: 0,
-        y: 40,
-      });
-
-      // NOW show the title element (after SplitText is applied and chars are hidden)
-      gsap.set(titleElement, {
-        opacity: 1,
-        visibility: "visible",
-      });
-
-      // Create a timeline that can be reversed
-      tl = gsap.timeline({ paused: true });
-
-      // Animate "How" first
-      tl.to(howSplitInstance.chars, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.03,
-        ease: "power2.out",
-      });
-
-      // Animate "I got here" to start before "How" finishes for continuous flow
-      tl.to(
-        igothereSplitInstance.chars,
-        {
+    // Animate on scroll with rising up effect (like home page subtitle)
+    const scrollTrigger = ScrollTrigger.create({
+      trigger: titleElement,
+      start: "top 80%",
+      once: true,
+      onEnter: () => {
+        gsap.to(titleText, {
           opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.03,
+          y: "0%",
+          duration: 1.2,
           ease: "power2.out",
-        },
-        "-=0.8"
-      );
-
-      // Animate on scroll - only once, no reverse
-      scrollTrigger = ScrollTrigger.create({
-        trigger: titleElement,
-        start: "top 80%",
-        once: true,
-        onEnter: () => {
-          tl.play();
-        },
-      });
-    }, 500);
+        });
+      },
+    });
 
     return () => {
-      clearTimeout(timeoutId);
       if (scrollTrigger) scrollTrigger.kill();
-      if (tl) tl.kill();
-      if (howSplitInstance) {
-        try {
-          howSplitInstance.revert();
-        } catch (e) {
-          // Ignore revert errors
-        }
-      }
-      if (igothereSplitInstance) {
-        try {
-          igothereSplitInstance.revert();
-        } catch (e) {
-          // Ignore revert errors
-        }
-      }
     };
   }, []);
 
-  // Animate title letters fading in on scroll
+  // Animate photo grid title with letter-by-letter animation
   useLetterByLetterAnimation({
-    titleRef,
+    titleRef: titleRef,
     triggerRef: titleRef,
-    start: "top 55%", // Slightly later trigger for tiny delay
+    start: "top 55%",
     end: "top 20%",
     scrub: 2,
     colorRanges: [
-      { start: 9, end: 11, color: "#7DD3FC" }, // "not" characters
+      { start: 9, end: 11, color: "#7DD3FC" }, // "not" should be blue (positions 9-11 after "When I'm ")
     ],
   });
 
@@ -201,9 +130,13 @@ const About = () => {
             <div className="space-y-6 md:space-y-8 about-content">
               {/* Title */}
               <h1 ref={howIGotHereTitleRef} className="about-title">
-                <span className="about-title-word about-title-how">How </span>
-                <span className="about-title-word about-title-igothere">
-                  I got here
+                <span className="about-title-wrapper">
+                  <span className="about-title-text">
+                    <span className="about-title-word about-title-how">How </span>
+                    <span className="about-title-word about-title-igothere">
+                      I got here
+                    </span>
+                  </span>
                 </span>
                 <span className="about-scroll-hint about-fade-in">
                   (scroll down ↓)
@@ -449,8 +382,12 @@ const About = () => {
               }}
               className="photo-grid-title"
             >
-              When I'm <span style={{ color: "#7DD3FC" }}>not</span> coding or
-              designing,
+              <span className="photo-grid-title-wrapper">
+                <span className="photo-grid-title-text">
+                  When I'm <span style={{ color: "#7DD3FC" }}>not</span> coding or
+                  designing,
+                </span>
+              </span>
             </h2>
             <PhotoGrid />
           </div>

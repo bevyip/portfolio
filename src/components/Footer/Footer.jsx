@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
@@ -7,6 +8,8 @@ import "./Footer.css";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const Footer = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
   const [timeString, setTimeString] = useState("Loading...");
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
@@ -42,8 +45,6 @@ const Footer = () => {
 
     // Wait a bit to ensure DOM is ready
     const timeoutId = setTimeout(() => {
-      // REMOVED: ScrollTrigger.refresh() - parent page handles this
-
       splitInstance = new SplitText(titleElement, {
         type: "chars",
         charsClass: "footer-char",
@@ -63,16 +64,64 @@ const Footer = () => {
         ease: "power3.out",
       });
 
-      scrollTrigger = ScrollTrigger.create({
-        trigger: titleElement,
-        start: "top 80%",
-        onEnter: () => {
-          tl.play();
-        },
-        onLeaveBack: () => {
-          tl.reverse();
-        },
-      });
+      // For home page, calculate start based on distance from document end
+      let startValue;
+      if (isHomePage) {
+        // Wait for pinComplete event to ensure page length is final
+        const handlePinComplete = () => {
+          const docHeight = document.documentElement.scrollHeight;
+          const viewportHeight = window.innerHeight;
+          const elementRect = titleElement.getBoundingClientRect();
+          const elementTop = elementRect.top + window.scrollY;
+          
+          // Calculate when element top should be at 90% of viewport from top (trigger later)
+          // We want: scrollY + viewportHeight * 0.9 = elementTop
+          // So: scrollY = elementTop - viewportHeight * 0.9
+          // Distance from end: docHeight - (elementTop - viewportHeight * 0.9)
+          const targetScrollY = elementTop - (viewportHeight * 0.9);
+          const distanceFromEnd = docHeight - targetScrollY;
+          
+          startValue = `bottom ${distanceFromEnd}px`;
+          
+          if (scrollTrigger) scrollTrigger.kill();
+          scrollTrigger = ScrollTrigger.create({
+            trigger: titleElement,
+            start: startValue,
+            invalidateOnRefresh: true,
+            onEnter: () => {
+              console.log("Footer title animation fired - scroll position:", window.scrollY);
+              tl.play();
+            },
+            onLeaveBack: () => {
+              tl.reverse();
+            },
+          });
+          ScrollTrigger.refresh();
+        };
+        
+        window.addEventListener('pinComplete', handlePinComplete);
+        
+        // Fallback: create after delay if pinComplete never fires
+        setTimeout(() => {
+          if (!scrollTrigger) {
+            handlePinComplete();
+          }
+        }, 2000);
+      } else {
+        // For other pages, use standard approach
+        startValue = "top 80%";
+        scrollTrigger = ScrollTrigger.create({
+          trigger: titleElement,
+          start: startValue,
+          invalidateOnRefresh: true,
+          onEnter: () => {
+            tl.play();
+          },
+          onLeaveBack: () => {
+            tl.reverse();
+          },
+        });
+      }
     }, 100);
 
     return () => {
@@ -87,7 +136,7 @@ const Footer = () => {
         }
       }
     };
-  }, []);
+  }, [isHomePage]);
 
   // Animate subtitle on scroll
   useEffect(() => {
@@ -98,8 +147,6 @@ const Footer = () => {
     let tl = null;
 
     const timeoutId = setTimeout(() => {
-      // REMOVED: ScrollTrigger.refresh() - parent page handles this
-
       gsap.set(subtitleElement, {
         opacity: 0,
         y: 20,
@@ -113,16 +160,57 @@ const Footer = () => {
         ease: "power3.out",
       });
 
-      scrollTrigger = ScrollTrigger.create({
-        trigger: subtitleElement,
-        start: "top 80%",
-        onEnter: () => {
-          tl.play();
-        },
-        onLeaveBack: () => {
-          tl.reverse();
-        },
-      });
+      // For home page, calculate start based on distance from document end
+      let startValue;
+      if (isHomePage) {
+        const handlePinComplete = () => {
+          const docHeight = document.documentElement.scrollHeight;
+          const viewportHeight = window.innerHeight;
+          const elementRect = subtitleElement.getBoundingClientRect();
+          const elementTop = elementRect.top + window.scrollY;
+          
+          // Calculate when element top should be at 90% of viewport from top (trigger later)
+          const targetScrollY = elementTop - (viewportHeight * 0.9);
+          const distanceFromEnd = docHeight - targetScrollY;
+          
+          startValue = `bottom ${distanceFromEnd}px`;
+          
+          if (scrollTrigger) scrollTrigger.kill();
+          scrollTrigger = ScrollTrigger.create({
+            trigger: subtitleElement,
+            start: startValue,
+            invalidateOnRefresh: true,
+            onEnter: () => {
+              console.log("Footer subtitle animation fired - scroll position:", window.scrollY);
+              tl.play();
+            },
+            onLeaveBack: () => {
+              tl.reverse();
+            },
+          });
+          ScrollTrigger.refresh();
+        };
+        
+        window.addEventListener('pinComplete', handlePinComplete);
+        setTimeout(() => {
+          if (!scrollTrigger) {
+            handlePinComplete();
+          }
+        }, 2000);
+      } else {
+        startValue = "top 80%";
+        scrollTrigger = ScrollTrigger.create({
+          trigger: subtitleElement,
+          start: startValue,
+          invalidateOnRefresh: true,
+          onEnter: () => {
+            tl.play();
+          },
+          onLeaveBack: () => {
+            tl.reverse();
+          },
+        });
+      }
     }, 100);
 
     return () => {
@@ -130,7 +218,7 @@ const Footer = () => {
       if (scrollTrigger) scrollTrigger.kill();
       if (tl) tl.kill();
     };
-  }, []);
+  }, [isHomePage]);
 
   // Animate social links on scroll
   useEffect(() => {
@@ -144,8 +232,6 @@ const Footer = () => {
     let tl = null;
 
     const timeoutId = setTimeout(() => {
-      // REMOVED: ScrollTrigger.refresh() - parent page handles this
-
       gsap.set(links, {
         opacity: 0,
         y: 20,
@@ -160,16 +246,57 @@ const Footer = () => {
         ease: "power2.out",
       });
 
-      scrollTrigger = ScrollTrigger.create({
-        trigger: socialLinksContainer,
-        start: "top 90%",
-        onEnter: () => {
-          tl.play();
-        },
-        onLeaveBack: () => {
-          tl.reverse();
-        },
-      });
+      // For home page, calculate start based on distance from document end
+      let startValue;
+      if (isHomePage) {
+        const handlePinComplete = () => {
+          const docHeight = document.documentElement.scrollHeight;
+          const viewportHeight = window.innerHeight;
+          const elementRect = socialLinksContainer.getBoundingClientRect();
+          const elementTop = elementRect.top + window.scrollY;
+          
+          // Calculate when element top should be at 98% of viewport from top (trigger later)
+          const targetScrollY = elementTop - (viewportHeight * 0.98);
+          const distanceFromEnd = docHeight - targetScrollY;
+          
+          startValue = `bottom ${distanceFromEnd}px`;
+          
+          if (scrollTrigger) scrollTrigger.kill();
+          scrollTrigger = ScrollTrigger.create({
+            trigger: socialLinksContainer,
+            start: startValue,
+            invalidateOnRefresh: true,
+            onEnter: () => {
+              console.log("Footer social links animation fired - scroll position:", window.scrollY);
+              tl.play();
+            },
+            onLeaveBack: () => {
+              tl.reverse();
+            },
+          });
+          ScrollTrigger.refresh();
+        };
+        
+        window.addEventListener('pinComplete', handlePinComplete);
+        setTimeout(() => {
+          if (!scrollTrigger) {
+            handlePinComplete();
+          }
+        }, 2000);
+      } else {
+        startValue = "top 90%";
+        scrollTrigger = ScrollTrigger.create({
+          trigger: socialLinksContainer,
+          start: startValue,
+          invalidateOnRefresh: true,
+          onEnter: () => {
+            tl.play();
+          },
+          onLeaveBack: () => {
+            tl.reverse();
+          },
+        });
+      }
     }, 100);
 
     return () => {
@@ -177,7 +304,7 @@ const Footer = () => {
       if (scrollTrigger) scrollTrigger.kill();
       if (tl) tl.kill();
     };
-  }, []);
+  }, [isHomePage]);
 
   return (
     <footer id="contact" className="footer">
@@ -233,3 +360,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
