@@ -284,6 +284,9 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-context-title {
@@ -319,6 +322,9 @@
   color: #666;
   margin: 2rem 0 0 0;
   text-align: left;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-context-statement-content {
@@ -329,6 +335,9 @@
   max-width: 36rem;
   margin-left: auto;
   margin-right: auto;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-context-statement-question-group {
@@ -362,6 +371,9 @@
 .wholefoods-context-image-container {
   width: 100%;
   margin-top: 0.5rem;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-context-image {
@@ -385,6 +397,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 0 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-impact-metrics {
@@ -397,6 +412,9 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-impact-value {
@@ -450,11 +468,17 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 2rem 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-problem-image-container {
   width: 100%;
   margin-top: 1rem;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-problem-image {
@@ -502,6 +526,9 @@
   margin: 0 0 1rem 0;
   letter-spacing: -0.05em;
   text-align: center;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-problem-overview {
@@ -571,6 +598,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 2rem 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-research-overview {
@@ -598,6 +628,9 @@
   color: #0f0f0f;
   margin: 0;
   letter-spacing: -0.05em;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-research-overview-text {
@@ -606,12 +639,18 @@
   color: #0f0f0f;
   margin: 0;
   font-weight: 300;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-research-image-container {
   width: 100%;
   margin-top: 0;
   margin-bottom: 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-research-image {
@@ -648,6 +687,9 @@
   font-weight: 300;
   text-align: center;
   width: 100%;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 /* Solution Section */
@@ -675,6 +717,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 2rem 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-solution-overview {
@@ -692,6 +737,9 @@
   color: #0f0f0f;
   margin: 0;
   letter-spacing: -0.05em;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-solution-overview-text {
@@ -700,11 +748,17 @@
   color: #0f0f0f;
   margin: 0;
   font-weight: 300;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-solution-image-container {
   width: 100%;
   margin-top: 0.5rem;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-solution-image {
@@ -739,6 +793,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 0 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-solution-iteration-text {
@@ -747,6 +804,9 @@
   color: #0f0f0f;
   margin: 0;
   font-weight: 300;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-solution-item {
@@ -767,6 +827,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 1rem 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-solution-item-content {
@@ -777,6 +840,9 @@
   max-width: 36rem;
   margin-left: auto;
   margin-right: auto;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-solution-item-description {
@@ -800,6 +866,9 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-solution-video {
@@ -819,6 +888,9 @@
   color: #0f0f0f;
   margin: 0;
   font-weight: 300;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-solution-caption-bold {
@@ -846,6 +918,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 2rem 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-takeaways-item {
@@ -853,6 +928,9 @@
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 2rem;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-takeaways-item:last-child {
@@ -898,6 +976,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 2rem 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-next-steps-list {
@@ -914,6 +995,9 @@
   padding-left: 1.5rem;
   position: relative;
   font-weight: 300;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-next-steps-item::before {
@@ -948,6 +1032,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 2rem 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .wholefoods-see-next-grid {

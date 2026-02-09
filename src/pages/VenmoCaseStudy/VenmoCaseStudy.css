@@ -283,6 +283,9 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-context-title {
@@ -318,6 +321,9 @@
   color: #666;
   margin: 2rem 0 0 0;
   text-align: left;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-context-statement-content {
@@ -328,6 +334,9 @@
   max-width: 36rem;
   margin-left: auto;
   margin-right: auto;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-context-statement-text {
@@ -351,6 +360,9 @@
 .venmo-context-image-container {
   width: 100%;
   margin-top: 0.5rem;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-context-image {
@@ -374,6 +386,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 0 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-impact-metrics {
@@ -386,6 +401,9 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-impact-value {
@@ -425,6 +443,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 2rem 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-research-overview {
@@ -442,11 +463,17 @@
   color: #0f0f0f;
   margin: 0;
   letter-spacing: -0.05em;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-research-image-container {
   width: 100%;
   margin-top: 0.5rem;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-research-image {
@@ -484,6 +511,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 1rem 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-research-finding-content {
@@ -494,6 +524,9 @@
   max-width: 36rem;
   margin-left: auto;
   margin-right: auto;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-research-finding-description {
@@ -585,6 +618,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 2rem 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-solution-overview {
@@ -602,11 +638,17 @@
   color: #0f0f0f;
   margin: 0;
   letter-spacing: -0.05em;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-solution-image-container {
   width: 100%;
   margin-top: 0.5rem;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-solution-image {
@@ -634,6 +676,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 1rem 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-solution-item-content {
@@ -644,6 +689,9 @@
   max-width: 36rem;
   margin-left: auto;
   margin-right: auto;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-solution-item-description {
@@ -667,6 +715,9 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-solution-video-container::before {
@@ -705,6 +756,9 @@
   color: #0f0f0f;
   margin: 0;
   font-weight: 300;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-solution-caption-bold {
@@ -732,6 +786,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 2rem 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-takeaways-item {
@@ -739,6 +796,9 @@
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 2rem;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-takeaways-item:last-child {
@@ -784,6 +844,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 2rem 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-next-steps-list {
@@ -800,6 +863,9 @@
   padding-left: 1.5rem;
   position: relative;
   font-weight: 300;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-next-steps-item::before {
@@ -834,6 +900,9 @@
   letter-spacing: 0.05em;
   color: #666;
   margin: 2rem 0 2rem 0;
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .venmo-see-next-grid {

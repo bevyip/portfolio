@@ -20,7 +20,6 @@ const ConfidoCaseStudy = () => {
   const metricRefs = useRef([]);
 
   // Refs for scroll animations
-  const heroContentRef = useRef(null);
   const contextWhatIsConfidoRef = useRef(null);
   const contextMyRoleRef = useRef(null);
   const contextImpactTitleRef = useRef(null);
@@ -109,23 +108,8 @@ const ConfidoCaseStudy = () => {
 
   useCountupAnimation(impactSectionRef, metrics);
 
-  // Scroll-triggered animations for hero section
+  // Scroll-triggered animations for context section
   useEffect(() => {
-    // Match hero section animation exactly: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1)
-    // Initial: opacity: 0, transform: translateY(30px)
-    // Final: opacity: 1, transform: translateY(0)
-    if (heroContentRef.current) {
-      gsap.set(heroContentRef.current, { opacity: 0, y: 30 });
-      gsap.to(heroContentRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-        delay: 1.2,
-      });
-    }
-
-    // Scroll-triggered animations for context section
     const scrollTriggers = [];
 
     // Helper function to create scroll trigger animation
@@ -265,7 +249,7 @@ const ConfidoCaseStudy = () => {
         </div>
 
         {/* Hero Text Content */}
-        <div className="confido-hero-content" ref={heroContentRef}>
+        <div className="confido-hero-content">
           {/* Left Column */}
           <div className="confido-hero-left">
             <h1 className="confido-hero-title">
