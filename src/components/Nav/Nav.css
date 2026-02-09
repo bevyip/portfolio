@@ -17,7 +17,7 @@ nav {
   transition: background-color 0.3s ease; /* , backdrop-filter 0.3s ease; */
   /* Initial hidden state for GSAP animation - will be animated in by GSAP */
   opacity: 0;
-  transform: translateY(-100px);
+  transform: translateY(-200px);
 }
 
 /* Light background mode (when bento grid is visible) */

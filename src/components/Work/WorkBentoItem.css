@@ -62,36 +62,38 @@
   justify-content: center;
   position: relative;
   flex-shrink: 0;
-  transition: height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+  /* Remove height transition - keep thumbnail fixed */
 }
 
+/* Keep image container at full height on hover - no scaling/moving */
 .work-bento-item:hover .work-bento-image-container {
-  height: 50%;
+  height: 100%;
 }
 
 /* On tablet/mobile, show hover state by default */
 @media (max-width: 1023px) {
   .work-bento-image-container {
-    height: 55%;
+    height: 100%;
   }
 }
 
 @media (min-width: 1026px) {
   .work-bento-item:hover .work-bento-image-container {
-    height: 45%;
+    height: 100%;
   }
 }
 
-/* Responsive height: increase text section as width gets narrower */
+/* Responsive height: keep full height */
 @media (min-width: 1026px) and (max-width: 1400px) {
   .work-bento-item:hover .work-bento-image-container {
-    height: 40%;
+    height: 100%;
   }
 }
 
 @media (min-width: 1026px) and (max-width: 1200px) {
   .work-bento-item:hover .work-bento-image-container {
-    height: 35%;
+    height: 100%;
   }
 }
 
@@ -130,6 +132,7 @@
   left: 0;
   right: 0;
   height: 50%;
+  z-index: 2;
 }
 
 /* On tablet/mobile, use 45/55 split */

@@ -74,21 +74,25 @@ const WorkSection = () => {
     const observers = videoRefs.current.map((video, index) => {
       if (!video) return null;
 
+      const isMobile = window.innerWidth <= 768;
+      const rootMargin = isMobile ? "100px" : "200px";
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              // Video is visible, play it
+              // Video is visible, load and play it
+              video.load();
               video.play().catch((err) => {
                 console.log("Autoplay failed:", err);
               });
             } else {
-              // Video is out of view, pause it (optional, saves battery)
+              // Video is out of view, pause it to save resources
               video.pause();
             }
           });
         },
-        { threshold: 0.5 } // Play when 50% visible
+        { rootMargin, threshold: 0.1 } // Load earlier, play when 10% visible
       );
 
       observer.observe(video);
@@ -181,7 +185,7 @@ const WorkSection = () => {
                       loop
                       muted
                       playsInline
-                      preload="auto"
+                      preload="none"
                       controls={false}
                       aria-label={project.title}
                     />
@@ -190,6 +194,7 @@ const WorkSection = () => {
                       src={project.image}
                       alt={project.title}
                       className="project-image"
+                      loading="lazy"
                     />
                   )}
                 </div>

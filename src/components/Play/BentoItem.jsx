@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   ExternalLink,
   Github,
@@ -100,6 +100,8 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
   const { id, theme = "white", tags, actions, size, media } = project;
   const [isTapped, setIsTapped] = useState(false);
   const iframeRef = useRef(null);
+  const videoRef = useRef(null);
+  const containerRef = useRef(null);
 
   const isBlack = theme === "black";
   const hasVideo = media?.video;
@@ -140,6 +142,68 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
       }
     : {};
 
+  // Lazy load video when it comes into viewport
+  useEffect(() => {
+    if (!videoRef.current || !hasVideo) return;
+
+    const video = videoRef.current;
+    const isMobile = window.innerWidth <= 768;
+    const rootMargin = isMobile ? "100px" : "200px";
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.load();
+            video.play().catch(() => {
+              // Autoplay may fail, that's okay
+            });
+            observer.unobserve(video);
+          } else {
+            // Pause when out of view to save resources
+            video.pause();
+          }
+        });
+      },
+      { rootMargin, threshold: 0.1 }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [hasVideo]);
+
+  // Lazy load iframe when it comes into viewport
+  useEffect(() => {
+    if (!iframeRef.current || !hasIframe || !containerRef.current) return;
+
+    const iframe = iframeRef.current;
+    const container = containerRef.current;
+    const isMobile = window.innerWidth <= 768;
+    const rootMargin = isMobile ? "150px" : "250px";
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && iframe.dataset.src && !iframe.src) {
+            // Only load iframe when it's about to be visible
+            iframe.src = iframe.dataset.src;
+            observer.unobserve(container);
+          }
+        });
+      },
+      { rootMargin, threshold: 0.1 }
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [hasIframe]);
+
   return (
     <div
       className={`
@@ -165,19 +229,21 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
       {/* Video Background */}
       {hasVideo && (
         <video
+          ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover rounded-lg"
           src={media.video}
           autoPlay
           loop
           muted
           playsInline
-          loading="lazy"
+          preload="none"
         />
       )}
 
       {/* Iframe Background (interactive) */}
       {!hasVideo && hasIframe && (
         <div
+          ref={containerRef}
           className="absolute inset-0 w-full h-full rounded-lg"
           onClick={handleIframeClick}
           onMouseDown={handleIframeClick}
@@ -186,9 +252,9 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
           <iframe
             ref={iframeRef}
             className="absolute inset-0 w-full h-full rounded-lg border-0"
-            src={media.iframe}
             title=""
             loading="lazy"
+            data-src={media.iframe}
           />
         </div>
       )}
@@ -199,6 +265,7 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
           className="absolute inset-0 w-full h-full object-cover rounded-lg"
           src={media.image || media.thumbnail}
           alt=""
+          loading="lazy"
         />
       )}
 

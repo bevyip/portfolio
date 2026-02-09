@@ -268,9 +268,7 @@
 @media (max-width: 1023px) {
   .play-preview__images-container {
     padding: 2rem;
-  }
-
-  .play-preview__img {
+  }  .play-preview__img {
     opacity: 0.4 !important;
     pointer-events: none;
     position: relative !important;

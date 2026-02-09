@@ -196,11 +196,19 @@ const Nav = () => {
   useEffect(() => {
     if (!navRef.current) return;
 
+    const isWorkPage = location.pathname === "/work";
+
     // Set initial state - position above viewport
     gsap.set(navRef.current, {
       y: -100,
       opacity: 0,
     });
+
+    // On work page, let the Work component control the navbar animation
+    // Don't auto-animate here to avoid conflicts
+    if (isWorkPage) {
+      return;
+    }
 
     // Calculate delay based on page
     let delay = 0;

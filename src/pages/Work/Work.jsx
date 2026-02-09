@@ -21,6 +21,9 @@ const Work = () => {
     const nav = document.querySelector('nav');
     if (nav) {
       navRef.current = nav;
+      // Kill any existing animations first
+      gsap.killTweensOf(nav);
+      // Force reset navbar to hidden state immediately
       gsap.set(nav, {
         opacity: 0,
         y: -100,
@@ -62,8 +65,13 @@ const Work = () => {
           });
         }
 
+        // Ensure navbar is still hidden and kill any animations
         if (navRef.current) {
           gsap.killTweensOf(navRef.current);
+          gsap.set(navRef.current, {
+            opacity: 0,
+            y: -100,
+          });
         }
 
         timelineRef.current = gsap.timeline({
