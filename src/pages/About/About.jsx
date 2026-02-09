@@ -168,7 +168,7 @@ const About = () => {
                   />
                 </div>
                 <p
-                  className="text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.6] font-normal"
+                  className="text-[16px] sm:text-[17px] md:text-[18px] leading-[1.5] md:leading-[1.6] font-normal"
                   style={{ color: "#fafafa" }}
                 >
                   <span
@@ -198,15 +198,13 @@ const About = () => {
                       Salesforce
                     </a>{" "}
                     and leading accessibility in my team. I was good at it. But
-                    somewhere along the way, I realized I cared just as much
-                    about{" "}
+                    somewhere along the way, I realized{" "}
                     <span
                       className="font-semibold"
                       style={{ color: "#7DD3FC" }}
                     >
-                      how people felt using it
-                    </span>{" "}
-                    as how the code worked.
+                      I cared just as much about how people felt using it as how the code worked.
+                    </span>
                   </span>
                 </p>
               </div>
@@ -236,7 +234,7 @@ const About = () => {
                   />
                 </div>
                 <p
-                  className="text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.6] font-normal about-paragraph-2 about-fade-in"
+                  className="text-[16px] sm:text-[17px] md:text-[18px] leading-[1.5] md:leading-[1.6] font-normal about-paragraph-2 about-fade-in"
                   style={{ color: "#fafafa" }}
                 >
                   That led me to{" "}
@@ -250,24 +248,7 @@ const About = () => {
                   </a>{" "}
                   to study Human-Computer Interaction — to explore how design
                   and engineering could work together to make technology more
-                  accessible and intuitive. During my time there, I joined{" "}
-                  <a
-                    href="https://www.confidotech.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium about-company-link"
-                  >
-                    Confido
-                  </a>{" "}
-                  as both Product Designer and Full-Stack Developer, where I
-                  stopped choosing between the two roles and finally became
-                  both. I designed the interfaces and built them too, which
-                  proved that{" "}
-                  <span className="font-medium" style={{ color: "#7DD3FC" }}>
-                    the best solutions come to life when you know what it takes
-                    to build it
-                  </span>
-                  .
+                  accessible and intuitive. 
                 </p>
               </div>
 
@@ -297,29 +278,20 @@ const About = () => {
                 </div>
                 <p
                   id="last-blurb-paragraph"
-                  className="text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.6] font-normal about-paragraph-3 about-fade-in"
+                  className="text-[16px] sm:text-[17px] md:text-[18px] leading-[1.5] md:leading-[1.6] font-normal about-paragraph-3 about-fade-in"
                   style={{ color: "#fafafa" }}
                 >
                   I still write code. I still ship products. But now every
                   decision starts with the person on the other side of the
                   screen. I'm not just designing interfaces — I'm designing
-                  systems that are as{" "}
+                  systems that are{" "}
                   <span className="font-medium" style={{ color: "#7DD3FC" }}>
-                    thoughtful
-                  </span>{" "}
-                  as they are{" "}
-                  <span className="font-medium" style={{ color: "#7DD3FC" }}>
-                    scalable
+                    as thoughtful as they are scalable
                   </span>
-                  , as{" "}
+                  ,{" "}
                   <span className="font-medium" style={{ color: "#7DD3FC" }}>
-                    beautiful
-                  </span>{" "}
-                  as they are{" "}
-                  <span className="font-medium" style={{ color: "#7DD3FC" }}>
-                    functional
+                    as beautiful as they are functional.
                   </span>
-                  .
                 </p>
               </div>
             </div>

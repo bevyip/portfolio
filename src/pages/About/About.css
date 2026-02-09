@@ -453,7 +453,7 @@ section {
 }
 
 /* Responsive behavior - hide or reposition stickers on smaller screens */
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .about-sticker-purdue,
   .about-sticker-nyu,
   .about-sticker-react {
