@@ -89,7 +89,6 @@ const Footer = () => {
             start: startValue,
             invalidateOnRefresh: true,
             onEnter: () => {
-              console.log("Footer title animation fired - scroll position:", window.scrollY);
               tl.play();
             },
             onLeaveBack: () => {
@@ -181,7 +180,6 @@ const Footer = () => {
             start: startValue,
             invalidateOnRefresh: true,
             onEnter: () => {
-              console.log("Footer subtitle animation fired - scroll position:", window.scrollY);
               tl.play();
             },
             onLeaveBack: () => {
@@ -267,7 +265,6 @@ const Footer = () => {
             start: startValue,
             invalidateOnRefresh: true,
             onEnter: () => {
-              console.log("Footer social links animation fired - scroll position:", window.scrollY);
               tl.play();
             },
             onLeaveBack: () => {
