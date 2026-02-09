@@ -12,6 +12,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["React", "Web Audio API"],
+    category: "digital",
     media: {
       video: "/projects/floral-jukebox/demo.mp4",
     },
@@ -33,6 +34,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["React", "Three.js"],
+    category: "digital",
     media: {
       video: "/projects/spherical-shopping/demo.mp4",
     },
@@ -54,6 +56,7 @@ export const playProjects = [
     size: "short",
     theme: "white",
     tags: ["R3F", "Three.js"],
+    category: "digital",
     media: {
       video: "/projects/emotional-canvas/demo.mp4",
     },
@@ -80,6 +83,7 @@ export const playProjects = [
     size: "tall",
     theme: "black",
     tags: ["Audio Analysis", "Three.js"],
+    category: "digital",
     media: {
       video: "/projects/im-listening/demo.mp4",
     },
@@ -101,6 +105,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["React", "Creative Coding"],
+    category: "digital",
     media: {
       iframe: "https://binary-pool.vercel.app/",
     },
@@ -122,6 +127,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["React", "Three.js"],
+    category: "digital",
     media: {
       iframe: "https://gravity-text.vercel.app/",
     },
@@ -143,6 +149,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["GSAP", "Three.js"],
+    category: "digital",
     media: {
       video: "/projects/ball-slide/demo.mp4",
     },
@@ -164,6 +171,7 @@ export const playProjects = [
     size: "short",
     theme: "white",
     tags: ["Fabrication", "Woodworking"],
+    category: "physical",
     media: {
       video: "/projects/cat-box/demo.mp4",
     },
@@ -185,6 +193,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["React", "Creative Coding"],
+    category: "digital",
     media: {
       video: "/projects/snowflake/demo1.mp4",
     },
@@ -206,6 +215,7 @@ export const playProjects = [
     size: "short",
     theme: "white",
     tags: ["React", "Creative Coding"],
+    category: "digital",
     media: {
       video: "/projects/ascii-art/demo.mp4",
     },
@@ -227,6 +237,7 @@ export const playProjects = [
     size: "short",
     theme: "white",
     tags: ["React", "Game Design"],
+    category: "digital",
     media: {
       video: "/projects/sprite-map/demo.mp4",
     },
@@ -248,6 +259,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["GSAP", "OGL"],
+    category: "digital",
     media: {
       video: "/projects/photo-collage/demo1.mp4",
     },
@@ -269,6 +281,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["React", "Creative Coding"],
+    category: "digital",
     media: {
       video: "/projects/picture-distortion/demo.mp4",
     },
@@ -290,6 +303,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["React", "Three.js"],
+    category: "digital",
     media: {
       iframe: "https://liquid-silk.vercel.app",
     },
@@ -311,6 +325,7 @@ export const playProjects = [
     size: "short",
     theme: "white",
     tags: ["React", "Interaction Design"],
+    category: "digital",
     media: {
       video: "/projects/buttons/demo.mp4",
     },
@@ -332,6 +347,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["React", "Image Processing"],
+    category: "digital",
     media: {
       video: "/projects/image-to-sprite/demo.mp4",
     },
@@ -353,6 +369,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["GSAP", "React"],
+    category: "digital",
     media: {
       iframe: "https://sticker-cats.vercel.app/",
     },
@@ -374,6 +391,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["GSAP", "Interaction Design"],
+    category: "digital",
     media: {
       iframe: "https://bouncing-ball-gules.vercel.app",
     },
@@ -395,6 +413,7 @@ export const playProjects = [
     size: "short",
     theme: "white",
     tags: ["Fabrication", "Woodworking"],
+    category: "physical",
     media: {
       video: "/projects/five-fishes/demo.mp4",
     },
@@ -416,6 +435,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["React", "Interaction Design"],
+    category: "digital",
     media: {
       iframe: "https://eye-see-you.vercel.app",
     },
@@ -437,6 +457,7 @@ export const playProjects = [
     size: "short",
     theme: "white",
     tags: ["Fabrication", "Woodworking"],
+    category: "physical",
     media: {
       video: "/projects/cat-figurine/demo.mp4",
     },
@@ -458,6 +479,7 @@ export const playProjects = [
     size: "tall",
     theme: "black",
     tags: ["React", "Interaction Design"],
+    category: "digital",
     media: {
       iframe: "https://pixel-trail-omega.vercel.app",
     },
@@ -479,6 +501,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["Web Art", "Interaction Design"],
+    category: "digital",
     media: {
       video: "/projects/monet/demo.mp4",
     },
@@ -500,6 +523,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["React", "Interaction Design"],
+    category: "digital",
     media: {
       iframe: "https://blend-your-cursor.vercel.app",
     },
@@ -521,6 +545,7 @@ export const playProjects = [
     size: "short",
     theme: "white",
     tags: ["P5.js", "Creative Coding"],
+    category: "digital",
     media: {
       iframe: "https://editor.p5js.org/bevyip/embed/M3nIH2bcE",
     },
@@ -537,6 +562,7 @@ export const playProjects = [
     size: "short",
     theme: "white",
     tags: ["Fabrication", "Laser Cutting"],
+    category: "physical",
     media: {
       video: "/projects/puzzle-feeder/demo.mp4",
     },
@@ -558,6 +584,7 @@ export const playProjects = [
     size: "short",
     theme: "black",
     tags: ["Arduino", "Unity"],
+    category: "physical",
     media: {
       thumbnail: "/projects/temple-of-fortune/thumbnail.jpg",
     },
@@ -574,6 +601,7 @@ export const playProjects = [
     size: "short",
     theme: "white",
     tags: ["Fabrication", "Laser Cutting"],
+    category: "physical",
     media: {
       video: "/projects/whack-a-mouse/demo.mp4",
     },
@@ -595,6 +623,7 @@ export const playProjects = [
     size: "tall",
     theme: "white",
     tags: ["Web Art", "Creative Coding"],
+    category: "digital",
     media: {
       video: "/projects/words-unseen/demo.mp4",
     },
@@ -620,7 +649,8 @@ export const playProjects = [
     id: "black-market",
     size: "tall",
     theme: "white",
-    tags: ["React", "Creative Coding"],
+    tags: ["Game Design", "Graphic Design"],
+    category: "physical",
     media: {
       image: "/projects/black-market/thumbnail1.png",
     },

@@ -1,41 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./WorkBentoItem.css";
 
 const WorkBentoItem = ({ project, gridPosition, onHoverChange }) => {
-  const videoRef = useRef(null);
-  const contentRef = useRef(null);
-
-  // Use Intersection Observer to play videos when they come into view
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video || !project.video) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Video is visible, play it
-            video.play().catch((err) => {
-              console.log("Autoplay failed:", err);
-            });
-          } else {
-            // Video is out of view, pause it (optional, saves battery)
-            video.pause();
-          }
-        });
-      },
-      { threshold: 0.5 } // Play when 50% visible
-    );
-
-    observer.observe(video);
-
-    return () => {
-      observer.unobserve(video);
-      observer.disconnect();
-    };
-  }, [project.video]);
-
   // Set CSS custom properties for grid positioning
   const gridStyle = gridPosition
     ? {
@@ -69,17 +36,15 @@ const WorkBentoItem = ({ project, gridPosition, onHoverChange }) => {
       <div className="work-bento-image-container">
         {project.video ? (
           <video
-            ref={videoRef}
             src={project.video}
             className="work-bento-image"
             autoPlay
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             controls={false}
             aria-label={project.title}
-            loading="lazy"
           />
         ) : (
           <img
@@ -89,7 +54,7 @@ const WorkBentoItem = ({ project, gridPosition, onHoverChange }) => {
           />
         )}
       </div>
-      <div ref={contentRef} className="work-bento-content">
+      <div className="work-bento-content">
         <h3 className="work-bento-title">{project.title}</h3>
         <p className="work-bento-role">{project.role}</p>
         <div className="work-bento-tags">
@@ -120,6 +85,7 @@ const WorkBentoItem = ({ project, gridPosition, onHoverChange }) => {
         to={routeMap[project.id]}
         className={cardClassName}
         style={gridStyle}
+        data-project-id={project.id}
         data-grid-col={gridPosition?.col}
         data-grid-row-start={gridPosition?.rowStart}
         data-grid-row-end={gridPosition?.rowEnd}
@@ -135,6 +101,7 @@ const WorkBentoItem = ({ project, gridPosition, onHoverChange }) => {
     <div
       className={cardClassName}
       style={gridStyle}
+      data-project-id={project.id}
       data-grid-col={gridPosition?.col}
       data-grid-row-start={gridPosition?.rowStart}
       data-grid-row-end={gridPosition?.rowEnd}

@@ -1,8 +1,8 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useLenis } from "@studio-freight/react-lenis";
 import { GridBackground } from "../../components/GridBackground";
-import CombinedBentoGrid from "../../components/Sandbox/CombinedBentoGrid";
+import HomeBentoGrid from "../../components/Work/HomeBentoGrid";
 import Footer from "../../components/Footer/Footer";
 import { usePlayPage } from "../../contexts/PlayPageContext";
 import gsap from "gsap";
@@ -26,6 +26,9 @@ const Home = () => {
   const dashRef = useRef(null);
   const bentoRef = useRef(null);
   const titleRef = useRef(null);
+  const seeMoreButtonRef = useRef(null);
+  const seeMoreCircleRef = useRef(null);
+  const seeMoreTlRef = useRef(null);
 
   useLayoutEffect(() => {
     setIsBentoVisible(false);
@@ -186,7 +189,7 @@ const Home = () => {
               // Dispatch custom event when pin completes so Footer can create ScrollTriggers
               // This ensures Footer ScrollTriggers are calculated after page length is final
               window.dispatchEvent(new CustomEvent('pinComplete'));
-              ScrollTrigger.refresh();
+              // ScrollTrigger.refresh();
             },
           },
         });
@@ -249,20 +252,20 @@ const Home = () => {
           ease: "power2.inOut",
         }, 0.5);
 
-        // Reveal bento content
+        // Reveal bento content (sooner since section is shorter)
         tl.fromTo(bentoRef.current, 
           { opacity: 0, pointerEvents: "none" },
           { opacity: 1, pointerEvents: "auto", duration: 2, ease: "power2.in" },
-          2.5
+          1.0
         );
 
         tl.fromTo(".bento-item, .work-bento-item",
           { opacity: 0 },
           { opacity: 1, stagger: { each: 0.1, from: "start" }, duration: 1.5, ease: "power2.out" },
-          3.2
+          1.5
         );
 
-        // Animate title rising up when section is further up viewport
+        // Animate title rising up when section is further up viewport (later trigger)
         gsap.to(".sandbox-title-text", {
           opacity: 1,
           y: "0%",
@@ -270,7 +273,7 @@ const Home = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: bentoRef.current,
-            start: "top 50%",
+            start: "top 30%",
             end: "top 10%",
             scrub: 1,
           },
@@ -282,6 +285,119 @@ const Home = () => {
       ctx.revert();
     };
   }, [setIsBentoVisible, setContextGridVisible, lenis]);
+
+  // Set up See More button animation (matching resume button)
+  useLayoutEffect(() => {
+    if (!seeMoreButtonRef.current || !seeMoreCircleRef.current) return;
+
+    const setupAnimation = () => {
+      const pill = seeMoreButtonRef.current;
+      const circle = seeMoreCircleRef.current;
+      if (!pill || !circle) return;
+
+      const rect = pill.getBoundingClientRect();
+      const { width: w, height: h } = rect;
+      const R = ((w * w) / 4 + h * h) / (2 * h);
+      const D = Math.ceil(2 * R) + 2;
+      const delta =
+        Math.ceil(R - Math.sqrt(Math.max(0, R * R - (w * w) / 4))) + 1;
+      const originY = D - delta;
+
+      circle.style.width = `${D}px`;
+      circle.style.height = `${D}px`;
+      circle.style.bottom = `-${delta}px`;
+
+      gsap.set(circle, {
+        xPercent: -50,
+        scale: 0,
+        transformOrigin: `50% ${originY}px`,
+      });
+
+      const label = pill.querySelector(".pill-label");
+      const white = pill.querySelector(".pill-label-hover");
+
+      if (label) gsap.set(label, { y: 0 });
+      if (white) gsap.set(white, { y: h + 12, opacity: 0 });
+
+      seeMoreTlRef.current?.kill();
+      const tl = gsap.timeline({ paused: true });
+
+      tl.to(
+        circle,
+        {
+          scale: 1.2,
+          xPercent: -50,
+          duration: 2,
+          ease: "power3.easeOut",
+          overwrite: "auto",
+        },
+        0
+      );
+
+      if (label) {
+        tl.to(
+          label,
+          {
+            y: -(h + 8),
+            duration: 2,
+            ease: "power3.easeOut",
+            overwrite: "auto",
+          },
+          0
+        );
+      }
+
+      if (white) {
+        tl.to(
+          white,
+          {
+            y: 0,
+            opacity: 1,
+            duration: 2,
+            ease: "power3.easeOut",
+            overwrite: "auto",
+          },
+          0
+        );
+      }
+
+      seeMoreTlRef.current = tl;
+    };
+
+    setupAnimation();
+
+    const onResize = () => setupAnimation();
+    window.addEventListener("resize", onResize);
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(setupAnimation).catch(() => {});
+    }
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      seeMoreTlRef.current?.kill();
+    };
+  }, []);
+
+  const handleSeeMoreEnter = () => {
+    const tl = seeMoreTlRef.current;
+    if (!tl) return;
+    tl.tweenTo(tl.duration(), {
+      duration: 0.3,
+      ease: "power3.easeOut",
+      overwrite: "auto",
+    });
+  };
+
+  const handleSeeMoreLeave = () => {
+    const tl = seeMoreTlRef.current;
+    if (!tl) return;
+    tl.tweenTo(0, {
+      duration: 0.2,
+      ease: "power3.easeOut",
+      overwrite: "auto",
+    });
+  };
 
   // Handle hash navigation AFTER ScrollTrigger is fully set up
   useLayoutEffect(() => {
@@ -422,7 +538,28 @@ const Home = () => {
                   </span>
                 </span>
               </h1>
-              <CombinedBentoGrid />
+              <HomeBentoGrid />
+              <div className="flex flex-col items-center" style={{ marginTop: '5rem' }}>
+                <Link
+                  to="/work"
+                  className="see-more-button pill"
+                  ref={seeMoreButtonRef}
+                  onMouseEnter={handleSeeMoreEnter}
+                  onMouseLeave={handleSeeMoreLeave}
+                >
+                  <span
+                    className="hover-circle"
+                    aria-hidden="true"
+                    ref={seeMoreCircleRef}
+                  />
+                  <span className="label-stack">
+                    <span className="pill-label">See All Work</span>
+                    <span className="pill-label-hover" aria-hidden="true">
+                      See All Work
+                    </span>
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
           <Footer />

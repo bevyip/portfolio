@@ -7,19 +7,16 @@ const ScrollToTop = () => {
   const lenis = useLenis();
 
   useEffect(() => {
-    // If there's a hash (e.g., #work) and we're on the home page,
-    // let the Home component handle it - don't scroll to top
     if (hash && pathname === "/") {
       return;
     }
 
-    // Normal scroll for all routes
     if (lenis) {
       lenis.scrollTo(0, { duration: 0, immediate: true });
     } else {
       window.scrollTo(0, 0);
     }
-  }, [pathname, hash, lenis]);
+  }, [pathname, hash]);
 
   return null;
 };

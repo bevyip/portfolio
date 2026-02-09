@@ -1,0 +1,109 @@
+.filter-pills-container {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  color: #0f0f0f;
+  background: rgba(15, 15, 15, 0.05);
+  border: 1px solid rgba(15, 15, 15, 0.2);
+  border-radius: 999px;
+  padding: 0.625rem 1.5rem;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.filter-pill.pill .hover-circle {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  border-radius: 50%;
+  background: #0f0f0f;
+  z-index: 1;
+  display: block;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.filter-pill.pill .label-stack {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  z-index: 2;
+}
+
+.filter-pill.pill .pill-label {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  line-height: 1;
+  will-change: transform;
+  color: inherit;
+}
+
+.filter-pill.pill .pill-label-hover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #fafafa;
+  z-index: 3;
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.filter-pill.active {
+  background: #0f0f0f;
+  color: #fafafa;
+  border: 1px solid #0f0f0f;
+  cursor: default;
+  pointer-events: none;
+}
+
+.filter-pill.active .hover-circle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .filter-pills-container {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-pill {
+    font-size: 0.875rem;
+    padding: 0.5rem 1.25rem;
+  }
+}
+
+/* Smooth transitions for filtered grid items */
+.bento-grid-filtered .bento-item,
+.bento-grid-filtered .work-bento-item {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.bento-grid-filtered .bento-item:not([style*="display: none"]),
+.bento-grid-filtered .work-bento-item:not([style*="display: none"]) {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

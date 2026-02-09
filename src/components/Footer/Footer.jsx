@@ -107,19 +107,20 @@ const Footer = () => {
           }
         }, 2000);
       } else {
-        // For other pages, use standard approach
         startValue = "top 80%";
-        scrollTrigger = ScrollTrigger.create({
-          trigger: titleElement,
-          start: startValue,
-          invalidateOnRefresh: true,
-          onEnter: () => {
-            tl.play();
-          },
-          onLeaveBack: () => {
-            tl.reverse();
-          },
-        });
+        setTimeout(() => {
+          scrollTrigger = ScrollTrigger.create({
+            trigger: titleElement,
+            start: startValue,
+            invalidateOnRefresh: true,
+            onEnter: () => {
+              tl.play();
+            },
+            onLeaveBack: () => {
+              tl.reverse();
+            },
+          });
+        }, 50);
       }
     }, 100);
 
