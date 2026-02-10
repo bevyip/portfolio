@@ -93,12 +93,12 @@ const allPlayPositions = {
   "words-unseen": { col: 3, rowStart: 18, rowEnd: 20 },
 };
 
-// CASE STUDIES FILTER - Only the 4 work projects
+// CASE STUDIES FILTER - Only the 4 work projects in 2x2 grid
 const caseStudyWorkPositions = {
-  "confido-approval-flow": { col: 1, rowStart: 1, rowEnd: 3 },
-  "moodle-pain-detection": { col: 2, rowStart: 1, rowEnd: 3 },
-  "venmo-privacy-controls": { col: 3, rowStart: 1, rowEnd: 3 },
-  "whole-foods-checkout": { col: 1, rowStart: 3, rowEnd: 5 },
+  "confido-approval-flow": { col: 1, rowStart: 1, rowEnd: 2 },
+  "moodle-pain-detection": { col: 2, rowStart: 1, rowEnd: 2 },
+  "venmo-privacy-controls": { col: 1, rowStart: 2, rowEnd: 3 },
+  "whole-foods-checkout": { col: 2, rowStart: 2, rowEnd: 3 },
 };
 
 // DIGITAL FILTER - Creative coding projects only
@@ -259,7 +259,21 @@ const WorkBentoGrid = ({ onProjectClick }) => {
       </div>
       <div
         ref={gridRef}
-        className="
+        className={
+          activeFilter === "case-study"
+            ? `
+          grid
+          grid-cols-1
+          min-[768px]:grid-cols-2
+          gap-6
+          min-[768px]:gap-8
+          min-[1024px]:gap-10
+          w-full
+          auto-rows-[480px]
+          min-[768px]:auto-rows-[600px]
+          case-study-grid
+        `
+            : `
           grid
           grid-cols-1
           min-[1026px]:grid-cols-3
@@ -268,7 +282,8 @@ const WorkBentoGrid = ({ onProjectClick }) => {
           auto-rows-[480px]
           min-[1026px]:auto-rows-[220px]
           bento-grid-filtered
-        "
+        `
+        }
       >
         {filteredWorkProjects.map((project) => {
           const position = workPositions[project.id];
@@ -278,6 +293,7 @@ const WorkBentoGrid = ({ onProjectClick }) => {
               project={project}
               gridPosition={position}
               onHoverChange={setIsHoveringWorkCard}
+              isCaseStudyView={activeFilter === "case-study"}
             />
           );
         })}

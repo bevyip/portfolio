@@ -1,9 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./WorkBentoItem.css";
 
-const WorkBentoItem = ({ project, gridPosition, onHoverChange }) => {
+const WorkBentoItem = ({ project, gridPosition, onHoverChange, isCaseStudyView = false }) => {
   const videoRef = useRef(null);
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(window.innerWidth < 1026);
   // Set CSS custom properties for grid positioning
   const gridStyle = gridPosition
     ? {
@@ -27,18 +28,49 @@ const WorkBentoItem = ({ project, gridPosition, onHoverChange }) => {
     "confido-approval-flow": "/confido",
   };
 
+  // Track window size for responsive video source
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileOrTablet(window.innerWidth < 1026);
+    };
+    
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Use thumbnail.mp4 for case-study view, or for mobile/tablet in ALL view
+  const getVideoSource = () => {
+    if (!project.video) return project.video;
+    
+    // Case-study filter view: always use thumbnail.mp4
+    if (isCaseStudyView) {
+      return project.video.replace("thumbnail1.mp4", "thumbnail.mp4");
+    }
+    
+    // ALL view: use thumbnail.mp4 on mobile/tablet, thumbnail1.mp4 on desktop
+    if (isMobileOrTablet) {
+      return project.video.replace("thumbnail1.mp4", "thumbnail.mp4");
+    }
+    
+    return project.video;
+  };
+  
+  const videoSource = getVideoSource();
+
   const CardContent = (
     <>
-      <img
-        src="/label.png"
-        alt="Featured project"
-        className="work-bento-label"
-      />
+      {!isCaseStudyView && (
+        <img
+          src="/label.png"
+          alt="Featured project"
+          className="work-bento-label"
+        />
+      )}
       <div className="work-bento-image-container">
-        {project.video ? (
+        {videoSource ? (
           <video
             ref={videoRef}
-            src={project.video}
+            src={videoSource}
             className="work-bento-image"
             autoPlay
             loop
@@ -57,7 +89,7 @@ const WorkBentoItem = ({ project, gridPosition, onHoverChange }) => {
           />
         )}
       </div>
-      <div className="work-bento-content">
+      <div className={`work-bento-content ${isCaseStudyView ? "case-study-visible" : ""}`}>
         <h3 className="work-bento-title">{project.title}</h3>
         <p className="work-bento-role">{project.role}</p>
         <div className="work-bento-tags">
@@ -82,7 +114,7 @@ const WorkBentoItem = ({ project, gridPosition, onHoverChange }) => {
 
   // Lazy load video when it comes into viewport
   useEffect(() => {
-    if (!videoRef.current || !project.video) return;
+    if (!videoRef.current || !videoSource) return;
 
     const video = videoRef.current;
     const isMobile = window.innerWidth <= 768;
@@ -109,9 +141,9 @@ const WorkBentoItem = ({ project, gridPosition, onHoverChange }) => {
     return () => {
       observer.disconnect();
     };
-  }, [project.video]);
+  }, [videoSource]);
 
-  const cardClassName = "work-bento-item group relative overflow-hidden rounded-lg bg-[#1a1a1a] shadow-[0_2px_8px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out h-full min-h-[200px] min-[1026px]:row-span-2 flex flex-col";
+  const cardClassName = `work-bento-item group relative overflow-hidden rounded-lg bg-[#1a1a1a] shadow-[0_2px_8px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out h-full min-h-[200px] ${isCaseStudyView ? "" : "min-[1026px]:row-span-2"} flex flex-col ${isCaseStudyView ? "case-study-card" : ""}`;
 
   if (isClickable) {
     return (
