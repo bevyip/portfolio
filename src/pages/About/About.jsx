@@ -132,7 +132,9 @@ const About = () => {
               <h1 ref={howIGotHereTitleRef} className="about-title">
                 <span className="about-title-wrapper">
                   <span className="about-title-text">
-                    <span className="about-title-word about-title-how">How </span>
+                    <span className="about-title-word about-title-how">
+                      How{" "}
+                    </span>
                     <span className="about-title-word about-title-igothere">
                       I got here
                     </span>
@@ -200,10 +202,11 @@ const About = () => {
                     and leading accessibility in my team. I was good at it. But
                     somewhere along the way, I realized{" "}
                     <span
-                      className="font-semibold"
+                      className="font-medium"
                       style={{ color: "#7DD3FC" }}
                     >
-                      I cared just as much about how people felt using it as how the code worked.
+                      I cared just as much about how people felt using it as how
+                      the code worked.
                     </span>
                   </span>
                 </p>
@@ -248,7 +251,7 @@ const About = () => {
                   </a>{" "}
                   to study Human-Computer Interaction — to explore how design
                   and engineering could work together to make technology more
-                  accessible and intuitive. 
+                  accessible and intuitive.
                 </p>
               </div>
 
@@ -283,14 +286,10 @@ const About = () => {
                 >
                   I still write code. I still ship products. But now every
                   decision starts with the person on the other side of the
-                  screen. I'm not just designing interfaces — I'm designing
-                  systems that are{" "}
+                  screen. I'm not just designing interfaces —{" "}
                   <span className="font-medium" style={{ color: "#7DD3FC" }}>
-                    as thoughtful as they are scalable
-                  </span>
-                  ,{" "}
-                  <span className="font-medium" style={{ color: "#7DD3FC" }}>
-                    as beautiful as they are functional.
+                    I'm designing experiences that are as thoughtful as they are
+                    scalable, as beautiful as they are functional.
                   </span>
                 </p>
               </div>
@@ -356,8 +355,8 @@ const About = () => {
             >
               <span className="photo-grid-title-wrapper">
                 <span className="photo-grid-title-text">
-                  When I'm <span style={{ color: "#7DD3FC" }}>not</span> coding or
-                  designing,
+                  When I'm <span style={{ color: "#7DD3FC" }}>not</span> coding
+                  or designing,
                 </span>
               </span>
             </h2>

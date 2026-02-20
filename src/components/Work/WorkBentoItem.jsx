@@ -2,9 +2,16 @@ import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./WorkBentoItem.css";
 
-const WorkBentoItem = ({ project, gridPosition, onHoverChange, isCaseStudyView = false }) => {
+const WorkBentoItem = ({
+  project,
+  gridPosition,
+  onHoverChange,
+  isCaseStudyView = false,
+}) => {
   const videoRef = useRef(null);
-  const [isMobileOrTablet, setIsMobileOrTablet] = useState(window.innerWidth < 1026);
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(
+    window.innerWidth < 1026,
+  );
   // Set CSS custom properties for grid positioning
   const gridStyle = gridPosition
     ? {
@@ -33,7 +40,7 @@ const WorkBentoItem = ({ project, gridPosition, onHoverChange, isCaseStudyView =
     const handleResize = () => {
       setIsMobileOrTablet(window.innerWidth < 1026);
     };
-    
+
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -41,20 +48,20 @@ const WorkBentoItem = ({ project, gridPosition, onHoverChange, isCaseStudyView =
   // Use thumbnail.mp4 for case-study view, or for mobile/tablet in ALL view
   const getVideoSource = () => {
     if (!project.video) return project.video;
-    
+
     // Case-study filter view: always use thumbnail.mp4
     if (isCaseStudyView) {
       return project.video.replace("thumbnail1.mp4", "thumbnail.mp4");
     }
-    
+
     // ALL view: use thumbnail.mp4 on mobile/tablet, thumbnail1.mp4 on desktop
     if (isMobileOrTablet) {
       return project.video.replace("thumbnail1.mp4", "thumbnail.mp4");
     }
-    
+
     return project.video;
   };
-  
+
   const videoSource = getVideoSource();
 
   const CardContent = (
@@ -89,7 +96,9 @@ const WorkBentoItem = ({ project, gridPosition, onHoverChange, isCaseStudyView =
           />
         )}
       </div>
-      <div className={`work-bento-content ${isCaseStudyView ? "case-study-visible" : ""}`}>
+      <div
+        className={`work-bento-content ${isCaseStudyView ? "case-study-visible" : ""}`}
+      >
         <h3 className="work-bento-title">{project.title}</h3>
         <p className="work-bento-role">{project.role}</p>
         <div className="work-bento-tags">
@@ -133,7 +142,7 @@ const WorkBentoItem = ({ project, gridPosition, onHoverChange, isCaseStudyView =
           }
         });
       },
-      { rootMargin, threshold: 0.1 }
+      { rootMargin, threshold: 0.1 },
     );
 
     observer.observe(video);
