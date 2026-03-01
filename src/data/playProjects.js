@@ -4,9 +4,9 @@
 
 export const playProjects = [
   // Arranged by column order for balanced heights
-  // Column 1: floral-jukebox, im-listening, cat-box, sprite-map, sticker-cats, words-unseen, reflections-of-monet, puzzle-feeder
-  // Column 2: spherical-shopping, binary-pool, snowflake, photo-collage-reveal, neumorphic-buttons, bouncing-ball, cat-figurine, temple-of-fortune
-  // Column 3: emotional-canvas, gravity-text, ball-slide, emoji-ascii-art, picture-distortion, image-to-sprite, five-identical-fishes, pixel-trail, starry-night, whack-a-mouse, words-unseen
+  // Column 1: floral-jukebox, im-listening, block-party, cat-box, sticker-cats, words-unseen, ball-slide, puzzle-feeder
+  // Column 2: spherical-shopping, binary-pool, snowflake, photo-collage-reveal, neumorphic-buttons, cat-figurine, temple-of-fortune, starry-night
+  // Column 3: emotional-canvas, gravity-text, ball-slide, emoji-ascii-art, picture-distortion, five-identical-fishes, pixel-trail, starry-night, whack-a-mouse, words-unseen
   {
     id: "floral-jukebox",
     size: "tall",
@@ -15,6 +15,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: "/projects/floral-jukebox/demo.mp4",
+      poster: "/projects/floral-jukebox/poster.jpg",
     },
     actions: [
       {
@@ -37,6 +38,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: "/projects/spherical-shopping/demo.mp4",
+      poster: "/projects/spherical-shopping/poster.jpg",
     },
     actions: [
       {
@@ -59,6 +61,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: "/projects/emotional-canvas/demo.mp4",
+      poster: "/projects/emotional-canvas/poster.jpg",
     },
     actions: [
       {
@@ -80,12 +83,13 @@ export const playProjects = [
   },
   {
     id: "im-listening",
-    size: "tall",
+    size: "short",
     theme: "black",
     tags: ["Audio Analysis", "Three.js"],
     category: "digital",
     media: {
-      video: "/projects/im-listening/demo.mp4",
+      video: "/projects/im-listening/demo1.mp4",
+      poster: "/projects/im-listening/poster1.jpg",
     },
     actions: [
       {
@@ -97,6 +101,29 @@ export const playProjects = [
         type: "X",
         tooltip: "View on X",
         url: "https://x.com/bevdesigns/status/2004340156485324979?s=20",
+      },
+    ],
+  },
+  {
+    id: "block-party",
+    size: "short",
+    theme: "white",
+    tags: ["Gemini AI", "Image Recognition"],
+    category: "digital",
+    media: {
+      video: "/projects/block-party/demo.mp4",
+      thumbnail: "/projects/block-party/poster.jpg",
+    },
+    actions: [
+      {
+        type: "live",
+        tooltip: "View App",
+        url: "https://block-party-thesis.vercel.app",
+      },
+      {
+        type: "X",
+        tooltip: "View on X",
+        url: "https://x.com/bevdesigns/status/2028207640124231722?s=20",
       },
     ],
   },
@@ -152,6 +179,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: "/projects/ball-slide/demo.mp4",
+      poster: "/projects/ball-slide/poster.jpg",
     },
     actions: [
       {
@@ -174,6 +202,7 @@ export const playProjects = [
     category: "physical",
     media: {
       video: "/projects/cat-box/demo.mp4",
+      poster: "/projects/cat-box/poster.jpg",
     },
     actions: [
       {
@@ -196,6 +225,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: "/projects/snowflake/demo1.mp4",
+      poster: "/projects/snowflake/poster.jpg",
     },
     actions: [
       {
@@ -218,6 +248,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: "/projects/ascii-art/demo.mp4",
+      poster: "/projects/ascii-art/poster.jpg",
     },
     actions: [
       {
@@ -233,28 +264,6 @@ export const playProjects = [
     ],
   },
   {
-    id: "sprite-map",
-    size: "short",
-    theme: "white",
-    tags: ["React", "Game Design"],
-    category: "digital",
-    media: {
-      video: "/projects/sprite-map/demo.mp4",
-    },
-    actions: [
-      {
-        type: "live",
-        tooltip: "View App",
-        url: "https://sprite-map.vercel.app/",
-      },
-      {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004347677124055322?s=20",
-      },
-    ],
-  },
-  {
     id: "photo-collage-reveal",
     size: "tall",
     theme: "white",
@@ -262,6 +271,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: "/projects/photo-collage/demo1.mp4",
+      poster: "/projects/photo-collage/poster.jpg",
     },
     actions: [
       {
@@ -284,6 +294,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: "/projects/picture-distortion/demo.mp4",
+      poster: "/projects/picture-distortion/poster.jpg",
     },
     actions: [
       {
@@ -306,6 +317,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: "/projects/buttons/demo.mp4",
+      poster: "/projects/buttons/poster.jpg",
     },
     actions: [
       {
@@ -317,28 +329,6 @@ export const playProjects = [
         type: "X",
         tooltip: "View on X",
         url: "https://x.com/bevdesigns/status/2004346763373871338?s=20",
-      },
-    ],
-  },
-  {
-    id: "image-to-sprite",
-    size: "tall",
-    theme: "white",
-    tags: ["React", "Image Processing"],
-    category: "digital",
-    media: {
-      video: "/projects/image-to-sprite/demo.mp4",
-    },
-    actions: [
-      {
-        type: "live",
-        tooltip: "View App",
-        url: "https://image-to-sprite.vercel.app/",
-      },
-      {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2005117207479714033?s=20",
       },
     ],
   },
@@ -372,6 +362,7 @@ export const playProjects = [
     category: "physical",
     media: {
       video: "/projects/five-fishes/demo.mp4",
+      poster: "/projects/five-fishes/poster.jpg",
     },
     actions: [
       {
@@ -394,6 +385,7 @@ export const playProjects = [
     category: "physical",
     media: {
       video: "/projects/cat-figurine/demo.mp4",
+      poster: "/projects/cat-figurine/poster.jpg",
     },
     actions: [
       {
@@ -416,6 +408,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: "/projects/monet/demo.mp4",
+      poster: "/projects/monet/poster.jpg",
     },
     actions: [
       {
@@ -455,6 +448,7 @@ export const playProjects = [
     category: "physical",
     media: {
       video: "/projects/puzzle-feeder/demo.mp4",
+      poster: "/projects/puzzle-feeder/poster.jpg",
     },
     actions: [
       {
@@ -494,6 +488,7 @@ export const playProjects = [
     category: "physical",
     media: {
       video: "/projects/whack-a-mouse/demo.mp4",
+      poster: "/projects/whack-a-mouse/poster.jpg",
     },
     actions: [
       {
@@ -516,6 +511,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: "/projects/words-unseen/demo.mp4",
+      poster: "/projects/words-unseen/poster.jpg",
     },
     actions: [
       {

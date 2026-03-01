@@ -260,12 +260,14 @@ export const useCardUnfurling = ({
           };
 
           images.forEach((img) => {
-            if (img.complete || (img.tagName === 'VIDEO' && img.readyState >= 2)) {
+            // Videos with deferred src (no src yet) are considered ready; they load when in view
+            if (img.tagName === 'VIDEO' && !img.src) {
+              checkComplete();
+            } else if (img.complete || (img.tagName === 'VIDEO' && img.readyState >= 2)) {
               checkComplete();
             } else {
               img.addEventListener('load', checkComplete, { once: true });
               img.addEventListener('error', checkComplete, { once: true });
-              // For videos, also check loadeddata event
               if (img.tagName === 'VIDEO') {
                 img.addEventListener('loadeddata', checkComplete, { once: true });
               }

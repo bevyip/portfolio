@@ -100,18 +100,21 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
   const { id, theme = "white", tags, actions, size, media } = project;
   const [isTapped, setIsTapped] = useState(false);
   const [isMediaLoaded, setIsMediaLoaded] = useState(false);
+  const [videoInView, setVideoInView] = useState(false);
   const iframeRef = useRef(null);
   const videoRef = useRef(null);
   const containerRef = useRef(null);
+  const videoContainerRef = useRef(null);
 
   const isBlack = theme === "black";
   const hasVideo = media?.video;
+  const hasPoster = hasVideo && media?.poster;
   const hasImage = media?.image || media?.thumbnail;
   const hasIframe = media?.iframe;
   const hasMedia = hasVideo || hasIframe || hasImage;
   const disableHover = id === "ball-slide";
 
-  // Skeleton: hide after video/iframe/image signals ready, or after timeout
+  // Skeleton: hide when poster/image loads (poster case) or after timeout
   useEffect(() => {
     if (!hasMedia) {
       setIsMediaLoaded(true);
@@ -154,25 +157,25 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
       }
     : {};
 
-  // Lazy load video when it comes into viewport
+  // Defer video src until card is in viewport (poster or skeleton shown first)
   useEffect(() => {
-    if (!videoRef.current || !hasVideo) return;
+    if (!videoContainerRef.current || !hasVideo || !media.video) return;
 
-    const video = videoRef.current;
+    const container = videoContainerRef.current;
     const isMobile = window.innerWidth <= 768;
     const rootMargin = isMobile ? "100px" : "200px";
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          const video = videoRef.current;
+          if (entry.isIntersecting && video?.dataset.src && !video.src) {
+            video.src = video.dataset.src;
             video.load();
-            video.play().catch(() => {
-              // Autoplay may fail, that's okay
-            });
-            observer.unobserve(video);
-          } else {
-            // Pause when out of view to save resources
+            video.play().catch(() => {});
+            setVideoInView(true);
+            observer.unobserve(container);
+          } else if (!entry.isIntersecting && video?.src) {
             video.pause();
           }
         });
@@ -180,12 +183,10 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
       { rootMargin, threshold: 0.1 }
     );
 
-    observer.observe(video);
+    observer.observe(container);
 
-    return () => {
-      observer.disconnect();
-    };
-  }, [hasVideo]);
+    return () => observer.disconnect();
+  }, [hasVideo, media?.video]);
 
   // Lazy load iframe when it comes into viewport
   useEffect(() => {
@@ -219,7 +220,7 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
   return (
     <div
       className={`
-        bento-item group relative overflow-hidden rounded-lg
+        bento-item group relative overflow-hidden rounded-[8px]
         ${isBlack ? "bg-black border-gray-800" : "bg-white border-gray-200"}
         border
         shadow-[0_2px_8px_rgba(0,0,0,0.04)]
@@ -238,34 +239,50 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
       data-grid-row-end={gridPosition?.rowEnd}
       onClick={handleCardClick}
     >
-      {/* Video Background */}
+      {/* Video Background: poster first, video src deferred until in view */}
       {hasVideo && (
-        <video
-          ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover rounded-lg"
-          src={media.video}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="none"
-          onCanPlay={() => setIsMediaLoaded(true)}
-          onLoadedData={() => setIsMediaLoaded(true)}
-        />
+        <div
+          ref={videoContainerRef}
+          className="absolute inset-0 w-full h-full rounded-[8px] overflow-hidden"
+        >
+          {hasPoster && (
+            <img
+              className="absolute inset-0 w-full h-full object-cover rounded-[8px]"
+              src={media.poster}
+              alt=""
+              loading="lazy"
+              onLoad={() => setIsMediaLoaded(true)}
+              style={{ zIndex: videoInView ? 0 : 1 }}
+            />
+          )}
+          <video
+            ref={videoRef}
+            className="absolute inset-0 w-full h-full object-cover rounded-[8px]"
+            data-src={media.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="none"
+            onCanPlay={() => setIsMediaLoaded(true)}
+            onLoadedData={() => setIsMediaLoaded(true)}
+            style={{ zIndex: hasPoster && videoInView ? 1 : 0 }}
+          />
+        </div>
       )}
 
       {/* Iframe Background (interactive) */}
       {!hasVideo && hasIframe && (
         <div
           ref={containerRef}
-          className="absolute inset-0 w-full h-full rounded-lg"
+          className="absolute inset-0 w-full h-full rounded-[8px]"
           onClick={handleIframeClick}
           onMouseDown={handleIframeClick}
           onMouseEnter={handleIframeMouseEnter}
         >
           <iframe
             ref={iframeRef}
-            className="absolute inset-0 w-full h-full rounded-lg border-0"
+            className="absolute inset-0 w-full h-full rounded-[8px] border-0"
             title=""
             loading="lazy"
             data-src={media.iframe}
@@ -277,7 +294,7 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
       {/* Image Background (fallback if no video or iframe) */}
       {!hasVideo && !hasIframe && hasImage && (
         <img
-          className="absolute inset-0 w-full h-full object-cover rounded-lg"
+          className="absolute inset-0 w-full h-full object-cover rounded-[8px]"
           src={media.image || media.thumbnail}
           alt=""
           loading="lazy"
@@ -288,7 +305,7 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
       {/* Skeleton overlay until media has loaded */}
       {hasMedia && (
         <div
-          className="absolute inset-0 rounded-lg pointer-events-none z-[1]"
+          className="absolute inset-0 rounded-[8px] pointer-events-none z-[1]"
           style={{
             opacity: isMediaLoaded ? 0 : 1,
             transition: "opacity 0.4s ease",
