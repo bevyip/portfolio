@@ -170,7 +170,10 @@
     gap: 0 1.25rem;
   }
 
-  .about-sandbox-where-section .experience-timeline-section .group > div:first-child {
+  .about-sandbox-where-section
+    .experience-timeline-section
+    .group
+    > div:first-child {
     width: 110px;
     min-width: 110px;
     max-width: 110px;
@@ -585,7 +588,7 @@
 }
 
 .about-sandbox-sticker-nyu {
-  top: 15px;
+  top: -15px;
   left: -45px;
 }
 
