@@ -12,8 +12,8 @@ import VenmoCaseStudy from "./pages/VenmoCaseStudy/VenmoCaseStudy";
 import MoodleCaseStudy from "./pages/MoodleCaseStudy/MoodleCaseStudy";
 import WholeFoodsCaseStudy from "./pages/WholeFoodsCaseStudy/WholeFoodsCaseStudy";
 import ConfidoCaseStudy from "./pages/ConfidoCaseStudy/ConfidoCaseStudy";
+import PixelCatPage from "./pages/PixelCat/PixelCat";
 import NotFound from "./pages/NotFound/NotFound";
-import { PlayPageProvider } from "./contexts/PlayPageContext";
 import "./App.css";
 
 const LenisScrollTriggerIntegration = () => {
@@ -49,35 +49,34 @@ function App() {
     >
       <Router>
         <LenisScrollTriggerIntegration />
-        <PlayPageProvider>
-          <ScrollToTop />
-          <BackToTop />
-          <div className="app min-h-screen relative">
-            {/* Nav - fixed at top, overlays all content */}
-            <div
-              className="fixed top-0 left-0 w-full"
-              style={{
-                zIndex: 100,
-                pointerEvents: "none",
-              }}
-            >
-              <div style={{ pointerEvents: "auto" }}>
-                <Nav />
-              </div>
+        <ScrollToTop />
+        <BackToTop />
+        <div className="app min-h-screen relative">
+          {/* Nav - fixed at top, overlays all content */}
+          <div
+            className="fixed top-0 left-0 w-full"
+            style={{
+              zIndex: 100,
+              pointerEvents: "none",
+            }}
+          >
+            <div style={{ pointerEvents: "auto" }}>
+              <Nav />
             </div>
-            {/* Routes - main content */}
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/work" element={<Work />} />
-              <Route path="/venmo" element={<VenmoCaseStudy />} />
-              <Route path="/moodle" element={<MoodleCaseStudy />} />
-              <Route path="/wholefoods" element={<WholeFoodsCaseStudy />} />
-              <Route path="/confido" element={<ConfidoCaseStudy />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
           </div>
-        </PlayPageProvider>
+          {/* Routes - main content */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/work" element={<Work />} />
+            <Route path="/venmo" element={<VenmoCaseStudy />} />
+            <Route path="/moodle" element={<MoodleCaseStudy />} />
+            <Route path="/wholefoods" element={<WholeFoodsCaseStudy />} />
+            <Route path="/confido" element={<ConfidoCaseStudy />} />
+            <Route path="/pixel-cat" element={<PixelCatPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
       </Router>
     </ReactLenis>
   );

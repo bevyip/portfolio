@@ -5,7 +5,7 @@
   --sticker-peelback-drag: 0%;
   --sticker-start: calc(-1 * var(--sticker-p));
   --sticker-end: calc(100% + var(--sticker-p));
-  --sticker-shadow-opacity: 0.6;
+  --sticker-shadow-opacity: 0.28;
   --peel-direction: 0deg;
   display: inline-block;
   overflow: visible;

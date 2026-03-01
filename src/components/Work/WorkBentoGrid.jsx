@@ -1,13 +1,10 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
-import { useLenis } from "@studio-freight/react-lenis";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import BentoItem from "../Play/BentoItem";
-import WorkBentoItem from "./WorkBentoItem";
+import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import CursorPill from "../CursorPill/CursorPill";
-import { playProjects } from "../../data/playProjects";
-import FilterPills from "./FilterPills";
+import "./WorkBentoGrid.css";
+import "./WorkBentoItem.css";
 
-// Work projects data
+// Work projects data (4 case studies only)
 const workProjects = [
   {
     id: "confido-approval-flow",
@@ -16,7 +13,7 @@ const workProjects = [
     tags: ["Web", "Design Systems", "Enterprise Software"],
     summary:
       "Redesigning approval workflows with smarter logic and clearer audit trails for improved enterprise usability.",
-    video: "/work/confido/thumbnail1.mp4",
+    video: "/work/confido/thumbnail.mp4",
     category: "case-study",
   },
   {
@@ -26,7 +23,7 @@ const workProjects = [
     tags: ["Mobile", "User Research", "AI/ML"],
     summary:
       "Making clinical-grade pain monitoring accessible to cat owners through intuitive mobile design and privacy-first AI.",
-    video: "/work/moodle/thumbnail1.mp4",
+    video: "/work/moodle/thumbnail.mp4",
     category: "case-study",
   },
   {
@@ -46,272 +43,179 @@ const workProjects = [
     tags: ["Mobile", "User Research", "Retail Tech"],
     summary:
       "Surfacing a hidden checkout feature for an improved in-store experience by aligning interface design with user mental models.",
-    video: "/work/wholefoods/thumbnail1.mp4",
+    video: "/work/wholefoods/thumbnail.mp4",
     category: "case-study",
   },
 ];
 
-// Grid position maps for each filter state
-// ALL FILTER - Original positions (work + play projects mixed)
-const allWorkPositions = {
-  "moodle-pain-detection": { col: 3, rowStart: 2, rowEnd: 4 },
-  "confido-approval-flow": { col: 2, rowStart: 1, rowEnd: 3 },
-  "venmo-privacy-controls": { col: 1, rowStart: 3, rowEnd: 5 },
-  "whole-foods-checkout": { col: 2, rowStart: 5, rowEnd: 7 },
+const routeMap = {
+  "venmo-privacy-controls": "/venmo",
+  "moodle-pain-detection": "/moodle",
+  "whole-foods-checkout": "/wholefoods",
+  "confido-approval-flow": "/confido",
 };
 
-const allPlayPositions = {
-  "floral-jukebox": { col: 1, rowStart: 1, rowEnd: 3 },
-  "im-listening": { col: 1, rowStart: 5, rowEnd: 7 },
-  "cat-box": { col: 1, rowStart: 7, rowEnd: 8 },
-  "sprite-map": { col: 1, rowStart: 8, rowEnd: 9 },
-  "liquid-silk": { col: 1, rowStart: 9, rowEnd: 11 },
-  "sticker-cats": { col: 1, rowStart: 11, rowEnd: 13 },
-  "eye-see-you": { col: 1, rowStart: 13, rowEnd: 15 },
-  "reflections-of-monet": { col: 1, rowStart: 15, rowEnd: 17 },
-  "puzzle-feeder": { col: 1, rowStart: 17, rowEnd: 18 },
-  "blend-your-cursor": { col: 1, rowStart: 18, rowEnd: 20 },
-  "spherical-shopping": { col: 2, rowStart: 3, rowEnd: 5 },
-  "binary-pool": { col: 2, rowStart: 7, rowEnd: 9 },
-  "photo-collage-reveal": { col: 2, rowStart: 9, rowEnd: 11 },
-  snowflake: { col: 2, rowStart: 11, rowEnd: 13 },
-  "neumorphic-buttons": { col: 2, rowStart: 13, rowEnd: 14 },
-  "bouncing-ball": { col: 2, rowStart: 14, rowEnd: 16 },
-  "cat-figurine": { col: 2, rowStart: 16, rowEnd: 17 },
-  "temple-of-fortune": { col: 2, rowStart: 17, rowEnd: 18 },
-  "black-market": { col: 2, rowStart: 18, rowEnd: 20 },
-  "emotional-canvas": { col: 3, rowStart: 1, rowEnd: 2 },
-  "gravity-text": { col: 3, rowStart: 4, rowEnd: 6 },
-  "ball-slide": { col: 3, rowStart: 6, rowEnd: 8 },
-  "emoji-ascii-art": { col: 3, rowStart: 8, rowEnd: 9 },
-  "picture-distortion": { col: 3, rowStart: 9, rowEnd: 11 },
-  "image-to-sprite": { col: 3, rowStart: 11, rowEnd: 13 },
-  "five-identical-fishes": { col: 3, rowStart: 13, rowEnd: 14 },
-  "pixel-trail": { col: 3, rowStart: 14, rowEnd: 16 },
-  "starry-night": { col: 3, rowStart: 16, rowEnd: 17 },
-  "whack-a-mouse": { col: 3, rowStart: 17, rowEnd: 18 },
-  "words-unseen": { col: 3, rowStart: 18, rowEnd: 20 },
-};
+/** Single work card (same visuals as before, inlined from WorkBentoItem) */
+function WorkCard({ project, onHoverChange, onVideoReady }) {
+  const videoRef = useRef(null);
+  const readyFired = useRef(false);
 
-// CASE STUDIES FILTER - Only the 4 work projects in 2x2 grid
-const caseStudyWorkPositions = {
-  "confido-approval-flow": { col: 1, rowStart: 1, rowEnd: 2 },
-  "moodle-pain-detection": { col: 2, rowStart: 1, rowEnd: 2 },
-  "venmo-privacy-controls": { col: 1, rowStart: 2, rowEnd: 3 },
-  "whole-foods-checkout": { col: 2, rowStart: 2, rowEnd: 3 },
-};
-
-// DIGITAL FILTER - Creative coding projects only
-const digitalPlayPositions = {
-  "floral-jukebox": { col: 1, rowStart: 1, rowEnd: 3 },
-  "spherical-shopping": { col: 2, rowStart: 1, rowEnd: 3 },
-  "emotional-canvas": { col: 3, rowStart: 1, rowEnd: 2 },
-  "im-listening": { col: 1, rowStart: 3, rowEnd: 5 },
-  "binary-pool": { col: 2, rowStart: 3, rowEnd: 5 },
-  "gravity-text": { col: 3, rowStart: 2, rowEnd: 4 },
-  "ball-slide": { col: 3, rowStart: 4, rowEnd: 6 },
-  "snowflake": { col: 1, rowStart: 5, rowEnd: 7 },
-  "emoji-ascii-art": { col: 2, rowStart: 5, rowEnd: 6 },
-  "sprite-map": { col: 2, rowStart: 6, rowEnd: 7 },
-  "photo-collage-reveal": { col: 1, rowStart: 7, rowEnd: 9 },
-  "picture-distortion": { col: 2, rowStart: 7, rowEnd: 9 },
-  "liquid-silk": { col: 3, rowStart: 6, rowEnd: 8 },
-  "neumorphic-buttons": { col: 3, rowStart: 8, rowEnd: 9 },
-  "image-to-sprite": { col: 1, rowStart: 9, rowEnd: 11 },
-  "sticker-cats": { col: 2, rowStart: 9, rowEnd: 11 },
-  "bouncing-ball": { col: 3, rowStart: 9, rowEnd: 11 },
-  "eye-see-you": { col: 1, rowStart: 11, rowEnd: 13 },
-  "pixel-trail": { col: 2, rowStart: 11, rowEnd: 13 },
-  "reflections-of-monet": { col: 3, rowStart: 11, rowEnd: 13 },
-  "blend-your-cursor": { col: 1, rowStart: 13, rowEnd: 15 },
-  "starry-night": { col: 2, rowStart: 13, rowEnd: 14 },
-  "words-unseen": { col: 3, rowStart: 13, rowEnd: 15 },
-};
-
-// PHYSICAL FILTER - Fabrication + Temple of Fortune + Black Market
-const physicalPlayPositions = {
-  "cat-box": { col: 1, rowStart: 1, rowEnd: 2 },
-  "cat-figurine": { col: 2, rowStart: 1, rowEnd: 2 },
-  "puzzle-feeder": { col: 3, rowStart: 1, rowEnd: 2 },
-  "five-identical-fishes": { col: 1, rowStart: 2, rowEnd: 3 },
-  "whack-a-mouse": { col: 2, rowStart: 2, rowEnd: 3 },
-  "temple-of-fortune": { col: 3, rowStart: 2, rowEnd: 3 },
-  "black-market": { col: 1, rowStart: 3, rowEnd: 5 },
-};
-
-const WorkBentoGrid = ({ onProjectClick }) => {
-  const [isHoveringWorkCard, setIsHoveringWorkCard] = useState(false);
-  const [activeFilter, setActiveFilter] = useState("all");
-  const gridRef = useRef(null);
-  const filterPillsRef = useRef(null);
-  const lenis = useLenis();
-
-  // Filter projects based on active filter
-  let filteredWorkProjects = workProjects.filter((project) => {
-    if (activeFilter === "all") return true;
-    if (activeFilter === "case-study") return project.category === "case-study";
-    return false; // Work projects only show in "all" or "case-study"
-  });
-
-  let filteredPlayProjects = playProjects.filter((project) => {
-    if (activeFilter === "all") return true;
-    if (activeFilter === "digital") return project.category === "digital";
-    if (activeFilter === "physical") return project.category === "physical";
-    return false;
-  });
-
-  // Select appropriate position maps based on active filter
-  const getWorkPositions = () => {
-    if (activeFilter === "case-study") return caseStudyWorkPositions;
-    return allWorkPositions;
+  const handleVideoReady = () => {
+    if (readyFired.current) return;
+    readyFired.current = true;
+    onVideoReady?.();
   };
 
-  const getPlayPositions = () => {
-    if (activeFilter === "digital") return digitalPlayPositions;
-    if (activeFilter === "physical") return physicalPlayPositions;
-    return allPlayPositions;
-  };
+  const isClickable =
+    project.id === "venmo-privacy-controls" ||
+    project.id === "moodle-pain-detection" ||
+    project.id === "whole-foods-checkout" ||
+    project.id === "confido-approval-flow";
 
-  const workPositions = getWorkPositions();
-  const playPositions = getPlayPositions();
-
-  const handleFilterChange = (newFilter) => {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    
-    if (lenis) {
-      lenis.scrollTo(0, { duration: 0, immediate: true, force: true });
-    }
-    
-    setActiveFilter(newFilter);
-  };
-
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    
-    if (lenis) {
-      lenis.scrollTo(0, { duration: 0, immediate: true, force: true });
-    }
-  }, [activeFilter, lenis]);
+  const videoSource = project.video;
 
   useEffect(() => {
-    const resetScroll = () => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      
-      if (lenis) {
-        lenis.scrollTo(0, { duration: 0, immediate: true, force: true });
-      }
-    };
+    if (!videoRef.current || !videoSource) return;
+    const video = videoRef.current;
+    const isMobile = window.innerWidth <= 768;
+    const rootMargin = isMobile ? "100px" : "200px";
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.load();
+            video.play().catch(() => {});
+            observer.unobserve(video);
+          }
+        });
+      },
+      { rootMargin, threshold: 0.1 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [videoSource]);
 
-    resetScroll();
+  const cardClassName =
+    "work-bento-item group relative overflow-hidden rounded-[8px] bg-[#1a1a1a] shadow-[0_2px_8px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out h-full min-h-[200px] flex flex-col case-study-card";
 
-    requestAnimationFrame(() => {
-      resetScroll();
-      requestAnimationFrame(() => {
-        resetScroll();
-      });
-    });
-
-    const timeoutId = setTimeout(() => {
-      resetScroll();
-      ScrollTrigger.refresh();
-      requestAnimationFrame(() => {
-        resetScroll();
-      });
-    }, 100);
-
-    let frameCount = 0;
-    const maxFrames = 120;
-
-    const preventScrollJump = () => {
-      if (frameCount >= maxFrames) return;
-
-      const currentScroll = window.scrollY || document.documentElement.scrollTop;
-
-      if (currentScroll > 0) {
-        resetScroll();
-      }
-
-      frameCount++;
-      requestAnimationFrame(preventScrollJump);
-    };
-
-    const monitorTimeoutId = setTimeout(() => {
-      requestAnimationFrame(preventScrollJump);
-    }, 50);
-
-    return () => {
-      clearTimeout(timeoutId);
-      clearTimeout(monitorTimeoutId);
-    };
-  }, [activeFilter, lenis]);
-
-  return (
+  const content = (
     <>
-      <CursorPill isHovering={isHoveringWorkCard} text="View case study" />
-      <div ref={filterPillsRef}>
-        <FilterPills activeFilter={activeFilter} onFilterChange={handleFilterChange} />
+      <div className="work-bento-image-container">
+        {videoSource ? (
+          <video
+            ref={videoRef}
+            src={videoSource}
+            className="work-bento-image"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="none"
+            controls={false}
+            aria-label={project.title}
+            onCanPlay={handleVideoReady}
+            onLoadedData={handleVideoReady}
+          />
+        ) : (
+          project.image && (
+            <img
+              src={project.image}
+              alt={project.title}
+              className="work-bento-image"
+              loading="lazy"
+            />
+          )
+        )}
       </div>
-      <div
-        ref={gridRef}
-        className={
-          activeFilter === "case-study"
-            ? `
-          grid
-          grid-cols-1
-          min-[768px]:grid-cols-2
-          gap-6
-          min-[768px]:gap-8
-          min-[1024px]:gap-10
-          w-full
-          auto-rows-[480px]
-          min-[768px]:auto-rows-[600px]
-          case-study-grid
-        `
-            : `
-          grid
-          grid-cols-1
-          min-[1026px]:grid-cols-3
-          gap-4
-          w-full
-          auto-rows-[480px]
-          min-[1026px]:auto-rows-[220px]
-          bento-grid-filtered
-        `
-        }
-      >
-        {filteredWorkProjects.map((project) => {
-          const position = workPositions[project.id];
-          return (
-            <WorkBentoItem
-              key={project.id}
-              project={project}
-              gridPosition={position}
-              onHoverChange={setIsHoveringWorkCard}
-              isCaseStudyView={activeFilter === "case-study"}
-            />
-          );
-        })}
-
-        {filteredPlayProjects.map((project) => {
-          const position = playPositions[project.id];
-          if (!position) return null;
-          return (
-            <BentoItem
-              key={project.id}
-              project={project}
-              onClick={onProjectClick}
-              gridPosition={position}
-            />
-          );
-        })}
+      <div className="work-bento-content case-study-visible">
+        <h3 className="work-bento-title">{project.title}</h3>
+        <p className="work-bento-role">{project.role}</p>
+        <div className="work-bento-tags">
+          {project.tags.map((tag, index) => (
+            <span key={index} className="work-bento-tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <p className="work-bento-summary">{project.summary}</p>
       </div>
     </>
+  );
+
+  const hoverProps = {
+    onMouseEnter: () => onHoverChange?.(true),
+    onMouseLeave: () => onHoverChange?.(false),
+  };
+
+  if (isClickable) {
+    return (
+      <Link
+        to={routeMap[project.id]}
+        className={cardClassName}
+        data-project-id={project.id}
+        {...hoverProps}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <div className={cardClassName} data-project-id={project.id} {...hoverProps}>
+      {content}
+    </div>
+  );
+}
+
+/**
+ * Simple 2x2 grid (full width) or single column on small devices.
+ * Renders the 4 case study cards only. No filters, no play projects.
+ */
+const WorkBentoGrid = ({
+  onHoverChange,
+  isHoveringWorkCard: controlledHover,
+  gridClassName = "work-bento-grid",
+  containerRef,
+  onReady,
+}) => {
+  const [localHover, setLocalHover] = useState(false);
+  const isHovering = controlledHover !== undefined ? controlledHover : localHover;
+  const handleHover = onHoverChange ?? setLocalHover;
+
+  const readyCountRef = useRef(0);
+  const readyCalledRef = useRef(false);
+
+  const fireReady = () => {
+    if (readyCalledRef.current) return;
+    readyCalledRef.current = true;
+    onReady?.();
+  };
+
+  const handleVideoReady = () => {
+    readyCountRef.current += 1;
+    if (readyCountRef.current >= workProjects.length) {
+      fireReady();
+    }
+  };
+
+  useEffect(() => {
+    if (!onReady) return;
+    const fallback = setTimeout(fireReady, 3000);
+    return () => clearTimeout(fallback);
+  }, [onReady]);
+
+  return (
+    <div ref={containerRef} className={gridClassName} aria-label="Case studies">
+      <CursorPill isHovering={isHovering} text="View case study" />
+      {workProjects.map((project) => (
+        <WorkCard
+          key={project.id}
+          project={project}
+          onHoverChange={handleHover}
+          onVideoReady={handleVideoReady}
+        />
+      ))}
+    </div>
   );
 };
 

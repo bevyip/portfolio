@@ -30,9 +30,13 @@ const formatTimeframe = (timeframe) => {
 
 const TimelineItem = forwardRef(({ experience }, ref) => {
   return (
-    <div
+    <a
       ref={ref}
-      className="col-span-full grid grid-cols-1 md:grid-cols-[max-content_1px_1fr] md:gap-x-10 group"
+      href={experience.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Visit ${experience.company}`}
+      className="col-span-full grid grid-cols-1 md:grid-cols-[max-content_1px_1fr] md:gap-x-10 group experience-timeline-row block cursor-pointer no-underline text-inherit"
     >
       {/* Date Column */}
       <div className="md:text-right pt-4 pb-3 md:pb-12 md:w-[180px] md:min-w-[180px]">
@@ -49,7 +53,6 @@ const TimelineItem = forwardRef(({ experience }, ref) => {
       {/* Content Column */}
       <div className="flex flex-col md:flex-row md:items-start gap-5 md:gap-10 justify-between relative pt-1 md:pt-3 pb-16 md:pb-12">
         <div className="flex flex-col md:flex-row md:items-start gap-5 md:gap-6 flex-1 min-w-0">
-          {/* Responsive Image: Square Container */}
           <div className="relative flex-shrink-0 w-full md:w-40 aspect-square overflow-hidden rounded-xl md:rounded-lg border border-zinc-800/80 bg-zinc-900 shadow-xl">
             <img
               src={experience.imageUrl}
@@ -57,8 +60,6 @@ const TimelineItem = forwardRef(({ experience }, ref) => {
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
-
-          {/* Text Stack */}
           <div className="min-w-0 flex flex-row items-start justify-between md:block">
             <div className="min-w-0">
               <div className="flex items-baseline gap-2 flex-wrap">
@@ -76,35 +77,26 @@ const TimelineItem = forwardRef(({ experience }, ref) => {
                 </p>
               )}
             </div>
-
-            {/* Mobile-only Arrow */}
             <div className="md:hidden ml-4 flex-shrink-0">
-              <LinkArrow link={experience.link} label={experience.company} />
+              <LinkArrow />
             </div>
           </div>
         </div>
-
-        {/* Desktop-only Arrow */}
         <div className="hidden md:block flex-shrink-0">
-          <LinkArrow link={experience.link} label={experience.company} />
+          <LinkArrow />
         </div>
       </div>
-
-      {/* Mobile progress line divider */}
       <div className="md:hidden h-px bg-zinc-900/50 mb-10 last:hidden w-full col-span-full" />
-    </div>
+    </a>
   );
 });
 
 TimelineItem.displayName = "TimelineItem";
 
-const LinkArrow = ({ link, label }) => (
-  <a
-    href={link}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center justify-center w-10 h-10 md:w-10 md:h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-[#7dd3fc] group-hover:border-[#7dd3fc]/50 group-hover:bg-[#7dd3fc]/5 backdrop-blur-sm transition-all duration-500 hover:scale-110 active:scale-95 cursor-pointer"
-    aria-label={`Visit ${label}`}
+const LinkArrow = () => (
+  <span
+    className="experience-timeline-link-arrow inline-flex items-center justify-center w-10 h-10 md:w-10 md:h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-[#7dd3fc] group-hover:border-[#7dd3fc]/50 group-hover:bg-[#7dd3fc]/5 backdrop-blur-sm transition-all duration-500 group-hover:scale-110 active:scale-95 pointer-events-none"
+    aria-hidden
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +112,7 @@ const LinkArrow = ({ link, label }) => (
       <line x1="7" y1="17" x2="17" y2="7"></line>
       <polyline points="7 7 17 7 17 17"></polyline>
     </svg>
-  </a>
+  </span>
 );
 
 export default TimelineItem;

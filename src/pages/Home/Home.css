@@ -1,236 +1,408 @@
-/* Hero text container - center-aligned, em dash centered vertically */
-.sandbox-hero-text-container {
-  display: grid;
-  grid-template-rows: 1fr auto 1fr;
-  align-items: center;
-  justify-items: center;
-  text-align: center;
-  width: 100%;
-  max-width: 90rem; /* Increased from 80rem = 1440px */
-  margin: 0 auto;
-  padding: 0 1.5rem; /* px-6 */
-  position: relative;
+/* Home – main homepage layout (navbar/footer from App) */
+
+.home {
   min-height: 100vh;
+  width: 100%;
+}
+
+/* ----- Landing ----- */
+.home-landing {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  background-color: #fafafa;
+}
+
+/* Content wrapper: same max-width and padding as before (matches navbar) */
+.home-landing-content {
+  position: relative;
+  z-index: 1;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: clamp(8rem, 22vh, 15rem) 1.5rem clamp(1.5rem, 4vh, 2rem);
 }
 
 @media (min-width: 640px) {
-  .sandbox-hero-text-container {
-    padding: 0 2rem; /* sm:px-8 */
+  .home-landing-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .sandbox-hero-text-container {
-    padding: 0 3rem; /* lg:px-12 */
+  .home-landing-content {
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }
 
-/* Hero title - positioned above centered dash */
-.sandbox-hero-title {
-  font-family: "Crimson Pro", serif;
-  font-size: clamp(3rem, 4.5vw, 6rem); /* 48-96px range, increased max again */
-  font-weight: 400;
-  line-height: 1;
-  color: #fafafa;
+/* Grid: left = title/subtitle, right = PixelCat (column on small) */
+.home-landing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Mobile: column layout, each child full width; cat needs min-height so absolute scene is visible */
+@media (max-width: 767px) {
+  .home-landing-content {
+    padding-bottom: 0;
+  }
+  .home-landing-grid {
+    width: 100%;
+    gap: 0;
+  }
+  .home-landing-inner,
+  .home-landing-cat {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .pixel-cat-scene {
+    height: 140px;
+    bottom: -30px;
+  }
+  /* Heart floats above cat; default bottom:110 is outside short container – position so it stays visible */
+  .home-landing-cat .pixel-cat-floating-heart {
+    bottom: 110px;
+  }
+}
+
+/* Desktop/tablet: text left, cat right; align row to end so cat's walking surface lines up with subtitle bottom */
+@media (min-width: 768px) {
+  .home-landing-grid {
+    grid-template-columns: minmax(0, 40.5rem) 1fr;
+    gap: 0rem;
+    align-items: end;
+  }
+}
+
+/* Tablet: give text column slightly less width so pixel cat has more room */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .home-landing-grid {
+    grid-template-columns: minmax(0, 32rem) 1fr;
+  }
+}
+
+.home-landing-inner {
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* PixelCat: hidden until rise animation runs; overflow so rise-from-baseline clips */
+.home-landing-cat {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  align-self: stretch;
+  overflow: hidden;
+  opacity: 0;
+}
+
+/* Desktop/tablet only: tall scene with bottom offset; mobile uses rules in @media (max-width: 767px) below */
+@media (min-width: 768px) {
+  .home-landing-cat .pixel-cat-scene {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-width: 100%;
+    height: 120%;
+    bottom: -30px;
+    box-sizing: border-box;
+  }
+}
+
+/* Landing title + bio: rise-from-baseline (line inners start below) */
+.home-hero-line {
+  display: block;
+  overflow: hidden;
+  line-height: 1.05;
   margin: 0;
-  margin-bottom: clamp(1.5rem, 2.5vh, 2rem); /* Spacing above dash */
-  letter-spacing: -0.05em;
-  max-width: clamp(22rem, 45vw, 48rem); /* Increased max-width for larger screens */
-  grid-row: 1;
-  align-self: end;
+  padding-bottom: 0.2em; /* room for descenders (g, y, p) */
+}
+.home-hero-line-inner {
+  display: block;
+  line-height: 1.05;
+}
+.home-bio-line {
+  display: block;
+  overflow: hidden;
+  line-height: 1.6;
+  margin: 0;
+}
+.home-bio-line-inner {
+  display: block;
+  line-height: 1.6;
+}
+.home-landing .home-hero-line-inner,
+.home-landing .home-bio-line-inner {
+  transform: translateY(100%);
+}
+/* PixelCat: start hidden for rise + fade on render */
+.home-landing .home-landing-cat {
+  opacity: 0;
+  transform: translateY(56px);
+}
+
+/* Title: full width of column */
+.home-hero {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  color: #1e1e1e;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.25rem 0;
+}
+
+.home-hero em {
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Subtitle */
+.home-bio {
+  max-width: 38rem;
+  font-family: "Satoshi", sans-serif;
+  font-size: clamp(0.95rem, 2vw, 18px);
+  color: #353535;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 300;
+}
+
+/* Company name with logo (Salesforce, Confido) – logo scaled to line height, small gap */
+.home-company-with-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  white-space: nowrap;
+  vertical-align: -0.15em;
+  margin-left: 0.25em;
+}
+
+.home-company-logo {
+  height: 1em;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Underline-on-hover (same as About page institution links) */
+.home-landing-company-link {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.home-landing-company-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.home-landing-company-link:hover::after {
+  width: 100%;
+}
+
+/* Second line: open-to-work sentence */
+.home-bio-second-line {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .home-landing .home-company-with-logo {
+    margin-left: 0.1em;
+  }
+
+  .home-hero {
+    font-size: 2.25rem;
+  }
+
+  /* 375px and smaller: slightly smaller titles */
+  @media (max-width: 375px) {
+    .home-hero {
+      font-size: 2.1rem;
+    }
+  }
+
+  /* Mobile: one paragraph – hide line break, second sentence flows inline */
+  .home-landing .home-bio br {
+    display: none;
+  }
+  .home-landing .home-bio .home-bio-second-line {
+    display: inline;
+    line-height: inherit;
+  }
+  .home-landing .home-bio .home-bio-second-line::before {
+    content: " ";
+  }
+}
+
+/* ----- Work: 2x2 case studies ----- */
+.home-work {
+  padding: 1rem 1.5rem 3rem;
+}
+
+.home-work-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.home-work-loading-wrapper {
+  position: relative;
+}
+
+.home-work-skeleton {
+  min-height: 200px;
+}
+
+.home-work-skeleton-card {
+  min-height: var(--home-row-h, 560px);
+  background: #e8e8e8;
+  border-radius: 8px;
+}
+
+/* Same structure as Work page case-study grid */
+.home-case-study-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  position: relative;
+  --home-row-h: 560px;
+}
+
+@media (max-width: 767px) {
+  .home-case-study-grid {
+    --home-row-h: 420px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .sandbox-hero-title {
-    font-size: clamp(3.5rem, 5vw, 5.5rem); /* Increased for tablet */
-    max-width: clamp(28rem, 50vw, 52rem); /* Increased max-width for tablet */
+  .home-case-study-grid {
+    --home-row-h: 500px;
   }
 }
 
+/* Tablet: keep single column; 2 columns from desktop only */
 @media (min-width: 1024px) {
-  .sandbox-hero-title {
-    font-size: clamp(4rem, 4vw, 6.5rem); /* Increased for 1024px and above */
-    max-width: clamp(32rem, 50vw, 52rem); /* Increased max-width for 1024px and above */
+  .home-case-study-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    --home-row-h: 720px;
   }
 }
 
-.sandbox-hero-accent {
-  color: #7dd3fc; /* Accent color */
-  font-style: italic;
-}
-
-/* Hero em dash - centered vertically, fixed width */
-.sandbox-hero-dash {
-  width: 64px; /* Fixed width - always use desktop size */
-  height: 8px; /* Fixed height - always use desktop size */
-  margin: 0;
-  grid-row: 2;
-  z-index: 20;
-}
-
-/* Hero subtitle - modest, 18-20px, positioned below centered dash */
-.sandbox-hero-subtitle {
-  font-family: "Satoshi", sans-serif;
-  font-size: clamp(1.125rem, 1.25vw, 1.25rem); /* 18-20px */
-  font-weight: 300;
-  line-height: 1.6;
-  color: #ffffff;
-  margin: 0;
-  margin-top: clamp(1.5rem, 2.5vh, 2rem); /* Spacing below dash */
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  grid-row: 3;
-  align-self: start;
-  transform-origin: bottom;
-}
-
-.sandbox-hero-subtitle-line {
-  display: block;
-  overflow: hidden;
-}
-
-.sandbox-hero-subtitle-line-text {
-  display: block;
-}
-
-.sandbox-title {
-  font-family: "Crimson Pro", serif;
-  font-size: 3rem;
-  font-weight: 400;
-  letter-spacing: -0.05em;
-  color: #0f0f0f;
-  margin: 0;
-  line-height: 1.2;
-  text-align: center;
-}
-
-.sandbox-title-wrapper {
-  display: inline-block;
-  overflow: hidden;
-  padding-right: 0.1em;
-}
-
-.sandbox-title-text {
-  display: inline-block;
-}
-
-.sandbox-title-featured {
-  font-weight: 500;
-  color: #7dd3fc;
-  letter-spacing: -0.05em;
-}
-
-.sandbox-title-work {
-  color: #0f0f0f;
-  letter-spacing: -0.05em;
-}
-
-@media (min-width: 768px) {
-  .sandbox-title {
-    font-size: 6rem;
-    letter-spacing: -0.05em;
-    font-weight: 400;
-  }
-}
-
-/* Ensure GSAP pin-spacer starts at top of viewport */
-.pin-spacer {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-/* Name container within hero text container */
-.sandbox-hero-text-container .sandbox-name-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-/* Name at bottom of grid background */
-.sandbox-name {
-  font-family: "Satoshi", sans-serif;
-  font-weight: 500;
-  color: #ffffff;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-transform: uppercase;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  box-sizing: border-box;
-  /* Keep current font size */
-  font-size: clamp(2rem, 9vw, 20rem);
-}
-
-/* Ensure text never wraps on any screen size */
-@media (max-width: 640px) {
-  .sandbox-name {
-    font-size: clamp(1.5rem, 12vw, 8rem);
-  }
-}
-
-/* Hardcoded grid positions for bento items - desktop only */
-@media (min-width: 1026px) {
-  .bento-item[data-grid-col][data-grid-row-start][data-grid-row-end],
+/* Grid placement for WorkBentoItem (same as Work page) */
+.home-case-study-grid
   .work-bento-item[data-grid-col][data-grid-row-start][data-grid-row-end] {
+  grid-column: var(--grid-col);
+  grid-row: var(--grid-row-start) / var(--grid-row-end);
+}
+
+.home-case-study-grid {
+  grid-auto-rows: var(--home-row-h);
+}
+
+/* ----- Play: title, subtitle, bento grid (play projects only) ----- */
+.home-play {
+  padding: 4rem 1.5rem 10rem;
+}
+
+.home-play-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.home-play-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  color: #1e1e1e;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.25rem 0;
+}
+
+.home-play-title-line {
+  display: block;
+  overflow: hidden;
+  line-height: 1.05;
+  margin: 0;
+  padding-bottom: 0.2em; /* room for descenders (g, y, p) */
+}
+
+.home-play-title-line-inner {
+  display: block;
+  line-height: 1.05;
+}
+
+.home-play-subtitle {
+  font-family: "Satoshi", sans-serif;
+  font-size: clamp(0.95rem, 2vw, 18px);
+  color: #353535;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+  max-width: 65%;
+  font-weight: 300;
+}
+
+/* Mobile: play text section (title + subtitle) full width; slightly larger title */
+@media (max-width: 767px) {
+  .home-play-inner {
+    width: 100%;
+  }
+  .home-play-title {
+    font-size: 2.25rem;
+  }
+  .home-play-title,
+  .home-play-subtitle {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 375px) {
+  .home-play-title {
+    font-size: 2.1rem;
+  }
+}
+
+.home-play-subtitle-line {
+  display: block;
+  overflow: hidden;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.home-play-subtitle-line-inner {
+  display: block;
+  line-height: 1.6;
+}
+
+.home-play-subtitle .play-question {
+  font-weight: 500;
+}
+
+.home-play .filter-pills-container {
+  margin-bottom: 1.5rem;
+}
+
+/* Play bento grid: place items by data attributes (desktop) */
+@media (min-width: 1026px) {
+  .home-play
+    .bento-item[data-grid-col][data-grid-row-start][data-grid-row-end] {
     grid-column: var(--grid-col);
     grid-row: var(--grid-row-start) / var(--grid-row-end);
   }
-}
-
-/* See All Work Button - matching resume button animation */
-.see-more-button.pill {
-  font-family: "Satoshi", sans-serif;
-  font-weight: 500;
-  font-size: 1rem;
-  letter-spacing: 0.02em;
-  color: #0f0f0f;
-  background: rgba(15, 15, 15, 0.05);
-  border: 1px solid rgba(15, 15, 15, 0.2);
-  border-radius: 999px;
-  padding: 0.75rem 2rem;
-  text-decoration: none;
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-}
-
-.see-more-button.pill .hover-circle {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  border-radius: 50%;
-  background: #0f0f0f;
-  z-index: 1;
-  display: block;
-  pointer-events: none;
-  will-change: transform;
-}
-
-.see-more-button.pill .label-stack {
-  position: relative;
-  display: inline-block;
-  line-height: 1;
-  z-index: 2;
-}
-
-.see-more-button.pill .pill-label {
-  position: relative;
-  z-index: 2;
-  display: inline-block;
-  line-height: 1;
-  will-change: transform;
-  color: inherit;
-}
-
-.see-more-button.pill .pill-label-hover {
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: #fafafa;
-  z-index: 3;
-  display: inline-block;
-  will-change: transform, opacity;
 }

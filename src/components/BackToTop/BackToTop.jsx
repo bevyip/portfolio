@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLenis } from "@studio-freight/react-lenis";
 import "./BackToTop.css";
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isInFooter, setIsInFooter] = useState(false);
   const lenis = useLenis();
 
   useEffect(() => {
     const checkScrollPosition = () => {
-      let scrollPosition = 0;
-
-      if (lenis) {
-        // Use Lenis scroll position if available
-        scrollPosition = lenis.scroll;
-      } else {
-        // Fallback to window scroll position
-        scrollPosition = window.scrollY || document.documentElement.scrollTop;
-      }
-
+      const scrollPosition = lenis
+        ? lenis.scroll
+        : window.scrollY || document.documentElement.scrollTop;
       setIsVisible(scrollPosition > 300);
+
+      // Check if viewport has entered the footer (button would sit over footer)
+      const footer = document.querySelector(".footer");
+      if (footer) {
+        const footerTop = footer.getBoundingClientRect().top;
+        const viewportHeight = window.innerHeight;
+        const buttonBottomOffset = 32 + 42; // 2rem + button height
+        setIsInFooter(footerTop < viewportHeight - buttonBottomOffset);
+      }
     };
 
-    // Initial check
     checkScrollPosition();
 
-    // Listen to Lenis scroll events if available
     if (lenis) {
       lenis.on("scroll", checkScrollPosition);
     } else {
-      // Fallback to window scroll events
       window.addEventListener("scroll", checkScrollPosition);
     }
 
@@ -57,22 +57,23 @@ const BackToTop = () => {
 
   return (
     <button
-      className={`back-to-top-button ${isVisible ? "visible" : ""}`}
+      className={`back-to-top-button ${isVisible ? "visible" : ""} ${isInFooter ? "in-footer" : ""}`}
       onClick={scrollToTop}
       aria-label="Back to top"
     >
       <svg
-        className="chevron-up"
+        className="back-to-top-arrow"
         width="16"
         height="16"
         viewBox="0 0 16 16"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        aria-hidden
       >
         <path
-          d="M12 10L8 6L4 10"
+          d="M8 3v10M4 7l4-4 4 4"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="1.2"
           strokeLinecap="square"
           strokeLinejoin="square"
         />

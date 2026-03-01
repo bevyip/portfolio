@@ -4,8 +4,8 @@
 
 export const playProjects = [
   // Arranged by column order for balanced heights
-  // Column 1: floral-jukebox, im-listening, cat-box, sprite-map, liquid-silk, sticker-cats, eye-see-you, reflections-of-monet, puzzle-feeder
-  // Column 2: spherical-shopping, binary-pool, snowflake, photo-collage-reveal, neumorphic-buttons, bouncing-ball, cat-figurine, blend-your-cursor, temple-of-fortune
+  // Column 1: floral-jukebox, im-listening, cat-box, sprite-map, sticker-cats, words-unseen, reflections-of-monet, puzzle-feeder
+  // Column 2: spherical-shopping, binary-pool, snowflake, photo-collage-reveal, neumorphic-buttons, bouncing-ball, cat-figurine, temple-of-fortune
   // Column 3: emotional-canvas, gravity-text, ball-slide, emoji-ascii-art, picture-distortion, image-to-sprite, five-identical-fishes, pixel-trail, starry-night, whack-a-mouse, words-unseen
   {
     id: "floral-jukebox",
@@ -299,28 +299,6 @@ export const playProjects = [
     ],
   },
   {
-    id: "liquid-silk",
-    size: "tall",
-    theme: "white",
-    tags: ["React", "Three.js"],
-    category: "digital",
-    media: {
-      iframe: "https://liquid-silk.vercel.app",
-    },
-    actions: [
-      {
-        type: "live",
-        tooltip: "View Live",
-        url: "https://liquid-silk.vercel.app",
-      },
-      {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004342200277373152?s=20",
-      },
-    ],
-  },
-  {
     id: "neumorphic-buttons",
     size: "short",
     theme: "white",
@@ -387,28 +365,6 @@ export const playProjects = [
     ],
   },
   {
-    id: "bouncing-ball",
-    size: "tall",
-    theme: "white",
-    tags: ["GSAP", "Interaction Design"],
-    category: "digital",
-    media: {
-      iframe: "https://bouncing-ball-gules.vercel.app",
-    },
-    actions: [
-      {
-        type: "live",
-        tooltip: "View Live",
-        url: "https://bouncing-ball-gules.vercel.app",
-      },
-      {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004352789703778514?s=20",
-      },
-    ],
-  },
-  {
     id: "five-identical-fishes",
     size: "short",
     theme: "white",
@@ -427,28 +383,6 @@ export const playProjects = [
         type: "notion",
         tooltip: "View Documentation",
         url: "https://bevyip.notion.site/Week-2-5x1-1145b3e7f9e7803283e2fa835c9638e6?source=copy_link",
-      },
-    ],
-  },
-  {
-    id: "eye-see-you",
-    size: "tall",
-    theme: "white",
-    tags: ["React", "Interaction Design"],
-    category: "digital",
-    media: {
-      iframe: "https://eye-see-you.vercel.app",
-    },
-    actions: [
-      {
-        type: "live",
-        tooltip: "View Live",
-        url: "https://eye-see-you.vercel.app",
-      },
-      {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004337580029235305?s=20",
       },
     ],
   },
@@ -475,28 +409,6 @@ export const playProjects = [
     ],
   },
   {
-    id: "pixel-trail",
-    size: "tall",
-    theme: "black",
-    tags: ["React", "Interaction Design"],
-    category: "digital",
-    media: {
-      iframe: "https://pixel-trail-omega.vercel.app",
-    },
-    actions: [
-      {
-        type: "live",
-        tooltip: "View Live",
-        url: "https://pixel-trail-omega.vercel.app",
-      },
-      {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004338980507234675?s=20",
-      },
-    ],
-  },
-  {
     id: "reflections-of-monet",
     size: "tall",
     theme: "white",
@@ -515,28 +427,6 @@ export const playProjects = [
         type: "notion",
         tooltip: "View Documentation",
         url: "https://bevyip.notion.site/Week-7-1cb5b3e7f9e780cf84a3e28e81f5a15d?source=copy_link",
-      },
-    ],
-  },
-  {
-    id: "blend-your-cursor",
-    size: "tall",
-    theme: "white",
-    tags: ["React", "Interaction Design"],
-    category: "digital",
-    media: {
-      iframe: "https://blend-your-cursor.vercel.app",
-    },
-    actions: [
-      {
-        type: "live",
-        tooltip: "View Live",
-        url: "https://blend-your-cursor.vercel.app",
-      },
-      {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004336601862684904?s=20",
       },
     ],
   },

@@ -3,18 +3,14 @@
    ============================================ */
 
 nav {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.02) 0%,
-    rgba(255, 255, 255, 0.015) 30%,
-    rgba(255, 255, 255, 0.01) 60%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  /* backdrop-filter: blur(3px); */
-  /* -webkit-backdrop-filter: blur(3px); */
-  border: none !important;
+  background: rgba(250, 250, 250, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid rgba(15, 15, 15, 0.12);
   box-shadow: none !important;
-  transition: background-color 0.3s ease; /* , backdrop-filter 0.3s ease; */
   /* Initial hidden state for GSAP animation - will be animated in by GSAP */
   opacity: 0;
   transform: translateY(-200px);
@@ -22,34 +18,7 @@ nav {
 
 /* Light background mode (when bento grid is visible) */
 nav.nav-light-bg {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.04) 0%,
-    rgba(255, 255, 255, 0.03) 30%,
-    rgba(255, 255, 255, 0.02) 60%,
-    rgba(255, 255, 255, 0) 100%
-  ) !important;
-  /* backdrop-filter: blur(3px); */
-  /* -webkit-backdrop-filter: blur(3px); */
-}
-
-/* Dark theme: Use darker background when overlaying dark content */
-nav.nav-play-page {
-  background: linear-gradient(
-    to bottom,
-    rgba(15, 15, 15, 0.02) 0%,
-    rgba(15, 15, 15, 0.015) 30%,
-    rgba(15, 15, 15, 0.01) 60%,
-    rgba(15, 15, 15, 0) 100%
-  );
-  /* backdrop-filter: blur(3px); */
-  /* -webkit-backdrop-filter: blur(3px); */
-}
-
-/* Remove blur on About page */
-nav.nav-about-page {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  background: rgba(250, 250, 250, 0.7);
 }
 
 .logo-link {
@@ -59,21 +28,16 @@ nav.nav-about-page {
 }
 
 .logo-image {
-  height: 48px;
-  width: 48px;
+  height: 36px;
+  width: 36px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 9px;
   display: block;
   transition: transform 0.2s ease;
 }
 
 .logo-link:hover .logo-image {
   transform: scale(0.95);
-}
-
-/* Dark theme: Make logo brighter/visible on dark backgrounds */
-.nav-play-page .logo-image {
-  box-shadow: 0 0 0 2px rgba(250, 250, 250, 0.3);
 }
 
 .pill-list {
@@ -94,20 +58,64 @@ nav.nav-about-page {
   justify-content: center;
   height: 42px;
   padding: 0 28px;
-  color: #fafafa;
+  color: #0f0f0f;
   text-decoration: none;
   border-radius: 9999px;
   box-sizing: border-box;
-  font-weight: 400;
-  font-size: 16px;
+  font-weight: 300;
+  font-size: 18px;
   line-height: 0;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 0.2px;
   white-space: nowrap;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   pointer-events: auto;
+  transition: font-weight 0.25s ease;
+}
+
+/* Inactive: light weight, dot faded out and collapsed */
+.pill:not(.pill-active) {
+  font-weight: 300;
+}
+
+.pill:not(.pill-active) .pill-active-dot {
+  opacity: 0;
+  max-width: 0;
+  margin-right: 0;
+  pointer-events: none;
+}
+
+/* Base dot (always in DOM for work/play/about); visibility transitions */
+.pill .pill-active-dot {
+  display: inline-block;
+  width: 8px;
+  min-width: 8px;
+  height: 8px;
+  border-radius: 1.5px;
+  background: currentColor;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  align-self: center;
+  transform: translateY(2px);
+  overflow: hidden;
+  transition:
+    opacity 0.25s ease,
+    max-width 0.25s ease,
+    margin-right 0.25s ease;
+}
+
+/* Active: medium weight, dot visible */
+.pill.pill-active {
+  font-weight: 500;
+}
+
+.pill.pill-active .pill-active-dot {
+  opacity: 1;
+  max-width: 8px;
+  margin-right: 8px;
 }
 
 .pill .hover-circle {
@@ -154,8 +162,8 @@ nav.nav-about-page {
 
 @media (min-width: 768px) {
   .logo-image {
-    height: 56px;
-    width: 56px;
+    height: 40px;
+    width: 40px;
   }
 }
 
@@ -210,44 +218,6 @@ nav.nav-about-page {
   /* Hover text for transparent pills should be black */
   .pill-list.desktop-only .pill:not(.pill-resume) .pill-label-hover {
     color: #0f0f0f;
-  }
-}
-
-/* ============================================
-   DARK THEME (Play Page with Grid Visible)
-   ============================================ */
-
-/* Dark theme: Text links should be white */
-@media (min-width: 769px) {
-  .nav-play-page .pill-list.desktop-only .pill:not(.pill-resume) .pill-label {
-    color: #fafafa;
-  }
-
-  .nav-play-page
-    .pill-list.desktop-only
-    .pill:not(.pill-resume)
-    .pill-label-hover {
-    color: #fafafa;
-  }
-
-  /* Dark theme: Resume button becomes light pill with dark text */
-  .nav-play-page .pill-list.desktop-only .pill.pill-resume {
-    background: #fafafa;
-    color: #0f0f0f;
-  }
-
-  .nav-play-page .pill-list.desktop-only .pill.pill-resume .pill-label {
-    color: #0f0f0f;
-  }
-
-  /* Dark theme: Resume hover text should be white (when pill turns dark on hover) */
-  .nav-play-page .pill-list.desktop-only .pill.pill-resume .pill-label-hover {
-    color: #fafafa;
-  }
-
-  /* Dark theme: Resume hover circle should be dark (makes pill dark on hover) */
-  .nav-play-page .pill-list.desktop-only .pill.pill-resume .hover-circle {
-    background: #0f0f0f;
   }
 }
 
@@ -350,17 +320,6 @@ nav.nav-about-page {
   transform-origin: center;
 }
 
-/* Dark theme: Hamburger menu button becomes white with black lines */
-.nav-play-page .mobile-menu-button,
-.mobile-menu-button.hamburger-white {
-  background: #fafafa;
-}
-
-.nav-play-page .mobile-menu-button .hamburger-line,
-.mobile-menu-button.hamburger-white .hamburger-line {
-  background: #0f0f0f;
-}
-
 .mobile-menu-popover {
   position: fixed;
   top: 0;
@@ -378,8 +337,6 @@ nav.nav-about-page {
 /* When menu is open, prevent body scroll */
 body.mobile-menu-open {
   overflow: hidden;
-  position: fixed;
-  width: 100%;
 }
 
 .mobile-menu-list {
@@ -406,6 +363,22 @@ body.mobile-menu-open {
   transition: all 0.2s ease;
   text-align: left;
   width: 100%;
+}
+
+.mobile-menu-popover .mobile-menu-link.mobile-menu-link-active {
+  font-weight: 500;
+}
+
+.mobile-menu-popover .mobile-menu-link.mobile-menu-link-active::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 1.5px;
+  background: currentColor;
+  margin-right: 8px;
+  vertical-align: middle;
+  transform: translateY(1px);
 }
 
 .mobile-menu-popover .mobile-menu-link:hover {

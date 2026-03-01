@@ -5,6 +5,10 @@
   padding-bottom: 4rem;
 }
 
+.experience-timeline-row {
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
   .experience-timeline-section {
     padding-top: 4rem;

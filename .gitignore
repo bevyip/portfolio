@@ -26,8 +26,14 @@ dist-ssr
 examples
 
 # Historical pages (preserved for history tracking)
+src/pages/AboutArchive/
 src/pages/Play/
 src/pages/OldHome/
+src/pages/OlderHome/
+
+# Components
+src/components/Ball/
+src/components/GridBackground.jsx
 
 
 

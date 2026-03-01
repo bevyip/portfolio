@@ -190,9 +190,7 @@ const Work = () => {
                 Designs, Creative Experiments, <span className="work-page-title-accent">and more!</span>
               </span>
             </h1>
-            <div ref={workBentoGridContainerRef}>
-              <WorkBentoGrid />
-            </div>
+            <WorkBentoGrid containerRef={workBentoGridContainerRef} />
           </div>
         </section>
         <Footer />

@@ -1,17 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLenis } from "@studio-freight/react-lenis";
-import { usePlayPage } from "../../contexts/PlayPageContext";
-
-gsap.registerPlugin(ScrollTrigger);
+import { LANDING_NAV_DELAY } from "../../pages/Home/Home";
 import "./Nav.css";
-import pfp1 from "../../assets/img/pfp1.png";
-import pfp2 from "../../assets/img/pfp2.png";
-import pfp3 from "../../assets/img/pfp3.png";
-import pfp4 from "../../assets/img/pfp4.png";
-import pfp5 from "../../assets/img/pfp5.png";
+import darkLogo from "../../assets/img/dark-logo.png";
+import lightLogo from "../../assets/img/light-logo.png";
 
 const Nav = () => {
   const location = useLocation();
@@ -20,32 +14,17 @@ const Nav = () => {
   const circleRefs = useRef([]);
   const tlRefs = useRef([]);
   const activeTweenRefs = useRef([]);
-  const navItemsTweenRef = useRef(null);
-  const hamburgerTweenRef = useRef(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth : 1024,
+  );
+  const [homeActiveSection, setHomeActiveSection] = useState("work");
   const hamburgerRef = useRef(null);
   const mobileMenuRef = useRef(null);
   const navItemsRef = useRef(null);
   const navRef = useRef(null);
 
-  const images = [pfp1, pfp2, pfp3, pfp4, pfp5];
-  const [currentImageIndex, setCurrentImageIndex] = useState(() => {
-    const savedIndex = localStorage.getItem("navLogoIndex");
-    return savedIndex ? parseInt(savedIndex, 10) : 0;
-  });
-
-  useEffect(() => {
-    localStorage.setItem("navLogoIndex", currentImageIndex.toString());
-    // Dispatch custom event to notify favicon update
-    window.dispatchEvent(new CustomEvent("logoChanged"));
-  }, [currentImageIndex]);
-
   const handleLogoClick = (e) => {
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
-
-    // Reset navbar color state since we're going to landing section
-    setIsOverWorkSection(false);
-
     if (location.pathname === "/") {
       e.preventDefault();
       window.history.pushState(null, "", "/");
@@ -71,132 +50,68 @@ const Nav = () => {
   };
 
   const navItems = [
-    { label: "ABOUT", href: "/about", isLink: true },
-    { label: "WORK", href: "/work", isLink: true },
-    {
-      label: "RESUME",
-      href: "https://drive.google.com/file/d/1t8BBP__xqK7TDSD1hLv0WFaMLLgeufTK/view?usp=sharing",
-      isLink: true,
-    },
+    { label: "work", href: "/", isLink: true },
+    { label: "play", href: "/#play", isLink: true },
+    { label: "about", href: "/about", isLink: true },
   ];
 
-  const isAboutPage = location.pathname === "/about";
-  const { isGridVisible, isBentoVisible } = usePlayPage();
-  const [isOverWorkSection, setIsOverWorkSection] = useState(false);
-  const isHoveringPlayPreviewLinkRef = useRef(false);
+  const isNavItemActive = (item) => {
+    const path = location.pathname;
+    // On home: use scroll-derived section (work vs play); other pages use path
+    if (path === "/") {
+      if (item.label === "work") return homeActiveSection === "work";
+      if (item.label === "play") return homeActiveSection === "play";
+      if (item.label === "about") return false;
+    }
+    if (item.label === "about") return path === "/about";
+    return false;
+  };
 
-  const shouldUseWhiteText =
-    (location.pathname === "/" && isGridVisible && !isBentoVisible) ||
-    isAboutPage ||
-    isOverWorkSection;
-
-  // Detect when nav is overlaying work section (dark) vs landing section (light)
+  // On home page: update nav active state (work vs play) from scroll position
   useEffect(() => {
     if (location.pathname !== "/") {
-      setIsOverWorkSection(false);
-      return; // Only on home page
+      setHomeActiveSection("work");
+      return;
     }
 
-    const checkOverlay = () => {
-      const nav = navRef.current;
-      const landingSection = document.getElementById("landing");
-      const workSection = document.getElementById("work");
-      const playPreviewSection = document.getElementById("play-preview");
+    const playSection = document.getElementById("play");
+    if (!playSection) return;
 
-      if (!nav || !landingSection || !workSection) return;
-
-      // Get the bottom of the nav (where it overlaps content)
-      const navRect = nav.getBoundingClientRect();
-      const navBottom = navRect.bottom;
-
-      // Get section positions
-      const landingRect = landingSection.getBoundingClientRect();
-      const workRect = workSection.getBoundingClientRect();
-      const playPreviewRect = playPreviewSection?.getBoundingClientRect();
-
-      // Check if nav is over PlayPreviewSection
-      const isOverPlayPreview = playPreviewRect && 
-        playPreviewRect.top <= navBottom && 
-        playPreviewRect.bottom >= navRect.top;
-
-      // Check if the work section has scrolled up enough to be behind the nav
-      // Since landing is fixed (100vh), when work section top reaches nav bottom,
-      // the nav is overlaying the work section (dark background)
-      // Also check if nav bottom has passed the landing section bottom
-      // If over PlayPreviewSection and link is NOT hovered (light background), don't use work section logic
-      // If over PlayPreviewSection and link IS hovered (dark background), use light mode
-      const isOverWork =
-        (workRect.top <= navBottom || navBottom > landingRect.bottom) && 
-        !(isOverPlayPreview && !isHoveringPlayPreviewLinkRef.current);
-
-      // If nav is overlaying work section (dark background), use light mode (white text/brighter logo)
-      // If nav is overlaying PlayPreviewSection with link hovered (dark background), use light mode
-      // If nav is overlaying PlayPreviewSection without link hovered (light background), use dark mode
-      setIsOverWorkSection(isOverWork || (isOverPlayPreview && isHoveringPlayPreviewLinkRef.current));
+    const updateSectionFromScroll = () => {
+      const rect = playSection.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      // When play section top enters the upper 30% of the viewport, switch to "play"
+      const threshold = viewportHeight * 0.3;
+      const inPlaySection = rect.top <= threshold;
+      setHomeActiveSection((prev) => (inPlaySection ? "play" : "work"));
     };
 
-    // Check on scroll
-    const handleScroll = () => {
-      checkOverlay();
-    };
+    updateSectionFromScroll();
 
-    // Check on resize
-    const handleResize = () => {
-      checkOverlay();
-    };
-
-    // Track hover state on play-preview-link
-    const playPreviewLink = document.querySelector('.play-preview-link');
-    const handleLinkMouseEnter = () => {
-      isHoveringPlayPreviewLinkRef.current = true;
-      checkOverlay();
-    };
-    const handleLinkMouseLeave = () => {
-      isHoveringPlayPreviewLinkRef.current = false;
-      checkOverlay();
-    };
-
-    if (playPreviewLink) {
-      playPreviewLink.addEventListener('mouseenter', handleLinkMouseEnter);
-      playPreviewLink.addEventListener('mouseleave', handleLinkMouseLeave);
-    }
-
-    // Initial check
-    checkOverlay();
-
-    // Use Lenis scroll event if available, otherwise use window scroll
     if (lenis) {
-      lenis.on("scroll", handleScroll);
-      window.addEventListener("resize", handleResize);
-
-      return () => {
-        lenis.off("scroll", handleScroll);
-        window.removeEventListener("resize", handleResize);
-        if (playPreviewLink) {
-          playPreviewLink.removeEventListener('mouseenter', handleLinkMouseEnter);
-          playPreviewLink.removeEventListener('mouseleave', handleLinkMouseLeave);
-        }
-      };
-    } else {
-      window.addEventListener("scroll", handleScroll);
-      window.addEventListener("resize", handleResize);
-
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-        window.removeEventListener("resize", handleResize);
-        if (playPreviewLink) {
-          playPreviewLink.removeEventListener('mouseenter', handleLinkMouseEnter);
-          playPreviewLink.removeEventListener('mouseleave', handleLinkMouseLeave);
-        }
-      };
+      lenis.on("scroll", updateSectionFromScroll);
+      return () => lenis.off("scroll", updateSectionFromScroll);
     }
+    window.addEventListener("scroll", updateSectionFromScroll);
+    window.addEventListener("resize", updateSectionFromScroll);
+    return () => {
+      window.removeEventListener("scroll", updateSectionFromScroll);
+      window.removeEventListener("resize", updateSectionFromScroll);
+    };
   }, [location.pathname, lenis]);
 
-  // Animate navbar dropping in from top on all pages
+  // Nav fade-in: same timing on all non–case-study pages; case studies show nav immediately
+  const CASE_STUDY_PATHS = ["/venmo", "/moodle", "/wholefoods", "/confido"];
+  const isHomePage = location.pathname === "/";
+  const NAV_FADE_DELAY = isHomePage ? LANDING_NAV_DELAY : 0.5;
+  const NAV_FADE_DURATION = 0.7;
+
   useEffect(() => {
     if (!navRef.current) return;
 
-    const isWorkPage = location.pathname === "/work";
+    const path = location.pathname;
+    const isWorkPage = path === "/work";
+    const isCaseStudyPage = CASE_STUDY_PATHS.includes(path);
 
     // Set initial state - position above viewport
     gsap.set(navRef.current, {
@@ -204,36 +119,18 @@ const Nav = () => {
       opacity: 0,
     });
 
-    // On work page, let the Work component control the navbar animation
-    // Don't auto-animate here to avoid conflicts
+    // Work page: let the Work component control the navbar animation
     if (isWorkPage) {
       return;
     }
 
-    // Calculate delay based on page
-    let delay = 0;
-    const isLandingPage = location.pathname === "/";
-    const isAboutPage = location.pathname === "/about";
-    const isConfidoPage = location.pathname === "/confido";
-    const isVenmoPage = location.pathname === "/venmo";
-    const isWholeFoodsPage = location.pathname === "/wholefoods";
-    const isMoodlePage = location.pathname === "/moodle";
-
-    if (isLandingPage) {
-      delay = 2;
-    } else if (isAboutPage) {
-      delay = 3.8;
-    } else if (
-      isConfidoPage ||
-      isVenmoPage ||
-      isWholeFoodsPage ||
-      isMoodlePage
-    ) {
-      delay = 2.2;
-    } else {
-      delay = 0;
+    // Case study pages: show nav immediately (no fade-in)
+    if (isCaseStudyPage) {
+      gsap.set(navRef.current, { y: 0, opacity: 1 });
+      return;
     }
 
+    // All other pages (home, about, pixel-cat, not-found): unified fade-in timing
     const navTl = gsap.timeline({
       defaults: { ease: "power2.out" },
     });
@@ -241,9 +138,9 @@ const Nav = () => {
     navTl.to(navRef.current, {
       y: 0,
       opacity: 1,
-      duration: 0.6,
+      duration: NAV_FADE_DURATION,
       ease: "power2.out",
-      delay: delay,
+      delay: NAV_FADE_DELAY,
     });
 
     return () => {
@@ -306,7 +203,7 @@ const Nav = () => {
               ease: "power3.easeOut",
               overwrite: "auto",
             },
-            0
+            0,
           );
         }
 
@@ -319,7 +216,7 @@ const Nav = () => {
               ease: "power3.easeOut",
               overwrite: "auto",
             },
-            0
+            0,
           );
         }
 
@@ -334,7 +231,7 @@ const Nav = () => {
               ease: "power3.easeOut",
               overwrite: "auto",
             },
-            0
+            0,
           );
         }
 
@@ -357,7 +254,7 @@ const Nav = () => {
     }
 
     return () => window.removeEventListener("resize", onResize);
-  }, [shouldUseWhiteText]);
+  }, []);
 
   // Effect to sync hamburger lines with menu state
   useEffect(() => {
@@ -377,7 +274,15 @@ const Nav = () => {
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
-    const isDesktop = window.innerWidth > 768;
+    const onResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  // On desktop: always show nav items and keep hamburger hidden (no scroll collapse).
+  // On small screens, CSS handles collapse via .desktop-only / .mobile-only.
+  useEffect(() => {
+    const isDesktop = windowWidth > 768;
     if (!isDesktop) return;
 
     const navItems = navItemsRef.current?.children;
@@ -385,256 +290,19 @@ const Nav = () => {
 
     if (!navItems || navItems.length === 0 || !hamburger) return;
 
-    const getScrollPosition = () => {
-      if (lenis) {
-        return lenis.scroll;
-      }
-      return window.scrollY || document.documentElement.scrollTop;
-    };
-
-    const currentScrollY = getScrollPosition();
-    const isScrolledDown = currentScrollY > 100;
-
-    if (isScrolledDown) {
-      gsap.set(navItems, { x: 100, opacity: 0 });
-      Array.from(navItems).forEach((item) => {
-        item.style.pointerEvents = "none";
-      });
-      gsap.set(hamburger, { opacity: 1, scale: 1, display: "flex" });
-      hamburger.style.pointerEvents = "auto";
-    } else {
-      gsap.set(navItems, { x: 0, opacity: 1 });
-      gsap.set(hamburger, { opacity: 0, scale: 0.8, display: "flex" });
-      hamburger.style.pointerEvents = "none";
-    }
+    gsap.set(navItems, { x: 0, opacity: 1 });
+    Array.from(navItems).forEach((item) => {
+      item.style.pointerEvents = "auto";
+    });
+    gsap.set(hamburger, { opacity: 0, scale: 0.8, display: "flex" });
+    hamburger.style.pointerEvents = "none";
 
     const lines = hamburger.querySelectorAll(".hamburger-line");
     if (lines.length >= 2 && !isMobileMenuOpen) {
       gsap.set(lines[0], { rotation: 0, y: 0 });
       gsap.set(lines[1], { rotation: 0, y: 0 });
     }
-
-    if (location.pathname === "/") {
-      let wasScrolledDown = isScrolledDown;
-
-      const handleScroll = () => {
-        const scrollY = getScrollPosition();
-        const scrolled = scrollY > 100;
-
-        if (scrolled && !wasScrolledDown) {
-          if (navItemsTweenRef.current) {
-            navItemsTweenRef.current.kill();
-          }
-          if (hamburgerTweenRef.current) {
-            hamburgerTweenRef.current.kill();
-          }
-
-          navItemsTweenRef.current = gsap.to(navItems, {
-            x: 100,
-            opacity: 0,
-            duration: 0.4,
-            stagger: 0.05,
-            ease: "power2.inOut",
-            overwrite: true,
-            onComplete: () => {
-              Array.from(navItems).forEach((item) => {
-                item.style.pointerEvents = "none";
-              });
-              navItemsTweenRef.current = null;
-            },
-          });
-
-          hamburgerTweenRef.current = gsap.to(hamburger, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.3,
-            overwrite: true,
-            onComplete: () => {
-              hamburger.style.pointerEvents = "auto";
-              hamburgerTweenRef.current = null;
-            },
-          });
-          wasScrolledDown = true;
-        } else if (!scrolled && wasScrolledDown) {
-          if (navItemsTweenRef.current) {
-            navItemsTweenRef.current.kill();
-          }
-          if (hamburgerTweenRef.current) {
-            hamburgerTweenRef.current.kill();
-          }
-
-          hamburgerTweenRef.current = gsap.to(hamburger, {
-            opacity: 0,
-            scale: 0.8,
-            duration: 0.2,
-            overwrite: true,
-            onComplete: () => {
-              hamburger.style.pointerEvents = "none";
-              hamburgerTweenRef.current = null;
-            },
-          });
-
-          Array.from(navItems).forEach((item) => {
-            item.style.pointerEvents = "auto";
-          });
-
-          navItemsTweenRef.current = gsap.to(navItems, {
-            x: 0,
-            opacity: 1,
-            duration: 0.4,
-            stagger: 0.05,
-            ease: "power2.inOut",
-            overwrite: true,
-            onComplete: () => {
-              navItemsTweenRef.current = null;
-            },
-          });
-          wasScrolledDown = false;
-        }
-      };
-
-      if (lenis) {
-        lenis.on("scroll", handleScroll);
-      } else {
-        window.addEventListener("scroll", handleScroll);
-      }
-
-      handleScroll();
-
-      return () => {
-        if (lenis) {
-          lenis.off("scroll", handleScroll);
-        } else {
-          window.removeEventListener("scroll", handleScroll);
-        }
-        if (navItemsTweenRef.current) {
-          navItemsTweenRef.current.kill();
-          navItemsTweenRef.current = null;
-        }
-        if (hamburgerTweenRef.current) {
-          hamburgerTweenRef.current.kill();
-          hamburgerTweenRef.current = null;
-        }
-      };
-    }
-
-    const scrollTrigger = ScrollTrigger.create({
-      trigger: "body",
-      start: "top top",
-      end: "100px top",
-      onEnter: () => {
-        if (navItemsTweenRef.current) {
-          navItemsTweenRef.current.kill();
-        }
-        if (hamburgerTweenRef.current) {
-          hamburgerTweenRef.current.kill();
-        }
-
-        const lines = hamburger.querySelectorAll(".hamburger-line");
-        if (lines.length >= 2 && !isMobileMenuOpen) {
-          gsap.set(lines[0], { rotation: 0, y: 0 });
-          gsap.set(lines[1], { rotation: 0, y: 0 });
-        }
-
-        navItemsTweenRef.current = gsap.to(navItems, {
-          x: 100,
-          opacity: 0,
-          duration: 0.4,
-          stagger: 0.05,
-          ease: "power2.inOut",
-          overwrite: true,
-          onComplete: () => {
-            Array.from(navItems).forEach((item) => {
-              item.style.pointerEvents = "none";
-            });
-            navItemsTweenRef.current = null;
-          },
-        });
-
-        hamburgerTweenRef.current = gsap.to(hamburger, {
-          opacity: 1,
-          scale: 1,
-          duration: 0.3,
-          delay: 0.2,
-          overwrite: true,
-          onComplete: () => {
-            hamburger.style.pointerEvents = "auto";
-            hamburgerTweenRef.current = null;
-          },
-        });
-      },
-      onLeaveBack: () => {
-        if (navItemsTweenRef.current) {
-          navItemsTweenRef.current.kill();
-        }
-        if (hamburgerTweenRef.current) {
-          hamburgerTweenRef.current.kill();
-        }
-
-        const lines = hamburger.querySelectorAll(".hamburger-line");
-        if (lines.length >= 2 && !isMobileMenuOpen) {
-          gsap.set(lines[0], { rotation: 0, y: 0 });
-          gsap.set(lines[1], { rotation: 0, y: 0 });
-        }
-
-        hamburgerTweenRef.current = gsap.to(hamburger, {
-          opacity: 0,
-          scale: 0.8,
-          duration: 0.2,
-          overwrite: true,
-          onComplete: () => {
-            hamburger.style.pointerEvents = "none";
-            hamburgerTweenRef.current = null;
-          },
-        });
-
-        Array.from(navItems).forEach((item) => {
-          item.style.pointerEvents = "auto";
-        });
-
-        navItemsTweenRef.current = gsap.to(navItems, {
-          x: 0,
-          opacity: 1,
-          duration: 0.4,
-          stagger: 0.05,
-          ease: "power2.inOut",
-          delay: 0.1,
-          overwrite: true,
-          onComplete: () => {
-            navItemsTweenRef.current = null;
-          },
-        });
-      },
-    });
-
-    const handleOverlayChange = () => {
-      if (document.body.classList.contains("photo-overlay-open")) {
-        scrollTrigger.disable();
-      } else {
-        scrollTrigger.enable();
-        scrollTrigger.refresh();
-      }
-    };
-
-    const observer = new MutationObserver(handleOverlayChange);
-    observer.observe(document.body, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => {
-      observer.disconnect();
-      scrollTrigger.kill();
-      if (navItemsTweenRef.current) {
-        navItemsTweenRef.current.kill();
-        navItemsTweenRef.current = null;
-      }
-      if (hamburgerTweenRef.current) {
-        hamburgerTweenRef.current.kill();
-        hamburgerTweenRef.current = null;
-      }
-    };
-  }, [isMobileMenuOpen, location.pathname, lenis]);
+  }, [isMobileMenuOpen, location.pathname, lenis, windowWidth]);
 
   const handleEnter = (i) => {
     const tl = tlRefs.current[i];
@@ -660,19 +328,70 @@ const Nav = () => {
 
   const handleWorkClick = (e) => {
     e.preventDefault();
-    
     if (location.pathname === "/") {
-      const workSection = document.getElementById("work");
-      if (workSection && lenis) {
-        lenis.scrollTo(workSection, {
-          offset: 0,
-          duration: 1.2,
-        });
+      setHomeActiveSection("work");
+      navigate("/", { replace: true });
+      if (lenis) {
+        lenis.scrollTo(0, { duration: 1.2 });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
-      window.history.pushState(null, "", "/#work");
     } else {
-      sessionStorage.setItem("shouldShowDarkHamburger", "true");
-      navigate("/#work");
+      navigate("/");
+      setTimeout(() => {
+        if (lenis) {
+          lenis.scrollTo(0, { duration: 1.2 });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, 100);
+    }
+  };
+
+  // Offset so the play section title sits below the fixed nav (nav ~60–80px). Temporarily 0.
+  const PLAY_SCROLL_OFFSET = 0;
+
+  const scrollToPlaySection = (
+    el,
+    fromOtherPage = false,
+    immediate = false,
+  ) => {
+    const offset = fromOtherPage ? PLAY_SCROLL_OFFSET : 0;
+    if (el && lenis) {
+      lenis.scrollTo(el, {
+        offset,
+        duration: immediate ? 0 : 1.2,
+        immediate,
+      });
+    } else if (el) {
+      el.scrollIntoView({
+        behavior: immediate ? "auto" : "smooth",
+        block: "start",
+      });
+      if (fromOtherPage && offset !== 0) {
+        const offsetPx = Math.abs(offset);
+        if (lenis) {
+          setTimeout(
+            () => lenis.scrollTo(lenis.scroll + offsetPx, { duration: 0.3 }),
+            100,
+          );
+        } else {
+          setTimeout(() => window.scrollBy(0, offsetPx), 100);
+        }
+      }
+    }
+  };
+
+  const handlePlayClick = (e) => {
+    e.preventDefault();
+    const playSection = document.getElementById("play");
+    if (location.pathname === "/") {
+      setHomeActiveSection("play");
+      scrollToPlaySection(playSection, false);
+    } else {
+      navigate("/", { state: { scrollToPlay: true } });
+      setHomeActiveSection("play");
+      // Home scrolls to #play when work grid is ready (isWorkLoading false), no fixed delay
     }
   };
 
@@ -681,7 +400,7 @@ const Nav = () => {
     window.open(
       "https://drive.google.com/file/d/1t8BBP__xqK7TDSD1hLv0WFaMLLgeufTK/view?usp=sharing",
       "_blank",
-      "noopener,noreferrer"
+      "noopener,noreferrer",
     );
   };
 
@@ -764,7 +483,7 @@ const Nav = () => {
             y: "0%",
             duration: 0.9,
             ease: "power3.easeOut",
-          }
+          },
         );
       } else {
         gsap.to(menu, {
@@ -782,80 +501,31 @@ const Nav = () => {
   return (
     <nav
       ref={navRef}
-      className={`top-0 z-[100] relative ${
-        shouldUseWhiteText ? "nav-play-page" : ""
-      } ${isAboutPage ? "nav-about-page" : ""}`}
+      className="top-0 z-[100] relative"
       style={{
         opacity: 0,
         transform: "translateY(-100px)",
       }}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between h-20 md:h-24 relative">
+        <div className="flex items-center justify-between py-5 z-[1000] gap-6 lg:h-16 relative min-h-[32px]">
           <Link to="/" onClick={handleLogoClick} className="logo-link">
             <img
-              src={images[currentImageIndex]}
-              alt="site-logo"
+              src={isMobileMenuOpen ? lightLogo : darkLogo}
+              alt="Beverly Yip"
               className="logo-image"
             />
           </Link>
           <ul className="pill-list desktop-only" ref={navItemsRef}>
             {navItems.map((item, i) => (
               <li key={item.href || `item-${i}`}>
-                {item.isLink ? (
-                  item.label === "RESUME" ? (
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={handleResumeClick}
-                      className="pill pill-resume"
-                      onMouseEnter={() => handleEnter(i)}
-                      onMouseLeave={() => handleLeave(i)}
-                    >
-                      <span
-                        className="hover-circle"
-                        aria-hidden="true"
-                        ref={(el) => {
-                          circleRefs.current[i] = el;
-                        }}
-                      />
-                      <span className="label-stack">
-                        <span className="pill-label">{item.label}</span>
-                        <span className="pill-label-hover" aria-hidden="true">
-                          {item.label}
-                        </span>
-                      </span>
-                    </a>
-                  ) : (
-                    <Link
-                      to={item.href}
-                      className="pill"
-                      onMouseEnter={() => handleEnter(i)}
-                      onMouseLeave={() => handleLeave(i)}
-                    >
-                      <span
-                        className="hover-circle"
-                        aria-hidden="true"
-                        ref={(el) => {
-                          circleRefs.current[i] = el;
-                        }}
-                      />
-                      <span className="label-stack">
-                        <span className="pill-label">{item.label}</span>
-                        <span className="pill-label-hover" aria-hidden="true">
-                          {item.label}
-                        </span>
-                      </span>
-                    </Link>
-                  )
-                ) : item.label === "WORK" ? (
+                {item.label === "play" ? (
                   <a
-                    href="#work"
-                    onClick={handleWorkClick}
-                    className="pill"
+                    href="/#play"
+                    className={`pill${isNavItemActive(item) ? " pill-active" : ""}`}
                     onMouseEnter={() => handleEnter(i)}
                     onMouseLeave={() => handleLeave(i)}
+                    onClick={handlePlayClick}
                   >
                     <span
                       className="hover-circle"
@@ -864,6 +534,7 @@ const Nav = () => {
                         circleRefs.current[i] = el;
                       }}
                     />
+                    <span className="pill-active-dot" aria-hidden="true" />
                     <span className="label-stack">
                       <span className="pill-label">{item.label}</span>
                       <span className="pill-label-hover" aria-hidden="true">
@@ -871,14 +542,39 @@ const Nav = () => {
                       </span>
                     </span>
                   </a>
-                ) : null}
+                ) : (
+                  <Link
+                    to={item.href}
+                    className={`pill${isNavItemActive(item) ? " pill-active" : ""}`}
+                    onMouseEnter={() => handleEnter(i)}
+                    onMouseLeave={() => handleLeave(i)}
+                    onClick={
+                      item.label === "work" ? handleWorkClick : undefined
+                    }
+                  >
+                    <span
+                      className="hover-circle"
+                      aria-hidden="true"
+                      ref={(el) => {
+                        circleRefs.current[i] = el;
+                      }}
+                    />
+                    <span className="pill-active-dot" aria-hidden="true" />
+                    <span className="label-stack">
+                      <span className="pill-label">{item.label}</span>
+                      <span className="pill-label-hover" aria-hidden="true">
+                        {item.label}
+                      </span>
+                    </span>
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
           <button
             className={`mobile-menu-button ${
               isMobileMenuOpen ? "menu-open" : ""
-            } ${shouldUseWhiteText ? "hamburger-white" : ""}`}
+            }`}
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
             ref={hamburgerRef}
@@ -892,10 +588,38 @@ const Nav = () => {
         <ul className="mobile-menu-list">
           {navItems.map((item, i) => (
             <li key={item.href || `mobile-item-${i}`}>
-              {item.isLink ? (
+              {item.label === "play" ? (
+                <a
+                  href="/#play"
+                  className={`mobile-menu-link${isNavItemActive(item) ? " mobile-menu-link-active" : ""}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const playSection = document.getElementById("play");
+                    if (location.pathname === "/" && playSection) {
+                      setHomeActiveSection("play");
+                      setIsMobileMenuOpen(false);
+                      toggleMobileMenu();
+                      // Scroll after menu has closed and Lenis has started (was stopped while menu open)
+                      setTimeout(() => {
+                        if (lenis) {
+                          lenis.scrollTo(playSection, { offset: 0, duration: 1.2 });
+                        } else {
+                          playSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                        }
+                      }, 400);
+                    } else {
+                      handlePlayClick(e);
+                      setIsMobileMenuOpen(false);
+                      toggleMobileMenu();
+                    }
+                  }}
+                >
+                  {item.label}
+                </a>
+              ) : (
                 <Link
                   to={item.href}
-                  className="mobile-menu-link"
+                  className={`mobile-menu-link${isNavItemActive(item) ? " mobile-menu-link-active" : ""}`}
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     toggleMobileMenu();
@@ -903,34 +627,6 @@ const Nav = () => {
                 >
                   {item.label}
                 </Link>
-              ) : item.label === "WORK" ? (
-                <a
-                  href="#work"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsMobileMenuOpen(false);
-                    toggleMobileMenu();
-                    handleWorkClick(e);
-                  }}
-                  className="mobile-menu-link"
-                >
-                  {item.label}
-                </a>
-              ) : (
-                <a
-                  href="https://drive.google.com/file/d/1t8BBP__xqK7TDSD1hLv0WFaMLLgeufTK/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsMobileMenuOpen(false);
-                    toggleMobileMenu();
-                    handleResumeClick(e);
-                  }}
-                  className="mobile-menu-link"
-                >
-                  {item.label}
-                </a>
               )}
             </li>
           ))}
