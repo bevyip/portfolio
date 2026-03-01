@@ -40,7 +40,13 @@ const Home = () => {
   // When navigated from another page with scrollToPlay, scroll to play once when layout is ready (work grid loaded).
   // We don't replace state so ScrollToTop keeps skipping and doesn't scroll to 0 after we scroll here.
   useEffect(() => {
-    if (location.state?.scrollToPlay !== true || isWorkLoading || !lenis || hasScrolledToPlayRef.current) return;
+    if (
+      location.state?.scrollToPlay !== true ||
+      isWorkLoading ||
+      !lenis ||
+      hasScrolledToPlayRef.current
+    )
+      return;
     const el = document.getElementById("play");
     if (!el) return;
     hasScrolledToPlayRef.current = true;
@@ -82,7 +88,7 @@ const Home = () => {
           duration: LANDING_FADE_DURATION,
           ease: LANDING_EASE,
         },
-        "-=0.2"
+        "-=0.2",
       )
       .to(
         cat,
@@ -92,7 +98,7 @@ const Home = () => {
           duration: LANDING_FADE_DURATION,
           ease: LANDING_EASE,
         },
-        "-=0.2"
+        "-=0.2",
       );
 
     return () => tl.kill();
@@ -161,8 +167,8 @@ const Home = () => {
                     .
                     <br />
                     <span className="home-bio-second-line">
-                      Open to product design, design engineering, and creative
-                      technology roles.
+                      Interested in product design, design engineering, and
+                      creative technology roles.
                     </span>
                   </span>
                 </span>
