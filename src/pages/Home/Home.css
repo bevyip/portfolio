@@ -6,35 +6,21 @@
 }
 
 /* ----- Landing ----- */
+/* Same horizontal padding as work section so content width matches at max-width 80rem */
 .home-landing {
   position: relative;
   width: 100%;
   min-height: 0;
   background-color: #fafafa;
+  padding: clamp(8rem, 22vh, 15rem) 1.5rem clamp(1.5rem, 4vh, 2rem);
 }
 
-/* Content wrapper: same max-width and padding as before (matches navbar) */
 .home-landing-content {
   position: relative;
   z-index: 1;
   max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
-  padding: clamp(8rem, 22vh, 15rem) 1.5rem clamp(1.5rem, 4vh, 2rem);
-}
-
-@media (min-width: 640px) {
-  .home-landing-content {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .home-landing-content {
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
 }
 
 /* Grid: left = title/subtitle, right = PixelCat (column on small) */
