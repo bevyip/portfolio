@@ -56,6 +56,15 @@
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Left Column */
 .wholefoods-hero-left {
   display: flex;

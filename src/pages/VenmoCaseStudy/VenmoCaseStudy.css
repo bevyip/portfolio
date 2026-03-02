@@ -55,6 +55,15 @@
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Left Column */
 .venmo-hero-left {
   display: flex;
