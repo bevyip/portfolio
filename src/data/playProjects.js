@@ -542,9 +542,9 @@ export const playProjects = [
     },
     actions: [
       {
-        type: "live",
-        tooltip: "View App",
-        url: "https://black-market.vercel.app",
+        type: "notion",
+        tooltip: "View Documentation",
+        url: "https://bevyip.notion.site/Black-Market-2c25b3e7f9e780e3bd40cfe680b1b391?source=copy_link",
       },
     ],
   },
