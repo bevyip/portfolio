@@ -24,6 +24,7 @@ dist-ssr
 
 # Examples folder
 examples
+scripts
 
 # Historical pages (preserved for history tracking)
 src/pages/AboutArchive/
