@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import CursorPill from "../CursorPill/CursorPill";
 import "./WorkBentoGrid.css";
@@ -206,29 +206,29 @@ const WorkBentoGrid = ({
 }) => {
   const [localHover, setLocalHover] = useState(false);
   const isHovering = controlledHover !== undefined ? controlledHover : localHover;
-  const handleHover = onHoverChange ?? setLocalHover;
+  const handleHover = (hovered) => (onHoverChange ?? setLocalHover)(hovered);
 
   const readyCountRef = useRef(0);
   const readyCalledRef = useRef(false);
 
-  const fireReady = () => {
+  const fireReady = useCallback(() => {
     if (readyCalledRef.current) return;
     readyCalledRef.current = true;
     onReady?.();
-  };
+  }, [onReady]);
 
-  const handleVideoReady = () => {
+  const handleVideoReady = useCallback(() => {
     readyCountRef.current += 1;
     if (readyCountRef.current >= workProjects.length) {
       fireReady();
     }
-  };
+  }, [fireReady]);
 
   useEffect(() => {
     if (!onReady) return;
     const fallback = setTimeout(fireReady, 3000);
     return () => clearTimeout(fallback);
-  }, [onReady]);
+  }, [onReady, fireReady]);
 
   return (
     <div ref={containerRef} className={gridClassName} aria-label="Case studies">

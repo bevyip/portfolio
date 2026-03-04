@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const Footer = () => {
   const [timeString, setTimeString] = useState("Loading...");
+  const containerRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const socialLinksRef = useRef(null);
@@ -31,26 +32,28 @@ const Footer = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Animate title on scroll
+  // Single ScrollTrigger on footer container: one timeline for title, subtitle, and links
   useEffect(() => {
+    const container = containerRef.current;
     const titleElement = titleRef.current;
-    if (!titleElement) return;
+    const subtitleElement = subtitleRef.current;
+    const socialLinksContainer = socialLinksRef.current;
+    if (!container || !titleElement || !subtitleElement || !socialLinksContainer) return;
 
+    const links = socialLinksContainer.querySelectorAll(".social-link");
     let splitInstance = null;
     let scrollTrigger = null;
     let tl = null;
 
-    // Wait a bit to ensure DOM is ready
     const timeoutId = setTimeout(() => {
       splitInstance = new SplitText(titleElement, {
         type: "chars",
         charsClass: "footer-char",
       });
 
-      gsap.set(splitInstance.chars, {
-        opacity: 0,
-        y: 40,
-      });
+      gsap.set(splitInstance.chars, { opacity: 0, y: 40 });
+      gsap.set(subtitleElement, { opacity: 0, y: 20 });
+      gsap.set(links, { opacity: 0, y: 20 });
 
       tl = gsap.timeline({ paused: true });
       tl.to(splitInstance.chars, {
@@ -59,21 +62,31 @@ const Footer = () => {
         duration: 0.6,
         stagger: 0.03,
         ease: "power3.out",
-      });
+      })
+        .to(
+          subtitleElement,
+          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+          "-=0.3"
+        )
+        .to(
+          links,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.05,
+            ease: "power2.out",
+          },
+          "-=0.2"
+        );
 
-      setTimeout(() => {
-        scrollTrigger = ScrollTrigger.create({
-          trigger: titleElement,
-          start: "top 80%",
-          invalidateOnRefresh: true,
-          onEnter: () => {
-            tl.play();
-          },
-          onLeaveBack: () => {
-            tl.reverse();
-          },
-        });
-      }, 50);
+      scrollTrigger = ScrollTrigger.create({
+        trigger: container,
+        start: "top 85%",
+        invalidateOnRefresh: true,
+        onEnter: () => tl.play(),
+        onLeaveBack: () => tl.reverse(),
+      });
     }, 100);
 
     return () => {
@@ -90,97 +103,9 @@ const Footer = () => {
     };
   }, []);
 
-  // Animate subtitle on scroll
-  useEffect(() => {
-    const subtitleElement = subtitleRef.current;
-    if (!subtitleElement) return;
-
-    let scrollTrigger = null;
-    let tl = null;
-
-    const timeoutId = setTimeout(() => {
-      gsap.set(subtitleElement, {
-        opacity: 0,
-        y: 20,
-      });
-
-      tl = gsap.timeline({ paused: true });
-      tl.to(subtitleElement, {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power3.out",
-      });
-
-      scrollTrigger = ScrollTrigger.create({
-        trigger: subtitleElement,
-        start: "top 80%",
-        invalidateOnRefresh: true,
-        onEnter: () => {
-          tl.play();
-        },
-        onLeaveBack: () => {
-          tl.reverse();
-        },
-      });
-    }, 100);
-
-    return () => {
-      clearTimeout(timeoutId);
-      if (scrollTrigger) scrollTrigger.kill();
-      if (tl) tl.kill();
-    };
-  }, []);
-
-  // Animate social links on scroll
-  useEffect(() => {
-    const socialLinksContainer = socialLinksRef.current;
-    if (!socialLinksContainer) return;
-
-    const links = socialLinksContainer.querySelectorAll(".social-link");
-    if (links.length === 0) return;
-
-    let scrollTrigger = null;
-    let tl = null;
-
-    const timeoutId = setTimeout(() => {
-      gsap.set(links, {
-        opacity: 0,
-        y: 20,
-      });
-
-      tl = gsap.timeline({ paused: true });
-      tl.to(links, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        stagger: 0.05,
-        ease: "power2.out",
-      });
-
-      scrollTrigger = ScrollTrigger.create({
-        trigger: socialLinksContainer,
-        start: "top 90%",
-        invalidateOnRefresh: true,
-        onEnter: () => {
-          tl.play();
-        },
-        onLeaveBack: () => {
-          tl.reverse();
-        },
-      });
-    }, 100);
-
-    return () => {
-      clearTimeout(timeoutId);
-      if (scrollTrigger) scrollTrigger.kill();
-      if (tl) tl.kill();
-    };
-  }, []);
-
   return (
     <footer id="contact" className="footer">
-      <div className="footer-container">
+      <div ref={containerRef} className="footer-container">
         <p ref={subtitleRef} className="footer-subtitle">
           Not Framer. Not Webflow. Just good old-fashioned code and a lot of
           tea.

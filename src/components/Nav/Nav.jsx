@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { useLenis } from "@studio-freight/react-lenis";
+import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { LANDING_NAV_DELAY } from "../../pages/Home/Home";
 import "./Nav.css";
 import darkLogo from "../../assets/img/dark-logo.png";
@@ -11,6 +12,7 @@ const Nav = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const lenis = useLenis();
+  const { scrollToTop, scrollToElement } = useLenisScroll();
   const circleRefs = useRef([]);
   const tlRefs = useRef([]);
   const activeTweenRefs = useRef([]);
@@ -28,24 +30,10 @@ const Nav = () => {
     if (location.pathname === "/") {
       e.preventDefault();
       window.history.pushState(null, "", "/");
-      if (lenis) {
-        lenis.scrollTo(0, {
-          duration: 1.2,
-        });
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      scrollToTop({ duration: 1.2 });
     } else {
       navigate("/");
-      setTimeout(() => {
-        if (lenis) {
-          lenis.scrollTo(0, {
-            duration: 1.2,
-          });
-        } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-      }, 100);
+      setTimeout(() => scrollToTop({ duration: 1.2 }), 100);
     }
   };
 
@@ -67,7 +55,8 @@ const Nav = () => {
     return false;
   };
 
-  // On home page: update nav active state (work vs play) from scroll position
+  // On home page: update nav active state (work vs play) from scroll position.
+  // Throttle with rAF so we don't call getBoundingClientRect every Lenis scroll tick (reduces scroll jank through Play).
   useEffect(() => {
     if (location.pathname !== "/") {
       setHomeActiveSection("work");
@@ -77,24 +66,32 @@ const Nav = () => {
     const playSection = document.getElementById("play");
     if (!playSection) return;
 
+    let rafId = null;
     const updateSectionFromScroll = () => {
-      const rect = playSection.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      // When play section top enters the upper 30% of the viewport, switch to "play"
-      const threshold = viewportHeight * 0.3;
-      const inPlaySection = rect.top <= threshold;
-      setHomeActiveSection((prev) => (inPlaySection ? "play" : "work"));
+      if (rafId != null) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        const rect = playSection.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const threshold = viewportHeight * 0.3;
+        const inPlaySection = rect.top <= threshold;
+        setHomeActiveSection((prev) => (inPlaySection ? "play" : "work"));
+      });
     };
 
     updateSectionFromScroll();
 
     if (lenis) {
       lenis.on("scroll", updateSectionFromScroll);
-      return () => lenis.off("scroll", updateSectionFromScroll);
+      return () => {
+        if (rafId != null) cancelAnimationFrame(rafId);
+        lenis.off("scroll", updateSectionFromScroll);
+      };
     }
     window.addEventListener("scroll", updateSectionFromScroll);
     window.addEventListener("resize", updateSectionFromScroll);
     return () => {
+      if (rafId != null) cancelAnimationFrame(rafId);
       window.removeEventListener("scroll", updateSectionFromScroll);
       window.removeEventListener("resize", updateSectionFromScroll);
     };
@@ -331,24 +328,13 @@ const Nav = () => {
     if (location.pathname === "/") {
       setHomeActiveSection("work");
       navigate("/", { replace: true });
-      if (lenis) {
-        lenis.scrollTo(0, { duration: 1.2 });
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      scrollToTop({ duration: 1.2 });
     } else {
       navigate("/");
-      setTimeout(() => {
-        if (lenis) {
-          lenis.scrollTo(0, { duration: 1.2 });
-        } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-      }, 100);
+      setTimeout(() => scrollToTop({ duration: 1.2 }), 100);
     }
   };
 
-  // Offset so the play section title sits below the fixed nav (nav ~60–80px). Temporarily 0.
   const PLAY_SCROLL_OFFSET = 0;
 
   const scrollToPlaySection = (
@@ -357,29 +343,11 @@ const Nav = () => {
     immediate = false,
   ) => {
     const offset = fromOtherPage ? PLAY_SCROLL_OFFSET : 0;
-    if (el && lenis) {
-      lenis.scrollTo(el, {
-        offset,
-        duration: immediate ? 0 : 1.2,
-        immediate,
-      });
-    } else if (el) {
-      el.scrollIntoView({
-        behavior: immediate ? "auto" : "smooth",
-        block: "start",
-      });
-      if (fromOtherPage && offset !== 0) {
-        const offsetPx = Math.abs(offset);
-        if (lenis) {
-          setTimeout(
-            () => lenis.scrollTo(lenis.scroll + offsetPx, { duration: 0.3 }),
-            100,
-          );
-        } else {
-          setTimeout(() => window.scrollBy(0, offsetPx), 100);
-        }
-      }
-    }
+    scrollToElement(el, {
+      offset,
+      duration: immediate ? 0 : 1.2,
+      immediate,
+    });
   };
 
   const handlePlayClick = (e) => {
@@ -599,13 +567,8 @@ const Nav = () => {
                       setHomeActiveSection("play");
                       setIsMobileMenuOpen(false);
                       toggleMobileMenu();
-                      // Scroll after menu has closed and Lenis has started (was stopped while menu open)
                       setTimeout(() => {
-                        if (lenis) {
-                          lenis.scrollTo(playSection, { offset: 0, duration: 1.2 });
-                        } else {
-                          playSection.scrollIntoView({ behavior: "smooth", block: "start" });
-                        }
+                        scrollToElement(playSection, { offset: 0, duration: 1.2 });
                       }, 400);
                     } else {
                       handlePlayClick(e);

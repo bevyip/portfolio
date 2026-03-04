@@ -321,19 +321,6 @@
   margin: 0 0 1.25rem 0;
 }
 
-.home-play-title-line {
-  display: block;
-  overflow: hidden;
-  line-height: 1.05;
-  margin: 0;
-  padding-bottom: 0.2em; /* room for descenders (g, y, p) */
-}
-
-.home-play-title-line-inner {
-  display: block;
-  line-height: 1.05;
-}
-
 .home-play-subtitle {
   font-family: "Satoshi", sans-serif;
   font-size: clamp(0.95rem, 2vw, 18px);
@@ -364,18 +351,6 @@
   }
 }
 
-.home-play-subtitle-line {
-  display: block;
-  overflow: hidden;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.home-play-subtitle-line-inner {
-  display: block;
-  line-height: 1.6;
-}
-
 .home-play-subtitle .play-question {
   font-weight: 500;
 }
@@ -392,3 +367,5 @@
     grid-row: var(--grid-row-start) / var(--grid-row-end);
   }
 }
+
+/* content-visibility removed: was causing mid/lower grid scroll jank (visibility recalc during scroll) */

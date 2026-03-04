@@ -20,13 +20,23 @@ const LenisScrollTriggerIntegration = () => {
   const lenis = useLenis();
 
   useEffect(() => {
-    if (lenis) {
-      lenis.on("scroll", ScrollTrigger.update);
+    if (!lenis) return;
 
-      return () => {
-        lenis.off("scroll", ScrollTrigger.update);
-      };
-    }
+    let rafId = null;
+    const onScroll = () => {
+      if (rafId != null) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        ScrollTrigger.update();
+      });
+    };
+
+    lenis.on("scroll", onScroll);
+
+    return () => {
+      if (rafId != null) cancelAnimationFrame(rafId);
+      lenis.off("scroll", onScroll);
+    };
   }, [lenis]);
 
   return null;
@@ -42,7 +52,7 @@ function App() {
         orientation: "vertical",
         gestureOrientation: "vertical",
         smoothWheel: true,
-        smoothTouch: false, // Keep native scroll on mobile
+        smoothTouch: false,
         wheelMultiplier: 1,
         touchMultiplier: 2,
       }}
@@ -52,7 +62,6 @@ function App() {
         <ScrollToTop />
         <BackToTop />
         <div className="app min-h-screen relative">
-          {/* Nav - fixed at top, overlays all content */}
           <div
             className="fixed top-0 left-0 w-full"
             style={{
@@ -64,7 +73,6 @@ function App() {
               <Nav />
             </div>
           </div>
-          {/* Routes - main content */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

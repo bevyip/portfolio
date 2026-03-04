@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useLenis } from "@studio-freight/react-lenis";
+import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Footer from "../../components/Footer/Footer";
 import WorkBentoGrid from "../../components/Work/WorkBentoGrid";
 import PlayBentoGrid from "../../components/Work/PlayBentoGrid";
@@ -28,7 +29,7 @@ function SkeletonWorkGrid() {
 
 const Home = () => {
   const location = useLocation();
-  const lenis = useLenis();
+  const { lenis, scrollToElement } = useLenisScroll();
   const [isHoveringWorkCard, setIsHoveringWorkCard] = useState(false);
   const [isWorkLoading, setIsWorkLoading] = useState(true);
   const heroTitleRef = useRef(null);
@@ -38,20 +39,18 @@ const Home = () => {
   const hasScrolledToPlayRef = useRef(false);
 
   // When navigated from another page with scrollToPlay, scroll to play once when layout is ready (work grid loaded).
-  // We don't replace state so ScrollToTop keeps skipping and doesn't scroll to 0 after we scroll here.
   useEffect(() => {
     if (
       location.state?.scrollToPlay !== true ||
       isWorkLoading ||
-      !lenis ||
       hasScrolledToPlayRef.current
     )
       return;
     const el = document.getElementById("play");
     if (!el) return;
     hasScrolledToPlayRef.current = true;
-    lenis.scrollTo(el, { offset: 0, duration: 0, immediate: true });
-  }, [location.state?.scrollToPlay, isWorkLoading, lenis]);
+    scrollToElement(el, { offset: 0, immediate: true });
+  }, [location.state?.scrollToPlay, isWorkLoading, scrollToElement]);
 
   // Reset so a future navigation with scrollToPlay can scroll again (e.g. About -> Play again)
   useEffect(() => {
@@ -59,6 +58,17 @@ const Home = () => {
       hasScrolledToPlayRef.current = false;
     }
   }, [location.pathname, location.state?.scrollToPlay]);
+
+  // After the play grid is in view and images have started loading,
+  // refresh ScrollTrigger so the footer trigger recalculates correctly
+  useEffect(() => {
+    if (isWorkLoading) return;
+    // Small delay to let the Play grid finish its layout pass
+    const t = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
+    return () => clearTimeout(t);
+  }, [isWorkLoading]);
 
   // Landing: rise-from-baseline for title and bio (same style as Play), start on mount to avoid lag
   useEffect(() => {
@@ -105,12 +115,7 @@ const Home = () => {
   }, []);
 
   const scrollToPlaySection = () => {
-    const el = document.getElementById("play");
-    if (el && lenis) {
-      lenis.scrollTo(el, { offset: 0, duration: 1.2 });
-    } else if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToElement(document.getElementById("play"), { offset: 0, duration: 1.2 });
   };
 
   return (
@@ -213,23 +218,13 @@ const Home = () => {
 
       <section id="play" className="home-play">
         <div className="home-play-inner">
-          <h2 className="home-play-title">
-            <span className="home-play-title-line">
-              <span className="home-play-title-line-inner">
-                Experiments & Artifacts
-              </span>
-            </span>
-          </h2>
+          <h2 className="home-play-title">Experiments & Artifacts</h2>
           <p className="home-play-subtitle">
-            <span className="home-play-subtitle-line">
-              <span className="home-play-subtitle-line-inner">
-                Designing and coding have always been inseparable to me. I
-                bounce between Figma and Cursor until something feels right, all
-                in pursuit of one question:{" "}
-                <span className="play-question">
-                  how do we make even the most boring tool spark joy?
-                </span>
-              </span>
+            Designing and coding have always been inseparable to me. I bounce
+            between Figma and Cursor until something feels right, all in
+            pursuit of one question:{" "}
+            <span className="play-question">
+              how do we make even the most boring tool spark joy?
             </span>
           </p>
           <PlayBentoGrid onProjectClick={scrollToPlaySection} />

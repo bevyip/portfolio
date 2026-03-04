@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import {
   ExternalLink,
   Github,
@@ -96,57 +96,74 @@ const sizeClasses = {
   short: "", // Standard height (1 row)
 };
 
-const BentoItem = ({ project, onClick, gridPosition }) => {
+const BentoItem = ({
+  project,
+  onClick,
+  gridPosition,
+  posterOnly = false,
+  onMouseEnter,
+  onMouseLeave,
+  onRequestPlay,
+  onNotifyPause,
+}) => {
   const { id, theme = "white", tags, actions, size, media } = project;
   const [isTapped, setIsTapped] = useState(false);
   const [isMediaLoaded, setIsMediaLoaded] = useState(false);
   const [videoInView, setVideoInView] = useState(false);
+  const [iframeReady, setIframeReady] = useState(false);
+  const [isHoveringIframe, setIsHoveringIframe] = useState(false);
   const iframeRef = useRef(null);
   const videoRef = useRef(null);
   const containerRef = useRef(null);
   const videoContainerRef = useRef(null);
+  const posterImgRef = useRef(null);
+  const iframeObserverTargetRef = useRef(null);
 
   const isBlack = theme === "black";
   const hasVideo = media?.video;
   const hasPoster = hasVideo && media?.poster;
   const hasImage = media?.image || media?.thumbnail;
   const hasIframe = media?.iframe;
-  const hasMedia = hasVideo || hasIframe || hasImage;
+  const showVideoBlock = hasVideo && !posterOnly;
+  const posterOnlyImage =
+    posterOnly && hasVideo && (media?.poster || media?.thumbnail);
+  const hasMedia = showVideoBlock || hasIframe || hasImage || !!posterOnlyImage;
   const disableHover = id === "ball-slide";
 
-  // Skeleton: hide when poster/image loads (poster case) or after timeout
-  useEffect(() => {
-    if (!hasMedia) {
-      setIsMediaLoaded(true);
-      return;
-    }
-    const fallback = setTimeout(() => setIsMediaLoaded(true), 4000);
-    return () => clearTimeout(fallback);
-  }, [hasMedia]);
+  // The lqip (low-quality image placeholder) is a tiny base64 WebP string
+  // embedded directly in playProjects.js. It renders instantly with no network
+  // request, replacing the skeleton entirely. isMediaLoaded controls the
+  // crossfade from blurred lqip → sharp real image/video.
+  const lqip = media?.lqip ?? null;
 
-  const handleCardClick = (e) => {
-    // Toggle tapped state on mobile for all items
-    setIsTapped((prev) => !prev);
-    if (!hasIframe) {
-      onClick?.(project);
-    }
-  };
+  // Deferred setState: keeps image onLoad / decode callbacks out of the same
+  // frame as scroll to avoid layout thrashing.
+  const setMediaLoadedDeferred = useCallback(() => {
+    requestAnimationFrame(() => setIsMediaLoaded(true));
+  }, []);
 
-  const handleIframeClick = (e) => {
-    // Stop propagation so parent onClick doesn't fire
+  const handleCardClick = useCallback(
+    (e) => {
+      setIsTapped((prev) => !prev);
+      if (!hasIframe) {
+        onClick?.(project);
+      }
+    },
+    [hasIframe, onClick, project],
+  );
+
+  const handleIframeClick = useCallback((e) => {
     e.stopPropagation();
-    // Focus the iframe to activate it for mouse interactions
     if (iframeRef.current) {
       iframeRef.current.focus();
     }
-  };
+  }, []);
 
-  const handleIframeMouseEnter = () => {
-    // Focus the iframe when mouse enters to enable immediate mouse tracking
+  const handleIframeMouseEnter = useCallback(() => {
     if (iframeRef.current) {
       iframeRef.current.focus();
     }
-  };
+  }, []);
 
   // Set CSS custom properties for grid positioning
   const gridStyle = gridPosition
@@ -157,65 +174,131 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
       }
     : {};
 
-  // Defer video src until card is in viewport (poster or skeleton shown first)
+  // For posterOnly cards: use IntersectionObserver + img.decode() instead of
+  // native loading="lazy". Assigns src 500px ahead, decodes off main thread,
+  // crossfades from LQIP only after decode completes — no paint jank.
   useEffect(() => {
-    if (!videoContainerRef.current || !hasVideo || !media.video) return;
-
-    const container = videoContainerRef.current;
-    const isMobile = window.innerWidth <= 768;
-    const rootMargin = isMobile ? "100px" : "200px";
+    if (!posterOnly) return;
+    const imgEl = posterImgRef.current;
+    if (!imgEl) return;
 
     const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0].isIntersecting) return;
+        const src = imgEl.dataset.src;
+        if (!src) {
+          setMediaLoadedDeferred();
+          observer.disconnect();
+          return;
+        }
+        imgEl.src = src;
+        imgEl
+          .decode()
+          .then(() => setMediaLoadedDeferred())
+          .catch(() => setMediaLoadedDeferred());
+        observer.disconnect();
+      },
+      { rootMargin: "500px", threshold: 0 },
+    );
+
+    observer.observe(imgEl);
+    return () => observer.disconnect();
+  }, [posterOnly, setMediaLoadedDeferred]);
+
+  // Phase 1 — assign video src 800px before viewport so buffering starts early.
+  // Phase 2 — request play only when card is actually in view; pause on leave.
+  // Both skip entirely when posterOnly (image-only mode) or no video.
+  useEffect(() => {
+    if (posterOnly || !showVideoBlock || !media?.video) return;
+    if (!videoContainerRef.current) return;
+
+    const container = videoContainerRef.current;
+
+    // Phase 1: preload src well ahead of viewport
+    const preloadObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const video = videoRef.current;
           if (entry.isIntersecting && video?.dataset.src && !video.src) {
             video.src = video.dataset.src;
             video.load();
-            video.play().catch(() => {});
-            setVideoInView(true);
-            observer.unobserve(container);
-          } else if (!entry.isIntersecting && video?.src) {
-            video.pause();
+            preloadObserver.unobserve(container);
           }
         });
       },
-      { rootMargin, threshold: 0.1 }
+      { rootMargin: "800px", threshold: 0 },
     );
 
-    observer.observe(container);
+    // Phase 2: play/pause based on actual visibility
+    const playObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = videoRef.current;
+          if (!video) return;
 
-    return () => observer.disconnect();
-  }, [hasVideo, media?.video]);
+          if (entry.isIntersecting) {
+            setVideoInView(true);
+            // Autoplay videos when their card is actually in view.
+            const playPromise = video.play();
+            if (playPromise && typeof playPromise.catch === "function") {
+              playPromise.catch(() => {});
+            }
+            onRequestPlay?.(video, gridPosition?.col ?? 1);
+          } else {
+            video.pause();
+            onNotifyPause?.(video);
+          }
+        });
+      },
+      { rootMargin: "0px", threshold: 0.1 },
+    );
 
-  // Lazy load iframe when it comes into viewport
+    preloadObserver.observe(container);
+    playObserver.observe(container);
+
+    return () => {
+      preloadObserver.disconnect();
+      playObserver.disconnect();
+      if (videoRef.current) {
+        videoRef.current.pause();
+      }
+    };
+  }, [
+    posterOnly,
+    showVideoBlock,
+    media?.video,
+    onRequestPlay,
+    onNotifyPause,
+    gridPosition?.col,
+  ]);
+
+  // Defer iframe mount until near viewport. We gate the entire <iframe> element
+  // on iframeReady so the browsing context isn't created until needed.
+  // The observer target is a plain div (iframeObserverTargetRef) shown before mount.
   useEffect(() => {
-    if (!iframeRef.current || !hasIframe || !containerRef.current) return;
+    if (!hasIframe) return;
+    if (iframeReady) return; // already mounted, nothing to observe
+    const target = iframeObserverTargetRef.current;
+    if (!target) return;
 
-    const iframe = iframeRef.current;
-    const container = containerRef.current;
     const isMobile = window.innerWidth <= 768;
     const rootMargin = isMobile ? "150px" : "250px";
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && iframe.dataset.src && !iframe.src) {
-            // Only load iframe when it's about to be visible
-            iframe.src = iframe.dataset.src;
-            observer.unobserve(container);
+          if (entry.isIntersecting) {
+            setIframeReady(true);
+            observer.disconnect();
           }
         });
       },
-      { rootMargin, threshold: 0.1 }
+      { rootMargin, threshold: 0 },
     );
 
-    observer.observe(container);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [hasIframe]);
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [hasIframe, iframeReady]);
 
   return (
     <div
@@ -229,7 +312,7 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
             ? "hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)]"
             : ""
         }
-        transition-all duration-300 ease-out
+        transition-[box-shadow,transform] duration-300 ease-out
         h-full min-h-[200px]
         ${sizeClasses[size] || ""}
       `}
@@ -237,21 +320,69 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
       data-grid-col={gridPosition?.col}
       data-grid-row-start={gridPosition?.rowStart}
       data-grid-row-end={gridPosition?.rowEnd}
+      data-size={size}
       onClick={handleCardClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
-      {/* Video Background: poster first, video src deferred until in view */}
-      {hasVideo && (
+      {/* LQIP background — always rendered instantly from the inline base64 string.
+          Crossfades to the real media once it's decoded and ready. */}
+      {lqip && (
+        <div
+          className="absolute inset-0 rounded-[8px] overflow-hidden"
+          style={{ zIndex: 0 }}
+          aria-hidden="true"
+        >
+          <img
+            src={lqip}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover rounded-[8px]"
+            style={{ filter: "blur(12px)", transform: "scale(1.05)" }}
+          />
+        </div>
+      )}
+
+      {/* Fallback skeleton for cards without an lqip yet */}
+      {!lqip && hasMedia && (
+        <div
+          className="absolute inset-0 rounded-[8px] pointer-events-none"
+          style={{
+            opacity: isMediaLoaded ? 0 : 1,
+            transition: "opacity 0.4s ease",
+            background: isBlack ? "#1a1a1a" : "#e8e8e8",
+            zIndex: 1,
+          }}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Real media crossfade overlay — fades in over the LQIP once loaded */}
+      {hasMedia && (
+        <div
+          className="absolute inset-0 rounded-[8px] pointer-events-none"
+          style={{
+            opacity: isMediaLoaded ? 1 : 0,
+            transition: "opacity 0.5s ease",
+            zIndex: 2,
+          }}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Video block: poster shown until video is buffered, then swapped */}
+      {showVideoBlock && (
         <div
           ref={videoContainerRef}
           className="absolute inset-0 w-full h-full rounded-[8px] overflow-hidden"
+          style={{ zIndex: 3 }}
         >
           {hasPoster && (
             <img
               className="absolute inset-0 w-full h-full object-cover rounded-[8px]"
               src={media.poster}
               alt=""
-              loading="lazy"
-              onLoad={() => setIsMediaLoaded(true)}
+              decoding="async"
+              onLoad={setMediaLoadedDeferred}
               style={{ zIndex: videoInView ? 0 : 1 }}
             />
           )}
@@ -259,63 +390,72 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
             ref={videoRef}
             className="absolute inset-0 w-full h-full object-cover rounded-[8px]"
             data-src={media.video}
-            autoPlay
             loop
             muted
             playsInline
             preload="none"
-            onCanPlay={() => setIsMediaLoaded(true)}
-            onLoadedData={() => setIsMediaLoaded(true)}
+            onCanPlay={setMediaLoadedDeferred}
+            onLoadedData={setMediaLoadedDeferred}
             style={{ zIndex: hasPoster && videoInView ? 1 : 0 }}
           />
         </div>
       )}
 
-      {/* Iframe Background (interactive) */}
-      {!hasVideo && hasIframe && (
+      {/* Iframe block: element not mounted until iframeReady (observer fired).
+          Before ready, a plain div acts as the observation target. */}
+      {!showVideoBlock && hasIframe && (
         <div
-          ref={containerRef}
           className="absolute inset-0 w-full h-full rounded-[8px]"
-          onClick={handleIframeClick}
-          onMouseDown={handleIframeClick}
-          onMouseEnter={handleIframeMouseEnter}
+          style={{ zIndex: 3 }}
         >
-          <iframe
-            ref={iframeRef}
-            className="absolute inset-0 w-full h-full rounded-[8px] border-0"
-            title=""
-            loading="lazy"
-            data-src={media.iframe}
-            onLoad={() => setIsMediaLoaded(true)}
-          />
+          {iframeReady ? (
+            <iframe
+              ref={iframeRef}
+              className="absolute inset-0 w-full h-full rounded-[8px] border-0"
+              src={media.iframe}
+              title=""
+              onLoad={setMediaLoadedDeferred}
+            />
+          ) : (
+            /* Observation target div — becomes the iframe once in range */
+            <div
+              ref={iframeObserverTargetRef}
+              className="absolute inset-0 rounded-[8px]"
+            />
+          )}
+          {/* Transparent capture layer so hover works over iframe content */}
+          {iframeReady && (
+            <div
+              className="absolute inset-0 z-[9] rounded-[8px]"
+              style={{ pointerEvents: isTapped ? "none" : "auto" }}
+              onMouseEnter={() => {
+                setIsHoveringIframe(true);
+                onMouseEnter?.();
+              }}
+              onMouseLeave={() => {
+                setIsHoveringIframe(false);
+                onMouseLeave?.();
+              }}
+              onClick={handleIframeClick}
+            />
+          )}
         </div>
       )}
 
-      {/* Image Background (fallback if no video or iframe) */}
-      {!hasVideo && !hasIframe && hasImage && (
+      {/* Poster-only image (no video element): uses img.decode() via observer above */}
+      {!showVideoBlock && !hasIframe && (hasImage || posterOnlyImage) && (
         <img
+          ref={posterImgRef}
           className="absolute inset-0 w-full h-full object-cover rounded-[8px]"
-          src={media.image || media.thumbnail}
+          src={media.image || media.thumbnail || media.poster}
           alt=""
-          loading="lazy"
-          onLoad={() => setIsMediaLoaded(true)}
+          decoding="async"
+          onLoad={setMediaLoadedDeferred}
+          style={{ zIndex: 3 }}
         />
       )}
 
-      {/* Skeleton overlay until media has loaded */}
-      {hasMedia && (
-        <div
-          className="absolute inset-0 rounded-[8px] pointer-events-none z-[1]"
-          style={{
-            opacity: isMediaLoaded ? 0 : 1,
-            transition: "opacity 0.4s ease",
-            background: isBlack ? "#1a1a1a" : "#e8e8e8",
-          }}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Tag Pills - Bottom Left (always visible on mobile, hover on desktop) */}
+      {/* Tag Pills - Bottom Left */}
       <div
         className={`
           absolute bottom-4 left-4 flex flex-wrap gap-2 z-10
@@ -324,12 +464,16 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
           min-[1026px]:opacity-0 min-[1026px]:translate-y-2
           min-[1026px]:group-hover:opacity-100 min-[1026px]:group-hover:translate-y-0
         `}
+        style={{
+          opacity: isHoveringIframe ? 1 : undefined,
+          transform: isHoveringIframe ? "translateY(0)" : undefined,
+        }}
       >
         {tags.slice(0, 3).map((tag, index) => (
           <span
             key={index}
             className={`
-              px-3 py-1.5 rounded-full
+              px-3 py-1.5 rounded-[4px]
               text-xs font-medium
               shadow-sm
               transition-all duration-200
@@ -346,7 +490,7 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
         ))}
       </div>
 
-      {/* Action Icons - Top Right (always visible on mobile, hover on desktop) */}
+      {/* Action Icons - Top Right */}
       <div
         className={`
           absolute top-4 right-4 flex gap-2 z-10
@@ -355,6 +499,10 @@ const BentoItem = ({ project, onClick, gridPosition }) => {
           min-[1026px]:opacity-0 min-[1026px]:-translate-y-2
           min-[1026px]:group-hover:opacity-100 min-[1026px]:group-hover:translate-y-0
         `}
+        style={{
+          opacity: isHoveringIframe ? 1 : undefined,
+          transform: isHoveringIframe ? "translateY(0)" : undefined,
+        }}
       >
         {actions.map((action, index) => {
           const config = actionConfig[action.type];

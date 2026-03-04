@@ -1,6 +1,6 @@
 import React, { useRef, useMemo, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useLenis } from "@studio-freight/react-lenis";
+import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useScrollReset from "../../hooks/useScrollReset";
@@ -16,7 +16,7 @@ const WholeFoodsCaseStudy = () => {
   // Reset scroll position to top when page loads/refreshes
   useScrollReset();
   const [isHoveringSeeNextCard, setIsHoveringSeeNextCard] = useState(false);
-  const lenis = useLenis();
+  const { scrollToElement } = useLenisScroll();
 
   const impactSectionRef = useRef(null);
   const metricRefs = useRef([]);
@@ -102,16 +102,7 @@ const WholeFoodsCaseStudy = () => {
 
   const handleSkipToSolution = () => {
     const solutionSection = document.getElementById("solution-section");
-    if (solutionSection) {
-      if (lenis) {
-        lenis.scrollTo(solutionSection, {
-          offset: 0,
-          duration: 1.2,
-        });
-      } else {
-        solutionSection.scrollIntoView({ behavior: "smooth" });
-      }
-    }
+    scrollToElement(solutionSection, { offset: 0, duration: 1.2 });
   };
 
   // Scroll-triggered animations for context section

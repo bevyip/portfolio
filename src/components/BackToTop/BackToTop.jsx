@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useLenis } from "@studio-freight/react-lenis";
+import { useLenisScroll } from "../../hooks/useLenisScroll";
 import "./BackToTop.css";
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isInFooter, setIsInFooter] = useState(false);
   const lenis = useLenis();
+  const { scrollToTop } = useLenisScroll();
 
   useEffect(() => {
     const checkScrollPosition = () => {
@@ -41,24 +43,14 @@ const BackToTop = () => {
     };
   }, [lenis]);
 
-  const scrollToTop = () => {
-    if (lenis) {
-      lenis.scrollTo(0, {
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      });
-    } else {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
+  const handleClick = () => {
+    scrollToTop({ duration: 1.2 });
   };
 
   return (
     <button
       className={`back-to-top-button ${isVisible ? "visible" : ""} ${isInFooter ? "in-footer" : ""}`}
-      onClick={scrollToTop}
+      onClick={handleClick}
       aria-label="Back to top"
     >
       <svg

@@ -2,11 +2,14 @@
 // Size options: "tall" (2 rows), "short" (1 row)
 // Theme options: "white" or "black" for card background
 
+const CDN = "https://res.cloudinary.com/djldar8hj";
+
+// Helpers
+const img = (id, w = 400) => `${CDN}/image/upload/w_${w},f_auto,q_auto/${id}`;
+const lqip = (id) => `${CDN}/image/upload/w_20,e_blur:200,f_auto,q_10/${id}`;
+const vid = (id) => `${CDN}/video/upload/f_auto,q_auto/${id}.mp4`;
+
 export const playProjects = [
-  // Arranged by column order for balanced heights
-  // Column 1: floral-jukebox, im-listening, block-party, cat-box, sticker-cats, words-unseen, ball-slide, puzzle-feeder
-  // Column 2: spherical-shopping, binary-pool, snowflake, photo-collage-reveal, neumorphic-buttons, cat-figurine, temple-of-fortune, starry-night
-  // Column 3: emotional-canvas, gravity-text, ball-slide, emoji-ascii-art, picture-distortion, five-identical-fishes, pixel-trail, starry-night, whack-a-mouse, words-unseen
   {
     id: "floral-jukebox",
     size: "tall",
@@ -14,8 +17,9 @@ export const playProjects = [
     tags: ["React", "Web Audio API"],
     category: "digital",
     media: {
-      video: "/projects/floral-jukebox/demo.mp4",
-      poster: "/projects/floral-jukebox/poster.jpg",
+      video: vid("projects/floral-jukebox/demo"),
+      poster: img("projects/floral-jukebox/poster"),
+      lqip: lqip("projects/floral-jukebox/poster"),
     },
     actions: [
       {
@@ -37,8 +41,9 @@ export const playProjects = [
     tags: ["React", "Three.js"],
     category: "digital",
     media: {
-      video: "/projects/spherical-shopping/demo.mp4",
-      poster: "/projects/spherical-shopping/poster.jpg",
+      video: vid("projects/spherical-shopping/demo"),
+      poster: img("projects/spherical-shopping/poster"),
+      lqip: lqip("projects/spherical-shopping/poster"),
     },
     actions: [
       {
@@ -60,8 +65,9 @@ export const playProjects = [
     tags: ["R3F", "Three.js"],
     category: "digital",
     media: {
-      video: "/projects/emotional-canvas/demo.mp4",
-      poster: "/projects/emotional-canvas/poster.jpg",
+      video: vid("projects/emotional-canvas/demo"),
+      poster: img("projects/emotional-canvas/poster"),
+      lqip: lqip("projects/emotional-canvas/poster"),
     },
     actions: [
       {
@@ -88,8 +94,9 @@ export const playProjects = [
     tags: ["Audio Analysis", "Three.js"],
     category: "digital",
     media: {
-      video: "/projects/im-listening/demo1.mp4",
-      poster: "/projects/im-listening/poster1.jpg",
+      video: vid("projects/im-listening/demo1"),
+      poster: img("projects/im-listening/poster1"),
+      lqip: lqip("projects/im-listening/poster1"),
     },
     actions: [
       {
@@ -111,8 +118,9 @@ export const playProjects = [
     tags: ["Gemini AI", "Image Recognition"],
     category: "digital",
     media: {
-      video: "/projects/block-party/demo.mp4",
-      thumbnail: "/projects/block-party/poster.jpg",
+      video: vid("projects/block-party/demo"),
+      poster: img("projects/block-party/poster"),
+      lqip: lqip("projects/block-party/poster"),
     },
     actions: [
       {
@@ -128,58 +136,15 @@ export const playProjects = [
     ],
   },
   {
-    id: "binary-pool",
-    size: "tall",
-    theme: "white",
-    tags: ["React", "Creative Coding"],
-    category: "digital",
-    media: {
-      iframe: "https://binary-pool.vercel.app/",
-    },
-    actions: [
-      {
-        type: "live",
-        tooltip: "View App",
-        url: "https://binary-pool.vercel.app/",
-      },
-      {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2009158116295033229?s=20",
-      },
-    ],
-  },
-  {
-    id: "gravity-text",
-    size: "tall",
-    theme: "white",
-    tags: ["React", "Three.js"],
-    category: "digital",
-    media: {
-      iframe: "https://gravity-text.vercel.app/",
-    },
-    actions: [
-      {
-        type: "live",
-        tooltip: "View App",
-        url: "https://gravity-text.vercel.app/",
-      },
-      {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2005463006642401381?s=20",
-      },
-    ],
-  },
-  {
     id: "ball-slide",
     size: "tall",
     theme: "white",
     tags: ["GSAP", "Three.js"],
     category: "digital",
     media: {
-      video: "/projects/ball-slide/demo.mp4",
-      poster: "/projects/ball-slide/poster.jpg",
+      video: vid("projects/ball-slide/demo"),
+      poster: img("projects/ball-slide/poster"),
+      lqip: lqip("projects/ball-slide/poster"),
     },
     actions: [
       {
@@ -201,8 +166,9 @@ export const playProjects = [
     tags: ["Fabrication", "Woodworking"],
     category: "physical",
     media: {
-      video: "/projects/cat-box/demo.mp4",
-      poster: "/projects/cat-box/poster.jpg",
+      video: vid("projects/cat-box/demo"),
+      poster: img("projects/cat-box/poster"),
+      lqip: lqip("projects/cat-box/poster"),
     },
     actions: [
       {
@@ -224,8 +190,9 @@ export const playProjects = [
     tags: ["React", "Creative Coding"],
     category: "digital",
     media: {
-      video: "/projects/snowflake/demo1.mp4",
-      poster: "/projects/snowflake/poster.jpg",
+      video: vid("projects/snowflake/demo1"),
+      poster: img("projects/snowflake/poster"),
+      lqip: lqip("projects/snowflake/poster"),
     },
     actions: [
       {
@@ -247,8 +214,9 @@ export const playProjects = [
     tags: ["React", "Creative Coding"],
     category: "digital",
     media: {
-      video: "/projects/ascii-art/demo.mp4",
-      poster: "/projects/ascii-art/poster.jpg",
+      video: vid("projects/ascii-art/demo"),
+      poster: img("projects/ascii-art/poster"),
+      lqip: lqip("projects/ascii-art/poster"),
     },
     actions: [
       {
@@ -270,8 +238,9 @@ export const playProjects = [
     tags: ["GSAP", "OGL"],
     category: "digital",
     media: {
-      video: "/projects/photo-collage/demo1.mp4",
-      poster: "/projects/photo-collage/poster.jpg",
+      video: vid("projects/photo-collage/demo1"),
+      poster: img("projects/photo-collage/poster"),
+      lqip: lqip("projects/photo-collage/poster"),
     },
     actions: [
       {
@@ -293,8 +262,9 @@ export const playProjects = [
     tags: ["React", "Creative Coding"],
     category: "digital",
     media: {
-      video: "/projects/picture-distortion/demo.mp4",
-      poster: "/projects/picture-distortion/poster.jpg",
+      video: vid("projects/picture-distortion/demo"),
+      poster: img("projects/picture-distortion/poster"),
+      lqip: lqip("projects/picture-distortion/poster"),
     },
     actions: [
       {
@@ -316,8 +286,9 @@ export const playProjects = [
     tags: ["React", "Interaction Design"],
     category: "digital",
     media: {
-      video: "/projects/buttons/demo.mp4",
-      poster: "/projects/buttons/poster.jpg",
+      video: vid("projects/buttons/demo"),
+      poster: img("projects/buttons/poster"),
+      lqip: lqip("projects/buttons/poster"),
     },
     actions: [
       {
@@ -333,36 +304,15 @@ export const playProjects = [
     ],
   },
   {
-    id: "sticker-cats",
-    size: "tall",
-    theme: "white",
-    tags: ["GSAP", "React"],
-    category: "digital",
-    media: {
-      iframe: "https://sticker-cats.vercel.app/",
-    },
-    actions: [
-      {
-        type: "live",
-        tooltip: "View Live",
-        url: "https://sticker-cats.vercel.app/",
-      },
-      {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004353435395891579?s=20",
-      },
-    ],
-  },
-  {
     id: "five-identical-fishes",
     size: "short",
     theme: "white",
     tags: ["Fabrication", "Woodworking"],
     category: "physical",
     media: {
-      video: "/projects/five-fishes/demo.mp4",
-      poster: "/projects/five-fishes/poster.jpg",
+      video: vid("projects/five-fishes/demo"),
+      poster: img("projects/five-fishes/poster"),
+      lqip: lqip("projects/five-fishes/poster"),
     },
     actions: [
       {
@@ -384,8 +334,9 @@ export const playProjects = [
     tags: ["Fabrication", "Woodworking"],
     category: "physical",
     media: {
-      video: "/projects/cat-figurine/demo.mp4",
-      poster: "/projects/cat-figurine/poster.jpg",
+      video: vid("projects/cat-figurine/demo"),
+      poster: img("projects/cat-figurine/poster"),
+      lqip: lqip("projects/cat-figurine/poster"),
     },
     actions: [
       {
@@ -407,8 +358,9 @@ export const playProjects = [
     tags: ["Web Art", "Interaction Design"],
     category: "digital",
     media: {
-      video: "/projects/monet/demo.mp4",
-      poster: "/projects/monet/poster.jpg",
+      video: vid("projects/monet/demo"),
+      poster: img("projects/monet/poster"),
+      lqip: lqip("projects/monet/poster"),
     },
     actions: [
       {
@@ -424,31 +376,15 @@ export const playProjects = [
     ],
   },
   {
-    id: "starry-night",
-    size: "short",
-    theme: "white",
-    tags: ["P5.js", "Creative Coding"],
-    category: "digital",
-    media: {
-      iframe: "https://editor.p5js.org/bevyip/embed/M3nIH2bcE",
-    },
-    actions: [
-      {
-        type: "notion",
-        tooltip: "View Documentation",
-        url: "https://bevyip.notion.site/Week-9-12f5b3e7f9e780078522ea5905ee81f1?source=copy_link",
-      },
-    ],
-  },
-  {
     id: "puzzle-feeder",
     size: "short",
     theme: "white",
     tags: ["Fabrication", "Laser Cutting"],
     category: "physical",
     media: {
-      video: "/projects/puzzle-feeder/demo.mp4",
-      poster: "/projects/puzzle-feeder/poster.jpg",
+      video: vid("projects/puzzle-feeder/demo"),
+      poster: img("projects/puzzle-feeder/poster"),
+      lqip: lqip("projects/puzzle-feeder/poster"),
     },
     actions: [
       {
@@ -470,7 +406,7 @@ export const playProjects = [
     tags: ["Arduino", "Unity"],
     category: "physical",
     media: {
-      thumbnail: "/projects/temple-of-fortune/thumbnail.jpg",
+      image: "/projects/temple-of-fortune/thumbnail.jpg",
     },
     actions: [
       {
@@ -487,8 +423,9 @@ export const playProjects = [
     tags: ["Fabrication", "Laser Cutting"],
     category: "physical",
     media: {
-      video: "/projects/whack-a-mouse/demo.mp4",
-      poster: "/projects/whack-a-mouse/poster.jpg",
+      video: vid("projects/whack-a-mouse/demo"),
+      poster: img("projects/whack-a-mouse/poster"),
+      lqip: lqip("projects/whack-a-mouse/poster"),
     },
     actions: [
       {
@@ -510,8 +447,9 @@ export const playProjects = [
     tags: ["Web Art", "Creative Coding"],
     category: "digital",
     media: {
-      video: "/projects/words-unseen/demo.mp4",
-      poster: "/projects/words-unseen/poster.jpg",
+      video: vid("projects/words-unseen/demo"),
+      poster: img("projects/words-unseen/poster"),
+      lqip: lqip("projects/words-unseen/poster"),
     },
     actions: [
       {
@@ -545,6 +483,74 @@ export const playProjects = [
         type: "notion",
         tooltip: "View Documentation",
         url: "https://bevyip.notion.site/Black-Market-2c25b3e7f9e780e3bd40cfe680b1b391?source=copy_link",
+      },
+    ],
+  },
+  {
+    id: "binary-pool",
+    size: "tall",
+    theme: "white",
+    tags: ["Creative Coding", "Interactive"],
+    category: "digital",
+    media: {
+      iframe: "https://binary-pool.vercel.app",
+    },
+    actions: [
+      {
+        type: "live",
+        tooltip: "View App",
+        url: "https://binary-pool.vercel.app",
+      },
+    ],
+  },
+  {
+    id: "gravity-text",
+    size: "tall",
+    theme: "white",
+    tags: ["Creative Coding", "Typography"],
+    category: "digital",
+    media: {
+      iframe: "https://gravity-text.vercel.app",
+    },
+    actions: [
+      {
+        type: "live",
+        tooltip: "View App",
+        url: "https://gravity-text.vercel.app",
+      },
+    ],
+  },
+  {
+    id: "sticker-cats",
+    size: "tall",
+    theme: "white",
+    tags: ["Creative Coding", "Interactive"],
+    category: "digital",
+    media: {
+      iframe: "https://sticker-cats.vercel.app",
+    },
+    actions: [
+      {
+        type: "live",
+        tooltip: "View App",
+        url: "https://sticker-cats.vercel.app",
+      },
+    ],
+  },
+  {
+    id: "starry-night",
+    size: "short",
+    theme: "white",
+    tags: ["P5.js", "Creative Coding"],
+    category: "digital",
+    media: {
+      iframe: "https://editor.p5js.org/bevyip/embed/M3nIH2bcE",
+    },
+    actions: [
+      {
+        type: "notion",
+        tooltip: "View Documentation",
+        url: "https://bevyip.notion.site/Week-9-12f5b3e7f9e780078522ea5905ee81f1?source=copy_link",
       },
     ],
   },

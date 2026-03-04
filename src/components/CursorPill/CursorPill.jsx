@@ -5,28 +5,34 @@ import "./CursorPill.css";
 const CursorPill = ({ isHovering, text = "View case study" }) => {
   const cursorPillRef = useRef(null);
 
-  // Custom cursor pill effect for desktop only
+  // Custom cursor pill: position via direct DOM transform (no React state) + rAF throttle to avoid re-renders on every mousemove
+  const rafIdRef = useRef(null);
   useEffect(() => {
-    // Only enable on desktop (devices that support hover)
     const isDesktop = window.matchMedia("(hover: hover)").matches;
     if (!isDesktop) return;
 
-    const cursorPill = cursorPillRef.current;
-    const cursorPillText = cursorPill?.querySelector(".cursor-pill-text");
-    if (!cursorPill || !cursorPillText) return;
+    const pill = cursorPillRef.current;
+    if (!pill) return;
+
+    const offsetX = 20;
+    pill.style.left = "0";
+    pill.style.top = "0";
 
     const handleMouseMove = (e) => {
-      // Position pill to the right of cursor
-      // CSS transform: translateY(-50%) handles vertical centering
-      const offsetX = 20;
-      cursorPill.style.left = `${e.clientX + offsetX}px`;
-      cursorPill.style.top = `${e.clientY}px`;
+      if (rafIdRef.current != null) return;
+      rafIdRef.current = requestAnimationFrame(() => {
+        rafIdRef.current = null;
+        const x = e.clientX + offsetX;
+        const y = e.clientY;
+        pill.style.transform = `translate(${x}px, ${y}px) translateY(-50%)`;
+      });
     };
 
     window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      if (rafIdRef.current != null) cancelAnimationFrame(rafIdRef.current);
     };
   }, []);
 

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useScrollReset from "../../hooks/useScrollReset";
+import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { useCountupAnimation } from "../../hooks/useCountupAnimation";
 import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
@@ -12,9 +13,9 @@ import "./ConfidoCaseStudy.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const ConfidoCaseStudy = () => {
-  // Reset scroll position to top when page loads/refreshes
   useScrollReset();
   const [isHoveringSeeNextCard, setIsHoveringSeeNextCard] = useState(false);
+  const { scrollToElement } = useLenisScroll();
 
   const impactSectionRef = useRef(null);
   const metricRefs = useRef([]);
@@ -89,11 +90,7 @@ const ConfidoCaseStudy = () => {
   });
 
   const handleSkipToSolution = () => {
-    // Scroll to solution section (to be implemented later)
-    const solutionSection = document.getElementById("solution-section");
-    if (solutionSection) {
-      solutionSection.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToElement(document.getElementById("solution-section"), { duration: 1.2 });
   };
 
   // Countup animation for metrics - memoize to prevent hook re-runs
