@@ -1,12 +1,9 @@
 // Play Projects Data
 // Size options: "tall" (2 rows), "short" (1 row)
-// Theme options: "white" or "black" for card background
+// Images: local paths under public/ (e.g. /projects/...)
+// Video: CDN (optional local /projects/<id>/demo.mp4 later)
 
 const CDN = "https://res.cloudinary.com/djldar8hj";
-
-// Helpers
-const img = (id, w = 400) => `${CDN}/image/upload/w_${w},f_auto,q_auto/${id}`;
-const lqip = (id) => `${CDN}/image/upload/w_20,e_blur:200,f_auto,q_10/${id}`;
 const vid = (id) => `${CDN}/video/upload/f_auto,q_auto/${id}.mp4`;
 
 export const playProjects = [
@@ -18,8 +15,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/floral-jukebox/demo"),
-      poster: img("projects/floral-jukebox/poster"),
-      lqip: lqip("projects/floral-jukebox/poster"),
+      poster: "/projects/floral-jukebox/poster.jpg",
     },
     actions: [
       {
@@ -42,8 +38,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/spherical-shopping/demo"),
-      poster: img("projects/spherical-shopping/poster"),
-      lqip: lqip("projects/spherical-shopping/poster"),
+      poster: "/projects/spherical-shopping/poster.jpg",
     },
     actions: [
       {
@@ -66,8 +61,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/emotional-canvas/demo"),
-      poster: img("projects/emotional-canvas/poster"),
-      lqip: lqip("projects/emotional-canvas/poster"),
+      poster: "/projects/emotional-canvas/poster.jpg",
     },
     actions: [
       {
@@ -95,8 +89,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/im-listening/demo1"),
-      poster: img("projects/im-listening/poster1"),
-      lqip: lqip("projects/im-listening/poster1"),
+      poster: "/projects/im-listening/poster1.jpg",
     },
     actions: [
       {
@@ -119,8 +112,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/block-party/demo"),
-      poster: img("projects/block-party/poster"),
-      lqip: lqip("projects/block-party/poster"),
+      poster: "/projects/block-party/poster.png",
     },
     actions: [
       {
@@ -143,8 +135,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/ball-slide/demo"),
-      poster: img("projects/ball-slide/poster"),
-      lqip: lqip("projects/ball-slide/poster"),
+      poster: "/projects/ball-slide/poster.jpg",
     },
     actions: [
       {
@@ -167,8 +158,7 @@ export const playProjects = [
     category: "physical",
     media: {
       video: vid("projects/cat-box/demo"),
-      poster: img("projects/cat-box/poster"),
-      lqip: lqip("projects/cat-box/poster"),
+      poster: "/projects/cat-box/poster.jpg",
     },
     actions: [
       {
@@ -191,8 +181,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/snowflake/demo1"),
-      poster: img("projects/snowflake/poster"),
-      lqip: lqip("projects/snowflake/poster"),
+      poster: "/projects/snowflake/poster.jpg",
     },
     actions: [
       {
@@ -215,8 +204,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/ascii-art/demo"),
-      poster: img("projects/ascii-art/poster"),
-      lqip: lqip("projects/ascii-art/poster"),
+      poster: "/projects/ascii-art/poster.jpg",
     },
     actions: [
       {
@@ -239,8 +227,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/photo-collage/demo1"),
-      poster: img("projects/photo-collage/poster"),
-      lqip: lqip("projects/photo-collage/poster"),
+      poster: "/projects/photo-collage/poster.jpg",
     },
     actions: [
       {
@@ -263,8 +250,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/picture-distortion/demo"),
-      poster: img("projects/picture-distortion/poster"),
-      lqip: lqip("projects/picture-distortion/poster"),
+      poster: "/projects/picture-distortion/poster.jpg",
     },
     actions: [
       {
@@ -287,8 +273,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/buttons/demo"),
-      poster: img("projects/buttons/poster"),
-      lqip: lqip("projects/buttons/poster"),
+      poster: "/projects/buttons/poster.jpg",
     },
     actions: [
       {
@@ -311,8 +296,7 @@ export const playProjects = [
     category: "physical",
     media: {
       video: vid("projects/five-fishes/demo"),
-      poster: img("projects/five-fishes/poster"),
-      lqip: lqip("projects/five-fishes/poster"),
+      poster: "/projects/five-fishes/poster.jpg",
     },
     actions: [
       {
@@ -335,8 +319,7 @@ export const playProjects = [
     category: "physical",
     media: {
       video: vid("projects/cat-figurine/demo"),
-      poster: img("projects/cat-figurine/poster"),
-      lqip: lqip("projects/cat-figurine/poster"),
+      poster: "/projects/cat-figurine/poster.jpg",
     },
     actions: [
       {
@@ -359,8 +342,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/monet/demo"),
-      poster: img("projects/monet/poster"),
-      lqip: lqip("projects/monet/poster"),
+      poster: "/projects/monet/poster.jpg",
     },
     actions: [
       {
@@ -383,8 +365,7 @@ export const playProjects = [
     category: "physical",
     media: {
       video: vid("projects/puzzle-feeder/demo"),
-      poster: img("projects/puzzle-feeder/poster"),
-      lqip: lqip("projects/puzzle-feeder/poster"),
+      poster: "/projects/puzzle-feeder/poster.jpg",
     },
     actions: [
       {
@@ -424,8 +405,7 @@ export const playProjects = [
     category: "physical",
     media: {
       video: vid("projects/whack-a-mouse/demo"),
-      poster: img("projects/whack-a-mouse/poster"),
-      lqip: lqip("projects/whack-a-mouse/poster"),
+      poster: "/projects/whack-a-mouse/poster.jpg",
     },
     actions: [
       {
@@ -448,8 +428,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/words-unseen/demo"),
-      poster: img("projects/words-unseen/poster"),
-      lqip: lqip("projects/words-unseen/poster"),
+      poster: "/projects/words-unseen/poster.jpg",
     },
     actions: [
       {

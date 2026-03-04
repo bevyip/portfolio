@@ -1,7 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import BentoItem from "../BentoItem/BentoItem";
 import CursorPill from "../CursorPill/CursorPill";
 import { playProjects } from "../../data/playProjects";
+
+// Match grid breakpoint: below 1026px = tablet/mobile (poster only, no video)
+const POSTER_ONLY_MEDIA = "(max-width: 1025px)";
 
 // Play grid position maps (same as WorkBentoGrid play filters)
 const allPlayPositions = {
@@ -64,7 +67,17 @@ const physicalPlayPositions = {
 const PlayBentoGrid = ({ onProjectClick }) => {
   const [isHoveringCard, setIsHoveringCard] = useState(false);
   const [activeFilter, setActiveFilter] = useState("all");
+  const [posterOnly, setPosterOnly] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia(POSTER_ONLY_MEDIA).matches : false
+  );
   const gridRef = useRef(null);
+
+  useEffect(() => {
+    const mql = window.matchMedia(POSTER_ONLY_MEDIA);
+    const handleChange = (e) => setPosterOnly(e.matches);
+    mql.addEventListener("change", handleChange);
+    return () => mql.removeEventListener("change", handleChange);
+  }, []);
 
   const filteredPlayProjects = playProjects.filter((project) => {
     if (activeFilter === "all") return true;
@@ -101,6 +114,7 @@ const PlayBentoGrid = ({ onProjectClick }) => {
               project={project}
               onClick={onProjectClick}
               gridPosition={position}
+              posterOnly={posterOnly}
             />
           );
         })}
