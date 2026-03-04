@@ -486,7 +486,7 @@ export const playProjects = [
     id: "gravity-text",
     size: "tall",
     theme: "white",
-    tags: ["Creative Coding", "Typography"],
+    tags: ["Creative Coding", "Three.js"],
     category: "digital",
     media: {
       iframe: "https://gravity-text.vercel.app",
@@ -503,7 +503,7 @@ export const playProjects = [
     id: "sticker-cats",
     size: "tall",
     theme: "white",
-    tags: ["Creative Coding", "Interactive"],
+    tags: ["GSAP", "Interactive"],
     category: "digital",
     media: {
       iframe: "https://sticker-cats.vercel.app",

@@ -107,11 +107,9 @@ const BentoItem = ({
   onNotifyPause,
 }) => {
   const { id, theme = "white", tags, actions, size, media } = project;
-  const [isTapped, setIsTapped] = useState(false);
   const [isMediaLoaded, setIsMediaLoaded] = useState(false);
   const [videoInView, setVideoInView] = useState(false);
   const [iframeReady, setIframeReady] = useState(false);
-  const [isHoveringIframe, setIsHoveringIframe] = useState(false);
   const iframeRef = useRef(null);
   const videoRef = useRef(null);
   const containerRef = useRef(null);
@@ -144,26 +142,12 @@ const BentoItem = ({
 
   const handleCardClick = useCallback(
     (e) => {
-      setIsTapped((prev) => !prev);
       if (!hasIframe) {
         onClick?.(project);
       }
     },
     [hasIframe, onClick, project],
   );
-
-  const handleIframeClick = useCallback((e) => {
-    e.stopPropagation();
-    if (iframeRef.current) {
-      iframeRef.current.focus();
-    }
-  }, []);
-
-  const handleIframeMouseEnter = useCallback(() => {
-    if (iframeRef.current) {
-      iframeRef.current.focus();
-    }
-  }, []);
 
   // Set CSS custom properties for grid positioning
   const gridStyle = gridPosition
@@ -423,20 +407,13 @@ const BentoItem = ({
               className="absolute inset-0 rounded-[8px]"
             />
           )}
-          {/* Transparent capture layer so hover works over iframe content */}
+          {/* Layer above iframe with pointer-events: none so the iframe is interactive immediately.
+              Card group-hover still shows tags/actions when cursor is over the iframe. */}
           {iframeReady && (
             <div
               className="absolute inset-0 z-[9] rounded-[8px]"
-              style={{ pointerEvents: isTapped ? "none" : "auto" }}
-              onMouseEnter={() => {
-                setIsHoveringIframe(true);
-                onMouseEnter?.();
-              }}
-              onMouseLeave={() => {
-                setIsHoveringIframe(false);
-                onMouseLeave?.();
-              }}
-              onClick={handleIframeClick}
+              style={{ pointerEvents: "none" }}
+              aria-hidden="true"
             />
           )}
         </div>
@@ -464,10 +441,6 @@ const BentoItem = ({
           min-[1026px]:opacity-0 min-[1026px]:translate-y-2
           min-[1026px]:group-hover:opacity-100 min-[1026px]:group-hover:translate-y-0
         `}
-        style={{
-          opacity: isHoveringIframe ? 1 : undefined,
-          transform: isHoveringIframe ? "translateY(0)" : undefined,
-        }}
       >
         {tags.slice(0, 3).map((tag, index) => (
           <span
@@ -499,10 +472,6 @@ const BentoItem = ({
           min-[1026px]:opacity-0 min-[1026px]:-translate-y-2
           min-[1026px]:group-hover:opacity-100 min-[1026px]:group-hover:translate-y-0
         `}
-        style={{
-          opacity: isHoveringIframe ? 1 : undefined,
-          transform: isHoveringIframe ? "translateY(0)" : undefined,
-        }}
       >
         {actions.map((action, index) => {
           const config = actionConfig[action.type];
