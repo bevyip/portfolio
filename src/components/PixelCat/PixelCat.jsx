@@ -19,7 +19,9 @@ const LICK_DURATION = 2167;
 const PLAY_DURATION = 3286;
 const LOAF_DURATION = 6000;
 const RUN_ARRIVAL_THRESHOLD = 4;
-const INITIAL_STATE_DELAY_MAX = 5000;
+/** First lick / play / loaf after mount: random delay in this range (ms) so idle holds longer on load */
+const INITIAL_STATE_DELAY_MIN = 5000;
+const INITIAL_STATE_DELAY_MAX = 10000;
 
 export default function PixelCat() {
   const containerRef = useRef(null);
@@ -74,7 +76,8 @@ export default function PixelCat() {
   // Schedule random licking (only when idle, don't interrupt run or click)
   const scheduleLick = useCallback(() => {
     const delay = firstLickRef.current
-      ? Math.random() * INITIAL_STATE_DELAY_MAX
+      ? INITIAL_STATE_DELAY_MIN +
+        Math.random() * (INITIAL_STATE_DELAY_MAX - INITIAL_STATE_DELAY_MIN)
       : LICK_INTERVAL_MIN +
         Math.random() * (LICK_INTERVAL_MAX - LICK_INTERVAL_MIN);
     if (firstLickRef.current) firstLickRef.current = false;
@@ -96,7 +99,8 @@ export default function PixelCat() {
   // Schedule random playing (only when idle, like licking)
   const schedulePlay = useCallback(() => {
     const delay = firstPlayRef.current
-      ? Math.random() * INITIAL_STATE_DELAY_MAX
+      ? INITIAL_STATE_DELAY_MIN +
+        Math.random() * (INITIAL_STATE_DELAY_MAX - INITIAL_STATE_DELAY_MIN)
       : PLAY_INTERVAL_MIN +
         Math.random() * (PLAY_INTERVAL_MAX - PLAY_INTERVAL_MIN);
     if (firstPlayRef.current) firstPlayRef.current = false;
@@ -118,7 +122,8 @@ export default function PixelCat() {
   // Schedule random loaf (only when idle, like licking/playing)
   const scheduleLoaf = useCallback(() => {
     const delay = firstLoafRef.current
-      ? Math.random() * INITIAL_STATE_DELAY_MAX
+      ? INITIAL_STATE_DELAY_MIN +
+        Math.random() * (INITIAL_STATE_DELAY_MAX - INITIAL_STATE_DELAY_MIN)
       : LOAF_INTERVAL_MIN +
         Math.random() * (LOAF_INTERVAL_MAX - LOAF_INTERVAL_MIN);
     if (firstLoafRef.current) firstLoafRef.current = false;

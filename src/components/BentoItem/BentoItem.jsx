@@ -153,6 +153,7 @@ const BentoItem = ({
   const gridStyle = gridPosition
     ? {
         "--grid-col": gridPosition.col,
+        "--grid-col-span": gridPosition.colSpan ?? 1,
         "--grid-row-start": gridPosition.rowStart,
         "--grid-row-end": gridPosition.rowEnd,
       }
@@ -302,6 +303,7 @@ const BentoItem = ({
       `}
       style={gridStyle}
       data-grid-col={gridPosition?.col}
+      data-grid-col-span={gridPosition?.colSpan ?? 1}
       data-grid-row-start={gridPosition?.rowStart}
       data-grid-row-end={gridPosition?.rowEnd}
       data-size={size}

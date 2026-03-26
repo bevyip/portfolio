@@ -8,6 +8,34 @@ const vid = (id) => `${CDN}/video/upload/f_auto,q_auto/${id}.mp4`;
 
 export const playProjects = [
   {
+    id: "block-party",
+    size: "tall",
+    theme: "white",
+    tags: ["Gemini AI", "Creative Coding"],
+    category: "digital",
+    media: {
+      video: vid("v1774495166/block-party_kb7spr"),
+      poster: "/projects/block-party/poster.png",
+    },
+    actions: [
+      {
+        type: "live",
+        tooltip: "View App",
+        url: "https://block-party-thesis.vercel.app",
+      },
+      {
+        type: "X",
+        tooltip: "View on X",
+        url: "https://x.com/bevdesigns/status/2028207640124231722?s=20",
+      },
+      {
+        type: "notion",
+        tooltip: "View Documentation",
+        url: "https://bevyip.notion.site/block-party-thesis?source=copy_link",
+      },
+    ],
+  },
+  {
     id: "floral-jukebox",
     size: "tall",
     theme: "white",
@@ -101,29 +129,6 @@ export const playProjects = [
         type: "X",
         tooltip: "View on X",
         url: "https://x.com/bevdesigns/status/2004340156485324979?s=20",
-      },
-    ],
-  },
-  {
-    id: "block-party",
-    size: "short",
-    theme: "white",
-    tags: ["Gemini AI", "Image Recognition"],
-    category: "digital",
-    media: {
-      video: vid("projects/block-party/demo"),
-      poster: "/projects/block-party/poster.png",
-    },
-    actions: [
-      {
-        type: "live",
-        tooltip: "View App",
-        url: "https://block-party-thesis.vercel.app",
-      },
-      {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2028207640124231722?s=20",
       },
     ],
   },
@@ -336,7 +341,7 @@ export const playProjects = [
   },
   {
     id: "reflections-of-monet",
-    size: "tall",
+    size: "short",
     theme: "white",
     tags: ["Web Art", "Interaction Design"],
     category: "digital",

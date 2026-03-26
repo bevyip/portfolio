@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, animate } from "framer-motion";
+import img0 from "../../assets/img/about-pictures/0.png";
 import img1 from "../../assets/img/about-pictures/1.png";
 import img2 from "../../assets/img/about-pictures/2.png";
 import img3 from "../../assets/img/about-pictures/3.png";
@@ -9,33 +10,34 @@ import img6 from "../../assets/img/about-pictures/6.png";
 import img7 from "../../assets/img/about-pictures/7.png";
 import img8 from "../../assets/img/about-pictures/8.png";
 import img9 from "../../assets/img/about-pictures/9.png";
+import img10 from "../../assets/img/about-pictures/10.png";
 import "./ExpandingPhotoRow.css";
 
-const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
+const images = [img0, img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 
 const cardW = 200;
 const gap = 8;
 const slotW = cardW + gap; // 208
-const rowW = 9 * cardW + 8 * gap; // 1864 — same in both states so x is one coordinate system
+const rowW = 11 * cardW + 10 * gap; // 2280 — same in both states so x is one coordinate system
 const ROW_HEIGHT = 260;
 const cy = ROW_HEIGHT / 2 - cardW / 2; // 30
 
-// Collapsed trio: center card must match expanded position (4 * slotW) so it doesn't jump; left/right symmetric around it
-const collapsedCenter = 4 * slotW; // same as expanded index 4
+// Collapsed trio: center card must match expanded position (5 * slotW) so it doesn't jump; left/right symmetric around it
+const collapsedCenter = 5 * slotW; // same as expanded index 5 (middle of 11)
 const collapsedFanOffset = Math.round(110 * (cardW / 180)); // ~122 for 200px — spacing for fan
 const collapsedLeft = collapsedCenter - collapsedFanOffset;
 const collapsedRight = collapsedCenter + collapsedFanOffset;
 const centerX = -rowW / 2;
 
 function getCollapsedStyle(index) {
-  if (index === 3) return { opacity: 1, scale: 1, x: collapsedLeft, y: cy, rotateZ: -12, zIndex: 2 };
-  if (index === 4) return { opacity: 1, scale: 1, x: collapsedCenter, y: cy, rotateZ: 0, zIndex: 3 };
-  if (index === 5) return { opacity: 1, scale: 1, x: collapsedRight, y: cy, rotateZ: 12, zIndex: 2 };
+  if (index === 4) return { opacity: 1, scale: 1, x: collapsedLeft, y: cy, rotateZ: -12, zIndex: 2 };
+  if (index === 5) return { opacity: 1, scale: 1, x: collapsedCenter, y: cy, rotateZ: 0, zIndex: 3 };
+  if (index === 6) return { opacity: 1, scale: 1, x: collapsedRight, y: cy, rotateZ: 12, zIndex: 2 };
   return { opacity: 0, scale: 1, x: collapsedCenter, y: cy, rotateZ: 0, zIndex: 1 };
 }
 
 function getExpandedStyle(index) {
-  const zIndex = index === 4 ? 3 : index === 3 || index === 5 ? 2 : 1;
+  const zIndex = index === 5 ? 3 : index === 4 || index === 6 ? 2 : 1;
   return { opacity: 1, scale: 1, x: index * slotW, y: cy, rotateZ: 0, zIndex };
 }
 
@@ -88,12 +90,12 @@ function ExpandingPhotoRow() {
 
   const getStyle = (index) => {
     if (isHovered) return getExpandedStyle(index);
-    if (isFadingOut && index !== 3 && index !== 4 && index !== 5) return getFadingOutStyle(index);
+    if (isFadingOut && index !== 4 && index !== 5 && index !== 6) return getFadingOutStyle(index);
     return getCollapsedStyle(index);
   };
 
   const getTransition = (index) => {
-    const isSkewedCard = index === 3 || index === 5;
+    const isSkewedCard = index === 4 || index === 6;
     if (isSkewedCard) {
       return { type: "tween", ease: "easeInOut", duration: 0.35 };
     }
@@ -121,39 +123,45 @@ function ExpandingPhotoRow() {
   };
 
   return (
-    <div className="expanding-photo-row-wrapper" style={{ position: "relative", height: ROW_HEIGHT, width: "100%" }}>
-      <div ref={breakoutRef} className="expanding-photo-row-breakout">
-        <div className="expanding-photo-row-inner">
-        <motion.div
-          className={isHovered ? "row-expanded row-expanded-draggable" : "row-collapsed"}
-          style={{ x: rowX, z: 0 }}
-          drag={isHovered ? "x" : false}
-          dragConstraints={isHovered ? dragConstraints : undefined}
-          dragElastic={isHovered ? 0.1 : 0}
-          dragMomentum={isHovered}
-          onDragStart={() => setIsDragging(true)}
-          onDragEnd={() => setIsDragging(false)}
-        >
-          <div
-            className={`expanding-photo-row-hitarea ${isHovered ? "expanding-photo-row-hitarea--expanded" : ""} ${isDragging ? "expanding-photo-row-hitarea--dragging" : ""}`}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={handleMouseLeave}
-            aria-hidden
-          />
-          {images.map((src, index) => (
+    <div className="expanding-photo-row-section">
+      <div
+        className="expanding-photo-row-wrapper"
+        style={{ position: "relative", height: ROW_HEIGHT, width: "100%" }}
+      >
+        <div ref={breakoutRef} className="expanding-photo-row-breakout">
+          <div className="expanding-photo-row-inner">
             <motion.div
-              key={index}
-              className="card-base card-absolute"
-              initial={false}
-              animate={getStyle(index)}
-              transition={getTransition(index)}
+              className={isHovered ? "row-expanded row-expanded-draggable" : "row-collapsed"}
+              style={{ x: rowX, z: 0 }}
+              drag={isHovered ? "x" : false}
+              dragConstraints={isHovered ? dragConstraints : undefined}
+              dragElastic={isHovered ? 0.1 : 0}
+              dragMomentum={isHovered}
+              onDragStart={() => setIsDragging(true)}
+              onDragEnd={() => setIsDragging(false)}
             >
-              <img src={src} alt="" />
+              <div
+                className={`expanding-photo-row-hitarea ${isHovered ? "expanding-photo-row-hitarea--expanded" : ""} ${isDragging ? "expanding-photo-row-hitarea--dragging" : ""}`}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={handleMouseLeave}
+                aria-hidden
+              />
+              {images.map((src, index) => (
+                <motion.div
+                  key={index}
+                  className="card-base card-absolute"
+                  initial={false}
+                  animate={getStyle(index)}
+                  transition={getTransition(index)}
+                >
+                  <img src={src} alt="" />
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
+          </div>
         </div>
       </div>
+      <p className="expanding-photo-row-hint">Hover/ Tap Me!</p>
     </div>
   );
 }

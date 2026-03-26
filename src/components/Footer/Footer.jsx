@@ -1,8 +1,27 @@
 import { useEffect, useState, useRef } from "react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import "./Footer.css";
+
+/** X (Twitter) brand mark — filled path scales with `currentColor` */
+function XLogo({ size = 22, className = "" }) {
+  return (
+    <svg
+      className={className}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      aria-hidden
+    >
+      <path
+        fill="currentColor"
+        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+      />
+    </svg>
+  );
+}
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -122,31 +141,46 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="social-link"
+            aria-label="LinkedIn (opens in new tab)"
           >
-            <span>LinkedIn</span>
-            <span className="arrow">↗</span>
+            <Linkedin className="social-logo" size={22} strokeWidth={1.75} aria-hidden />
+            <span className="arrow" aria-hidden>
+              ↗
+            </span>
           </a>
           <a
             href="https://github.com/bevyip"
             target="_blank"
             rel="noopener noreferrer"
             className="social-link"
+            aria-label="GitHub (opens in new tab)"
           >
-            <span>GitHub</span>
-            <span className="arrow">↗</span>
+            <Github className="social-logo" size={22} strokeWidth={1.75} aria-hidden />
+            <span className="arrow" aria-hidden>
+              ↗
+            </span>
           </a>
           <a
             href="https://x.com/bevdesigns"
             target="_blank"
             rel="noopener noreferrer"
             className="social-link"
+            aria-label="X (opens in new tab)"
           >
-            <span>X</span>
-            <span className="arrow">↗</span>
+            <XLogo size={20} className="social-logo social-logo--x" />
+            <span className="arrow" aria-hidden>
+              ↗
+            </span>
           </a>
-          <a href="mailto:beverly.yip.8000@gmail.com" className="social-link">
-            <span>Email</span>
-            <span className="arrow">↗</span>
+          <a
+            href="mailto:beverly.yip.8000@gmail.com"
+            className="social-link"
+            aria-label="Email"
+          >
+            <Mail className="social-logo" size={22} strokeWidth={1.75} aria-hidden />
+            <span className="arrow" aria-hidden>
+              ↗
+            </span>
           </a>
         </div>
 

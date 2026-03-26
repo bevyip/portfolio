@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { useLenisScroll } from "../hooks/useLenisScroll";
+import { isHomePath } from "../constants/homeRoutes";
 
 const ScrollToTop = () => {
   const { pathname, hash, state } = useLocation();
@@ -12,7 +13,7 @@ const ScrollToTop = () => {
       prevPathnameRef.current = pathname;
       return;
     }
-    if (hash && pathname === "/") {
+    if (hash && isHomePath(pathname)) {
       prevPathnameRef.current = pathname;
       return;
     }

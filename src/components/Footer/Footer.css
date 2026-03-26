@@ -66,11 +66,21 @@
   text-decoration: none;
   font-size: 18px;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   font-family: "Satoshi", sans-serif;
+}
+
+.social-link .social-logo {
+  display: block;
+  flex-shrink: 0;
+}
+
+.social-link .social-logo--x {
+  position: relative;
+  top: 1px;
 }
 
 .social-link .arrow {

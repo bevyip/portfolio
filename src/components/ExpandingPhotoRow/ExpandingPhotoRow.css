@@ -1,3 +1,17 @@
+.expanding-photo-row-section {
+  width: 100%;
+}
+
+.expanding-photo-row-hint {
+  margin: 0;
+  padding-top: 0.75rem;
+  text-align: center;
+  font-family: "Satoshi", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #666;
+}
+
 /* Full-width breakout: absolute centering, 100vw, overflow clips */
 .expanding-photo-row-breakout {
   position: absolute;
@@ -16,7 +30,7 @@
   position: absolute;
   left: 50%;
   top: 0;
-  width: 1864px; /* 9 * 200 + 8 * 8 */
+  width: 2280px; /* 11 * 200 + 10 * 8 */
   height: 260px;
   backface-visibility: hidden;
   transform: translateZ(0);

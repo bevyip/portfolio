@@ -1,4 +1,12 @@
 @font-face {
+  font-family: "Pokemon GB";
+  src: url("./PokemonGb.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Satoshi';
   src: url('./Satoshi-Light.otf') format('opentype');
   font-weight: 300;

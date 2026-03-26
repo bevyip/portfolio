@@ -4,6 +4,11 @@ import { gsap } from "gsap";
 import { useLenis } from "@studio-freight/react-lenis";
 import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { LANDING_NAV_DELAY } from "../../pages/Home/Home";
+import {
+  isHomePath,
+  isGoogleCreativePath,
+  isDefaultHomePath,
+} from "../../constants/homeRoutes";
 import "./Nav.css";
 import darkLogo from "../../assets/img/dark-logo.png";
 import lightLogo from "../../assets/img/light-logo.png";
@@ -26,10 +31,17 @@ const Nav = () => {
   const navItemsRef = useRef(null);
   const navRef = useRef(null);
 
+  const homeBasePath = isHomePath(location.pathname) ? location.pathname : "/";
+  const navItems = [
+    { label: "work", href: "/", isLink: true },
+    { label: "play", href: "/#play", isLink: true },
+    { label: "about", href: "/about", isLink: true },
+  ];
+
   const handleLogoClick = (e) => {
-    if (location.pathname === "/") {
+    if (isHomePath(location.pathname)) {
       e.preventDefault();
-      window.history.pushState(null, "", "/");
+      window.history.pushState(null, "", location.pathname);
       scrollToTop({ duration: 1.2 });
     } else {
       navigate("/");
@@ -37,16 +49,11 @@ const Nav = () => {
     }
   };
 
-  const navItems = [
-    { label: "work", href: "/", isLink: true },
-    { label: "play", href: "/#play", isLink: true },
-    { label: "about", href: "/about", isLink: true },
-  ];
-
   const isNavItemActive = (item) => {
     const path = location.pathname;
-    // On home: use scroll-derived section (work vs play); other pages use path
-    if (path === "/") {
+    if (isGoogleCreativePath(path)) return false;
+    // Main home only: scroll-derived work vs play; /google-creative never highlights
+    if (isDefaultHomePath(path)) {
       if (item.label === "work") return homeActiveSection === "work";
       if (item.label === "play") return homeActiveSection === "play";
       if (item.label === "about") return false;
@@ -58,7 +65,7 @@ const Nav = () => {
   // On home page: update nav active state (work vs play) from scroll position.
   // Throttle with rAF so we don't call getBoundingClientRect every Lenis scroll tick (reduces scroll jank through Play).
   useEffect(() => {
-    if (location.pathname !== "/") {
+    if (!isHomePath(location.pathname)) {
       setHomeActiveSection("work");
       return;
     }
@@ -99,8 +106,9 @@ const Nav = () => {
 
   // Nav fade-in: same timing on all non–case-study pages; case studies show nav immediately
   const CASE_STUDY_PATHS = ["/venmo", "/moodle", "/wholefoods", "/confido"];
-  const isHomePage = location.pathname === "/";
-  const NAV_FADE_DELAY = isHomePage ? LANDING_NAV_DELAY : 0.5;
+  const NAV_FADE_DELAY = isDefaultHomePath(location.pathname)
+    ? LANDING_NAV_DELAY
+    : 0.5;
   const NAV_FADE_DURATION = 0.7;
 
   useEffect(() => {
@@ -313,6 +321,7 @@ const Nav = () => {
   };
 
   const handleLeave = (i) => {
+    if (isGoogleCreativePath(location.pathname)) return;
     const tl = tlRefs.current[i];
     if (!tl) return;
     activeTweenRefs.current[i]?.kill();
@@ -325,8 +334,8 @@ const Nav = () => {
 
   const handleWorkClick = (e) => {
     e.preventDefault();
+    setHomeActiveSection("work");
     if (location.pathname === "/") {
-      setHomeActiveSection("work");
       navigate("/", { replace: true });
       scrollToTop({ duration: 1.2 });
     } else {
@@ -477,7 +486,7 @@ const Nav = () => {
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between py-5 z-[1000] gap-6 lg:h-16 relative min-h-[32px]">
-          <Link to="/" onClick={handleLogoClick} className="logo-link">
+          <Link to={homeBasePath} onClick={handleLogoClick} className="logo-link">
             <img
               src={isMobileMenuOpen ? lightLogo : darkLogo}
               alt="Beverly Yip"
@@ -563,12 +572,21 @@ const Nav = () => {
                   onClick={(e) => {
                     e.preventDefault();
                     const playSection = document.getElementById("play");
-                    if (location.pathname === "/" && playSection) {
-                      setHomeActiveSection("play");
+                    if (
+                      (isDefaultHomePath(location.pathname) ||
+                        isGoogleCreativePath(location.pathname)) &&
+                      playSection
+                    ) {
+                      if (isDefaultHomePath(location.pathname)) {
+                        setHomeActiveSection("play");
+                      }
                       setIsMobileMenuOpen(false);
                       toggleMobileMenu();
                       setTimeout(() => {
-                        scrollToElement(playSection, { offset: 0, duration: 1.2 });
+                        scrollToElement(playSection, {
+                          offset: 0,
+                          duration: 1.2,
+                        });
                       }, 400);
                     } else {
                       handlePlayClick(e);
@@ -583,7 +601,10 @@ const Nav = () => {
                 <Link
                   to={item.href}
                   className={`mobile-menu-link${isNavItemActive(item) ? " mobile-menu-link-active" : ""}`}
-                  onClick={() => {
+                  onClick={(e) => {
+                    if (item.label === "work") {
+                      handleWorkClick(e);
+                    }
                     setIsMobileMenuOpen(false);
                     toggleMobileMenu();
                   }}
