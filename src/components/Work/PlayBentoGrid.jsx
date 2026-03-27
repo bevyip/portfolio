@@ -8,7 +8,7 @@ const POSTER_ONLY_MEDIA = "(max-width: 1025px)";
 
 /* Home (`/`): original WorkBentoGrid play maps (verbatim) */
 const allPlayPositionsHome = {
-  "floral-jukebox": { col: 1, rowStart: 1, rowEnd: 3 },
+  "floral-jukebox": { col: 3, rowStart: 2, rowEnd: 4 },
   "im-listening": { col: 1, rowStart: 3, rowEnd: 4 },
   "binary-pool": { col: 1, rowStart: 4, rowEnd: 6 },
   "cat-box": { col: 1, rowStart: 6, rowEnd: 7 },
@@ -24,7 +24,7 @@ const allPlayPositionsHome = {
   "temple-of-fortune": { col: 2, rowStart: 11, rowEnd: 12 },
   "puzzle-feeder": { col: 2, rowStart: 12, rowEnd: 13 },
   "emotional-canvas": { col: 3, rowStart: 1, rowEnd: 2 },
-  "block-party": { col: 3, rowStart: 2, rowEnd: 4 },
+  "block-party": { col: 1, rowStart: 1, rowEnd: 3 },
   "picture-distortion": { col: 3, rowStart: 4, rowEnd: 6 },
   "emoji-ascii-art": { col: 3, rowStart: 6, rowEnd: 7 },
   "reflections-of-monet": { col: 3, rowStart: 7, rowEnd: 8 },
@@ -63,13 +63,13 @@ const allPlayPositionsGoogleCreative = {
 };
 
 const digitalPlayPositionsHome = {
-  "floral-jukebox": { col: 1, rowStart: 1, rowEnd: 3 },
+  "floral-jukebox": { col: 3, rowStart: 2, rowEnd: 4 },
   "spherical-shopping": { col: 2, rowStart: 1, rowEnd: 3 },
   "emotional-canvas": { col: 3, rowStart: 1, rowEnd: 2 },
   "im-listening": { col: 1, rowStart: 3, rowEnd: 4 },
   "binary-pool": { col: 1, rowStart: 4, rowEnd: 6 },
   "gravity-text": { col: 2, rowStart: 3, rowEnd: 5 },
-  "block-party": { col: 3, rowStart: 2, rowEnd: 4 },
+  "block-party": { col: 1, rowStart: 1, rowEnd: 3 },
   "picture-distortion": { col: 3, rowStart: 4, rowEnd: 6 },
   "snowflake": { col: 1, rowStart: 6, rowEnd: 8 },
   "emoji-ascii-art": { col: 2, rowStart: 5, rowEnd: 6 },

@@ -31,7 +31,6 @@ const Nav = () => {
   const navItemsRef = useRef(null);
   const navRef = useRef(null);
 
-  const homeBasePath = isHomePath(location.pathname) ? location.pathname : "/";
   const navItems = [
     { label: "work", href: "/", isLink: true },
     { label: "play", href: "/#play", isLink: true },
@@ -486,7 +485,7 @@ const Nav = () => {
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between py-5 z-[1000] gap-6 lg:h-16 relative min-h-[32px]">
-          <Link to={homeBasePath} onClick={handleLogoClick} className="logo-link">
+          <Link to="/" onClick={handleLogoClick} className="logo-link">
             <img
               src={isMobileMenuOpen ? lightLogo : darkLogo}
               alt="Beverly Yip"
