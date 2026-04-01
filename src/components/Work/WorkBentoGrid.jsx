@@ -19,6 +19,18 @@ const workProjects = [
     category: "case-study",
   },
   {
+    id: "dandi-bio-smart-wearable",
+    title: "Dandi: A Bio-Smart Wearable for PCOS",
+    role: "Product Designer",
+    tags: ["Mobile", "Wearable", "Women's Health"],
+    summary:
+      "Making hormonal health accessible for women through emotionally-resonant design and real-time biosensing.",
+    video: "/work/dandi/thumbnail.mp4",
+    thumbnailImage: "/work/dandi/thumbnail-frame.png",
+    category: "case-study",
+    awardLine: "🏅 Most Impact Winner – FigBuild 2026",
+  },
+  {
     id: "moodle-pain-detection",
     title: "Moodle: AI-Powered Feline Pain Detection for Cat Owners",
     role: "Product Designer",
@@ -40,24 +52,13 @@ const workProjects = [
     thumbnailImage: "/work/venmo/thumbnail-frame.jpg",
     category: "case-study",
   },
-  {
-    id: "whole-foods-checkout",
-    title: "Improving Whole Foods In-Store Checkout Experience",
-    role: "Product Designer",
-    tags: ["Mobile", "User Research", "Retail Tech"],
-    summary:
-      "Surfacing a hidden checkout feature for an improved in-store experience by aligning interface design with user mental models.",
-    video: "/work/wholefoods/thumbnail.mp4",
-    thumbnailImage: "/work/wholefoods/thumbnail-frame.jpg",
-    category: "case-study",
-  },
 ];
 
 const routeMap = {
   "venmo-privacy-controls": "/venmo",
   "moodle-pain-detection": "/moodle",
-  "whole-foods-checkout": "/wholefoods",
   "confido-approval-flow": "/confido",
+  "dandi-bio-smart-wearable": "/dandi",
 };
 
 /** Single work card (same visuals as before, inlined from WorkBentoItem) */
@@ -82,8 +83,8 @@ function WorkCard({ project, onHoverChange, onVideoReady }) {
   const isClickable =
     project.id === "venmo-privacy-controls" ||
     project.id === "moodle-pain-detection" ||
-    project.id === "whole-foods-checkout" ||
-    project.id === "confido-approval-flow";
+    project.id === "confido-approval-flow" ||
+    project.id === "dandi-bio-smart-wearable";
 
   const videoSource = project.video;
   const useThumbnailImage = isMobile && project.thumbnailImage;
@@ -126,6 +127,7 @@ function WorkCard({ project, onHoverChange, onVideoReady }) {
             alt={project.title}
             className="work-bento-image"
             loading="lazy"
+            onLoad={handleVideoReady}
           />
         ) : videoSource ? (
           <video
@@ -149,11 +151,16 @@ function WorkCard({ project, onHoverChange, onVideoReady }) {
               alt={project.title}
               className="work-bento-image"
               loading="lazy"
+              onLoad={handleVideoReady}
             />
           )
         )}
       </div>
-      <div className="work-bento-content case-study-visible">
+      <div
+        className={`work-bento-content case-study-visible${
+          project.awardLine ? " work-bento-content--with-award" : ""
+        }`}
+      >
         <h3 className="work-bento-title">{project.title}</h3>
         <p className="work-bento-role">{project.role}</p>
         <div className="work-bento-tags">
@@ -164,6 +171,9 @@ function WorkCard({ project, onHoverChange, onVideoReady }) {
           ))}
         </div>
         <p className="work-bento-summary">{project.summary}</p>
+        {project.awardLine ? (
+          <p className="work-bento-award-line">{project.awardLine}</p>
+        ) : null}
       </div>
     </>
   );

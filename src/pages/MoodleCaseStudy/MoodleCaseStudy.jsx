@@ -1114,7 +1114,7 @@ const MoodleCaseStudy = () => {
               </div>
             </Link>
             <Link
-              to="/wholefoods"
+              to="/dandi"
               className="moodle-see-next-card-link"
               onMouseEnter={() => setIsHoveringSeeNextCard(true)}
               onMouseLeave={() => setIsHoveringSeeNextCard(false)}
@@ -1125,21 +1125,21 @@ const MoodleCaseStudy = () => {
               >
                 <div className="moodle-see-next-image-container">
                   <video
-                    src="/work/wholefoods/thumbnail.mp4"
+                    src="/work/dandi/thumbnail.mp4"
                     className="moodle-see-next-image"
                     autoPlay
                     loop
                     muted
                     playsInline
+                    aria-label="Dandi: A Bio-Smart Wearable for PCOS — preview"
                   />
                 </div>
                 <h4 className="moodle-see-next-card-title">
-                  Improving Whole Foods In-Store Checkout Experience
+                  Dandi: A Bio-Smart Wearable for PCOS
                 </h4>
                 <p className="moodle-see-next-card-description">
-                  Surfacing a hidden checkout feature for an improved in-store
-                  experience by aligning interface design with user mental
-                  models.
+                  Making hormonal health accessible for women through
+                  emotionally-resonant design and real-time biosensing.
                 </p>
               </div>
             </Link>

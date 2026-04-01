@@ -12,6 +12,7 @@ import VenmoCaseStudy from "./pages/VenmoCaseStudy/VenmoCaseStudy";
 import MoodleCaseStudy from "./pages/MoodleCaseStudy/MoodleCaseStudy";
 import WholeFoodsCaseStudy from "./pages/WholeFoodsCaseStudy/WholeFoodsCaseStudy";
 import ConfidoCaseStudy from "./pages/ConfidoCaseStudy/ConfidoCaseStudy";
+import DandiCaseStudy from "./pages/DandiCaseStudy/DandiCaseStudy";
 import PixelCatPage from "./pages/PixelCat/PixelCat";
 import NotFound from "./pages/NotFound/NotFound";
 import "./App.css";
@@ -82,6 +83,7 @@ function App() {
             <Route path="/moodle" element={<MoodleCaseStudy />} />
             <Route path="/wholefoods" element={<WholeFoodsCaseStudy />} />
             <Route path="/confido" element={<ConfidoCaseStudy />} />
+            <Route path="/dandi" element={<DandiCaseStudy />} />
             <Route path="/pixel-cat" element={<PixelCatPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

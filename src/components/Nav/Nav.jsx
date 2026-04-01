@@ -104,7 +104,13 @@ const Nav = () => {
   }, [location.pathname, lenis]);
 
   // Nav fade-in: same timing on all non–case-study pages; case studies show nav immediately
-  const CASE_STUDY_PATHS = ["/venmo", "/moodle", "/wholefoods", "/confido"];
+  const CASE_STUDY_PATHS = [
+    "/venmo",
+    "/moodle",
+    "/wholefoods",
+    "/confido",
+    "/dandi",
+  ];
   const NAV_FADE_DELAY = isDefaultHomePath(location.pathname)
     ? LANDING_NAV_DELAY
     : 0.5;

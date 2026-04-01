@@ -216,11 +216,26 @@ const WholeFoodsCaseStudy = () => {
     // Key Takeaways
     createScrollAnimation(takeawaysTitleRef);
     createScrollAnimation(takeawaysItemRef, 0.1);
-    // Next Steps
+    // Next Steps (use DOM nodes like impact metrics — createScrollAnimation expects ref.current)
     createScrollAnimation(nextStepsTitleRef);
-    nextStepsItemsRefs.current.forEach((ref, index) => {
-      if (ref) {
-        createScrollAnimation(ref, 0.1 * (index + 1));
+    nextStepsItemsRefs.current.forEach((el, index) => {
+      if (el) {
+        gsap.set(el, { opacity: 0, y: 30 });
+        const trigger = ScrollTrigger.create({
+          trigger: el,
+          start: "top 80%",
+          once: true,
+          onEnter: () => {
+            gsap.to(el, {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power2.out",
+              delay: 0.1 * (index + 1),
+            });
+          },
+        });
+        scrollTriggers.push(trigger);
       }
     });
     // See Next
