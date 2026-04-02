@@ -248,25 +248,19 @@ export const playProjects = [
     ],
   },
   {
-    id: "picture-distortion",
+    id: "gravity-text",
     size: "tall",
     theme: "white",
-    tags: ["React", "Creative Coding"],
+    tags: ["Creative Coding", "Three.js"],
     category: "digital",
     media: {
-      video: vid("projects/picture-distortion/demo"),
-      poster: "/projects/picture-distortion/poster.jpg",
+      iframe: "https://gravity-text.vercel.app",
     },
     actions: [
       {
         type: "live",
         tooltip: "View App",
-        url: "https://picture-distortion.vercel.app/",
-      },
-      {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2011731823676801478?s=20",
+        url: "https://gravity-text.vercel.app",
       },
     ],
   },
@@ -454,25 +448,25 @@ export const playProjects = [
     ],
   },
   {
-    id: "ascii-filter",
+    id: "picture-distortion",
     size: "tall",
     theme: "white",
     tags: ["React", "Creative Coding"],
     category: "digital",
     media: {
-      video: vid("v1775109597/ascii-filter_sjfgw1"),
-      poster: "/projects/ascii-filter/thumbnail-poster.jpg",
+      video: vid("v1775166287/picture-demo_xy11bg"),
+      poster: "/projects/picture-distortion/poster.jpg",
     },
     actions: [
       {
         type: "live",
         tooltip: "View App",
-        url: "https://ascii-filter-weld.vercel.app/",
+        url: "https://picture-distortion.vercel.app/",
       },
       {
         type: "X",
         tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2039584760872272200?s=20",
+        url: "https://x.com/bevdesigns/status/2011731823676801478?s=20",
       },
     ],
   },
@@ -494,19 +488,25 @@ export const playProjects = [
     ],
   },
   {
-    id: "gravity-text",
+    id: "ascii-filter",
     size: "tall",
     theme: "white",
-    tags: ["Creative Coding", "Three.js"],
+    tags: ["React", "Creative Coding"],
     category: "digital",
     media: {
-      iframe: "https://gravity-text.vercel.app",
+      video: vid("v1775109597/ascii-filter_sjfgw1"),
+      poster: "/projects/ascii-filter/thumbnail-poster.jpg",
     },
     actions: [
       {
         type: "live",
         tooltip: "View App",
-        url: "https://gravity-text.vercel.app",
+        url: "https://ascii-filter-weld.vercel.app/",
+      },
+      {
+        type: "X",
+        tooltip: "View on X",
+        url: "https://x.com/bevdesigns/status/2039584760872272200?s=20",
       },
     ],
   },

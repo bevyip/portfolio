@@ -230,12 +230,15 @@ const BentoItem = ({
             }
             onRequestPlay?.(video, gridPosition?.col ?? 1);
           } else {
+            setVideoInView(false);
             video.pause();
             onNotifyPause?.(video);
           }
         });
       },
-      { rootMargin: "0px", threshold: 0.1 },
+      // threshold 0: tall row-spanned cards (e.g. picture-distortion) often fail 0.1
+      // with smooth scroll, leaving the poster stacked above the video indefinitely.
+      { rootMargin: "0px", threshold: 0 },
     );
 
     preloadObserver.observe(container);
@@ -364,12 +367,16 @@ const BentoItem = ({
         >
           {hasPoster && (
             <img
-              className="absolute inset-0 w-full h-full object-cover rounded-[8px]"
+              className="absolute inset-0 w-full h-full object-cover rounded-[8px] pointer-events-none"
               src={media.poster}
               alt=""
               decoding="async"
               onLoad={setMediaLoadedDeferred}
-              style={{ zIndex: videoInView ? 0 : 1 }}
+              style={{
+                zIndex: videoInView ? 0 : 1,
+                opacity: videoInView ? 0 : 1,
+                transition: "opacity 0.45s ease",
+              }}
             />
           )}
           <video
