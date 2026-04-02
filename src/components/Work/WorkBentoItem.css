@@ -75,6 +75,14 @@
   flex-shrink: 0;
 }
 
+/* Dandi: give text panel more room on small screens (award line adds height) */
+@media (max-width: 768px) {
+  .work-bento-item.case-study-card[data-project-id="dandi-bio-smart-wearable"]
+    .work-bento-image-container {
+    height: 38%;
+  }
+}
+
 /* Keep image container at full height on hover - only when device supports hover */
 @media (hover: hover) {
   .work-bento-item:hover .work-bento-image-container {
@@ -321,6 +329,13 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Mobile: prevent wrapped title descenders from clipping */
+@media (max-width: 768px) {
+  .work-bento-title {
+    line-height: 1.4;
+  }
 }
 
 @media (min-width: 768px) {
