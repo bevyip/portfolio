@@ -454,19 +454,25 @@ export const playProjects = [
     ],
   },
   {
-    id: "black-market",
+    id: "ascii-filter",
     size: "tall",
     theme: "white",
-    tags: ["Game Design", "Graphic Design"],
-    category: "physical",
+    tags: ["React", "Creative Coding"],
+    category: "digital",
     media: {
-      image: "/projects/black-market/thumbnail1.png",
+      video: vid("v1775109597/ascii-filter_sjfgw1"),
+      poster: "/projects/ascii-filter/thumbnail-poster.jpg",
     },
     actions: [
       {
-        type: "notion",
-        tooltip: "View Documentation",
-        url: "https://bevyip.notion.site/Black-Market-2c25b3e7f9e780e3bd40cfe680b1b391?source=copy_link",
+        type: "live",
+        tooltip: "View App",
+        url: "https://ascii-filter-weld.vercel.app/",
+      },
+      {
+        type: "X",
+        tooltip: "View on X",
+        url: "https://x.com/bevdesigns/status/2039584760872272200?s=20",
       },
     ],
   },

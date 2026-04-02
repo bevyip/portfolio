@@ -132,13 +132,6 @@ const Home = () => {
     return () => tl.kill();
   }, [isGoogleCreative]);
 
-  const scrollToPlaySection = () => {
-    scrollToElement(document.getElementById("play"), {
-      offset: 0,
-      duration: 1.2,
-    });
-  };
-
   const defaultPlayIntro = (
     <>
       <div className="home-play-title-row">
@@ -166,7 +159,6 @@ const Home = () => {
         <PlayBentoGrid
           key={playBentoLayout.id}
           bentoLayout={playBentoLayout}
-          onProjectClick={scrollToPlaySection}
         />
       </div>
     </section>
