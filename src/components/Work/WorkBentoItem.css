@@ -41,8 +41,8 @@
   }
 }
 
-/* Hover expansion only on devices that support hover (avoids sticky-hover on touch) */
-@media (hover: hover) {
+/* Hover lift only on desktop width + real hover (narrow viewports: no hover layout changes) */
+@media (min-width: 1026px) and (hover: hover) {
   .work-bento-item:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   }
@@ -83,13 +83,6 @@
   }
 }
 
-/* Keep image container at full height on hover - only when device supports hover */
-@media (hover: hover) {
-  .work-bento-item:hover .work-bento-image-container {
-    height: 100%;
-  }
-}
-
 /* On tablet/mobile, for ALL view case studies: 50/50 split (not overlay) */
 @media (max-width: 1025px) {
   /* On tablet/mobile, show hover state by default for other cases */
@@ -105,19 +98,6 @@
 }
 
 @media (min-width: 1026px) and (hover: hover) {
-  .work-bento-item:hover .work-bento-image-container {
-    height: 100%;
-  }
-}
-
-/* Responsive height: keep full height (hover only) */
-@media (min-width: 1026px) and (max-width: 1400px) and (hover: hover) {
-  .work-bento-item:hover .work-bento-image-container {
-    height: 100%;
-  }
-}
-
-@media (min-width: 1026px) and (max-width: 1200px) and (hover: hover) {
   .work-bento-item:hover .work-bento-image-container {
     height: 100%;
   }
@@ -199,7 +179,7 @@
   }
 }
 
-@media (hover: hover) {
+@media (min-width: 1026px) and (hover: hover) {
   .work-bento-item:hover .work-bento-content {
     transform: translateY(0);
   }
@@ -455,7 +435,7 @@
   z-index: 1;
 }
 
-@media (hover: hover) {
+@media (min-width: 1026px) and (hover: hover) {
   .work-bento-item:hover .work-bento-tag::before {
     opacity: 1;
     background-position: 150%;

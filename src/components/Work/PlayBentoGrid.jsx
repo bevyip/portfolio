@@ -10,14 +10,14 @@ const POSTER_ONLY_MEDIA = "(max-width: 1025px)";
 const allPlayPositionsHome = {
   "floral-jukebox": { col: 2, rowStart: 3, rowEnd: 5 },
   "im-listening": { col: 1, rowStart: 3, rowEnd: 4 },
-  "binary-pool": { col: 1, rowStart: 4, rowEnd: 6 },
+  "binary-pool": { col: 1, rowStart: 9, rowEnd: 11 },
   "cat-box": { col: 1, rowStart: 6, rowEnd: 7 },
   "sticker-cats": { col: 1, rowStart: 7, rowEnd: 9 },
-  "words-unseen": { col: 1, rowStart: 9, rowEnd: 11 },
+  "words-unseen": { col: 3, rowStart: 10, rowEnd: 12 },
   "ball-slide": { col: 1, rowStart: 11, rowEnd: 13 },
   "spherical-shopping": { col: 2, rowStart: 1, rowEnd: 3 },
   "gravity-text": { col: 3, rowStart: 4, rowEnd: 6 },
-  "photo-collage-reveal": { col: 3, rowStart: 10, rowEnd: 12 },
+  "page-canvas": { col: 1, rowStart: 4, rowEnd: 6 },
   snowflake: { col: 2, rowStart: 7, rowEnd: 9 },
   "neumorphic-buttons": { col: 2, rowStart: 9, rowEnd: 10 },
   "cat-figurine": { col: 2, rowStart: 10, rowEnd: 11 },
@@ -41,12 +41,12 @@ const allPlayPositionsGoogleCreative = {
   "im-listening": { col: 1, rowStart: 6, rowEnd: 7 },
   "cat-box": { col: 1, rowStart: 7, rowEnd: 8 },
   "sticker-cats": { col: 1, rowStart: 8, rowEnd: 10 },
-  "words-unseen": { col: 1, rowStart: 10, rowEnd: 12 },
+  "words-unseen": { col: 3, rowStart: 10, rowEnd: 12 },
   "ball-slide": { col: 1, rowStart: 12, rowEnd: 14 },
   "starry-night": { col: 1, rowStart: 14, rowEnd: 15 },
   "gravity-text": { col: 3, rowStart: 4, rowEnd: 6 },
-  "binary-pool": { col: 2, rowStart: 6, rowEnd: 8 },
-  "photo-collage-reveal": { col: 3, rowStart: 10, rowEnd: 12 },
+  "binary-pool": { col: 1, rowStart: 10, rowEnd: 12 },
+  "page-canvas": { col: 2, rowStart: 6, rowEnd: 8 },
   snowflake: { col: 2, rowStart: 10, rowEnd: 12 },
   "neumorphic-buttons": { col: 2, rowStart: 12, rowEnd: 13 },
   "cat-figurine": { col: 2, rowStart: 13, rowEnd: 14 },
@@ -67,17 +67,17 @@ const digitalPlayPositionsHome = {
   "spherical-shopping": { col: 2, rowStart: 1, rowEnd: 3 },
   "emotional-canvas": { col: 3, rowStart: 1, rowEnd: 2 },
   "im-listening": { col: 1, rowStart: 3, rowEnd: 4 },
-  "binary-pool": { col: 1, rowStart: 4, rowEnd: 6 },
+  "binary-pool": { col: 1, rowStart: 11, rowEnd: 13 },
   "gravity-text": { col: 3, rowStart: 4, rowEnd: 6 },
   "block-party": { col: 1, rowStart: 1, rowEnd: 3 },
   "picture-distortion": { col: 1, rowStart: 8, rowEnd: 10 },
   "snowflake": { col: 1, rowStart: 6, rowEnd: 8 },
   "emoji-ascii-art": { col: 2, rowStart: 5, rowEnd: 6 },
-  "photo-collage-reveal": { col: 3, rowStart: 9, rowEnd: 11 },
+  "page-canvas": { col: 1, rowStart: 4, rowEnd: 6 },
   "reflections-of-monet": { col: 2, rowStart: 7, rowEnd: 8 },
   "neumorphic-buttons": { col: 3, rowStart: 6, rowEnd: 7 },
   "sticker-cats": { col: 2, rowStart: 8, rowEnd: 10 },
-  "words-unseen": { col: 1, rowStart: 11, rowEnd: 13 },
+  "words-unseen": { col: 3, rowStart: 9, rowEnd: 11 },
   "ball-slide": { col: 3, rowStart: 7, rowEnd: 9 },
   "starry-night": { col: 2, rowStart: 10, rowEnd: 11 },
   "ascii-filter": { col: 3, rowStart: 2, rowEnd: 4 },
@@ -89,16 +89,16 @@ const digitalPlayPositionsGoogleCreative = {
   "gravity-text": { col: 3, rowStart: 4, rowEnd: 6 },
   "emotional-canvas": { col: 3, rowStart: 1, rowEnd: 2 },
   "im-listening": { col: 1, rowStart: 6, rowEnd: 7 },
-  "binary-pool": { col: 2, rowStart: 6, rowEnd: 8 },
+  "binary-pool": { col: 1, rowStart: 10, rowEnd: 12 },
   "spherical-shopping": { col: 3, rowStart: 2, rowEnd: 4 },
   "picture-distortion": { col: 3, rowStart: 7, rowEnd: 9 },
   "snowflake": { col: 2, rowStart: 10, rowEnd: 12 },
   "emoji-ascii-art": { col: 3, rowStart: 6, rowEnd: 7 },
-  "photo-collage-reveal": { col: 3, rowStart: 11, rowEnd: 13 },
+  "page-canvas": { col: 2, rowStart: 6, rowEnd: 8 },
   "reflections-of-monet": { col: 2, rowStart: 8, rowEnd: 10 },
   "neumorphic-buttons": { col: 2, rowStart: 12, rowEnd: 13 },
   "sticker-cats": { col: 1, rowStart: 8, rowEnd: 10 },
-  "words-unseen": { col: 1, rowStart: 10, rowEnd: 12 },
+  "words-unseen": { col: 3, rowStart: 11, rowEnd: 13 },
   "ball-slide": { col: 1, rowStart: 12, rowEnd: 14 },
   "starry-night": { col: 3, rowStart: 9, rowEnd: 11 },
   "ascii-filter": { col: 2, rowStart: 4, rowEnd: 6 },
@@ -112,6 +112,18 @@ const physicalPlayPositions = {
   "whack-a-mouse": { col: 2, rowStart: 2, rowEnd: 3 },
   "temple-of-fortune": { col: 3, rowStart: 2, rowEnd: 3 },
 };
+
+/** Below 1026px the play grid is one column and explicit placement is off (Home.css), so DOM order = scroll order. Sort by the same cell map as the wide grid: top to bottom, then left to right. */
+function comparePlayReadingOrder(a, b, positions) {
+  const pa = positions[a.id];
+  const pb = positions[b.id];
+  if (!pa && !pb) return 0;
+  if (!pa) return 1;
+  if (!pb) return -1;
+  if (pa.rowStart !== pb.rowStart) return pa.rowStart - pb.rowStart;
+  if (pa.col !== pb.col) return pa.col - pb.col;
+  return (pa.rowEnd ?? 0) - (pb.rowEnd ?? 0);
+}
 
 /**
  * Two play bento layouts: pick one from the page (see Home `playBentoLayout`).
@@ -167,6 +179,13 @@ const PlayBentoGrid = ({
 
   const playPositions = getPlayPositions();
 
+  // Below 1026px, grid placement CSS is off: one column flows in DOM order. Match wide-layout reading order (row, then col).
+  const projectsForGrid = posterOnly
+    ? [...filteredPlayProjects].sort((a, b) =>
+        comparePlayReadingOrder(a, b, playPositions),
+      )
+    : filteredPlayProjects;
+
   const introFitsInBentoGrid =
     bentoLayout.embedIntroInGrid &&
     sectionIntro != null &&
@@ -176,7 +195,7 @@ const PlayBentoGrid = ({
   const gridClassName =
     "home-play-bento-grid grid grid-cols-1 min-[1026px]:grid-cols-3 gap-4 w-full auto-rows-[480px] min-[1026px]:auto-rows-[220px] bento-grid-filtered";
 
-  const bentoItems = filteredPlayProjects.map((project) => {
+  const bentoItems = projectsForGrid.map((project) => {
     const position = playPositions[project.id];
     if (!position) return null;
     return (

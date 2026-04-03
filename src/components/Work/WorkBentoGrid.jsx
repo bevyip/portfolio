@@ -116,7 +116,7 @@ function WorkCard({ project, onHoverChange, onVideoReady }) {
   }, [videoSource, useThumbnailImage, isMobile]);
 
   const cardClassName =
-    "work-bento-item group relative overflow-hidden rounded-[8px] bg-[#1a1a1a] shadow-[0_2px_8px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out h-full min-h-[200px] flex flex-col case-study-card";
+    "work-bento-item group relative overflow-hidden rounded-[8px] bg-[#1a1a1a] shadow-[0_2px_8px_rgba(0,0,0,0.3)] min-[1026px]:hover:shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out h-full min-h-[200px] flex flex-col case-study-card";
 
   const content = (
     <>

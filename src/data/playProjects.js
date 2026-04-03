@@ -66,7 +66,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/spherical-shopping/demo"),
-      poster: "/projects/spherical-shopping/poster.jpg",
+      poster: "/projects/spherical-shopping/poster.png",
     },
     actions: [
       {
@@ -186,7 +186,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: vid("projects/snowflake/demo1"),
-      poster: "/projects/snowflake/poster.jpg",
+      poster: "/projects/snowflake/poster.png",
     },
     actions: [
       {
@@ -225,25 +225,30 @@ export const playProjects = [
     ],
   },
   {
-    id: "photo-collage-reveal",
+    id: "words-unseen",
     size: "tall",
     theme: "white",
-    tags: ["GSAP", "OGL"],
+    tags: ["Web Art", "Creative Coding"],
     category: "digital",
     media: {
-      video: vid("projects/photo-collage/demo1"),
-      poster: "/projects/photo-collage/poster.jpg",
+      video: vid("projects/words-unseen/demo"),
+      poster: "/projects/words-unseen/poster.jpg",
     },
     actions: [
       {
         type: "live",
         tooltip: "View App",
-        url: "https://photo-collage-reveal.vercel.app/",
+        url: "https://bevyip.github.io/words-unseen/",
       },
       {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004344350034309212?s=20",
+        type: "notion",
+        tooltip: "View Documentation",
+        url: "https://www.notion.so/bevyip/Week-11-1a45b3e7f9e78021bc7bd8de9c02eaa5",
+      },
+      {
+        type: "github",
+        tooltip: "View Code",
+        url: "https://github.com/bevyip/words-unseen",
       },
     ],
   },
@@ -420,30 +425,19 @@ export const playProjects = [
     ],
   },
   {
-    id: "words-unseen",
+    id: "binary-pool",
     size: "tall",
     theme: "white",
-    tags: ["Web Art", "Creative Coding"],
+    tags: ["Creative Coding", "Interactive"],
     category: "digital",
     media: {
-      video: vid("projects/words-unseen/demo"),
-      poster: "/projects/words-unseen/poster.jpg",
+      iframe: "https://binary-pool.vercel.app",
     },
     actions: [
       {
         type: "live",
         tooltip: "View App",
-        url: "https://bevyip.github.io/words-unseen/",
-      },
-      {
-        type: "notion",
-        tooltip: "View Documentation",
-        url: "https://www.notion.so/bevyip/Week-11-1a45b3e7f9e78021bc7bd8de9c02eaa5",
-      },
-      {
-        type: "github",
-        tooltip: "View Code",
-        url: "https://github.com/bevyip/words-unseen",
+        url: "https://binary-pool.vercel.app",
       },
     ],
   },
@@ -454,7 +448,7 @@ export const playProjects = [
     tags: ["React", "Creative Coding"],
     category: "digital",
     media: {
-      video: vid("v1775166287/picture-demo_xy11bg"),
+      video: vid("v1775194785/picture-distortion_zd6wtu"),
       poster: "/projects/picture-distortion/poster.jpg",
     },
     actions: [
@@ -471,19 +465,26 @@ export const playProjects = [
     ],
   },
   {
-    id: "binary-pool",
+    id: "page-canvas",
     size: "tall",
     theme: "white",
-    tags: ["Creative Coding", "Interactive"],
+    tags: ["Pretext Library", "Creative Coding"],
     category: "digital",
     media: {
-      iframe: "https://binary-pool.vercel.app",
+      video: vid("v1775193349/page-canvas_jwfwdd"),
+      poster: "/projects/page-canvas/thumbnail-frame.jpg",
+      thumbnail: "/projects/page-canvas/thumbnail-frame.jpg",
     },
     actions: [
       {
         type: "live",
         tooltip: "View App",
-        url: "https://binary-pool.vercel.app",
+        url: "https://page-canvas-doodle.vercel.app/",
+      },
+      {
+        type: "X",
+        tooltip: "View on X",
+        url: "https://x.com/bevdesigns/status/2039934698349068330?s=20",
       },
     ],
   },
