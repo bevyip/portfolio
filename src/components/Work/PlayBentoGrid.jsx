@@ -9,15 +9,15 @@ const POSTER_ONLY_MEDIA = "(max-width: 1025px)";
 /* Home (`/`): original WorkBentoGrid play maps (verbatim) */
 const allPlayPositionsHome = {
   "floral-jukebox": { col: 2, rowStart: 3, rowEnd: 5 },
-  "im-listening": { col: 1, rowStart: 3, rowEnd: 4 },
-  "binary-pool": { col: 1, rowStart: 9, rowEnd: 11 },
-  "cat-box": { col: 1, rowStart: 6, rowEnd: 7 },
-  "sticker-cats": { col: 1, rowStart: 7, rowEnd: 9 },
+  "im-listening": { col: 1, rowStart: 5, rowEnd: 6 },
+  "binary-pool": { col: 3, rowStart: 7, rowEnd: 9 },
+  "cat-box": { col: 1, rowStart: 8, rowEnd: 9 },
+  "sticker-cats": { col: 1, rowStart: 9, rowEnd: 11 },
   "words-unseen": { col: 3, rowStart: 10, rowEnd: 12 },
-  "ball-slide": { col: 1, rowStart: 11, rowEnd: 13 },
+  "draw-canvas": { col: 1, rowStart: 3, rowEnd: 5 },
   "spherical-shopping": { col: 2, rowStart: 1, rowEnd: 3 },
   "gravity-text": { col: 3, rowStart: 4, rowEnd: 6 },
-  "page-canvas": { col: 1, rowStart: 4, rowEnd: 6 },
+  "page-canvas": { col: 2, rowStart: 5, rowEnd: 7 },
   snowflake: { col: 2, rowStart: 7, rowEnd: 9 },
   "neumorphic-buttons": { col: 2, rowStart: 9, rowEnd: 10 },
   "cat-figurine": { col: 2, rowStart: 10, rowEnd: 11 },
@@ -25,10 +25,10 @@ const allPlayPositionsHome = {
   "puzzle-feeder": { col: 2, rowStart: 12, rowEnd: 13 },
   "emotional-canvas": { col: 3, rowStart: 1, rowEnd: 2 },
   "block-party": { col: 1, rowStart: 1, rowEnd: 3 },
-  "picture-distortion": { col: 2, rowStart: 5, rowEnd: 7 },
+  "picture-distortion": { col: 1, rowStart: 6, rowEnd: 8 },
   "emoji-ascii-art": { col: 3, rowStart: 6, rowEnd: 7 },
-  "reflections-of-monet": { col: 3, rowStart: 7, rowEnd: 8 },
-  "starry-night": { col: 3, rowStart: 8, rowEnd: 9 },
+  "reflections-of-monet": { col: 1, rowStart: 11, rowEnd: 12 },
+  "starry-night": { col: 1, rowStart: 12, rowEnd: 13 },
   "five-identical-fishes": { col: 3, rowStart: 9, rowEnd: 10 },
   "ascii-filter": { col: 3, rowStart: 2, rowEnd: 4 },
   "whack-a-mouse": { col: 3, rowStart: 12, rowEnd: 13 },
@@ -37,71 +37,29 @@ const allPlayPositionsHome = {
 /* /google-creative: wide block-party hero + col 1–2 under it; col 3 matches home (no intro in grid) */
 const allPlayPositionsGoogleCreative = {
   "block-party": { col: 1, rowStart: 1, rowEnd: 4, colSpan: 2 },
-  "floral-jukebox": { col: 1, rowStart: 4, rowEnd: 6 },
-  "im-listening": { col: 1, rowStart: 6, rowEnd: 7 },
-  "cat-box": { col: 1, rowStart: 7, rowEnd: 8 },
-  "sticker-cats": { col: 1, rowStart: 8, rowEnd: 10 },
+  "floral-jukebox": { col: 1, rowStart: 6, rowEnd: 8 },
+  "draw-canvas": { col: 1, rowStart: 4, rowEnd: 6 },
+  "picture-distortion": { col: 1, rowStart: 8, rowEnd: 10 },
+  "cat-box": { col: 1, rowStart: 10, rowEnd: 11 },
+  "sticker-cats": { col: 1, rowStart: 11, rowEnd: 13 },
   "words-unseen": { col: 3, rowStart: 10, rowEnd: 12 },
-  "ball-slide": { col: 1, rowStart: 12, rowEnd: 14 },
-  "starry-night": { col: 1, rowStart: 14, rowEnd: 15 },
-  "gravity-text": { col: 3, rowStart: 4, rowEnd: 6 },
-  "binary-pool": { col: 1, rowStart: 10, rowEnd: 12 },
-  "page-canvas": { col: 2, rowStart: 6, rowEnd: 8 },
+  "reflections-of-monet": { col: 1, rowStart: 13, rowEnd: 15 },
+  "gravity-text": { col: 2, rowStart: 6, rowEnd: 8 },
+  "binary-pool": { col: 2, rowStart: 8, rowEnd: 10 },
+  "page-canvas": { col: 3, rowStart: 4, rowEnd: 6 },
   snowflake: { col: 2, rowStart: 10, rowEnd: 12 },
   "neumorphic-buttons": { col: 2, rowStart: 12, rowEnd: 13 },
   "cat-figurine": { col: 2, rowStart: 13, rowEnd: 14 },
   "temple-of-fortune": { col: 2, rowStart: 14, rowEnd: 15 },
   "emotional-canvas": { col: 3, rowStart: 1, rowEnd: 2 },
   "spherical-shopping": { col: 3, rowStart: 2, rowEnd: 4 },
-  "picture-distortion": { col: 3, rowStart: 7, rowEnd: 9 },
+  "im-listening": { col: 3, rowStart: 7, rowEnd: 8 },
   "emoji-ascii-art": { col: 3, rowStart: 6, rowEnd: 7 },
-  "reflections-of-monet": { col: 2, rowStart: 8, rowEnd: 10 },
-  "five-identical-fishes": { col: 3, rowStart: 9, rowEnd: 10 },
+  "five-identical-fishes": { col: 3, rowStart: 8, rowEnd: 9 },
+  "starry-night": { col: 3, rowStart: 9, rowEnd: 10 },
   "ascii-filter": { col: 2, rowStart: 4, rowEnd: 6 },
   "whack-a-mouse": { col: 3, rowStart: 12, rowEnd: 13 },
   "puzzle-feeder": { col: 3, rowStart: 13, rowEnd: 15 },
-};
-
-const digitalPlayPositionsHome = {
-  "floral-jukebox": { col: 2, rowStart: 3, rowEnd: 5 },
-  "spherical-shopping": { col: 2, rowStart: 1, rowEnd: 3 },
-  "emotional-canvas": { col: 3, rowStart: 1, rowEnd: 2 },
-  "im-listening": { col: 1, rowStart: 3, rowEnd: 4 },
-  "binary-pool": { col: 1, rowStart: 11, rowEnd: 13 },
-  "gravity-text": { col: 3, rowStart: 4, rowEnd: 6 },
-  "block-party": { col: 1, rowStart: 1, rowEnd: 3 },
-  "picture-distortion": { col: 1, rowStart: 8, rowEnd: 10 },
-  "snowflake": { col: 1, rowStart: 6, rowEnd: 8 },
-  "emoji-ascii-art": { col: 2, rowStart: 5, rowEnd: 6 },
-  "page-canvas": { col: 1, rowStart: 4, rowEnd: 6 },
-  "reflections-of-monet": { col: 2, rowStart: 7, rowEnd: 8 },
-  "neumorphic-buttons": { col: 3, rowStart: 6, rowEnd: 7 },
-  "sticker-cats": { col: 2, rowStart: 8, rowEnd: 10 },
-  "words-unseen": { col: 3, rowStart: 9, rowEnd: 11 },
-  "ball-slide": { col: 3, rowStart: 7, rowEnd: 9 },
-  "starry-night": { col: 2, rowStart: 10, rowEnd: 11 },
-  "ascii-filter": { col: 3, rowStart: 2, rowEnd: 4 },
-};
-
-const digitalPlayPositionsGoogleCreative = {
-  "block-party": { col: 1, rowStart: 1, rowEnd: 4, colSpan: 2 },
-  "floral-jukebox": { col: 1, rowStart: 4, rowEnd: 6 },
-  "gravity-text": { col: 3, rowStart: 4, rowEnd: 6 },
-  "emotional-canvas": { col: 3, rowStart: 1, rowEnd: 2 },
-  "im-listening": { col: 1, rowStart: 6, rowEnd: 7 },
-  "binary-pool": { col: 1, rowStart: 10, rowEnd: 12 },
-  "spherical-shopping": { col: 3, rowStart: 2, rowEnd: 4 },
-  "picture-distortion": { col: 3, rowStart: 7, rowEnd: 9 },
-  "snowflake": { col: 2, rowStart: 10, rowEnd: 12 },
-  "emoji-ascii-art": { col: 3, rowStart: 6, rowEnd: 7 },
-  "page-canvas": { col: 2, rowStart: 6, rowEnd: 8 },
-  "reflections-of-monet": { col: 2, rowStart: 8, rowEnd: 10 },
-  "neumorphic-buttons": { col: 2, rowStart: 12, rowEnd: 13 },
-  "sticker-cats": { col: 1, rowStart: 8, rowEnd: 10 },
-  "words-unseen": { col: 3, rowStart: 11, rowEnd: 13 },
-  "ball-slide": { col: 1, rowStart: 12, rowEnd: 14 },
-  "starry-night": { col: 3, rowStart: 9, rowEnd: 11 },
-  "ascii-filter": { col: 2, rowStart: 4, rowEnd: 6 },
 };
 
 const physicalPlayPositions = {
@@ -126,21 +84,19 @@ function comparePlayReadingOrder(a, b, positions) {
 }
 
 /**
- * Two play bento layouts: pick one from the page (see Home `playBentoLayout`).
- * - `all` / `digital`: grid cell maps for each filter mode
+ * Play bento layouts: pick one from the page (see Home `playBentoLayout`).
+ * - `all`: full grid cell map (home vs google-creative variants)
  * - `embedIntroInGrid`: optional title block inside the grid (unused; intros render above the grid from Home)
  */
 export const PLAY_BENTO_LAYOUT = {
   home: {
     id: "home",
     all: allPlayPositionsHome,
-    digital: digitalPlayPositionsHome,
     embedIntroInGrid: false,
   },
   googleCreative: {
     id: "google-creative",
     all: allPlayPositionsGoogleCreative,
-    digital: digitalPlayPositionsGoogleCreative,
     embedIntroInGrid: false,
   },
 };
@@ -166,13 +122,11 @@ const PlayBentoGrid = ({
 
   const filteredPlayProjects = playProjects.filter((project) => {
     if (activeFilter === "all") return true;
-    if (activeFilter === "digital") return project.category === "digital";
     if (activeFilter === "physical") return project.category === "physical";
     return false;
   });
 
   const getPlayPositions = () => {
-    if (activeFilter === "digital") return bentoLayout.digital;
     if (activeFilter === "physical") return physicalPlayPositions;
     return bentoLayout.all;
   };
@@ -198,10 +152,14 @@ const PlayBentoGrid = ({
   const bentoItems = projectsForGrid.map((project) => {
     const position = playPositions[project.id];
     if (!position) return null;
+    const projectForItem =
+      bentoLayout.id === "google-creative" && project.id === "puzzle-feeder"
+        ? { ...project, size: "tall" }
+        : project;
     return (
       <BentoItem
         key={project.id}
-        project={project}
+        project={projectForItem}
         onClick={onProjectClick}
         gridPosition={position}
         posterOnly={posterOnly}

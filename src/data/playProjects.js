@@ -133,25 +133,25 @@ export const playProjects = [
     ],
   },
   {
-    id: "ball-slide",
+    id: "draw-canvas",
     size: "tall",
     theme: "white",
-    tags: ["GSAP", "Three.js"],
+    tags: ["MediaPipe", "Three.js"],
     category: "digital",
     media: {
-      video: vid("projects/ball-slide/demo"),
-      poster: "/projects/ball-slide/poster.jpg",
+      video: vid("v1775790683/draw-canvas-work_wvmfqf"),
+      poster: "/projects/draw-canvas/thumbnail-poster.jpg",
     },
     actions: [
       {
         type: "live",
         tooltip: "View App",
-        url: "https://ball-slide.vercel.app",
+        url: "https://3d-draw-canvas.vercel.app/",
       },
       {
         type: "X",
         tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2004342996427592084?s=20",
+        url: "https://x.com/bevdesigns/status/2042439062678565302?s=20",
       },
     ],
   },

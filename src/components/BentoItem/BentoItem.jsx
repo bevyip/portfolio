@@ -126,7 +126,7 @@ const BentoItem = ({
   const posterOnlyImage =
     posterOnly && hasVideo && (media?.poster || media?.thumbnail);
   const hasMedia = showVideoBlock || hasIframe || hasImage || !!posterOnlyImage;
-  const disableHover = id === "ball-slide";
+  const disableHover = id === "draw-canvas";
 
   // The lqip (low-quality image placeholder) is a tiny base64 WebP string
   // embedded directly in playProjects.js. It renders instantly with no network
