@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { useLenis } from "@studio-freight/react-lenis";
 import { useLenisScroll } from "../../hooks/useLenisScroll";
-import { LANDING_NAV_DELAY } from "../../pages/Home/Home";
+import { LANDING_NAV_DELAY, LANDING_NAV_DURATION } from "../../pages/Home/Home";
 import {
   isHomePath,
   isGoogleCreativePath,
@@ -114,7 +114,6 @@ const Nav = () => {
   const NAV_FADE_DELAY = isDefaultHomePath(location.pathname)
     ? LANDING_NAV_DELAY
     : 0.5;
-  const NAV_FADE_DURATION = 0.7;
 
   useEffect(() => {
     if (!navRef.current) return;
@@ -148,7 +147,7 @@ const Nav = () => {
     navTl.to(navRef.current, {
       y: 0,
       opacity: 1,
-      duration: NAV_FADE_DURATION,
+      duration: LANDING_NAV_DURATION,
       ease: "power2.out",
       delay: NAV_FADE_DELAY,
     });

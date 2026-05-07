@@ -375,7 +375,7 @@
 }
 
 /* Play bento grid: place items by data attributes (desktop) */
-@media (min-width: 1026px) {
+@media (min-width: 1024px) {
   .home-play
     .bento-item[data-grid-col][data-grid-row-start][data-grid-row-end] {
     grid-column: var(--grid-col) / span var(--grid-col-span, 1);

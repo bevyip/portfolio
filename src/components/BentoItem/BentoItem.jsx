@@ -6,6 +6,7 @@ import {
   Maximize2,
   Code2,
   FileText,
+  GraduationCap,
 } from "lucide-react";
 
 // Custom Figma icon component
@@ -76,6 +77,11 @@ const actionConfig = {
     color: "text-orange-500",
     hoverBg: "hover:bg-orange-50",
   },
+  thesis: {
+    icon: GraduationCap,
+    color: "text-violet-600",
+    hoverBg: "hover:bg-violet-50",
+  },
   figma: {
     icon: FigmaIcon,
     color: "text-pink-500",
@@ -89,10 +95,10 @@ const actionConfig = {
 };
 
 // Map sizes to grid classes (strict 3 columns, only height varies)
-// Desktop (>1025px): 3 columns, cards only vary in row span
-// Mobile (≤1025px): Single column, all cards same height
+// Desktop (≥1024px): 3 columns, cards only vary in row span
+// Mobile (<1024px): Single column, all cards same height
 const sizeClasses = {
-  tall: "min-[1026px]:row-span-2", // Tall card (2 rows)
+  tall: "min-[1024px]:row-span-2", // Tall card (2 rows)
   short: "", // Standard height (1 row)
 };
 
@@ -446,9 +452,9 @@ const BentoItem = ({
         className={`
           absolute bottom-4 left-4 flex flex-wrap gap-2 z-10
           transition-all duration-300
-          max-[1025px]:opacity-100 max-[1025px]:translate-y-0
-          min-[1026px]:opacity-0 min-[1026px]:translate-y-2
-          min-[1026px]:group-hover:opacity-100 min-[1026px]:group-hover:translate-y-0
+          max-[1023px]:opacity-100 max-[1023px]:translate-y-0
+          min-[1024px]:opacity-0 min-[1024px]:translate-y-2
+          min-[1024px]:group-hover:opacity-100 min-[1024px]:group-hover:translate-y-0
         `}
       >
         {tags.slice(0, 3).map((tag, index) => (
@@ -477,9 +483,9 @@ const BentoItem = ({
         className={`
           absolute top-4 right-4 flex gap-2 z-10
           transition-all duration-300
-          max-[1025px]:opacity-100 max-[1025px]:translate-y-0
-          min-[1026px]:opacity-0 min-[1026px]:-translate-y-2
-          min-[1026px]:group-hover:opacity-100 min-[1026px]:group-hover:translate-y-0
+          max-[1023px]:opacity-100 max-[1023px]:translate-y-0
+          min-[1024px]:opacity-0 min-[1024px]:-translate-y-2
+          min-[1024px]:group-hover:opacity-100 min-[1024px]:group-hover:translate-y-0
         `}
       >
         {actions.map((action, index) => {

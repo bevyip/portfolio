@@ -1,14 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { isHomePath, isGoogleCreativePath } from "../../constants/homeRoutes";
+import { isHomePath, isGoogleCreativePath, isDefaultHomePath } from "../../constants/homeRoutes";
 import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Footer from "../../components/Footer/Footer";
 import WorkBentoGrid from "../../components/Work/WorkBentoGrid";
-import PlayBentoGrid, {
-  PLAY_BENTO_LAYOUT,
-} from "../../components/Work/PlayBentoGrid";
+import PlayBentoGrid from "../../components/Work/PlayBentoGrid";
 import PixelCat from "../../components/PixelCat/PixelCat";
 import PokemonIntro from "../../components/PokemonIntro/PokemonIntro";
 import salesforceLogo from "../../assets/img/logo-stickers/salesforce-logo.png";
@@ -20,8 +18,9 @@ const HERO_OPEN_ROLES_LINE =
 
 const LANDING_FADE_DURATION = 1;
 const LANDING_EASE = "power2.out";
-// Nav floats in a little before landing fade finishes
+// Pixel cat rises in with nav (matches Nav.jsx)
 export const LANDING_NAV_DELAY = 0.85;
+export const LANDING_NAV_DURATION = 0.7;
 
 /** Placeholder grid matching .home-case-study-grid layout for skeleton state */
 function SkeletonWorkGrid() {
@@ -102,12 +101,15 @@ const Home = () => {
     gsap.set(titleLines, { y: "100%" });
     gsap.set(bioLine, { y: "100%" });
 
+    const navFadeDelay = isDefaultHomePath(location.pathname)
+      ? LANDING_NAV_DELAY
+      : 0.5;
+
     const tl = gsap.timeline();
     tl.to(titleLines, {
       y: 0,
       duration: LANDING_FADE_DURATION,
       ease: LANDING_EASE,
-      stagger: 0.1,
     })
       .to(
         bioLine,
@@ -123,14 +125,14 @@ const Home = () => {
         {
           opacity: 1,
           y: 0,
-          duration: LANDING_FADE_DURATION,
+          duration: LANDING_NAV_DURATION,
           ease: LANDING_EASE,
         },
-        "-=0.2",
+        navFadeDelay,
       );
 
     return () => tl.kill();
-  }, [isGoogleCreative]);
+  }, [location.pathname]);
 
   const defaultPlayIntro = (
     <>
@@ -148,18 +150,11 @@ const Home = () => {
     </>
   );
 
-  const playBentoLayout = isGoogleCreative
-    ? PLAY_BENTO_LAYOUT.googleCreative
-    : PLAY_BENTO_LAYOUT.home;
-
   const playSection = (
     <section id="play" className="home-play">
       <div className="home-play-inner">
         {!isGoogleCreative ? defaultPlayIntro : null}
-        <PlayBentoGrid
-          key={playBentoLayout.id}
-          bentoLayout={playBentoLayout}
-        />
+        <PlayBentoGrid />
       </div>
     </section>
   );

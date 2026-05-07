@@ -11,11 +11,11 @@ export const playProjects = [
     id: "block-party",
     size: "tall",
     theme: "white",
-    tags: ["Gemini AI", "Creative Coding"],
+    tags: ["Gemini AI", "Interactive Installation", "Play"],
     category: "digital",
     media: {
-      video: vid("v1774495166/block-party_kb7spr"),
-      poster: "/projects/block-party/poster.png",
+      video: vid("v1778184515/block-party-demo_ghi2oo"),
+      poster: "/projects/block-party/poster.jpg",
     },
     actions: [
       {
@@ -24,9 +24,9 @@ export const playProjects = [
         url: "https://block-party-thesis.vercel.app",
       },
       {
-        type: "X",
-        tooltip: "View on X",
-        url: "https://x.com/bevdesigns/status/2028207640124231722?s=20",
+        type: "thesis",
+        tooltip: "View Thesis Presentation & Details",
+        url: "https://itp.nyu.edu/thesis/archive/2026/12338-beverly-yip/",
       },
       {
         type: "notion",

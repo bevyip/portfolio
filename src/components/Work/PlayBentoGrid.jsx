@@ -3,39 +3,11 @@ import BentoItem from "../BentoItem/BentoItem";
 import CursorPill from "../CursorPill/CursorPill";
 import { playProjects } from "../../data/playProjects";
 
-// Match grid breakpoint: below 1026px = tablet/mobile (poster only, no video)
-const POSTER_ONLY_MEDIA = "(max-width: 1025px)";
+// Match grid breakpoint: below 1024px = tablet/mobile (poster only, no video)
+const POSTER_ONLY_MEDIA = "(max-width: 1023px)";
 
-/* Home (`/`): original WorkBentoGrid play maps (verbatim) */
-const allPlayPositionsHome = {
-  "floral-jukebox": { col: 2, rowStart: 3, rowEnd: 5 },
-  "im-listening": { col: 1, rowStart: 5, rowEnd: 6 },
-  "binary-pool": { col: 3, rowStart: 7, rowEnd: 9 },
-  "cat-box": { col: 1, rowStart: 8, rowEnd: 9 },
-  "sticker-cats": { col: 1, rowStart: 9, rowEnd: 11 },
-  "words-unseen": { col: 3, rowStart: 10, rowEnd: 12 },
-  "draw-canvas": { col: 2, rowStart: 1, rowEnd: 3 },
-  "spherical-shopping": { col: 1, rowStart: 3, rowEnd: 5 },
-  "gravity-text": { col: 3, rowStart: 4, rowEnd: 6 },
-  "page-canvas": { col: 2, rowStart: 5, rowEnd: 7 },
-  snowflake: { col: 2, rowStart: 7, rowEnd: 9 },
-  "neumorphic-buttons": { col: 2, rowStart: 9, rowEnd: 10 },
-  "cat-figurine": { col: 2, rowStart: 10, rowEnd: 11 },
-  "temple-of-fortune": { col: 2, rowStart: 11, rowEnd: 12 },
-  "puzzle-feeder": { col: 2, rowStart: 12, rowEnd: 13 },
-  "emotional-canvas": { col: 3, rowStart: 1, rowEnd: 2 },
-  "block-party": { col: 1, rowStart: 1, rowEnd: 3 },
-  "picture-distortion": { col: 1, rowStart: 6, rowEnd: 8 },
-  "emoji-ascii-art": { col: 3, rowStart: 6, rowEnd: 7 },
-  "reflections-of-monet": { col: 1, rowStart: 11, rowEnd: 12 },
-  "starry-night": { col: 1, rowStart: 12, rowEnd: 13 },
-  "five-identical-fishes": { col: 3, rowStart: 9, rowEnd: 10 },
-  "ascii-filter": { col: 3, rowStart: 2, rowEnd: 4 },
-  "whack-a-mouse": { col: 3, rowStart: 12, rowEnd: 13 },
-};
-
-/* /google-creative: wide block-party hero + col 1–2 under it; col 3 matches home (no intro in grid) */
-const allPlayPositionsGoogleCreative = {
+/** Desktop grid placement for “all” play projects (`/` and `/google-creative`). */
+const allPlayPositions = {
   "block-party": { col: 1, rowStart: 1, rowEnd: 4, colSpan: 2 },
   "floral-jukebox": { col: 1, rowStart: 6, rowEnd: 8 },
   "draw-canvas": { col: 3, rowStart: 2, rowEnd: 4 },
@@ -71,7 +43,7 @@ const physicalPlayPositions = {
   "temple-of-fortune": { col: 3, rowStart: 2, rowEnd: 3 },
 };
 
-/** Below 1026px the play grid is one column and explicit placement is off (Home.css), so DOM order = scroll order. Sort by the same cell map as the wide grid: top to bottom, then left to right. */
+/** Below 1024px the play grid is one column and explicit placement is off (Home.css), so DOM order = scroll order. Sort by the same cell map as the wide grid: top to bottom, then left to right. */
 function comparePlayReadingOrder(a, b, positions) {
   const pa = positions[a.id];
   const pb = positions[b.id];
@@ -83,28 +55,9 @@ function comparePlayReadingOrder(a, b, positions) {
   return (pa.rowEnd ?? 0) - (pb.rowEnd ?? 0);
 }
 
-/**
- * Play bento layouts: pick one from the page (see Home `playBentoLayout`).
- * - `all`: full grid cell map (home vs google-creative variants)
- * - `embedIntroInGrid`: optional title block inside the grid (unused; intros render above the grid from Home)
- */
-export const PLAY_BENTO_LAYOUT = {
-  home: {
-    id: "home",
-    all: allPlayPositionsHome,
-    embedIntroInGrid: false,
-  },
-  googleCreative: {
-    id: "google-creative",
-    all: allPlayPositionsGoogleCreative,
-    embedIntroInGrid: false,
-  },
-};
-
 const PlayBentoGrid = ({
   onProjectClick,
   sectionIntro = null,
-  bentoLayout = PLAY_BENTO_LAYOUT.home,
 }) => {
   const [isHoveringCard, setIsHoveringCard] = useState(false);
   const activeFilter = "all";
@@ -128,32 +81,26 @@ const PlayBentoGrid = ({
 
   const getPlayPositions = () => {
     if (activeFilter === "physical") return physicalPlayPositions;
-    return bentoLayout.all;
+    return allPlayPositions;
   };
 
   const playPositions = getPlayPositions();
 
-  // Below 1026px, grid placement CSS is off: one column flows in DOM order. Match wide-layout reading order (row, then col).
+  // Below 1024px, grid placement CSS is off: one column flows in DOM order. Match wide-layout reading order (row, then col).
   const projectsForGrid = posterOnly
     ? [...filteredPlayProjects].sort((a, b) =>
         comparePlayReadingOrder(a, b, playPositions),
       )
     : filteredPlayProjects;
 
-  const introFitsInBentoGrid =
-    bentoLayout.embedIntroInGrid &&
-    sectionIntro != null &&
-    !posterOnly &&
-    activeFilter !== "physical";
-
   const gridClassName =
-    "home-play-bento-grid grid grid-cols-1 min-[1026px]:grid-cols-3 gap-4 w-full auto-rows-[480px] min-[1026px]:auto-rows-[220px] bento-grid-filtered";
+    "home-play-bento-grid grid grid-cols-1 min-[1024px]:grid-cols-3 gap-4 w-full auto-rows-[480px] min-[1024px]:auto-rows-[220px] bento-grid-filtered";
 
   const bentoItems = projectsForGrid.map((project) => {
     const position = playPositions[project.id];
     if (!position) return null;
     const projectForItem =
-      bentoLayout.id === "google-creative" && project.id === "puzzle-feeder"
+      project.id === "puzzle-feeder"
         ? { ...project, size: "tall" }
         : project;
     return (
@@ -170,21 +117,12 @@ const PlayBentoGrid = ({
   return (
     <>
       <CursorPill isHovering={isHoveringCard} text="View project" />
-      {introFitsInBentoGrid ? (
-        <div ref={gridRef} className={gridClassName}>
-          <div className="home-play-bento-intro">{sectionIntro}</div>
-          {bentoItems}
-        </div>
-      ) : (
-        <>
-          {sectionIntro != null ? (
-            <div className="home-play-bento-intro-outside">{sectionIntro}</div>
-          ) : null}
-          <div ref={gridRef} className={gridClassName}>
-            {bentoItems}
-          </div>
-        </>
-      )}
+      {sectionIntro != null ? (
+        <div className="home-play-bento-intro-outside">{sectionIntro}</div>
+      ) : null}
+      <div ref={gridRef} className={gridClassName}>
+        {bentoItems}
+      </div>
     </>
   );
 };
