@@ -10,7 +10,7 @@ const workProjects = [
   {
     id: "confido-approval-flow",
     title: "Rebuilding Confido's Approval Flow",
-    role: "Product Designer & Developer",
+    role: "Product Designer & Engineer",
     tags: ["Web", "Design Systems", "Enterprise Software"],
     summary:
       "Redesigning approval workflows with smarter logic and clearer audit trails for improved enterprise usability.",
@@ -109,7 +109,7 @@ function WorkCard({ project, onHoverChange, onVideoReady }) {
           }
         });
       },
-      { rootMargin, threshold: 0.1 }
+      { rootMargin, threshold: 0.1 },
     );
     observer.observe(video);
     return () => observer.disconnect();
@@ -215,7 +215,8 @@ const WorkBentoGrid = ({
   onReady,
 }) => {
   const [localHover, setLocalHover] = useState(false);
-  const isHovering = controlledHover !== undefined ? controlledHover : localHover;
+  const isHovering =
+    controlledHover !== undefined ? controlledHover : localHover;
   const handleHover = (hovered) => (onHoverChange ?? setLocalHover)(hovered);
 
   const readyCountRef = useRef(0);

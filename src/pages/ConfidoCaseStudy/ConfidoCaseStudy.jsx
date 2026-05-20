@@ -90,7 +90,9 @@ const ConfidoCaseStudy = () => {
   });
 
   const handleSkipToSolution = () => {
-    scrollToElement(document.getElementById("solution-section"), { duration: 1.2 });
+    scrollToElement(document.getElementById("solution-section"), {
+      duration: 1.2,
+    });
   };
 
   // Countup animation for metrics - memoize to prevent hook re-runs
@@ -100,7 +102,7 @@ const ConfidoCaseStudy = () => {
       { value: 27, prefix: "", suffix: "%", elementRef: metricRefs, index: 1 },
       { value: 61, prefix: "", suffix: "%", elementRef: metricRefs, index: 2 },
     ],
-    []
+    [],
   );
 
   useCountupAnimation(impactSectionRef, metrics);
@@ -256,7 +258,7 @@ const ConfidoCaseStudy = () => {
               <div className="confido-hero-detail-item">
                 <div className="confido-hero-detail-label">ROLE</div>
                 <div className="confido-hero-detail-value">
-                  Product Designer & Developer
+                  Product Designer & Engineer
                 </div>
               </div>
               <div className="confido-hero-detail-item">

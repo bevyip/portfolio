@@ -25,8 +25,13 @@ export const playProjects = [
       },
       {
         type: "thesis",
-        tooltip: "View Thesis Presentation & Details",
+        tooltip: "View Project Overview",
         url: "https://itp.nyu.edu/thesis/archive/2026/12338-beverly-yip/",
+      },
+      {
+        type: "video",
+        tooltip: "Watch Thesis Presentation",
+        url: "https://vimeo.com/1190889138",
       },
       {
         type: "notion",
