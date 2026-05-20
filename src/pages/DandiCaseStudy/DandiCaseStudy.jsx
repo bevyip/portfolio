@@ -207,7 +207,9 @@ const DandiCaseStudy = () => {
             <div className="dandi-hero-details">
               <div className="dandi-hero-detail-item">
                 <div className="dandi-hero-detail-label">ROLE</div>
-                <div className="dandi-hero-detail-value">Product Designer</div>
+                <div className="dandi-hero-detail-value">
+                  Product Designer & Engineer
+                </div>
               </div>
               <div className="dandi-hero-detail-item">
                 <div className="dandi-hero-detail-label">DURATION</div>

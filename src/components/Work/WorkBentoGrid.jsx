@@ -21,7 +21,7 @@ const workProjects = [
   {
     id: "dandi-bio-smart-wearable",
     title: "Dandi: A Bio-Smart Wearable for PCOS",
-    role: "Product Designer",
+    role: "Product Designer & Engineer",
     tags: ["Mobile", "Wearable", "Women's Health"],
     summary:
       "Making hormonal health accessible for women through emotionally-resonant design and real-time biosensing.",
