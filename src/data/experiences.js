@@ -7,7 +7,7 @@ import salesforceExp from "../assets/img/experience-pictures/salesforce-exp.jpeg
 export const experiences = [
   {
     id: "1",
-    title: "Product Design & Development Intern",
+    title: "Product Designer & Engineer (Internship)",
     company: "Confido",
     timeframe: "June 2025 – August 2025",
     imageUrl: confidoExp,
@@ -18,7 +18,7 @@ export const experiences = [
     id: "2",
     title: "Coding Lab Mentor & Co-Lead",
     company: "NYU",
-    timeframe: "August 2024 – Present",
+    timeframe: "August 2024 – May 2026",
     imageUrl: codingLabExp,
     link: "https://codinglab.itp.io/",
     description:
@@ -28,7 +28,7 @@ export const experiences = [
     id: "3",
     title: "Co-Founder / Co-President",
     company: "UX Club @ NYU",
-    timeframe: "October 2024 – Present",
+    timeframe: "October 2024 – May 2026",
     imageUrl: uxClubExp,
     link: "https://www.instagram.com/uxcnyu",
     description:
