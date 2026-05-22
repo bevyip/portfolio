@@ -29,7 +29,7 @@ function PolaroidStack({ photos = [] }) {
       <div
         style={{
           width: 334,
-          height: 413, // display height (530 * 0.78)
+          height: 460, // extra headroom for back polaroid peeking above the stack
           overflow: "visible",
           position: "relative",
         }}
@@ -52,6 +52,7 @@ function PolaroidStack({ photos = [] }) {
             animationConfig={{ stiffness: 260, damping: 20 }}
             sendToBackOnClick={true}
             mobileClickOnly={true}
+            animateOnMount={true}
           />
         </div>
       </div>

@@ -10,6 +10,7 @@ import useRiseUpOnScroll from "../../hooks/useRiseUpOnScroll";
 import a1 from "../../assets/img/about-pictures/a-1.png";
 import a2 from "../../assets/img/about-pictures/a-2.png";
 import a3 from "../../assets/img/about-pictures/a-3.png";
+import a4 from "../../assets/img/about-pictures/a-4.png";
 import purdueLogo from "../../assets/img/logo-stickers/purdue-logo.png";
 import salesforceLogo from "../../assets/img/logo-stickers/salesforce-logo.png";
 import nyuLogo from "../../assets/img/logo-stickers/nyu-logo.png";
@@ -47,6 +48,7 @@ const About = () => {
             { src: a1, alt: "" },
             { src: a2, alt: "" },
             { src: a3, alt: "" },
+            { src: a4, alt: "" },
           ]}
         />
       </section>
@@ -108,7 +110,7 @@ const About = () => {
                   >
                     Salesforce
                   </a>{" "}
-                  and leading accessibility in my team. I was good at it. But
+                  and leading accessibility in my team. I was doing good. But
                   somewhere along the way, I realized{" "}
                   <span className="about-sandbox-accent">
                     I cared just as much about how people felt using it as how

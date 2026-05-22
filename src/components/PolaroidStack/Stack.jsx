@@ -2,6 +2,20 @@ import { motion, useMotionValue } from "framer-motion";
 import { useState, useEffect } from "react";
 import "./Stack.css";
 
+const ENTRANCE_STAGGER_S = 0.16;
+const ENTRANCE_DROP_Y = 320;
+const ENTRANCE_SPRING = {
+  type: "spring",
+  stiffness: 180,
+  damping: 34,
+  mass: 1.4,
+};
+const HOVER_SPRING = {
+  type: "spring",
+  stiffness: 400,
+  damping: 30,
+};
+
 function CardRotate({
   children,
   onSendToBack,
@@ -15,6 +29,11 @@ function CardRotate({
   hoverX,
   hoverY,
   isGroupHovered = false,
+  zIndex = 0,
+  enterFromY = 0,
+  enterDelay = 0,
+  animateOnMount = false,
+  entranceComplete = true,
 }) {
   const x = useMotionValue(0); // drag offset only
   const y = useMotionValue(0);
@@ -31,27 +50,48 @@ function CardRotate({
     }
   }
 
-  const hoverTransition = {
-    type: "spring",
-    stiffness: 400,
-    damping: 30,
-  };
+  const restingX = isGroupHovered ? (hoverX ?? offsetX) : offsetX;
+  const restingY = isGroupHovered ? (hoverY ?? offsetY) : offsetY;
+  const restingRotateZ = isGroupHovered ? (hoverRotateZ ?? rotateZ) : rotateZ;
+
+  const motionTransition = entranceComplete
+    ? HOVER_SPRING
+    : { ...ENTRANCE_SPRING, delay: enterDelay };
+
+  const motionProps = animateOnMount
+    ? {
+        initial: {
+          x: offsetX,
+          y: offsetY + enterFromY,
+          rotateZ: 0,
+          opacity: 0,
+        },
+        animate: {
+          x: restingX,
+          y: restingY,
+          rotateZ: restingRotateZ,
+          opacity: 1,
+        },
+      }
+    : {
+        initial: false,
+        animate: {
+          x: restingX,
+          y: restingY,
+          rotateZ: restingRotateZ,
+        },
+      };
 
   if (disableDrag) {
     return (
       <motion.div
         className="card-rotate-disabled"
         style={{
-          x: offsetX,
-          y: 0,
-          rotateZ,
           transformOrigin,
+          zIndex,
         }}
-        animate={{
-          x: isGroupHovered ? (hoverX ?? offsetX) : offsetX,
-          rotateZ: isGroupHovered ? (hoverRotateZ ?? rotateZ) : rotateZ,
-        }}
-        transition={hoverTransition}
+        transition={motionTransition}
+        {...motionProps}
       >
         {children}
       </motion.div>
@@ -61,13 +101,9 @@ function CardRotate({
   return (
     <motion.div
       className="card-rotate"
-      style={{ transformOrigin }}
-      animate={{
-        x: isGroupHovered ? (hoverX ?? offsetX) : offsetX,
-        y: isGroupHovered ? (hoverY ?? offsetY) : offsetY,
-        rotateZ: isGroupHovered ? (hoverRotateZ ?? rotateZ) : rotateZ,
-      }}
-      transition={hoverTransition}
+      style={{ transformOrigin, zIndex }}
+      transition={motionTransition}
+      {...motionProps}
     >
       <motion.div
         style={{ x, y, width: "100%", height: "100%" }}
@@ -94,10 +130,13 @@ export default function Stack({
   pauseOnHover = false,
   mobileClickOnly = false,
   mobileBreakpoint = 768,
+  animateOnMount = false,
 }) {
   const [isMobile, setIsMobile] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isGroupHovered, setIsGroupHovered] = useState(false);
+  const [entranceComplete, setEntranceComplete] = useState(!animateOnMount);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -108,6 +147,14 @@ export default function Stack({
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, [mobileBreakpoint]);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setPrefersReducedMotion(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const shouldDisableDrag = mobileClickOnly && isMobile;
   const shouldEnableClick = sendToBackOnClick || shouldDisableDrag;
@@ -128,6 +175,19 @@ export default function Stack({
       );
     }
   }, [cards]);
+
+  useEffect(() => {
+    if (!animateOnMount || prefersReducedMotion || stack.length === 0) {
+      setEntranceComplete(true);
+      return;
+    }
+
+    setEntranceComplete(false);
+    const settleMs =
+      900 + (stack.length - 1) * ENTRANCE_STAGGER_S * 1000;
+    const timer = window.setTimeout(() => setEntranceComplete(true), settleMs);
+    return () => window.clearTimeout(timer);
+  }, [animateOnMount, prefersReducedMotion, stack.length]);
 
   const sendToBack = (id) => {
     setStack((prev) => {
@@ -165,19 +225,39 @@ export default function Stack({
       }}
     >
       {stack.map((card, index) => {
-        const stackPosition = stack.length - index - 1; // 0 = top, 1 = middle, 2 = bottom
+        const stackPosition = stack.length - index - 1; // 0 = top … 3 = back
         const rotations = [
           { rotateZ: 0, x: 0, y: 0, transformOrigin: "50% 50%" },
           { rotateZ: -10, x: -50, y: 0, transformOrigin: "50% 50%" },
           { rotateZ: 10, x: 80, y: 0, transformOrigin: "50% 50%" },
+          { rotateZ: 0, x: 0, y: -52, transformOrigin: "50% 100%" },
         ];
         const rotationsHover = [
           { rotateZ: 0, x: 0, y: -12 }, // top: lifts up slightly
           { rotateZ: -18, x: -65, y: 0 }, // middle: fans left
           { rotateZ: 18, x: 100, y: 0 }, // bottom: fans right
+          { rotateZ: 5, x: 0, y: -68 }, // back: peeks up a bit more
         ];
         const rot = rotations[stackPosition] ?? rotations[2];
         const rotHover = rotationsHover[stackPosition] ?? rotationsHover[2];
+        const targetScale = 0.94 - stackPosition * 0.06;
+        const shouldAnimateEntrance =
+          animateOnMount && !prefersReducedMotion;
+        const enterFromY = shouldAnimateEntrance ? -ENTRANCE_DROP_Y : 0;
+        const enterDelay = shouldAnimateEntrance
+          ? index * ENTRANCE_STAGGER_S
+          : 0;
+        const cardTransition = entranceComplete
+          ? {
+              type: "spring",
+              stiffness: animationConfig.stiffness,
+              damping: animationConfig.damping,
+            }
+          : {
+              ...ENTRANCE_SPRING,
+              delay: enterDelay,
+            };
+
         return (
           <CardRotate
             key={card.id}
@@ -192,19 +272,27 @@ export default function Stack({
             hoverX={rotHover.x}
             hoverY={rotHover.y}
             isGroupHovered={isGroupHovered}
+            zIndex={index}
+            enterFromY={enterFromY}
+            enterDelay={enterDelay}
+            animateOnMount={shouldAnimateEntrance}
+            entranceComplete={entranceComplete}
           >
             <motion.div
-              className="card"
+              className={
+                stackPosition === 3 ? "card card--back" : "card"
+              }
               onClick={() => shouldEnableClick && sendToBack(card.id)}
+              initial={
+                shouldAnimateEntrance
+                  ? { scale: targetScale * 0.9, opacity: 0 }
+                  : false
+              }
               animate={{
-                scale: 1 + index * 0.06 - stack.length * 0.06,
+                scale: targetScale,
+                opacity: 1,
               }}
-              initial={false}
-              transition={{
-                type: "spring",
-                stiffness: animationConfig.stiffness,
-                damping: animationConfig.damping,
-              }}
+              transition={cardTransition}
             >
               {card.content}
             </motion.div>
