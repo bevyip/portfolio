@@ -15,7 +15,7 @@
 
 /* Hero Image Containers */
 .moodle-hero-image-container {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   width: 100%;
   padding: 0 1.5rem; /* px-6 */
@@ -33,7 +33,7 @@
 }
 
 .moodle-hero-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -276,7 +276,7 @@
 }
 
 .moodle-context-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -504,7 +504,7 @@
 }
 
 .moodle-research-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -669,7 +669,7 @@
 }
 
 .moodle-solution-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -918,7 +918,7 @@
 }
 
 .moodle-validation-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -1088,7 +1088,7 @@
 }
 
 .moodle-takeaways-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -1146,7 +1146,7 @@
 }
 
 .moodle-next-steps-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -1202,7 +1202,7 @@
 }
 
 .moodle-see-next-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }

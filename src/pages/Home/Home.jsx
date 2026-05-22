@@ -152,7 +152,7 @@ const Home = () => {
 
   const playSection = (
     <section id="play" className="home-play">
-      <div className="home-play-inner">
+      <div className="home-play-inner page-content-shell">
         {!isGoogleCreative ? defaultPlayIntro : null}
         <PlayBentoGrid />
       </div>
@@ -161,7 +161,7 @@ const Home = () => {
 
   const workSection = (
     <section id="work" className="home-work">
-      <div className="home-work-inner">
+      <div className="home-work-inner page-content-shell">
         {isGoogleCreative ? (
           <div className="home-work-section-intro">
             <h2 className="home-play-title">Design Case Studies</h2>
@@ -220,7 +220,7 @@ const Home = () => {
         style={{ backgroundColor: "#fafafa" }}
       >
         <section id="landing" className="home-landing">
-          <div className="home-landing-content">
+          <div className="home-landing-content page-content-shell">
             <div className="home-landing-grid">
               <div className="home-landing-inner">
                 <h1 ref={heroTitleRef} className="home-hero">

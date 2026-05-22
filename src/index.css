@@ -4,7 +4,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Matches Nav: 90rem cap + px-6 sm:px-8 lg:px-12 (use var — @apply max-w-content is not resolved here) */
+@layer components {
+  .page-content-shell {
+    max-width: var(--page-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .page-content-shell {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .page-content-shell {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+}
+
 @layer base {
+  :root {
+    --page-max-width: 90rem; /* 1440px — unified content width (was 70–80rem / 1200px) */
+  }
+
   html,
   body {
     @apply antialiased;

@@ -229,16 +229,22 @@ const BentoItem = ({
 
           if (entry.isIntersecting) {
             setVideoInView(true);
-            // Autoplay videos when their card is actually in view.
-            const playPromise = video.play();
-            if (playPromise && typeof playPromise.catch === "function") {
-              playPromise.catch(() => {});
+            // Play via parent coordinator when provided (PlayBentoGrid); otherwise autoplay here.
+            if (onRequestPlay) {
+              onRequestPlay(video, gridPosition?.col ?? 1);
+            } else {
+              const playPromise = video.play();
+              if (playPromise && typeof playPromise.catch === "function") {
+                playPromise.catch(() => {});
+              }
             }
-            onRequestPlay?.(video, gridPosition?.col ?? 1);
           } else {
             setVideoInView(false);
-            video.pause();
-            onNotifyPause?.(video);
+            if (onNotifyPause) {
+              onNotifyPause(video);
+            } else {
+              video.pause();
+            }
           }
         });
       },

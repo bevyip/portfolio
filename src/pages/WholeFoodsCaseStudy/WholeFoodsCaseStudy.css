@@ -16,7 +16,7 @@
 
 /* Hero Image Containers */
 .wholefoods-hero-image-container {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   width: 100%;
   padding: 0 1.5rem; /* px-6 */
@@ -34,7 +34,7 @@
 }
 
 .wholefoods-hero-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -277,7 +277,7 @@
 }
 
 .wholefoods-context-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -465,7 +465,7 @@
 }
 
 .wholefoods-problem-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -595,7 +595,7 @@
 }
 
 .wholefoods-research-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -712,7 +712,7 @@
 }
 
 .wholefoods-solution-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
   position: relative;
@@ -915,7 +915,7 @@
 }
 
 .wholefoods-takeaways-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -973,7 +973,7 @@
 }
 
 .wholefoods-next-steps-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -1029,7 +1029,7 @@
 }
 
 .wholefoods-see-next-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }

@@ -184,7 +184,7 @@ const Work = () => {
         style={{ backgroundColor: "#fafafa" }}
       >
         <section className="pt-32 pb-20 px-6 md:px-12 lg:px-20">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-content mx-auto">
             <h1 ref={titleRef} className="work-page-title">
               <span ref={titleWrapperRef} className="work-page-title-wrapper">
                 Designs, Creative Experiments, <span className="work-page-title-accent">and more!</span>

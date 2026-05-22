@@ -185,6 +185,12 @@ nav.nav-light-bg {
   }
 }
 
+@media (min-width: 1280px) {
+  .pill-list.desktop-only {
+    gap: 4rem;
+  }
+}
+
 .desktop-only {
   display: block;
 }

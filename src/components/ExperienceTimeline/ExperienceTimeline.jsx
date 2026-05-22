@@ -83,7 +83,7 @@ const ExperienceTimeline = ({ revealEarlier = false }) => {
       id="experience-timeline-section"
       className="experience-timeline-section"
     >
-      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12">
         <header ref={headerRef} className="md:mb-16">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-10">
             <h2 className="experience-timeline-title">

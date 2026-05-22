@@ -15,7 +15,7 @@
 
 /* Hero Image Containers */
 .venmo-hero-image-container {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   width: 100%;
   padding: 0 1.5rem; /* px-6 */
@@ -33,7 +33,7 @@
 }
 
 .venmo-hero-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -276,7 +276,7 @@
 }
 
 .venmo-context-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -440,7 +440,7 @@
 }
 
 .venmo-research-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -615,7 +615,7 @@
 }
 
 .venmo-solution-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -783,7 +783,7 @@
 }
 
 .venmo-takeaways-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -841,7 +841,7 @@
 }
 
 .venmo-next-steps-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }
@@ -897,7 +897,7 @@
 }
 
 .venmo-see-next-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem; /* px-6 */
 }

@@ -6,21 +6,18 @@
 }
 
 /* ----- Landing ----- */
-/* Same horizontal padding as work section so content width matches at max-width 80rem */
+/* Horizontal inset via .page-content-shell (same as navbar) */
 .home-landing {
   position: relative;
   width: 100%;
   min-height: 0;
   background-color: #fafafa;
-  padding: clamp(8rem, 22vh, 15rem) 1.5rem clamp(1.5rem, 4vh, 2rem);
+  padding: clamp(8rem, 22vh, 15rem) 0 clamp(1.5rem, 4vh, 2rem);
 }
 
 .home-landing-content {
   position: relative;
   z-index: 1;
-  max-width: 80rem;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* Grid: left = title/subtitle, right = PixelCat (column on small) */
@@ -154,9 +151,10 @@
   font-weight: 500;
 }
 
-/* Subtitle */
+/* Subtitle — full width of .home-landing-inner text column */
 .home-bio {
-  max-width: 38rem;
+  width: 100%;
+  max-width: 100%;
   font-family: "Satoshi", sans-serif;
   font-size: clamp(0.95rem, 2vw, 18px);
   color: #353535;
@@ -229,16 +227,11 @@
 
 /* ----- Work: 2x2 case studies ----- */
 .home-work {
-  padding: 2.25rem 1.5rem 3.5rem;
+  padding: 2.25rem 0 3.5rem;
 }
 
 .home-work-section-intro .home-play-subtitle {
   margin-bottom: 2rem;
-}
-
-.home-work-inner {
-  max-width: 80rem;
-  margin: 0 auto;
 }
 
 .home-work-loading-wrapper {
@@ -296,21 +289,16 @@
 
 /* ----- Play: title, subtitle, bento grid (play projects only) ----- */
 .home-play {
-  padding: 5rem 1.5rem 10rem;
+  padding: 5rem 0 10rem;
 }
 
 /* /google-creative: play → case studies — swap to mirror home’s work → play padding */
 .home-google-creative .home-play {
-  padding: 2.25rem 1.5rem 3.5rem;
+  padding: 2.25rem 0 3.5rem;
 }
 
 .home-google-creative .home-work {
-  padding: 5rem 1.5rem 10rem;
-}
-
-.home-play-inner {
-  max-width: 80rem;
-  margin: 0 auto;
+  padding: 5rem 0 10rem;
 }
 
 .home-play-title-row {

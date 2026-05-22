@@ -15,7 +15,7 @@
 
 /* Hero Image Containers */
 .dandi-hero-image-container {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   width: 100%;
   padding: 0 1.5rem; /* px-6 */
@@ -33,7 +33,7 @@
 }
 
 .dandi-hero-content {
-  max-width: 70rem; /* 1120px */
+  max-width: var(--page-max-width);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -406,7 +406,7 @@
 }
 
 .dandi-context-content {
-  max-width: 70rem;
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -560,7 +560,7 @@
 
 .dandi-solution-content {
   width: 100%;
-  max-width: 70rem;
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem;
   box-sizing: border-box;
@@ -880,7 +880,7 @@
 .dandi-takeaways-content,
 .dandi-next-steps-content,
 .dandi-learn-more-content {
-  max-width: 70rem;
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -924,7 +924,7 @@
 }
 
 .dandi-see-next-content {
-  max-width: 70rem;
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -1018,7 +1018,7 @@
 }
 
 .dandi-where-we-began-content {
-  max-width: 70rem;
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem;
   display: flex;
@@ -1080,7 +1080,7 @@
 }
 
 .dandi-what-we-found-content {
-  max-width: 70rem;
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 1.5rem;
   display: flex;

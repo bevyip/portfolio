@@ -488,7 +488,7 @@ const Nav = () => {
         transform: "translateY(-100px)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="page-content-shell">
         <div className="flex items-center justify-between py-5 z-[1000] gap-6 lg:h-16 relative min-h-[32px]">
           <Link to="/" onClick={handleLogoClick} className="logo-link">
             <img

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import BentoItem from "../BentoItem/BentoItem";
 import CursorPill from "../CursorPill/CursorPill";
 import { playProjects } from "../../data/playProjects";
@@ -66,6 +66,25 @@ const PlayBentoGrid = ({
   );
   const gridRef = useRef(null);
 
+  // TEMPORARY: concurrent play cap disabled — every in-view card may play its video.
+  // const MAX_PLAYING = 6;
+  // const playingVideos = useRef(new Set());
+
+  const requestPlay = useCallback((videoEl) => {
+    if (!videoEl) return;
+    // if (playingVideos.current.size < MAX_PLAYING) {
+    //   playingVideos.current.add(videoEl);
+    //   videoEl.play().catch(() => {});
+    // }
+    videoEl.play().catch(() => {});
+  }, []);
+
+  const notifyPause = useCallback((videoEl) => {
+    if (!videoEl) return;
+    // playingVideos.current.delete(videoEl);
+    videoEl.pause();
+  }, []);
+
   useEffect(() => {
     const mql = window.matchMedia(POSTER_ONLY_MEDIA);
     const handleChange = (e) => setPosterOnly(e.matches);
@@ -110,6 +129,8 @@ const PlayBentoGrid = ({
         onClick={onProjectClick}
         gridPosition={position}
         posterOnly={posterOnly}
+        onRequestPlay={requestPlay}
+        onNotifyPause={notifyPause}
       />
     );
   });
