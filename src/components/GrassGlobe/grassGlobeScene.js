@@ -19,6 +19,7 @@ import {
   mrt,
   output,
   normalView,
+  positionViewDirection,
   storage,
 } from "three/tsl";
 
@@ -419,7 +420,7 @@ async function initGrassGlobeWebGPU(container, options = {}, quality) {
   const skydomeGeo = new THREE.SphereGeometry(220, sphereSegments, sphereSegments);
   const skydomeMat = new THREE.MeshBasicNodeMaterial({ side: THREE.BackSide });
   skydomeMat.colorNode = Fn(() => {
-    const t = uv().y;
+    const t = positionViewDirection.y.mul(0.5).add(0.5);
     const horizonColor = vec3(0.78, 0.9, 0.97);
     const zenithColor = vec3(0.58, 0.78, 0.94);
     const nadirColor = vec3(0.72, 0.86, 0.96);

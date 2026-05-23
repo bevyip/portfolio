@@ -77,10 +77,8 @@ export async function initGrassGlobeLite(container, options = {}) {
   scene.add(
     new THREE.Mesh(
       new THREE.SphereGeometry(SPHERE_R, 48, 48),
-      new THREE.MeshStandardMaterial({
+      new THREE.MeshBasicMaterial({
         color: new THREE.Color(0.08, 0.22, 0.03),
-        roughness: 0.92,
-        metalness: 0,
       }),
     ),
   );
@@ -90,16 +88,16 @@ export async function initGrassGlobeLite(container, options = {}) {
     depthWrite: false,
     uniforms: {},
     vertexShader: `
-      varying vec2 vUv;
       void main() {
-        vUv = uv;
         gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
       }
     `,
     fragmentShader: `
-      varying vec2 vUv;
       void main() {
-        float t = vUv.y;
+        vec3 worldPos = (modelMatrix * vec4(position, 1.0)).xyz;
+        vec3 viewDir = normalize(worldPos - cameraPosition);
+        vec3 viewDirView = mat3(viewMatrix) * viewDir;
+        float t = viewDirView.y * 0.5 + 0.5;
         vec3 horizon = vec3(0.78, 0.9, 0.97);
         vec3 zenith = vec3(0.58, 0.78, 0.94);
         vec3 nadir = vec3(0.72, 0.86, 0.96);
