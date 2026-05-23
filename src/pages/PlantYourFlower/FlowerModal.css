@@ -66,23 +66,28 @@
   position: relative;
   z-index: 2;
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  flex-wrap: nowrap;
   gap: 0.35rem;
   margin-bottom: 1.25rem;
 }
 
 .flower-modal-title-row .flower-modal-title {
   margin: 0;
+  line-height: 1.25;
 }
 
 .flower-modal-info {
   position: relative;
   z-index: 2;
+  display: inline-flex;
   flex-shrink: 0;
+  align-items: center;
+  transform: translateY(0.12em);
 }
 
 .flower-modal-info-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.15rem;
@@ -102,11 +107,13 @@
 
 .flower-modal-info-tooltip {
   position: absolute;
-  left: 50%;
+  right: 0;
+  left: auto;
   bottom: calc(100% + 0.45rem);
   z-index: 210;
+  box-sizing: border-box;
   width: max-content;
-  max-width: min(16rem, 70vw);
+  max-width: min(16rem, calc(100vw - 3rem));
   padding: 0.45rem 0.6rem;
   border-radius: 0.35rem;
   background: #122a04;
@@ -114,12 +121,13 @@
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1.4;
-  text-align: center;
+  text-align: left;
   white-space: normal;
+  overflow-wrap: break-word;
   pointer-events: none;
   opacity: 0;
   visibility: hidden;
-  transform: translateX(-50%) translateY(4px);
+  transform: translateY(4px);
   transition:
     opacity 0.15s ease,
     transform 0.15s ease,
@@ -130,7 +138,7 @@
 .flower-modal-info:focus-within .flower-modal-info-tooltip {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 
 .flower-modal-form {
@@ -211,12 +219,28 @@
 }
 
 .flower-color-row input[type="color"] {
-  width: 2.75rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   padding: 0;
   border: none;
+  border-radius: 50%;
   background: none;
   cursor: pointer;
+  overflow: hidden;
+}
+
+.flower-color-row input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.flower-color-row input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+.flower-color-row input[type="color"]::-moz-color-swatch {
+  border: none;
+  border-radius: 50%;
 }
 
 .flower-color-hex {

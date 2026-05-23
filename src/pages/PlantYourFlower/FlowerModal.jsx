@@ -193,7 +193,10 @@ export default function FlowerModal({
         ) : (
           <>
             <div className="flower-modal-title-row">
-              <h2 id="flower-modal-title" className="flower-modal-title">
+              <h2
+                id="flower-modal-title"
+                className="flower-modal-title flower-modal-title--playfair"
+              >
                 Your flower is ready.
               </h2>
               <span className="flower-modal-info">

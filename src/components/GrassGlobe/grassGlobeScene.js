@@ -26,6 +26,8 @@ const BLADE_COUNT = 100000;
 const SPHERE_R = 20;
 const FLOWER_SURFACE_OFFSET = 4;
 const FLOWER_SIZE = 4.2;
+const GRASS_BEND_LERP_IN = 12;
+const GRASS_BEND_LERP_OUT = 2.5;
 
 export async function initGrassGlobe(container, options = {}) {
   const { initialFlowers = [], onFlowerTooltipUpdate } = options;
@@ -174,9 +176,9 @@ export async function initGrassGlobe(container, options = {}) {
   const bendState = storage(bendStateAttr, "vec4", BLADE_COUNT);
 
   const mouseWorld = uniform(new THREE.Vector3(99999, 99999, 99999));
-  const mouseRadius = uniform(4.0);
+  const mouseRadius = uniform(2.5);
   const mouseStrength = uniform(5.0);
-  const outerRadius = uniform(7.5);
+  const outerRadius = uniform(5.0);
   const outerStrength = uniform(2.0);
 
   const bladeWidth = uniform(0.12);
@@ -230,8 +232,8 @@ export async function initGrassGlobe(container, options = {}) {
     const currentMag = sqrt(bend.z.mul(bend.z).add(bend.w.mul(bend.w)));
     const lm = select(
       targetMag.greaterThan(currentMag),
-      deltaTime.mul(12.0),
-      deltaTime.mul(1),
+      deltaTime.mul(GRASS_BEND_LERP_IN),
+      deltaTime.mul(GRASS_BEND_LERP_OUT),
     ).saturate();
 
     bend.z.assign(mix(bend.z, fT1, lm));
@@ -624,7 +626,10 @@ export async function initGrassGlobe(container, options = {}) {
       const currentMag = Math.sqrt(
         flower.bendT1 * flower.bendT1 + flower.bendT2 * flower.bendT2,
       );
-      const lm = Math.min(1, targetMag > currentMag ? dt * 12 : dt);
+      const lm = Math.min(
+        1,
+        targetMag > currentMag ? dt * GRASS_BEND_LERP_IN : dt * GRASS_BEND_LERP_OUT,
+      );
 
       flower.bendT1 += (targetT1 - flower.bendT1) * lm;
       flower.bendT2 += (targetT2 - flower.bendT2) * lm;

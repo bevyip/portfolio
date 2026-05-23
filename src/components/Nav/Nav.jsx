@@ -12,7 +12,7 @@ import {
 import "./Nav.css";
 import darkLogo from "../../assets/img/dark-logo.png";
 import lightLogo from "../../assets/img/light-logo.png";
-// import flowerIcon from "../../assets/img/flower.png";
+import flowerIcon from "../../assets/img/flower.png";
 
 const Nav = () => {
   const location = useLocation();
@@ -36,14 +36,13 @@ const Nav = () => {
     { label: "work", href: "/", isLink: true },
     { label: "play", href: "/#play", isLink: true },
     { label: "about", href: "/about", isLink: true },
-    // Temporarily hidden until Vercel + Supabase are live
-    // {
-    //   label: "flower",
-    //   href: "/plantyourflower",
-    //   isLink: true,
-    //   image: flowerIcon,
-    //   imageAlt: "Plant your flower",
-    // },
+    {
+      label: "flower",
+      href: "/plantyourflower",
+      isLink: true,
+      image: flowerIcon,
+      imageAlt: "Plant your flower",
+    },
   ];
 
   const handleLogoClick = (e) => {
@@ -67,7 +66,7 @@ const Nav = () => {
       if (item.label === "about") return false;
     }
     if (item.label === "about") return path === "/about";
-    // if (item.label === "flower") return path === "/plantyourflower";
+    if (item.label === "flower") return path === "/plantyourflower";
     return false;
   };
 
