@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Analytics } from "@vercel/analytics/react";
 import Nav from "./components/Nav/Nav";
 import ScrollToTop from "./components/ScrollToTop";
 import BackToTop from "./components/BackToTop/BackToTop";
@@ -90,6 +91,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
+        <Analytics />
       </Router>
     </ReactLenis>
   );
