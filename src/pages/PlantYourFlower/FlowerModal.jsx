@@ -183,8 +183,8 @@ export default function FlowerModal({
 
               <button
                 type="submit"
-                className="flower-modal-primary"
-                disabled={isGenerating}
+                className={`flower-modal-primary${isGenerating ? " flower-modal-primary--loading" : ""}`}
+                disabled={isGenerating || !message.trim()}
               >
                 {isGenerating ? "Creating your flower…" : "Create"}
               </button>
@@ -240,7 +240,7 @@ export default function FlowerModal({
                 </button>
                 <button
                   type="button"
-                  className="flower-modal-primary"
+                  className={`flower-modal-primary${isPlanting ? " flower-modal-primary--loading" : ""}`}
                   onClick={handlePlant}
                   disabled={isPlanting}
                 >

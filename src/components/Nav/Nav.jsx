@@ -38,7 +38,7 @@ const Nav = () => {
     { label: "about", href: "/about", isLink: true },
     {
       label: "flower",
-      href: "/plantyourflower",
+      href: "/flower",
       isLink: true,
       image: flowerIcon,
       imageAlt: "Plant your flower",
@@ -66,7 +66,7 @@ const Nav = () => {
       if (item.label === "about") return false;
     }
     if (item.label === "about") return path === "/about";
-    if (item.label === "flower") return path === "/plantyourflower";
+    if (item.label === "flower") return path === "/flower";
     return false;
   };
 

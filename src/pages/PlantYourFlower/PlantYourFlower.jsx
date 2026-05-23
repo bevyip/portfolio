@@ -16,6 +16,7 @@ export default function PlantYourFlower() {
   const [plantError, setPlantError] = useState("");
   const [isPlanting, setIsPlanting] = useState(false);
   const [sessionCount, setSessionCount] = useState(null);
+  const [welcomeVisible, setWelcomeVisible] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -45,7 +46,13 @@ export default function PlantYourFlower() {
 
     recordGardenSession()
       .then((count) => {
-        if (!cancelled) setSessionCount(count);
+        if (cancelled) return;
+        setSessionCount(count);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            if (!cancelled) setWelcomeVisible(true);
+          });
+        });
       })
       .catch((err) => {
         console.error("[PlantYourFlower] session count", err);
@@ -53,6 +60,7 @@ export default function PlantYourFlower() {
 
     return () => {
       cancelled = true;
+      setWelcomeVisible(false);
     };
   }, []);
 
@@ -80,13 +88,9 @@ export default function PlantYourFlower() {
     <main className="plant-your-flower-page">
       <section className="plant-your-flower-hero">
         <div className="plant-your-flower-globe-wrap">
-          {flowers === null ? (
-            <p className="plant-your-flower-status" aria-live="polite">
-              Loading the garden…
-            </p>
-          ) : (
+          {flowers !== null ? (
             <GrassGlobe ref={globeRef} initialFlowers={flowers} />
-          )}
+          ) : null}
         </div>
 
         {loadError ? (
@@ -102,33 +106,46 @@ export default function PlantYourFlower() {
         ) : null}
 
         <div className="plant-your-flower-actions">
-          <p className="plant-your-flower-welcome" aria-live="polite">
-            {sessionCount === null ? (
-              "Loading garden stats…"
-            ) : sessionCount === 1 ? (
-              <>
-                1 visitor{" "}
-                <span className="plant-your-flower-welcome-muted">
-                  has checked out this garden.
-                </span>
-              </>
-            ) : (
-              <>
-                {sessionCount.toLocaleString()} visitors{" "}
-                <span className="plant-your-flower-welcome-muted">
-                  have checked out this garden.
-                </span>
-              </>
-            )}
-          </p>
-          <button
-            type="button"
-            className="plant-your-flower-cta"
-            onClick={() => setModalOpen(true)}
-            disabled={flowers === null || isPlanting}
-          >
-            plant my flower
-          </button>
+          <div className="plant-your-flower-actions-inner">
+            <div className="plant-your-flower-welcome-slot">
+              <p
+                className={`plant-your-flower-welcome${
+                  welcomeVisible ? " plant-your-flower-welcome--visible" : ""
+                }`}
+                aria-live="polite"
+              >
+                {sessionCount === 1 ? (
+                  <>
+                    1 visitor{" "}
+                    <span className="plant-your-flower-text-muted">
+                      has checked out this garden.
+                    </span>
+                  </>
+                ) : sessionCount !== null ? (
+                  <>
+                    {sessionCount.toLocaleString()} visitors{" "}
+                    <span className="plant-your-flower-text-muted">
+                      have checked out this garden.
+                    </span>
+                  </>
+                ) : null}
+              </p>
+            </div>
+            <div
+              className={`plant-your-flower-cta-slot${
+                welcomeVisible ? " plant-your-flower-cta-slot--visible" : ""
+              }`}
+            >
+              <button
+                type="button"
+                className="plant-your-flower-cta"
+                onClick={() => setModalOpen(true)}
+                disabled={flowers === null || isPlanting}
+              >
+                Plant my flower
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 

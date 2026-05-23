@@ -87,7 +87,7 @@ function App() {
             <Route path="/confido" element={<ConfidoCaseStudy />} />
             <Route path="/dandi" element={<DandiCaseStudy />} />
             <Route path="/pixel-cat" element={<PixelCatPage />} />
-            <Route path="/plantyourflower" element={<PlantYourFlower />} />
+            <Route path="/flower" element={<PlantYourFlower />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

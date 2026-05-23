@@ -29,7 +29,7 @@ create policy "Anyone can view flower images"
   to anon, authenticated
   using (bucket_id = 'flowers');
 
--- Browser sessions for /plantyourflower (one increment per session via API).
+-- Browser sessions for /flower (one increment per session via API).
 create table if not exists public.garden_stats (
   id text primary key default 'default',
   page_views bigint not null default 127 check (page_views >= 0)

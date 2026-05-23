@@ -255,19 +255,24 @@
   padding: 0.75rem 1rem;
   border: none;
   border-radius: 0.5rem;
-  background: #3a7a4a;
-  color: #fff;
+  background: #122a04;
+  color: #fafcf8;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 .flower-modal-primary:hover:not(:disabled) {
-  background: #2f6340;
+  background: #1e4010;
 }
 
 .flower-modal-primary:disabled {
   opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.flower-modal-primary--loading:disabled {
   cursor: wait;
 }
 
