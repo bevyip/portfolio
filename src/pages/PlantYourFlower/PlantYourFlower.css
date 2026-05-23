@@ -36,7 +36,33 @@
     inset 0 0 44px 22px rgba(255, 255, 255, 0.72);
 }
 
+.plant-your-flower-actions {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  width: min(100%, 72rem);
+}
+
+.plant-your-flower-welcome {
+  margin: 0;
+  max-width: 42rem;
+  text-align: left;
+  font-family: "Satoshi", sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #0f0f0f;
+}
+
+.plant-your-flower-welcome-muted {
+  color: rgba(15, 15, 15, 0.5);
+}
+
 .plant-your-flower-cta {
+  flex-shrink: 0;
   padding: 0.85rem 1.75rem;
   border: none;
   border-radius: 999px;
@@ -89,5 +115,16 @@
   .plant-your-flower-globe-wrap {
     height: min(62vh, 34rem);
     min-height: 24rem;
+  }
+
+  .plant-your-flower-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .plant-your-flower-welcome {
+    text-align: center;
   }
 }

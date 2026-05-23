@@ -3,6 +3,7 @@ import Footer from "../../components/Footer/Footer";
 import GrassGlobe from "../../components/GrassGlobe/GrassGlobe";
 import useScrollReset from "../../hooks/useScrollReset";
 import { fetchFlowers, plantFlower } from "../../utils/flowersApi";
+import { recordGardenSession } from "../../utils/gardenStatsApi";
 import FlowerModal from "./FlowerModal";
 import "./PlantYourFlower.css";
 
@@ -14,6 +15,7 @@ export default function PlantYourFlower() {
   const [loadError, setLoadError] = useState("");
   const [plantError, setPlantError] = useState("");
   const [isPlanting, setIsPlanting] = useState(false);
+  const [sessionCount, setSessionCount] = useState(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -31,6 +33,22 @@ export default function PlantYourFlower() {
           setFlowers([]);
           setLoadError(err.message || "Could not load flowers.");
         }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    recordGardenSession()
+      .then((count) => {
+        if (!cancelled) setSessionCount(count);
+      })
+      .catch((err) => {
+        console.error("[PlantYourFlower] session count", err);
       });
 
     return () => {
@@ -83,14 +101,35 @@ export default function PlantYourFlower() {
           </p>
         ) : null}
 
-        <button
-          type="button"
-          className="plant-your-flower-cta"
-          onClick={() => setModalOpen(true)}
-          disabled={flowers === null || isPlanting}
-        >
-          plant my flower
-        </button>
+        <div className="plant-your-flower-actions">
+          <p className="plant-your-flower-welcome" aria-live="polite">
+            {sessionCount === null ? (
+              "Loading garden stats…"
+            ) : sessionCount === 1 ? (
+              <>
+                1 visitor{" "}
+                <span className="plant-your-flower-welcome-muted">
+                  has checked out this garden.
+                </span>
+              </>
+            ) : (
+              <>
+                {sessionCount.toLocaleString()} visitors{" "}
+                <span className="plant-your-flower-welcome-muted">
+                  have checked out this garden.
+                </span>
+              </>
+            )}
+          </p>
+          <button
+            type="button"
+            className="plant-your-flower-cta"
+            onClick={() => setModalOpen(true)}
+            disabled={flowers === null || isPlanting}
+          >
+            plant my flower
+          </button>
+        </div>
       </section>
 
       <FlowerModal

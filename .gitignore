@@ -23,9 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
-# Examples folder
 examples
 scripts
+supabase
 
 # Historical pages (preserved for history tracking)
 src/pages/AboutArchive/

@@ -13,6 +13,10 @@
     "api/flowers.js": {
       "maxDuration": 30,
       "memory": 1024
+    },
+    "api/garden-stats.js": {
+      "maxDuration": 10,
+      "memory": 256
     }
   }
 }

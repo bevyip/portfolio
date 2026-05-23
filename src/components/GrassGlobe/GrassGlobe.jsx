@@ -23,6 +23,7 @@ const GrassGlobe = forwardRef(function GrassGlobe({ initialFlowers = [] }, ref) 
   const sceneRef = useRef(null);
   const flowersRef = useRef(initialFlowers);
   const [tooltip, setTooltip] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useImperativeHandle(ref, () => ({
     addFlower(flowerData) {
@@ -47,6 +48,9 @@ const GrassGlobe = forwardRef(function GrassGlobe({ initialFlowers = [] }, ref) 
           return;
         }
         sceneRef.current = scene;
+        requestAnimationFrame(() => {
+          if (!cancelled) setIsVisible(true);
+        });
       })
       .catch((err) => {
         console.error("[GrassGlobe]", err);
@@ -54,6 +58,7 @@ const GrassGlobe = forwardRef(function GrassGlobe({ initialFlowers = [] }, ref) 
 
     return () => {
       cancelled = true;
+      setIsVisible(false);
       sceneRef.current?.destroy();
       sceneRef.current = null;
     };
@@ -73,7 +78,9 @@ const GrassGlobe = forwardRef(function GrassGlobe({ initialFlowers = [] }, ref) 
   }, [tooltip]);
 
   return (
-    <div className="grass-globe-root">
+    <div
+      className={`grass-globe-root${isVisible ? " grass-globe-root--visible" : ""}`}
+    >
       <div
         className="grass-globe"
         ref={containerRef}

@@ -670,15 +670,12 @@ export async function initGrassGlobe(container, options = {}) {
     flowerCount = i + 1;
   }
 
-  canvas.style.opacity = "0";
-  canvas.style.transition = "opacity 0.6s ease";
   for (let i = 0; i < 3; i++) {
     renderer.compute(computeUpdate);
     updateFlowerBends(1 / 60);
     postProcessing.render();
     await new Promise((r) => requestAnimationFrame(r));
   }
-  canvas.style.opacity = "1";
 
   let lastFrameTime = performance.now();
   let disposed = false;
