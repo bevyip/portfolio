@@ -138,6 +138,12 @@
     row-gap: 1.5rem;
     width: 100%;
     max-width: 42rem;
+    justify-items: center;
+  }
+
+  .plant-your-flower-welcome-slot {
+    width: 100%;
+    text-align: center;
   }
 
   .plant-your-flower-welcome {
@@ -145,6 +151,6 @@
   }
 
   .plant-your-flower-cta-slot {
-    justify-self: end;
+    justify-self: center;
   }
 }

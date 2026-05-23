@@ -33,29 +33,25 @@ export default function FlowerModal({
   }, [isOpen]);
 
   useEffect(() => {
-    if (isOpen) return;
-    setStep("form");
-    setName("");
-    setMessage("");
-    setColor("#a855f7");
-    setSuggestedName(generateRandomName());
-    setError("");
-    setGeneratedFlower(null);
-    setIsGenerating(false);
+    if (!isOpen) {
+      setStep("form");
+      setName("");
+      setMessage("");
+      setColor("#a855f7");
+      setError("");
+      setGeneratedFlower(null);
+      setIsGenerating(false);
+      return;
+    }
+
+    const initialName = generateRandomName();
+    setSuggestedName(initialName);
+    setName(initialName);
   }, [isOpen]);
 
   if (!isOpen) return null;
 
   const displayName = name.trim() || suggestedName;
-
-  const handleNameFocus = (e) => {
-    if (name) return;
-    setName(suggestedName);
-    const len = suggestedName.length;
-    requestAnimationFrame(() => {
-      e.target.setSelectionRange(len, len);
-    });
-  };
 
   const handleCreate = async (e) => {
     e.preventDefault();
@@ -121,9 +117,8 @@ export default function FlowerModal({
                   <input
                     id="flower-name"
                     type="text"
-                    value={name || suggestedName}
+                    value={name}
                     onChange={(e) => setName(e.target.value)}
-                    onFocus={handleNameFocus}
                     maxLength={80}
                     autoComplete="name"
                   />
@@ -132,10 +127,10 @@ export default function FlowerModal({
                     className="flower-reroll"
                     onClick={() => {
                       const next = generateRandomName();
-                      setSuggestedName(next);
-                      if (!name || name === suggestedName) {
-                        setName("");
+                      if (name === suggestedName) {
+                        setName(next);
                       }
+                      setSuggestedName(next);
                     }}
                     aria-label="Generate a new random name"
                     title="Re-roll name"

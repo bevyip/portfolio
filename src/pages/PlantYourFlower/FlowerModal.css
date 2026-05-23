@@ -29,6 +29,7 @@
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
+  padding: 4px;
 }
 
 .flower-modal-close {
@@ -173,9 +174,10 @@
   color: #0f0f0f;
 }
 
-.flower-field input[type="text"]:focus {
+.flower-field input[type="text"]:focus,
+.flower-field input[type="text"]:focus-visible {
   outline: 2px solid rgba(58, 122, 74, 0.35);
-  outline-offset: 1px;
+  outline-offset: 2px;
 }
 
 .flower-name-row {
@@ -204,6 +206,11 @@
   background: #f0f6f0;
 }
 
+.flower-reroll:focus-visible {
+  outline: 2px solid rgba(58, 122, 74, 0.35);
+  outline-offset: 2px;
+}
+
 .flower-field-hint {
   margin: 0;
   font-size: 0.875rem;
@@ -226,7 +233,12 @@
   border-radius: 50%;
   background: none;
   cursor: pointer;
-  overflow: hidden;
+}
+
+.flower-color-row input[type="color"]:focus,
+.flower-color-row input[type="color"]:focus-visible {
+  outline: 2px solid rgba(58, 122, 74, 0.35);
+  outline-offset: 2px;
 }
 
 .flower-color-row input[type="color"]::-webkit-color-swatch-wrapper {
