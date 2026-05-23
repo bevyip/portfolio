@@ -73,18 +73,13 @@ const Nav = () => {
   const renderPillLabel = (item) => {
     if (item.image) {
       return (
-        <>
-          <span className="pill-label">
-            <img
-              src={item.image}
-              alt={item.imageAlt ?? item.label}
-              className="pill-flower-icon"
-            />
-          </span>
-          <span className="pill-label-hover" aria-hidden="true">
-            <img src={item.image} alt="" className="pill-flower-icon" />
-          </span>
-        </>
+        <span className="pill-label">
+          <img
+            src={item.image}
+            alt={item.imageAlt ?? item.label}
+            className="pill-flower-icon"
+          />
+        </span>
       );
     }
 
@@ -232,53 +227,71 @@ const Nav = () => {
 
         const label = pill.querySelector(".pill-label");
         const white = pill.querySelector(".pill-label-hover");
+        const isFlowerPill = pill.classList.contains("pill-flower");
+        const flowerIcon = isFlowerPill
+          ? pill.querySelector(".pill-flower-icon")
+          : null;
 
         if (label) gsap.set(label, { y: 0 });
-        if (white) gsap.set(white, { y: h + 12, opacity: 0 });
+        if (white && !isFlowerPill) gsap.set(white, { y: h + 12, opacity: 0 });
 
         tlRefs.current[index]?.kill();
         const tl = gsap.timeline({ paused: true });
 
-        if (shouldAnimateCircle) {
+        if (shouldAnimateCircle && !isFlowerPill) {
           tl.to(
             circle,
             {
               scale: 1.2,
               xPercent: -50,
               duration: 2,
-              ease: "power3.easeOut",
+              ease: "power1.easeOut",
               overwrite: "auto",
             },
             0,
           );
         }
 
-        if (label) {
+        if (isFlowerPill && flowerIcon) {
+          gsap.set(flowerIcon, { rotation: 0, transformOrigin: "50% 50%" });
           tl.to(
-            label,
+            flowerIcon,
             {
-              y: -(h + 8),
-              duration: 2,
-              ease: "power3.easeOut",
+              rotation: 180,
+              duration: 1,
+              ease: "power1.easeOut",
               overwrite: "auto",
             },
             0,
           );
-        }
+        } else {
+          if (label) {
+            tl.to(
+              label,
+              {
+                y: -(h + 8),
+                duration: 2,
+                ease: "power1.easeOut",
+                overwrite: "auto",
+              },
+              0,
+            );
+          }
 
-        if (white) {
-          gsap.set(white, { y: Math.ceil(h + 100), opacity: 0 });
-          tl.to(
-            white,
-            {
-              y: 0,
-              opacity: 1,
-              duration: 2,
-              ease: "power3.easeOut",
-              overwrite: "auto",
-            },
-            0,
-          );
+          if (white) {
+            gsap.set(white, { y: Math.ceil(h + 100), opacity: 0 });
+            tl.to(
+              white,
+              {
+                y: 0,
+                opacity: 1,
+                duration: 2,
+                ease: "power1.easeOut",
+                overwrite: "auto",
+              },
+              0,
+            );
+          }
         }
 
         tlRefs.current[index] = tl;

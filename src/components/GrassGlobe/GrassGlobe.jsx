@@ -96,7 +96,9 @@ const GrassGlobe = forwardRef(function GrassGlobe({ initialFlowers = [] }, ref) 
             top: `${tooltip.y}px`,
           }}
         >
-          <p className="flower-globe-tooltip-name">{tooltip.name}</p>
+          <p className="flower-globe-tooltip-name">
+            {tooltip.name?.toLowerCase() ?? ""}
+          </p>
           {tooltip.createdAt ? (
             <time
               className="flower-globe-tooltip-date"
