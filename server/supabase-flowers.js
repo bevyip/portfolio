@@ -3,8 +3,15 @@ import { createClient } from "@supabase/supabase-js";
 
 const FLOWERS_BUCKET = "flowers";
 
+function normalizeSupabaseUrl(url) {
+  if (!url) return url;
+  return String(url)
+    .replace(/\/rest\/v1\/?$/i, "")
+    .replace(/\/+$/, "");
+}
+
 function getSupabaseAdmin(env = process.env) {
-  const url = env.SUPABASE_URL;
+  const url = normalizeSupabaseUrl(env.SUPABASE_URL);
   const key = env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!url || !key) {
