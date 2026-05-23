@@ -156,6 +156,41 @@ nav.nav-light-bg {
   will-change: transform, opacity;
 }
 
+.pill-flower {
+  padding: 0 28px;
+}
+
+.pill-flower .label-stack {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+}
+
+.pill-flower .pill-label,
+.pill-flower .pill-label-hover {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  line-height: 0;
+}
+
+.pill-flower-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.mobile-menu-flower-icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  vertical-align: middle;
+  filter: invert(1);
+  transition: transform 0.2s ease;
+}
+
 /* ============================================
    DESKTOP STYLES
    ============================================ */
@@ -390,6 +425,11 @@ body.mobile-menu-open {
 .mobile-menu-popover .mobile-menu-link:hover {
   cursor: pointer;
   background-color: transparent;
-  color: #7dd3fc; /* Accent color */
+  color: #fafafa;
+  font-weight: 700;
   opacity: 1;
+}
+
+.mobile-menu-popover .mobile-menu-link:hover .mobile-menu-flower-icon {
+  transform: scale(1.08);
 }

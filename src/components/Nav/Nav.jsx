@@ -12,6 +12,7 @@ import {
 import "./Nav.css";
 import darkLogo from "../../assets/img/dark-logo.png";
 import lightLogo from "../../assets/img/light-logo.png";
+// import flowerIcon from "../../assets/img/flower.png";
 
 const Nav = () => {
   const location = useLocation();
@@ -35,6 +36,14 @@ const Nav = () => {
     { label: "work", href: "/", isLink: true },
     { label: "play", href: "/#play", isLink: true },
     { label: "about", href: "/about", isLink: true },
+    // Temporarily hidden until Vercel + Supabase are live
+    // {
+    //   label: "flower",
+    //   href: "/plantyourflower",
+    //   isLink: true,
+    //   image: flowerIcon,
+    //   imageAlt: "Plant your flower",
+    // },
   ];
 
   const handleLogoClick = (e) => {
@@ -58,7 +67,36 @@ const Nav = () => {
       if (item.label === "about") return false;
     }
     if (item.label === "about") return path === "/about";
+    // if (item.label === "flower") return path === "/plantyourflower";
     return false;
+  };
+
+  const renderPillLabel = (item) => {
+    if (item.image) {
+      return (
+        <>
+          <span className="pill-label">
+            <img
+              src={item.image}
+              alt={item.imageAlt ?? item.label}
+              className="pill-flower-icon"
+            />
+          </span>
+          <span className="pill-label-hover" aria-hidden="true">
+            <img src={item.image} alt="" className="pill-flower-icon" />
+          </span>
+        </>
+      );
+    }
+
+    return (
+      <>
+        <span className="pill-label">{item.label}</span>
+        <span className="pill-label-hover" aria-hidden="true">
+          {item.label}
+        </span>
+      </>
+    );
   };
 
   // On home page: update nav active state (work vs play) from scroll position.
@@ -516,17 +554,12 @@ const Nav = () => {
                       }}
                     />
                     <span className="pill-active-dot" aria-hidden="true" />
-                    <span className="label-stack">
-                      <span className="pill-label">{item.label}</span>
-                      <span className="pill-label-hover" aria-hidden="true">
-                        {item.label}
-                      </span>
-                    </span>
+                    <span className="label-stack">{renderPillLabel(item)}</span>
                   </a>
                 ) : (
                   <Link
                     to={item.href}
-                    className={`pill${isNavItemActive(item) ? " pill-active" : ""}`}
+                    className={`pill${item.image ? " pill-flower" : ""}${isNavItemActive(item) ? " pill-active" : ""}`}
                     onMouseEnter={() => handleEnter(i)}
                     onMouseLeave={() => handleLeave(i)}
                     onClick={
@@ -541,12 +574,7 @@ const Nav = () => {
                       }}
                     />
                     <span className="pill-active-dot" aria-hidden="true" />
-                    <span className="label-stack">
-                      <span className="pill-label">{item.label}</span>
-                      <span className="pill-label-hover" aria-hidden="true">
-                        {item.label}
-                      </span>
-                    </span>
+                    <span className="label-stack">{renderPillLabel(item)}</span>
                   </Link>
                 )}
               </li>
@@ -599,7 +627,15 @@ const Nav = () => {
                     }
                   }}
                 >
-                  {item.label}
+                  {item.image ? (
+                    <img
+                      src={item.image}
+                      alt={item.imageAlt ?? item.label}
+                      className="mobile-menu-flower-icon"
+                    />
+                  ) : (
+                    item.label
+                  )}
                 </a>
               ) : (
                 <Link
@@ -613,7 +649,15 @@ const Nav = () => {
                     toggleMobileMenu();
                   }}
                 >
-                  {item.label}
+                  {item.image ? (
+                    <img
+                      src={item.image}
+                      alt={item.imageAlt ?? item.label}
+                      className="mobile-menu-flower-icon"
+                    />
+                  ) : (
+                    item.label
+                  )}
                 </Link>
               )}
             </li>

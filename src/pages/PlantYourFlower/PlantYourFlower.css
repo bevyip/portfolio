@@ -1,0 +1,93 @@
+.plant-your-flower-page {
+  background: #fafafa;
+}
+
+.plant-your-flower-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 8rem 1.25rem 6rem;
+}
+
+.plant-your-flower-globe-wrap {
+  position: relative;
+  width: min(100%, 72rem);
+  height: min(68vh, 44rem);
+  min-height: 28rem;
+  margin-bottom: 3rem;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fafafa;
+}
+
+.plant-your-flower-globe-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  box-shadow:
+    inset 0 0 20px 8px #fefefe,
+    inset 0 0 44px 22px rgba(255, 255, 255, 0.72);
+}
+
+.plant-your-flower-cta {
+  padding: 0.85rem 1.75rem;
+  border: none;
+  border-radius: 999px;
+  background: #122a04;
+  color: #fafcf8;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.plant-your-flower-cta:hover:not(:disabled) {
+  background: #1e4010;
+}
+
+.plant-your-flower-cta:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.plant-your-flower-status {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #5a6f5a;
+  text-align: center;
+}
+
+.plant-your-flower-status--error {
+  color: #b42318;
+}
+
+.plant-your-flower-globe-wrap .plant-your-flower-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .plant-your-flower-hero {
+    padding: 7rem 0.75rem 5rem;
+  }
+
+  .plant-your-flower-globe-wrap {
+    height: min(62vh, 34rem);
+    min-height: 24rem;
+  }
+}

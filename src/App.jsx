@@ -14,6 +14,7 @@ import WholeFoodsCaseStudy from "./pages/WholeFoodsCaseStudy/WholeFoodsCaseStudy
 import ConfidoCaseStudy from "./pages/ConfidoCaseStudy/ConfidoCaseStudy";
 import DandiCaseStudy from "./pages/DandiCaseStudy/DandiCaseStudy";
 import PixelCatPage from "./pages/PixelCat/PixelCat";
+import PlantYourFlower from "./pages/PlantYourFlower/PlantYourFlower";
 import NotFound from "./pages/NotFound/NotFound";
 import "./App.css";
 
@@ -85,6 +86,7 @@ function App() {
             <Route path="/confido" element={<ConfidoCaseStudy />} />
             <Route path="/dandi" element={<DandiCaseStudy />} />
             <Route path="/pixel-cat" element={<PixelCatPage />} />
+            <Route path="/plantyourflower" element={<PlantYourFlower />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
