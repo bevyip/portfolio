@@ -5,6 +5,7 @@ import React, {
   forwardRef,
   useState,
 } from "react";
+import flowerIcon from "../../assets/img/flower.png";
 import { initGrassGlobe } from "./grassGlobeScene";
 import "./GrassGlobe.css";
 
@@ -24,6 +25,7 @@ const GrassGlobe = forwardRef(function GrassGlobe({ initialFlowers = [] }, ref) 
   const flowersRef = useRef(initialFlowers);
   const [tooltip, setTooltip] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [loaderMounted, setLoaderMounted] = useState(true);
 
   useImperativeHandle(ref, () => ({
     addFlower(flowerData) {
@@ -77,12 +79,34 @@ const GrassGlobe = forwardRef(function GrassGlobe({ initialFlowers = [] }, ref) 
     return () => document.removeEventListener("pointerdown", onDocPointerDown);
   }, [tooltip]);
 
+  const handleLoaderTransitionEnd = (e) => {
+    if (e.propertyName !== "opacity" || !isVisible) return;
+    setLoaderMounted(false);
+  };
+
   return (
-    <div
-      className={`grass-globe-root${isVisible ? " grass-globe-root--visible" : ""}`}
-    >
+    <div className="grass-globe-root">
+      {loaderMounted ? (
+        <div
+          className={`grass-globe-loader${isVisible ? " grass-globe-loader--hiding" : ""}`}
+          aria-hidden="true"
+          onTransitionEnd={handleLoaderTransitionEnd}
+        >
+          <div className="grass-globe-loader-flowers">
+            {[0, 1, 2].map((i) => (
+              <img
+                key={i}
+                className="grass-globe-loader-flower"
+                src={flowerIcon}
+                alt=""
+                draggable={false}
+              />
+            ))}
+          </div>
+        </div>
+      ) : null}
       <div
-        className="grass-globe"
+        className={`grass-globe${isVisible ? " grass-globe--visible" : ""}`}
         ref={containerRef}
         data-lenis-prevent-wheel
         data-lenis-prevent-touch

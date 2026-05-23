@@ -23,6 +23,7 @@
   background: #fafcf8;
   border: 1px solid rgba(18, 42, 4, 0.08);
   box-shadow: 0 24px 64px rgba(18, 42, 4, 0.18);
+  color: #0f0f0f;
 }
 
 .flower-modal-scroll {
@@ -44,19 +45,19 @@
   border: none;
   border-radius: 999px;
   background: transparent;
-  color: #3a4a3a;
+  color: #0f0f0f;
   cursor: pointer;
 }
 
 .flower-modal-close:hover {
-  background: rgba(18, 42, 4, 0.06);
+  background: rgba(15, 15, 15, 0.06);
 }
 
 .flower-modal-title {
   margin: 0 0 1.25rem;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #122a04;
+  color: #0f0f0f;
 }
 
 .flower-modal-title--playfair {
@@ -95,14 +96,14 @@
   border: none;
   border-radius: 999px;
   background: transparent;
-  color: #5a6f5a;
+  color: rgba(15, 15, 15, 0.5);
   cursor: help;
 }
 
 .flower-modal-info-btn:hover,
 .flower-modal-info-btn:focus-visible {
-  color: #122a04;
-  background: rgba(18, 42, 4, 0.06);
+  color: #0f0f0f;
+  background: rgba(15, 15, 15, 0.06);
   outline: none;
 }
 
@@ -117,8 +118,8 @@
   max-width: min(16rem, calc(100vw - 3rem));
   padding: 0.45rem 0.6rem;
   border-radius: 0.35rem;
-  background: #122a04;
-  color: #fafcf8;
+  background: #1f1f1f;
+  color: #fafafa;
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1.4;
@@ -158,13 +159,13 @@
 .flower-label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #122a04;
+  color: #0f0f0f;
 }
 
 .flower-field input[type="text"] {
   width: 100%;
   padding: 0.65rem 0.75rem;
-  border: 1px solid #d4e4d0;
+  border: 1px solid rgba(15, 15, 15, 0.15);
   border-radius: 0.5rem;
   font-family: inherit;
   font-size: 1rem;
@@ -176,7 +177,7 @@
 
 .flower-field input[type="text"]:focus,
 .flower-field input[type="text"]:focus-visible {
-  outline: 2px solid rgba(58, 122, 74, 0.35);
+  outline: 2px solid rgba(15, 15, 15, 0.35);
   outline-offset: 2px;
 }
 
@@ -195,19 +196,20 @@
   justify-content: center;
   width: 2.5rem;
   flex-shrink: 0;
-  border: 1px solid #d4e4d0;
+  border: 1px solid #1f1f1f;
   border-radius: 0.5rem;
-  background: #fff;
-  color: #3a7a4a;
+  background: #1f1f1f;
+  color: #fafafa;
   cursor: pointer;
 }
 
 .flower-reroll:hover {
-  background: #f0f6f0;
+  background: #333333;
+  border-color: #333333;
 }
 
 .flower-reroll:focus-visible {
-  outline: 2px solid rgba(58, 122, 74, 0.35);
+  outline: 2px solid rgba(15, 15, 15, 0.35);
   outline-offset: 2px;
 }
 
@@ -216,7 +218,7 @@
   font-size: 0.875rem;
   line-height: 1.6;
   font-weight: 300;
-  color: #666;
+  color: rgba(15, 15, 15, 0.5);
 }
 
 .flower-color-row {
@@ -237,7 +239,7 @@
 
 .flower-color-row input[type="color"]:focus,
 .flower-color-row input[type="color"]:focus-visible {
-  outline: 2px solid rgba(58, 122, 74, 0.35);
+  outline: 2px solid rgba(15, 15, 15, 0.35);
   outline-offset: 2px;
 }
 
@@ -258,7 +260,7 @@
 .flower-color-hex {
   font-family: inherit;
   font-size: 0.85rem;
-  color: #5a6f5a;
+  color: rgba(15, 15, 15, 0.5);
   text-transform: uppercase;
 }
 
@@ -267,8 +269,8 @@
   padding: 0.75rem 1rem;
   border: none;
   border-radius: 0.5rem;
-  background: #122a04;
-  color: #fafcf8;
+  background: #1f1f1f;
+  color: #fafafa;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
@@ -276,7 +278,7 @@
 }
 
 .flower-modal-primary:hover:not(:disabled) {
-  background: #1e4010;
+  background: #333333;
 }
 
 .flower-modal-primary:disabled {
@@ -336,15 +338,24 @@
   width: 2.75rem;
   flex-shrink: 0;
   padding: 0;
-  border: 1px solid #d4e4d0;
+  border: 1px solid rgba(15, 15, 15, 0.35);
   border-radius: 0.5rem;
-  background: #fff;
-  color: #3a4a3a;
+  background: transparent;
+  color: #0f0f0f;
   cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .flower-modal-back:hover {
-  background: #f0f6f0;
+  background: rgba(15, 15, 15, 0.06);
+  border-color: rgba(15, 15, 15, 0.5);
+}
+
+.flower-modal-back:focus-visible {
+  outline: 2px solid rgba(15, 15, 15, 0.35);
+  outline-offset: 2px;
 }
 
 .flower-modal-actions .flower-modal-primary {
