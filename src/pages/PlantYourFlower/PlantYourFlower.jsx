@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Info } from "lucide-react";
 import Footer from "../../components/Footer/Footer";
 import GrassGlobe from "../../components/GrassGlobe/GrassGlobe";
 import useScrollReset from "../../hooks/useScrollReset";
@@ -128,6 +129,27 @@ export default function PlantYourFlower() {
                       have checked out this garden.
                     </span>
                   </>
+                ) : null}
+                {sessionCount !== null ? (
+                  <span className="plant-your-flower-welcome-info">
+                    <button
+                      type="button"
+                      className="plant-your-flower-welcome-info-btn"
+                      aria-describedby="plant-your-flower-globe-tooltip"
+                      aria-label="About the 3D garden display"
+                    >
+                      <Info size={16} strokeWidth={2} aria-hidden />
+                    </button>
+                    <span
+                      id="plant-your-flower-globe-tooltip"
+                      role="tooltip"
+                      className="plant-your-flower-welcome-info-tooltip"
+                    >
+                      If you&apos;re seeing a solid green ball with no grass,
+                      your device may not support the full 3D garden. Try
+                      another device for the complete experience.
+                    </span>
+                  </span>
                 ) : null}
               </p>
             </div>

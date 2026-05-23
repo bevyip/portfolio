@@ -55,6 +55,7 @@
 .plant-your-flower-welcome-slot {
   width: 100%;
   min-height: 1.6em;
+  overflow: visible;
 }
 
 .plant-your-flower-text-muted {
@@ -75,6 +76,74 @@
 
 .plant-your-flower-welcome--visible {
   opacity: 1;
+}
+
+.plant-your-flower-welcome-info {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+  transform: translateY(-0.05em);
+}
+
+.plant-your-flower-welcome-info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(15, 15, 15, 0.5);
+  cursor: help;
+}
+
+.plant-your-flower-welcome-info-btn:hover,
+.plant-your-flower-welcome-info-btn:focus-visible {
+  color: #0f0f0f;
+  background: rgba(15, 15, 15, 0.06);
+  outline: none;
+}
+
+.plant-your-flower-welcome-info-tooltip {
+  position: absolute;
+  right: 0;
+  left: auto;
+  bottom: calc(100% + 0.45rem);
+  z-index: 210;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: min(16rem, calc(100vw - 3rem));
+  padding: 0.45rem 0.6rem;
+  border-radius: 0.35rem;
+  background: #1f1f1f;
+  color: #fafafa;
+  font-family: "Satoshi", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: break-word;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease,
+    visibility 0.15s ease;
+}
+
+.plant-your-flower-welcome-info:hover .plant-your-flower-welcome-info-tooltip,
+.plant-your-flower-welcome-info:focus-within
+  .plant-your-flower-welcome-info-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .plant-your-flower-cta-slot {
@@ -127,7 +196,8 @@
 
 @media (max-width: 640px) {
   .plant-your-flower-hero {
-    padding: 7rem 0.75rem 5rem;
+    justify-content: flex-start;
+    padding: 6rem 0.75rem 5rem;
   }
 
   .plant-your-flower-globe-wrap {
@@ -144,13 +214,35 @@
     justify-items: center;
   }
 
+  .plant-your-flower-actions-inner {
+    overflow: visible;
+  }
+
   .plant-your-flower-welcome-slot {
     width: 100%;
     text-align: center;
+    overflow: visible;
+    padding-inline: 0.25rem;
   }
 
   .plant-your-flower-welcome {
     text-align: center;
+    overflow: visible;
+  }
+
+  .plant-your-flower-welcome-info-tooltip {
+    top: calc(100% + 0.45rem);
+    bottom: auto;
+    right: 0;
+    left: auto;
+    max-width: min(16rem, calc(100vw - 1.5rem));
+    transform: translateY(-4px);
+  }
+
+  .plant-your-flower-welcome-info:hover .plant-your-flower-welcome-info-tooltip,
+  .plant-your-flower-welcome-info:focus-within
+    .plant-your-flower-welcome-info-tooltip {
+    transform: translateY(0);
   }
 
   .plant-your-flower-cta-slot {
