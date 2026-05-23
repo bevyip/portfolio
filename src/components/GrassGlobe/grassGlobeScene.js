@@ -179,7 +179,7 @@ export async function initGrassGlobe(container, options = {}) {
 
   const mouseWorld = uniform(new THREE.Vector3(99999, 99999, 99999));
   const mouseRadius = uniform(2.5);
-  const mouseStrength = uniform(5.0);
+  const mouseStrength = uniform(10.0);
   const outerRadius = uniform(5.0);
   const outerStrength = uniform(2.0);
 
@@ -290,7 +290,7 @@ export async function initGrassGlobe(container, options = {}) {
       .mul(heightScale.add(0.3).sign());
     const localY = positionGeometry.y.mul(heightScale).mul(bladeHeight);
 
-    const bf = pow(t, 1.8);
+    const bf = pow(t, 1.0);
     const sbT1 = hash(instanceIndex.add(7777)).sub(0.5).mul(bladeLean);
     const sbT2 = hash(instanceIndex.add(8888)).sub(0.5).mul(bladeLean);
 
