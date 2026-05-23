@@ -19,18 +19,12 @@ import {
   mrt,
   output,
   normalView,
-  positionViewDirection,
   storage,
 } from "three/tsl";
 
-import {
-  getEffectivePixelRatio,
-  getQualityRetryOrder,
-  GRASS_GLOBE_QUALITY_PRESETS,
-  resolveGrassGlobeQuality,
-} from "./grassGlobeQuality.js";
-import { initGrassGlobeLite } from "./grassGlobeLite.js";
+import { createGlobeSkyBackground } from "./grassGlobeSky.js";
 
+const BLADE_COUNT = 100000;
 const SPHERE_R = 20;
 const FLOWER_SURFACE_OFFSET = 4;
 const FLOWER_SIZE = 4.2;
@@ -38,43 +32,12 @@ const GRASS_BEND_LERP_IN = 12;
 const GRASS_BEND_LERP_OUT = 2.5;
 
 export async function initGrassGlobe(container, options = {}) {
-  const detected = await resolveGrassGlobeQuality();
-
-  if (detected.tier === "lite" || !detected.webgpuAvailable) {
-    return initGrassGlobeLite(container, options);
-  }
-
-  const retryOrder = getQualityRetryOrder(detected.tier);
-  let lastError;
-
-  for (const tier of retryOrder) {
-    container.replaceChildren();
-    try {
-      const quality = {
-        tier,
-        webgpuAvailable: true,
-        ...GRASS_GLOBE_QUALITY_PRESETS[tier],
-      };
-      return await initGrassGlobeWebGPU(container, options, quality);
-    } catch (err) {
-      lastError = err;
-      console.warn(`[GrassGlobe] ${tier} quality failed`, err);
-    }
-  }
-
-  console.warn("[GrassGlobe] Falling back to lite renderer", lastError);
-  container.replaceChildren();
-  return initGrassGlobeLite(container, options);
-}
-
-async function initGrassGlobeWebGPU(container, options = {}, quality) {
   const { initialFlowers = [], onFlowerTooltipUpdate } = options;
-  const bladeCount = quality.bladeCount;
 
   const golden = (1 + Math.sqrt(5)) / 2;
 
   const scene = new THREE.Scene();
-  scene.background = null;
+  scene.background = createGlobeSkyBackground();
 
   const getSize = () => ({
     width: container.clientWidth || window.innerWidth,
@@ -87,8 +50,9 @@ async function initGrassGlobeWebGPU(container, options = {}, quality) {
   camera.position.set(0, 30, 70);
   camera.lookAt(0, 0, 0);
 
-  const maxDPR = getEffectivePixelRatio(quality.maxPixelRatio, width);
-  const renderer = new THREE.WebGPURenderer({ antialias: quality.antialias });
+  const maxDPR =
+    window.innerWidth < 1200 ? 1.5 : Math.min(window.devicePixelRatio, 2);
+  const renderer = new THREE.WebGPURenderer({ antialias: true });
   renderer.setPixelRatio(maxDPR);
   renderer.setSize(width, height);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -116,13 +80,13 @@ async function initGrassGlobeWebGPU(container, options = {}, quality) {
   camera.position.normalize().multiplyScalar(defaultCameraDistance);
   controls.update();
 
-  const cpuPos = new Float32Array(bladeCount * 4);
-  const cpuNorm = new Float32Array(bladeCount * 4);
-  const cpuT1 = new Float32Array(bladeCount * 4);
-  const cpuT2 = new Float32Array(bladeCount * 4);
+  const cpuPos = new Float32Array(BLADE_COUNT * 4);
+  const cpuNorm = new Float32Array(BLADE_COUNT * 4);
+  const cpuT1 = new Float32Array(BLADE_COUNT * 4);
+  const cpuT2 = new Float32Array(BLADE_COUNT * 4);
 
-  for (let i = 0; i < bladeCount; i++) {
-    const theta = Math.acos(1 - (2 * (i + 0.5)) / bladeCount);
+  for (let i = 0; i < BLADE_COUNT; i++) {
+    const theta = Math.acos(1 - (2 * (i + 0.5)) / BLADE_COUNT);
     const phi = (2 * Math.PI * i) / golden;
 
     const st = Math.sin(theta);
@@ -203,15 +167,15 @@ async function initGrassGlobeWebGPU(container, options = {}, quality) {
   const bladeTan1Attr = new THREE.StorageBufferAttribute(cpuT1, 4);
   const bladeTan2Attr = new THREE.StorageBufferAttribute(cpuT2, 4);
   const bendStateAttr = new THREE.StorageBufferAttribute(
-    new Float32Array(bladeCount * 4),
+    new Float32Array(BLADE_COUNT * 4),
     4,
   );
 
-  const bladeData = storage(bladeDataAttr, "vec4", bladeCount);
-  const bladeNorm = storage(bladeNormAttr, "vec4", bladeCount);
-  const bladeTan1 = storage(bladeTan1Attr, "vec4", bladeCount);
-  const bladeTan2 = storage(bladeTan2Attr, "vec4", bladeCount);
-  const bendState = storage(bendStateAttr, "vec4", bladeCount);
+  const bladeData = storage(bladeDataAttr, "vec4", BLADE_COUNT);
+  const bladeNorm = storage(bladeNormAttr, "vec4", BLADE_COUNT);
+  const bladeTan1 = storage(bladeTan1Attr, "vec4", BLADE_COUNT);
+  const bladeTan2 = storage(bladeTan2Attr, "vec4", BLADE_COUNT);
+  const bendState = storage(bendStateAttr, "vec4", BLADE_COUNT);
 
   const mouseWorld = uniform(new THREE.Vector3(99999, 99999, 99999));
   const mouseRadius = uniform(2.5);
@@ -276,7 +240,7 @@ async function initGrassGlobeWebGPU(container, options = {}, quality) {
 
     bend.z.assign(mix(bend.z, fT1, lm));
     bend.w.assign(mix(bend.w, fT2, lm));
-  })().compute(bladeCount);
+  })().compute(BLADE_COUNT);
 
   function createBladeGeometry() {
     const segs = 5;
@@ -398,60 +362,30 @@ async function initGrassGlobeWebGPU(container, options = {}, quality) {
   const grass = new THREE.InstancedMesh(
     createBladeGeometry(),
     grassMat,
-    bladeCount,
+    BLADE_COUNT,
   );
   grass.name = "grassGlobe";
   grass.frustumCulled = false;
   scene.add(grass);
   const dummy = new THREE.Object3D();
-  for (let i = 0; i < bladeCount; i++) grass.setMatrixAt(i, dummy.matrix);
+  for (let i = 0; i < BLADE_COUNT; i++) grass.setMatrixAt(i, dummy.matrix);
   grass.instanceMatrix.needsUpdate = true;
 
-  const sphereSegments = quality.sphereSegments;
-  const innerSphereGeo = new THREE.SphereGeometry(
-    SPHERE_R - 0.05,
-    sphereSegments,
-    sphereSegments,
-  );
+  const innerSphereGeo = new THREE.SphereGeometry(SPHERE_R - 0.05, 64, 64);
   const innerSphereMat = new THREE.MeshBasicNodeMaterial();
   innerSphereMat.colorNode = Fn(() => vec3(0.08, 0.22, 0.03))();
   scene.add(new THREE.Mesh(innerSphereGeo, innerSphereMat));
-
-  const skydomeGeo = new THREE.SphereGeometry(220, sphereSegments, sphereSegments);
-  const skydomeMat = new THREE.MeshBasicNodeMaterial({ side: THREE.BackSide });
-  skydomeMat.colorNode = Fn(() => {
-    const t = positionViewDirection.y.mul(0.5).add(0.5);
-    const horizonColor = vec3(0.78, 0.9, 0.97);
-    const zenithColor = vec3(0.58, 0.78, 0.94);
-    const nadirColor = vec3(0.72, 0.86, 0.96);
-    const upperT = smoothstep(float(0.5), float(0.88), t);
-    const upperC = mix(horizonColor, zenithColor, upperT);
-    const lowerT = smoothstep(float(0.5), float(0.12), t);
-    const lowerC = mix(horizonColor, nadirColor, lowerT);
-    const isUpper = smoothstep(float(0.48), float(0.52), t);
-    return mix(lowerC, upperC, isUpper);
-  })();
-  scene.add(new THREE.Mesh(skydomeGeo, skydomeMat));
 
   scene.add(new THREE.AmbientLight(0xffffff, 1.0));
   const dirLight = new THREE.DirectionalLight(0xf0f6fc, 1.2);
   dirLight.position.set(-20, 50, -20);
   scene.add(dirLight);
 
-  const postProcessing = quality.usePostProcessing
-    ? new THREE.PostProcessing(renderer)
-    : null;
-  if (postProcessing) {
-    const scenePass = pass(scene, camera);
-    scenePass.setMRT(mrt({ output, normal: normalView }));
-    postProcessing.outputNode = scenePass.getTextureNode("output");
-    postProcessing.needsUpdate = true;
-  }
-
-  const renderFrame = () => {
-    if (postProcessing) postProcessing.render();
-    else renderer.render(scene, camera);
-  };
+  const postProcessing = new THREE.PostProcessing(renderer);
+  const scenePass = pass(scene, camera);
+  scenePass.setMRT(mrt({ output, normal: normalView }));
+  postProcessing.outputNode = scenePass.getTextureNode("output");
+  postProcessing.needsUpdate = true;
 
   const raycaster = new THREE.Raycaster();
   const mouseNDC = new THREE.Vector2();
@@ -703,7 +637,9 @@ async function initGrassGlobeWebGPU(container, options = {}, quality) {
       ({ width, height } = getSize());
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      renderer.setPixelRatio(getEffectivePixelRatio(quality.maxPixelRatio, width));
+      renderer.setPixelRatio(
+        window.innerWidth < 1200 ? 1.5 : Math.min(window.devicePixelRatio, 2),
+      );
       renderer.setSize(width, height);
     }, 100);
   };
@@ -743,7 +679,7 @@ async function initGrassGlobeWebGPU(container, options = {}, quality) {
   for (let i = 0; i < 3; i++) {
     renderer.compute(computeUpdate);
     updateFlowerBends(1 / 60);
-    renderFrame();
+    postProcessing.render();
     await new Promise((r) => requestAnimationFrame(r));
   }
 
@@ -760,7 +696,7 @@ async function initGrassGlobeWebGPU(container, options = {}, quality) {
     updateFlowerBends(dt);
     controls.update();
     if (selectedFlowerMesh) notifyFlowerTooltip();
-    renderFrame();
+    postProcessing.render();
   });
 
   return {
