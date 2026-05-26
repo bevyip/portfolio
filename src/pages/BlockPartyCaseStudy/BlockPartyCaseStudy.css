@@ -1,6 +1,6 @@
 .blockparty-case-study {
   --blockparty-section-space-y: 4rem;
-  --blockparty-inner-gap-xl: 4rem;
+  --blockparty-inner-gap-xl: 5rem;
   --blockparty-inner-gap-lg: 3rem;
   --blockparty-inner-gap-md: 2rem;
   --blockparty-inner-gap-sm: 1.5rem;
@@ -27,7 +27,8 @@
   --blockparty-hero-text-delay: 0.4s;
   --blockparty-hero-text-duration: 1s;
   --blockparty-hero-video-delay: calc(
-    var(--blockparty-hero-text-delay) + var(--blockparty-hero-text-duration) + 0.2s
+    var(--blockparty-hero-text-delay) + var(--blockparty-hero-text-duration) +
+      0.2s
   );
   padding-top: var(--case-study-spy-nav-top, 112px);
   padding-bottom: var(--blockparty-section-space-y);
@@ -1082,7 +1083,7 @@
 @media (min-width: 768px) {
   .blockparty-case-study {
     --blockparty-section-space-y: 5rem;
-    --blockparty-inner-gap-xl: 5rem;
+    --blockparty-inner-gap-xl: 6rem;
     --blockparty-inner-gap-lg: 3.5rem;
     --blockparty-inner-gap-md: 2.5rem;
   }
