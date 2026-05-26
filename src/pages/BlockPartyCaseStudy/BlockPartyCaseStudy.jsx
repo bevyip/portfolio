@@ -499,10 +499,11 @@ export default function BlockPartyCaseStudy() {
                         </p>
                         <p className="blockparty-story-p">
                           My original answer was a printed copy of their
-                          character. But every user testing session told me the{" "}
+                          character. But every user testing session told me the
+                          same thing —{" "}
                           <span className="font-semibold">
-                            same thing — people wanted to be able to revisit
-                            their characters after the experience.
+                            people wanted to be able to revisit their characters
+                            after the experience.
                           </span>
                         </p>
                         <p className="blockparty-story-p">
