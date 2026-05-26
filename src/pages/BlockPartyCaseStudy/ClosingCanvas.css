@@ -4,7 +4,6 @@
   --closing-tile-width: clamp(5.25rem, 24vw, 8.25rem);
   --closing-tile-gap: 0.5rem;
   --closing-tile-radius: var(--bento-card-radius, 4px);
-  --closing-lens-radius: 140px;
   container-type: inline-size;
   display: block;
   width: 100%;
@@ -46,7 +45,6 @@
   border-radius: var(--closing-tile-radius);
   overflow: hidden;
   transform-origin: center center;
-  will-change: transform;
   transition: none;
   pointer-events: none;
 }
@@ -66,7 +64,6 @@
     --closing-initial-zoom: 1.22;
     --closing-tile-width: 16rem;
     --closing-tile-gap: 0.625rem;
-    --closing-lens-radius: 180px;
   }
 
   .closing-canvas__world {
@@ -79,7 +76,6 @@
     --closing-initial-zoom: 1.52;
     --closing-tile-width: 20rem;
     --closing-tile-gap: 0.75rem;
-    --closing-lens-radius: 220px;
   }
 
   .closing-canvas__world {
@@ -90,9 +86,5 @@
 @media (prefers-reduced-motion: reduce) {
   .closing-canvas__viewport {
     cursor: default;
-  }
-
-  .closing-canvas__tile {
-    will-change: auto;
   }
 }

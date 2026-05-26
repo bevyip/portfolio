@@ -5,8 +5,6 @@ import "./ClosingCanvas.css";
 const IMAGE_COUNT = 24;
 const IMAGE_BASE = "/projects/block-party/closing";
 
-const DEFAULT_LENS_RADIUS = 220;
-const MAX_SCALE = 1.45;
 const DEFAULT_INITIAL_ZOOM = 1.52;
 const DRAG_SENSITIVITY = 1;
 const INERTIA_FRICTION = 0.92;
@@ -78,27 +76,6 @@ function clampPanToBounds(pan, bounds) {
   };
 }
 
-function lensTransform(tileCx, tileCy, cursorX, cursorY, radius, maxScale) {
-  const dx = cursorX - tileCx;
-  const dy = cursorY - tileCy;
-  const dist = Math.hypot(dx, dy);
-  if (dist >= radius) {
-    return { scale: 1, tx: 0, ty: 0, z: 1 };
-  }
-
-  const t = 1 - dist / radius;
-  const eased = t * t * (3 - 2 * t);
-  const scale = 1 + (maxScale - 1) * eased;
-  const pull = eased * 0.22;
-
-  return {
-    scale,
-    tx: dx * pull,
-    ty: dy * pull,
-    z: Math.round(10 + eased * 90),
-  };
-}
-
 function readCssNumber(rootEl, variable, fallback) {
   if (!rootEl) return fallback;
   const raw = getComputedStyle(rootEl).getPropertyValue(variable).trim();
@@ -114,17 +91,13 @@ export default function ClosingCanvas({ className = "" }) {
   const tileRefs = useRef([]);
   const panRef = useRef({ x: 0, y: 0 });
   const panStartRef = useRef({ x: 0, y: 0 });
-  const cursorRef = useRef({ x: 0, y: 0, active: false });
   const inertiaRafRef = useRef(null);
-  const lensRafRef = useRef(null);
-  const reducedMotionRef = useRef(false);
   const boundsRef = useRef({ minX: 0, maxX: 0, minY: 0, maxY: 0 });
   const hasInitializedViewRef = useRef(false);
   const draggingRef = useRef(false);
 
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [initialZoom, setInitialZoom] = useState(DEFAULT_INITIAL_ZOOM);
-  const [lensRadius, setLensRadius] = useState(DEFAULT_LENS_RADIUS);
 
   const updateBounds = useCallback(() => {
     const viewport = viewportRef.current;
@@ -139,50 +112,6 @@ export default function ClosingCanvas({ className = "" }) {
     setPan(clamped);
     return clamped;
   }, []);
-
-  const applyLens = useCallback(() => {
-    const { x, y, active } = cursorRef.current;
-    const tiles = tileRefs.current;
-
-    tiles.forEach((el) => {
-      if (!el) return;
-
-      if (!active || reducedMotionRef.current) {
-        el.style.transform = "";
-        el.style.zIndex = "";
-        return;
-      }
-
-      const rect = el.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const { scale, tx, ty, z } = lensTransform(
-        cx,
-        cy,
-        x,
-        y,
-        lensRadius,
-        MAX_SCALE,
-      );
-
-      if (scale <= 1.001) {
-        el.style.transform = "";
-        el.style.zIndex = "";
-        return;
-      }
-
-      el.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`;
-      el.style.zIndex = String(z);
-    });
-  }, [lensRadius]);
-
-  const scheduleLens = useCallback(() => {
-    if (lensRafRef.current) return;
-    lensRafRef.current = requestAnimationFrame(() => {
-      lensRafRef.current = null;
-      applyLens();
-    });
-  }, [applyLens]);
 
   const centerViewOnCollage = useCallback(() => {
     const viewport = viewportRef.current;
@@ -230,8 +159,7 @@ export default function ClosingCanvas({ className = "" }) {
     if (!draggingRef.current) {
       applyPan(panRef.current);
     }
-    scheduleLens();
-  }, [applyPan, centerViewOnCollage, scheduleLens, updateBounds]);
+  }, [applyPan, centerViewOnCollage, updateBounds]);
 
   const stopInertia = useCallback(() => {
     if (inertiaRafRef.current) {
@@ -264,13 +192,12 @@ export default function ClosingCanvas({ className = "" }) {
         if (clamped.x !== nextPan.x) velocityX = 0;
         if (clamped.y !== nextPan.y) velocityY = 0;
 
-        scheduleLens();
         inertiaRafRef.current = requestAnimationFrame(step);
       };
 
       inertiaRafRef.current = requestAnimationFrame(step);
     },
-    [applyPan, scheduleLens, stopInertia],
+    [applyPan, stopInertia],
   );
 
   useGesture(
@@ -291,7 +218,6 @@ export default function ClosingCanvas({ className = "" }) {
           x: panStartRef.current.x + mx * DRAG_SENSITIVITY,
           y: panStartRef.current.y + my * DRAG_SENSITIVITY,
         });
-        scheduleLens();
 
         if (last) {
           draggingRef.current = false;
@@ -327,23 +253,6 @@ export default function ClosingCanvas({ className = "" }) {
     { target: viewportRef, eventOptions: { passive: true } },
   );
 
-  const onPointerMove = useCallback(
-    (event) => {
-      cursorRef.current = {
-        x: event.clientX,
-        y: event.clientY,
-        active: true,
-      };
-      scheduleLens();
-    },
-    [scheduleLens],
-  );
-
-  const onPointerLeave = useCallback(() => {
-    cursorRef.current.active = false;
-    scheduleLens();
-  }, [scheduleLens]);
-
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
@@ -351,10 +260,6 @@ export default function ClosingCanvas({ className = "" }) {
     const syncZoom = () => {
       setInitialZoom((prev) => {
         const next = readCssNumber(canvas, "--closing-initial-zoom", DEFAULT_INITIAL_ZOOM);
-        return prev === next ? prev : next;
-      });
-      setLensRadius((prev) => {
-        const next = readCssNumber(canvas, "--closing-lens-radius", DEFAULT_LENS_RADIUS);
         return prev === next ? prev : next;
       });
     };
@@ -381,20 +286,8 @@ export default function ClosingCanvas({ className = "" }) {
   }, [images.length, syncLayout, initialZoom]);
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => {
-      reducedMotionRef.current = mq.matches;
-      scheduleLens();
-    };
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, [scheduleLens]);
-
-  useEffect(() => {
     return () => {
       stopInertia();
-      if (lensRafRef.current) cancelAnimationFrame(lensRafRef.current);
     };
   }, [stopInertia]);
 
@@ -402,14 +295,9 @@ export default function ClosingCanvas({ className = "" }) {
     <div
       ref={canvasRef}
       className={`closing-canvas${className ? ` ${className}` : ""}`}
-      aria-label="User testing and contributor photos — drag to pan, hover to magnify"
+      aria-label="User testing and contributor photos — drag to pan"
     >
-      <div
-        ref={viewportRef}
-        className="closing-canvas__viewport"
-        onPointerMove={onPointerMove}
-        onPointerLeave={onPointerLeave}
-      >
+      <div ref={viewportRef} className="closing-canvas__viewport">
         <div
           ref={worldRef}
           className="closing-canvas__world"

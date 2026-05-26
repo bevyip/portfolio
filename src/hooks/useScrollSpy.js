@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLenis } from "@studio-freight/react-lenis";
-
-const SCROLL_OFFSET = 140;
+import { CASE_STUDY_SCROLL_OFFSET } from "../constants/caseStudyScroll";
 
 export function useScrollSpy(sectionIds) {
   const lenis = useLenis();
@@ -24,7 +23,7 @@ export function useScrollSpy(sectionIds) {
 
         for (const id of stableSectionIds) {
           const el = document.getElementById(id);
-          if (el && el.getBoundingClientRect().top <= SCROLL_OFFSET) {
+          if (el && el.getBoundingClientRect().top <= CASE_STUDY_SCROLL_OFFSET) {
             currentId = id;
           }
         }

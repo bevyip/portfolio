@@ -165,6 +165,10 @@
     padding-left: 0;
     padding-right: 0;
   }
+
+  .case-study-layout__main [id] {
+    scroll-margin-top: 8.75rem;
+  }
 }
 
 @media (min-width: 1280px) {

@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { caseStudyNavConfig } from "../../data/caseStudyNavConfig";
+import { CASE_STUDY_SCROLL_OFFSET } from "../../constants/caseStudyScroll";
 import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { usePinnedSpyNav } from "../../hooks/usePinnedSpyNav";
 import { useScrollSpy } from "../../hooks/useScrollSpy";
@@ -19,17 +21,26 @@ function CaseStudySpyNav({
   const linkRefs = useRef([]);
   const sectionIds = sections.map((section) => section.id);
   const activeId = useScrollSpy(sectionIds);
-  const { scrollToTop, scrollToElement } = useLenisScroll();
+  const { lenis, scrollToTop, scrollToElement } = useLenisScroll();
   const pinStyle = usePinnedSpyNav(slotRef, layoutRef, navRef);
   const isBlockParty = projectId === "blockparty";
 
   const handleClick = (id, index) => {
     if (index === 0) {
-      scrollToTop({ duration: 1.2 });
+      scrollToTop({ duration: 1.2, force: true });
       return;
     }
     const el = document.getElementById(id);
-    scrollToElement(el, { offset: 0, duration: 1.2 });
+    if (!el) return;
+
+    ScrollTrigger.refresh();
+    lenis?.resize?.();
+
+    scrollToElement(el, {
+      offset: -CASE_STUDY_SCROLL_OFFSET,
+      duration: 1.2,
+      force: true,
+    });
   };
 
   return (

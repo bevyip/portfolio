@@ -27,12 +27,13 @@ export function useLenisScroll() {
   const scrollToElement = useCallback(
     (el, opts = {}) => {
       if (!el) return;
-      const { offset = 0, duration = 1.2, immediate = false } = opts;
+      const { offset = 0, duration = 1.2, immediate = false, force } = opts;
       if (lenis) {
         lenis.scrollTo(el, {
           offset,
           duration: immediate ? 0 : duration,
           immediate: !!immediate,
+          ...(force !== undefined && { force }),
         });
       } else {
         el.scrollIntoView({
