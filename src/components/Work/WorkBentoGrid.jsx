@@ -11,7 +11,7 @@ const workProjects = [
     id: "confido-approval-flow",
     title: "Rebuilding Confido's Approval Flow",
     role: "Product Designer & Engineer",
-    tags: ["Web", "Design Systems", "Enterprise Software"],
+    tags: ["Design Systems", "Enterprise Software"],
     summary:
       "Redesigning approval workflows with smarter logic and clearer audit trails for improved enterprise usability.",
     video: "/work/confido/thumbnail.mp4",
@@ -22,7 +22,7 @@ const workProjects = [
     id: "dandi-bio-smart-wearable",
     title: "Dandi: A Bio-Smart Wearable for PCOS",
     role: "Product Designer & Engineer",
-    tags: ["Mobile", "Wearable", "Women's Health"],
+    tags: ["Wearable", "Women's Health"],
     summary:
       "Making hormonal health accessible for women through emotionally-resonant design and real-time biosensing.",
     video: "/work/dandi/thumbnail.mp4",
@@ -34,7 +34,7 @@ const workProjects = [
     id: "moodle-pain-detection",
     title: "Moodle: AI-Powered Feline Pain Detection for Cat Owners",
     role: "Product Designer",
-    tags: ["Mobile", "User Research", "AI/ML"],
+    tags: ["UX Research", "AI/ML"],
     summary:
       "Making clinical-grade pain monitoring accessible to cat owners through intuitive mobile design and privacy-first AI.",
     video: "/work/moodle/thumbnail.mp4",
@@ -45,10 +45,10 @@ const workProjects = [
     id: "venmo-privacy-controls",
     title: "Redesigning Venmo's Privacy Controls",
     role: "Product Designer",
-    tags: ["Mobile", "User Research", "FinTech"],
+    tags: ["UX Research", "FinTech"],
     summary:
       "Transforming Venmo's public-by-default privacy model to help users make informed choices without confusion.",
-    video: "/work/venmo/thumbnail1.mp4",
+    video: "/work/venmo/thumbnail.mp4",
     thumbnailImage: "/work/venmo/thumbnail-frame.jpg",
     category: "case-study",
   },
@@ -61,8 +61,13 @@ const routeMap = {
   "dandi-bio-smart-wearable": "/dandi",
 };
 
-/** Single work card (same visuals as before, inlined from WorkBentoItem) */
-function WorkCard({ project, onHoverChange, onVideoReady }) {
+/** Single work card (full layout on Work page; compact footer on Home) */
+function WorkCard({
+  project,
+  onHoverChange,
+  onVideoReady,
+  compactLayout = false,
+}) {
   const videoRef = useRef(null);
   const readyFired = useRef(false);
   const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 768);
@@ -115,47 +120,76 @@ function WorkCard({ project, onHoverChange, onVideoReady }) {
     return () => observer.disconnect();
   }, [videoSource, useThumbnailImage, isMobile]);
 
-  const cardClassName =
-    "work-bento-item group relative overflow-hidden rounded-[8px] bg-[#1a1a1a] shadow-[0_2px_8px_rgba(0,0,0,0.3)] min-[1026px]:hover:shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out h-full min-h-[200px] flex flex-col case-study-card";
+  const cardClassName = compactLayout
+    ? "work-bento-item group relative work-bento-item--compact case-study-card block no-underline text-inherit cursor-pointer"
+    : "work-bento-item group relative overflow-hidden rounded-[var(--bento-card-radius)] bg-[#1a1a1a] shadow-[0_2px_8px_rgba(0,0,0,0.3)] min-[1026px]:hover:shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out h-full min-h-[200px] flex flex-col case-study-card";
 
-  const content = (
-    <>
-      <div className="work-bento-image-container">
-        {useThumbnailImage ? (
+  const mediaBlock = (
+    <div
+      className={`work-bento-image-container${compactLayout ? " work-bento-image-container--compact" : ""}`}
+    >
+      {useThumbnailImage ? (
+        <img
+          src={project.thumbnailImage}
+          alt={project.title}
+          className="work-bento-image"
+          loading="lazy"
+          onLoad={handleVideoReady}
+        />
+      ) : videoSource ? (
+        <video
+          ref={videoRef}
+          src={videoSource}
+          className="work-bento-image"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+          controls={false}
+          aria-label={project.title}
+          onCanPlay={handleVideoReady}
+          onLoadedData={handleVideoReady}
+        />
+      ) : (
+        project.image && (
           <img
-            src={project.thumbnailImage}
+            src={project.image}
             alt={project.title}
             className="work-bento-image"
             loading="lazy"
             onLoad={handleVideoReady}
           />
-        ) : videoSource ? (
-          <video
-            ref={videoRef}
-            src={videoSource}
-            className="work-bento-image"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="none"
-            controls={false}
-            aria-label={project.title}
-            onCanPlay={handleVideoReady}
-            onLoadedData={handleVideoReady}
-          />
-        ) : (
-          project.image && (
-            <img
-              src={project.image}
-              alt={project.title}
-              className="work-bento-image"
-              loading="lazy"
-              onLoad={handleVideoReady}
-            />
-          )
-        )}
+        )
+      )}
+      {compactLayout && project.awardLine ? (
+        <span className="work-bento-compact-award-pill">
+          {project.awardLine}
+        </span>
+      ) : null}
+      {compactLayout && project.tags.length > 0 ? (
+        <div className="work-bento-compact-tags">
+          {project.tags.map((tag, index) => (
+            <span key={index} className="work-bento-compact-tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+
+  const content = compactLayout ? (
+    <>
+      {mediaBlock}
+      <div className="work-bento-compact-footer">
+        <h3 className="work-bento-compact-title">{project.title}</h3>
+        <p className="work-bento-compact-role">{project.role}</p>
       </div>
+    </>
+  ) : (
+    <>
+      {mediaBlock}
       <div
         className={`work-bento-content case-study-visible${
           project.awardLine ? " work-bento-content--with-award" : ""
@@ -213,6 +247,7 @@ const WorkBentoGrid = ({
   gridClassName = "work-bento-grid",
   containerRef,
   onReady,
+  compactLayout = false,
 }) => {
   const [localHover, setLocalHover] = useState(false);
   const isHovering =
@@ -250,6 +285,7 @@ const WorkBentoGrid = ({
           project={project}
           onHoverChange={handleHover}
           onVideoReady={handleVideoReady}
+          compactLayout={compactLayout}
         />
       ))}
     </div>

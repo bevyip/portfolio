@@ -74,8 +74,8 @@ export async function initGrassGlobe(container, options = {}) {
   controls.enablePan = false;
   controls.target.set(0, 0, 0);
   const baseCameraDistance = camera.position.distanceTo(controls.target);
-  const defaultCameraDistance = baseCameraDistance * 1.18;
-  controls.minDistance = baseCameraDistance * 0.82;
+  const defaultCameraDistance = baseCameraDistance * 1.02;
+  controls.minDistance = baseCameraDistance * 0.72;
   controls.maxDistance = defaultCameraDistance;
   camera.position.normalize().multiplyScalar(defaultCameraDistance);
   controls.update();

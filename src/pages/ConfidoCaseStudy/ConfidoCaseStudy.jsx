@@ -8,6 +8,7 @@ import { useCountupAnimation } from "../../hooks/useCountupAnimation";
 import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
 import CursorPill from "../../components/CursorPill/CursorPill";
+import CaseStudyLayout from "../../components/CaseStudyLayout/CaseStudyLayout";
 import "./ConfidoCaseStudy.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -236,6 +237,7 @@ const ConfidoCaseStudy = () => {
   return (
     <div className="confido-case-study">
       <CursorPill isHovering={isHoveringSeeNextCard} text="View case study" />
+      <CaseStudyLayout projectId="confido">
       {/* Hero Section */}
       <section className="confido-hero-section">
         {/* Hero Before Image - Visual welcome */}
@@ -325,7 +327,7 @@ const ConfidoCaseStudy = () => {
       </section>
 
       {/* Context Section */}
-      <section className="confido-context-section">
+      <section id="confido-context" className="confido-context-section">
         <div className="confido-context-content">
           {/* Top Row - Two Columns */}
           <div className="confido-context-top">
@@ -438,7 +440,7 @@ const ConfidoCaseStudy = () => {
       </section>
 
       {/* Problem Section */}
-      <section className="confido-problem-section">
+      <section id="confido-problem" className="confido-problem-section">
         <div className="confido-problem-content">
           {/* Problem #1 */}
           <div className="confido-problem-item">
@@ -554,7 +556,7 @@ const ConfidoCaseStudy = () => {
       </section>
 
       {/* Research Section */}
-      <section className="confido-research-section">
+      <section id="confido-research" className="confido-research-section">
         <div className="confido-research-content">
           <h3 className="confido-research-title" ref={researchTitleRef}>
             RESEARCH
@@ -625,7 +627,7 @@ const ConfidoCaseStudy = () => {
       </section>
 
       {/* Design Approach Section */}
-      <section className="confido-design-approach-section">
+      <section id="confido-design-approach" className="confido-design-approach-section">
         <div className="confido-design-approach-content">
           <h3
             className="confido-design-approach-title"
@@ -909,7 +911,7 @@ const ConfidoCaseStudy = () => {
       </section>
 
       {/* Reflection Section */}
-      <section className="confido-reflection-section">
+      <section id="confido-reflection" className="confido-reflection-section">
         <div className="confido-reflection-content">
           <h3 className="confido-reflection-title" ref={reflectionTitleRef}>
             REFLECTION
@@ -934,7 +936,7 @@ const ConfidoCaseStudy = () => {
       </section>
 
       {/* See Next Section */}
-      <section className="confido-see-next-section">
+      <section id="confido-see-next" className="confido-see-next-section">
         <div className="confido-see-next-content">
           <h3 className="confido-see-next-title" ref={seeNextTitleRef}>
             SEE NEXT
@@ -1032,6 +1034,7 @@ const ConfidoCaseStudy = () => {
         </div>
       </section>
 
+      </CaseStudyLayout>
       <Footer />
     </div>
   );

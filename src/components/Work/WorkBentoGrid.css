@@ -8,8 +8,8 @@
   --work-bento-row-h: 480px;
 }
 
-/* Tablet: keep single column; 2 columns from desktop only */
-@media (min-width: 1024px) {
+/* Single column through 1024px; 2 columns from 1025px */
+@media (min-width: 1025px) {
   .work-bento-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;

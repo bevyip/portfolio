@@ -59,7 +59,7 @@ const PlayBentoGrid = ({
   onProjectClick,
   sectionIntro = null,
 }) => {
-  const [isHoveringCard, setIsHoveringCard] = useState(false);
+  const [hoveredCaseStudyId, setHoveredCaseStudyId] = useState(null);
   const activeFilter = "all";
   const [posterOnly, setPosterOnly] = useState(() =>
     typeof window !== "undefined" ? window.matchMedia(POSTER_ONLY_MEDIA).matches : false
@@ -131,13 +131,22 @@ const PlayBentoGrid = ({
         posterOnly={posterOnly}
         onRequestPlay={requestPlay}
         onNotifyPause={notifyPause}
+        onMouseEnter={() => {
+          if (project.caseStudyRoute) setHoveredCaseStudyId(project.id);
+        }}
+        onMouseLeave={() => {
+          if (project.caseStudyRoute) setHoveredCaseStudyId(null);
+        }}
       />
     );
   });
 
   return (
     <>
-      <CursorPill isHovering={isHoveringCard} text="View project" />
+      <CursorPill
+        isHovering={hoveredCaseStudyId !== null}
+        text="View case study"
+      />
       {sectionIntro != null ? (
         <div className="home-play-bento-intro-outside">{sectionIntro}</div>
       ) : null}

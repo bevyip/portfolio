@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { experiences } from "../../data/experiences";
 
 import TimelineItem from "./TimelineItem";
-import AwardsGrid from "../AwardsGrid/AwardsGrid";
+import AwardsRack from "../AwardsRack/AwardsRack";
 import "./ExperienceTimeline.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -64,7 +64,7 @@ const ExperienceTimeline = ({ revealEarlier = false }) => {
             duration: itemDuration,
             ease: "ease-out",
           },
-          startTime // Position in timeline based on stagger
+          startTime, // Position in timeline based on stagger
         );
       });
     }, 100);
@@ -83,7 +83,7 @@ const ExperienceTimeline = ({ revealEarlier = false }) => {
       id="experience-timeline-section"
       className="experience-timeline-section"
     >
-      <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="page-content-shell">
         <header ref={headerRef} className="md:mb-16">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-10">
             <h2 className="experience-timeline-title">
@@ -118,8 +118,8 @@ const ExperienceTimeline = ({ revealEarlier = false }) => {
           ))}
         </div>
 
-        {/* Awards and Certifications Grid */}
-        <AwardsGrid />
+        {/* Awards — two-tier vinyl rack */}
+        <AwardsRack />
       </div>
     </section>
   );

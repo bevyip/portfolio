@@ -16,6 +16,7 @@ import ConfidoCaseStudy from "./pages/ConfidoCaseStudy/ConfidoCaseStudy";
 import DandiCaseStudy from "./pages/DandiCaseStudy/DandiCaseStudy";
 import PixelCatPage from "./pages/PixelCat/PixelCat";
 import PlantYourFlower from "./pages/PlantYourFlower/PlantYourFlower";
+import BlockPartyCaseStudy from "./pages/BlockPartyCaseStudy/BlockPartyCaseStudy";
 import NotFound from "./pages/NotFound/NotFound";
 import "./App.css";
 
@@ -88,6 +89,7 @@ function App() {
             <Route path="/dandi" element={<DandiCaseStudy />} />
             <Route path="/pixel-cat" element={<PixelCatPage />} />
             <Route path="/flower" element={<PlantYourFlower />} />
+            <Route path="/blockparty" element={<BlockPartyCaseStudy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

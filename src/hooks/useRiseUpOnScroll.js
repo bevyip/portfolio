@@ -23,6 +23,11 @@ export default function useRiseUpOnScroll(ref, options = {}) {
   useEffect(() => {
     if (!ref?.current) return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.set(ref.current, { opacity: 1, y: 0 });
+      return;
+    }
+
     gsap.set(ref.current, { opacity: 0, y: 30 });
 
     if (triggerOnMount) {

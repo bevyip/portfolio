@@ -4,34 +4,54 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Matches Nav: 90rem cap + px-6 sm:px-8 lg:px-12 (use var — @apply max-w-content is not resolved here) */
+@layer utilities {
+  .font-semibold {
+    font-weight: 500;
+  }
+}
+
+/* Unified content shell: --page-max-width + --page-gutter-x (shared with max-w-content) */
 @layer components {
   .page-content-shell {
     max-width: var(--page-max-width);
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  @media (min-width: 640px) {
-    .page-content-shell {
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .page-content-shell {
-      padding-left: 3rem;
-      padding-right: 3rem;
-    }
+    padding-left: var(--page-gutter-x);
+    padding-right: var(--page-gutter-x);
   }
 }
 
 @layer base {
   :root {
-    --page-max-width: 90rem; /* 1440px — unified content width (was 70–80rem / 1200px) */
+    --page-max-width: 110rem; /* 1760px — wide content shell */
+    --page-gutter-x: 1.5rem;
+    --bento-card-radius: 4px;
+    --case-study-body-size: 1rem;
+    --case-study-body-line-height: 1.6;
+    --case-study-body-weight: 300;
+    --case-study-label-size: 0.7rem;
+    --case-study-label-weight: 400;
+    --case-study-label-tracking: 0.05em;
+    --case-study-label-color: #666;
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --page-gutter-x: 2rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --case-study-body-size: 1.125rem;
+      --case-study-label-size: 0.875rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --case-study-body-size: 1.25rem;
+    }
   }
 
   html,
@@ -63,4 +83,19 @@ html.lenis {
 
 .lenis.lenis-stopped {
   overflow: hidden;
+}
+
+body.dg-scroll-lock {
+  overflow: hidden;
+}
+
+/* See Next cards: single column through 1024px, three-up above */
+@media (min-width: 1025px) {
+  .confido-see-next-grid,
+  .venmo-see-next-grid,
+  .moodle-see-next-grid,
+  .dandi-see-next-grid,
+  .wholefoods-see-next-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

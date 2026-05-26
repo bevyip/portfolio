@@ -41,6 +41,6 @@ export const experiences = [
     timeframe: "March 2020 – July 2023",
     imageUrl: salesforceExp,
     link: "https://www.salesforce.com",
-    description: "Back when I lived and breathed code 😳",
+    description: "Back when I lived and breathed code (⸝⸝>﹏<⸝⸝)",
   },
 ];

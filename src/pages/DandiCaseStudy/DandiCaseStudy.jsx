@@ -7,6 +7,7 @@ import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
 import CursorPill from "../../components/CursorPill/CursorPill";
+import CaseStudyLayout from "../../components/CaseStudyLayout/CaseStudyLayout";
 import "./DandiCaseStudy.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -185,6 +186,7 @@ const DandiCaseStudy = () => {
   return (
     <div className="dandi-case-study">
       <CursorPill isHovering={isHoveringSeeNextCard} text="View case study" />
+      <CaseStudyLayout projectId="dandi">
       <section className="dandi-hero-section">
         <div className="dandi-hero-image-container dandi-hero-before">
           <img
@@ -273,6 +275,7 @@ const DandiCaseStudy = () => {
       </section>
 
       <section
+        id="dandi-context"
         className="dandi-context-section"
         aria-labelledby="dandi-context-heading"
       >
@@ -349,6 +352,7 @@ const DandiCaseStudy = () => {
       </section>
 
       <section
+        id="dandi-where-we-began"
         className="dandi-where-we-began-section"
         aria-labelledby="dandi-where-we-began-heading"
       >
@@ -406,6 +410,7 @@ const DandiCaseStudy = () => {
       </section>
 
       <section
+        id="dandi-what-we-found"
         className="dandi-what-we-found-section"
         aria-labelledby="dandi-what-we-found-heading"
       >
@@ -578,7 +583,7 @@ const DandiCaseStudy = () => {
       </section>
 
       {/* Next Steps Section */}
-      <section className="dandi-next-steps-section">
+      <section id="dandi-next-steps" className="dandi-next-steps-section">
         <div className="dandi-next-steps-content">
           <h3 className="dandi-solution-title" ref={nextStepsTitleRef}>
             WHAT&apos;S NEXT FOR DANDI
@@ -601,7 +606,7 @@ const DandiCaseStudy = () => {
       </section>
 
       {/* Key Takeaway Section */}
-      <section className="dandi-takeaways-section">
+      <section id="dandi-takeaways" className="dandi-takeaways-section">
         <div className="dandi-takeaways-content">
           <h3 className="dandi-solution-title" ref={takeawaysTitleRef}>
             KEY TAKEAWAY
@@ -620,7 +625,7 @@ const DandiCaseStudy = () => {
       </section>
 
       {/* Learn More Section */}
-      <section className="dandi-learn-more-section">
+      <section id="dandi-learn-more" className="dandi-learn-more-section">
         <div className="dandi-learn-more-content">
           <div className="dandi-solution-learn-more">
             <h4
@@ -690,7 +695,7 @@ const DandiCaseStudy = () => {
         </div>
       </section>
 
-      <section className="dandi-see-next-section">
+      <section id="dandi-see-next" className="dandi-see-next-section">
         <div className="dandi-see-next-content">
           <h3 className="dandi-see-next-title" ref={seeNextTitleRef}>
             SEE NEXT
@@ -793,6 +798,7 @@ const DandiCaseStudy = () => {
         </div>
       </section>
 
+      </CaseStudyLayout>
       <Footer />
     </div>
   );

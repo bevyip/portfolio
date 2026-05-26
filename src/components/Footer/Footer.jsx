@@ -43,7 +43,7 @@ const Footer = () => {
         hour12: true,
       };
       const time = now.toLocaleTimeString("en-US", options);
-      setTimeString(`© BEVERLY YIP | ${time} EST`);
+      setTimeString(`© BEVERLY YIP | ${time} ET`);
     };
 
     updateClock();
@@ -57,7 +57,13 @@ const Footer = () => {
     const titleElement = titleRef.current;
     const subtitleElement = subtitleRef.current;
     const socialLinksContainer = socialLinksRef.current;
-    if (!container || !titleElement || !subtitleElement || !socialLinksContainer) return;
+    if (
+      !container ||
+      !titleElement ||
+      !subtitleElement ||
+      !socialLinksContainer
+    )
+      return;
 
     const links = socialLinksContainer.querySelectorAll(".social-link");
     let splitInstance = null;
@@ -85,7 +91,7 @@ const Footer = () => {
         .to(
           subtitleElement,
           { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-          "-=0.3"
+          "-=0.3",
         )
         .to(
           links,
@@ -96,7 +102,7 @@ const Footer = () => {
             stagger: 0.05,
             ease: "power2.out",
           },
-          "-=0.2"
+          "-=0.2",
         );
 
       scrollTrigger = ScrollTrigger.create({
@@ -143,7 +149,12 @@ const Footer = () => {
             className="social-link"
             aria-label="LinkedIn (opens in new tab)"
           >
-            <Linkedin className="social-logo" size={22} strokeWidth={1.75} aria-hidden />
+            <Linkedin
+              className="social-logo"
+              size={18}
+              strokeWidth={1.75}
+              aria-hidden
+            />
             <span className="arrow" aria-hidden>
               ↗
             </span>
@@ -155,7 +166,12 @@ const Footer = () => {
             className="social-link"
             aria-label="GitHub (opens in new tab)"
           >
-            <Github className="social-logo" size={22} strokeWidth={1.75} aria-hidden />
+            <Github
+              className="social-logo"
+              size={18}
+              strokeWidth={1.75}
+              aria-hidden
+            />
             <span className="arrow" aria-hidden>
               ↗
             </span>
@@ -167,7 +183,7 @@ const Footer = () => {
             className="social-link"
             aria-label="X (opens in new tab)"
           >
-            <XLogo size={20} className="social-logo social-logo--x" />
+            <XLogo size={17} className="social-logo social-logo--x" />
             <span className="arrow" aria-hidden>
               ↗
             </span>
@@ -177,7 +193,12 @@ const Footer = () => {
             className="social-link"
             aria-label="Email"
           >
-            <Mail className="social-logo" size={22} strokeWidth={1.75} aria-hidden />
+            <Mail
+              className="social-logo"
+              size={18}
+              strokeWidth={1.75}
+              aria-hidden
+            />
             <span className="arrow" aria-hidden>
               ↗
             </span>

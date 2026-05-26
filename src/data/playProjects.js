@@ -13,32 +13,12 @@ export const playProjects = [
     theme: "white",
     tags: ["Gemini AI", "Interactive Installation", "Play"],
     category: "digital",
+    caseStudyRoute: "/blockparty",
     media: {
       video: vid("v1778184515/block-party-demo_ghi2oo"),
       poster: "/projects/block-party/poster.jpg",
     },
-    actions: [
-      {
-        type: "live",
-        tooltip: "View App",
-        url: "https://block-party-thesis.vercel.app",
-      },
-      {
-        type: "thesis",
-        tooltip: "View Project Overview",
-        url: "https://itp.nyu.edu/thesis/archive/2026/12338-beverly-yip/",
-      },
-      {
-        type: "video",
-        tooltip: "Watch Thesis Presentation",
-        url: "https://vimeo.com/1190889138",
-      },
-      {
-        type: "notion",
-        tooltip: "View Documentation",
-        url: "https://bevyip.notion.site/block-party-thesis?source=copy_link",
-      },
-    ],
+    actions: [],
   },
   {
     id: "floral-jukebox",

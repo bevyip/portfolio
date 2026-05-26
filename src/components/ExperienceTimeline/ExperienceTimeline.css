@@ -10,6 +10,13 @@
 }
 
 @media (min-width: 768px) {
+  .experience-timeline-row-arrow {
+    width: 2.5rem;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) {
   .experience-timeline-section {
     padding-top: 4rem;
     padding-bottom: 6rem;

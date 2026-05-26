@@ -26,9 +26,9 @@
 }
 
 .container {
-  max-width: 90rem;
+  max-width: var(--page-max-width);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--page-gutter-x);
 }
 
 .section h1 {
@@ -63,6 +63,6 @@
   }
 
   .container {
-    padding: 0 1rem;
+    padding: 0 var(--page-gutter-x);
   }
 }

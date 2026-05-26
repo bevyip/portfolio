@@ -142,6 +142,7 @@ const Nav = () => {
     "/wholefoods",
     "/confido",
     "/dandi",
+    "/blockparty",
   ];
   const NAV_FADE_DELAY = isDefaultHomePath(location.pathname)
     ? LANDING_NAV_DELAY

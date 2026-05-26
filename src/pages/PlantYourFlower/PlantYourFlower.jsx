@@ -164,7 +164,7 @@ export default function PlantYourFlower() {
                 onClick={() => setModalOpen(true)}
                 disabled={flowers === null || isPlanting}
               >
-                Plant my flower
+                Plant your flower
               </button>
             </div>
           </div>

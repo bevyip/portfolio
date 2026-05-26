@@ -193,6 +193,7 @@ const Home = () => {
             }}
           >
             <WorkBentoGrid
+              compactLayout
               gridClassName="home-case-study-grid"
               onHoverChange={setIsHoveringWorkCard}
               isHoveringWorkCard={isHoveringWorkCard}

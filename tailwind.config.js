@@ -4,8 +4,10 @@ export default {
   theme: {
     extend: {
       maxWidth: {
-        /* Site content width: one step above Tailwind 7xl (80rem / 1280px) */
-        content: "90rem",
+        content: "var(--page-max-width)",
+      },
+      fontWeight: {
+        semibold: "500",
       },
       fontFamily: {
         sans: [
@@ -25,7 +27,3 @@ export default {
   },
   plugins: [],
 };
-
-
-
-

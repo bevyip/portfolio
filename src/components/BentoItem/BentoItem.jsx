@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 import {
   ExternalLink,
   Github,
@@ -112,7 +113,15 @@ const BentoItem = ({
   onRequestPlay,
   onNotifyPause,
 }) => {
-  const { id, theme = "white", tags, actions, size, media } = project;
+  const {
+    id,
+    theme = "white",
+    tags,
+    actions,
+    size,
+    media,
+    caseStudyRoute,
+  } = project;
   const [isMediaLoaded, setIsMediaLoaded] = useState(false);
   const [videoInView, setVideoInView] = useState(false);
   const [iframeReady, setIframeReady] = useState(false);
@@ -148,11 +157,10 @@ const BentoItem = ({
 
   const handleCardClick = useCallback(
     (e) => {
-      if (!hasIframe) {
-        onClick?.(project);
-      }
+      if (caseStudyRoute || hasIframe) return;
+      onClick?.(project);
     },
-    [hasIframe, onClick, project],
+    [caseStudyRoute, hasIframe, onClick, project],
   );
 
   // Set CSS custom properties for grid positioning
@@ -300,10 +308,8 @@ const BentoItem = ({
     return () => observer.disconnect();
   }, [hasIframe, iframeReady]);
 
-  return (
-    <div
-      className={`
-        bento-item group relative overflow-hidden rounded-[8px]
+  const cardClassName = `
+        bento-item group relative overflow-hidden rounded-[var(--bento-card-radius)]
         ${isBlack ? "bg-black border-gray-800" : "bg-white border-gray-200"}
         border
         shadow-[0_2px_8px_rgba(0,0,0,0.04)]
@@ -315,29 +321,40 @@ const BentoItem = ({
         transition-[box-shadow,transform] duration-300 ease-out
         h-full min-h-[200px]
         ${sizeClasses[size] || ""}
-      `}
-      style={gridStyle}
-      data-grid-col={gridPosition?.col}
-      data-grid-col-span={gridPosition?.colSpan ?? 1}
-      data-grid-row-start={gridPosition?.rowStart}
-      data-grid-row-end={gridPosition?.rowEnd}
-      data-size={size}
-      onClick={handleCardClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
+        ${caseStudyRoute ? "block no-underline text-inherit cursor-pointer" : ""}
+      `;
+
+  const cardProps = {
+    className: cardClassName,
+    style: gridStyle,
+    "data-grid-col": gridPosition?.col,
+    "data-grid-col-span": gridPosition?.colSpan ?? 1,
+    "data-grid-row-start": gridPosition?.rowStart,
+    "data-grid-row-end": gridPosition?.rowEnd,
+    "data-size": size,
+    onMouseEnter,
+    onMouseLeave,
+  };
+
+  const CardWrapper = caseStudyRoute ? Link : "div";
+  const wrapperProps = caseStudyRoute
+    ? { ...cardProps, to: caseStudyRoute }
+    : { ...cardProps, onClick: handleCardClick };
+
+  return (
+    <CardWrapper {...wrapperProps}>
       {/* LQIP background — always rendered instantly from the inline base64 string.
           Crossfades to the real media once it's decoded and ready. */}
       {lqip && (
         <div
-          className="absolute inset-0 rounded-[8px] overflow-hidden"
+          className="absolute inset-0 rounded-[var(--bento-card-radius)] overflow-hidden"
           style={{ zIndex: 0 }}
           aria-hidden="true"
         >
           <img
             src={lqip}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover rounded-[8px]"
+            className="absolute inset-0 w-full h-full object-cover rounded-[var(--bento-card-radius)]"
             style={{ filter: "blur(12px)", transform: "scale(1.05)" }}
           />
         </div>
@@ -346,7 +363,7 @@ const BentoItem = ({
       {/* Fallback skeleton for cards without an lqip yet */}
       {!lqip && hasMedia && (
         <div
-          className="absolute inset-0 rounded-[8px] pointer-events-none"
+          className="absolute inset-0 rounded-[var(--bento-card-radius)] pointer-events-none"
           style={{
             opacity: isMediaLoaded ? 0 : 1,
             transition: "opacity 0.4s ease",
@@ -360,7 +377,7 @@ const BentoItem = ({
       {/* Real media crossfade overlay — fades in over the LQIP once loaded */}
       {hasMedia && (
         <div
-          className="absolute inset-0 rounded-[8px] pointer-events-none"
+          className="absolute inset-0 rounded-[var(--bento-card-radius)] pointer-events-none"
           style={{
             opacity: isMediaLoaded ? 1 : 0,
             transition: "opacity 0.5s ease",
@@ -374,12 +391,12 @@ const BentoItem = ({
       {showVideoBlock && (
         <div
           ref={videoContainerRef}
-          className="absolute inset-0 w-full h-full rounded-[8px] overflow-hidden"
+          className="absolute inset-0 w-full h-full rounded-[var(--bento-card-radius)] overflow-hidden"
           style={{ zIndex: 3 }}
         >
           {hasPoster && (
             <img
-              className="absolute inset-0 w-full h-full object-cover rounded-[8px] pointer-events-none"
+              className="absolute inset-0 w-full h-full object-cover rounded-[var(--bento-card-radius)] pointer-events-none"
               src={media.poster}
               alt=""
               decoding="async"
@@ -393,7 +410,7 @@ const BentoItem = ({
           )}
           <video
             ref={videoRef}
-            className="absolute inset-0 w-full h-full object-cover rounded-[8px]"
+            className="absolute inset-0 w-full h-full object-cover rounded-[var(--bento-card-radius)]"
             data-src={media.video}
             loop
             muted
@@ -410,13 +427,13 @@ const BentoItem = ({
           Before ready, a plain div acts as the observation target. */}
       {!showVideoBlock && hasIframe && (
         <div
-          className="absolute inset-0 w-full h-full rounded-[8px]"
+          className="absolute inset-0 w-full h-full rounded-[var(--bento-card-radius)]"
           style={{ zIndex: 3 }}
         >
           {iframeReady ? (
             <iframe
               ref={iframeRef}
-              className="absolute inset-0 w-full h-full rounded-[8px] border-0"
+              className="absolute inset-0 w-full h-full rounded-[var(--bento-card-radius)] border-0"
               src={media.iframe}
               title=""
               onLoad={setMediaLoadedDeferred}
@@ -425,14 +442,14 @@ const BentoItem = ({
             /* Observation target div — becomes the iframe once in range */
             <div
               ref={iframeObserverTargetRef}
-              className="absolute inset-0 rounded-[8px]"
+              className="absolute inset-0 rounded-[var(--bento-card-radius)]"
             />
           )}
           {/* Layer above iframe with pointer-events: none so the iframe is interactive immediately.
               Card group-hover still shows tags/actions when cursor is over the iframe. */}
           {iframeReady && (
             <div
-              className="absolute inset-0 z-[9] rounded-[8px]"
+              className="absolute inset-0 z-[9] rounded-[var(--bento-card-radius)]"
               style={{ pointerEvents: "none" }}
               aria-hidden="true"
             />
@@ -444,7 +461,7 @@ const BentoItem = ({
       {!showVideoBlock && !hasIframe && (hasImage || posterOnlyImage) && (
         <img
           ref={posterImgRef}
-          className="absolute inset-0 w-full h-full object-cover rounded-[8px]"
+          className="absolute inset-0 w-full h-full object-cover rounded-[var(--bento-card-radius)]"
           src={media.image || media.thumbnail || media.poster}
           alt=""
           decoding="async"
@@ -467,7 +484,7 @@ const BentoItem = ({
           <span
             key={index}
             className={`
-              px-3 py-1.5 rounded-[4px]
+              px-3 py-1.5 rounded-[var(--bento-card-radius)]
               text-xs font-medium
               shadow-sm
               transition-all duration-200
@@ -523,7 +540,7 @@ const BentoItem = ({
           );
         })}
       </div>
-    </div>
+    </CardWrapper>
   );
 };
 

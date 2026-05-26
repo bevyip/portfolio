@@ -1257,11 +1257,6 @@
     font-size: 0.875rem;
   }
 
-  .venmo-see-next-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-  }
-
   .venmo-see-next-card-title {
     font-size: 1.5rem;
   }

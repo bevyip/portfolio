@@ -8,6 +8,7 @@ import { useCountupAnimation } from "../../hooks/useCountupAnimation";
 import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
 import CursorPill from "../../components/CursorPill/CursorPill";
+import CaseStudyLayout from "../../components/CaseStudyLayout/CaseStudyLayout";
 import "./MoodleCaseStudy.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -285,6 +286,7 @@ const MoodleCaseStudy = () => {
   return (
     <div className="moodle-case-study">
       <CursorPill isHovering={isHoveringSeeNextCard} text="View case study" />
+      <CaseStudyLayout projectId="moodle">
       {/* Hero Section */}
       <section className="moodle-hero-section">
         {/* Hero Before Image - Visual welcome */}
@@ -370,7 +372,7 @@ const MoodleCaseStudy = () => {
       </section>
 
       {/* Context Section */}
-      <section className="moodle-context-section">
+      <section id="moodle-context" className="moodle-context-section">
         <div className="moodle-context-content">
           {/* Top Row - Two Columns */}
           <div className="moodle-context-top">
@@ -522,7 +524,7 @@ const MoodleCaseStudy = () => {
       </section>
 
       {/* Research Section */}
-      <section className="moodle-research-section">
+      <section id="moodle-research" className="moodle-research-section">
         <div className="moodle-research-content">
           <h3 className="moodle-research-title" ref={researchTitleRef}>
             RESEARCH
@@ -889,7 +891,7 @@ const MoodleCaseStudy = () => {
       </section>
 
       {/* Validation Study Section */}
-      <section className="moodle-validation-section">
+      <section id="moodle-validation" className="moodle-validation-section">
         <div className="moodle-validation-content">
           <h3 className="moodle-validation-title" ref={validationTitleRef}>
             VALIDATION STUDY
@@ -971,7 +973,7 @@ const MoodleCaseStudy = () => {
       </section>
 
       {/* Next Steps Section */}
-      <section className="moodle-next-steps-section">
+      <section id="moodle-next-steps" className="moodle-next-steps-section">
         <div className="moodle-next-steps-content">
           <h3 className="moodle-next-steps-title" ref={nextStepsTitleRef}>
             WHERE MOODLE GOES FROM HERE
@@ -1012,7 +1014,7 @@ const MoodleCaseStudy = () => {
       </section>
 
       {/* Key Takeaways Section */}
-      <section className="moodle-takeaways-section">
+      <section id="moodle-takeaways" className="moodle-takeaways-section">
         <div className="moodle-takeaways-content">
           <h3 className="moodle-takeaways-title" ref={takeawaysTitleRef}>
             KEY TAKEAWAYS
@@ -1049,7 +1051,7 @@ const MoodleCaseStudy = () => {
       </section>
 
       {/* See Next Section */}
-      <section className="moodle-see-next-section">
+      <section id="moodle-see-next" className="moodle-see-next-section">
         <div className="moodle-see-next-content">
           <h3 className="moodle-see-next-title" ref={seeNextTitleRef}>
             SEE NEXT
@@ -1147,6 +1149,7 @@ const MoodleCaseStudy = () => {
         </div>
       </section>
 
+      </CaseStudyLayout>
       <Footer />
     </div>
   );

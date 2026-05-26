@@ -14,7 +14,8 @@ const CursorPill = ({ isHovering, text = "View case study" }) => {
     const pill = cursorPillRef.current;
     if (!pill) return;
 
-    const offsetX = 20;
+    const offsetX = 12;
+    const offsetY = 12;
     pill.style.left = "0";
     pill.style.top = "0";
 
@@ -23,8 +24,8 @@ const CursorPill = ({ isHovering, text = "View case study" }) => {
       rafIdRef.current = requestAnimationFrame(() => {
         rafIdRef.current = null;
         const x = e.clientX + offsetX;
-        const y = e.clientY;
-        pill.style.transform = `translate(${x}px, ${y}px) translateY(-50%)`;
+        const y = e.clientY + offsetY;
+        pill.style.transform = `translate(${x}px, ${y}px)`;
       });
     };
 

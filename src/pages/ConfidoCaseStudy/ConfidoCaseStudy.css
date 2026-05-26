@@ -3,7 +3,6 @@
   min-height: 100vh;
   background-color: #f5f5f5;
   color: #0f0f0f;
-  overflow-y: hidden;
 }
 
 /* Hero Section */
@@ -1378,11 +1377,6 @@
 
   .confido-see-next-title {
     font-size: 0.875rem;
-  }
-
-  .confido-see-next-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
   }
 
   .confido-see-next-card-title {

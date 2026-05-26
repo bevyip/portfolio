@@ -8,6 +8,7 @@ import { useCountupAnimation } from "../../hooks/useCountupAnimation";
 import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
 import CursorPill from "../../components/CursorPill/CursorPill";
+import CaseStudyLayout from "../../components/CaseStudyLayout/CaseStudyLayout";
 import "./VenmoCaseStudy.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -251,6 +252,7 @@ const VenmoCaseStudy = () => {
   return (
     <div className="venmo-case-study">
       <CursorPill isHovering={isHoveringSeeNextCard} text="View case study" />
+      <CaseStudyLayout projectId="venmo">
       {/* Hero Section */}
       <section className="venmo-hero-section">
         {/* Hero Before Image - Visual welcome */}
@@ -336,7 +338,7 @@ const VenmoCaseStudy = () => {
       </section>
 
       {/* Context Section */}
-      <section className="venmo-context-section">
+      <section id="venmo-context" className="venmo-context-section">
         <div className="venmo-context-content">
           {/* Top Row - Two Columns */}
           <div className="venmo-context-top">
@@ -447,7 +449,7 @@ const VenmoCaseStudy = () => {
       </section>
 
       {/* Research Section */}
-      <section className="venmo-research-section">
+      <section id="venmo-research" className="venmo-research-section">
         <div className="venmo-research-content">
           <h3 className="venmo-research-title" ref={researchTitleRef}>
             RESEARCH
@@ -730,7 +732,7 @@ const VenmoCaseStudy = () => {
       </section>
 
       {/* Next Steps Section */}
-      <section className="venmo-next-steps-section">
+      <section id="venmo-next-steps" className="venmo-next-steps-section">
         <div className="venmo-next-steps-content">
           <h3 className="venmo-next-steps-title" ref={nextStepsTitleRef}>
             NEXT STEPS
@@ -765,7 +767,7 @@ const VenmoCaseStudy = () => {
       </section>
 
       {/* Key Takeaways Section */}
-      <section className="venmo-takeaways-section">
+      <section id="venmo-takeaways" className="venmo-takeaways-section">
         <div className="venmo-takeaways-content">
           <h3 className="venmo-takeaways-title" ref={takeawaysTitleRef}>
             KEY TAKEAWAYS
@@ -800,7 +802,7 @@ const VenmoCaseStudy = () => {
       </section>
 
       {/* See Next Section */}
-      <section className="venmo-see-next-section">
+      <section id="venmo-see-next" className="venmo-see-next-section">
         <div className="venmo-see-next-content">
           <h3 className="venmo-see-next-title" ref={seeNextTitleRef}>
             SEE NEXT
@@ -898,6 +900,7 @@ const VenmoCaseStudy = () => {
         </div>
       </section>
 
+      </CaseStudyLayout>
       <Footer />
     </div>
   );

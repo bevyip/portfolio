@@ -36,7 +36,7 @@ const TimelineItem = forwardRef(({ experience }, ref) => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Visit ${experience.company}`}
-      className="col-span-full grid grid-cols-1 md:grid-cols-[max-content_1px_1fr] md:gap-x-10 group experience-timeline-row block cursor-pointer no-underline text-inherit"
+      className="col-span-full grid grid-cols-1 md:grid-cols-[max-content_1px_50rem_auto] md:gap-x-10 group experience-timeline-row block cursor-pointer no-underline text-inherit"
     >
       {/* Date Column */}
       <div className="md:text-right pt-4 pb-3 md:pb-12 md:w-[180px] md:min-w-[180px]">
@@ -51,40 +51,40 @@ const TimelineItem = forwardRef(({ experience }, ref) => {
       </div>
 
       {/* Content Column */}
-      <div className="flex flex-col md:flex-row md:items-start gap-5 md:gap-10 justify-between relative pt-1 md:pt-3 pb-16 md:pb-12">
-        <div className="flex flex-col md:flex-row md:items-start gap-5 md:gap-6 flex-1 min-w-0">
-          <div className="relative flex-shrink-0 w-full md:w-40 aspect-square overflow-hidden rounded-xl md:rounded-lg border border-zinc-800/80 bg-zinc-900 shadow-xl">
-            <img
-              src={experience.imageUrl}
-              alt={`${experience.title} at ${experience.company}`}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+      <div className="flex flex-col md:flex-row md:items-start gap-5 md:gap-6 relative pt-1 md:pt-3 pb-16 md:pb-12 min-w-0">
+        <div className="relative flex-shrink-0 w-full md:w-40 aspect-square overflow-hidden rounded-xl md:rounded-lg border border-zinc-800/80 bg-zinc-900 shadow-xl">
+          <img
+            src={experience.imageUrl}
+            alt={`${experience.title} at ${experience.company}`}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
+        <div className="min-w-0 flex flex-row items-start justify-between md:block">
+          <div className="min-w-0">
+            <div className="flex items-baseline gap-2 flex-wrap">
+              <h3 className="text-base md:text-lg font-bold text-zinc-300 group-hover:text-[#7dd3fc] transition-colors duration-500 tracking-tight leading-tight">
+                {experience.title}
+              </h3>
+              <span className="text-zinc-400 text-base md:text-lg">·</span>
+              <p className="text-zinc-300 group-hover:text-[#7dd3fc] font-semibold text-base md:text-lg transition-colors duration-500">
+                {experience.company}
+              </p>
+            </div>
+            {experience.description && (
+              <p className="text-zinc-500 text-sm md:text-base mt-2 font-normal leading-relaxed">
+                {experience.description}
+              </p>
+            )}
           </div>
-          <div className="min-w-0 flex flex-row items-start justify-between md:block">
-            <div className="min-w-0">
-              <div className="flex items-baseline gap-2 flex-wrap">
-                <h3 className="text-base md:text-lg font-bold text-zinc-300 group-hover:text-[#7dd3fc] transition-colors duration-500 tracking-tight leading-tight">
-                  {experience.title}
-                </h3>
-                <span className="text-zinc-400 text-base md:text-lg">·</span>
-                <p className="text-zinc-300 group-hover:text-[#7dd3fc] font-semibold text-base md:text-lg transition-colors duration-500">
-                  {experience.company}
-                </p>
-              </div>
-              {experience.description && (
-                <p className="text-zinc-500 text-sm md:text-base mt-2 font-normal leading-relaxed">
-                  {experience.description}
-                </p>
-              )}
-            </div>
-            <div className="md:hidden ml-4 flex-shrink-0">
-              <LinkArrow />
-            </div>
+          <div className="md:hidden ml-4 flex-shrink-0">
+            <LinkArrow />
           </div>
         </div>
-        <div className="hidden md:block flex-shrink-0">
-          <LinkArrow />
-        </div>
+      </div>
+
+      {/* Link Column — fixed grid track keeps arrows aligned across rows */}
+      <div className="hidden md:flex flex-shrink-0 items-start pt-1 md:pt-3 pb-16 md:pb-12 experience-timeline-row-arrow">
+        <LinkArrow />
       </div>
       <div className="md:hidden h-px bg-zinc-900/50 mb-10 last:hidden w-full col-span-full" />
     </a>

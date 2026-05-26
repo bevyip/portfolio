@@ -3,6 +3,15 @@
 .home {
   min-height: 100vh;
   width: 100%;
+  --home-section-gap: clamp(4rem, 10vh, 6rem);
+  --home-footer-gap: 7rem;
+}
+
+@media (max-width: 767px) {
+  .home {
+    --home-section-gap: clamp(2.75rem, 7vh, 3.5rem);
+    --home-footer-gap: 4.5rem;
+  }
 }
 
 /* ----- Landing ----- */
@@ -12,7 +21,7 @@
   width: 100%;
   min-height: 0;
   background-color: #fafafa;
-  padding: clamp(8rem, 22vh, 15rem) 0 clamp(1.5rem, 4vh, 2rem);
+  padding: clamp(8rem, 22vh, 15rem) 0 calc(var(--home-section-gap) / 2);
 }
 
 .home-landing-content {
@@ -26,6 +35,7 @@
   grid-template-columns: 1fr;
   gap: 2rem;
   align-items: start;
+  width: 100%;
 }
 
 /* Mobile: column layout, each child full width; cat needs min-height so absolute scene is visible */
@@ -56,16 +66,37 @@
 /* Desktop/tablet: text left, cat right; align row to end so cat's walking surface lines up with subtitle bottom */
 @media (min-width: 768px) {
   .home-landing-grid {
-    grid-template-columns: minmax(0, 40.5rem) 1fr;
+    grid-template-columns: minmax(0, 28rem) 1fr;
     gap: 0rem;
     align-items: end;
   }
 }
 
-/* Tablet: give text column slightly less width so pixel cat has more room */
-@media (min-width: 768px) and (max-width: 1024px) {
+/* Narrow tablet: shrink text cap so Boba has more room to walk */
+@media (min-width: 768px) and (max-width: 899px) {
   .home-landing-grid {
-    grid-template-columns: minmax(0, 32rem) 1fr;
+    grid-template-columns: minmax(0, 24rem) 1fr;
+  }
+}
+
+/* Wide tablet: text grows a little; cat still gets the majority of leftover space */
+@media (min-width: 900px) and (max-width: 1024px) {
+  .home-landing-grid {
+    grid-template-columns: minmax(0, 33rem) 1fr;
+  }
+}
+
+/* Small desktop: wider hero copy, cat fills remaining column width */
+@media (min-width: 1025px) and (max-width: 1279px) {
+  .home-landing-grid {
+    grid-template-columns: minmax(0, 42rem) minmax(0, 1fr);
+  }
+}
+
+/* Large desktop: widest text column, cat fills remaining column width */
+@media (min-width: 1280px) {
+  .home-landing-grid {
+    grid-template-columns: minmax(0, 46rem) minmax(0, 1fr);
   }
 }
 
@@ -78,8 +109,10 @@
 .home-landing-cat {
   position: relative;
   width: 100%;
+  max-width: none;
   min-width: 0;
   min-height: 140px;
+  justify-self: stretch;
   align-self: stretch;
   overflow: visible;
   opacity: 0;
@@ -93,12 +126,10 @@
 
   .home-landing-cat > .pixel-cat-scene {
     position: absolute;
-    left: 0;
-    right: 0;
+    inset: auto 0 -30px 0;
     width: 100%;
     min-width: 100%;
     height: 120%;
-    bottom: -30px;
     box-sizing: border-box;
   }
 }
@@ -227,7 +258,7 @@
 
 /* ----- Work: 2x2 case studies ----- */
 .home-work {
-  padding: 2.25rem 0 3.5rem;
+  padding: calc(var(--home-section-gap) / 2) 0 calc(var(--home-section-gap) / 2);
 }
 
 .home-work-section-intro .home-play-subtitle {
@@ -243,40 +274,80 @@
 }
 
 .home-work-skeleton-card {
-  min-height: var(--home-row-h, 560px);
-  background: #e8e8e8;
-  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  min-height: unset;
+  background: transparent;
 }
 
-/* Same structure as Work page case-study grid */
+@media (min-width: 768px) {
+  .home-work-skeleton-card {
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .home-work-skeleton-card {
+    gap: 0.875rem;
+  }
+}
+
+.home-work-skeleton-card::before {
+  content: "";
+  aspect-ratio: 888 / 500;
+  background: #e8e8e8;
+  border-radius: var(--bento-card-radius);
+}
+
+@media (max-width: 767px) {
+  .home-work-skeleton-card::before {
+    aspect-ratio: 888 / 540;
+  }
+}
+
+.home-work-skeleton-card::after {
+  content: "";
+  height: 1rem;
+  width: 72%;
+  background: #e8e8e8;
+  border-radius: 2px;
+}
+
+/* Home case study grid — compact cards size from media aspect ratio */
 .home-case-study-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 2rem;
   width: 100%;
   position: relative;
-  --home-row-h: 560px;
-  grid-auto-rows: var(--home-row-h);
+  grid-auto-rows: auto;
+}
+
+/* Single column at 1024px and below; 2 columns from 1025px */
+@media (max-width: 1024px) {
+  .home-case-study-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 @media (max-width: 767px) {
   .home-case-study-grid {
-    --home-row-h: 420px;
+    gap: 1.75rem;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .home-case-study-grid {
-    --home-row-h: 500px;
+    gap: 2rem;
   }
 }
 
-/* Tablet: keep single column; 2 columns from desktop only */
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .home-case-study-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
-    --home-row-h: 720px;
   }
 }
 
@@ -289,16 +360,16 @@
 
 /* ----- Play: title, subtitle, bento grid (play projects only) ----- */
 .home-play {
-  padding: 5rem 0 10rem;
+  padding: calc(var(--home-section-gap) / 2) 0 var(--home-footer-gap);
 }
 
-/* /google-creative: play → case studies — swap to mirror home’s work → play padding */
+/* /google-creative: play → case studies — same section gap; work sits above footer */
 .home-google-creative .home-play {
-  padding: 2.25rem 0 3.5rem;
+  padding: calc(var(--home-section-gap) / 2) 0 calc(var(--home-section-gap) / 2);
 }
 
 .home-google-creative .home-work {
-  padding: 5rem 0 10rem;
+  padding: calc(var(--home-section-gap) / 2) 0 var(--home-footer-gap);
 }
 
 .home-play-title-row {

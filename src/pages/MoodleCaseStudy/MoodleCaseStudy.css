@@ -1631,11 +1631,6 @@
     font-size: 0.875rem;
   }
 
-  .moodle-see-next-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-  }
-
   .moodle-see-next-card-title {
     font-size: 1.75rem;
   }
@@ -1911,7 +1906,6 @@
   }
 
   .moodle-see-next-grid {
-    grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
   }
 

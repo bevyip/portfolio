@@ -130,9 +130,9 @@
 /* Mobile: column layout — full-width experience content only; title keeps section padding */
 @media (max-width: 767px) {
   .about-sandbox-where-section .experience-timeline-section {
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-    width: calc(100% + 3rem);
+    margin-left: calc(var(--page-gutter-x) * -1);
+    margin-right: calc(var(--page-gutter-x) * -1);
+    width: calc(100% + var(--page-gutter-x) * 2);
   }
 
   .about-sandbox-where-section .experience-timeline-section > div {
@@ -151,6 +151,12 @@
   margin: 0 auto;
 }
 
+@media (min-width: 1025px) {
+  .about-sandbox-where-inner {
+    max-width: 90rem;
+  }
+}
+
 /* Tablet: give experience rows more width; date/line narrower, content wider */
 @media (min-width: 768px) and (max-width: 1024px) {
   .about-sandbox-where-section {
@@ -164,10 +170,13 @@
     padding-right: 1rem !important;
   }
 
-  /* Narrower date + line columns so image/text content gets more width */
   .about-sandbox-where-section .experience-timeline-section .group {
-    grid-template-columns: 110px 1px 1fr;
+    grid-template-columns: 110px 1px minmax(0, 1fr) auto;
     gap: 0 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .about-sandbox-where-section
@@ -296,7 +305,11 @@
 .about-sandbox-where-section
   .experience-timeline-section
   .group
-  > div:nth-child(3) {
+  > div:nth-child(3),
+.about-sandbox-where-section
+  .experience-timeline-section
+  .group
+  > div:nth-child(4) {
   align-self: start;
 }
 .about-sandbox-where-section
@@ -317,7 +330,11 @@
 .about-sandbox-where-section
   .experience-timeline-section
   .group
-  > div:nth-child(3) {
+  > div:nth-child(3),
+.about-sandbox-where-section
+  .experience-timeline-section
+  .group
+  > div:nth-child(4) {
   padding-top: 0;
   padding-bottom: 2rem;
 }
@@ -325,7 +342,11 @@
   .about-sandbox-where-section
     .experience-timeline-section
     .group
-    > div:nth-child(3) {
+    > div:nth-child(3),
+  .about-sandbox-where-section
+    .experience-timeline-section
+    .group
+    > div:nth-child(4) {
     padding-bottom: 1.5rem;
   }
 }
@@ -456,57 +477,18 @@
   font-weight: 300;
 }
 
-/* ----- Awards grid: light mode (dark borders + dark text) ----- */
-.about-sandbox-where-section .awards-section {
-  padding: 2.5rem 0 0; /* match title→content gap (same as Where I've been → experience rows) */
+/* ----- Awards rack: light mode ----- */
+.about-sandbox-where-section .awards-rack-section {
+  padding: 3rem 0 1rem;
+  margin-inline: auto;
+  max-width: 100%;
 }
-.about-sandbox-where-section .awards-grid {
-  border-color: #d4d4d4 !important;
-}
-.about-sandbox-where-section .award-card {
-  border-right-color: #d4d4d4 !important;
-  border-bottom-color: #d4d4d4 !important;
-}
-.about-sandbox-where-section .award-card:nth-child(3n) {
-  border-right: none;
-}
-.about-sandbox-where-section .award-card:nth-child(n + 4) {
-  border-bottom: none;
-}
-.about-sandbox-where-section .award-title {
+.about-sandbox-where-section .awards-rack-caption-title {
   color: #1e1e1e !important;
 }
-.about-sandbox-where-section .award-organization,
-.about-sandbox-where-section .award-year {
+.about-sandbox-where-section .awards-rack-caption-meta,
+.about-sandbox-where-section .awards-rack-caption-hint {
   color: #525252 !important;
-}
-/* Tablet (2-col only, not single-col): restore bottom border on item 4; remove bottom only from last row (5, 6) */
-@media (min-width: 641px) and (max-width: 768px) {
-  .about-sandbox-where-section .award-card:nth-child(3n) {
-    border-right: 1px solid #d4d4d4 !important;
-  }
-  .about-sandbox-where-section .award-card:nth-child(2n) {
-    border-right: none;
-  }
-  .about-sandbox-where-section .award-card:nth-child(4) {
-    border-bottom: 1px solid #d4d4d4 !important;
-  }
-  .about-sandbox-where-section .award-card:nth-child(n + 5) {
-    border-bottom: none !important;
-  }
-}
-/* Single column: all cards get bottom border except the last; card 5 must keep border (overrides 768px n+5 rule) */
-@media (max-width: 640px) {
-  .about-sandbox-where-section .awards-grid .award-card {
-    border-right: none !important;
-    border-bottom: 1px solid #d4d4d4 !important;
-  }
-  .about-sandbox-where-section .awards-grid .award-card:nth-child(5) {
-    border-bottom: 1px solid #d4d4d4 !important;
-  }
-  .about-sandbox-where-section .awards-grid .award-card:last-child {
-    border-bottom: none !important;
-  }
 }
 
 .about-sandbox-content {
