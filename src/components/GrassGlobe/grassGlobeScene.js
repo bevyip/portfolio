@@ -16,9 +16,6 @@ import {
   hash,
   deltaTime,
   pass,
-  mrt,
-  output,
-  normalView,
   storage,
 } from "three/tsl";
 
@@ -30,6 +27,10 @@ const FLOWER_SURFACE_OFFSET = 4;
 const FLOWER_SIZE = 4.2;
 const GRASS_BEND_LERP_IN = 12;
 const GRASS_BEND_LERP_OUT = 2.5;
+
+function getPixelRatio() {
+  return window.innerWidth < 1200 ? 1.5 : Math.min(window.devicePixelRatio, 2);
+}
 
 export async function initGrassGlobe(container, options = {}) {
   const { initialFlowers = [], onFlowerTooltipUpdate } = options;
@@ -50,10 +51,8 @@ export async function initGrassGlobe(container, options = {}) {
   camera.position.set(0, 30, 70);
   camera.lookAt(0, 0, 0);
 
-  const maxDPR =
-    window.innerWidth < 1200 ? 1.5 : Math.min(window.devicePixelRatio, 2);
   const renderer = new THREE.WebGPURenderer({ antialias: true });
-  renderer.setPixelRatio(maxDPR);
+  renderer.setPixelRatio(getPixelRatio());
   renderer.setSize(width, height);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.1;
@@ -376,15 +375,9 @@ export async function initGrassGlobe(container, options = {}) {
   innerSphereMat.colorNode = Fn(() => vec3(0.08, 0.22, 0.03))();
   scene.add(new THREE.Mesh(innerSphereGeo, innerSphereMat));
 
-  scene.add(new THREE.AmbientLight(0xffffff, 1.0));
-  const dirLight = new THREE.DirectionalLight(0xf0f6fc, 1.2);
-  dirLight.position.set(-20, 50, -20);
-  scene.add(dirLight);
-
   const postProcessing = new THREE.PostProcessing(renderer);
   const scenePass = pass(scene, camera);
-  scenePass.setMRT(mrt({ output, normal: normalView }));
-  postProcessing.outputNode = scenePass.getTextureNode("output");
+  postProcessing.outputNode = scenePass;
   postProcessing.needsUpdate = true;
 
   const raycaster = new THREE.Raycaster();
@@ -405,7 +398,6 @@ export async function initGrassGlobe(container, options = {}) {
 
   const flowerInstances = [];
   const textureLoader = new THREE.TextureLoader();
-  let flowerCount = 0;
 
   function setPointerNDC(clientX, clientY) {
     const rect = canvas.getBoundingClientRect();
@@ -517,9 +509,18 @@ export async function initGrassGlobe(container, options = {}) {
     return { normal: n, t1, t2 };
   }
 
+  function hash01(index, salt) {
+    let h = index * 374761393 + salt * 668265263;
+    h = (h ^ (h >>> 13)) * 1274126177;
+    h = h ^ (h >>> 16);
+    return (h >>> 0) / 4294967296;
+  }
+
   function placementOnSphere(index) {
-    const theta = Math.acos(1 - (2 * (((index * 37 + 11) % 97) + 0.5)) / 97);
-    const phi = 2 * Math.PI * index * golden;
+    const u = hash01(index, 1);
+    const v = hash01(index, 2);
+    const theta = Math.acos(1 - 2 * u);
+    const phi = 2 * Math.PI * v;
     const st = Math.sin(theta);
     const ct = Math.cos(theta);
     const sp = Math.sin(phi);
@@ -637,9 +638,7 @@ export async function initGrassGlobe(container, options = {}) {
       ({ width, height } = getSize());
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      renderer.setPixelRatio(
-        window.innerWidth < 1200 ? 1.5 : Math.min(window.devicePixelRatio, 2),
-      );
+      renderer.setPixelRatio(getPixelRatio());
       renderer.setSize(width, height);
     }, 100);
   };
@@ -668,7 +667,6 @@ export async function initGrassGlobe(container, options = {}) {
 
   for (let i = 0; i < initialFlowers.length; i++) {
     await addFlowerToGlobe(initialFlowers[i], i);
-    flowerCount = i + 1;
   }
 
   const initialViewFlower = pickFlowerForInitialView();
@@ -701,9 +699,7 @@ export async function initGrassGlobe(container, options = {}) {
 
   return {
     addFlower(flowerData) {
-      const index = flowerCount;
-      flowerCount += 1;
-      return addFlowerToGlobe(flowerData, index);
+      return addFlowerToGlobe(flowerData, flowerInstances.length);
     },
     clearFlowerSelection() {
       selectedFlowerMesh = null;
