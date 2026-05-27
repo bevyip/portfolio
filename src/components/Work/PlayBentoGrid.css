@@ -132,7 +132,7 @@
   height: clamp(380px, 65vh, 760px);
 }
 
-/* Iframe play cards — shorter at 1024/1440 than default embed height */
+/* Iframe play cards — shorter at 1024/1440; bit taller again on wide desktops (1600px+) */
 @media (min-width: 1024px) {
   .natural-play-bento-item[data-play-project-id="gravity-text"]
     .natural-play-bento-iframe-placeholder,
@@ -154,12 +154,12 @@
   .natural-play-bento-item[data-play-project-id="starry-night"]
     .natural-play-bento-iframe-wrap
     iframe {
-    min-height: clamp(340px, 48vh, 580px);
-    height: clamp(340px, 48vh, 580px);
+    min-height: clamp(352px, 52vh, 640px);
+    height: clamp(352px, 52vh, 640px);
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1440px) and (max-width: 1599px) {
   .natural-play-bento-item[data-play-project-id="gravity-text"]
     .natural-play-bento-iframe-placeholder,
   .natural-play-bento-item[data-play-project-id="gravity-text"]
@@ -180,7 +180,33 @@
   .natural-play-bento-item[data-play-project-id="starry-night"]
     .natural-play-bento-iframe-wrap
     iframe {
-    min-height: clamp(300px, 42vh, 520px);
-    height: clamp(300px, 42vh, 520px);
+    min-height: clamp(320px, 45vh, 580px);
+    height: clamp(320px, 45vh, 580px);
+  }
+}
+
+@media (min-width: 1600px) {
+  .natural-play-bento-item[data-play-project-id="gravity-text"]
+    .natural-play-bento-iframe-placeholder,
+  .natural-play-bento-item[data-play-project-id="gravity-text"]
+    .natural-play-bento-iframe-wrap
+    iframe,
+  .natural-play-bento-item[data-play-project-id="binary-pool"]
+    .natural-play-bento-iframe-placeholder,
+  .natural-play-bento-item[data-play-project-id="binary-pool"]
+    .natural-play-bento-iframe-wrap
+    iframe,
+  .natural-play-bento-item[data-play-project-id="sticker-cats"]
+    .natural-play-bento-iframe-placeholder,
+  .natural-play-bento-item[data-play-project-id="sticker-cats"]
+    .natural-play-bento-iframe-wrap
+    iframe,
+  .natural-play-bento-item[data-play-project-id="starry-night"]
+    .natural-play-bento-iframe-placeholder,
+  .natural-play-bento-item[data-play-project-id="starry-night"]
+    .natural-play-bento-iframe-wrap
+    iframe {
+    min-height: clamp(380px, 58vh, 720px);
+    height: clamp(380px, 58vh, 720px);
   }
 }
