@@ -3,10 +3,10 @@ import { useLocation } from "react-router-dom";
 import { isHomePath, isGoogleCreativePath, isDefaultHomePath } from "../../constants/homeRoutes";
 import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { scheduleScrollTriggerLayoutRefresh } from "../../utils/scrollTriggerLayout";
 import Footer from "../../components/Footer/Footer";
 import WorkBentoGrid from "../../components/Work/WorkBentoGrid";
-import PlayBentoGrid from "../../components/Work/PlayBentoGrid";
+import PlayBentoGridNatural from "../../components/Work/PlayBentoGrid";
 import PixelCat from "../../components/PixelCat/PixelCat";
 import PokemonIntro from "../../components/PokemonIntro/PokemonIntro";
 import salesforceLogo from "../../assets/img/logo-stickers/salesforce-logo.png";
@@ -76,15 +76,29 @@ const Home = () => {
     }
   }, [location.pathname, location.state?.scrollToPlay]);
 
-  // After the play grid is in view and images have started loading,
-  // refresh ScrollTrigger so the footer trigger recalculates correctly
+  // Re-measure ScrollTrigger when play grid height changes (media load, masonry columns).
   useEffect(() => {
     if (isWorkLoading) return;
-    // Small delay to let the Play grid finish its layout pass
-    const t = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 500);
-    return () => clearTimeout(t);
+
+    let settleTimer = null;
+    const playSection = document.getElementById("play");
+    if (!playSection) return;
+
+    const onLayoutChange = () => {
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(() => scheduleScrollTriggerLayoutRefresh(), 280);
+    };
+
+    const initialRefresh = setTimeout(onLayoutChange, 500);
+
+    const ro = new ResizeObserver(onLayoutChange);
+    ro.observe(playSection);
+
+    return () => {
+      clearTimeout(settleTimer);
+      clearTimeout(initialRefresh);
+      ro.disconnect();
+    };
   }, [isWorkLoading]);
 
   // Landing: rise-from-baseline for title and bio (same style as Play), start on mount to avoid lag
@@ -154,7 +168,7 @@ const Home = () => {
     <section id="play" className="home-play">
       <div className="home-play-inner page-content-shell">
         {!isGoogleCreative ? defaultPlayIntro : null}
-        <PlayBentoGrid />
+        <PlayBentoGridNatural />
       </div>
     </section>
   );

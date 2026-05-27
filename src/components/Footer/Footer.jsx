@@ -3,6 +3,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import { scheduleScrollTriggerLayoutRefresh } from "../../utils/scrollTriggerLayout";
 import "./Footer.css";
 
 /** X (Twitter) brand mark — filled path scales with `currentColor` */
@@ -69,6 +70,7 @@ const Footer = () => {
     let splitInstance = null;
     let scrollTrigger = null;
     let tl = null;
+    let removeRefreshListener = null;
 
     const timeoutId = setTimeout(() => {
       splitInstance = new SplitText(titleElement, {
@@ -105,17 +107,38 @@ const Footer = () => {
           "-=0.2",
         );
 
+      const revealFooter = () => tl.play();
+      const hideFooter = () => tl.reverse();
+
+      const syncFooterIfInView = () => {
+        if (!scrollTrigger || !tl) return;
+        if (scrollTrigger.isActive) {
+          tl.progress(1);
+        }
+      };
+
       scrollTrigger = ScrollTrigger.create({
         trigger: container,
         start: "top 85%",
         invalidateOnRefresh: true,
-        onEnter: () => tl.play(),
-        onLeaveBack: () => tl.reverse(),
+        onEnter: revealFooter,
+        onEnterBack: revealFooter,
+        onLeaveBack: hideFooter,
       });
+
+      scheduleScrollTriggerLayoutRefresh();
+      syncFooterIfInView();
+
+      const onLayoutRefresh = () => syncFooterIfInView();
+      ScrollTrigger.addEventListener("refresh", onLayoutRefresh);
+      removeRefreshListener = () => {
+        ScrollTrigger.removeEventListener("refresh", onLayoutRefresh);
+      };
     }, 100);
 
     return () => {
       clearTimeout(timeoutId);
+      removeRefreshListener?.();
       if (scrollTrigger) scrollTrigger.kill();
       if (tl) tl.kill();
       if (splitInstance) {

@@ -101,7 +101,7 @@ export const playProjects = [
     tags: ["Audio Analysis", "Three.js"],
     category: "digital",
     media: {
-      video: vid("projects/im-listening/demo1"),
+      video: vid("projects/im-listening/demo"),
       poster: "/projects/im-listening/poster1.jpg",
     },
     actions: [
@@ -170,7 +170,7 @@ export const playProjects = [
     tags: ["React", "Creative Coding"],
     category: "digital",
     media: {
-      video: vid("projects/snowflake/demo1"),
+      video: vid("v1779845191/demo1_rtym49"),
       poster: "/projects/snowflake/poster.png",
     },
     actions: [

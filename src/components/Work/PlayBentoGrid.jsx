@@ -1,89 +1,40 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
-import BentoItem from "../BentoItem/BentoItem";
+import React, { useState, useRef, useEffect, useMemo } from "react";
+import { useLenis } from "@studio-freight/react-lenis";
+import NaturalPlayBentoItem from "./PlayBentoItem";
 import CursorPill from "../CursorPill/CursorPill";
 import { playProjects } from "../../data/playProjects";
+import {
+  preserveScrollAtBottom,
+  scheduleScrollTriggerLayoutRefresh,
+} from "../../utils/scrollTriggerLayout";
+import {
+  allPlayPositions,
+  getWideSpanLaneColumns,
+  groupPlayProjectsByColumn,
+  sortPlayProjectsByReadingOrder,
+} from "./playGridReadingOrder";
+import "./PlayBentoGrid.css";
 
 // Match grid breakpoint: below 1024px = tablet/mobile (poster only, no video)
 const POSTER_ONLY_MEDIA = "(max-width: 1023px)";
+const DESKTOP_LAYOUT_MEDIA = "(min-width: 1024px)";
 
-/** Desktop grid placement for “all” play projects (`/` and `/google-creative`). */
-const allPlayPositions = {
-  "block-party": { col: 1, rowStart: 1, rowEnd: 4, colSpan: 2 },
-  "floral-jukebox": { col: 1, rowStart: 6, rowEnd: 8 },
-  "draw-canvas": { col: 3, rowStart: 2, rowEnd: 4 },
-  "picture-distortion": { col: 1, rowStart: 8, rowEnd: 10 },
-  "cat-box": { col: 1, rowStart: 10, rowEnd: 11 },
-  "sticker-cats": { col: 1, rowStart: 11, rowEnd: 13 },
-  "words-unseen": { col: 3, rowStart: 10, rowEnd: 12 },
-  "reflections-of-monet": { col: 1, rowStart: 13, rowEnd: 15 },
-  "gravity-text": { col: 2, rowStart: 6, rowEnd: 8 },
-  "binary-pool": { col: 2, rowStart: 8, rowEnd: 10 },
-  "page-canvas": { col: 3, rowStart: 4, rowEnd: 6 },
-  snowflake: { col: 2, rowStart: 10, rowEnd: 12 },
-  "neumorphic-buttons": { col: 2, rowStart: 12, rowEnd: 13 },
-  "cat-figurine": { col: 2, rowStart: 13, rowEnd: 14 },
-  "temple-of-fortune": { col: 2, rowStart: 14, rowEnd: 15 },
-  "emotional-canvas": { col: 3, rowStart: 1, rowEnd: 2 },
-  "spherical-shopping": { col: 1, rowStart: 4, rowEnd: 6 },
-  "im-listening": { col: 3, rowStart: 7, rowEnd: 8 },
-  "emoji-ascii-art": { col: 3, rowStart: 6, rowEnd: 7 },
-  "five-identical-fishes": { col: 3, rowStart: 8, rowEnd: 9 },
-  "starry-night": { col: 3, rowStart: 9, rowEnd: 10 },
-  "ascii-filter": { col: 2, rowStart: 4, rowEnd: 6 },
-  "whack-a-mouse": { col: 3, rowStart: 12, rowEnd: 13 },
-  "puzzle-feeder": { col: 3, rowStart: 13, rowEnd: 15 },
-};
-
-const physicalPlayPositions = {
-  "cat-box": { col: 1, rowStart: 1, rowEnd: 2 },
-  "cat-figurine": { col: 2, rowStart: 1, rowEnd: 2 },
-  "puzzle-feeder": { col: 3, rowStart: 1, rowEnd: 2 },
-  "five-identical-fishes": { col: 1, rowStart: 2, rowEnd: 3 },
-  "whack-a-mouse": { col: 2, rowStart: 2, rowEnd: 3 },
-  "temple-of-fortune": { col: 3, rowStart: 2, rowEnd: 3 },
-};
-
-/** Below 1024px the play grid is one column and explicit placement is off (Home.css), so DOM order = scroll order. Sort by the same cell map as the wide grid: top to bottom, then left to right. */
-function comparePlayReadingOrder(a, b, positions) {
-  const pa = positions[a.id];
-  const pb = positions[b.id];
-  if (!pa && !pb) return 0;
-  if (!pa) return 1;
-  if (!pb) return -1;
-  if (pa.rowStart !== pb.rowStart) return pa.rowStart - pb.rowStart;
-  if (pa.col !== pb.col) return pa.col - pb.col;
-  return (pa.rowEnd ?? 0) - (pb.rowEnd ?? 0);
-}
-
-const PlayBentoGrid = ({
-  onProjectClick,
-  sectionIntro = null,
-}) => {
+/**
+ * TEMP preview grid: same projects in the same top-to-bottom reading order,
+ * but auto-placed in 3 columns with heights driven by media aspect ratio
+ * (object-contain, no fixed row tracks).
+ */
+const PlayBentoGridNatural = ({ onProjectClick, sectionIntro = null }) => {
   const [hoveredCaseStudyId, setHoveredCaseStudyId] = useState(null);
-  const activeFilter = "all";
   const [posterOnly, setPosterOnly] = useState(() =>
-    typeof window !== "undefined" ? window.matchMedia(POSTER_ONLY_MEDIA).matches : false
+    typeof window !== "undefined"
+      ? window.matchMedia(POSTER_ONLY_MEDIA).matches
+      : false,
   );
-  const gridRef = useRef(null);
-
-  // TEMPORARY: concurrent play cap disabled — every in-view card may play its video.
-  // const MAX_PLAYING = 6;
-  // const playingVideos = useRef(new Set());
-
-  const requestPlay = useCallback((videoEl) => {
-    if (!videoEl) return;
-    // if (playingVideos.current.size < MAX_PLAYING) {
-    //   playingVideos.current.add(videoEl);
-    //   videoEl.play().catch(() => {});
-    // }
-    videoEl.play().catch(() => {});
-  }, []);
-
-  const notifyPause = useCallback((videoEl) => {
-    if (!videoEl) return;
-    // playingVideos.current.delete(videoEl);
-    videoEl.pause();
-  }, []);
+  const lenis = useLenis();
+  const wideSpanRef = useRef(null);
+  const spacerHeightCommittedRef = useRef(0);
+  const [wideLaneSpacerHeight, setWideLaneSpacerHeight] = useState(0);
 
   useEffect(() => {
     const mql = window.matchMedia(POSTER_ONLY_MEDIA);
@@ -92,45 +43,111 @@ const PlayBentoGrid = ({
     return () => mql.removeEventListener("change", handleChange);
   }, []);
 
-  const filteredPlayProjects = playProjects.filter((project) => {
-    if (activeFilter === "all") return true;
-    if (activeFilter === "physical") return project.category === "physical";
-    return false;
-  });
+  const playProjectsInGrid = playProjects.filter(
+    (p) => allPlayPositions[p.id],
+  );
 
-  const getPlayPositions = () => {
-    if (activeFilter === "physical") return physicalPlayPositions;
-    return allPlayPositions;
-  };
+  const wideAnchorId = useMemo(
+    () =>
+      playProjectsInGrid.find(
+        (p) => (allPlayPositions[p.id]?.colSpan ?? 1) > 1,
+      )?.id ?? null,
+    [playProjectsInGrid],
+  );
 
-  const playPositions = getPlayPositions();
+  const wideSpanLaneColumns = useMemo(
+    () => getWideSpanLaneColumns(allPlayPositions),
+    [],
+  );
 
-  // Below 1024px, grid placement CSS is off: one column flows in DOM order. Match wide-layout reading order (row, then col).
-  const projectsForGrid = posterOnly
-    ? [...filteredPlayProjects].sort((a, b) =>
-        comparePlayReadingOrder(a, b, playPositions),
-      )
-    : filteredPlayProjects;
+  const wideAnchorRowEnd = wideAnchorId
+    ? allPlayPositions[wideAnchorId]?.rowEnd
+    : null;
 
-  const gridClassName =
-    "home-play-bento-grid grid grid-cols-1 min-[1024px]:grid-cols-3 gap-4 w-full auto-rows-[480px] min-[1024px]:auto-rows-[220px] bento-grid-filtered";
+  // Column 2 aligns with column 1 below Block Party: spacer = Block Party offsetHeight;
+  // one flex `gap` sits under Block Party (col 1) and between spacer + first card (col 2).
+  useEffect(() => {
+    const wideEl = wideSpanRef.current;
+    if (!wideEl || !wideAnchorId) return;
 
-  const bentoItems = projectsForGrid.map((project) => {
-    const position = playPositions[project.id];
-    if (!position) return null;
-    const projectForItem =
-      project.id === "puzzle-feeder"
-        ? { ...project, size: "tall" }
-        : project;
+    let measureRaf = null;
+
+    const measure = () => {
+      if (!window.matchMedia(DESKTOP_LAYOUT_MEDIA).matches) {
+        spacerHeightCommittedRef.current = 0;
+        setWideLaneSpacerHeight(0);
+        return;
+      }
+
+      // offsetHeight tracks layout box; matches flex column stacking with col 1 Block Party card
+      const spacerHeight = Math.round(wideEl.offsetHeight);
+      const prev = spacerHeightCommittedRef.current;
+      const isFirstSize = prev === 0 && spacerHeight > 0;
+      if (
+        isFirstSize ||
+        (spacerHeight > 0 &&
+          prev > 0 &&
+          Math.abs(spacerHeight - prev) >= 2)
+      ) {
+        spacerHeightCommittedRef.current = spacerHeight;
+        setWideLaneSpacerHeight(spacerHeight);
+        preserveScrollAtBottom(lenis);
+        scheduleScrollTriggerLayoutRefresh();
+      }
+    };
+
+    const scheduleMeasure = () => {
+      if (measureRaf != null) cancelAnimationFrame(measureRaf);
+      measureRaf = requestAnimationFrame(() => {
+        measureRaf = null;
+        measure();
+      });
+    };
+
+    // Layout soon after paint (poster/video intrinsic height settles)
+    const id2 = requestAnimationFrame(() =>
+      requestAnimationFrame(measure),
+    );
+
+    measure();
+
+    const ro = new ResizeObserver(scheduleMeasure);
+    ro.observe(wideEl);
+
+    const onWideMediaLoad = () => scheduleMeasure();
+    wideEl.addEventListener("load", onWideMediaLoad, true);
+    wideEl.addEventListener("loadeddata", onWideMediaLoad, true);
+    wideEl.addEventListener("loadedmetadata", onWideMediaLoad, true);
+
+    const desktopMql = window.matchMedia(DESKTOP_LAYOUT_MEDIA);
+    desktopMql.addEventListener("change", scheduleMeasure);
+    scheduleMeasure();
+
+    return () => {
+      cancelAnimationFrame(id2);
+      if (measureRaf != null) cancelAnimationFrame(measureRaf);
+      ro.disconnect();
+      desktopMql.removeEventListener("change", scheduleMeasure);
+      wideEl.removeEventListener("load", onWideMediaLoad, true);
+      wideEl.removeEventListener("loadeddata", onWideMediaLoad, true);
+      wideEl.removeEventListener("loadedmetadata", onWideMediaLoad, true);
+      spacerHeightCommittedRef.current = 0;
+      setWideLaneSpacerHeight(0);
+    };
+  }, [wideAnchorId, posterOnly, lenis]);
+
+  const renderItem = (project, itemRef) => {
+    const position = allPlayPositions[project.id];
+    const wide = (position?.colSpan ?? 1) > 1;
+
     return (
-      <BentoItem
+      <NaturalPlayBentoItem
         key={project.id}
-        project={projectForItem}
+        ref={itemRef}
+        project={project}
         onClick={onProjectClick}
-        gridPosition={position}
+        wide={wide}
         posterOnly={posterOnly}
-        onRequestPlay={requestPlay}
-        onNotifyPause={notifyPause}
         onMouseEnter={() => {
           if (project.caseStudyRoute) setHoveredCaseStudyId(project.id);
         }}
@@ -139,7 +156,39 @@ const PlayBentoGrid = ({
         }}
       />
     );
-  });
+  };
+
+  const projectsByColumn = groupPlayProjectsByColumn(
+    playProjectsInGrid,
+    allPlayPositions,
+  );
+
+  const columnProjects = useMemo(() => {
+    const byCol = { 1: [], 2: [], 3: [] };
+
+    for (const col of [1, 2, 3]) {
+      const laneCol = wideSpanLaneColumns.has(col);
+      const items = projectsByColumn[col];
+
+      if (!laneCol || wideAnchorRowEnd == null) {
+        byCol[col] = items;
+        continue;
+      }
+
+      // In span lanes (col 2 for block party), only show items that start after the wide card’s rows.
+      byCol[col] = items.filter((project) => {
+        const rowStart = allPlayPositions[project.id]?.rowStart;
+        return rowStart == null || rowStart >= wideAnchorRowEnd;
+      });
+    }
+
+    return byCol;
+  }, [projectsByColumn, wideSpanLaneColumns, wideAnchorRowEnd]);
+
+  const mobileStack = sortPlayProjectsByReadingOrder(
+    playProjectsInGrid,
+    allPlayPositions,
+  );
 
   return (
     <>
@@ -150,11 +199,32 @@ const PlayBentoGrid = ({
       {sectionIntro != null ? (
         <div className="home-play-bento-intro-outside">{sectionIntro}</div>
       ) : null}
-      <div ref={gridRef} className={gridClassName}>
-        {bentoItems}
+      <div className="home-play-bento-grid-natural">
+        <div className="home-play-bento-grid-natural-mobile">
+          {mobileStack.map((project) => renderItem(project))}
+        </div>
+        <div className="home-play-bento-grid-natural-desktop">
+          {[1, 2, 3].map((col) => (
+            <div key={col} className="home-play-bento-natural-col">
+              {wideSpanLaneColumns.has(col) ? (
+                <div
+                  className="home-play-bento-wide-span-spacer"
+                  style={{ height: wideLaneSpacerHeight }}
+                  aria-hidden="true"
+                />
+              ) : null}
+              {columnProjects[col].map((project) =>
+                renderItem(
+                  project,
+                  project.id === wideAnchorId ? wideSpanRef : undefined,
+                ),
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
 };
 
-export default PlayBentoGrid;
+export default PlayBentoGridNatural;

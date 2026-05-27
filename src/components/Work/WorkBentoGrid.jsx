@@ -103,22 +103,26 @@ function WorkCard({
   useEffect(() => {
     if (useThumbnailImage || !videoRef.current || !videoSource) return;
     const video = videoRef.current;
-    const rootMargin = isMobile ? "100px" : "200px";
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            video.load();
             video.play().catch(() => {});
-            observer.unobserve(video);
+          } else {
+            video.pause();
           }
         });
       },
-      { rootMargin, threshold: 0.1 },
+      { threshold: 0 },
     );
+
     observer.observe(video);
-    return () => observer.disconnect();
-  }, [videoSource, useThumbnailImage, isMobile]);
+    return () => {
+      observer.disconnect();
+      video.pause();
+    };
+  }, [videoSource, useThumbnailImage]);
 
   const cardClassName = compactLayout
     ? "work-bento-item group relative work-bento-item--compact case-study-card block no-underline text-inherit cursor-pointer"
@@ -141,7 +145,6 @@ function WorkCard({
           ref={videoRef}
           src={videoSource}
           className="work-bento-image"
-          autoPlay
           loop
           muted
           playsInline
