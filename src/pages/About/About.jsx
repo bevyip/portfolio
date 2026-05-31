@@ -25,17 +25,17 @@ const About = () => {
   const howTitleRef = useRef(null);
   const whereTitleRef = useRef(null);
   const enjoyTitleRef = useRef(null);
-  const howBlock1Ref = useRef(null);
-  const howBlock2Ref = useRef(null);
-  const howBlock3Ref = useRef(null);
+  const howText1Ref = useRef(null);
+  const howText2Ref = useRef(null);
+  const howText3Ref = useRef(null);
   const enjoyDescRef = useRef(null);
   const enjoyImagesRef = useRef(null);
   useRiseUpOnScroll(howTitleRef, { triggerOnMount: true });
   useRiseUpOnScroll(whereTitleRef);
   useRiseUpOnScroll(enjoyTitleRef);
-  useRiseUpOnScroll(howBlock1Ref, { triggerOnMount: true, delay: 0.25 });
-  useRiseUpOnScroll(howBlock2Ref, { triggerOnMount: true, delay: 0.45 });
-  useRiseUpOnScroll(howBlock3Ref, { triggerOnMount: true, delay: 0.65 });
+  useRiseUpOnScroll(howText1Ref, { triggerOnMount: true, delay: 0.25 });
+  useRiseUpOnScroll(howText2Ref, { triggerOnMount: true, delay: 0.45 });
+  useRiseUpOnScroll(howText3Ref, { triggerOnMount: true, delay: 0.65 });
   useRiseUpOnScroll(enjoyDescRef);
   useRiseUpOnScroll(enjoyImagesRef, { delay: 0.5 });
 
@@ -63,7 +63,7 @@ const About = () => {
           </div>
 
           <div className="about-sandbox-content">
-            <div ref={howBlock1Ref} className="about-sandbox-paragraph-wrapper">
+            <div className="about-sandbox-paragraph-wrapper">
               <div
                 onMouseEnter={() => setIsHoveringSticker(true)}
                 onMouseLeave={() => setIsHoveringSticker(false)}
@@ -86,7 +86,7 @@ const About = () => {
                   className="about-sandbox-sticker about-sandbox-sticker-salesforce"
                 />
               </div>
-              <div className="about-sandbox-text-wrap">
+              <div ref={howText1Ref} className="about-sandbox-text-wrap">
                 <p className="about-sandbox-text">
                   <span className="about-sandbox-subtitle">
                     I didn't start out in the creative space.
@@ -120,7 +120,7 @@ const About = () => {
               </div>
             </div>
 
-            <div ref={howBlock2Ref} className="about-sandbox-paragraph-wrapper">
+            <div className="about-sandbox-paragraph-wrapper">
               <div
                 onMouseEnter={() => setIsHoveringSticker(true)}
                 onMouseLeave={() => setIsHoveringSticker(false)}
@@ -143,7 +143,7 @@ const About = () => {
                   className="about-sandbox-sticker about-sandbox-sticker-confido"
                 />
               </div>
-              <div className="about-sandbox-text-wrap">
+              <div ref={howText2Ref} className="about-sandbox-text-wrap">
                 <p className="about-sandbox-text">
                   That led me to{" "}
                   <a
@@ -161,7 +161,7 @@ const About = () => {
               </div>
             </div>
 
-            <div ref={howBlock3Ref} className="about-sandbox-paragraph-wrapper">
+            <div className="about-sandbox-paragraph-wrapper">
               <div
                 onMouseEnter={() => setIsHoveringSticker(true)}
                 onMouseLeave={() => setIsHoveringSticker(false)}
@@ -184,7 +184,7 @@ const About = () => {
                   className="about-sandbox-sticker about-sandbox-sticker-figma"
                 />
               </div>
-              <div className="about-sandbox-text-wrap">
+              <div ref={howText3Ref} className="about-sandbox-text-wrap">
                 <p className="about-sandbox-text">
                   I still write code. I still ship products. But now every
                   decision starts with the person on the other side of the
