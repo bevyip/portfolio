@@ -9,6 +9,11 @@ import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
 import CursorPill from "../../components/CursorPill/CursorPill";
 import CaseStudyLayout from "../../components/CaseStudyLayout/CaseStudyLayout";
+import {
+  CaseStudyStatement,
+  CaseStudyStatementBody,
+  CaseStudyStatementHeadline,
+} from "../../components/CaseStudyStatement/CaseStudyStatement";
 import "./VenmoCaseStudy.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -420,20 +425,17 @@ const VenmoCaseStudy = () => {
             >
               CONTEXT
             </h3>
-            <div
-              className="venmo-context-statement-content"
-              ref={contextStatementContentRef}
-            >
-              <p className="venmo-context-statement-text">
+            <CaseStudyStatement ref={contextStatementContentRef}>
+              <CaseStudyStatementHeadline>
                 Public-by-default settings expose{" "}
                 <span className="venmo-accent-text">millions</span> to
                 unintended data leaks.
-              </p>
-              <p className="venmo-context-statement-description">
+              </CaseStudyStatementHeadline>
+              <CaseStudyStatementBody>
                 When Biden's Venmo was found through public search in 2021, it
                 exposed a flaw affecting <i>10.5%</i> of all transactions.
-              </p>
-            </div>
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
             <div
               className="venmo-context-image-container"
               ref={contextImageRef}
@@ -456,12 +458,11 @@ const VenmoCaseStudy = () => {
           </h3>
 
           <div className="venmo-research-overview">
-            <h4
-              className="venmo-research-subtitle"
-              ref={researchOverviewSubtitleRef}
-            >
-              A Two-Part Approach
-            </h4>
+            <CaseStudyStatement ref={researchOverviewSubtitleRef}>
+              <CaseStudyStatementHeadline as="h4">
+                A Two-Part Approach
+              </CaseStudyStatementHeadline>
+            </CaseStudyStatement>
             <div
               className="venmo-research-image-container"
               ref={researchOverviewImageRef}
@@ -482,19 +483,16 @@ const VenmoCaseStudy = () => {
             >
               Key Finding #1: Industry Outlier
             </h4>
-            <div
-              className="venmo-research-finding-content"
-              ref={researchFinding1ContentRef}
-            >
-              <p className="venmo-research-finding-description">
+            <CaseStudyStatement ref={researchFinding1ContentRef}>
+              <CaseStudyStatementHeadline>
                 <span className="venmo-accent-text">75%</span> of competing apps
                 default to private.
-              </p>
-              <p className="venmo-research-finding-text">
+              </CaseStudyStatementHeadline>
+              <CaseStudyStatementBody>
                 Venmo is the only app requiring users to manage their
                 privacy—everyone else eliminates this mental burden.
-              </p>
-            </div>
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
             <div
               className="venmo-research-image-container"
               ref={researchFinding1ImageRef}
@@ -515,18 +513,15 @@ const VenmoCaseStudy = () => {
             >
               Key Finding #2: Users Don't Recall Being Asked About Privacy
             </h4>
-            <div
-              className="venmo-research-finding-content"
-              ref={researchFinding2ContentRef}
-            >
-              <p className="venmo-research-finding-description">
+            <CaseStudyStatement ref={researchFinding2ContentRef}>
+              <CaseStudyStatementHeadline>
                 <span className="venmo-accent-text">0 out of 6 users</span>{" "}
                 remembered being asked about privacy during signup.
-              </p>
-              <p className="venmo-research-finding-text">
+              </CaseStudyStatementHeadline>
+              <CaseStudyStatementBody>
                 Most assumed their transactions were private by default.
-              </p>
-            </div>
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
             <div
               className="venmo-research-image-container"
               ref={researchFinding2Image1Ref}
@@ -564,19 +559,16 @@ const VenmoCaseStudy = () => {
             >
               Key Finding #3: Privacy Controls Are Hard to Find
             </h4>
-            <div
-              className="venmo-research-finding-content"
-              ref={researchFinding3ContentRef}
-            >
-              <p className="venmo-research-finding-description">
+            <CaseStudyStatement ref={researchFinding3ContentRef}>
+              <CaseStudyStatementHeadline>
                 Average time to locate settings:{" "}
                 <span className="venmo-accent-text">2-3 minutes</span>.
-              </p>
-              <p className="venmo-research-finding-text">
+              </CaseStudyStatementHeadline>
+              <CaseStudyStatementBody>
                 Privacy controls are buried in menus and appear after users
                 press "Pay".
-              </p>
-            </div>
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
             <div
               className="venmo-research-image-container"
               ref={researchFinding3ImageRef}
@@ -599,12 +591,11 @@ const VenmoCaseStudy = () => {
           </h3>
 
           <div className="venmo-solution-overview">
-            <h4
-              className="venmo-solution-subtitle"
-              ref={solutionOverviewSubtitleRef}
-            >
-              Four Core Principles
-            </h4>
+            <CaseStudyStatement ref={solutionOverviewSubtitleRef}>
+              <CaseStudyStatementHeadline as="h4">
+                Four Core Principles
+              </CaseStudyStatementHeadline>
+            </CaseStudyStatement>
             <div
               className="venmo-solution-image-container"
               ref={solutionOverviewImageRef}
@@ -622,15 +613,12 @@ const VenmoCaseStudy = () => {
             <h4 className="venmo-solution-item-title" ref={solution1TitleRef}>
               Solution #1: Onboarding That Educates
             </h4>
-            <div
-              className="venmo-solution-item-content"
-              ref={solution1ContentRef}
-            >
-              <p className="venmo-solution-item-description">
+            <CaseStudyStatement ref={solution1ContentRef}>
+              <CaseStudyStatementHeadline>
                 Users <span className="venmo-accent-text">choose</span> their
                 default privacy level before making their first payment.
-              </p>
-            </div>
+              </CaseStudyStatementHeadline>
+            </CaseStudyStatement>
             <div className="venmo-solution-media">
               <div
                 className="venmo-solution-video-container"
@@ -658,15 +646,12 @@ const VenmoCaseStudy = () => {
             <h4 className="venmo-solution-item-title" ref={solution2TitleRef}>
               Solution #2: Controls That Appear Early
             </h4>
-            <div
-              className="venmo-solution-item-content"
-              ref={solution2ContentRef}
-            >
-              <p className="venmo-solution-item-description">
+            <CaseStudyStatement ref={solution2ContentRef}>
+              <CaseStudyStatementHeadline>
                 Users <span className="venmo-accent-text">set</span> their
                 transaction privacy while entering payment details.
-              </p>
-            </div>
+              </CaseStudyStatementHeadline>
+            </CaseStudyStatement>
             <div className="venmo-solution-media">
               <div
                 className="venmo-solution-video-container"
@@ -696,15 +681,12 @@ const VenmoCaseStudy = () => {
             <h4 className="venmo-solution-item-title" ref={solution3TitleRef}>
               Solution #3: Status You Can See
             </h4>
-            <div
-              className="venmo-solution-item-content"
-              ref={solution3ContentRef}
-            >
-              <p className="venmo-solution-item-description">
+            <CaseStudyStatement ref={solution3ContentRef}>
+              <CaseStudyStatementHeadline>
                 Users <span className="venmo-accent-text">see</span> their
                 privacy setting directly on their profile.
-              </p>
-            </div>
+              </CaseStudyStatementHeadline>
+            </CaseStudyStatement>
             <div className="venmo-solution-media">
               <div
                 className="venmo-solution-video-container"

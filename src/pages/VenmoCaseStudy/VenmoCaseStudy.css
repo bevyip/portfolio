@@ -335,37 +335,6 @@
   transform: translateY(30px);
 }
 
-.venmo-context-statement-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  text-align: center;
-  max-width: 36rem;
-  margin-left: auto;
-  margin-right: auto;
-  /* Initial hidden state for GSAP animation */
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.venmo-context-statement-text {
-  font-family: "Crimson Pro", serif;
-  font-size: 2.5rem;
-  font-weight: 500;
-  line-height: 1.3;
-  color: #0f0f0f;
-  margin: 0;
-  letter-spacing: -0.05em;
-}
-
-.venmo-context-statement-description {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #0f0f0f;
-  margin: 0;
-  font-weight: 300;
-}
-
 .venmo-context-image-container {
   width: 100%;
   margin-top: 0.5rem;
@@ -464,19 +433,6 @@
   margin-bottom: 4rem;
 }
 
-.venmo-research-subtitle {
-  font-family: "Crimson Pro", serif;
-  font-size: 2.5rem;
-  font-weight: 500;
-  line-height: 1.3;
-  color: #0f0f0f;
-  margin: 0;
-  letter-spacing: -0.05em;
-  /* Initial hidden state for GSAP animation */
-  opacity: 0;
-  transform: translateY(30px);
-}
-
 .venmo-research-image-container {
   width: 100%;
   margin-top: 0.5rem;
@@ -525,41 +481,10 @@
   transform: translateY(30px);
 }
 
-.venmo-research-finding-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  text-align: center;
-  max-width: 36rem;
-  margin-left: auto;
-  margin-right: auto;
-  /* Initial hidden state for GSAP animation */
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.venmo-research-finding-description {
-  font-family: "Crimson Pro", serif;
-  font-size: 2.5rem;
-  font-weight: 500;
-  line-height: 1.3;
-  color: #0f0f0f;
-  margin: 0;
-  letter-spacing: -0.05em;
-}
-
 .venmo-accent-text {
   color: #008cff;
   font-style: italic;
   margin: 0 0.05em;
-}
-
-.venmo-research-finding-text {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #0f0f0f;
-  margin: 0;
-  font-weight: 300;
 }
 
 .venmo-research-quote {
@@ -639,19 +564,6 @@
   margin-bottom: 4rem;
 }
 
-.venmo-solution-subtitle {
-  font-family: "Crimson Pro", serif;
-  font-size: 2.5rem;
-  font-weight: 500;
-  line-height: 1.3;
-  color: #0f0f0f;
-  margin: 0;
-  letter-spacing: -0.05em;
-  /* Initial hidden state for GSAP animation */
-  opacity: 0;
-  transform: translateY(30px);
-}
-
 .venmo-solution-image-container {
   width: 100%;
   margin-top: 0.5rem;
@@ -688,29 +600,6 @@
   /* Initial hidden state for GSAP animation */
   opacity: 0;
   transform: translateY(30px);
-}
-
-.venmo-solution-item-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  text-align: center;
-  max-width: 36rem;
-  margin-left: auto;
-  margin-right: auto;
-  /* Initial hidden state for GSAP animation */
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.venmo-solution-item-description {
-  font-family: "Crimson Pro", serif;
-  font-size: 2.5rem;
-  font-weight: 500;
-  line-height: 1.3;
-  color: #0f0f0f;
-  margin: 0;
-  letter-spacing: -0.05em;
 }
 
 .venmo-solution-media {
@@ -1113,20 +1002,8 @@
     margin-bottom: 0;
   }
 
-  .venmo-context-statement-content {
-    gap: 1.25rem;
-  }
-
   .venmo-context-statement-title {
     font-size: 0.875rem;
-  }
-
-  .venmo-context-statement-text {
-    font-size: 3rem;
-  }
-
-  .venmo-context-statement-description {
-    font-size: 1.125rem;
   }
 
   .venmo-impact-title {
@@ -1155,16 +1032,8 @@
     font-size: 0.875rem;
   }
 
-  .venmo-solution-subtitle {
-    font-size: 3rem;
-  }
-
   .venmo-solution-item-title {
     font-size: 0.875rem;
-  }
-
-  .venmo-solution-item-description {
-    font-size: 3rem;
   }
 
   .venmo-solution-media {
@@ -1220,20 +1089,8 @@
     font-size: 0.875rem;
   }
 
-  .venmo-research-subtitle {
-    font-size: 3.5rem;
-  }
-
   .venmo-research-finding-title {
     font-size: 0.875rem;
-  }
-
-  .venmo-research-finding-description {
-    font-size: 3.5rem;
-  }
-
-  .venmo-research-finding-text {
-    font-size: 1.125rem;
   }
 
   .venmo-research-quote {
@@ -1325,10 +1182,6 @@
     font-size: 2.75rem;
   }
 
-  .venmo-context-statement-text {
-    font-size: 3.5rem;
-  }
-
   .venmo-impact-value {
     font-size: 4rem;
   }
@@ -1340,14 +1193,6 @@
 
   .venmo-solution-content {
     padding: 0 3rem; /* lg:px-12 */
-  }
-
-  .venmo-solution-subtitle {
-    font-size: 3.5rem;
-  }
-
-  .venmo-solution-item-description {
-    font-size: 3.5rem;
   }
 
   .venmo-problem-item-description {
@@ -1369,10 +1214,6 @@
 
   .venmo-research-finding-title {
     font-size: 0.875rem;
-  }
-
-  .venmo-research-finding-text {
-    font-size: 1.25rem;
   }
 
   .venmo-research-quote {

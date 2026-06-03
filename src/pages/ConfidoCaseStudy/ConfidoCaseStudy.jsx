@@ -9,6 +9,11 @@ import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
 import CursorPill from "../../components/CursorPill/CursorPill";
 import CaseStudyLayout from "../../components/CaseStudyLayout/CaseStudyLayout";
+import {
+  CaseStudyStatement,
+  CaseStudyStatementBody,
+  CaseStudyStatementHeadline,
+} from "../../components/CaseStudyStatement/CaseStudyStatement";
 import "./ConfidoCaseStudy.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -411,20 +416,17 @@ const ConfidoCaseStudy = () => {
             >
               CONTEXT
             </h3>
-            <div
-              className="confido-context-statement-content"
-              ref={contextStatementContentRef}
-            >
-              <p className="confido-context-statement-text">
+            <CaseStudyStatement ref={contextStatementContentRef}>
+              <CaseStudyStatementHeadline>
                 Every Approval Was Taking{" "}
                 <span className="confido-accent-text">3+ Days</span>.
-              </p>
-              <p className="confido-context-statement-description">
+              </CaseStudyStatementHeadline>
+              <CaseStudyStatementBody>
                 The existing approval system caused <i>35% of deductions</i> to
                 cycle back for reviews, creating costly delays across the
                 organization.
-              </p>
-            </div>
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
             <div
               className="confido-context-image-container"
               ref={contextImageRef}
@@ -447,25 +449,22 @@ const ConfidoCaseStudy = () => {
             <h4 className="confido-problem-item-title" ref={problem1TitleRef}>
               Problem #1
             </h4>
-            <div
-              className="confido-problem-item-content"
-              ref={problem1ContentRef}
-            >
-              <p className="confido-problem-item-description">
+            <CaseStudyStatement ref={problem1ContentRef}>
+              <CaseStudyStatementHeadline>
                 Approval panels were{" "}
                 <span className="confido-accent-text">
                   buried 3 levels deep
                 </span>
                 .
-              </p>
-              <p className="confido-problem-item-text">
+              </CaseStudyStatementHeadline>
+              <CaseStudyStatementBody>
                 Users{" "}
                 <span style={{ fontWeight: 600 }}>
                   couldn't find where to approve, reject, or reassign
                 </span>{" "}
                 without clicking through multiple screens.
-              </p>
-            </div>
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
             <div
               className="confido-problem-media-container"
               ref={problem1VideoRef}
@@ -486,23 +485,20 @@ const ConfidoCaseStudy = () => {
             <h4 className="confido-problem-item-title" ref={problem2TitleRef}>
               Problem #2
             </h4>
-            <div
-              className="confido-problem-item-content"
-              ref={problem2ContentRef}
-            >
-              <p className="confido-problem-item-description">
+            <CaseStudyStatement ref={problem2ContentRef}>
+              <CaseStudyStatementHeadline>
                 Rejecting a deduction created{" "}
                 <span className="confido-accent-text">endless cycles</span>.
-              </p>
-              <p className="confido-problem-item-text">
+              </CaseStudyStatementHeadline>
+              <CaseStudyStatementBody>
                 Auto-reassignment logic sent rejected deductions back to the
                 same user with no explanation,{" "}
                 <span style={{ fontWeight: 600 }}>
                   causing confusion and wasted time
                 </span>
                 .
-              </p>
-            </div>
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
             <div
               className="confido-problem-image-container"
               ref={problem2ImageRef}
@@ -520,18 +516,15 @@ const ConfidoCaseStudy = () => {
             <h4 className="confido-problem-item-title" ref={problem3TitleRef}>
               Problem #3
             </h4>
-            <div
-              className="confido-problem-item-content"
-              ref={problem3ContentRef}
-            >
-              <p className="confido-problem-item-description">
+            <CaseStudyStatement ref={problem3ContentRef}>
+              <CaseStudyStatementHeadline>
                 Analysts were{" "}
                 <span className="confido-accent-text">
                   missing important context
                 </span>
                 .
-              </p>
-              <p className="confido-problem-item-text">
+              </CaseStudyStatementHeadline>
+              <CaseStudyStatementBody>
                 Without detailed audit trails or change history, analysts
                 couldn't understand{" "}
                 <span style={{ fontWeight: 600 }}>what had changed</span> or{" "}
@@ -539,8 +532,8 @@ const ConfidoCaseStudy = () => {
                   why a deduction required their attention
                 </span>
                 .
-              </p>
-            </div>
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
             <div
               className="confido-problem-image-container"
               ref={problem3ImageRef}
@@ -563,20 +556,17 @@ const ConfidoCaseStudy = () => {
           </h3>
 
           <div className="confido-research-overview">
-            <div
-              className="confido-research-overview-content"
-              ref={researchOverviewSubtitleRef}
-            >
-              <h4 className="confido-research-subtitle">
+            <CaseStudyStatement ref={researchOverviewSubtitleRef}>
+              <CaseStudyStatementHeadline as="h4">
                 What's <span className="confido-accent-text">really</span> going
                 on?
-              </h4>
-              <p className="confido-research-overview-text">
+              </CaseStudyStatementHeadline>
+              <CaseStudyStatementBody>
                 Through user interviews with accounting teams at brands like
                 Olipop and Unbun Foods, I combined qualitative insights with
                 competitive analysis to understand the full scope of the issue.
-              </p>
-            </div>
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
             <div
               className="confido-research-image-container"
               ref={researchOverviewImageRef}
@@ -591,18 +581,18 @@ const ConfidoCaseStudy = () => {
 
           {/* Research Finding */}
           <div className="confido-research-finding">
-            <div
-              className="confido-research-finding-content"
+            <CaseStudyStatement
               ref={researchFindingContentRef}
+              className="confido-research-finding-statement"
             >
-              <h4
-                className="confido-research-finding-title"
+              <CaseStudyStatementHeadline
+                as="h4"
                 ref={researchFindingTitleRef}
               >
                 Approvals were an{" "}
                 <span className="confido-accent-text">afterthought</span>.
-              </h4>
-              <p className="confido-research-finding-text">
+              </CaseStudyStatementHeadline>
+              <CaseStudyStatementBody>
                 After analyzing how competitors approached approval workflows, I
                 realized{" "}
                 <span style={{ fontWeight: 600 }}>
@@ -610,8 +600,8 @@ const ConfidoCaseStudy = () => {
                   had been treated as a secondary feature
                 </span>{" "}
                 rather than designed as a core workflow.
-              </p>
-            </div>
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
             <div
               className="confido-research-image-container"
               ref={researchFindingImageRef}
@@ -638,17 +628,18 @@ const ConfidoCaseStudy = () => {
 
           {/* Design Approach #1 */}
           <div className="confido-design-approach-item">
-            <div
-              className="confido-design-approach-item-content confido-design-approach-item-content-narrow"
+            <CaseStudyStatement
               ref={designApproach1ContentRef}
+              variant="narrow"
+              className="confido-design-approach-statement"
             >
-              <h4
-                className="confido-design-approach-item-title"
+              <CaseStudyStatementHeadline
+                as="h4"
                 ref={designApproach1TitleRef}
               >
                 Redesigning the Approval Flow
-              </h4>
-              <p className="confido-design-approach-item-text">
+              </CaseStudyStatementHeadline>
+              <CaseStudyStatementBody>
                 The redesigned flow introduces{" "}
                 <span style={{ fontWeight: 600 }}>clear terminal states</span>{" "}
                 for all rejection paths and{" "}
@@ -656,8 +647,8 @@ const ConfidoCaseStudy = () => {
                   fallback user assignments
                 </span>{" "}
                 to prevent workflow breakdowns.
-              </p>
-            </div>
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
             <div
               className="confido-design-approach-image-container"
               ref={designApproach1ImageRef}
@@ -672,25 +663,25 @@ const ConfidoCaseStudy = () => {
 
           {/* Design Approach #2 */}
           <div className="confido-design-approach-item">
-            <div
-              className="confido-design-approach-item-content"
+            <CaseStudyStatement
               ref={designApproach2ContentRef}
+              className="confido-design-approach-statement"
             >
-              <h4
-                className="confido-design-approach-item-title"
+              <CaseStudyStatementHeadline
+                as="h4"
                 ref={designApproach2TitleRef}
               >
                 From Research to Design
-              </h4>
-              <p className="confido-design-approach-item-text">
+              </CaseStudyStatementHeadline>
+              <CaseStudyStatementBody>
                 To address the systemic issues, I moved approvals from buried
                 modals to{" "}
                 <span style={{ fontWeight: 600 }}>
                   its own dedicated section with full navigation and visibility
                 </span>
                 .
-              </p>
-            </div>
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
             <div
               className="confido-design-approach-image-container"
               ref={designApproach2Image1Ref}
@@ -715,22 +706,22 @@ const ConfidoCaseStudy = () => {
 
           {/* Design Approach #3 */}
           <div className="confido-design-approach-item">
-            <div
-              className="confido-design-approach-item-content"
+            <CaseStudyStatement
               ref={designApproach3ContentRef}
+              className="confido-design-approach-statement"
             >
-              <h4
-                className="confido-design-approach-item-title"
+              <CaseStudyStatementHeadline
+                as="h4"
                 ref={designApproach3TitleRef}
               >
                 Validating Through Iteration
-              </h4>
-              <p className="confido-design-approach-item-text">
+              </CaseStudyStatementHeadline>
+              <CaseStudyStatementBody>
                 Over 3 weeks of weekly validation sessions with users and
                 stakeholders, I iterated my designs over 4 critical areas based
                 on the feedback I received:
-              </p>
-            </div>
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
             <div
               className="confido-design-approach-image-container"
               ref={designApproach3ImageRef}
@@ -753,15 +744,12 @@ const ConfidoCaseStudy = () => {
             <h4 className="confido-solution-item-title" ref={solution1TitleRef}>
               Solution #1: Dedicated Approval Section
             </h4>
-            <div
-              className="confido-solution-item-content"
-              ref={solution1ContentRef}
-            >
-              <p className="confido-solution-item-description">
+            <CaseStudyStatement ref={solution1ContentRef}>
+              <CaseStudyStatementHeadline>
                 All approval actions live in{" "}
                 <span className="confido-accent-text">one interface</span>.
-              </p>
-            </div>
+              </CaseStudyStatementHeadline>
+            </CaseStudyStatement>
             <div className="confido-solution-media">
               <div
                 className="confido-solution-video-container"
@@ -790,18 +778,15 @@ const ConfidoCaseStudy = () => {
             <h4 className="confido-solution-item-title" ref={solution2TitleRef}>
               Solution #2: Visual Multi-Tier Flow Builder
             </h4>
-            <div
-              className="confido-solution-item-content"
-              ref={solution2ContentRef}
-            >
-              <p className="confido-solution-item-description">
+            <CaseStudyStatement ref={solution2ContentRef}>
+              <CaseStudyStatementHeadline>
                 The flow builder transforms from single-step logic to{" "}
                 <span className="confido-accent-text">
                   flexible, multi-tier approval chains
                 </span>
                 .
-              </p>
-            </div>
+              </CaseStudyStatementHeadline>
+            </CaseStudyStatement>
             <div className="confido-solution-media">
               <div
                 className="confido-solution-video-container"
@@ -832,16 +817,13 @@ const ConfidoCaseStudy = () => {
             <h4 className="confido-solution-item-title" ref={solution3TitleRef}>
               Solution #3: Comprehensive Audit Trails
             </h4>
-            <div
-              className="confido-solution-item-content"
-              ref={solution3ContentRef}
-            >
-              <p className="confido-solution-item-description">
+            <CaseStudyStatement ref={solution3ContentRef}>
+              <CaseStudyStatementHeadline>
                 Every deduction displays{" "}
                 <span className="confido-accent-text">complete history</span>{" "}
                 with timestamps, actions, and decision context.
-              </p>
-            </div>
+              </CaseStudyStatementHeadline>
+            </CaseStudyStatement>
             <div className="confido-solution-media">
               <div
                 className="confido-solution-video-container"
@@ -872,18 +854,15 @@ const ConfidoCaseStudy = () => {
             <h4 className="confido-solution-item-title" ref={solution4TitleRef}>
               Solution #4: Stopping Endless Cycles
             </h4>
-            <div
-              className="confido-solution-item-content"
-              ref={solution4ContentRef}
-            >
-              <p className="confido-solution-item-description">
+            <CaseStudyStatement ref={solution4ContentRef}>
+              <CaseStudyStatementHeadline>
                 Users can{" "}
                 <span className="confido-accent-text">
                   flag misassigned deductions
                 </span>{" "}
                 and <span className="confido-accent-text">reroute</span> them.
-              </p>
-            </div>
+              </CaseStudyStatementHeadline>
+            </CaseStudyStatement>
             <div className="confido-solution-media">
               <div
                 className="confido-solution-video-container"

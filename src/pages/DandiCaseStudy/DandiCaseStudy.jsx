@@ -8,6 +8,10 @@ import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
 import CursorPill from "../../components/CursorPill/CursorPill";
 import CaseStudyLayout from "../../components/CaseStudyLayout/CaseStudyLayout";
+import {
+  CaseStudyStatement,
+  CaseStudyStatementHeadline,
+} from "../../components/CaseStudyStatement/CaseStudyStatement";
 import "./DandiCaseStudy.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -21,8 +25,7 @@ const DANDI_FEATURES = [
     video: "/work/dandi/sol1.mp4",
     title: "Feature #1: Health tracking that feels like self-care",
     headlineLead: "Your garden ",
-    headlineHighlight: "reflects your body",
-    headlineTrail: ".",
+    headlineHighlight: "reflects your body.",
     caption:
       "Heart rate, sleep, glucose, and body temp each visualized as an animated flower that blooms when you're thriving.",
   },
@@ -30,8 +33,7 @@ const DANDI_FEATURES = [
     video: "/work/dandi/sol2.mp4",
     title: "Feature #2: Supplements delivered hands-free",
     headlineLead: "No pills. ",
-    headlineHighlight: "No thinking",
-    headlineTrail: ".",
+    headlineHighlight: "No thinking.",
     caption:
       "The earring reads your real-time biometrics and automatically micro-doses exactly what your body needs through the skin.",
   },
@@ -39,8 +41,7 @@ const DANDI_FEATURES = [
     video: "/work/dandi/sol3.mp4",
     title: "Feature #3: See your whole health in one place",
     headlineLead: "Everything your body is doing, ",
-    headlineHighlight: "at a glance",
-    headlineTrail: ".",
+    headlineHighlight: "at a glance.",
     caption:
       "Key biometrics, medication intake, and cycle tracking — designed to feel like a morning check-in, not a medical dashboard.",
   },
@@ -48,8 +49,7 @@ const DANDI_FEATURES = [
     video: "/work/dandi/sol4.mp4",
     title: "Feature #4: You are not alone",
     headlineLead: "Peer supported, ",
-    headlineHighlight: "clinically vetted",
-    headlineTrail: ".",
+    headlineHighlight: "clinically vetted.",
     caption:
       'A community forum where every post marked "Reviewed" has been verified by a medical and nutrition advisory team.',
   },
@@ -422,16 +422,16 @@ const DandiCaseStudy = () => {
           >
             What We Found
           </h2>
-          <div
-            className="dandi-what-we-found-statement-content"
+          <CaseStudyStatement
             ref={whatWeFoundStatRef}
+            className="dandi-what-we-found-statement"
           >
-            <p className="dandi-what-we-found-text">
+            <CaseStudyStatementHeadline>
               As of 2021, there are approximately{" "}
               <span className="dandi-accent-text">65.77 million</span> women
               worldwide living with PCOS.
-            </p>
-          </div>
+            </CaseStudyStatementHeadline>
+          </CaseStudyStatement>
           <div className="dandi-what-we-found-stats" ref={whatWeFoundStatsRef}>
             <figure className="dandi-what-we-found-stat dandi-what-we-found-stat--image-left">
               <div className="dandi-what-we-found-stat-media">
@@ -555,15 +555,14 @@ const DandiCaseStudy = () => {
               }}
             >
               <h4 className="dandi-feature-item-title">{feature.title}</h4>
-              <div className="dandi-feature-item-content">
-                <p className="dandi-feature-item-headline">
+              <CaseStudyStatement>
+                <CaseStudyStatementHeadline>
                   {feature.headlineLead}
                   <span className="dandi-accent-text">
                     {feature.headlineHighlight}
                   </span>
-                  {feature.headlineTrail}
-                </p>
-              </div>
+                </CaseStudyStatementHeadline>
+              </CaseStudyStatement>
               <div className="dandi-feature-media">
                 <div className="dandi-feature-video-container">
                   <video
@@ -640,7 +639,7 @@ const DandiCaseStudy = () => {
               ref={learnMoreEmbedRef}
             >
               <iframe
-                src="https://www.youtube.com/embed/ARy32Mv2iKg"
+                src="https://www.youtube.com/embed/ARy32Mv2iKg?autoplay=1&mute=1&loop=1&playlist=ARy32Mv2iKg&playsinline=1"
                 title="Dandi demo"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
