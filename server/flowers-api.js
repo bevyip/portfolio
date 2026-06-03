@@ -47,7 +47,7 @@ export async function handleFlowersRequest(req, res, env) {
     if (req.method === "POST") {
       const body = await readJsonBody(req);
       const flower = await saveFlower(
-        { name: body.name, image: body.image },
+        { name: body.name, image: body.image, message: body.message },
         env,
       );
       sendJson(res, 201, { flower });

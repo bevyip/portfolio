@@ -73,6 +73,7 @@ export default function PlantYourFlower() {
       const saved = await plantFlower({
         name: flower.name,
         image: flower.image,
+        message: flower.message,
       });
       setFlowers((prev) => [...(prev ?? []), saved]);
       await globeRef.current?.addFlower(saved);

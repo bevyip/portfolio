@@ -27,8 +27,8 @@ export default async function handler(req, res) {
     }
 
     if (req.method === "POST") {
-      const { name, image } = req.body ?? {};
-      const flower = await saveFlower({ name, image }, process.env);
+      const { name, image, message } = req.body ?? {};
+      const flower = await saveFlower({ name, image, message }, process.env);
       return res.status(201).json({ flower });
     }
 

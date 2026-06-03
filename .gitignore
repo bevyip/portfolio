@@ -25,7 +25,7 @@ dist-ssr
 
 examples
 scripts
-supabase
+supabase/
 
 # Historical pages (preserved for history tracking)
 src/pages/AboutArchive/

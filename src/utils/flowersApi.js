@@ -9,11 +9,11 @@ export async function fetchFlowers() {
   return data.flowers ?? [];
 }
 
-export async function plantFlower({ name, image }) {
+export async function plantFlower({ name, image, message }) {
   const res = await fetch("/api/flowers", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, image }),
+    body: JSON.stringify({ name, image, message }),
   });
 
   const data = await res.json();

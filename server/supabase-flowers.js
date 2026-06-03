@@ -60,7 +60,7 @@ export async function listFlowers(env = process.env) {
   return (data ?? []).map(rowToFlower);
 }
 
-export async function saveFlower({ name, image }, env = process.env) {
+export async function saveFlower({ name, image, message }, env = process.env) {
   const trimmedName = String(name ?? "").trim();
   if (!trimmedName) {
     throw new Error("Name is required.");
@@ -68,6 +68,7 @@ export async function saveFlower({ name, image }, env = process.env) {
   if (!image) {
     throw new Error("Image is required.");
   }
+  const trimmedMessage = String(message ?? "").trim();
 
   const supabase = getSupabaseAdmin(env);
   const { contentType, buffer } = parseDataUrl(image);
@@ -93,7 +94,11 @@ export async function saveFlower({ name, image }, env = process.env) {
 
   const { data, error } = await supabase
     .from("flowers")
-    .insert({ name: trimmedName, image_url: imageUrl })
+    .insert({
+      name: trimmedName,
+      image_url: imageUrl,
+      message: trimmedMessage || null,
+    })
     .select("id, name, image_url, created_at")
     .single();
 
