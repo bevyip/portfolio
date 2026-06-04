@@ -27,13 +27,29 @@ const FLOWER_SURFACE_OFFSET = 4;
 const FLOWER_SIZE = 4.2;
 const GRASS_BEND_LERP_IN = 12;
 const GRASS_BEND_LERP_OUT = 2.5;
+const FLOWER_FADE_DURATION = 0.55;
+const FLOWER_ALPHA_TEST = 0.08;
+const FLOWER_RANDOM_BLEND_MIN = 0.42;
+const FLOWER_RANDOM_BLEND_RANGE = 0.38;
+const FLOWER_LOCAL_JITTER = 0.55;
+
+function easeOutCubic(t) {
+  return 1 - (1 - t) ** 3;
+}
+
+function hash01(index, salt) {
+  let h = index * 374761393 + salt * 668265263;
+  h = (h ^ (h >>> 13)) * 1274126177;
+  h = h ^ (h >>> 16);
+  return (h >>> 0) / 4294967296;
+}
 
 function getPixelRatio() {
   return window.innerWidth < 1200 ? 1.5 : Math.min(window.devicePixelRatio, 2);
 }
 
 export async function initGrassGlobe(container, options = {}) {
-  const { initialFlowers = [], onFlowerTooltipUpdate } = options;
+  const { onFlowerTooltipUpdate } = options;
 
   const golden = (1 + Math.sqrt(5)) / 2;
 
@@ -509,48 +525,58 @@ export async function initGrassGlobe(container, options = {}) {
     return { normal: n, t1, t2 };
   }
 
-  function hash01(index, salt) {
-    let h = index * 374761393 + salt * 668265263;
-    h = (h ^ (h >>> 13)) * 1274126177;
-    h = h ^ (h >>> 16);
-    return (h >>> 0) / 4294967296;
-  }
-
-  function placementOnSphere(index) {
-    const u = hash01(index, 1);
-    const v = hash01(index, 2);
+  function randomUnitNormal(index, saltA, saltB) {
+    const u = hash01(index, saltA);
+    const v = hash01(index, saltB);
     const theta = Math.acos(1 - 2 * u);
     const phi = 2 * Math.PI * v;
     const st = Math.sin(theta);
-    const ct = Math.cos(theta);
-    const sp = Math.sin(phi);
-    const cp = Math.cos(phi);
-    const nx = st * cp;
-    const ny = ct;
-    const nz = st * sp;
-    const normal = new THREE.Vector3(nx, ny, nz);
+    return new THREE.Vector3(st * Math.cos(phi), Math.cos(theta), st * Math.sin(phi));
+  }
+
+  function placementOnSphere(index, totalCount) {
+    const count = Math.max(totalCount, index + 1);
+    const theta = Math.acos(1 - (2 * (index + 0.5)) / count);
+    const phi = (2 * Math.PI * index) / golden;
+    const st = Math.sin(theta);
+    const anchor = new THREE.Vector3(st * Math.cos(phi), Math.cos(theta), st * Math.sin(phi));
+    const random = randomUnitNormal(index, 11, 12);
+
+    const blend =
+      FLOWER_RANDOM_BLEND_MIN + hash01(index, 13) * FLOWER_RANDOM_BLEND_RANGE;
+    let normal = anchor.lerp(random, blend).normalize();
+
+    const frame = tangentFrame(normal);
+    const localSpread = FLOWER_LOCAL_JITTER * (0.4 + hash01(index, 14) * 0.6);
+    const jitterAngle = hash01(index, 15) * Math.PI * 2;
+    normal
+      .addScaledVector(frame.t1, Math.cos(jitterAngle) * localSpread)
+      .addScaledVector(frame.t2, Math.sin(jitterAngle) * localSpread)
+      .normalize();
+
     const basePos = normal
       .clone()
       .multiplyScalar(SPHERE_R + FLOWER_SURFACE_OFFSET);
     return { basePos, ...tangentFrame(normal) };
   }
 
-  async function addFlowerToGlobe(flowerData, index) {
+  const flowerPlaneGeo = new THREE.PlaneGeometry(FLOWER_SIZE, FLOWER_SIZE);
+
+  async function addFlowerToGlobe(flowerData, index, totalCount) {
     const texture = await textureLoader.loadAsync(flowerData.image);
     texture.colorSpace = THREE.SRGBColorSpace;
 
-    const size = FLOWER_SIZE;
-    const geo = new THREE.PlaneGeometry(size, size);
     const mat = new THREE.MeshBasicMaterial({
       map: texture,
       transparent: true,
-      alphaTest: 0.08,
+      opacity: 0,
+      alphaTest: 0,
       depthWrite: false,
       side: THREE.DoubleSide,
     });
 
-    const mesh = new THREE.Mesh(geo, mat);
-    const place = placementOnSphere(index);
+    const mesh = new THREE.Mesh(flowerPlaneGeo, mat);
+    const place = placementOnSphere(index, totalCount);
     mesh.position.copy(place.basePos);
     mesh.quaternion.setFromUnitVectors(
       new THREE.Vector3(0, 0, 1),
@@ -573,7 +599,23 @@ export async function initGrassGlobe(container, options = {}) {
       t2: place.t2,
       bendT1: 0,
       bendT2: 0,
+      fade: 0,
     });
+  }
+
+  function updateFlowerFades(dt) {
+    for (const flower of flowerInstances) {
+      if (flower.fade >= 1) continue;
+
+      flower.fade = Math.min(1, flower.fade + dt / FLOWER_FADE_DURATION);
+      const mat = flower.mesh.material;
+      mat.opacity = easeOutCubic(flower.fade);
+
+      if (flower.fade >= 1) {
+        mat.opacity = 1;
+        mat.alphaTest = FLOWER_ALPHA_TEST;
+      }
+    }
   }
 
   function updateFlowerBends(dt) {
@@ -665,15 +707,6 @@ export async function initGrassGlobe(container, options = {}) {
     return flowerInstances[0];
   }
 
-  for (let i = 0; i < initialFlowers.length; i++) {
-    await addFlowerToGlobe(initialFlowers[i], i);
-  }
-
-  const initialViewFlower = pickFlowerForInitialView();
-  if (initialViewFlower) {
-    orientCameraTowardFlower(initialViewFlower);
-  }
-
   for (let i = 0; i < 3; i++) {
     renderer.compute(computeUpdate);
     updateFlowerBends(1 / 60);
@@ -683,6 +716,18 @@ export async function initGrassGlobe(container, options = {}) {
 
   let lastFrameTime = performance.now();
   let disposed = false;
+  let initialViewSet = false;
+  const loadedFlowerIds = new Set();
+  let nextFlowerIndex = 0;
+
+  function maybeSetInitialView() {
+    if (initialViewSet || flowerInstances.length === 0) return;
+    const initialViewFlower = pickFlowerForInitialView();
+    if (initialViewFlower) {
+      orientCameraTowardFlower(initialViewFlower);
+      initialViewSet = true;
+    }
+  }
 
   renderer.setAnimationLoop(() => {
     if (disposed) return;
@@ -692,15 +737,44 @@ export async function initGrassGlobe(container, options = {}) {
 
     renderer.compute(computeUpdate);
     updateFlowerBends(dt);
+    updateFlowerFades(dt);
     controls.update();
     if (selectedFlowerMesh) notifyFlowerTooltip();
     postProcessing.render();
   });
 
+  async function loadFlowers(flowers) {
+    if (disposed) return;
+
+    const toLoad = [];
+    for (const flower of flowers) {
+      const key = flower.id ?? flower.image;
+      if (loadedFlowerIds.has(key)) continue;
+      loadedFlowerIds.add(key);
+      toLoad.push(flower);
+    }
+
+    if (toLoad.length === 0) return;
+
+    const startIndex = nextFlowerIndex;
+    const totalCount = startIndex + toLoad.length;
+    nextFlowerIndex = totalCount;
+
+    const tasks = toLoad.map((flower, offset) => {
+      const index = startIndex + offset;
+      return addFlowerToGlobe(flower, index, totalCount)
+        .then(() => maybeSetInitialView())
+        .catch((err) => {
+          loadedFlowerIds.delete(flower.id ?? flower.image);
+          console.error("[GrassGlobe] flower load", err);
+        });
+    });
+
+    await Promise.all(tasks);
+  }
+
   return {
-    addFlower(flowerData) {
-      return addFlowerToGlobe(flowerData, flowerInstances.length);
-    },
+    loadFlowers,
     clearFlowerSelection() {
       selectedFlowerMesh = null;
       lastTooltipPayload = null;
@@ -721,6 +795,7 @@ export async function initGrassGlobe(container, options = {}) {
         window.removeEventListener("resize", handleResize);
       }
       clearTimeout(resizeTimeout);
+      flowerPlaneGeo.dispose();
       renderer.dispose();
       if (canvas.parentNode === container) {
         container.removeChild(canvas);

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Info } from "lucide-react";
 import Footer from "../../components/Footer/Footer";
 import GrassGlobe from "../../components/GrassGlobe/GrassGlobe";
@@ -10,9 +10,9 @@ import "./PlantYourFlower.css";
 
 export default function PlantYourFlower() {
   useScrollReset();
-  const globeRef = useRef(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const [flowers, setFlowers] = useState(null);
+  const [flowers, setFlowers] = useState([]);
+  const [flowersLoading, setFlowersLoading] = useState(true);
   const [loadError, setLoadError] = useState("");
   const [plantError, setPlantError] = useState("");
   const [isPlanting, setIsPlanting] = useState(false);
@@ -32,9 +32,11 @@ export default function PlantYourFlower() {
       .catch((err) => {
         console.error("[PlantYourFlower] load flowers", err);
         if (!cancelled) {
-          setFlowers([]);
           setLoadError(err.message || "Could not load flowers.");
         }
+      })
+      .finally(() => {
+        if (!cancelled) setFlowersLoading(false);
       });
 
     return () => {
@@ -75,8 +77,7 @@ export default function PlantYourFlower() {
         image: flower.image,
         message: flower.message,
       });
-      setFlowers((prev) => [...(prev ?? []), saved]);
-      await globeRef.current?.addFlower(saved);
+      setFlowers((prev) => [...prev, saved]);
       setModalOpen(false);
     } catch (err) {
       console.error("[PlantYourFlower] plant flower", err);
@@ -90,9 +91,7 @@ export default function PlantYourFlower() {
     <main className="plant-your-flower-page">
       <section className="plant-your-flower-hero">
         <div className="plant-your-flower-globe-wrap">
-          {flowers !== null ? (
-            <GrassGlobe ref={globeRef} initialFlowers={flowers} />
-          ) : null}
+          <GrassGlobe flowers={flowers} />
         </div>
 
         {loadError ? (
@@ -163,7 +162,7 @@ export default function PlantYourFlower() {
                 type="button"
                 className="plant-your-flower-cta"
                 onClick={() => setModalOpen(true)}
-                disabled={flowers === null || isPlanting}
+                disabled={flowersLoading || isPlanting}
               >
                 Plant your flower
               </button>

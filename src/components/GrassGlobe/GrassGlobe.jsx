@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useRef,
-  useImperativeHandle,
-  forwardRef,
-  useState,
-} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import flowerIcon from "../../assets/img/flower.png";
 import { initGrassGlobe } from "./grassGlobeScene";
 import "./GrassGlobe.css";
@@ -19,20 +13,13 @@ function formatFlowerDate(timestamp) {
   });
 }
 
-const GrassGlobe = forwardRef(function GrassGlobe({ initialFlowers = [] }, ref) {
+export default function GrassGlobe({ flowers = [] }) {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
-  const flowersRef = useRef(initialFlowers);
   const [tooltip, setTooltip] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const [loaderMounted, setLoaderMounted] = useState(true);
-
-  useImperativeHandle(ref, () => ({
-    addFlower(flowerData) {
-      flowersRef.current = [...flowersRef.current, flowerData];
-      return sceneRef.current?.addFlower(flowerData);
-    },
-  }));
+  const [sceneReady, setSceneReady] = useState(false);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -41,7 +28,6 @@ const GrassGlobe = forwardRef(function GrassGlobe({ initialFlowers = [] }, ref) 
     let cancelled = false;
 
     initGrassGlobe(container, {
-      initialFlowers: flowersRef.current,
       onFlowerTooltipUpdate: setTooltip,
     })
       .then((scene) => {
@@ -50,6 +36,7 @@ const GrassGlobe = forwardRef(function GrassGlobe({ initialFlowers = [] }, ref) 
           return;
         }
         sceneRef.current = scene;
+        setSceneReady(true);
         requestAnimationFrame(() => {
           if (!cancelled) setIsVisible(true);
         });
@@ -61,10 +48,16 @@ const GrassGlobe = forwardRef(function GrassGlobe({ initialFlowers = [] }, ref) 
     return () => {
       cancelled = true;
       setIsVisible(false);
+      setSceneReady(false);
       sceneRef.current?.destroy();
       sceneRef.current = null;
     };
   }, []);
+
+  useEffect(() => {
+    if (!sceneReady) return;
+    sceneRef.current?.loadFlowers(flowers);
+  }, [flowers, sceneReady]);
 
   useEffect(() => {
     if (!tooltip) return undefined;
@@ -135,6 +128,4 @@ const GrassGlobe = forwardRef(function GrassGlobe({ initialFlowers = [] }, ref) 
       ) : null}
     </div>
   );
-});
-
-export default GrassGlobe;
+}
