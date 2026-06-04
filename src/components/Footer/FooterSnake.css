@@ -187,12 +187,13 @@
 
 @media (max-width: 768px) {
   .footer-snake__controls {
-    grid-template-columns: repeat(3, 36px);
-    grid-template-rows: repeat(2, 36px);
+    grid-template-columns: repeat(3, 48px);
+    grid-template-rows: repeat(2, 48px);
+    gap: 6px;
   }
 
   .footer-snake__control {
-    font-size: 13px;
+    font-size: 18px;
   }
 }
 
@@ -243,14 +244,14 @@
   }
 
   .footer-snake__controls {
-    grid-template-columns: repeat(3, 34px);
-    grid-template-rows: repeat(2, 34px);
-    gap: 4px;
+    grid-template-columns: repeat(3, 52px);
+    grid-template-rows: repeat(2, 52px);
+    gap: 6px;
   }
 
   .footer-snake__control {
-    font-size: 12px;
-    border-radius: 3px;
+    font-size: 20px;
+    border-radius: 4px;
   }
 }
 
