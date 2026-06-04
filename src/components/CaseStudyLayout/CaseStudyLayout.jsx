@@ -12,7 +12,7 @@ function CaseStudySpyNav({
   sections,
   accentColor,
   slotRef,
-  layoutRef,
+  mainRef,
   projectId,
 }) {
   const navRef = useRef(null);
@@ -22,7 +22,7 @@ function CaseStudySpyNav({
   const sectionIds = sections.map((section) => section.id);
   const activeId = useScrollSpy(sectionIds);
   const { lenis, scrollToTop, scrollToElement } = useLenisScroll();
-  const pinStyle = usePinnedSpyNav(slotRef, layoutRef, navRef);
+  const { pinStyle, atBottom } = usePinnedSpyNav(slotRef, mainRef, navRef);
   const isBlockParty = projectId === "blockparty";
 
   const handleClick = (id, index) => {
@@ -48,11 +48,14 @@ function CaseStudySpyNav({
       <div
         ref={navRef}
         className={`case-study-spy-nav${pinStyle ? " is-pinned" : ""}${
-          isBlockParty ? " case-study-spy-nav--blockparty" : ""
-        }`}
+          atBottom ? " is-at-bottom" : ""
+        }${isBlockParty ? " case-study-spy-nav--blockparty" : ""}`}
         role="navigation"
         aria-label="Case study sections"
-        style={{ "--case-study-spy-accent": accentColor, ...pinStyle }}
+        style={{
+          "--case-study-spy-accent": accentColor,
+          ...pinStyle,
+        }}
       >
         <div ref={trackRef} className="case-study-spy-nav__track">
           {isBlockParty ? (
@@ -107,7 +110,7 @@ function CaseStudySpyNav({
 
 export default function CaseStudyLayout({ projectId, children }) {
   const config = caseStudyNavConfig[projectId];
-  const layoutRef = useRef(null);
+  const mainRef = useRef(null);
   const slotRef = useRef(null);
 
   if (!config) {
@@ -115,15 +118,15 @@ export default function CaseStudyLayout({ projectId, children }) {
   }
 
   return (
-    <div ref={layoutRef} className="case-study-layout">
+    <div className="case-study-layout">
       <CaseStudySpyNav
         projectId={projectId}
         sections={config.sections}
         accentColor={config.accentColor}
         slotRef={slotRef}
-        layoutRef={layoutRef}
+        mainRef={mainRef}
       />
-      <div className="case-study-layout__main">{children}</div>
+      <div ref={mainRef} className="case-study-layout__main">{children}</div>
     </div>
   );
 }

@@ -1,37 +1,104 @@
-import { useEffect, useState, useRef } from "react";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
-import { scheduleScrollTriggerLayoutRefresh } from "../../utils/scrollTriggerLayout";
+import FooterSnake from "./FooterSnake";
 import "./Footer.css";
 
-/** X (Twitter) brand mark — filled path scales with `currentColor` */
-function XLogo({ size = 22, className = "" }) {
-  return (
-    <svg
-      className={className}
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      aria-hidden
-    >
-      <path
-        fill="currentColor"
-        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-      />
-    </svg>
-  );
-}
+gsap.registerPlugin(ScrollTrigger);
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+const FOOTER_RISE_DURATION = 1;
+const FOOTER_RISE_EASE = "power2.out";
+const FOOTER_LINE_STAGGER = 0.12;
+const FOOTER_SNAKE_FADE_DURATION = 0.5;
+const FOOTER_SNAKE_FADE_OVERLAP = 0.55;
+
+const FooterLine = ({ children }) => (
+  <span className="footer-line">
+    <span className="footer-line-inner">{children}</span>
+  </span>
+);
+
+const SOCIAL_LINKS = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/bevyip/",
+    external: true,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/bevyip",
+    external: true,
+  },
+  {
+    label: "X",
+    href: "https://x.com/bevdesigns",
+    external: true,
+  },
+  {
+    label: "Email",
+    href: "mailto:beverly.yip.8000@gmail.com",
+    external: false,
+  },
+];
 
 const Footer = () => {
-  const [timeString, setTimeString] = useState("Loading...");
-  const containerRef = useRef(null);
-  const titleRef = useRef(null);
-  const subtitleRef = useRef(null);
-  const socialLinksRef = useRef(null);
+  const footerRef = useRef(null);
+  const [timeString, setTimeString] = useState("—:—:—");
+
+  useEffect(() => {
+    const footer = footerRef.current;
+    if (!footer) return undefined;
+
+    const lineInners = footer.querySelectorAll(".footer-line-inner");
+    if (!lineInners.length) return undefined;
+
+    const snakeTargets = footer.querySelectorAll(
+      ".footer-snake__main, .footer-snake__aside",
+    );
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.set(lineInners, { y: 0 });
+      gsap.set(snakeTargets, { opacity: 1 });
+      return undefined;
+    }
+
+    gsap.set(lineInners, { y: "100%" });
+
+    let scrollTrigger = null;
+    const timeoutId = window.setTimeout(() => {
+      ScrollTrigger.refresh();
+      scrollTrigger = ScrollTrigger.create({
+        trigger: footer,
+        start: "top 85%",
+        once: true,
+        onEnter: () => {
+          const tl = gsap.timeline();
+          tl.to(lineInners, {
+            y: 0,
+            duration: FOOTER_RISE_DURATION,
+            ease: FOOTER_RISE_EASE,
+            stagger: FOOTER_LINE_STAGGER,
+          });
+          if (snakeTargets.length) {
+            tl.to(
+              snakeTargets,
+              {
+                opacity: 1,
+                duration: FOOTER_SNAKE_FADE_DURATION,
+                ease: FOOTER_RISE_EASE,
+              },
+              `-=${FOOTER_SNAKE_FADE_OVERLAP}`,
+            );
+          }
+        },
+      });
+    }, 100);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      if (scrollTrigger) scrollTrigger.kill();
+    };
+  }, []);
 
   useEffect(() => {
     const updateClock = () => {
@@ -43,8 +110,7 @@ const Footer = () => {
         second: "2-digit",
         hour12: true,
       };
-      const time = now.toLocaleTimeString("en-US", options);
-      setTimeString(`© BEVERLY YIP | ${time} ET`);
+      setTimeString(now.toLocaleTimeString("en-US", options));
     };
 
     updateClock();
@@ -52,183 +118,65 @@ const Footer = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Single ScrollTrigger on footer container: one timeline for title, subtitle, and links
-  useEffect(() => {
-    const container = containerRef.current;
-    const titleElement = titleRef.current;
-    const subtitleElement = subtitleRef.current;
-    const socialLinksContainer = socialLinksRef.current;
-    if (
-      !container ||
-      !titleElement ||
-      !subtitleElement ||
-      !socialLinksContainer
-    )
-      return;
-
-    const links = socialLinksContainer.querySelectorAll(".social-link");
-    let splitInstance = null;
-    let scrollTrigger = null;
-    let tl = null;
-    let removeRefreshListener = null;
-
-    const timeoutId = setTimeout(() => {
-      splitInstance = new SplitText(titleElement, {
-        type: "chars",
-        charsClass: "footer-char",
-      });
-
-      gsap.set(splitInstance.chars, { opacity: 0, y: 40 });
-      gsap.set(subtitleElement, { opacity: 0, y: 20 });
-      gsap.set(links, { opacity: 0, y: 20 });
-
-      tl = gsap.timeline({ paused: true });
-      tl.to(splitInstance.chars, {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.03,
-        ease: "power3.out",
-      })
-        .to(
-          subtitleElement,
-          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-          "-=0.3",
-        )
-        .to(
-          links,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            stagger: 0.05,
-            ease: "power2.out",
-          },
-          "-=0.2",
-        );
-
-      const revealFooter = () => tl.play();
-      const hideFooter = () => tl.reverse();
-
-      const syncFooterIfInView = () => {
-        if (!scrollTrigger || !tl) return;
-        if (scrollTrigger.isActive) {
-          tl.progress(1);
-        }
-      };
-
-      scrollTrigger = ScrollTrigger.create({
-        trigger: container,
-        start: "top 85%",
-        invalidateOnRefresh: true,
-        onEnter: revealFooter,
-        onEnterBack: revealFooter,
-        onLeaveBack: hideFooter,
-      });
-
-      scheduleScrollTriggerLayoutRefresh();
-      syncFooterIfInView();
-
-      const onLayoutRefresh = () => syncFooterIfInView();
-      ScrollTrigger.addEventListener("refresh", onLayoutRefresh);
-      removeRefreshListener = () => {
-        ScrollTrigger.removeEventListener("refresh", onLayoutRefresh);
-      };
-    }, 100);
-
-    return () => {
-      clearTimeout(timeoutId);
-      removeRefreshListener?.();
-      if (scrollTrigger) scrollTrigger.kill();
-      if (tl) tl.kill();
-      if (splitInstance) {
-        try {
-          splitInstance.revert();
-        } catch (e) {
-          // Ignore revert errors
-        }
-      }
-    };
-  }, []);
-
   return (
-    <footer id="contact" className="footer">
-      <div ref={containerRef} className="footer-container">
-        <p ref={subtitleRef} className="footer-subtitle">
-          Not Framer. Not Webflow. Just good old-fashioned code and a lot of
-          tea.
-        </p>
+    <footer ref={footerRef} id="contact" className="footer">
+      <div className="footer-container page-content-shell">
+        <div className="footer-top">
+          <div className="footer-blurb">
+            <h2 className="footer-title">
+              <FooterLine>
+                Design is better when you have{" "}
+                <span className="footer-title-em">fun.</span>
+              </FooterLine>
+            </h2>
 
-        <h2 ref={titleRef} className="footer-title">
-          <span className="work">Let's get in touch</span>
-          <span className="me">.</span>
-        </h2>
+            <p className="footer-subtitle">
+              <FooterLine>
+                Not Framer. Not Webflow. Just good old-fashioned code and a lot
+                of tea.
+              </FooterLine>
+            </p>
 
-        <div ref={socialLinksRef} className="social-links">
-          <a
-            href="https://www.linkedin.com/in/bevyip/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link"
-            aria-label="LinkedIn (opens in new tab)"
-          >
-            <Linkedin
-              className="social-logo"
-              size={18}
-              strokeWidth={1.75}
-              aria-hidden
-            />
-            <span className="arrow" aria-hidden>
-              ↗
-            </span>
-          </a>
-          <a
-            href="https://github.com/bevyip"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link"
-            aria-label="GitHub (opens in new tab)"
-          >
-            <Github
-              className="social-logo"
-              size={18}
-              strokeWidth={1.75}
-              aria-hidden
-            />
-            <span className="arrow" aria-hidden>
-              ↗
-            </span>
-          </a>
-          <a
-            href="https://x.com/bevdesigns"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link"
-            aria-label="X (opens in new tab)"
-          >
-            <XLogo size={17} className="social-logo social-logo--x" />
-            <span className="arrow" aria-hidden>
-              ↗
-            </span>
-          </a>
-          <a
-            href="mailto:beverly.yip.8000@gmail.com"
-            className="social-link"
-            aria-label="Email"
-          >
-            <Mail
-              className="social-logo"
-              size={18}
-              strokeWidth={1.75}
-              aria-hidden
-            />
-            <span className="arrow" aria-hidden>
-              ↗
-            </span>
-          </a>
+            <p
+              className="footer-bio"
+              aria-label={`© Beverly Yip. Current time in Eastern Time: ${timeString}`}
+            >
+              <FooterLine>© BEVERLY YIP | {timeString} ET</FooterLine>
+            </p>
+          </div>
+
+          <div className="footer-links-col">
+            <p className="footer-bio social-links-heading">
+              <FooterLine>SAY HI</FooterLine>
+            </p>
+            <div
+              className="social-links"
+              role="navigation"
+              aria-label="Social links"
+            >
+              {SOCIAL_LINKS.map(({ label, href, external }) => (
+                <a
+                  key={label}
+                  href={href}
+                  {...(external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className="social-link"
+                  aria-label={external ? `${label} (opens in new tab)` : label}
+                >
+                  <FooterLine>
+                    {label}
+                    <span className="arrow" aria-hidden>
+                      ↗
+                    </span>
+                  </FooterLine>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <p className="footer-bio">{timeString}</p>
+        <FooterSnake />
       </div>
     </footer>
   );

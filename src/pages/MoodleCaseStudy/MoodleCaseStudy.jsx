@@ -281,6 +281,9 @@ const MoodleCaseStudy = () => {
       }
     });
 
+    // See Next Section
+    createScrollAnimation(seeNextTitleRef);
+
     return () => {
       scrollTriggers.forEach((trigger) => trigger.kill());
     };
@@ -1036,7 +1039,11 @@ const MoodleCaseStudy = () => {
             <h3 className="moodle-see-next-title" ref={seeNextTitleRef}>
               SEE NEXT
             </h3>
-            <div className="moodle-see-next-grid" ref={seeNextGridRef}>
+            <div
+              className="moodle-see-next-grid"
+              ref={seeNextGridRef}
+              data-case-study-nav-boundary
+            >
               <Link
                 to="/venmo"
                 className="moodle-see-next-card-link"

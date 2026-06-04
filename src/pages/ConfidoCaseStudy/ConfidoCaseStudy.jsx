@@ -920,7 +920,11 @@ const ConfidoCaseStudy = () => {
           <h3 className="confido-see-next-title" ref={seeNextTitleRef}>
             SEE NEXT
           </h3>
-          <div className="confido-see-next-grid" ref={seeNextGridRef}>
+          <div
+            className="confido-see-next-grid"
+            ref={seeNextGridRef}
+            data-case-study-nav-boundary
+          >
             <Link
               to="/moodle"
               className="confido-see-next-card-link"

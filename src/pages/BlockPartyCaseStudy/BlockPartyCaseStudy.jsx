@@ -551,10 +551,10 @@ export default function BlockPartyCaseStudy() {
                 </>
               ) : null}
               {section.id === "closing" ? (
-                <>
+                <div data-case-study-nav-boundary>
                   <ClosingCanvas />
                   <div className="page-content-shell">{CLOSING_BLURB}</div>
-                </>
+                </div>
               ) : null}
             </FadeInSection>
           );

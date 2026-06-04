@@ -699,7 +699,11 @@ const DandiCaseStudy = () => {
           <h3 className="dandi-see-next-title" ref={seeNextTitleRef}>
             SEE NEXT
           </h3>
-          <div className="dandi-see-next-grid" ref={seeNextGridRef}>
+          <div
+            className="dandi-see-next-grid"
+            ref={seeNextGridRef}
+            data-case-study-nav-boundary
+          >
             <Link
               to="/confido"
               className="dandi-see-next-card-link"

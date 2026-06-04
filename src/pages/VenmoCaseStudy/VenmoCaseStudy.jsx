@@ -789,7 +789,11 @@ const VenmoCaseStudy = () => {
           <h3 className="venmo-see-next-title" ref={seeNextTitleRef}>
             SEE NEXT
           </h3>
-          <div className="venmo-see-next-grid" ref={seeNextGridRef}>
+          <div
+            className="venmo-see-next-grid"
+            ref={seeNextGridRef}
+            data-case-study-nav-boundary
+          >
             <Link
               to="/moodle"
               className="venmo-see-next-card-link"

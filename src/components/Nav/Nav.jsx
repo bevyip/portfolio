@@ -533,7 +533,7 @@ const Nav = () => {
   return (
     <nav
       ref={navRef}
-      className="top-0 z-[100] relative"
+      className="site-nav top-0 z-[100] relative"
       style={{
         opacity: 0,
         transform: "translateY(-100px)",
