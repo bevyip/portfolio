@@ -22,12 +22,15 @@
 
 .footer-snake__score {
   margin: 0 0 10px;
-  font-family: "Satoshi", sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  font-family: "Pokemon GB", monospace;
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #6b8056;
+  line-height: 1.4;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
 }
 
 .footer-snake__score-value {
@@ -89,19 +92,20 @@
 }
 
 .footer-snake__play-btn {
-  font-family: "Satoshi", sans-serif;
-  font-size: clamp(11px, 1.1vw, 13px);
-  font-weight: 500;
-  font-style: normal;
-  letter-spacing: 0.14em;
+  font-family: "Pokemon GB", monospace;
+  font-size: clamp(9px, 0.95vw, 11px);
+  font-weight: normal;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #9bbc0f;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
-  line-height: 1;
+  line-height: 1.4;
   pointer-events: none;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
 }
 
 .footer-snake__controls {

@@ -550,80 +550,86 @@ export default function FooterSnake() {
     >
       <div className="footer-snake__layout">
         <div ref={sectionRef} className="footer-snake__main">
-        <CursorPill isHovering={showPlayCursorPill} text="ssssss..." />
-        <p className="footer-snake__score" aria-live="off">
-          Score{" "}
-          <span className="footer-snake__score-value">{uiState.score}</span>
-        </p>
+          <CursorPill isHovering={showPlayCursorPill} text="ssssss..." />
+          <p className="footer-snake__score" aria-live="off">
+            Score{" "}
+            <span className="footer-snake__score-value">{uiState.score}</span>
+          </p>
 
-        <div
-          ref={playAreaRef}
-          className="footer-snake__play-area"
-          role="application"
-          tabIndex={reducedMotion ? -1 : 0}
-          aria-label="Snake mini-game. Press Play to start, then use arrow keys or on-screen controls."
-          onMouseEnter={() => {
-            if (overlayVisible && !reducedMotion) setIsHoveringPlayArea(true);
-          }}
-          onMouseLeave={() => setIsHoveringPlayArea(false)}
-        >
           <div
-            ref={canvasWrapRef}
-            className="footer-snake__canvas-wrap"
-            style={{ aspectRatio: `${gridConfig.cols} / ${gridConfig.rows}` }}
+            ref={playAreaRef}
+            className="footer-snake__play-area"
+            role="application"
+            tabIndex={reducedMotion ? -1 : 0}
+            aria-label="Snake mini-game. Press Play to start, then use arrow keys or on-screen controls."
+            onMouseEnter={() => {
+              if (overlayVisible && !reducedMotion) setIsHoveringPlayArea(true);
+            }}
+            onMouseLeave={() => setIsHoveringPlayArea(false)}
           >
-            <canvas
-              ref={canvasRef}
-              className="footer-snake__canvas"
-              aria-hidden="true"
-            />
+            <div
+              ref={canvasWrapRef}
+              className="footer-snake__canvas-wrap"
+              style={{ aspectRatio: `${gridConfig.cols} / ${gridConfig.rows}` }}
+            >
+              <canvas
+                ref={canvasRef}
+                className="footer-snake__canvas"
+                aria-hidden="true"
+              />
 
-            {overlayVisible && (
-              <button
-                type="button"
-                className="footer-snake__overlay"
-                onClick={reducedMotion ? undefined : handlePlay}
-                disabled={reducedMotion}
-                aria-label={overlayAriaLabel}
-              >
-                <span className="footer-snake__play-btn">{playLabel}</span>
-              </button>
+              {overlayVisible && (
+                <button
+                  type="button"
+                  className="footer-snake__overlay"
+                  onClick={reducedMotion ? undefined : handlePlay}
+                  disabled={reducedMotion}
+                  aria-label={overlayAriaLabel}
+                >
+                  <span className="footer-snake__play-btn">{playLabel}</span>
+                </button>
+              )}
+            </div>
+          </div>
+
+          <p
+            className="footer-snake__live"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {liveMessage}
+          </p>
+        </div>
+
+        <div className="footer-snake__aside">
+          <div
+            className={`footer-snake__controls${
+              isGameLive ? " footer-snake__controls--live" : ""
+            }`}
+            aria-label="Snake direction controls"
+          >
+            {DIRECTION_CONTROLS.map(
+              ({ direction, className, label, symbol }) => (
+                <button
+                  key={direction}
+                  type="button"
+                  className={`footer-snake__control ${className}${
+                    activeDirection === direction
+                      ? " footer-snake__control--active"
+                      : ""
+                  }`}
+                  aria-label={label}
+                  disabled={!isGameLive}
+                  tabIndex={-1}
+                  onMouseDown={(event) => event.preventDefault()}
+                  onClick={() => handleDirection(direction)}
+                >
+                  {symbol}
+                </button>
+              ),
             )}
           </div>
         </div>
-
-        <p className="footer-snake__live" aria-live="polite" aria-atomic="true">
-          {liveMessage}
-        </p>
-      </div>
-
-      <div className="footer-snake__aside">
-        <div
-          className={`footer-snake__controls${
-            isGameLive ? " footer-snake__controls--live" : ""
-          }`}
-          aria-label="Snake direction controls"
-        >
-          {DIRECTION_CONTROLS.map(({ direction, className, label, symbol }) => (
-            <button
-              key={direction}
-              type="button"
-              className={`footer-snake__control ${className}${
-                activeDirection === direction
-                  ? " footer-snake__control--active"
-                  : ""
-              }`}
-              aria-label={label}
-              disabled={!isGameLive}
-              tabIndex={-1}
-              onMouseDown={(event) => event.preventDefault()}
-              onClick={() => handleDirection(direction)}
-            >
-              {symbol}
-            </button>
-          ))}
-        </div>
-      </div>
       </div>
     </section>
   );
