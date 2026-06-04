@@ -369,12 +369,16 @@ const MoodleCaseStudy = () => {
             </div>
           </div>
 
-          {/* Hero After Image - After all text */}
+          {/* Hero After Video - After all text */}
           <div className="moodle-hero-image-container moodle-hero-after">
-            <img
-              src="/work/moodle/hero-after.png"
-              alt="Moodle AI-Powered Feline Pain Detection"
+            <video
+              src="/work/moodle/thumbnail.mp4"
               className="moodle-hero-image"
+              autoPlay
+              loop
+              muted
+              playsInline
+              aria-label="Moodle AI-Powered Feline Pain Detection"
             />
           </div>
         </section>

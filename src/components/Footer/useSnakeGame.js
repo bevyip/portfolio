@@ -20,6 +20,13 @@ function isOpposite(a, b) {
   return a.x + b.x === 0 && a.y + b.y === 0;
 }
 
+/** Direction applied on the next tick (queued turn, or current heading). */
+function resolveStepDirection(game) {
+  const { direction, pendingDirection: pending } = game;
+  if (!pending || isOpposite(direction, pending)) return direction;
+  return pending;
+}
+
 function cellsEqual(a, b) {
   return a.x === b.x && a.y === b.y;
 }
@@ -66,7 +73,7 @@ export function queueDirection(game, directionName) {
   const next = getDirectionVector(directionName);
   if (!next) return game;
 
-  if (isOpposite(game.direction, next)) return game;
+  if (isOpposite(resolveStepDirection(game), next)) return game;
 
   return {
     ...game,
@@ -78,13 +85,7 @@ export function stepGame(game) {
   if (game.status !== "playing") return game;
 
   const { cols, rows } = getGrid(game);
-  let direction = game.pendingDirection ?? game.direction;
-  if (
-    game.pendingDirection &&
-    isOpposite(game.direction, game.pendingDirection)
-  ) {
-    direction = game.direction;
-  }
+  const direction = resolveStepDirection(game);
   const head = game.snake[0];
   const nextX = head.x + direction.x;
   const nextY = head.y + direction.y;
