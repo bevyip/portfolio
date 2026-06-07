@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import FooterSnake from "./FooterSnake";
+import Gameboy from "../Gameboy";
 import "./Footer.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -9,8 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 const FOOTER_RISE_DURATION = 1;
 const FOOTER_RISE_EASE = "power2.out";
 const FOOTER_LINE_STAGGER = 0.12;
-const FOOTER_SNAKE_FADE_DURATION = 0.5;
-const FOOTER_SNAKE_FADE_OVERLAP = 0.55;
 
 const FooterLine = ({ children }) => (
   <span className="footer-line">
@@ -52,13 +50,8 @@ const Footer = () => {
     const lineInners = footer.querySelectorAll(".footer-line-inner");
     if (!lineInners.length) return undefined;
 
-    const snakeTargets = footer.querySelectorAll(
-      ".footer-snake__main, .footer-snake__aside",
-    );
-
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       gsap.set(lineInners, { y: 0 });
-      gsap.set(snakeTargets, { opacity: 1 });
       return undefined;
     }
 
@@ -72,24 +65,12 @@ const Footer = () => {
         start: "top 85%",
         once: true,
         onEnter: () => {
-          const tl = gsap.timeline();
-          tl.to(lineInners, {
+          gsap.to(lineInners, {
             y: 0,
             duration: FOOTER_RISE_DURATION,
             ease: FOOTER_RISE_EASE,
             stagger: FOOTER_LINE_STAGGER,
           });
-          if (snakeTargets.length) {
-            tl.to(
-              snakeTargets,
-              {
-                opacity: 1,
-                duration: FOOTER_SNAKE_FADE_DURATION,
-                ease: FOOTER_RISE_EASE,
-              },
-              `-=${FOOTER_SNAKE_FADE_OVERLAP}`,
-            );
-          }
         },
       });
     }, 100);
@@ -121,7 +102,7 @@ const Footer = () => {
   return (
     <footer ref={footerRef} id="contact" className="footer">
       <div className="footer-container page-content-shell">
-        <div className="footer-top">
+        <div className="footer-left-col">
           <div className="footer-blurb">
             <h2 className="footer-title">
               <FooterLine>
@@ -176,7 +157,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <FooterSnake />
+        <div className="footer-right-col">
+          <Gameboy className="footer-gameboy" />
+        </div>
       </div>
     </footer>
   );
