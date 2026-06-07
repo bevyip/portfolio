@@ -1,14 +1,25 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
 const CELL_SIZE = 8;
-const FOOD_RENDER_SIZE = CELL_SIZE;
-const FOOD_RENDER_OFFSET = (FOOD_RENDER_SIZE - CELL_SIZE) / 2;
 const INITIAL_SNAKE = [
   { x: 96, y: 68 },
   { x: 88, y: 68 },
   { x: 80, y: 68 },
 ];
 const GAME_SPEED = 150;
+// Matches inner screen shadow/bezel so death bounds align with visible frame edges.
+const PLAYFIELD_INSET = { top: 2, right: 2, bottom: 0, left: 0 };
+
+function measurePlayfield(el) {
+  const { clientWidth, clientHeight } = el;
+
+  return {
+    left: PLAYFIELD_INSET.left,
+    top: PLAYFIELD_INSET.top,
+    width: clientWidth - PLAYFIELD_INSET.left - PLAYFIELD_INSET.right,
+    height: clientHeight - PLAYFIELD_INSET.top - PLAYFIELD_INSET.bottom,
+  };
+}
 
 export default function SnakeGame({
   direction,
@@ -22,7 +33,12 @@ export default function SnakeGame({
   const [score, setScore] = useState(0);
   const gameLoopRef = useRef(null);
   const screenRef = useRef(null);
-  const [boundaries, setBoundaries] = useState({ width: 0, height: 0 });
+  const [boundaries, setBoundaries] = useState({
+    left: 0,
+    top: 0,
+    width: 0,
+    height: 0,
+  });
 
   const generateFood = useCallback(
     (snakeBody) => {
@@ -31,13 +47,17 @@ export default function SnakeGame({
       }
 
       let newFood;
-      const maxX = Math.floor(boundaries.width / CELL_SIZE) * CELL_SIZE;
-      const maxY = Math.floor(boundaries.height / CELL_SIZE) * CELL_SIZE;
 
       do {
         newFood = {
-          x: Math.floor(Math.random() * (maxX / CELL_SIZE)) * CELL_SIZE,
-          y: Math.floor(Math.random() * (maxY / CELL_SIZE)) * CELL_SIZE,
+          x:
+            boundaries.left +
+            Math.floor(Math.random() * (boundaries.width / CELL_SIZE)) *
+              CELL_SIZE,
+          y:
+            boundaries.top +
+            Math.floor(Math.random() * (boundaries.height / CELL_SIZE)) *
+              CELL_SIZE,
         };
       } while (
         snakeBody.some(
@@ -52,8 +72,12 @@ export default function SnakeGame({
   const startGame = useCallback(() => {
     if (boundaries.width === 0 || boundaries.height === 0) return;
 
-    const centerX = Math.floor(boundaries.width / 2 / CELL_SIZE) * CELL_SIZE;
-    const centerY = Math.floor(boundaries.height / 2 / CELL_SIZE) * CELL_SIZE;
+    const centerX =
+      boundaries.left +
+      Math.floor(boundaries.width / 2 / CELL_SIZE) * CELL_SIZE;
+    const centerY =
+      boundaries.top +
+      Math.floor(boundaries.height / 2 / CELL_SIZE) * CELL_SIZE;
 
     const initialSnake = [
       { x: centerX, y: centerY },
@@ -78,8 +102,7 @@ export default function SnakeGame({
 
     const measureBoundaries = () => {
       if (!screenRef.current) return;
-      const rect = screenRef.current.getBoundingClientRect();
-      setBoundaries({ width: rect.width, height: rect.height });
+      setBoundaries(measurePlayfield(screenRef.current));
     };
 
     measureBoundaries();
@@ -117,11 +140,14 @@ export default function SnakeGame({
           break;
       }
 
+      const playRight = boundaries.left + boundaries.width;
+      const playBottom = boundaries.top + boundaries.height;
+
       if (
-        newHead.x < 0 ||
-        newHead.x + CELL_SIZE > boundaries.width ||
-        newHead.y < 0 ||
-        newHead.y + CELL_SIZE > boundaries.height ||
+        newHead.x < boundaries.left ||
+        newHead.x + CELL_SIZE > playRight ||
+        newHead.y < boundaries.top ||
+        newHead.y + CELL_SIZE > playBottom ||
         prevSnake.some(
           (segment) => segment.x === newHead.x && segment.y === newHead.y,
         )
@@ -177,7 +203,10 @@ export default function SnakeGame({
 
   return (
     <div className="absolute inset-[14px] flex items-center justify-center">
-      <div ref={screenRef} className="relative bg-[#1b1b1b] w-full h-full">
+      <div
+        ref={screenRef}
+        className="relative overflow-hidden bg-[#1b1b1b] w-full h-full"
+      >
         {gameState === "playing" && (
           <div className="absolute top-1 left-1 text-[#4a934a] text-[10px] gameboy-pixel-text z-10">
             {score}
@@ -202,10 +231,10 @@ export default function SnakeGame({
           <div
             className="absolute"
             style={{
-              width: FOOD_RENDER_SIZE,
-              height: FOOD_RENDER_SIZE,
-              left: food.x - FOOD_RENDER_OFFSET,
-              top: food.y - FOOD_RENDER_OFFSET,
+              width: CELL_SIZE,
+              height: CELL_SIZE,
+              left: food.x,
+              top: food.y,
             }}
           >
             <svg

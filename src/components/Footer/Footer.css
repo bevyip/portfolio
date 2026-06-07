@@ -145,9 +145,25 @@
 
 .social-links {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+}
+
+@media (min-width: 481px) and (max-width: 1023px) {
+  .social-links {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .social-links {
+    gap: 10px 20px;
+  }
 }
 
 .social-link {
@@ -254,13 +270,6 @@
 
   .social-links-heading {
     margin-bottom: 10px;
-  }
-
-  .social-links {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px 14px;
   }
 }
 
