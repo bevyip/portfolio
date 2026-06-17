@@ -27,7 +27,10 @@ function SkeletonWorkGrid() {
   return (
     <div className="home-case-study-grid home-work-skeleton" aria-hidden="true">
       {[1, 2, 3, 4].map((i) => (
-        <div key={i} className="home-work-skeleton-card" />
+        <div key={i} className="home-work-skeleton-card">
+          <div className="home-work-skeleton-media" />
+          <div className="home-work-skeleton-text" />
+        </div>
       ))}
     </div>
   );
