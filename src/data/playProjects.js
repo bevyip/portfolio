@@ -101,8 +101,8 @@ export const playProjects = [
     tags: ["Audio Analysis", "Three.js"],
     category: "digital",
     media: {
-      video: vid("projects/im-listening/demo"),
-      poster: "/projects/im-listening/poster1.jpg",
+      video: vid("v1781737116/demo-vid_zzjrnz"),
+      poster: "/projects/im-listening/poster.jpg",
     },
     actions: [
       {
