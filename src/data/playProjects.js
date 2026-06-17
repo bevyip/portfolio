@@ -210,30 +210,25 @@ export const playProjects = [
     ],
   },
   {
-    id: "words-unseen",
+    id: "shopify-dap",
     size: "tall",
     theme: "white",
-    tags: ["Web Art", "Creative Coding"],
+    tags: ["AI", "Interaction Design", "Concept"],
     category: "digital",
     media: {
-      video: vid("projects/words-unseen/demo"),
-      poster: "/projects/words-unseen/poster.jpg",
+      video: vid("v1781734207/demo_boxn8y"),
+      poster: "/projects/shopify-dap/poster.png",
     },
     actions: [
       {
         type: "live",
         tooltip: "View App",
-        url: "https://bevyip.github.io/words-unseen/",
+        url: "https://shopify-dap-prototype.vercel.app/",
       },
       {
-        type: "notion",
-        tooltip: "View Documentation",
-        url: "https://www.notion.so/bevyip/Week-11-1a45b3e7f9e78021bc7bd8de9c02eaa5",
-      },
-      {
-        type: "github",
-        tooltip: "View Code",
-        url: "https://github.com/bevyip/words-unseen",
+        type: "X",
+        tooltip: "View on X",
+        url: "https://x.com/bevdesigns/status/2067362425045672164",
       },
     ],
   },

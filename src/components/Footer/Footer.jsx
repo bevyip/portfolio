@@ -41,10 +41,12 @@ const SOCIAL_LINKS = [
 
 const Footer = () => {
   const footerRef = useRef(null);
+  const gameboyRef = useRef(null);
   const [timeString, setTimeString] = useState("—:—:—");
 
   useEffect(() => {
     const footer = footerRef.current;
+    const gameboy = gameboyRef.current;
     if (!footer) return undefined;
 
     const lineInners = footer.querySelectorAll(".footer-line-inner");
@@ -52,10 +54,12 @@ const Footer = () => {
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       gsap.set(lineInners, { y: 0 });
+      if (gameboy) gsap.set(gameboy, { opacity: 1 });
       return undefined;
     }
 
     gsap.set(lineInners, { y: "100%" });
+    if (gameboy) gsap.set(gameboy, { opacity: 0 });
 
     let scrollTrigger = null;
     const timeoutId = window.setTimeout(() => {
@@ -71,6 +75,13 @@ const Footer = () => {
             ease: FOOTER_RISE_EASE,
             stagger: FOOTER_LINE_STAGGER,
           });
+          if (gameboy) {
+            gsap.to(gameboy, {
+              opacity: 1,
+              duration: FOOTER_RISE_DURATION,
+              ease: FOOTER_RISE_EASE,
+            });
+          }
         },
       });
     }, 100);
@@ -158,7 +169,9 @@ const Footer = () => {
         </div>
 
         <div className="footer-right-col">
-          <Gameboy className="footer-gameboy" />
+          <div ref={gameboyRef} className="footer-gameboy-wrap">
+            <Gameboy className="footer-gameboy" />
+          </div>
         </div>
       </div>
     </footer>

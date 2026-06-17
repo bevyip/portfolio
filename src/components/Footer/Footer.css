@@ -36,8 +36,15 @@
   align-self: stretch;
 }
 
-.footer-gameboy {
+.footer-gameboy-wrap {
   flex-shrink: 0;
+}
+
+.footer .footer-gameboy-wrap {
+  opacity: 0;
+}
+
+.footer-gameboy {
   transform-origin: left center;
 }
 
@@ -276,6 +283,10 @@
 @media (prefers-reduced-motion: reduce) {
   .footer .footer-line-inner {
     transform: none;
+  }
+
+  .footer .footer-gameboy-wrap {
+    opacity: 1;
   }
 
   .social-link,
