@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "postinstall": "node ./server/copy-imgly-bg-removal-assets.mjs",
     "dev": "vite",
-    "build": "vite build",
+    "build": "node ./server/copy-imgly-bg-removal-assets.mjs && vite build",
     "preview": "vite preview"
   },
   "overrides": {
@@ -13,6 +14,7 @@
   },
   "dependencies": {
     "@google/genai": "^2.6.0",
+    "@imgly/background-removal": "^1.7.0",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
     "@remix-run/router": "^1.23.2",
@@ -25,6 +27,7 @@
     "gsap": "^3.14.2",
     "lucide-react": "^0.561.0",
     "ogl": "^1.0.11",
+    "onnxruntime-web": "^1.21.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0",

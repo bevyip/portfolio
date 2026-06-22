@@ -56,6 +56,7 @@ export default function FlowerModal({
   const handleCreate = async (e) => {
     e.preventDefault();
     setError("");
+    setGeneratedFlower(null);
     setIsGenerating(true);
 
     try {
