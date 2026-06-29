@@ -10,7 +10,7 @@ const workProjects = [
   {
     id: "confido-approval-flow",
     title: "Rebuilding Confido's Approval Flow",
-    role: "Product Designer & Engineer",
+    role: "Design Engineer",
     tags: ["Design Systems", "Enterprise Software"],
     summary:
       "Redesigning approval workflows with smarter logic and clearer audit trails for improved enterprise usability.",

@@ -7,7 +7,7 @@ import salesforceExp from "../assets/img/experience-pictures/salesforce-exp.jpeg
 export const experiences = [
   {
     id: "1",
-    title: "Product Designer & Engineer (Internship)",
+    title: "Design Engineer (Internship)",
     company: "Confido",
     timeframe: "June 2025 – August 2025",
     imageUrl: confidoExp,

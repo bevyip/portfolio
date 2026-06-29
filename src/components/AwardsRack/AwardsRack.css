@@ -282,12 +282,14 @@
   pointer-events: none;
 }
 
-.awards-vinyl-wrap[data-motion="overlay-return-lift"] .awards-vinyl-shadow-float {
+.awards-vinyl-wrap[data-motion="overlay-return-lift"]
+  .awards-vinyl-shadow-float {
   opacity: 0.82;
   transition: none;
 }
 
-.awards-vinyl-wrap[data-motion="overlay-return-lift"] .awards-vinyl-shadow-side {
+.awards-vinyl-wrap[data-motion="overlay-return-lift"]
+  .awards-vinyl-shadow-side {
   opacity: 0.92;
   transition: none;
 }

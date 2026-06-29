@@ -188,7 +188,12 @@ export default function VinylStack({
 
   const resetDragState = useCallback(() => {
     const { pointerId } = dragStateRef.current;
-    dragStateRef.current = { active: false, startX: 0, startY: 0, pointerId: null };
+    dragStateRef.current = {
+      active: false,
+      startX: 0,
+      startY: 0,
+      pointerId: null,
+    };
     dragOffsetRef.current = EMPTY_DRAG_OFFSET;
     movedRef.current = false;
     setIsDragging(false);
@@ -213,9 +218,7 @@ export default function VinylStack({
   const advanceStack = useCallback(
     (direction) => {
       setIsTransitioning(true);
-      setActiveIndex(
-        (i) => (i + direction + awards.length) % awards.length,
-      );
+      setActiveIndex((i) => (i + direction + awards.length) % awards.length);
       window.setTimeout(() => setIsTransitioning(false), 320);
     },
     [awards.length],
