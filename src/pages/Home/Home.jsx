@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { isHomePath, isGoogleCreativePath, isDefaultHomePath } from "../../constants/homeRoutes";
+import {
+  isHomePath,
+  isGoogleCreativePath,
+  isDefaultHomePath,
+} from "../../constants/homeRoutes";
 import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { gsap } from "gsap";
 import { scheduleScrollTriggerLayoutRefresh } from "../../utils/scrollTriggerLayout";
@@ -11,10 +15,8 @@ import PixelCat from "../../components/PixelCat/PixelCat";
 import PokemonIntro from "../../components/PokemonIntro/PokemonIntro";
 import salesforceLogo from "../../assets/img/logo-stickers/salesforce-logo.png";
 import confidoLogo from "../../assets/img/logo-stickers/confido-logo.png";
+import googleLogo from "../../assets/img/logo-stickers/google-logo.png";
 import "./Home.css";
-
-const HERO_OPEN_ROLES_LINE =
-  "Interested in product design, design engineering, and creative technology roles.";
 
 const LANDING_FADE_DURATION = 1;
 const LANDING_EASE = "power2.out";
@@ -256,6 +258,22 @@ const Home = () => {
                 <p ref={bioRef} className="home-bio">
                   <span className="home-bio-line">
                     <span className="home-bio-line-inner">
+                      Creative Technologist at{" "}
+                      <a
+                        href="https://the-brandidentity.com/interview/inside-google-creative-lab-how-a-small-team-helps-to-invent-the-future"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="home-company-with-logo home-landing-company-link"
+                      >
+                        <img
+                          src={googleLogo}
+                          alt=""
+                          className="home-company-logo"
+                          aria-hidden="true"
+                        />
+                        Google Creative Lab.
+                      </a>
+                      <br />
                       Previously coded at{" "}
                       <a
                         href="https://www.salesforce.com"
@@ -287,16 +305,6 @@ const Home = () => {
                         Confido
                       </a>
                       .
-                      <br />
-                      {isGoogleCreative ? (
-                        <>
-                          I love building and experimenting — asking{" "}
-                          <strong>'what if?'</strong> through tools, artifacts,
-                          and everything in between.
-                        </>
-                      ) : (
-                        HERO_OPEN_ROLES_LINE
-                      )}
                     </span>
                   </span>
                 </p>
