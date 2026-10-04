@@ -21,7 +21,9 @@ const FABRICATION_IDS = new Set([
 
 const PRODUCT_DESIGN_IDS = new Set(
   workProjects
-    .filter((project) => !project.archived && project.filter === "product-design")
+    .filter(
+      (project) => !project.archived && project.filter === "product-design",
+    )
     .map((project) => project.id),
 );
 
@@ -85,14 +87,14 @@ export const productDesignPositions = {
   "confido-approval-flow": { col: 2, rowStart: 1, rowEnd: 2 },
 };
 
-/** Creative Tech only: page canvas takes the draw-canvas slot, and the reverse.
- * Art gallery takes the jukebox slot at the top of column 3. */
+/** Creative Tech only: unique alignment changes. **/
 const creativeTechPositions = {
   ...allPlayPositions,
   "page-canvas": allPlayPositions["draw-canvas"],
   "draw-canvas": allPlayPositions["page-canvas"],
   "art-gallery": { col: 3, rowStart: 1, rowEnd: 2 },
   "floral-jukebox": { col: 2, rowStart: 5, rowEnd: 6 },
+  "neumorphic-buttons": { col: 1, rowStart: 10, rowEnd: 12 },
 };
 
 export function getHomeGridPositions(filterId = "all") {
