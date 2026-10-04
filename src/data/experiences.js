@@ -1,10 +1,21 @@
 // Experience Timeline Data
+import creativeLabExp from "../assets/img/experience-pictures/creative-lab-exp.jpg";
 import confidoExp from "../assets/img/experience-pictures/confido-exp.png";
 import codingLabExp from "../assets/img/experience-pictures/codinglab-exp.jpeg";
 import uxClubExp from "../assets/img/experience-pictures/uxcnyu-exp.JPG";
 import salesforceExp from "../assets/img/experience-pictures/salesforce-exp.jpeg";
 
 export const experiences = [
+  {
+    id: "5",
+    title: "Creative Technologist",
+    company: "Google Creative Lab",
+    timeframe: "2026 – Present",
+    imageUrl: creativeLabExp,
+    link: "https://the-brandidentity.com/interview/inside-google-creative-lab-how-a-small-team-helps-to-invent-the-future",
+    description:
+      "I'm building the coolest stuff and helping shape what's next for Gemini.",
+  },
   {
     id: "1",
     title: "Design Engineer (Internship)",

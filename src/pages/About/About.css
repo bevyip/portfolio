@@ -580,37 +580,49 @@
   transform: translateY(-50%);
 }
 
-.about-sandbox-sticker-react {
+.about-sandbox-sticker-crab {
   top: 15px;
   left: -45px;
 }
 
-.about-sandbox-sticker-figma {
+.about-sandbox-sticker-google {
   top: 40%;
-  right: -45px;
+  right: -30px;
   transform: translateY(-50%);
+}
+
+.about-sandbox-sticker-crab .sticker-image,
+.about-sandbox-sticker-crab .flap-image {
+  image-rendering: pixelated;
 }
 
 @media (max-width: 1023px) {
   .about-sandbox-sticker-purdue,
   .about-sandbox-sticker-nyu,
-  .about-sandbox-sticker-react {
+  .about-sandbox-sticker-crab {
     left: -40px;
   }
 
   .about-sandbox-sticker-salesforce,
-  .about-sandbox-sticker-confido,
-  .about-sandbox-sticker-figma {
+  .about-sandbox-sticker-confido {
     right: -40px;
+  }
+
+  .about-sandbox-sticker-google {
+    right: -26px;
   }
 
   .about-sandbox-sticker-purdue .sticker-image,
   .about-sandbox-sticker-nyu .sticker-image,
   .about-sandbox-sticker-salesforce .sticker-image,
   .about-sandbox-sticker-confido .sticker-image,
-  .about-sandbox-sticker-react .sticker-image,
-  .about-sandbox-sticker-figma .sticker-image {
+  .about-sandbox-sticker-crab .sticker-image {
     width: 50px !important;
+  }
+
+  .about-sandbox-sticker-google .sticker-image,
+  .about-sandbox-sticker-google .flap-image {
+    width: 40px !important;
   }
 }
 
@@ -618,24 +630,27 @@
 @media (min-width: 768px) and (max-width: 1024px) {
   .about-sandbox-sticker-purdue,
   .about-sandbox-sticker-nyu,
-  .about-sandbox-sticker-react {
+  .about-sandbox-sticker-crab {
     left: -8px;
   }
 
   .about-sandbox-sticker-salesforce,
-  .about-sandbox-sticker-confido,
-  .about-sandbox-sticker-figma {
+  .about-sandbox-sticker-confido {
     right: -8px;
+  }
+
+  .about-sandbox-sticker-google {
+    right: 6px;
   }
 }
 
 @media (max-width: 425px) {
   .about-sandbox-sticker-purdue,
   .about-sandbox-sticker-nyu,
-  .about-sandbox-sticker-react,
+  .about-sandbox-sticker-google,
   .about-sandbox-sticker-salesforce,
   .about-sandbox-sticker-confido,
-  .about-sandbox-sticker-figma {
+  .about-sandbox-sticker-crab {
     display: none !important;
   }
 }

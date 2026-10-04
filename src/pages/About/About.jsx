@@ -15,8 +15,8 @@ import purdueLogo from "../../assets/img/logo-stickers/purdue-logo.png";
 import salesforceLogo from "../../assets/img/logo-stickers/salesforce-logo.png";
 import nyuLogo from "../../assets/img/logo-stickers/nyu-logo.png";
 import confidoLogo from "../../assets/img/logo-stickers/confido-logo.png";
-import reactLogo from "../../assets/img/logo-stickers/react-logo.png";
-import figmaLogo from "../../assets/img/logo-stickers/figma-logo.png";
+import googleLogo from "../../assets/img/logo-stickers/google-logo.png";
+import crabSticker from "../../assets/img/logo-stickers/crab.png";
 import "./About.css";
 
 const About = () => {
@@ -110,11 +110,12 @@ const About = () => {
                   >
                     Salesforce
                   </a>{" "}
-                  and leading accessibility in my team. I was doing good. But
-                  somewhere along the way, I realized{" "}
+                  and leading accessibility in my team. Somewhere along the way,
+                  I began wanting to do more with code than fix bugs and make
+                  things run faster.{" "}
                   <span className="about-sandbox-accent">
-                    I cared just as much about how people felt using it as how
-                    the code worked.
+                    I wanted to design and build experiences that reminded
+                    people why they loved using technology in the first place.
                   </span>
                 </p>
               </div>
@@ -155,8 +156,8 @@ const About = () => {
                     NYU's Interactive Telecommunications Program
                   </a>{" "}
                   to study Human-Computer Interaction — to explore how design
-                  and engineering could work together to make technology more
-                  accessible and intuitive.
+                  and technology could work together to make technology more
+                  accessible and intuitive for everyone.
                 </p>
               </div>
             </div>
@@ -167,10 +168,10 @@ const About = () => {
                 onMouseLeave={() => setIsHoveringSticker(false)}
               >
                 <StickerPeel
-                  imageSrc={reactLogo}
+                  imageSrc={crabSticker}
                   rotate={-10}
-                  width={70}
-                  className="about-sandbox-sticker about-sandbox-sticker-react"
+                  width={80}
+                  className="about-sandbox-sticker about-sandbox-sticker-crab"
                 />
               </div>
               <div
@@ -178,20 +179,20 @@ const About = () => {
                 onMouseLeave={() => setIsHoveringSticker(false)}
               >
                 <StickerPeel
-                  imageSrc={figmaLogo}
+                  imageSrc={googleLogo}
                   rotate={10}
-                  width={80}
-                  className="about-sandbox-sticker about-sandbox-sticker-figma"
+                  width={56}
+                  className="about-sandbox-sticker about-sandbox-sticker-google"
                 />
               </div>
               <div ref={howText3Ref} className="about-sandbox-text-wrap">
                 <p className="about-sandbox-text">
-                  I still write code. I still ship products. But now every
-                  decision starts with the person on the other side of the
-                  screen. I'm not just designing interfaces —{" "}
+                  Currently a Creative Technologist at Google Creative Lab, I'm
+                  designing, prototyping, and being closer to the people behind
+                  the screens than ever before. At the end of the day,{" "}
                   <span className="about-sandbox-accent">
-                    I'm designing experiences that are as thoughtful as they are
-                    scalable, as beautiful as they are functional.
+                    I just want to create experiences that remain useful, fun,
+                    and spark a little childlike wonder and delight in everyone.
                   </span>
                 </p>
               </div>
