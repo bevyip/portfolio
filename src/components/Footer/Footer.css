@@ -38,6 +38,21 @@
 
 .footer-gameboy-wrap {
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-high-score {
+  margin: 0 0 calc((var(--gameboy-scale) - 1) * var(--gameboy-base-height) / 2 + 12px);
+  font-family: "Pokemon GB", monospace;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #c8c5c2;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
 }
 
 .footer .footer-gameboy-wrap {

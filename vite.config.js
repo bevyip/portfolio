@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import { createFlowersMiddleware } from "./server/flowers-api.js";
 import { createGardenStatsMiddleware } from "./server/garden-stats-api.js";
+import { createSnakeScoreMiddleware } from "./server/snake-score-api.js";
 import { createGeminiFlowerMiddleware } from "./server/gemini-flower.js";
 
 export default defineConfig(({ mode }) => {
@@ -21,6 +22,10 @@ export default defineConfig(({ mode }) => {
           server.middlewares.use(
             "/api/garden-stats",
             createGardenStatsMiddleware(env),
+          );
+          server.middlewares.use(
+            "/api/snake-score",
+            createSnakeScoreMiddleware(env),
           );
         },
       },

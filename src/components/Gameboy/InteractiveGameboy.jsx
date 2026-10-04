@@ -3,7 +3,7 @@ import svgPaths from './svgPaths';
 import SnakeGame from './SnakeGame';
 import './Gameboy.css';
 
-export default function InteractiveGameboy({ className }) {
+export default function InteractiveGameboy({ className, onGameOver }) {
   const [direction, setDirection] = useState(null);
   const [pressedKeys, setPressedKeys] = useState(new Set());
   const [pressedDirection, setPressedDirection] = useState(null);
@@ -404,6 +404,7 @@ export default function InteractiveGameboy({ className }) {
           direction={direction}
           onDirectionChange={setDirection}
           onStartGame={(callback) => { startGameRef.current = callback; }}
+          onGameOver={onGameOver}
         />
       </div>
 

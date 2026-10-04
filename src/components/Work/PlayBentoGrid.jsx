@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NaturalPlayBentoItem from "./PlayBentoItem";
 import { WorkCard } from "./WorkBentoGrid";
 import CursorPill from "../CursorPill/CursorPill";
@@ -12,6 +14,8 @@ import "./PlayBentoGrid.css";
 
 // Match grid breakpoint: below 1024px = tablet/mobile (poster only, no video)
 const POSTER_ONLY_MEDIA = "(max-width: 1023px)";
+
+gsap.registerPlugin(ScrollTrigger);
 
 /**
  * TEMP preview grid: same projects in the same top-to-bottom reading order,
@@ -52,6 +56,9 @@ const PlayBentoGridNatural = ({
     let timeoutId = 0;
     const release = () => {
       grid.style.minHeight = "";
+      // Dropping the held height pulls the footer up without a scroll.
+      // Refresh so scroll triggers measure the shorter page.
+      requestAnimationFrame(() => ScrollTrigger.refresh());
     };
 
     if (!visibleMediaPending(grid)) {

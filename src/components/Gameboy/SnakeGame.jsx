@@ -25,6 +25,7 @@ export default function SnakeGame({
   direction,
   onDirectionChange,
   onStartGame,
+  onGameOver,
 }) {
   const [snake, setSnake] = useState(INITIAL_SNAKE);
   const [food, setFood] = useState({ x: 144, y: 96 });
@@ -33,6 +34,9 @@ export default function SnakeGame({
   const [score, setScore] = useState(0);
   const gameLoopRef = useRef(null);
   const screenRef = useRef(null);
+  const scoreRef = useRef(0);
+  const onGameOverRef = useRef(onGameOver);
+  const reportedGameOverRef = useRef(false);
   const [boundaries, setBoundaries] = useState({
     left: 0,
     top: 0,
@@ -89,9 +93,15 @@ export default function SnakeGame({
     setFood(generateFood(initialSnake));
     setCurrentDirection("RIGHT");
     setGameState("playing");
+    scoreRef.current = 0;
+    reportedGameOverRef.current = false;
     setScore(0);
     onDirectionChange("RIGHT");
   }, [onDirectionChange, boundaries, generateFood]);
+
+  useEffect(() => {
+    onGameOverRef.current = onGameOver;
+  }, [onGameOver]);
 
   useEffect(() => {
     onStartGame(startGame);
@@ -153,13 +163,21 @@ export default function SnakeGame({
         )
       ) {
         setGameState("game_over");
+        if (!reportedGameOverRef.current) {
+          reportedGameOverRef.current = true;
+          onGameOverRef.current?.(scoreRef.current);
+        }
         return prevSnake;
       }
 
       const newSnake = [newHead, ...prevSnake];
 
       if (newHead.x === food.x && newHead.y === food.y) {
-        setScore((prev) => prev + 1);
+        setScore((prev) => {
+          const next = prev + 1;
+          scoreRef.current = next;
+          return next;
+        });
         setFood(generateFood(newSnake));
         return newSnake;
       }

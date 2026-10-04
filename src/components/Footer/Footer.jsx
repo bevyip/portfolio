@@ -1,7 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Gameboy from "../Gameboy";
+import {
+  fetchSnakeHighScore,
+  submitSnakeScore,
+} from "../../utils/snakeScoreApi";
 import "./Footer.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -42,7 +46,56 @@ const SOCIAL_LINKS = [
 const Footer = () => {
   const footerRef = useRef(null);
   const gameboyRef = useRef(null);
+  const highScoreRef = useRef(0);
   const [timeString, setTimeString] = useState("—:—:—");
+  const [highScore, setHighScore] = useState(0);
+
+  const applyHighScore = useCallback((value) => {
+    const next = Number(value);
+    if (!Number.isFinite(next)) return;
+    const merged = Math.max(highScoreRef.current, next);
+    highScoreRef.current = merged;
+    setHighScore(merged);
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const pullHighScore = async () => {
+      try {
+        const next = await fetchSnakeHighScore();
+        if (!cancelled) applyHighScore(next);
+      } catch {
+        // Keep the last score we already showed.
+      }
+    };
+
+    pullHighScore();
+    const intervalId = window.setInterval(pullHighScore, 15000);
+    const onVisible = () => {
+      if (document.visibilityState === "visible") pullHighScore();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+
+    return () => {
+      cancelled = true;
+      window.clearInterval(intervalId);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
+  }, [applyHighScore]);
+
+  const handleGameOver = useCallback(
+    async (score) => {
+      const value = Number(score);
+      if (!Number.isInteger(value) || value <= highScoreRef.current) return;
+      try {
+        applyHighScore(await submitSnakeScore(value));
+      } catch {
+        // The next poll can still pick up a score that did save.
+      }
+    },
+    [applyHighScore],
+  );
 
   useEffect(() => {
     const footer = footerRef.current;
@@ -61,33 +114,81 @@ const Footer = () => {
     gsap.set(lineInners, { y: "100%" });
     if (gameboy) gsap.set(gameboy, { opacity: 0 });
 
+    let revealed = false;
     let scrollTrigger = null;
+    let layoutTimer = 0;
+    let lastHeight = document.documentElement.scrollHeight;
+
+    const reveal = () => {
+      if (revealed) return;
+      revealed = true;
+      window.clearTimeout(layoutTimer);
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", onLayout);
+      gsap.to(lineInners, {
+        y: 0,
+        duration: FOOTER_RISE_DURATION,
+        ease: FOOTER_RISE_EASE,
+        stagger: FOOTER_LINE_STAGGER,
+      });
+      if (gameboy) {
+        gsap.to(gameboy, {
+          opacity: 1,
+          duration: FOOTER_RISE_DURATION,
+          ease: FOOTER_RISE_EASE,
+        });
+      }
+    };
+
+    const footerInZone = () => {
+      const rect = footer.getBoundingClientRect();
+      if (rect.height < 1) return false;
+      // A shorter tab can pull the footer on screen without a scroll, and
+      // the top can sit just below the 85% line while the footer is already
+      // visible. Treat any on-screen footer as ready to reveal.
+      return rect.top < window.innerHeight && rect.bottom > 0;
+    };
+
+    const revealIfInZone = () => {
+      if (revealed) return;
+      if (footerInZone()) reveal();
+    };
+
+    const onLayout = () => {
+      if (revealed) return;
+      window.clearTimeout(layoutTimer);
+      layoutTimer = window.setTimeout(() => {
+        if (revealed) return;
+        const nextHeight = document.documentElement.scrollHeight;
+        const shrunk = nextHeight < lastHeight - 1;
+        lastHeight = nextHeight;
+        if (!shrunk) return;
+        ScrollTrigger.refresh();
+        revealIfInZone();
+      }, 80);
+    };
+
+    const resizeObserver = new ResizeObserver(onLayout);
+
     const timeoutId = window.setTimeout(() => {
       ScrollTrigger.refresh();
       scrollTrigger = ScrollTrigger.create({
         trigger: footer,
         start: "top 85%",
         once: true,
-        onEnter: () => {
-          gsap.to(lineInners, {
-            y: 0,
-            duration: FOOTER_RISE_DURATION,
-            ease: FOOTER_RISE_EASE,
-            stagger: FOOTER_LINE_STAGGER,
-          });
-          if (gameboy) {
-            gsap.to(gameboy, {
-              opacity: 1,
-              duration: FOOTER_RISE_DURATION,
-              ease: FOOTER_RISE_EASE,
-            });
-          }
-        },
+        onEnter: reveal,
       });
+      revealIfInZone();
     }, 100);
+
+    resizeObserver.observe(document.documentElement);
+    window.addEventListener("resize", onLayout);
 
     return () => {
       window.clearTimeout(timeoutId);
+      window.clearTimeout(layoutTimer);
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", onLayout);
       if (scrollTrigger) scrollTrigger.kill();
     };
   }, []);
@@ -170,7 +271,8 @@ const Footer = () => {
 
         <div className="footer-right-col">
           <div ref={gameboyRef} className="footer-gameboy-wrap">
-            <Gameboy className="footer-gameboy" />
+            <p className="footer-high-score">High Score: {highScore}</p>
+            <Gameboy className="footer-gameboy" onGameOver={handleGameOver} />
           </div>
         </div>
       </div>

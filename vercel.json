@@ -17,6 +17,10 @@
     "api/garden-stats.js": {
       "maxDuration": 10,
       "memory": 256
+    },
+    "api/snake-score.js": {
+      "maxDuration": 10,
+      "memory": 256
     }
   }
 }
