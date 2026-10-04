@@ -72,7 +72,8 @@ export const combinedHomePositions = {
   "block-party": { col: 1, rowStart: 1, rowEnd: 2 },
   "dandi-bio-smart-wearable": { col: 2, rowStart: 1, rowEnd: 2 },
   "draw-canvas": { col: 3, rowStart: 1, rowEnd: 3 },
-  "floral-jukebox": { col: 1, rowStart: 4, rowEnd: 5 },
+  "art-gallery": { col: 1, rowStart: 4, rowEnd: 5 },
+  "floral-jukebox": { col: 3, rowStart: 3, rowEnd: 4 },
   "page-canvas": { col: 2, rowStart: 4, rowEnd: 6 },
   "spherical-shopping": { col: 3, rowStart: 4, rowEnd: 6 },
   "ascii-filter": { col: 1, rowStart: 5, rowEnd: 7 },
@@ -85,12 +86,13 @@ export const productDesignPositions = {
 };
 
 /** Creative Tech only: page canvas takes the draw-canvas slot, and the reverse.
- * Art gallery sits in column 2, directly above gravity text. */
+ * Art gallery takes the jukebox slot at the top of column 3. */
 const creativeTechPositions = {
   ...allPlayPositions,
   "page-canvas": allPlayPositions["draw-canvas"],
   "draw-canvas": allPlayPositions["page-canvas"],
-  "art-gallery": { col: 2, rowStart: 5, rowEnd: 6 },
+  "art-gallery": { col: 3, rowStart: 1, rowEnd: 2 },
+  "floral-jukebox": { col: 2, rowStart: 5, rowEnd: 6 },
 };
 
 export function getHomeGridPositions(filterId = "all") {
