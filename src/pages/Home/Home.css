@@ -29,7 +29,8 @@
   z-index: 1;
 }
 
-/* Grid: left = title/subtitle, right = PixelCat (column on small) */
+/* One column on small screens. From 768px up, the text is only as wide as its
+   longest line and the cat walks in whatever space is left, with the same gap. */
 .home-landing-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -38,65 +39,27 @@
   width: 100%;
 }
 
-/* Mobile: column layout, each child full width; cat needs min-height so absolute scene is visible */
 @media (max-width: 767px) {
   .home-landing-content {
     padding-bottom: 0;
   }
   .home-landing-grid {
-    width: 100%;
     gap: 0;
-  }
-  .home-landing-inner,
-  .home-landing-cat {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
   }
   .pixel-cat-scene {
     height: 140px;
     bottom: -30px;
   }
-  /* Heart floats above cat; default bottom:110 is outside short container – position so it stays visible */
   .home-landing-cat .pixel-cat-floating-heart {
     bottom: 110px;
   }
 }
 
-/* Desktop/tablet: text left, cat right; align row to end so cat's walking surface lines up with subtitle bottom */
 @media (min-width: 768px) {
   .home-landing-grid {
-    grid-template-columns: minmax(0, 28rem) 1fr;
-    gap: 0rem;
+    grid-template-columns: max-content minmax(12rem, 1fr);
+    column-gap: 1.5rem;
     align-items: end;
-  }
-}
-
-/* Narrow tablet: shrink text cap so Boba has more room to walk */
-@media (min-width: 768px) and (max-width: 899px) {
-  .home-landing-grid {
-    grid-template-columns: minmax(0, 24rem) 1fr;
-  }
-}
-
-/* Wide tablet: text grows a little; cat still gets the majority of leftover space */
-@media (min-width: 900px) and (max-width: 1024px) {
-  .home-landing-grid {
-    grid-template-columns: minmax(0, 33rem) 1fr;
-  }
-}
-
-/* Small desktop: wider hero copy, cat fills remaining column width */
-@media (min-width: 1025px) and (max-width: 1279px) {
-  .home-landing-grid {
-    grid-template-columns: minmax(0, 42rem) minmax(0, 1fr);
-  }
-}
-
-/* Large desktop: widest text column, cat fills remaining column width */
-@media (min-width: 1280px) {
-  .home-landing-grid {
-    grid-template-columns: minmax(0, 46rem) minmax(0, 1fr);
   }
 }
 
@@ -109,13 +72,11 @@
 .home-landing-cat {
   position: relative;
   width: 100%;
-  max-width: none;
   min-width: 0;
   min-height: 140px;
-  justify-self: stretch;
-  align-self: stretch;
   overflow: visible;
   opacity: 0;
+  transform: translateY(56px);
 }
 
 /* Desktop/tablet: room for tall scene anchored to bottom */
@@ -159,11 +120,6 @@
 .home-landing .home-hero-line-inner,
 .home-landing .home-bio-line-inner {
   transform: translateY(100%);
-}
-/* PixelCat: start hidden for rise + fade on render */
-.home-landing .home-landing-cat {
-  opacity: 0;
-  transform: translateY(56px);
 }
 
 /* Title: full width of column */
@@ -259,6 +215,88 @@
 /* ----- Work: 2x2 case studies ----- */
 .home-work {
   padding: calc(var(--home-section-gap) / 2) 0 calc(var(--home-section-gap) / 2);
+}
+
+.home-work--combined {
+  padding: calc(var(--home-section-gap) / 2) 0 var(--home-footer-gap);
+  overflow-anchor: none;
+}
+
+.home-project-filter {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.35rem 1.35rem;
+  margin: 0 0 1.75rem;
+}
+
+.home-project-filter-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1px;
+  background: #1e1e1e;
+  pointer-events: none;
+  transform: translate(0, 0);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-project-filter-btn {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0.35rem 0;
+  margin: 0;
+  font-family: "Satoshi", sans-serif;
+  font-size: clamp(0.95rem, 2vw, 18px);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: #8a8a8a;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.home-project-filter-btn:hover,
+.home-project-filter-btn:focus-visible {
+  color: #1e1e1e;
+}
+
+.home-project-filter-btn:focus-visible {
+  outline: 2px solid #1e1e1e;
+  outline-offset: 4px;
+}
+
+.home-project-filter-btn.is-active {
+  font-weight: 500;
+  color: #1e1e1e;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-project-filter-indicator {
+    transition: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-project-filter {
+    gap: 0.15rem 0.85rem;
+    margin-bottom: 1.35rem;
+    row-gap: 0;
+  }
+
+  .home-project-filter-btn {
+    min-height: 44px;
+    min-width: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    padding-inline: 0.1rem;
+  }
 }
 
 .home-work-section-intro .home-play-subtitle {
@@ -395,15 +433,6 @@
 
 /* ----- Play: title, subtitle, bento grid (play projects only) ----- */
 .home-play {
-  padding: calc(var(--home-section-gap) / 2) 0 var(--home-footer-gap);
-}
-
-/* /google-creative: play → case studies — same section gap; work sits above footer */
-.home-google-creative .home-play {
-  padding: calc(var(--home-section-gap) / 2) 0 calc(var(--home-section-gap) / 2);
-}
-
-.home-google-creative .home-work {
   padding: calc(var(--home-section-gap) / 2) 0 var(--home-footer-gap);
 }
 

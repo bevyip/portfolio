@@ -4,11 +4,7 @@ import { gsap } from "gsap";
 import { useLenis } from "@studio-freight/react-lenis";
 import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { LANDING_NAV_DELAY, LANDING_NAV_DURATION } from "../../pages/Home/Home";
-import {
-  isHomePath,
-  isGoogleCreativePath,
-  isDefaultHomePath,
-} from "../../constants/homeRoutes";
+import { isHomePath, isDefaultHomePath } from "../../constants/homeRoutes";
 import "./Nav.css";
 import darkLogo from "../../assets/img/dark-logo.png";
 import lightLogo from "../../assets/img/light-logo.png";
@@ -18,7 +14,7 @@ const Nav = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const lenis = useLenis();
-  const { scrollToTop, scrollToElement } = useLenisScroll();
+  const { scrollToTop } = useLenisScroll();
   const circleRefs = useRef([]);
   const tlRefs = useRef([]);
   const activeTweenRefs = useRef([]);
@@ -26,7 +22,6 @@ const Nav = () => {
   const [windowWidth, setWindowWidth] = useState(() =>
     typeof window !== "undefined" ? window.innerWidth : 1024,
   );
-  const [homeActiveSection, setHomeActiveSection] = useState("work");
   const hamburgerRef = useRef(null);
   const mobileMenuRef = useRef(null);
   const navItemsRef = useRef(null);
@@ -34,7 +29,6 @@ const Nav = () => {
 
   const navItems = [
     { label: "work", href: "/", isLink: true },
-    { label: "play", href: "/#play", isLink: true },
     { label: "about", href: "/about", isLink: true },
     {
       label: "flower",
@@ -58,11 +52,8 @@ const Nav = () => {
 
   const isNavItemActive = (item) => {
     const path = location.pathname;
-    if (isGoogleCreativePath(path)) return false;
-    // Main home only: scroll-derived work vs play; /google-creative never highlights
     if (isDefaultHomePath(path)) {
-      if (item.label === "work") return homeActiveSection === "work";
-      if (item.label === "play") return homeActiveSection === "play";
+      if (item.label === "work") return true;
       if (item.label === "about") return false;
     }
     if (item.label === "about") return path === "/about";
@@ -92,48 +83,6 @@ const Nav = () => {
       </>
     );
   };
-
-  // On home page: update nav active state (work vs play) from scroll position.
-  // Throttle with rAF so we don't call getBoundingClientRect every Lenis scroll tick (reduces scroll jank through Play).
-  useEffect(() => {
-    if (!isHomePath(location.pathname)) {
-      setHomeActiveSection("work");
-      return;
-    }
-
-    const playSection = document.getElementById("play");
-    if (!playSection) return;
-
-    let rafId = null;
-    const updateSectionFromScroll = () => {
-      if (rafId != null) return;
-      rafId = requestAnimationFrame(() => {
-        rafId = null;
-        const rect = playSection.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-        const threshold = viewportHeight * 0.3;
-        const inPlaySection = rect.top <= threshold;
-        setHomeActiveSection((prev) => (inPlaySection ? "play" : "work"));
-      });
-    };
-
-    updateSectionFromScroll();
-
-    if (lenis) {
-      lenis.on("scroll", updateSectionFromScroll);
-      return () => {
-        if (rafId != null) cancelAnimationFrame(rafId);
-        lenis.off("scroll", updateSectionFromScroll);
-      };
-    }
-    window.addEventListener("scroll", updateSectionFromScroll);
-    window.addEventListener("resize", updateSectionFromScroll);
-    return () => {
-      if (rafId != null) cancelAnimationFrame(rafId);
-      window.removeEventListener("scroll", updateSectionFromScroll);
-      window.removeEventListener("resize", updateSectionFromScroll);
-    };
-  }, [location.pathname, lenis]);
 
   // Nav fade-in: same timing on all non–case-study pages; case studies show nav immediately
   const CASE_STUDY_PATHS = [
@@ -376,7 +325,6 @@ const Nav = () => {
   };
 
   const handleLeave = (i) => {
-    if (isGoogleCreativePath(location.pathname)) return;
     const tl = tlRefs.current[i];
     if (!tl) return;
     activeTweenRefs.current[i]?.kill();
@@ -389,41 +337,12 @@ const Nav = () => {
 
   const handleWorkClick = (e) => {
     e.preventDefault();
-    setHomeActiveSection("work");
     if (location.pathname === "/") {
       navigate("/", { replace: true });
       scrollToTop({ duration: 1.2 });
     } else {
       navigate("/");
       setTimeout(() => scrollToTop({ duration: 1.2 }), 100);
-    }
-  };
-
-  const PLAY_SCROLL_OFFSET = 0;
-
-  const scrollToPlaySection = (
-    el,
-    fromOtherPage = false,
-    immediate = false,
-  ) => {
-    const offset = fromOtherPage ? PLAY_SCROLL_OFFSET : 0;
-    scrollToElement(el, {
-      offset,
-      duration: immediate ? 0 : 1.2,
-      immediate,
-    });
-  };
-
-  const handlePlayClick = (e) => {
-    e.preventDefault();
-    const playSection = document.getElementById("play");
-    if (location.pathname === "/") {
-      setHomeActiveSection("play");
-      scrollToPlaySection(playSection, false);
-    } else {
-      navigate("/", { state: { scrollToPlay: true } });
-      setHomeActiveSection("play");
-      // Home scrolls to #play when work grid is ready (isWorkLoading false), no fixed delay
     }
   };
 
@@ -551,45 +470,25 @@ const Nav = () => {
           <ul className="pill-list desktop-only" ref={navItemsRef}>
             {navItems.map((item, i) => (
               <li key={item.href || `item-${i}`}>
-                {item.label === "play" ? (
-                  <a
-                    href="/#play"
-                    className={`pill${isNavItemActive(item) ? " pill-active" : ""}`}
-                    onMouseEnter={() => handleEnter(i)}
-                    onMouseLeave={() => handleLeave(i)}
-                    onClick={handlePlayClick}
-                  >
-                    <span
-                      className="hover-circle"
-                      aria-hidden="true"
-                      ref={(el) => {
-                        circleRefs.current[i] = el;
-                      }}
-                    />
-                    <span className="pill-active-dot" aria-hidden="true" />
-                    <span className="label-stack">{renderPillLabel(item)}</span>
-                  </a>
-                ) : (
-                  <Link
-                    to={item.href}
-                    className={`pill${item.image ? " pill-flower" : ""}${isNavItemActive(item) ? " pill-active" : ""}`}
-                    onMouseEnter={() => handleEnter(i)}
-                    onMouseLeave={() => handleLeave(i)}
-                    onClick={
-                      item.label === "work" ? handleWorkClick : undefined
-                    }
-                  >
-                    <span
-                      className="hover-circle"
-                      aria-hidden="true"
-                      ref={(el) => {
-                        circleRefs.current[i] = el;
-                      }}
-                    />
-                    <span className="pill-active-dot" aria-hidden="true" />
-                    <span className="label-stack">{renderPillLabel(item)}</span>
-                  </Link>
-                )}
+                <Link
+                  to={item.href}
+                  className={`pill${item.image ? " pill-flower" : ""}${isNavItemActive(item) ? " pill-active" : ""}`}
+                  onMouseEnter={() => handleEnter(i)}
+                  onMouseLeave={() => handleLeave(i)}
+                  onClick={
+                    item.label === "work" ? handleWorkClick : undefined
+                  }
+                >
+                  <span
+                    className="hover-circle"
+                    aria-hidden="true"
+                    ref={(el) => {
+                      circleRefs.current[i] = el;
+                    }}
+                  />
+                  <span className="pill-active-dot" aria-hidden="true" />
+                  <span className="label-stack">{renderPillLabel(item)}</span>
+                </Link>
               </li>
             ))}
           </ul>
@@ -610,69 +509,27 @@ const Nav = () => {
         <ul className="mobile-menu-list">
           {navItems.map((item, i) => (
             <li key={item.href || `mobile-item-${i}`}>
-              {item.label === "play" ? (
-                <a
-                  href="/#play"
-                  className={`mobile-menu-link${isNavItemActive(item) ? " mobile-menu-link-active" : ""}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const playSection = document.getElementById("play");
-                    if (
-                      (isDefaultHomePath(location.pathname) ||
-                        isGoogleCreativePath(location.pathname)) &&
-                      playSection
-                    ) {
-                      if (isDefaultHomePath(location.pathname)) {
-                        setHomeActiveSection("play");
-                      }
-                      setIsMobileMenuOpen(false);
-                      toggleMobileMenu();
-                      setTimeout(() => {
-                        scrollToElement(playSection, {
-                          offset: 0,
-                          duration: 1.2,
-                        });
-                      }, 400);
-                    } else {
-                      handlePlayClick(e);
-                      setIsMobileMenuOpen(false);
-                      toggleMobileMenu();
-                    }
-                  }}
-                >
-                  {item.image ? (
-                    <img
-                      src={item.image}
-                      alt={item.imageAlt ?? item.label}
-                      className="mobile-menu-flower-icon"
-                    />
-                  ) : (
-                    item.label
-                  )}
-                </a>
-              ) : (
-                <Link
-                  to={item.href}
-                  className={`mobile-menu-link${isNavItemActive(item) ? " mobile-menu-link-active" : ""}`}
-                  onClick={(e) => {
-                    if (item.label === "work") {
-                      handleWorkClick(e);
-                    }
-                    setIsMobileMenuOpen(false);
-                    toggleMobileMenu();
-                  }}
-                >
-                  {item.image ? (
-                    <img
-                      src={item.image}
-                      alt={item.imageAlt ?? item.label}
-                      className="mobile-menu-flower-icon"
-                    />
-                  ) : (
-                    item.label
-                  )}
-                </Link>
-              )}
+              <Link
+                to={item.href}
+                className={`mobile-menu-link${isNavItemActive(item) ? " mobile-menu-link-active" : ""}`}
+                onClick={(e) => {
+                  if (item.label === "work") {
+                    handleWorkClick(e);
+                  }
+                  setIsMobileMenuOpen(false);
+                  toggleMobileMenu();
+                }}
+              >
+                {item.image ? (
+                  <img
+                    src={item.image}
+                    alt={item.imageAlt ?? item.label}
+                    className="mobile-menu-flower-icon"
+                  />
+                ) : (
+                  item.label
+                )}
+              </Link>
             </li>
           ))}
         </ul>

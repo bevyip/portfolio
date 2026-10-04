@@ -58,6 +58,7 @@
   body {
     @apply antialiased;
     overflow-x: hidden;
+    overflow-anchor: none;
   }
 
   code {
@@ -69,6 +70,12 @@
     /* stylelint-disable-next-line */
     @apply w-full min-h-screen;
     overflow-x: hidden;
+  }
+
+  /* Layout swaps (filter grids, images) must not nudge the page. */
+  #root,
+  #root * {
+    overflow-anchor: none;
   }
 }
 

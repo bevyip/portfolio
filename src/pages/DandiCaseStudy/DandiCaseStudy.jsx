@@ -1,13 +1,11 @@
-import React, { useRef, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useScrollReset from "../../hooks/useScrollReset";
 import { useLenisScroll } from "../../hooks/useLenisScroll";
-import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
-import CursorPill from "../../components/CursorPill/CursorPill";
 import CaseStudyLayout from "../../components/CaseStudyLayout/CaseStudyLayout";
+import SeeNextSection from "../../components/SeeNext/SeeNextSection";
 import {
   CaseStudyStatement,
   CaseStudyStatementHeadline,
@@ -57,7 +55,6 @@ const DANDI_FEATURES = [
 
 const DandiCaseStudy = () => {
   useScrollReset();
-  const [isHoveringSeeNextCard, setIsHoveringSeeNextCard] = useState(false);
   const { scrollToElement } = useLenisScroll();
 
   const contextWhatIsRef = useRef(null);
@@ -86,21 +83,6 @@ const DandiCaseStudy = () => {
   const learnMoreTitleRef = useRef(null);
   const learnMoreEmbedRef = useRef(null);
   const learnMoreLinksRef = useRef(null);
-  const seeNextTitleRef = useRef(null);
-  const seeNextGridRef = useRef(null);
-  const seeNextCardsRefs = useRef([]);
-
-  useCardUnfurling({
-    gridRef: seeNextGridRef,
-    cardRefs: seeNextCardsRefs,
-    options: {
-      peekOffset: 40,
-      start: "top 70%",
-      end: "top 20%",
-      minWidth: 768,
-      layoutDelay: 100,
-    },
-  });
 
   const handleSkipToSolution = () => {
     scrollToElement(document.getElementById("solution-section"), {
@@ -156,8 +138,6 @@ const DandiCaseStudy = () => {
     createScrollAnimation(learnMoreTitleRef, 0.06);
     createScrollAnimation(learnMoreEmbedRef, 0.1);
     createScrollAnimation(learnMoreLinksRef, 0.14);
-    createScrollAnimation(seeNextTitleRef, 0.06);
-
     featureItemRefs.current.forEach((node, index) => {
       if (!node) return;
       gsap.set(node, { opacity: 0, y: 30 });
@@ -185,7 +165,6 @@ const DandiCaseStudy = () => {
 
   return (
     <div className="dandi-case-study">
-      <CursorPill isHovering={isHoveringSeeNextCard} text="View case study" />
       <CaseStudyLayout projectId="dandi">
       <section className="dandi-hero-section">
         <div className="dandi-hero-image-container dandi-hero-before">
@@ -694,112 +673,7 @@ const DandiCaseStudy = () => {
         </div>
       </section>
 
-      <section id="dandi-see-next" className="dandi-see-next-section">
-        <div className="dandi-see-next-content">
-          <h3 className="dandi-see-next-title" ref={seeNextTitleRef}>
-            SEE NEXT
-          </h3>
-          <div
-            className="dandi-see-next-grid"
-            ref={seeNextGridRef}
-            data-case-study-nav-boundary
-          >
-            <Link
-              to="/confido"
-              className="dandi-see-next-card-link"
-              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
-              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
-            >
-              <div
-                className="dandi-see-next-card"
-                ref={(el) => {
-                  seeNextCardsRefs.current[0] = el;
-                }}
-              >
-                <div className="dandi-see-next-image-container">
-                  <video
-                    src="/work/confido/thumbnail.mp4"
-                    className="dandi-see-next-image"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
-                </div>
-                <h4 className="dandi-see-next-card-title">
-                  Rebuilding Confido&apos;s Approval Flow
-                </h4>
-                <p className="dandi-see-next-card-description">
-                  Redesigning approval workflows with smarter logic and clearer
-                  audit trails for improved enterprise usability.
-                </p>
-              </div>
-            </Link>
-            <Link
-              to="/moodle"
-              className="dandi-see-next-card-link"
-              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
-              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
-            >
-              <div
-                className="dandi-see-next-card"
-                ref={(el) => {
-                  seeNextCardsRefs.current[1] = el;
-                }}
-              >
-                <div className="dandi-see-next-image-container">
-                  <video
-                    src="/work/moodle/thumbnail.mp4"
-                    className="dandi-see-next-image"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
-                </div>
-                <h4 className="dandi-see-next-card-title">
-                  Moodle: AI-Powered Feline Pain Detection for Cat Owners
-                </h4>
-                <p className="dandi-see-next-card-description">
-                  Making clinical-grade pain monitoring accessible to cat owners
-                  through intuitive mobile design and privacy-first AI.
-                </p>
-              </div>
-            </Link>
-            <Link
-              to="/venmo"
-              className="dandi-see-next-card-link"
-              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
-              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
-            >
-              <div
-                className="dandi-see-next-card"
-                ref={(el) => {
-                  seeNextCardsRefs.current[2] = el;
-                }}
-              >
-                <div className="dandi-see-next-image-container">
-                  <video
-                    src="/work/venmo/thumbnail.mp4"
-                    className="dandi-see-next-image"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
-                </div>
-                <h4 className="dandi-see-next-card-title">
-                  Redesigning Venmo&apos;s Privacy Controls
-                </h4>
-                <p className="dandi-see-next-card-description">
-                  Transforming Venmo&apos;s public-by-default privacy model to
-                  help users make informed choices without confusion.
-                </p>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <SeeNextSection sectionId="dandi-see-next" excludeId="dandi" />
 
       </CaseStudyLayout>
       <Footer />

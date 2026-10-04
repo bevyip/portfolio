@@ -17,7 +17,7 @@
   overflow: hidden;
   touch-action: none;
   cursor: grab;
-  background: #fafafa;
+  background: #f5f5f5;
   -webkit-mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, #000 55%, transparent 100%);
   mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, #000 55%, transparent 100%);
 }

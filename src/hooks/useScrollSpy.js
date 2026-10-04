@@ -21,9 +21,13 @@ export function useScrollSpy(sectionIds) {
 
         let currentId = stableSectionIds[0];
 
+        // Lenis rounds the scroll target to a whole pixel, so a clicked
+        // section can sit a fraction below the offset and miss activation.
+        const activationLine = CASE_STUDY_SCROLL_OFFSET + 1;
+
         for (const id of stableSectionIds) {
           const el = document.getElementById(id);
-          if (el && el.getBoundingClientRect().top <= CASE_STUDY_SCROLL_OFFSET) {
+          if (el && el.getBoundingClientRect().top <= activationLine) {
             currentId = id;
           }
         }

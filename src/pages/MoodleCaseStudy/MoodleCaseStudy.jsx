@@ -1,13 +1,11 @@
-import React, { useRef, useMemo, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useRef, useMemo, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useScrollReset from "../../hooks/useScrollReset";
 import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { useCountupAnimation } from "../../hooks/useCountupAnimation";
-import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
-import CursorPill from "../../components/CursorPill/CursorPill";
+import SeeNextSection from "../../components/SeeNext/SeeNextSection";
 import CaseStudyLayout from "../../components/CaseStudyLayout/CaseStudyLayout";
 import {
   CaseStudyStatement,
@@ -20,7 +18,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const MoodleCaseStudy = () => {
   useScrollReset();
-  const [isHoveringSeeNextCard, setIsHoveringSeeNextCard] = useState(false);
   const { scrollToElement } = useLenisScroll();
 
   const impactSectionRef = useRef(null);
@@ -77,10 +74,6 @@ const MoodleCaseStudy = () => {
   const takeawaysItemsRefs = useRef([]);
   const nextStepsTitleRef = useRef(null);
   const nextStepsItemsRefs = useRef([]);
-  const seeNextTitleRef = useRef(null);
-  const seeNextGridRef = useRef(null);
-  const seeNextCardsRefs = useRef([]);
-
   const handleSkipToSolution = () => {
     scrollToElement(document.getElementById("solution-section"), {
       duration: 1.2,
@@ -116,19 +109,6 @@ const MoodleCaseStudy = () => {
   );
 
   useCountupAnimation(impactSectionRef, metrics);
-
-  // Use card unfurling hook for See Next section
-  useCardUnfurling({
-    gridRef: seeNextGridRef,
-    cardRefs: seeNextCardsRefs,
-    options: {
-      peekOffset: 40,
-      start: "top 70%",
-      end: "top 20%",
-      minWidth: 768,
-      layoutDelay: 100,
-    },
-  });
 
   // Scroll-triggered animations for context section
   useEffect(() => {
@@ -282,8 +262,6 @@ const MoodleCaseStudy = () => {
     });
 
     // See Next Section
-    createScrollAnimation(seeNextTitleRef);
-
     return () => {
       scrollTriggers.forEach((trigger) => trigger.kill());
     };
@@ -291,7 +269,6 @@ const MoodleCaseStudy = () => {
 
   return (
     <div className="moodle-case-study">
-      <CursorPill isHovering={isHoveringSeeNextCard} text="View case study" />
       <CaseStudyLayout projectId="moodle">
         {/* Hero Section */}
         <section className="moodle-hero-section">
@@ -1038,107 +1015,7 @@ const MoodleCaseStudy = () => {
         </section>
 
         {/* See Next Section */}
-        <section id="moodle-see-next" className="moodle-see-next-section">
-          <div className="moodle-see-next-content">
-            <h3 className="moodle-see-next-title" ref={seeNextTitleRef}>
-              SEE NEXT
-            </h3>
-            <div
-              className="moodle-see-next-grid"
-              ref={seeNextGridRef}
-              data-case-study-nav-boundary
-            >
-              <Link
-                to="/venmo"
-                className="moodle-see-next-card-link"
-                onMouseEnter={() => setIsHoveringSeeNextCard(true)}
-                onMouseLeave={() => setIsHoveringSeeNextCard(false)}
-              >
-                <div
-                  className="moodle-see-next-card"
-                  ref={(el) => (seeNextCardsRefs.current[0] = el)}
-                >
-                  <div className="moodle-see-next-image-container">
-                    <video
-                      src="/work/venmo/thumbnail.mp4"
-                      className="moodle-see-next-image"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    />
-                  </div>
-                  <h4 className="moodle-see-next-card-title">
-                    Redesigning Venmo's Privacy Controls
-                  </h4>
-                  <p className="moodle-see-next-card-description">
-                    Transforming Venmo's public-by-default privacy model to help
-                    users make informed choices without confusion.
-                  </p>
-                </div>
-              </Link>
-              <Link
-                to="/confido"
-                className="moodle-see-next-card-link"
-                onMouseEnter={() => setIsHoveringSeeNextCard(true)}
-                onMouseLeave={() => setIsHoveringSeeNextCard(false)}
-              >
-                <div
-                  className="moodle-see-next-card"
-                  ref={(el) => (seeNextCardsRefs.current[1] = el)}
-                >
-                  <div className="moodle-see-next-image-container">
-                    <video
-                      src="/work/confido/thumbnail.mp4"
-                      className="moodle-see-next-image"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    />
-                  </div>
-                  <h4 className="moodle-see-next-card-title">
-                    Rebuilding Confido's Approval Flow
-                  </h4>
-                  <p className="moodle-see-next-card-description">
-                    Redesigning approval workflows with smarter logic and
-                    clearer audit trails for improved enterprise usability.
-                  </p>
-                </div>
-              </Link>
-              <Link
-                to="/dandi"
-                className="moodle-see-next-card-link"
-                onMouseEnter={() => setIsHoveringSeeNextCard(true)}
-                onMouseLeave={() => setIsHoveringSeeNextCard(false)}
-              >
-                <div
-                  className="moodle-see-next-card"
-                  ref={(el) => (seeNextCardsRefs.current[2] = el)}
-                >
-                  <div className="moodle-see-next-image-container">
-                    <video
-                      src="/work/dandi/thumbnail.mp4"
-                      className="moodle-see-next-image"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      aria-label="Dandi: A Bio-Smart Wearable for PCOS — preview"
-                    />
-                  </div>
-                  <h4 className="moodle-see-next-card-title">
-                    Dandi: A Bio-Smart Wearable for PCOS
-                  </h4>
-                  <p className="moodle-see-next-card-description">
-                    Making hormonal health accessible for women through
-                    emotionally-resonant design and real-time biosensing.
-                  </p>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <SeeNextSection sectionId="moodle-see-next" excludeId="moodle" />
       </CaseStudyLayout>
       <Footer />
     </div>

@@ -234,7 +234,7 @@ const StickerPeel = ({
       width,
       shadowIntensity,
       peelDirection,
-    ]
+    ],
   );
 
   const containerClassName = [

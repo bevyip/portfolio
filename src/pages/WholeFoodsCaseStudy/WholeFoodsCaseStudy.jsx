@@ -1,13 +1,11 @@
-import React, { useRef, useMemo, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useRef, useMemo, useEffect } from "react";
 import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useScrollReset from "../../hooks/useScrollReset";
 import { useCountupAnimation } from "../../hooks/useCountupAnimation";
-import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
-import CursorPill from "../../components/CursorPill/CursorPill";
+import SeeNextSection from "../../components/SeeNext/SeeNextSection";
 import "./WholeFoodsCaseStudy.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -15,7 +13,6 @@ gsap.registerPlugin(ScrollTrigger);
 const WholeFoodsCaseStudy = () => {
   // Reset scroll position to top when page loads/refreshes
   useScrollReset();
-  const [isHoveringSeeNextCard, setIsHoveringSeeNextCard] = useState(false);
   const { scrollToElement } = useLenisScroll();
 
   const impactSectionRef = useRef(null);
@@ -73,15 +70,6 @@ const WholeFoodsCaseStudy = () => {
   const takeawaysItemRef = useRef(null);
   const nextStepsTitleRef = useRef(null);
   const nextStepsItemsRefs = useRef([]);
-  const seeNextTitleRef = useRef(null);
-  const seeNextGridRef = useRef(null);
-  const seeNextCardsRefs = useRef([]);
-
-  useCardUnfurling({
-    gridRef: seeNextGridRef,
-    cardRefs: seeNextCardsRefs,
-  });
-
   // Countup animation for metrics - memoize to prevent hook re-runs
   const metrics = useMemo(
     () => [
@@ -239,8 +227,6 @@ const WholeFoodsCaseStudy = () => {
       }
     });
     // See Next
-    createScrollAnimation(seeNextTitleRef);
-
     return () => {
       scrollTriggers.forEach((trigger) => trigger.kill());
     };
@@ -248,7 +234,6 @@ const WholeFoodsCaseStudy = () => {
 
   return (
     <div className="wholefoods-case-study">
-      <CursorPill isHovering={isHoveringSeeNextCard} text="View case study" />
       {/* Hero Section */}
       <section className="wholefoods-hero-section">
         {/* Hero Before Image - Visual welcome */}
@@ -956,102 +941,7 @@ const WholeFoodsCaseStudy = () => {
       </section>
 
       {/* See Next Section */}
-      <section className="wholefoods-see-next-section">
-        <div className="wholefoods-see-next-content">
-          <h3 className="wholefoods-see-next-title" ref={seeNextTitleRef}>
-            SEE NEXT
-          </h3>
-          <div className="wholefoods-see-next-grid" ref={seeNextGridRef}>
-            <Link
-              to="/moodle"
-              className="wholefoods-see-next-card-link"
-              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
-              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
-            >
-              <div
-                className="wholefoods-see-next-card"
-                ref={(el) => (seeNextCardsRefs.current[0] = el)}
-              >
-                <div className="wholefoods-see-next-image-container">
-                  <video
-                    src="/work/moodle/thumbnail.mp4"
-                    className="wholefoods-see-next-image"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
-                </div>
-                <h4 className="wholefoods-see-next-card-title">
-                  Moodle: AI-Powered Feline Pain Detection for Cat Owners
-                </h4>
-                <p className="wholefoods-see-next-card-description">
-                  Making clinical-grade pain monitoring accessible to cat owners
-                  through intuitive mobile design and privacy-first AI.
-                </p>
-              </div>
-            </Link>
-            <Link
-              to="/venmo"
-              className="wholefoods-see-next-card-link"
-              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
-              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
-            >
-              <div
-                className="wholefoods-see-next-card"
-                ref={(el) => (seeNextCardsRefs.current[1] = el)}
-              >
-                <div className="wholefoods-see-next-image-container">
-                  <video
-                    src="/work/venmo/thumbnail.mp4"
-                    className="wholefoods-see-next-image"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
-                </div>
-                <h4 className="wholefoods-see-next-card-title">
-                  Redesigning Venmo's Privacy Controls
-                </h4>
-                <p className="wholefoods-see-next-card-description">
-                  Transforming Venmo's public-by-default privacy model to help
-                  users make informed choices without confusion.
-                </p>
-              </div>
-            </Link>
-            <Link
-              to="/confido"
-              className="wholefoods-see-next-card-link"
-              onMouseEnter={() => setIsHoveringSeeNextCard(true)}
-              onMouseLeave={() => setIsHoveringSeeNextCard(false)}
-            >
-              <div
-                className="wholefoods-see-next-card"
-                ref={(el) => (seeNextCardsRefs.current[2] = el)}
-              >
-                <div className="wholefoods-see-next-image-container">
-                  <video
-                    src="/work/confido/thumbnail.mp4"
-                    className="wholefoods-see-next-image"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
-                </div>
-                <h4 className="wholefoods-see-next-card-title">
-                  Rebuilding Confido's Approval Flow
-                </h4>
-                <p className="wholefoods-see-next-card-description">
-                  Redesigning approval workflows with smarter logic and clearer
-                  audit trails for improved enterprise usability.
-                </p>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <SeeNextSection sectionId="wholefoods-see-next" excludeId="wholefoods" />
 
       <Footer />
     </div>

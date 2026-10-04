@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
  * Hook for creating a scroll-scrubbed card unfurling animation
  * @param {Object} config - Configuration object
  * @param {React.RefObject} config.gridRef - Ref to the grid container
- * @param {React.MutableRefObject<Array>} config.cardRefs - Array ref containing three card refs
+ * @param {React.MutableRefObject<Array>} config.cardRefs - Array ref containing two card refs
  * @param {Object} config.options - Optional configuration
  * @param {number} config.options.peekOffset - Pixels of edge visible in collapsed state (default: 40)
  * @param {string} config.options.start - ScrollTrigger start position (default: "top 70%")
@@ -29,13 +29,13 @@ export const useCardUnfurling = ({
       peekOffset = 40,
       start = "top 70%",
       end = "top 20%",
-      minWidth = 768,
+      minWidth = 1025,
       layoutDelay = 100,
     } = options;
 
     // Reset any existing transforms from previous page navigation
     const resetCards = () => {
-      if (cardRefs.current && cardRefs.current.length === 3) {
+      if (cardRefs.current && cardRefs.current.length >= 2) {
         cardRefs.current.forEach((card) => {
           if (card) {
             // Kill any active tweens on this card
@@ -58,16 +58,15 @@ export const useCardUnfurling = ({
     resetCards();
 
     const setupUnfurlingAnimation = () => {
-      if (!gridRef.current || !cardRefs.current || cardRefs.current.length !== 3) {
+      if (!gridRef.current || !cardRefs.current || cardRefs.current.length !== 2) {
         return;
       }
 
       const card1 = cardRefs.current[0];
-      const card2 = cardRefs.current[1]; // Center card
-      const card3 = cardRefs.current[2];
+      const card2 = cardRefs.current[1];
       const grid = gridRef.current;
 
-      if (!card1 || !card2 || !card3) {
+      if (!card1 || !card2) {
         return;
       }
 
@@ -81,57 +80,39 @@ export const useCardUnfurling = ({
           // Wait for layout to be ready using requestAnimationFrame
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
-              // Get grid center
-              const gridRect = grid.getBoundingClientRect();
-              const gridCenterX = gridRect.left + gridRect.width / 2;
-
               // Get final positions of each card
               const card1Rect = card1.getBoundingClientRect();
               const card2Rect = card2.getBoundingClientRect();
-              const card3Rect = card3.getBoundingClientRect();
 
               // Calculate center points of each card
               const card1CenterX = card1Rect.left + card1Rect.width / 2;
               const card2CenterX = card2Rect.left + card2Rect.width / 2;
-              const card3CenterX = card3Rect.left + card3Rect.width / 2;
+              const pairMidpointX = (card1CenterX + card2CenterX) / 2;
 
-              // Calculate collapsed state positions
-              // All cards should visually appear at card 2's center position with edges peeking out
-              const card1CollapsedX = card2CenterX - card1CenterX - peekOffset;
-              const card2CollapsedX = 0;
-              const card3CollapsedX = card2CenterX - card3CenterX + peekOffset;
+              // Stack the pair at the midpoint, with a sliver of each card peeking out
+              const card1CollapsedX = pairMidpointX - card1CenterX - peekOffset;
+              const card2CollapsedX = pairMidpointX - card2CenterX + peekOffset;
 
               // Store collapsed offsets
               const collapsedOffsets = {
                 card1: card1CollapsedX,
                 card2: card2CollapsedX,
-                card3: card3CollapsedX,
               };
 
-              // Set collapsed state: Card 2 visible at center, cards 1 & 3 fully visible but behind
+              // Right card sits on top; left card peeks out from behind
               const setCollapsedState = () => {
-                // Card 1: Fully visible but behind card 2
                 gsap.set(card1, {
                   opacity: 1,
                   scale: 1,
                   x: collapsedOffsets.card1,
                 });
-                // Card 2: Fully visible at center
                 gsap.set(card2, {
                   opacity: 1,
                   scale: 1,
                   x: collapsedOffsets.card2,
                 });
-                // Card 3: Fully visible but behind card 2
-                gsap.set(card3, {
-                  opacity: 1,
-                  scale: 1,
-                  x: collapsedOffsets.card3,
-                });
-                // Set z-index: card 2 on top, cards 1 & 3 behind
                 gsap.set(card2, { zIndex: 10, force3D: false });
                 gsap.set(card1, { zIndex: 1, force3D: false });
-                gsap.set(card3, { zIndex: 1, force3D: false });
               };
 
               // Set initial collapsed state
@@ -151,7 +132,7 @@ export const useCardUnfurling = ({
               // Store timeline reference for cleanup
               timelineRef.current = unfurlTimeline;
 
-              // Cards start from collapsed state (behind card 2) and unfurl outward
+              // Cards start overlapped and slide out to their two-column positions
               unfurlTimeline.fromTo(
                 card1,
                 {
@@ -163,28 +144,11 @@ export const useCardUnfurling = ({
                   opacity: 1,
                   scale: 1,
                   x: 0,
-                  duration: 0.5, // Takes 50% of the scroll range
+                  duration: 0.5,
                 },
-                0 // Start immediately
+                0,
               );
 
-              unfurlTimeline.fromTo(
-                card3,
-                {
-                  opacity: 1,
-                  scale: 1,
-                  x: collapsedOffsets.card3,
-                },
-                {
-                  opacity: 1,
-                  scale: 1,
-                  x: 0,
-                  duration: 0.5, // Takes 50% of the scroll range
-                },
-                0 // Start immediately with card1
-              );
-
-              // Card 2 stays in place
               unfurlTimeline.fromTo(
                 card2,
                 {
@@ -196,13 +160,12 @@ export const useCardUnfurling = ({
                   opacity: 1,
                   scale: 1,
                   x: 0,
-                  duration: 0.3, // Quick animation
+                  duration: 0.5,
                 },
-                0
+                0,
               );
 
-              // Reset z-index when fully unfurled (at end of timeline)
-              unfurlTimeline.set([card1, card2, card3], { zIndex: "auto" }, 0.95);
+              unfurlTimeline.set([card1, card2], { zIndex: "auto" }, 0.95);
 
               // Ensure timeline starts at progress 0 (collapsed state)
               unfurlTimeline.progress(0);
@@ -218,16 +181,13 @@ export const useCardUnfurling = ({
                   // Handle z-index based on scroll progress
                   const progress = self.progress;
                   if (progress >= 0.95) {
-                    // Fully unfurled: reset z-index to auto
-                    gsap.set([card1, card2, card3], {
+                    gsap.set([card1, card2], {
                       zIndex: "auto",
                       force3D: false,
                     });
                   } else {
-                    // During animation or collapsed: maintain z-index order
                     gsap.set(card2, { zIndex: 10, force3D: false });
                     gsap.set(card1, { zIndex: 1, force3D: false });
-                    gsap.set(card3, { zIndex: 1, force3D: false });
                   }
                 },
               });
@@ -318,7 +278,7 @@ export const useCardUnfurling = ({
       }
 
       // Reset all card transforms to prevent persistence between navigations
-      if (cardRefs.current && cardRefs.current.length === 3) {
+      if (cardRefs.current && cardRefs.current.length >= 2) {
         cardRefs.current.forEach((card) => {
           if (card) {
             // Kill any active tweens

@@ -44,6 +44,29 @@ export const playProjects = [
     ],
   },
   {
+    id: "art-gallery",
+    size: "tall",
+    theme: "white",
+    tags: ["Three.js", "Web Art"],
+    category: "digital",
+    media: {
+      video: vid("v1791081587/art-gallery_tsz2p2"),
+      poster: "/projects/art-gallery/thumbnail.png",
+    },
+    actions: [
+      {
+        type: "live",
+        tooltip: "View App",
+        url: "https://interactive-art-gallery-pink.vercel.app/",
+      },
+      {
+        type: "X",
+        tooltip: "View on X",
+        url: "https://x.com/bevdesigns/status/2106529118204657699?s=20",
+      },
+    ],
+  },
+  {
     id: "spherical-shopping",
     size: "tall",
     theme: "white",

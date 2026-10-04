@@ -1,13 +1,11 @@
-import React, { useRef, useMemo, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useRef, useMemo, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useScrollReset from "../../hooks/useScrollReset";
 import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { useCountupAnimation } from "../../hooks/useCountupAnimation";
-import { useCardUnfurling } from "../../hooks/useCardUnfurling";
 import Footer from "../../components/Footer/Footer";
-import CursorPill from "../../components/CursorPill/CursorPill";
+import SeeNextSection from "../../components/SeeNext/SeeNextSection";
 import CaseStudyLayout from "../../components/CaseStudyLayout/CaseStudyLayout";
 import {
   CaseStudyStatement,
@@ -20,7 +18,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ConfidoCaseStudy = () => {
   useScrollReset();
-  const [isHoveringSeeNextCard, setIsHoveringSeeNextCard] = useState(false);
   const { scrollToElement } = useLenisScroll();
 
   const impactSectionRef = useRef(null);
@@ -78,23 +75,6 @@ const ConfidoCaseStudy = () => {
   const solution4CaptionRef = useRef(null);
   const reflectionTitleRef = useRef(null);
   const reflectionContentRef = useRef(null);
-  const seeNextTitleRef = useRef(null);
-  const seeNextGridRef = useRef(null);
-  const seeNextCardsRefs = useRef([]);
-
-  // Use card unfurling hook for See Next section
-  useCardUnfurling({
-    gridRef: seeNextGridRef,
-    cardRefs: seeNextCardsRefs,
-    options: {
-      peekOffset: 40,
-      start: "top 70%",
-      end: "top 20%",
-      minWidth: 768,
-      layoutDelay: 100,
-    },
-  });
-
   const handleSkipToSolution = () => {
     scrollToElement(document.getElementById("solution-section"), {
       duration: 1.2,
@@ -232,8 +212,6 @@ const ConfidoCaseStudy = () => {
     createScrollAnimation(reflectionContentRef, 0.1);
 
     // See Next Section
-    createScrollAnimation(seeNextTitleRef);
-
     return () => {
       scrollTriggers.forEach((trigger) => trigger.kill());
     };
@@ -241,7 +219,6 @@ const ConfidoCaseStudy = () => {
 
   return (
     <div className="confido-case-study">
-      <CursorPill isHovering={isHoveringSeeNextCard} text="View case study" />
       <CaseStudyLayout projectId="confido">
         {/* Hero Section */}
         <section className="confido-hero-section">
@@ -949,107 +926,7 @@ const ConfidoCaseStudy = () => {
         </section>
 
         {/* See Next Section */}
-        <section id="confido-see-next" className="confido-see-next-section">
-          <div className="confido-see-next-content">
-            <h3 className="confido-see-next-title" ref={seeNextTitleRef}>
-              SEE NEXT
-            </h3>
-            <div
-              className="confido-see-next-grid"
-              ref={seeNextGridRef}
-              data-case-study-nav-boundary
-            >
-              <Link
-                to="/moodle"
-                className="confido-see-next-card-link"
-                onMouseEnter={() => setIsHoveringSeeNextCard(true)}
-                onMouseLeave={() => setIsHoveringSeeNextCard(false)}
-              >
-                <div
-                  className="confido-see-next-card"
-                  ref={(el) => (seeNextCardsRefs.current[0] = el)}
-                >
-                  <div className="confido-see-next-image-container">
-                    <video
-                      src="/work/moodle/thumbnail.mp4"
-                      className="confido-see-next-image"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    />
-                  </div>
-                  <h4 className="confido-see-next-card-title">
-                    Moodle: AI-Powered Feline Pain Detection for Cat Owners
-                  </h4>
-                  <p className="confido-see-next-card-description">
-                    Making clinical-grade pain monitoring accessible to cat
-                    owners through intuitive mobile design and privacy-first AI.
-                  </p>
-                </div>
-              </Link>
-              <Link
-                to="/venmo"
-                className="confido-see-next-card-link"
-                onMouseEnter={() => setIsHoveringSeeNextCard(true)}
-                onMouseLeave={() => setIsHoveringSeeNextCard(false)}
-              >
-                <div
-                  className="confido-see-next-card"
-                  ref={(el) => (seeNextCardsRefs.current[1] = el)}
-                >
-                  <div className="confido-see-next-image-container">
-                    <video
-                      src="/work/venmo/thumbnail.mp4"
-                      className="confido-see-next-image"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    />
-                  </div>
-                  <h4 className="confido-see-next-card-title">
-                    Redesigning Venmo's Privacy Model
-                  </h4>
-                  <p className="confido-see-next-card-description">
-                    Shifting from public-by-default to private-by-default with
-                    privacy controls surfaced where users make decisions.
-                  </p>
-                </div>
-              </Link>
-              <Link
-                to="/dandi"
-                className="confido-see-next-card-link"
-                onMouseEnter={() => setIsHoveringSeeNextCard(true)}
-                onMouseLeave={() => setIsHoveringSeeNextCard(false)}
-              >
-                <div
-                  className="confido-see-next-card"
-                  ref={(el) => (seeNextCardsRefs.current[2] = el)}
-                >
-                  <div className="confido-see-next-image-container">
-                    <video
-                      src="/work/dandi/thumbnail.mp4"
-                      className="confido-see-next-image"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      aria-label="Dandi: A Bio-Smart Wearable for PCOS — preview"
-                    />
-                  </div>
-                  <h4 className="confido-see-next-card-title">
-                    Dandi: A Bio-Smart Wearable for PCOS
-                  </h4>
-                  <p className="confido-see-next-card-description">
-                    Making hormonal health accessible for women through
-                    emotionally-resonant design and real-time biosensing.
-                  </p>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <SeeNextSection sectionId="confido-see-next" excludeId="confido" />
       </CaseStudyLayout>
       <Footer />
     </div>

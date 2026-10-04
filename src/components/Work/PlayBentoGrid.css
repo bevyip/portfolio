@@ -40,17 +40,15 @@
     z-index: 1;
   }
 
-  /* Explicit spacer — height set from measured block party card (JS) */
-  .home-play-bento-wide-span-spacer {
-    flex-shrink: 0;
-    width: 100%;
-    pointer-events: none;
-  }
-
   .natural-play-bento-item--wide {
     width: calc(200% + var(--play-natural-gap));
     max-width: calc(200% + var(--play-natural-gap));
   }
+}
+
+.home-play-bento-natural-col .work-bento-item--compact,
+.home-play-bento-grid-natural-mobile .work-bento-item--compact {
+  width: 100%;
 }
 
 .natural-play-bento-item {

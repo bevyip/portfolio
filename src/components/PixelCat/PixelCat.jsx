@@ -6,7 +6,11 @@ const playingGif = "/pixel-cat/playing.gif";
 const loafGif = "/pixel-cat/loaf.gif";
 import "./PixelCat.css";
 
-const BASE_CAT_SIZE = 64;
+const CAT_FRAME = 64;
+/** Shared empty margin around every cat animation, in source pixels. */
+const CAT_CROP = { top: 16, right: 14, bottom: 19, left: 12 };
+const CAT_WIDTH = CAT_FRAME - CAT_CROP.left - CAT_CROP.right;
+const CAT_HEIGHT = CAT_FRAME - CAT_CROP.top - CAT_CROP.bottom;
 const DESKTOP_CAT_SCALE = 2;
 const MOBILE_CAT_SCALE = 1.75;
 const MOBILE_CAT_MQL = "(max-width: 767px)";
@@ -29,6 +33,27 @@ const BUBBLE_FADE_MS = 600;
 const TYPE_MS = 38;
 const INTRO_MESSAGE = "Play with Boba?";
 
+const GRASS_TILES = {
+  plain: { src: "/pixel-cat/grass-plain.png", w: 24, h: 6 },
+  sprout: { src: "/pixel-cat/grass-sprout.png", w: 23, h: 13 },
+  plants: { src: "/pixel-cat/grass-plants.png", w: 49, h: 11 },
+};
+/** Mostly the short grass, with the taller patches a little more often. */
+const GRASS_PATTERN = [
+  "plain",
+  "plain",
+  "plain",
+  "sprout",
+  "plain",
+  "plain",
+  "plants",
+  "plain",
+  "plain",
+  "sprout",
+  "plain",
+  "plants",
+];
+
 const REFUSE_MESSAGES = [
   "Boba doesn't seem to want to play right now...",
   "Boba does what he wants.",
@@ -48,6 +73,14 @@ const LOVE_MESSAGES = [
   'Boba says "meow I love you!"',
   "Boba's tail goes swish swish!",
 ];
+
+/** Scale grows the sprite from its center, so the visual box hangs past `left`. */
+function getCatBounds(containerWidth, scale) {
+  const inset = ((scale - 1) * CAT_WIDTH) / 2;
+  const minX = inset;
+  const maxX = Math.max(minX, containerWidth - CAT_WIDTH - inset);
+  return { minX, maxX };
+}
 
 function PixelCatBubble({
   text,
@@ -126,7 +159,7 @@ export default function PixelCat() {
   const showIntroBubbleRef = useRef(true);
   const catMetricsRef = useRef({
     scale: DESKTOP_CAT_SCALE,
-    scaledSize: BASE_CAT_SIZE * DESKTOP_CAT_SCALE,
+    scaledSize: CAT_WIDTH * DESKTOP_CAT_SCALE,
   });
 
   catPosRef.current = catPos;
@@ -147,7 +180,7 @@ export default function PixelCat() {
       : DESKTOP_CAT_SCALE;
     catMetricsRef.current = {
       scale,
-      scaledSize: BASE_CAT_SIZE * scale,
+      scaledSize: CAT_WIDTH * scale,
     };
     setCatScale(scale);
   }, []);
@@ -172,9 +205,9 @@ export default function PixelCat() {
     const setInitialCenter = () => {
       updateRect();
       if (containerRect.current.width > 0 && !initialPositionSetRef.current) {
-        const { scaledSize } = catMetricsRef.current;
-        const centerX = (containerRect.current.width - scaledSize) / 2;
-        setCatPos(Math.max(0, centerX));
+        const { scale } = catMetricsRef.current;
+        const { minX, maxX } = getCatBounds(containerRect.current.width, scale);
+        setCatPos((minX + maxX) / 2);
         initialPositionSetRef.current = true;
       }
     };
@@ -283,8 +316,7 @@ export default function PixelCat() {
       const rect = containerRect.current;
       const targetX = targetXRef.current;
       const current = catPosRef.current;
-      const { scaledSize } = catMetricsRef.current;
-      const catCenterX = current + scaledSize / 2;
+      const catCenterX = current + CAT_WIDTH / 2;
 
       if (targetX != null && !interactionLockedRef.current) {
         const dx = targetX - current;
@@ -296,8 +328,11 @@ export default function PixelCat() {
           targetXRef.current = null;
         } else {
           const step = dx > 0 ? CAT_SPEED : -CAT_SPEED;
-          const maxX = Math.max(0, rect.width - scaledSize);
-          const newX = Math.max(0, Math.min(maxX, current + step));
+          const { minX, maxX } = getCatBounds(
+            rect.width,
+            catMetricsRef.current.scale,
+          );
+          const newX = Math.max(minX, Math.min(maxX, current + step));
           setCatPos(newX);
           setState("run");
           setFacingLeft(dx < 0);
@@ -367,7 +402,7 @@ export default function PixelCat() {
     const { clientX, clientY } = getTapPosition(e);
     const localX = clientX - rect.left;
     const localY = clientY - (rect.top ?? 0);
-    const catCenterX = catPosRef.current + catMetricsRef.current.scaledSize / 2;
+    const catCenterX = catPosRef.current + CAT_WIDTH / 2;
     const tapIsRightOfCat = localX > catCenterX;
     const id = Date.now();
     setCursorPings((prev) => [
@@ -397,10 +432,9 @@ export default function PixelCat() {
     const rect = containerRect.current;
     const { clientX } = getTapPosition(e);
     const localX = clientX - rect.left;
-    const { scaledSize } = catMetricsRef.current;
-    const catLeft = localX - scaledSize / 2;
-    const maxX = Math.max(0, rect.width - scaledSize);
-    const clamped = Math.max(0, Math.min(maxX, catLeft));
+    const { minX, maxX } = getCatBounds(rect.width, catMetricsRef.current.scale);
+    const catLeft = localX - CAT_WIDTH / 2;
+    const clamped = Math.max(minX, Math.min(maxX, catLeft));
     targetXRef.current = clamped;
     setState("run");
     setFacingLeft(clamped < catPosRef.current);
@@ -409,7 +443,7 @@ export default function PixelCat() {
   const handlePetClick = (e) => {
     if (e && e.stopPropagation) e.stopPropagation();
     dismissIntroBubble();
-    const catCenterX = catPosRef.current + catMetricsRef.current.scaledSize / 2;
+    const catCenterX = catPosRef.current + CAT_WIDTH / 2;
 
     showBubble(LOVE_MESSAGES);
 
@@ -503,12 +537,32 @@ export default function PixelCat() {
         />
       ))}
 
-      <img
-        src={gifMap[state]}
-        alt="pixel cat"
+      <div className="pixel-cat-ground" aria-hidden="true">
+        {GRASS_PATTERN.concat(GRASS_PATTERN, GRASS_PATTERN).map((kind, index) => {
+          const tile = GRASS_TILES[kind];
+          return (
+            <img
+              key={`${kind}-${index}`}
+              src={tile.src}
+              alt=""
+              width={tile.w}
+              height={tile.h}
+              style={{
+                width: tile.w * catScale,
+                height: tile.h * catScale,
+              }}
+              draggable={false}
+            />
+          );
+        })}
+      </div>
+
+      <div
         className="pixel-cat-sprite"
         style={{
           left: catPos,
+          width: CAT_WIDTH,
+          height: CAT_HEIGHT,
           transform: facingLeft
             ? `scale(${catScale}) scaleX(-1)`
             : `scale(${catScale}) scaleX(1)`,
@@ -521,8 +575,20 @@ export default function PixelCat() {
           e.stopPropagation();
           handlePetClick(e);
         }}
-        draggable={false}
-      />
+      >
+        <img
+          src={gifMap[state]}
+          alt="pixel cat"
+          className="pixel-cat-sprite-img"
+          style={{
+            width: CAT_FRAME,
+            height: CAT_FRAME,
+            left: -CAT_CROP.left,
+            top: -CAT_CROP.top,
+          }}
+          draggable={false}
+        />
+      </div>
     </div>
   );
 }

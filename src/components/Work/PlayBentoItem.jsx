@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import {
   ExternalLink,
@@ -9,6 +9,100 @@ import {
   FileText,
   GraduationCap,
 } from "lucide-react";
+
+let iframePark = null;
+const parkedIframes = new Map();
+
+function getIframePark() {
+  if (iframePark) return iframePark;
+  const park = document.createElement("div");
+  park.setAttribute("aria-hidden", "true");
+  park.style.cssText =
+    "position:fixed;top:0;left:0;width:0;height:0;overflow:hidden;pointer-events:none;";
+  document.body.appendChild(park);
+  iframePark = park;
+  return park;
+}
+
+function blurIframe(iframe) {
+  if (document.activeElement === iframe) iframe.blur();
+}
+
+/**
+ * Reparenting a focused iframe makes the browser scroll it into view.
+ * Pin the scroll position across the move so a filter change stays put.
+ */
+function moveIframe(iframe, parent) {
+  const x = window.scrollX;
+  const y = window.scrollY;
+  iframe.inert = true;
+  blurIframe(iframe);
+  parent.appendChild(iframe);
+  if (window.scrollX !== x || window.scrollY !== y) window.scrollTo(x, y);
+}
+
+function parkIframe(iframe) {
+  iframe.style.position = "absolute";
+  iframe.style.left = "0";
+  iframe.style.top = "0";
+  iframe.style.width = "0";
+  iframe.style.height = "0";
+  moveIframe(iframe, getIframePark());
+}
+
+function placeIframe(iframe, slot) {
+  const x = window.scrollX;
+  const y = window.scrollY;
+  iframe.style.position = "";
+  iframe.style.left = "";
+  iframe.style.top = "";
+  iframe.style.width = "";
+  iframe.style.height = "";
+  moveIframe(iframe, slot);
+  iframe.inert = false;
+  blurIframe(iframe);
+  if (window.scrollX !== x || window.scrollY !== y) window.scrollTo(x, y);
+
+  // A shown embed can take focus a moment later and scroll itself into view.
+  // Put the page back in that same event, before the next paint.
+  const onScroll = () => {
+    if (!(document.activeElement instanceof HTMLIFrameElement)) return;
+    if (window.scrollX === x && window.scrollY === y) return;
+    window.scrollTo(x, y);
+  };
+  window.addEventListener("scroll", onScroll, true);
+  window.setTimeout(() => window.removeEventListener("scroll", onScroll, true), 500);
+}
+
+/** Keep one iframe per src so filter changes move it instead of reloading it. */
+function retainIframe(src) {
+  let entry = parkedIframes.get(src);
+  if (entry) return entry;
+
+  const iframe = document.createElement("iframe");
+  iframe.src = src;
+  iframe.title = "";
+  iframe.setAttribute("tabindex", "-1");
+  entry = { iframe, settled: false, onSettled: null };
+  parkedIframes.set(src, entry);
+
+  const markSettled = () => {
+    if (entry.settled) return;
+    entry.settled = true;
+    blurIframe(iframe);
+    const notify = entry.onSettled;
+    entry.onSettled = null;
+    notify?.();
+  };
+
+  iframe.addEventListener("load", () => {
+    blurIframe(iframe);
+    window.setTimeout(markSettled, 400);
+  });
+
+  parkIframe(iframe);
+  return entry;
+}
 
 const FigmaIcon = ({ size = 16 }) => (
   <svg
@@ -113,10 +207,12 @@ const NaturalPlayBentoItem = React.forwardRef(function NaturalPlayBentoItem(
   } = project;
   const [isMediaLoaded, setIsMediaLoaded] = useState(false);
   const [iframeReady, setIframeReady] = useState(false);
+  const [iframeAttached, setIframeAttached] = useState(false);
   const videoRef = useRef(null);
   const videoContainerRef = useRef(null);
   const posterImgRef = useRef(null);
   const iframeObserverTargetRef = useRef(null);
+  const iframeSlotRef = useRef(null);
 
   const isBlack = theme === "black";
   const hasVideo = media?.video;
@@ -226,7 +322,40 @@ const NaturalPlayBentoItem = React.forwardRef(function NaturalPlayBentoItem(
 
     observer.observe(target);
     return () => observer.disconnect();
-  }, [hasIframe, iframeReady]);
+  }, [hasIframe, iframeReady, iframeAttached]);
+
+  useLayoutEffect(() => {
+    const slot = iframeSlotRef.current;
+    if (
+      !hasIframe ||
+      !iframeReady ||
+      !media?.iframe ||
+      !slot ||
+      slot.getClientRects().length === 0
+    ) {
+      return undefined;
+    }
+    const entry = retainIframe(media.iframe);
+    let cancelled = false;
+
+    const attach = () => {
+      const slot = iframeSlotRef.current;
+      if (cancelled || !slot) return;
+      placeIframe(entry.iframe, slot);
+      setIframeAttached(true);
+      setMediaLoadedDeferred();
+    };
+
+    if (entry.settled) attach();
+    else entry.onSettled = attach;
+
+    return () => {
+      cancelled = true;
+      if (entry.onSettled === attach) entry.onSettled = null;
+      parkIframe(entry.iframe);
+      setIframeAttached(false);
+    };
+  }, [hasIframe, iframeReady, media?.iframe, setMediaLoadedDeferred]);
 
   const itemClassName = [
     "natural-play-bento-item group",
@@ -292,14 +421,8 @@ const NaturalPlayBentoItem = React.forwardRef(function NaturalPlayBentoItem(
           )}
 
           {!showVideoBlock && hasIframe && (
-            <div className="natural-play-bento-iframe-wrap">
-              {iframeReady ? (
-                <iframe
-                  src={media.iframe}
-                  title=""
-                  onLoad={setMediaLoadedDeferred}
-                />
-              ) : (
+            <div className="natural-play-bento-iframe-wrap" ref={iframeSlotRef}>
+              {!iframeAttached && (
                 <div
                   ref={iframeObserverTargetRef}
                   className="natural-play-bento-iframe-placeholder"

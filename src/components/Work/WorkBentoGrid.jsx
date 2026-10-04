@@ -1,68 +1,12 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import CursorPill from "../CursorPill/CursorPill";
+import { workProjects, workRouteMap } from "../../data/workProjects";
 import "./WorkBentoGrid.css";
 import "./WorkBentoItem.css";
 
-// Work projects data (4 case studies only)
-// thumbnailImage: used as thumbnail in mobile view instead of video
-const workProjects = [
-  {
-    id: "confido-approval-flow",
-    title: "Rebuilding Confido's Approval Flow",
-    role: "Design Engineer",
-    tags: ["Design Systems", "Enterprise Software"],
-    summary:
-      "Redesigning approval workflows with smarter logic and clearer audit trails for improved enterprise usability.",
-    video: "/work/confido/thumbnail.mp4",
-    thumbnailImage: "/work/confido/thumbnail-frame.jpg",
-    category: "case-study",
-  },
-  {
-    id: "dandi-bio-smart-wearable",
-    title: "Dandi: A Bio-Smart Wearable for PCOS",
-    role: "Product Designer & Engineer",
-    tags: ["Wearable", "Women's Health"],
-    summary:
-      "Making hormonal health accessible for women through emotionally-resonant design and real-time biosensing.",
-    video: "/work/dandi/thumbnail.mp4",
-    thumbnailImage: "/work/dandi/thumbnail-frame.png",
-    category: "case-study",
-    awardLine: "🏅 Most Impact Winner – FigBuild 2026",
-  },
-  {
-    id: "moodle-pain-detection",
-    title: "Moodle: AI-Powered Feline Pain Detection for Cat Owners",
-    role: "Product Designer",
-    tags: ["UX Research", "AI/ML"],
-    summary:
-      "Making clinical-grade pain monitoring accessible to cat owners through intuitive mobile design and privacy-first AI.",
-    video: "/work/moodle/thumbnail.mp4",
-    thumbnailImage: "/work/moodle/thumbnail-frame.jpg",
-    category: "case-study",
-  },
-  {
-    id: "venmo-privacy-controls",
-    title: "Redesigning Venmo's Privacy Controls",
-    role: "Product Designer",
-    tags: ["UX Research", "FinTech"],
-    summary:
-      "Transforming Venmo's public-by-default privacy model to help users make informed choices without confusion.",
-    video: "/work/venmo/thumbnail.mp4",
-    thumbnailImage: "/work/venmo/thumbnail-frame.jpg",
-    category: "case-study",
-  },
-];
-
-const routeMap = {
-  "venmo-privacy-controls": "/venmo",
-  "moodle-pain-detection": "/moodle",
-  "confido-approval-flow": "/confido",
-  "dandi-bio-smart-wearable": "/dandi",
-};
-
 /** Single work card (full layout on Work page; compact footer on Home) */
-function WorkCard({
+export function WorkCard({
   project,
   onHoverChange,
   onVideoReady,
@@ -187,7 +131,6 @@ function WorkCard({
       {mediaBlock}
       <div className="work-bento-compact-footer">
         <h3 className="work-bento-compact-title">{project.title}</h3>
-        <p className="work-bento-compact-role">{project.role}</p>
       </div>
     </>
   ) : (
@@ -223,7 +166,7 @@ function WorkCard({
   if (isClickable) {
     return (
       <Link
-        to={routeMap[project.id]}
+        to={workRouteMap[project.id]}
         className={cardClassName}
         data-project-id={project.id}
         {...hoverProps}

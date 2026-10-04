@@ -1,6 +1,6 @@
-/** Desktop grid placement for “all” play projects (`/` and `/google-creative`). */
+/** Desktop grid placement for play projects on the homepage. */
 export const allPlayPositions = {
-  "block-party": { col: 1, rowStart: 1, rowEnd: 4, colSpan: 2 },
+  "block-party": { col: 1, rowStart: 1, rowEnd: 3 },
   "floral-jukebox": { col: 3, rowStart: 1, rowEnd: 2 },
   "draw-canvas": { col: 3, rowStart: 2, rowEnd: 4 },
   "picture-distortion": { col: 1, rowStart: 6, rowEnd: 8 },
@@ -11,18 +11,19 @@ export const allPlayPositions = {
   "puzzle-feeder": { col: 1, rowStart: 15, rowEnd: 17 },
   "gravity-text": { col: 2, rowStart: 6, rowEnd: 8 },
   "binary-pool": { col: 2, rowStart: 10, rowEnd: 12 },
-  "page-canvas": { col: 1, rowStart: 4, rowEnd: 6 },
+  "page-canvas": { col: 2, rowStart: 4, rowEnd: 6 },
   snowflake: { col: 3, rowStart: 7, rowEnd: 8 },
   "neumorphic-buttons": { col: 3, rowStart: 10, rowEnd: 12 },
   "cat-figurine": { col: 2, rowStart: 14, rowEnd: 15 },
   "temple-of-fortune": { col: 2, rowStart: 15, rowEnd: 16 },
   "emotional-canvas": { col: 1, rowStart: 8, rowEnd: 10 },
+  "art-gallery": { col: 3, rowStart: 3, rowEnd: 4 },
   "spherical-shopping": { col: 3, rowStart: 4, rowEnd: 6 },
   "im-listening": { col: 2, rowStart: 12, rowEnd: 14 },
   "emoji-ascii-art": { col: 3, rowStart: 6, rowEnd: 7 },
   "five-identical-fishes": { col: 3, rowStart: 8, rowEnd: 9 },
   "starry-night": { col: 3, rowStart: 9, rowEnd: 10 },
-  "ascii-filter": { col: 2, rowStart: 4, rowEnd: 6 },
+  "ascii-filter": { col: 1, rowStart: 4, rowEnd: 6 },
   "whack-a-mouse": { col: 3, rowStart: 12, rowEnd: 13 },
 };
 
@@ -32,7 +33,7 @@ export const physicalPlayPositions = {
   "puzzle-feeder": { col: 3, rowStart: 1, rowEnd: 2 },
   "five-identical-fishes": { col: 1, rowStart: 2, rowEnd: 3 },
   "whack-a-mouse": { col: 2, rowStart: 2, rowEnd: 3 },
-  "temple-of-fortune": { col: 3, rowStart: 2, rowEnd: 3 },
+  "temple-of-fortune": { col: 1, rowStart: 3, rowEnd: 4 },
 };
 
 /** Top to bottom, then left to right — matches the curated wide-layout reading order. */
@@ -68,21 +69,6 @@ export function groupPlayProjectsByColumn(projects, positions = allPlayPositions
       if (pa.rowStart !== pb.rowStart) return pa.rowStart - pb.rowStart;
       return (pa.rowEnd ?? 0) - (pb.rowEnd ?? 0);
     });
-  }
-
-  return columns;
-}
-
-/** Column indices that sit beside a multi-column-wide card and need top offset (e.g. col 2 for block party). */
-export function getWideSpanLaneColumns(positions = allPlayPositions) {
-  const columns = new Set();
-
-  for (const pos of Object.values(positions)) {
-    const span = pos.colSpan ?? 1;
-    if (span <= 1) continue;
-    for (let col = pos.col + 1; col < pos.col + span; col += 1) {
-      columns.add(col);
-    }
   }
 
   return columns;

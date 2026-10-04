@@ -79,7 +79,6 @@ function App() {
           </div>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/google-creative" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/work" element={<Work />} />
             <Route path="/venmo" element={<VenmoCaseStudy />} />

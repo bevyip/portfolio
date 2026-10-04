@@ -1,18 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import {
-  isHomePath,
-  isGoogleCreativePath,
-  isDefaultHomePath,
-} from "../../constants/homeRoutes";
-import { useLenisScroll } from "../../hooks/useLenisScroll";
+import React, { useState, useRef, useEffect, useLayoutEffect, useMemo } from "react";
 import { gsap } from "gsap";
-import { scheduleScrollTriggerLayoutRefresh } from "../../utils/scrollTriggerLayout";
 import Footer from "../../components/Footer/Footer";
-import WorkBentoGrid from "../../components/Work/WorkBentoGrid";
 import PlayBentoGridNatural from "../../components/Work/PlayBentoGrid";
 import PixelCat from "../../components/PixelCat/PixelCat";
-import PokemonIntro from "../../components/PokemonIntro/PokemonIntro";
+import {
+  HOME_FILTERS,
+  getHomeGridPositions,
+  getHomeGridProjects,
+} from "../../data/homeGrid";
 import salesforceLogo from "../../assets/img/logo-stickers/salesforce-logo.png";
 import confidoLogo from "../../assets/img/logo-stickers/confido-logo.png";
 import googleLogo from "../../assets/img/logo-stickers/google-logo.png";
@@ -24,87 +19,49 @@ const LANDING_EASE = "power2.out";
 export const LANDING_NAV_DELAY = 0.85;
 export const LANDING_NAV_DURATION = 0.7;
 
-/** Placeholder grid matching .home-case-study-grid layout for skeleton state */
-function SkeletonWorkGrid() {
-  return (
-    <div className="home-case-study-grid home-work-skeleton" aria-hidden="true">
-      {[1, 2, 3, 4].map((i) => (
-        <div key={i} className="home-work-skeleton-card">
-          <div className="home-work-skeleton-media" />
-          <div className="home-work-skeleton-text" />
-        </div>
-      ))}
-    </div>
-  );
-}
-
 const Home = () => {
-  const location = useLocation();
-  const isGoogleCreative = isGoogleCreativePath(location.pathname);
-  const [pokemonIntroDone, setPokemonIntroDone] = useState(
-    () => !isGoogleCreativePath(location.pathname),
-  );
-  const { scrollToTop, scrollToElement } = useLenisScroll();
-  const [isHoveringWorkCard, setIsHoveringWorkCard] = useState(false);
-  const [isWorkLoading, setIsWorkLoading] = useState(true);
+  const [projectFilter, setProjectFilter] = useState("all");
+  const filterRef = useRef(null);
+  const [filterIndicator, setFilterIndicator] = useState({
+    left: 0,
+    top: 0,
+    width: 0,
+  });
   const heroTitleRef = useRef(null);
   const bioRef = useRef(null);
   const landingCatRef = useRef(null);
-  const workGridRef = useRef(null);
-  const hasScrolledToPlayRef = useRef(false);
+  const homeGridProjects = useMemo(
+    () => getHomeGridProjects(projectFilter),
+    [projectFilter],
+  );
+  const homeGridPositions = useMemo(
+    () => getHomeGridPositions(projectFilter),
+    [projectFilter],
+  );
 
-  useEffect(() => {
-    setPokemonIntroDone(!isGoogleCreative);
-  }, [isGoogleCreative]);
+  useLayoutEffect(() => {
+    const root = filterRef.current;
+    if (!root) return undefined;
 
-  // When navigated from another page with scrollToPlay, scroll to play once when layout is ready (work grid loaded).
-  useEffect(() => {
-    if (
-      location.state?.scrollToPlay !== true ||
-      isWorkLoading ||
-      hasScrolledToPlayRef.current
-    )
-      return;
-    const el = document.getElementById("play");
-    if (!el) return;
-    hasScrolledToPlayRef.current = true;
-    scrollToElement(el, { offset: 0, immediate: true });
-  }, [location.state?.scrollToPlay, isWorkLoading, scrollToElement]);
-
-  // Reset so a future navigation with scrollToPlay can scroll again (e.g. About -> Play again)
-  useEffect(() => {
-    if (
-      !isHomePath(location.pathname) ||
-      location.state?.scrollToPlay !== true
-    ) {
-      hasScrolledToPlayRef.current = false;
-    }
-  }, [location.pathname, location.state?.scrollToPlay]);
-
-  // Re-measure ScrollTrigger when play grid height changes (media load, masonry columns).
-  useEffect(() => {
-    if (isWorkLoading) return;
-
-    let settleTimer = null;
-    const playSection = document.getElementById("play");
-    if (!playSection) return;
-
-    const onLayoutChange = () => {
-      clearTimeout(settleTimer);
-      settleTimer = setTimeout(() => scheduleScrollTriggerLayoutRefresh(), 280);
+    const measure = () => {
+      const active = root.querySelector(".home-project-filter-btn.is-active");
+      if (!active) return;
+      setFilterIndicator({
+        left: active.offsetLeft,
+        top: active.offsetTop + active.offsetHeight - 1,
+        width: active.offsetWidth,
+      });
     };
 
-    const initialRefresh = setTimeout(onLayoutChange, 500);
-
-    const ro = new ResizeObserver(onLayoutChange);
-    ro.observe(playSection);
-
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(root);
+    window.addEventListener("resize", measure);
     return () => {
-      clearTimeout(settleTimer);
-      clearTimeout(initialRefresh);
-      ro.disconnect();
+      observer.disconnect();
+      window.removeEventListener("resize", measure);
     };
-  }, [isWorkLoading]);
+  }, [projectFilter]);
 
   // Landing: rise-from-baseline for title and bio (same style as Play), start on mount to avoid lag
   useEffect(() => {
@@ -119,10 +76,6 @@ const Home = () => {
 
     gsap.set(titleLines, { y: "100%" });
     gsap.set(bioLine, { y: "100%" });
-
-    const navFadeDelay = isDefaultHomePath(location.pathname)
-      ? LANDING_NAV_DELAY
-      : 0.5;
 
     const tl = gsap.timeline();
     tl.to(titleLines, {
@@ -147,79 +100,64 @@ const Home = () => {
           duration: LANDING_NAV_DURATION,
           ease: LANDING_EASE,
         },
-        navFadeDelay,
+        LANDING_NAV_DELAY,
       );
 
     return () => tl.kill();
-  }, [location.pathname]);
+  }, []);
 
-  const defaultPlayIntro = (
-    <>
-      <div className="home-play-title-row">
-        <h2 className="home-play-title">Experiments & Artifacts</h2>
-      </div>
-      <p className="home-play-subtitle">
-        Designing and coding have always been inseparable to me. I bounce
-        between Figma and Cursor until something feels right, all in pursuit of
-        one question:{" "}
-        <span className="play-question">
-          how do we make even the most boring tool spark joy?
-        </span>
-      </p>
-    </>
-  );
-
-  const playSection = (
-    <section id="play" className="home-play">
-      <div className="home-play-inner page-content-shell">
-        {!isGoogleCreative ? defaultPlayIntro : null}
-        <PlayBentoGridNatural />
-      </div>
-    </section>
-  );
-
-  const workSection = (
-    <section id="work" className="home-work">
+  const combinedWorkSection = (
+    <section id="work" className="home-work home-work--combined">
       <div className="home-work-inner page-content-shell">
-        {isGoogleCreative ? (
-          <div className="home-work-section-intro">
-            <h2 className="home-play-title">Design Case Studies</h2>
-            <p className="home-play-subtitle">
-              <span className="play-question">
-                How I balance real user needs and business goals
-              </span>{" "}
-              — from research to shipped, across fintech, health AI, and
-              enterprise.
-            </p>
-          </div>
-        ) : null}
-        <div className="home-work-loading-wrapper">
-          <div
+        <div
+          ref={filterRef}
+          className="home-project-filter"
+          role="group"
+          aria-label="Filter projects"
+        >
+          <span
+            className="home-project-filter-indicator"
             style={{
-              opacity: isWorkLoading ? 1 : 0,
-              transition: "opacity 0.4s ease",
-              pointerEvents: "none",
-              position: isWorkLoading ? "relative" : "absolute",
-              inset: 0,
+              width: filterIndicator.width,
+              transform: `translate(${filterIndicator.left}px, ${filterIndicator.top}px)`,
             }}
-          >
-            <SkeletonWorkGrid />
-          </div>
-          <div
-            style={{
-              opacity: isWorkLoading ? 0 : 1,
-              transition: "opacity 0.4s ease",
-            }}
-          >
-            <WorkBentoGrid
-              compactLayout
-              gridClassName="home-case-study-grid"
-              onHoverChange={setIsHoveringWorkCard}
-              isHoveringWorkCard={isHoveringWorkCard}
-              containerRef={workGridRef}
-              onReady={() => setIsWorkLoading(false)}
-            />
-          </div>
+            aria-hidden="true"
+          />
+          {HOME_FILTERS.map((filter) => {
+            const isActive = projectFilter === filter.id;
+            return (
+              <button
+                key={filter.id}
+                type="button"
+                aria-pressed={isActive}
+                className={`home-project-filter-btn${isActive ? " is-active" : ""}`}
+                onMouseDown={(event) => {
+                  event.preventDefault();
+                  // A focused embed is still in the document when the grid
+                  // swaps. React then refocuses it and the page scrolls.
+                  if (document.activeElement instanceof HTMLIFrameElement) {
+                    document.activeElement.blur();
+                  }
+                }}
+                onClick={() => {
+                  if (filter.id === projectFilter) return;
+                  const grid = document.querySelector(
+                    ".home-play-bento-grid-natural",
+                  );
+                  if (grid) grid.style.minHeight = `${grid.offsetHeight}px`;
+                  setProjectFilter(filter.id);
+                }}
+              >
+                {filter.label}
+              </button>
+            );
+          })}
+        </div>
+        <div>
+          <PlayBentoGridNatural
+            projects={homeGridProjects}
+            positions={homeGridPositions}
+          />
         </div>
       </div>
     </section>
@@ -227,18 +165,7 @@ const Home = () => {
 
   return (
     <>
-      {isGoogleCreative && !pokemonIntroDone ? (
-        <PokemonIntro
-          onComplete={() => {
-            scrollToTop({ immediate: true });
-            setPokemonIntroDone(true);
-          }}
-        />
-      ) : null}
-      <main
-        className={`home${isGoogleCreative ? " home-google-creative" : ""}`}
-        style={{ backgroundColor: "#fafafa" }}
-      >
+      <main className="home" style={{ backgroundColor: "#fafafa" }}>
         <section id="landing" className="home-landing">
           <div className="home-landing-content page-content-shell">
             <div className="home-landing-grid">
@@ -316,17 +243,7 @@ const Home = () => {
           </div>
         </section>
 
-        {isGoogleCreative ? (
-          <>
-            {playSection}
-            {workSection}
-          </>
-        ) : (
-          <>
-            {workSection}
-            {playSection}
-          </>
-        )}
+        {combinedWorkSection}
 
         <Footer />
       </main>
