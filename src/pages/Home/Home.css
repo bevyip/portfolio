@@ -285,17 +285,19 @@
 
 @media (max-width: 767px) {
   .home-project-filter {
-    gap: 0.15rem 0.85rem;
+    flex-wrap: nowrap;
+    gap: 0 0.55rem;
     margin-bottom: 1.35rem;
-    row-gap: 0;
   }
 
   .home-project-filter-btn {
     min-height: 44px;
-    min-width: 2.75rem;
+    min-width: 0;
     display: inline-flex;
     align-items: center;
-    padding-inline: 0.1rem;
+    padding-inline: 0;
+    font-size: 0.875rem;
+    white-space: nowrap;
   }
 }
 
