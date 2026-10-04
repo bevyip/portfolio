@@ -187,7 +187,11 @@ const About = () => {
               </div>
               <div ref={howText3Ref} className="about-sandbox-text-wrap">
                 <p className="about-sandbox-text">
-                  Currently a Creative Technologist at Google Creative Lab, I'm
+                  Currently a Creative Technologist at{" "}
+                  <span className="about-sandbox-link-institution">
+                    Google Creative Lab
+                  </span>
+                  , I'm
                   designing, prototyping, and being closer to the people behind
                   the screens than ever before. At the end of the day,{" "}
                   <span className="about-sandbox-accent">
