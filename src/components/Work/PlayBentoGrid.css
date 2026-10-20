@@ -60,7 +60,7 @@
   border-radius: var(--bento-card-radius);
   border: 1px solid #e5e5e5;
   background: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: none;
   transition:
     box-shadow 0.3s ease,
     transform 0.3s ease;
@@ -71,10 +71,12 @@
   border-color: #333;
 }
 
-.natural-play-bento-item:not(.natural-play-bento-item--iframe):not(
-    .natural-play-bento-item--no-hover
-  ):hover {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+@media (min-width: 1026px) and (hover: hover) {
+  .natural-play-bento-item:not(.natural-play-bento-item--iframe):not(
+      .natural-play-bento-item--no-hover
+    ):hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  }
 }
 
 .natural-play-bento-media {
