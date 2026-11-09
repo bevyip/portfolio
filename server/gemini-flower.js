@@ -6,7 +6,7 @@ import { GoogleGenAI } from "@google/genai";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REFERENCE_FILES = Array.from({ length: 10 }, (_, i) => `${i + 1}.png`);
 
-const DEFAULT_MODEL = "gemini-2.5-flash-image";
+const DEFAULT_MODEL = "gemini-nano-banana-2.1";
 
 let referencePartsCache = null;
 

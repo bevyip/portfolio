@@ -151,11 +151,6 @@ const DINO_ICON_SRC = "/projects/block-party/dino.png";
 
 const RESOURCE_LINKS = [
   {
-    key: "view-app",
-    label: "View App",
-    url: "https://block-party-thesis.vercel.app",
-  },
-  {
     key: "documentation",
     label: "Documentation",
     url: "https://bevyip.notion.site/block-party-thesis?source=copy_link",
